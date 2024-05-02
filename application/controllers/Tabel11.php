@@ -27,7 +27,7 @@ class Tabel11 extends Omnitags
 			'tbl4' => $this->tl4->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -59,10 +59,10 @@ class Tabel11 extends Omnitags
 
 		if ($simpan) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_1['tabel11_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_2['tabel11_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel5/admin'));
@@ -82,10 +82,10 @@ class Tabel11 extends Omnitags
 
 		if ($update) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel11_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel11_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 		-
 			redirect(site_url('tabel11/admin'));
@@ -99,10 +99,10 @@ class Tabel11 extends Omnitags
 
 		if ($hapus) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_5['tabel11_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_6['tabel11_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel11/admin'));
@@ -122,7 +122,7 @@ class Tabel11 extends Omnitags
 			'tbl11' => $this->tl11->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views_v4['tabel11'], $data);
 	}

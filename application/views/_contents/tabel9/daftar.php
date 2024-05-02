@@ -50,7 +50,7 @@
 
 <!-- modal edit password-->
 <?php foreach ($tbl9 as $tl9): ?>
-  <div id="password<?= $tl9->$tabel9_field1 ?>" class="modal fade password">
+  <div id="password<?= $tl9->$tabel9_field1 ?>" class="modal fade tabel9_field4">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -67,7 +67,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <input class="form-control" type="password" required name="<?= $tabel9_field4_old ?>"
+              <input class="form-control" type="password" required name="txt<?= $tabel9_field4 ?>"
                 placeholder="Masukkan <?= $tabel9_field4_alias ?> lama">
               <input type="hidden" name="<?= $tabel9_field1_input ?>" value="<?= $tl9->$tabel9_field1; ?>">
             </div>
@@ -91,7 +91,7 @@
 
           <!-- pesan untuk pengguna yang sedang merubah password -->
           <!-- untuk bagian ini akan kuubah nanti -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('notifikasi') ?></p>
+          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tabel9_field4') ?></p>
 
           <div class="modal-footer">
             <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel9_field4_alias ?>?')"

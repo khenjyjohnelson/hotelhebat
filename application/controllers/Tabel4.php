@@ -28,7 +28,7 @@ class Tabel4 extends Omnitags
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -113,10 +113,10 @@ class Tabel4 extends Omnitags
 
 		if ($update) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_1['tabel4_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_2['tabel4_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel4/admin'));
@@ -130,10 +130,10 @@ class Tabel4 extends Omnitags
 
 		if ($hapus) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel4_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel4_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel4/admin'));
@@ -153,7 +153,7 @@ class Tabel4 extends Omnitags
 			'tbl4' => $this->tl4->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views_v4['tabel4'], $data);
 	}
@@ -173,7 +173,7 @@ class Tabel4 extends Omnitags
 			'tbl4' => $this->tl4->ambil_tabel4_field1($tabel4_field1)->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -190,7 +190,7 @@ class Tabel4 extends Omnitags
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['tabel4_v9'], $data);
 	}
@@ -207,7 +207,7 @@ class Tabel4 extends Omnitags
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v3'], $data);
 	}
@@ -230,11 +230,11 @@ class Tabel4 extends Omnitags
 		if ($update) {
 
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], 'Profil berhasil diubah!');
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], 'Profil gagal diubah!');
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		// mengambil data profil yang baru dirubah
@@ -291,24 +291,24 @@ class Tabel4 extends Omnitags
 					// jika konfirmasi password tidak sama dengan password baru
 				} else {
 
-					$this->session->set_flashdata($this->flashdatas['v_flashdata2'], 'Konfirmasi ' . $this->aliases['tabel4_field4'] . ' tidak sesuai!');
-					$this->session->set_flashdata($this->flashdatas['v_flashdata_b'], $this->flashdatas['v_flashdata_b_func1']);
+					$this->session->set_flashdata($this->v_flashdata['tabel4_field4'], $this->v_flashdata_msg3_alt2['tabel4_field4_alias']);
+					$this->session->set_flashdata('modal', $this->v_flashdata_func['tabel4_field4']);
 					redirect($_SERVER['HTTP_REFERER']);
 				}
 
 				// jika password lama salah
 			} else {
 
-				$this->session->set_flashdata($this->flashdatas['v_flashdata2'], $this->aliases['tabel4_field4'] . ' lama salah!');
-				$this->session->set_flashdata($this->flashdatas['v_flashdata_b'], $this->flashdatas['v_flashdata_b_func1']);
+				$this->session->set_flashdata($this->v_flashdata['tabel4_field4'], $this->v_flashdata_msg3_alt1['tabel4_field4_alias']);
+				$this->session->set_flashdata('modal', $this->v_flashdata_func['tabel4_field4']);
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 
 			// jika jumlah data kurang dari 0
 		} else {
 
-			$this->session->set_flashdata($this->flashdatas['v_flashdata2'], 'Akun tidak tersedia!');
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_b'], $this->flashdatas['v_flashdata_b_func1']);
+			$this->session->set_flashdata($this->v_flashdata['tabel4_field4'], $this->v_flashdata_msg5['tabel4_alias2']);
+			$this->session->set_flashdata('modal', $this->v_flashdata_func['tabel4_field4']);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}

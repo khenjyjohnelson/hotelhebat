@@ -20,10 +20,10 @@ class Tabel2 extends Omnitags
 	{
 		$this->declarew();
 		// nilai min dan max di sini belum ada
-		$param1 = $this->views['tabel2_field11_filter1_get'];
-		$param2 = $this->views['tabel2_field11_filter2_get'];
-		$param3 = $this->views['tabel2_field12_filter1_get'];
-		$param4 = $this->views['tabel2_field12_filter2_get'];
+		$param1 = $this->views_filter1_get['tabel2_field11'];
+		$param2 = $this->views_filter2_get['tabel2_field11'];
+		$param3 = $this->views_filter1_get['tabel2_field12'];
+		$param4 = $this->views_filter2_get['tabel2_field12'];
 
 		$param5 = $this->session->userdata($this->aliases['tabel9_field1']);
 
@@ -44,7 +44,7 @@ class Tabel2 extends Omnitags
 			'tabel2_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -55,10 +55,10 @@ class Tabel2 extends Omnitags
 		$this->declarew();
 
 		// nilai min dan max sudah diinput sebelumnya
-		$param1 = $this->views['tabel2_field11_filter1_get'];
-		$param2 = $this->views['tabel2_field11_filter2_get'];
-		$param3 = $this->views['tabel2_field12_filter1_get'];
-		$param4 = $this->views['tabel2_field12_filter2_get'];
+		$param1 = $this->views_filter1_get['tabel2_field11'];
+		$param2 = $this->views_filter2_get['tabel2_field11'];
+		$param3 = $this->views_filter1_get['tabel2_field12'];
+		$param4 = $this->views_filter2_get['tabel2_field12'];
 
 		$param5 = $this->session->userdata($this->aliases['tabel9_field1']);
 
@@ -79,7 +79,7 @@ class Tabel2 extends Omnitags
 			'tabel2_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -90,10 +90,10 @@ class Tabel2 extends Omnitags
 		$this->declarew();
 
 		// nilai min dan max di sini belum ada
-		$param1 = $this->views['tabel2_field11_filter1_get'];
-		$param2 = $this->views['tabel2_field11_filter2_get'];
-		$param3 = $this->views['tabel2_field12_filter1_get'];
-		$param4 = $this->views['tabel2_field12_filter2_get'];
+		$param1 = $this->views_filter1_get['tabel2_field11'];
+		$param2 = $this->views_filter2_get['tabel2_field11'];
+		$param3 = $this->views_filter1_get['tabel2_field12'];
+		$param4 = $this->views_filter2_get['tabel2_field12'];
 
 		$data1 = array(
 			$this->v_part1 => $this->views_v3_title['tabel2_alias'],
@@ -112,7 +112,7 @@ class Tabel2 extends Omnitags
 			'tabel2_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -140,7 +140,7 @@ class Tabel2 extends Omnitags
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views_v4['tabel2'], $data);
 	}
@@ -150,10 +150,10 @@ class Tabel2 extends Omnitags
 		$this->declarew();
 
 		// nilai min dan max sudah diinput sebelumnya
-		$param1 = $this->views['tabel2_field11_filter1_get'];
-		$param2 = $this->views['tabel2_field11_filter2_get'];
-		$param3 = $this->views['tabel2_field12_filter1_get'];
-		$param4 = $this->views['tabel2_field12_filter2_get'];
+		$param1 = $this->views_filter1_get['tabel2_field11'];
+		$param2 = $this->views_filter2_get['tabel2_field11'];
+		$param3 = $this->views_filter1_get['tabel2_field12'];
+		$param4 = $this->views_filter2_get['tabel2_field12'];
 
 		$data1 = array(
 			$this->v_part1 => $this->views_v3_title['tabel2_alias'],
@@ -172,7 +172,7 @@ class Tabel2 extends Omnitags
 			'tabel2_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}

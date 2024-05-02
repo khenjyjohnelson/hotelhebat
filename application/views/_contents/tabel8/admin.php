@@ -225,7 +225,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p id="p_ubah" class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
 
               <div class="modal-footer">
                 <!-- pesan yg muncul berdasarkan nilai status -->
@@ -409,7 +409,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p id="p_book" class="small text-center text-danger"><?= $this->session->flashdata('pesan_book') ?></p>
+              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_book') ?></p>
 
               <div class="modal-footer">
 

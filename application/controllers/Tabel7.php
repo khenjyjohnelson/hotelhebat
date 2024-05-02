@@ -25,7 +25,7 @@ class Tabel7 extends Omnitags
 			'tbl13' => $this->tl13->ambildata()->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -49,10 +49,10 @@ class Tabel7 extends Omnitags
 
 		if ($update) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel7_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel7_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel7/admin'));
@@ -70,11 +70,11 @@ class Tabel7 extends Omnitags
 		$update = $this->tl7->update($data, $tabel7_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel7_v_flashdata1_msg_13']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_o'], $this->flashdatas['v_flashdata_o_func1']);
+			$this->session->set_flashdata($this->v_flashdata['tabel7_field12'], $this->flashdata1_msg_3['tabel7_field12']);
+			$this->session->set_flashdata('modal', $this->v_flashdata_func['tabel7_field12']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel7_v_flashdata1_msg_14']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_o'], $this->flashdatas['v_flashdata_o_func1']);
+			$this->session->set_flashdata($this->v_flashdata['tabel7_field12'], $this->flashdata1_msg_4['tabel7_field12']);
+			$this->session->set_flashdata('modal', $this->v_flashdata_func['tabel7_field12']);
 		}
 
 		redirect(site_url('tabel7/admin'));
@@ -86,9 +86,9 @@ class Tabel7 extends Omnitags
 
 		$table = $this->tl7->ambil_tabel7_field1($this->views_post['tabel7_field1'])->result();
 		$tabel7_field3 = $table[0]->favicon;
-		unlink($this->views['tabel7_field3_upload_path'] . $tabel7_field3);
+		unlink($this->views_upload_path['tabel7'] . $tabel7_field3);
 
-		$config['upload_path'] = $this->views['tabel7_field3_upload_path'];
+		$config['upload_path'] = $this->views_upload_path['tabel7'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->aliases['tabel7_field3'];
@@ -100,7 +100,7 @@ class Tabel7 extends Omnitags
 		$file_extension = pathinfo($_FILES[$this->views_input['tabel7_field3_input']]['name'], PATHINFO_EXTENSION);
 
 		if (!$this->upload->do_upload($this->views_input['tabel7_field3_input'])) {
-			$gambar = $this->views['tabel7_field3_alt'];
+			$gambar = $this->views_post_old['tabel7_field3'];
 		} else {
 			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
@@ -116,10 +116,10 @@ class Tabel7 extends Omnitags
 		$update = $this->tl7->update($data, $tabel7_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel7_v_flashdata1_msg_7']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel7_field3']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel7_v_flashdata1_msg_8']);
+			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel7_field3']);
 			$this->session->set_flashdata($this->flashdatas['v_flashdata_m'], $this->flashdatas['v_flashdata_m_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
@@ -133,9 +133,9 @@ class Tabel7 extends Omnitags
 
 		$table = $this->tl7->ambil_tabel7_field1($this->views_post['tabel7_field1'])->result();
 		$tabel7_field4 = $table[0]->logo;
-		unlink($this->views['tabel7_field4_upload_path'] . $tabel7_field4);
+		unlink($this->views_upload_path['tabel7'] . $tabel7_field4);
 
-		$config['upload_path'] = $this->views['tabel7_field4_upload_path'];
+		$config['upload_path'] = $this->views_upload_path['tabel7'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->aliases['tabel7_field4'];
@@ -147,7 +147,7 @@ class Tabel7 extends Omnitags
 		$file_extension = pathinfo($_FILES[$this->views_input['tabel7_field4_input']]['name'], PATHINFO_EXTENSION);
 
 		if (!$this->upload->do_upload($this->views_input['tabel7_field4_input'])) {
-			$gambar = $this->views['tabel7_field4_alt'];
+			$gambar = $this->views_post_old['tabel7_field4'];
 		} else {
 			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
@@ -163,10 +163,10 @@ class Tabel7 extends Omnitags
 		$update = $this->tl7->update($data, $tabel7_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel7_v_flashdata1_msg_9']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel7_field4']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel7_v_flashdata1_msg_10']);
+			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel7_field4']);
 			$this->session->set_flashdata($this->flashdatas['v_flashdata_m'], $this->flashdatas['v_flashdata_m_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
@@ -180,9 +180,9 @@ class Tabel7 extends Omnitags
 
 		$table = $this->tl7->ambil_tabel7_field1($this->views_post['tabel7_field1'])->result();
 		$tabel7_field5 = $table[0]->foto;
-		unlink($this->views['tabel7_field5_upload_path'] . $tabel7_field5);
+		unlink($this->views_upload_path['tabel7'] . $tabel7_field5);
 
-		$config['upload_path'] = $this->views['tabel7_field5_upload_path'];
+		$config['upload_path'] = $this->views_upload_path['tabel7'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->aliases['tabel7_field5'];
@@ -194,7 +194,7 @@ class Tabel7 extends Omnitags
 		$file_extension = pathinfo($_FILES[$this->views_input['tabel7_field5_input']]['name'], PATHINFO_EXTENSION);
 
 		if (!$this->upload->do_upload($this->views_input['tabel7_field5_input'])) {
-			$gambar = $this->views['tabel7_field5_alt'];
+			$gambar = $this->views_post_old['tabel7_field5'];
 		} else {
 			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
@@ -210,10 +210,10 @@ class Tabel7 extends Omnitags
 		$update = $this->tl7->update($data, $tabel7_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel7_v_flashdata1_msg_11']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel7_field5']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel7_v_flashdata1_msg_12']);
+			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel7_field5']);
 			$this->session->set_flashdata($this->flashdatas['v_flashdata_m'], $this->flashdatas['v_flashdata_m_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		}

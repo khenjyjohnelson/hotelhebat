@@ -91,7 +91,7 @@
         </div>
 
         <!-- memunculkan notifikasi modal -->
-        <p id="p_tambah" class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
+        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
           <button class="btn btn-success" type="submit">Simpan</button>
@@ -136,7 +136,7 @@
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p id="p_ubah" class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
 
           <div class="modal-footer">
             <button class="btn btn-success" type="submit">Simpan Perubahan</button>
@@ -181,9 +181,9 @@
 
             </div>
           </div>
-
+          
           <!-- memunculkan notifikasi modal -->
-          <p id="p_lihat" class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
+          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
             <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>

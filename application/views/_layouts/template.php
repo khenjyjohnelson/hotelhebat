@@ -98,7 +98,7 @@ switch (true) {
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p id="p_cari" class="small text-center text-danger">
+              <p class="small text-center text-danger">
                 <?= $this->session->flashdata('pesan_cari') ?>
               </p>
 
@@ -236,31 +236,10 @@ switch (true) {
 
 
 
-
-
-
         // yg ini yang menggunakan toast
-        <?= $this->session->flashdata('panggil') ?>
-        // ini sebenarnya utk ubah password cman aku malas buat ubah namanya
-        <?= $this->session->flashdata('modal') ?>
+        <?= $this->session->flashdata('toast') ?>
         // yg di bawah ini adalah semua yg berhubungan dgn modal
-        <?= $this->session->flashdata('tambah') ?>
-        <?= $this->session->flashdata('ubah') ?>
-        <?= $this->session->flashdata('lihat') ?>
-        <?= $this->session->flashdata('cari') ?>
-        <?= $this->session->flashdata('maintenance') ?>
-        <?= $this->session->flashdata('clean') ?>
-        <?= $this->session->flashdata('book') ?>
-        <?= $this->session->flashdata($tabel10_field6) ?>
-        <?= $this->session->flashdata('cari') ?>
-        //  $this->session->flashdata('quickTour') ?>
-
-
-
-
-
-
-
+        <?= $this->session->flashdata('modal') ?>
 
 
       });

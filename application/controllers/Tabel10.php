@@ -37,7 +37,7 @@ class Tabel10 extends Omnitags
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -58,7 +58,7 @@ class Tabel10 extends Omnitags
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -69,8 +69,8 @@ class Tabel10 extends Omnitags
 		$this->declarew();
 
 		// nilai min dan max sudah diinput sebelumnya
-		// $param1 = $this->views['tabel10_field7_filter1_get'];
-		// $param2 = $this->views['tabel10_field7_filter2_get'];
+		// $param1 = $this->views_filter1_get['tabel10_field7'];
+		// $param2 = $this->views_filter2_get['tabel10_field7'];
 
 		$data1 = array(
 			$this->v_part1 => $this->views_v3_title['tabel10_alias'],
@@ -87,11 +87,7 @@ class Tabel10 extends Omnitags
 			// 'tgl_transaksi_max' => $param2,
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
-
-
-		$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['v_flashdata1_msg1']);
-		$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -102,8 +98,8 @@ class Tabel10 extends Omnitags
 		$this->declarew();
 
 		// nilai min dan max sudah diinput sebelumnya
-		// $param1 = $this->views['tabel10_field7_filter1_get'];
-		// $param2 = $this->views['tabel10_field7_filter2_get'];
+		// $param1 = $this->views_filter1_get['tabel10_field7'];
+		// $param2 = $this->views_filter2_get['tabel10_field7'];
 
 		$data1 = array(
 			$this->v_part1 => $this->views['tabel10_v3_alt_title'],
@@ -120,7 +116,7 @@ class Tabel10 extends Omnitags
 			// 'tgl_transaksi_max' => $param2,
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -162,10 +158,10 @@ class Tabel10 extends Omnitags
 
 		if ($simpan) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_1['tabel10_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_2['tabel10_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		// fitur mengubah status ini seharusnya berada di bagian pesanan cman saya belum bisa menemukan algoritma yang pas jadi akan disimpan untuk pengembangan di kemudian hari
@@ -180,15 +176,15 @@ class Tabel10 extends Omnitags
 			$update = $this->tl8->update($status, $tabel10_field4);
 
 			if ($update) {
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel10_v_flashdata1_msg_7']);
-				$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel8_alias']);
+				$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 			} else {
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel10_v_flashdata1_msg_8']);
-				$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel8_alias']);
+				$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 			}
 		} else {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['tabel10_v_flashdata1_msg_9']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->v_flashdata_msg3['tabel10_alias']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel10/konfirmasi'));
@@ -214,10 +210,10 @@ class Tabel10 extends Omnitags
 
 		if ($update) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel10_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel10_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel10/admin'));
@@ -232,10 +228,10 @@ class Tabel10 extends Omnitags
 
 		if ($hapus) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_5['tabel10_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_6['tabel10_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel10/admin'));
@@ -247,8 +243,8 @@ class Tabel10 extends Omnitags
 		$this->declarew();
 
 		// nilai min dan max sudah diinput sebelumnya
-		$tabel10_field7_filter1 = $this->views['tabel10_field7_filter1_get'];
-		$tabel10_field7_filter2 = $this->views['tabel10_field7_filter2_get'];
+		$tabel10_field7_filter1 = $this->views_filter1_get['tabel10_field7'];
+		$tabel10_field7_filter2 = $this->views_filter2_get['tabel10_field7'];
 
 		$data1 = array(
 			$this->v_part1 => $this->views_v3_title['tabel10_alias'],
@@ -266,7 +262,7 @@ class Tabel10 extends Omnitags
 			'tabel10_field7_filter2' => $tabel10_field7_filter2,
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -287,7 +283,7 @@ class Tabel10 extends Omnitags
 			'tbl8' => $this->tl8->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views_v4['tabel10'], $data);
 	}
@@ -342,7 +338,7 @@ class Tabel10 extends Omnitags
 
 		$tabel10_field3 = $this->session->tempdata($this->aliases['tabel10_field3'] . '_' . $this->aliases['tabel10']);
 		$data1 = array(
-			$this->v_part1 => $this->views['tabel10_v6_title'],
+			$this->v_part1 => $this->views_v6_title['tabel10_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel10')->result(),
@@ -352,8 +348,8 @@ class Tabel10 extends Omnitags
 			'tbl10' => $this->tl10->ambil_tabel9_field3($tabel10_field3)->last_row(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views['tabel10_v6'], $data);
+		$this->load->view($this->views_v6['tabel10'], $data);
 	}
 }

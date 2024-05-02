@@ -26,7 +26,7 @@ class Tabel12 extends Omnitags
 			'tbl12' => $this->tl12->ambildata()->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -35,7 +35,7 @@ class Tabel12 extends Omnitags
 	{
 		$this->declarew();
 
-		$config['upload_path'] = $this->views['tabel12_field3_upload_path'];
+		$config['upload_path'] = $this->views_upload_path['tabel12'];
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->views_post['tabel12_field2'];
 		$config['overwrite'] = TRUE;
@@ -50,8 +50,8 @@ class Tabel12 extends Omnitags
 			// Tapi karena formnya sudah required saya rasa tidak perlu
 
 
-			$this->session->set_flashdata($this->flashdatas['v_flashdata3'], $this->flashdatas['tabel12_v_flashdata3_msg_1']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_c'], $this->flashdatas['v_flashdata_c_func1']);
+			$this->session->set_flashdata($this->flashdatas['v_flashdata3'], $this->v_flashdata_msg2['tabel12_field3_alias']);
+			$this->session->set_flashdata('modal', $this->flashdatas['v_flashdata_3_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
@@ -70,10 +70,10 @@ class Tabel12 extends Omnitags
 
 		if ($simpan) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_1['tabel12_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_2['tabel12_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel12/admin'));
@@ -83,7 +83,7 @@ class Tabel12 extends Omnitags
 	{
 		$this->declarew();
 
-		$config['upload_path'] = $this->views['tabel12_field3_upload_path'];
+		$config['upload_path'] = $this->views_upload_path['tabel12'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->views_post['tabel12_field2'];
@@ -115,7 +115,7 @@ class Tabel12 extends Omnitags
 
 		if ($update) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel12_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel12_alias']);
 			$this->session->set_flashdata($this->flashdatas['v_flashdata_m'], $this->flashdatas['v_flashdata_m_func1']);
@@ -132,16 +132,16 @@ class Tabel12 extends Omnitags
 		$tabel12 = $this->tl12->ambil_tabel12_field1($tabel12_field1)->result();
 		$img = $tabel12[0]->img;
 
-		unlink($this->views['tabel12_field3_upload_path'] . $img);
+		unlink($this->views_upload_path['tabel12'] . $img);
 
 		$hapus = $this->tl12->hapus($tabel12_field1);
 
 		if ($hapus) {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_5['tabel12_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_6['tabel12_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
 		}
 
 		redirect(site_url('tabel12/admin'));
@@ -161,7 +161,7 @@ class Tabel12 extends Omnitags
 			'tbl12' => $this->tl12->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views_v4['tabel12'], $data);
 	}

@@ -50,7 +50,7 @@
 
 <!-- modal edit password-->
 <?php foreach ($tbl4 as $tl4): ?>
-  <div id="password<?= $tl4->$tabel4_field1 ?>" class="modal fade password">
+  <div id="password<?= $tl4->$tabel4_field1 ?>" class="modal fade tabel4_field4">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -67,7 +67,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <input class="form-control" type="password" required name="<?= $tabel4_field4_old ?>"
+              <input class="form-control" type="password" required name="<?= $tabel4_field4_aalt ?>"
                 placeholder="Masukkan <?= $tabel4_field4_alias ?> lama">
               <input type="hidden" name="<?= $tabel4_field1_input ?>" value="<?= $tl4->$tabel4_field1_input; ?>">
             </div>

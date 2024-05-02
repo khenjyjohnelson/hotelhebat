@@ -133,7 +133,7 @@
         </div>
 
         <!-- memunculkan notifikasi modal -->
-        <p id="p_tambah" class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
+        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
           <button class="btn btn-success" type="submit">Simpan</button>
@@ -205,7 +205,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p id="p_ubah" class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
 
               <div class="modal-footer">
                 <button class="btn btn-success" type="submit">Simpan Perubahan</button>
@@ -256,7 +256,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p id="p_lihat" class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
+              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
               <div class="modal-footer">
                 <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -274,7 +274,7 @@
 <?php foreach ($tbl5 as $tl5) : ?>
   <?php foreach ($tbl6 as $tl6) : ?>
     <?php if ($tl6->$tabel5_field2 == $tl5->$tabel5_field2) { ?>
-      <div id="<?= $tabel4_field6_value1 . $tl5->$tabel5_field1 ?>" class="modal fade clean">
+      <div id="<?= $tabel4_field6_value1 . $tl5->$tabel5_field1 ?>" class="modal fade tabel4_field6_value1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -359,7 +359,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p id="p_clean" class="small text-center text-danger"><?= $this->session->flashdata('pesan_clean') ?></p>
+              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tabel4_field6_value1') ?></p>
 
               <div class="modal-footer">
                 <p>Proses <?= $tabel5_alias ?> <?= $tl5->$tabel5_field1; ?>?</p>
@@ -465,7 +465,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p id="p_maintenance" class="small text-center text-danger"><?= $this->session->flashdata('pesan_maintenance') ?></p>
+              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_maintenance') ?></p>
 
               <div class="modal-footer">
                 <p>Proses <?= $tabel5_alias ?> <?= $tl5->$tabel5_field1; ?>?</p>

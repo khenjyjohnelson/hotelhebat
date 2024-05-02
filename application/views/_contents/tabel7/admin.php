@@ -95,7 +95,7 @@
 
 <!-- modal edit event-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel13 . $tl7->$tabel7_field1 ?>" class="modal fade event">
+  <div id="<?= $tabel13 . $tl7->$tabel7_field1 ?>" class="modal fade tabel7_field12">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -138,8 +138,8 @@
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p id="p_<?= $tabel7_field12 ?>" class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel7_field12) ?>
+          <p class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_tabel7_field12') ?>
           </p>
 
           <div class="modal-footer">
@@ -154,7 +154,7 @@
 
 <!-- modal edit favicon-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel7_field3 . $tl7->$tabel7_field1; ?>" class="modal fade favicon">
+  <div id="<?= $tabel7_field3 . $tl7->$tabel7_field1; ?>" class="modal fade tabel7_field3">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -177,13 +177,13 @@
               <label>Ubah <?= $tabel7_field3_alias ?></label>
               <input class="form-control-file" required type="file" name="<?= $tabel7_field3_input ?>">
               <input type="hidden" name="<?= $tabel7_field1_input ?>" value="<?= $tl7->$tabel7_field1; ?>">
-              <input type="hidden" name="<?= $tabel7_field3_alt ?>" value="<?= $tl7->$tabel7_field3; ?>">
+              <input type="hidden" name="<?= $tabel7_field3_old ?>" value="<?= $tl7->$tabel7_field3; ?>">
             </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p id="p_<?= $tabel7_field3 ?>" class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel7_field3) ?>
+          <p class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_tabel7_field3') ?>
           </p>
 
           <div class="modal-footer">
@@ -198,7 +198,7 @@
 
 <!-- modal edit logo-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel7_field4 . $tl7->$tabel7_field1; ?>" class="modal fade logo">
+  <div id="<?= $tabel7_field4 . $tl7->$tabel7_field1; ?>" class="modal fade tabel7_field4">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -222,13 +222,13 @@
               <label>Ubah <?= $tabel7_field4_alias ?></label>
               <input class="form-control-file" required type="file" name="<?= $tabel7_field4_input ?>">
               <input type="hidden" name="<?= $tabel7_field1_input ?>" value="<?= $tl7->$tabel7_field1; ?>">
-              <input type="hidden" name="<?= $tabel7_field4_alt ?>" value="<?= $tl7->$tabel7_field4; ?>">
+              <input type="hidden" name="<?= $tabel7_field4_old ?>" value="<?= $tl7->$tabel7_field4; ?>">
             </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p id="p_<?= $tabel7_field4 ?>" class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel7_field4) ?>
+          <p class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_tabel7_field4') ?>
           </p>
 
           <div class="modal-footer">
@@ -243,7 +243,7 @@
 
 <!-- modal edit foto-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel7_field5 . $tl7->$tabel7_field1; ?>" class="modal fade foto">
+  <div id="<?= $tabel7_field5 . $tl7->$tabel7_field1; ?>" class="modal fade tabel7_field5">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -266,13 +266,13 @@
               <label>Ubah <?= $tabel7_field5_alias ?></label>
               <input class="form-control-file" required type="file" name="<?= $tabel7_field5_input ?>">
               <input type="hidden" name="<?= $tabel7_field1_input ?>" value="<?= $tl7->$tabel7_field1; ?>">
-              <input type="hidden" name="<?= $tabel7_field5_alt ?>" value="<?= $tl7->$tabel7_field5; ?>">
+              <input type="hidden" name="<?= $tabel7_field5_old ?>" value="<?= $tl7->$tabel7_field5; ?>">
             </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p id="p_<?= $tabel7_field5 ?>" class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel7_field5) ?>
+          <p class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_tabel7_field5') ?>
           </p>
 
           <div class="modal-footer">
