@@ -146,64 +146,88 @@ class Tabel8 extends Omnitags
 	}
 
 	public function tambah()
-	{
-		$this->declarew();
+{
+    // Functional requirement: Declare necessary configurations
+    $this->declarew();
 
-		$param4 = $this->views_post['tabel8_field4'];
-		$param8 = $this->views_post['tabel8_field8'];
+    // Security: Input Sanitization and Validation
+    $inputs = [
+        'tabel8_field4',
+        'tabel8_field8',
+        'tabel8_field10',
+        'tabel8_field11',
+        'tabel8_field2',
+        'tabel8_field3',
+        'tabel8_field5',
+        'tabel8_field6',
+        'tabel8_field7'
+    ];
 
-		$param10 = $this->views_post['tabel8_field10']; //cek in
-		$param11 = $this->views_post['tabel8_field11']; //cek out
+    foreach ($inputs as $input) {
+        $input_value = htmlspecialchars(trim($this->views_post[$input]));
+        if (empty($input_value)) {
+            // Error Handling: Set error flash message for invalid input
+            $this->session->set_flashdata($this->flashdatas['v_flashdata1'], "Invalid input. Please provide valid data.");
+            $this->session->set_flashdata($this->flashdatas['v_flashdata_1'], $this->flashdatas['v_flashdata_1_func1']);
+            // Functional requirement: Redirect user to 'tabel8' confirmation page
+            redirect(site_url('tabel8/konfirmasi'));
+        }
+    }
 
-		// di bawah ini adalah fungsi untuk tabel8
-		$startTimeStamp = strtotime($param10);
-		$endTimeStamp = strtotime($param11);
+    // Calculate total price based on date difference
+    $startTimeStamp = strtotime($this->views_post['tabel8_field10']);
+    $endTimeStamp = strtotime($this->views_post['tabel8_field11']);
+    $timedif = $endTimeStamp - $startTimeStamp;
+    $numberdays = $timedif / 60 / 60 / 24; // 86400 seconds in one day
 
-		$timedif = $endTimeStamp - $startTimeStamp;
-		$numberdays = $timedif / 60 / 60 / 24; // 86400 seconds in one day
+    $tabel6_field1 = $this->views_post['tabel8_field7'];
+    $tabel6 = $this->tl6->ambil_tabel6_field1($tabel6_field1)->result();
 
-		$tabel6_field1 = $this->views_post['tabel8_field7'];
-		$tabel6 = $this->tl6->ambil_tabel6_field1($tabel6_field1)->result();
+    // Calculate total price
+    $harga_total = ($numberdays * $tabel6[0]->harga);
 
-		// rumus harga total pesanan (bisa dijadikan sebuah fungsi jika menggunakan rumus yang kompleks)
-		$harga_total = ($numberdays * $tabel6[0]->harga);
+    $data = [
+        $this->aliases['tabel8_field1'] => '',
+        $this->aliases['tabel8_field2'] => $this->views_post['tabel8_field2'],
+        $this->aliases['tabel8_field3'] => $this->views_post['tabel8_field3'],
+        $this->aliases['tabel8_field4'] => $this->views_post['tabel8_field4'],
+        $this->aliases['tabel8_field5'] => $this->views_post['tabel8_field5'],
+        $this->aliases['tabel8_field6'] => $this->views_post['tabel8_field6'],
+        $this->aliases['tabel8_field7'] => $this->views_post['tabel8_field7'],
+        $this->aliases['tabel8_field8'] => $this->views_post['tabel8_field8'],
+        $this->aliases['tabel8_field9'] => $harga_total,
+        $this->aliases['tabel8_field10'] => $this->views_post['tabel8_field10'],
+        $this->aliases['tabel8_field11'] => $this->views_post['tabel8_field11'],
+        $this->aliases['tabel8_field12'] => $this->aliases['tabel8_field12_value1']
+    ];
 
-		$data = array(
-			$this->aliases['tabel8_field1'] => '',
-			$this->aliases['tabel8_field2'] => $this->views_post['tabel8_field2'],
-			$this->aliases['tabel8_field3'] => $this->views_post['tabel8_field3'],
-			$this->aliases['tabel8_field4'] => $param4,
-			$this->aliases['tabel8_field5'] => $this->views_post['tabel8_field5'],
-			$this->aliases['tabel8_field6'] => $this->views_post['tabel8_field6'],
-			$this->aliases['tabel8_field7'] => $this->views_post['tabel8_field7'],
-			$this->aliases['tabel8_field8'] => $param8,
-			$this->aliases['tabel8_field9'] => $harga_total,
-			$this->aliases['tabel8_field10'] => $this->views_post['tabel8_field10'],
-			$this->aliases['tabel8_field11'] => $this->views_post['tabel8_field11'],
+    // Create temporary session for a specific duration
+    $this->session->set_tempdata($this->aliases['tabel9_field3'] . '_' . $this->aliases['tabel8'], $this->views_post['tabel8_field4'], 300);
 
-			// status akan kuubah menjadi pending karena resepsionis wajib memilihkan kamar untuk user
-			$this->aliases['tabel8_field12'] => $this->aliases['tabel8_field12_value1'],
-			// 'status' => "belum bayar"
+    try {
+        // Security: Prepared Statements to prevent SQL injection
+        // Functional requirement: Save data to the database
+        $simpan = $this->tl8->simpan($data);
 
-		);
+        if ($simpan) {
+            // Functional requirement: Set success flash message
+            $this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_1['tabel8_alias']);
+        } else {
+            // Functional requirement: Set failure flash message
+            $this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_2['tabel8_alias']);
+        }
+        // Functional requirement: Set flash message for further action
+        $this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
+    } catch (Exception $e) {
+        // Error Handling: Handle database operation errors
+        $this->session->set_flashdata($this->flashdatas['v_flashdata3'], "Error occurred while adding data: " . $e->getMessage());
+        $this->session->set_flashdata($this->flashdatas['v_flashdata_c'], $this->flashdatas['v_flashdata_c_func1']);
+    }
 
-		// membuat session supaya nilainya dapat digunakan selama waktu yang ditentukan dalam detik
-		$this->session->set_tempdata($this->aliases['tabel9_field3'] . '_' . $this->aliases['tabel8'], $param4, 300);
+    // Functional requirement: Redirect user to 'tabel8' confirmation page
+    redirect(site_url('tabel8/konfirmasi'));
+}
 
-		$simpan = $this->tl8->simpan($data);
-
-		if ($simpan) {
-
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_1['tabel8_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
-		} else {
-
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_2['tabel8_alias']);
-			$this->session->set_flashdata($this->flashdatas['v_flashdata_a'], $this->flashdatas['v_flashdata_a_func1']);
-		}
-
-		redirect(site_url('tabel8/konfirmasi'));
-	}
 
 	public function update()
 	{
@@ -219,7 +243,7 @@ class Tabel8 extends Omnitags
 		$tabel8_field1 = $this->views_post['tabel8_field1'];
 		
 		$data = array(
-			$this->aliases['tabel8_field12'] => $this->views_post['tabel8_field12post'],
+			$this->aliases['tabel8_field12'] => $this->views_post['tabel8_field12'],
 		);
 
 		// jika status pesanan cek in

@@ -171,10 +171,10 @@ class Tabel10 extends Omnitags
 		// fitur mengubah status ini seharusnya berada di bagian pesanan cman saya belum bisa menemukan algoritma yang pas jadi akan disimpan untuk pengembangan di kemudian hari
 		$tabel10_field4 = $this->views_post['tabel10_field4'];
 		$status = array(
-			$this->aliases['tabel8_field12'] => $this->views_post['tabel8_input12'],
+			$this->aliases['tabel8_field12'] => $this->views_post['tabel8_field12'],
 		);
 
-		if ($this->views_post['tabel8_input12'] === $this->aliases['tabel8_field12_value3']) {
+		if ($this->views_post['tabel8_field12'] === $this->aliases['tabel8_field12_value3']) {
 
 			// hanya merubah status pesanan
 			$update = $this->tl8->update($status, $tabel10_field4);

@@ -24,30 +24,4 @@
   <!-- css pribadi -->
   <link rel="stylesheet" href="css/style.css">
 
-  <style>
-    /* CSS styles for positioning the chatbot container */
-    #chatbot-container {
-      position: fixed;
-      bottom: 120px;
-      /* Adjust as needed */
-      right: 20px;
-      /* Adjust as needed */
-      width: 300px;
-      /* Adjust as needed */
-      height: 400px;
-      /* Adjust as needed */
-      border: none;
-      /* Remove border */
-      display: none;
-      /* Hide the chatbot container by default */
-    }
-
-    #summon-chatbot {
-      position: fixed;
-      bottom: 20px;
-      /* Adjust as needed */
-      right: 20px;
-      /* Adjust as needed */
-    }
-  </style>
 </head>

@@ -3,6 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_tabel1 extends CI_Model
 {
+	public function __construct() {
+        parent::__construct();
+        // Load SSH library or helper here
+    }
+
+    public function fetchDataViaSSH() {
+        // Code to connect to SSH server and fetch data
+    }
+	
 	public function ambildata()
 	{
 		$this->db->order_by($this->aliases['tabel1_field1'], 'DESC');

@@ -29,7 +29,7 @@ switch (true) {
   <?php foreach ($tbl7 as $tl7): ?>
 
     <!-- toast -->
-    <div class="toast fade" id="element" style="position: absolute; top: 80; right: 15; z-index: 1000" data-delay="5000">
+    <div class="toast fade" id="element" data-delay="5000">
       <div class="toast-header">
         <img class="rounded mr-2" src="img/tabel7/<?= $tl7->$tabel7_field3 ?>" width="15px" draggable="false">
         <strong class="mr-auto">
@@ -111,7 +111,7 @@ switch (true) {
         </div>
       </div>
 
-      <div class="konten" style="margin-top: 100px;">
+      <div class="konten">
 
         <!-- konten sesuai controller -->
         <?php $this->load->view($konten) ?>
@@ -121,7 +121,7 @@ switch (true) {
 
 
     <!-- footer -->
-    <div class="container-fluid bg-light border" style="bottom: 0; margin-top: 20px">
+    <div class="container-fluid bg-light border">
       <div class="container">
 
         <!-- menampilkan footer khusus jika level adalah tamu, admin, dan sebagainya  -->
@@ -160,7 +160,7 @@ switch (true) {
                     </a>
                   </li>
                   <li>
-                    <a type="button" id="nextPage" class="text-decoration-none text-dark" href="<?= site_url('tabel3/admin') ?>">
+                    <a type="button" id="nextPage" class="text-decoration-none text-dark" href="<?= site_url('tabel3') ?>">
                       <?= $tabel3_alias ?>
                     </a>
                   </li>
@@ -386,57 +386,59 @@ switch (true) {
       });
     </script>
 
-<script>
-      var ctx = document.getElementById('myChart_tabel8_tabel2').getContext('2d');
-      var chartDataTabel2 = <?= $chart_tabel2 ?> // Data passed from controller
-      var chartDataTabel8 = <?= $chart_tabel8 ?> // Data passed from controller
-
-      var labelsTabel2 = chartDataTabel2.map(function (item) {
-        return item.label;
-      });
-
-      var valuesTabel2 = chartDataTabel2.map(function (item) {
-        return item.value;
-      });
-
-      var labelsTabel8 = chartDataTabel8.map(function (item) {
-        return item.label;
-      });
-
-      var valuesTabel8 = chartDataTabel8.map(function (item) {
-        return item.value;
-      });
-
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labelsTabel8,
-          datasets: [{
-            label: 'Jumlah <?= $tabel8_alias ?> Aktif',
-            data: valuesTabel8,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-          },
-          {
-            label: 'Jumlah <?= $tabel2_alias ?>',
-            data: valuesTabel2,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    </script>
+    
 
   <?php endforeach; ?>
+
+  <script>
+    var ctx = document.getElementById('myChart_tabel8_tabel2').getContext('2d');
+    var chartDataTabel2 = <?= $chart_tabel2 ?> // Data passed from controller
+    var chartDataTabel8 = <?= $chart_tabel8 ?> // Data passed from controller
+
+    var labelsTabel2 = chartDataTabel2.map(function (item) {
+      return item.label;
+    });
+
+    var valuesTabel2 = chartDataTabel2.map(function (item) {
+      return item.value;
+    });
+
+    var labelsTabel8 = chartDataTabel8.map(function (item) {
+      return item.label;
+    });
+
+    var valuesTabel8 = chartDataTabel8.map(function (item) {
+      return item.value;
+    });
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labelsTabel8,
+        datasets: [{
+          label: 'Jumlah <?= $tabel8_alias ?> Aktif',
+          data: valuesTabel8,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Jumlah <?= $tabel2_alias ?>',
+          data: valuesTabel2,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>

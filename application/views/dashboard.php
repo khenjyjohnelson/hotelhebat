@@ -240,4 +240,7 @@
       <img class="img-thumbnail rounded" src="img/tabel7/<?= $tl7->$tabel7_field5 ?>">
     </div>
   </div>
+
+
+  
 <?php endforeach; ?>

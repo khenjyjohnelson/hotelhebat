@@ -69,7 +69,7 @@
               </div>
               <input class="form-control" type="password" required name="<?= $tabel9_field4_old ?>"
                 placeholder="Masukkan <?= $tabel9_field4_alias ?> lama">
-              <input type="hidden" name="<?= $tabel9_field1_input ?>" value="<?= $tl9->$tabel9_field1_input; ?>">
+              <input type="hidden" name="<?= $tabel9_field1_input ?>" value="<?= $tl9->$tabel9_field1; ?>">
             </div>
 
             <div class="input-group">

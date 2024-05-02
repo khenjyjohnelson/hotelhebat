@@ -532,3 +532,8 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+$config['ssh_host'] = '153.92.9.99';
+$config['ssh_username'] = 'u873829283';
+$config['ssh_password'] = 'dGS3TTEanmJkBaj_';

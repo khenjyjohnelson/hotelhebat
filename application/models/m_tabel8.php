@@ -41,11 +41,11 @@ class M_tabel8 extends CI_Model
 
 	public function filter($param1, $param2, $param3, $param4)
 	{
-		$filter = "SELECT * FROM $this->aliases['tabel8'] WHERE 
+		$filter = "SELECT * FROM {$this->aliases['tabel8']} WHERE 
 		
-		$this->aliases['tabel8_field10'] BETWEEN '$param1' AND '$param2'
-		OR $this->aliases['tabel8_field11'] BETWEEN '$param3' AND '$param4'
-		ORDER BY $this->aliases['tabel8_field1'] DESC";
+		{$this->aliases['tabel8_field10']} BETWEEN '$param1' AND '$param2'
+		OR {$this->aliases['tabel8_field11']} BETWEEN '$param3' AND '$param4'
+		ORDER BY {$this->aliases['tabel8_field1']} DESC";
 		return $this->db->query($filter);
 	}
 
@@ -70,7 +70,7 @@ class M_tabel8 extends CI_Model
 
 	public function hapus($param1)
 	{
-		$sql = "DELETE FROM $this->aliases['tabel8'] WHERE $this->aliases['tabel8_field1'] =  $param1;";
+		$sql = "DELETE FROM {$this->aliases['tabel8']} WHERE {$this->aliases['tabel8_field1']} =  $param1;";
 		return $this->db->query($sql);
 	}
 

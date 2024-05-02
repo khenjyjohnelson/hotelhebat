@@ -173,7 +173,7 @@ class Tabel9 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views['v2'],
+			$this->v_part1 => $this->views['v2_title'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('v2')->result(),
@@ -190,16 +190,16 @@ class Tabel9 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views['v2'],
+			$this->v_part1 => $this->views['v3_title'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
-			$this->v_part5 => $this->tl12->dekor('v2')->result(),
+			$this->v_part5 => $this->tl12->dekor('v3')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views['v2'], $data);
+		$this->load->view($this->views['v3'], $data);
 	}
 
 	public function update_profil()

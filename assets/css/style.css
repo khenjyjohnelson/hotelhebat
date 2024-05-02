@@ -1,54 +1,59 @@
 @font-face {
-  font-family: Poppy;
-  src: url(../font/Poppins-Medium.ttf);
+	font-family: Poppy;
+	src: url(../font/Poppins-Medium.ttf);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-html, body {
-  font-family: Poppy;
-  height: 100%;
+html,
+body {
+	font-family: Poppy;
+	height: 100%;
 }
 
 #konten {
-  min-height: 100%;
+	min-height: 100%;
+}
+
+.konten {
+	margin-top: 100px;
 }
 
 body.login {
-  background-color: aqua;
+	background-color: aqua;
 }
 
 div.login {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  background-color: white;
-  margin: 40px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	background-color: white;
+	margin: 40px;
 }
 
 img.img-fluid {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
 }
 
 .input-group {
-  margin: 20px 0;
+	margin: 20px 0;
 }
 
 .btn.login {
-  margin-top: 20px;
-  width: 48%;
+	margin-top: 20px;
+	width: 48%;
 }
 
 div.tabel3 {
-  margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 .tabel7 {
-  width: 90%;
+	width: 90%;
 }
 
 #notif {
@@ -56,22 +61,34 @@ div.tabel3 {
 }
 
 hr {
-  margin-top: -2px;
+	margin-top: -2px;
 }
 
 .card.radio {
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: center;
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
 }
 
 .form-check {
-  margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
-.checkbox-option {  /* Adjust this selector to target your specific checkbox class */
-  width: 30px; /* Adjust width as desired */
-  height: 30px; /* Adjust height as desired */
+.checkbox-option {
+	/* Adjust this selector to target your specific checkbox class */
+	width: 30px; /* Adjust width as desired */
+	height: 30px; /* Adjust height as desired */
 }
 
+.toast.fade {
+	position: absolute;
+	top: 80;
+	right: 15;
+	z-index: 1000;
+}
+
+div.container-fluid.bg-light.border {
+	bottom: 0;
+	margin-top: 20px;
+}

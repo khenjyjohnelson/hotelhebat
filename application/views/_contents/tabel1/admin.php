@@ -69,6 +69,11 @@
             <input class="form-control" type="text" required name="<?= $tabel1_field3_input ?>" placeholder="Masukkan <?= $tabel1_field3_alias ?>">
           </div>
 
+          <div class="form-group">
+            <label><?= $tabel1_field4_alias ?></label>
+            <input class="form-control" type="text" required name="<?= $tabel1_field4_input ?>" placeholder="Masukkan <?= $tabel1_field4_alias ?>">
+          </div>
+
 
         </div>
 

@@ -3,6 +3,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Omnitags extends CI_Controller
 {
+    public function __construct() {
+        parent::__construct();
+    
+        // Set security headers
+        $this->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
+        $this->output->set_header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
+        $this->output->set_header("X-Frame-Options: SAMEORIGIN");
+        $this->output->set_header("X-Content-Type-Options: nosniff");
+        $this->output->set_header("Referrer-Policy: strict-origin-when-cross-origin");
+        $this->output->set_header("Permissions-Policy: geolocation=(self 'http://localhost/me/hotel')");
+    }
+    
+    
+    
     // Di bawah ini aku berencana untuk membuat sebuah array yang menampung semua jenis alias dari field dan nama tabel
     // Dan aku akan membuat array itu merge dengan array yang akan diload ke halaman view pada setiap
     // Controller yang ada di aplikasi ini, dengan begitu, aku tidak perlu khawatir jika ingin memulai projek baru
@@ -44,6 +58,12 @@ class Omnitags extends CI_Controller
     public $views_input;
     public $views_post;
     public $views_get;
+    public $views_post_alt;
+    public $views_upload_path;
+    public $views_filter1;
+    public $views_filter1_get;
+    public $views_filter2;
+    public $views_filter2_get;
     public $flashdatas;
     public $flashdata1_msg_1;
     public $flashdata1_msg_2;
@@ -65,6 +85,13 @@ class Omnitags extends CI_Controller
             $this->views_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
             $this->views_post[$item['key']] = $this->input->post('txt_' . $item['value']);
             $this->views_get[$item['key']] = $this->input->get('txt_'.$item['value']);
+            $this->views_post_alt[$item['key']] = $this->input->post('txt' . $item['value']);
+
+            $this->views_filter1[$item['key']] = $item['value'] . '_min';
+            $this->views_filter2[$item['key']] = $item['value'] . '_max';
+
+            $this->views_filter1_get[$item['key']] = $this->input->get($item['value'] . '_min');
+            $this->views_filter2_get[$item['key']] = $this->input->get($item['value'] . '_max');
         }
 
         $jsonData2 = file_get_contents(site_url('assets/json/school_ukk_hotel_tables.postman_environment.json'));
@@ -72,6 +99,8 @@ class Omnitags extends CI_Controller
 
         // Create variables dynamically
         foreach ($myData2 as $item) {
+            $this->views_upload_path[$item['key']] = './assets/img/' . $item['key'] . '/';
+
             $this->views_v1[$item['key']] = '_contents/'. $item['key'].'/index';
             $this->views_v2[$item['key']] = '_contents/'. $item['key'].'/daftar';
             $this->views_v3[$item['key']] = '_contents/'. $item['key'].'/admin';

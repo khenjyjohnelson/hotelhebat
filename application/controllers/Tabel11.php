@@ -37,7 +37,7 @@ class Tabel11 extends Omnitags
 		$this->declarew();
 
 		// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
-		$tabel11_field6 = date("Y-m-d") . " " . date("h:m:s", time());
+		$tabel11_field7 = date("Y-m-d") . " " . date("h:m:s", time());
 
 		$tabel11_field2 = $this->views_post['tabel11_field2'];
 		$data = array(
@@ -46,7 +46,8 @@ class Tabel11 extends Omnitags
 			$this->aliases['tabel11_field3'] => $this->views_post['tabel11_field3'],
 			$this->aliases['tabel11_field4'] => $this->views_post['tabel11_field4'],
 			$this->aliases['tabel11_field5'] => $this->views_post['tabel11_field5'],
-			$this->aliases['tabel11_field6'] => $tabel11_field6,
+			$this->aliases['tabel11_field6'] => $this->views_post['tabel11_field6'],
+			$this->aliases['tabel11_field7'] => $tabel11_field7,
 		);
 
 		$status = array(
