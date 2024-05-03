@@ -12,8 +12,12 @@
 <hr>
 
 <button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
+<button class="btn btn-info mb-4" type="button" data-toggle="modal" data-target="#import">+ Import</button>
 <a class="btn btn-info mb-4" href="<?= site_url('tabel6/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
+<a class="btn btn-info mb-4" href="<?= site_url('tabel6/excel') ?>" target="_blank">
+  <i class="fas fa-print"></i> Cetak Excel</a>
+
 
 <div class="table-responsive">
   <table class="table table-light" id="data">
@@ -50,6 +54,41 @@
     </tbody>
 
   </table>
+</div>
+
+
+<!-- modal import -->
+<div id="import" class="modal fade import">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Import <?= $tabel6_alias ?></h5>
+
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <form action="<?= site_url('tabel6/import') ?>" enctype="multipart/form-data" method="post">
+        <div class="modal-body">
+          
+        <div class="form-group">
+          <label for="excel">Import Excel</label>
+          <input type="file" class="form-control-file" name="import" id="excel" placeholder="Masukkan" aria-describedby="fileHelpId">
+        </div>
+
+
+        </div>
+
+        <!-- memunculkan notifikasi modal -->
+        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_import') ?></p>
+
+        <div class="modal-footer">
+          <button class="btn btn-success" type="submit">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 <!-- modal tambah -->

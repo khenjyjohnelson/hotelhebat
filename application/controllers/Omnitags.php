@@ -14,7 +14,6 @@ class Omnitags extends CI_Controller
         $this->output->set_header("X-Content-Type-Options: nosniff");
         $this->output->set_header("Referrer-Policy: strict-origin-when-cross-origin");
         $this->output->set_header("Permissions-Policy: geolocation=(self 'http://localhost/me/hotel')");
-        $this->load->library('upload');
     }
 
     // Di bawah ini aku berencana untuk membuat sebuah array yang menampung semua jenis alias dari field dan nama tabel
@@ -44,10 +43,10 @@ class Omnitags extends CI_Controller
     public $v_part4_msg4 = '';  // feature released
 
     public $aliases, $views, $flashdatas, $tempdatas;
-    public $views_v1, $views_v2, $views_v3, $views_v4, $views_v5, $views_v6;
-    public $views_v1_title, $views_v2_title, $views_v3_title, $views_v4_title, $views_v5_title, $views_v6_title;
+    public $v1, $v2, $v3, $v4, $v5, $v6;
+    public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title;
     public $v_input, $v_post, $v_get, $v_old, $v_post_old;
-    public $views_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
+    public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
     public $flash1_msg_1;
     public $flash1_msg_2;
@@ -69,9 +68,9 @@ class Omnitags extends CI_Controller
         // Create variables dynamically
         foreach ($myData1 as $item) {
             $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
-            $this->v_input[$item['key'] . '_input'] = $item['value'];
-            $this->v_post[$item['key']] = $this->input->post($item['value']);
-            $this->v_get[$item['key']] = $this->input->get($item['value']);
+            $this->v_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
+            $this->v_post[$item['key']] = $this->input->post('txt_' . $item['value']);
+            $this->v_get[$item['key']] = $this->input->get('txt_' . $item['value']);
             $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
             $this->v_post_old[$item['key']] = $this->input->post('old_' . $item['value']);
 
@@ -89,7 +88,7 @@ class Omnitags extends CI_Controller
             $this->flash1_msg_6[$item['key']] = 'Data ' . $item['value'] . ' gagal dihapus!';
 
             $this->flash[$item['key']] = 'pesan_' . $item['key'];
-            $this->flash_func[$item['key']] = '$(".' . $item['key'] . '")modal("show")';
+            $this->flash_func[$item['key']] = '$(".' . $item['key'] . '").modal("show")';
 
             $this->flash_msg1[$item['key']] = $item['value'] . ' tidak bisa diupload!';
             $this->flash_msg2[$item['key']] = $item['value'] . ' tidak bisa diupload!';
@@ -105,21 +104,21 @@ class Omnitags extends CI_Controller
 
         // Create variables dynamically
         foreach ($myData2 as $item) {
-            $this->views_upload_path[$item['key']] = './assets/img/' . $item['key'] . '/';
+            $this->v_upload_path[$item['key']] = './assets/img/' . $item['key'] . '/';
 
-            $this->views_v1[$item['key']] = '_contents/' . $item['key'] . '/index';
-            $this->views_v2[$item['key']] = '_contents/' . $item['key'] . '/daftar';
-            $this->views_v3[$item['key']] = '_contents/' . $item['key'] . '/admin';
-            $this->views_v4[$item['key']] = '_contents/' . $item['key'] . '/laporan';
-            $this->views_v5[$item['key']] = '_contents/' . $item['key'] . '/print';
-            $this->views_v6[$item['key']] = '_contents/' . $item['key'] . '/konfirmasi';
+            $this->v1[$item['key']] = '_contents/' . $item['key'] . '/index';
+            $this->v2[$item['key']] = '_contents/' . $item['key'] . '/daftar';
+            $this->v3[$item['key']] = '_contents/' . $item['key'] . '/admin';
+            $this->v4[$item['key']] = '_contents/' . $item['key'] . '/laporan';
+            $this->v5[$item['key']] = '_contents/' . $item['key'] . '/print';
+            $this->v6[$item['key']] = '_contents/' . $item['key'] . '/konfirmasi';
 
-            $this->views_v1_title[$item['key']] = $item['value'];
-            $this->views_v2_title[$item['key']] = 'Daftar ' . $item['value'];
-            $this->views_v3_title[$item['key']] = 'Data ' . $item['value'];
-            $this->views_v4_title[$item['key']] = 'Laporan ' . $item['value'];
-            $this->views_v5_title[$item['key']] = 'Data ' . $item['value'];
-            $this->views_v6_title[$item['key']] = $item['value'] . ' Berhasil!';
+            $this->v1_title[$item['key']] = $item['value'];
+            $this->v2_title[$item['key']] = 'Daftar ' . $item['value'];
+            $this->v3_title[$item['key']] = 'Data ' . $item['value'];
+            $this->v4_title[$item['key']] = 'Laporan ' . $item['value'];
+            $this->v5_title[$item['key']] = 'Data ' . $item['value'];
+            $this->v6_title[$item['key']] = $item['value'] . ' Berhasil!';
         }
 
         $this->views = array(

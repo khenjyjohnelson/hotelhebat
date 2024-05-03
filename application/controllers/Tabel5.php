@@ -17,9 +17,9 @@ class Tabel5 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel5_alias'],
+			$this->v_part1 => $this->v3_title['tabel5_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel5'],
+			$this->v_part3 => $this->v3['tabel5'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel5')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -104,7 +104,7 @@ class Tabel5 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v4_title['tabel5_alias'],
+			$this->v_part1 => $this->v4_title['tabel5_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel5')->result(),
@@ -114,7 +114,7 @@ class Tabel5 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v4['tabel5'], $data);
+		$this->load->view($this->v4['tabel5'], $data);
 	}
 
 	// Cetak satu data

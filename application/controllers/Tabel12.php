@@ -17,9 +17,9 @@ class Tabel12 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel12_alias'],
+			$this->v_part1 => $this->v3_title['tabel12_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel12'],
+			$this->v_part3 => $this->v3['tabel12'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel12')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -35,7 +35,7 @@ class Tabel12 extends Omnitags
 	{
 		$this->declarew();
 
-		$config['upload_path'] = $this->views_upload_path['tabel12'];
+		$config['upload_path'] = $this->v_upload_path['tabel12'];
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->v_post['tabel12_field2'];
 		$config['overwrite'] = TRUE;
@@ -83,7 +83,7 @@ class Tabel12 extends Omnitags
 	{
 		$this->declarew();
 
-		$config['upload_path'] = $this->views_upload_path['tabel12'];
+		$config['upload_path'] = $this->v_upload_path['tabel12'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->v_post['tabel12_field2'];
@@ -118,7 +118,7 @@ class Tabel12 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		} else {
 			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_4['tabel12_alias']);
-			$this->session->set_flashdata($this->flashdatas['flashm'], $this->flashdatas['flashm_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 
@@ -132,7 +132,7 @@ class Tabel12 extends Omnitags
 		$tabel12 = $this->tl12->ambil_tabel12_field1($tabel12_field1)->result();
 		$img = $tabel12[0]->img;
 
-		unlink($this->views_upload_path['tabel12'] . $img);
+		unlink($this->v_upload_path['tabel12'] . $img);
 
 		$hapus = $this->tl12->hapus($tabel12_field1);
 
@@ -153,7 +153,7 @@ class Tabel12 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v4_title['tabel12_alias'],
+			$this->v_part1 => $this->v4_title['tabel12_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel12')->result(),
@@ -163,6 +163,6 @@ class Tabel12 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v4['tabel12'], $data);
+		$this->load->view($this->v4['tabel12'], $data);
 	}
 }

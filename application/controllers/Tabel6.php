@@ -11,9 +11,9 @@ class Tabel6 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v1_title['tabel6_alias'],
+			$this->v_part1 => $this->v1_title['tabel6_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v1['tabel6'],
+			$this->v_part3 => $this->v1['tabel6'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel6')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -34,9 +34,9 @@ class Tabel6 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel6_alias'],
+			$this->v_part1 => $this->v3_title['tabel6_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel6'],
+			$this->v_part3 => $this->v3['tabel6'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel6')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -130,7 +130,7 @@ class Tabel6 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v4_title['tabel6_alias'],
+			$this->v_part1 => $this->v4_title['tabel6_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel6')->result(),
@@ -140,8 +140,28 @@ class Tabel6 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v4['tabel6'], $data);
+		$this->load->view($this->v4['tabel6'], $data);
 	}
 
 	// Cetak satu data
+
+	// Cetak excel
+	public function exportExcel() {
+        // Fetch data from the model
+        $data['karyawan'] = $this->tl6->getAll(); // Example function to get all data
+
+        // Export data to Excel
+        $filename = 'Data_karyawan.xlsx';
+        $this->spreadsheet_lib->exportData($data['karyawan'], $filename);
+
+        // Force download the Excel file
+        $file_path = APPPATH . 'Data_karyawan.xlsx';
+        if (file_exists($file_path)) {
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment;filename="' . $filename . '"');
+            header('Cache-Control: max-age=0');
+            readfile($file_path);
+            exit;
+        }
+	}
 }

@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <script src="jquery.min.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="fontawesome/js/all.js"></script>
 </body>

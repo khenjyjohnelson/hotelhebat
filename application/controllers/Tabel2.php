@@ -22,9 +22,9 @@ class Tabel2 extends Omnitags
 		$param5 = $this->session->userdata($this->aliases['tabel9_field1']);
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v2_title['tabel2_alias'],
+			$this->v_part1 => $this->v2_title['tabel2_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v2['tabel2'],
+			$this->v_part3 => $this->v2['tabel2'],
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -57,9 +57,9 @@ class Tabel2 extends Omnitags
 		$param5 = $this->session->userdata($this->aliases['tabel9_field1']);
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v2_title['tabel2_alias'],
+			$this->v_part1 => $this->v2_title['tabel2_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v2['tabel2'],
+			$this->v_part3 => $this->v2['tabel2'],
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -90,9 +90,9 @@ class Tabel2 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel2_field12'];
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel2_alias'],
+			$this->v_part1 => $this->v3_title['tabel2_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel2'],
+			$this->v_part3 => $this->v3['tabel2'],
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -125,7 +125,7 @@ class Tabel2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v4_title['tabel2_alias'],
+			$this->v_part1 => $this->v4_title['tabel2_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
@@ -136,7 +136,7 @@ class Tabel2 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v4['tabel2'], $data);
+		$this->load->view($this->v4['tabel2'], $data);
 	}
 
 	public function filter($tabel7_field1 = 1)
@@ -150,9 +150,9 @@ class Tabel2 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel2_field12'];
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel2_alias'],
+			$this->v_part1 => $this->v3_title['tabel2_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel2'],
+			$this->v_part3 => $this->v3['tabel2'],
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),

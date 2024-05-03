@@ -27,9 +27,9 @@ class Tabel10 extends Omnitags
 
 		$tabel9_field1 = $this->session->userdata($this->aliases['tabel9_field1']);
 		$data1 = array(
-			$this->v_part1 => $this->views_v2_title['tabel10_alias'],
+			$this->v_part1 => $this->v2_title['tabel10_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v2['tabel10'],
+			$this->v_part3 => $this->v2['tabel10'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel10')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -73,9 +73,9 @@ class Tabel10 extends Omnitags
 		// $param2 = $this->v_filter2_get['tabel10_field7'];
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel10_alias'],
+			$this->v_part1 => $this->v3_title['tabel10_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel10'],
+			$this->v_part3 => $this->v3['tabel10'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel10')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -247,9 +247,9 @@ class Tabel10 extends Omnitags
 		$tabel10_field7_filter2 = $this->v_filter2_get['tabel10_field7'];
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel10_alias'],
+			$this->v_part1 => $this->v3_title['tabel10_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel10'],
+			$this->v_part3 => $this->v3['tabel10'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel10')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -273,7 +273,7 @@ class Tabel10 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v4_title['tabel10_alias'],
+			$this->v_part1 => $this->v4_title['tabel10_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel10')->result(),
@@ -285,7 +285,7 @@ class Tabel10 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v4['tabel10'], $data);
+		$this->load->view($this->v4['tabel10'], $data);
 	}
 
 	// Cetak satu data
@@ -297,7 +297,7 @@ class Tabel10 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v5_title['tabel10'],
+			$this->v_part1 => $this->v5_title['tabel10'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel10')->result(),
@@ -321,13 +321,13 @@ class Tabel10 extends Omnitags
 				'tbl2' => $this->tl2->ambildata()->result(),
 			);
 			$data = array_merge($data1, $data2, $this->aliases);
-			$this->load->view($this->views_v5['tabel2'], $data);
+			$this->load->view($this->v5['tabel2'], $data);
 		} else {
 			$data2 = array(
 				'tbl8' => $this->tl8->ambildata()->result(),
 			);
 			$data = array_merge($data1, $data2, $this->aliases);
-			$this->load->view($this->views_v5['tabel10'], $data);
+			$this->load->view($this->v5['tabel10'], $data);
 		}
 	}
 
@@ -338,7 +338,7 @@ class Tabel10 extends Omnitags
 
 		$tabel10_field3 = $this->session->tempdata($this->aliases['tabel10_field3'] . '_' . $this->aliases['tabel10']);
 		$data1 = array(
-			$this->v_part1 => $this->views_v6_title['tabel10_alias'],
+			$this->v_part1 => $this->v6_title['tabel10_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel10')->result(),
@@ -350,6 +350,6 @@ class Tabel10 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v6['tabel10'], $data);
+		$this->load->view($this->v6['tabel10'], $data);
 	}
 }

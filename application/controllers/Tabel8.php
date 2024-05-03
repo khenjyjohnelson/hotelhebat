@@ -20,9 +20,9 @@ class Tabel8 extends Omnitags
 		switch ($this->session->userdata($this->aliases['tabel9_field6'])) {
 			case $this->aliases['tabel9_field6_value5']:
 				$data1 = array(
-					$this->v_part1 => $this->views_v1_title['tabel8'],
+					$this->v_part1 => $this->v1_title['tabel8'],
 					$this->v_part2 => $this->head,
-					$this->v_part3 => $this->views_v1['tabel8'],
+					$this->v_part3 => $this->v1['tabel8'],
 					$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
 					'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 					'tbl6' => $this->tl6->ambildata()->result(),
@@ -62,9 +62,9 @@ class Tabel8 extends Omnitags
 
 		$tabel9_field1 = $this->session->userdata($this->aliases['tabel9_field1']);
 		$data1 = array(
-			$this->v_part1 => $this->views_v2_title['tabel8_alias'],
+			$this->v_part1 => $this->v2_title['tabel8_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v2['tabel8'],
+			$this->v_part3 => $this->v2['tabel8'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -91,9 +91,9 @@ class Tabel8 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel8_field11'];
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v2_title['tabel2_alias'],
+			$this->v_part1 => $this->v2_title['tabel2_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v2['tabel2'],
+			$this->v_part3 => $this->v2['tabel2'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -123,9 +123,9 @@ class Tabel8 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel8_field11'];
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel8_alias'],
+			$this->v_part1 => $this->v3_title['tabel8_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel8'],
+			$this->v_part3 => $this->v3['tabel8'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -322,9 +322,9 @@ class Tabel8 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel8_field11'];
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v3_title['tabel8_alias'],
+			$this->v_part1 => $this->v3_title['tabel8_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v3['tabel8'],
+			$this->v_part3 => $this->v3['tabel8'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -350,7 +350,7 @@ class Tabel8 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v4_title['tabel8_alias'],
+			$this->v_part1 => $this->v4_title['tabel8_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
@@ -361,7 +361,7 @@ class Tabel8 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v4['tabel8'], $data);
+		$this->load->view($this->v4['tabel8'], $data);
 	}
 
 	// Cetak satu data
@@ -370,7 +370,7 @@ class Tabel8 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v5_title['tabel8'],
+			$this->v_part1 => $this->v5_title['tabel8'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
@@ -381,7 +381,7 @@ class Tabel8 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v5['tabel8'], $data);
+		$this->load->view($this->v5['tabel8'], $data);
 	}	
 
 
@@ -406,9 +406,9 @@ class Tabel8 extends Omnitags
 		$param2 = $this->v_get['tabel8_field4'];
 
 		$data1 = array(
-			$this->v_part1 => $this->views_v1['tabel8_alias'],
+			$this->v_part1 => $this->v1['tabel8_alias'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->views_v1['tabel8'],
+			$this->v_part3 => $this->v1['tabel8'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -432,7 +432,7 @@ class Tabel8 extends Omnitags
 
 		$tabel9_field3 = $this->session->tempdata($this->aliases['tabel9_field3'] . '_' . $this->aliases['tabel8']);
 		$data1 = array(
-			$this->v_part1 => $this->views_v6_title['tabel8_alias'],
+			$this->v_part1 => $this->v6_title['tabel8_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
@@ -444,7 +444,7 @@ class Tabel8 extends Omnitags
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
-		$this->load->view($this->views_v6['tabel8'], $data);
+		$this->load->view($this->v6['tabel8'], $data);
 	}
 
 	// Ini adalah fitur untuk membooking kamar berdasarkan pesanan oleh resepsionis
