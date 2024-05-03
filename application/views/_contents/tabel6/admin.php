@@ -15,8 +15,8 @@
 <button class="btn btn-info mb-4" type="button" data-toggle="modal" data-target="#import">+ Import</button>
 <a class="btn btn-info mb-4" href="<?= site_url('tabel6/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
-<a class="btn btn-info mb-4" href="<?= site_url('tabel6/excel') ?>" target="_blank">
-  <i class="fas fa-print"></i> Cetak Excel</a>
+<button type="button" class="btn btn-info mb-4" id="export-btn" target="_blank">
+  <i class="fas fa-print"></i> Cetak Excel</button>
 
 
 <div class="table-responsive">

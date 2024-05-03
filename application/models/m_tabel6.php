@@ -6,7 +6,7 @@ class M_tabel6 extends CI_Model
 	public function ambildata()
 	{
 		$this->db->order_by($this->aliases['tabel6_field1'], 'DESC');
-		return $this->db->get($this->aliases['tabel6']);
+		return $this->db->get('tipe_kamar');
 	}
 
 	public function getChartTabel8()

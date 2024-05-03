@@ -202,10 +202,11 @@ switch (true) {
       </div>
     </div>
 
-  <?php endforeach; ?>
 
-  <?php $this->load->view('_partials/script') ?>
+    <?php $this->load->view('_partials/script') ?>
 
+    <?php endforeach; ?>
+   
 </body>
 
 </html>

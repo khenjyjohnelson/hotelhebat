@@ -145,23 +145,27 @@ class Tabel6 extends Omnitags
 
 	// Cetak satu data
 
-	// Cetak excel
-	public function exportExcel() {
-        // Fetch data from the model
-        $data['karyawan'] = $this->tl6->getAll(); // Example function to get all data
+	// Import excel
+	public function importExcel()
+	{
+		$this->load->library('spreadsheet_lib');
 
-        // Export data to Excel
-        $filename = 'Data_karyawan.xlsx';
-        $this->spreadsheet_lib->exportData($data['karyawan'], $filename);
+		// Check if the form was submitted
+		if ($this->input->post('submit')) {
+			// Handle file upload
+			$file_path = $_FILES['filepegawai']['tmp_name'];
 
-        // Force download the Excel file
-        $file_path = APPPATH . 'Data_karyawan.xlsx';
-        if (file_exists($file_path)) {
-            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            header('Content-Disposition: attachment;filename="' . $filename . '"');
-            header('Cache-Control: max-age=0');
-            readfile($file_path);
-            exit;
-        }
+			// Read Excel file using the library
+			$excel_data = $this->spreadsheet_lib->readExcel($file_path);
+
+			// Process $excel_data as needed (e.g., insert into database)
+
+			// Redirect or show success message
+		} else {
+			// Display form view
+			$this->load->view('import_excel_form');
+		}
 	}
+
+
 }

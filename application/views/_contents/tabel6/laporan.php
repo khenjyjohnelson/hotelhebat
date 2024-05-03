@@ -5,6 +5,7 @@
 
   default:
     redirect(site_url('welcome/no_level'));
+    break;
 }
 ?>
 
@@ -20,9 +21,10 @@
 
   <!-- border garis putus-putus -->
   <div class="container" style="border-style: dashed;">
-    <?php foreach ($tbl7 as $tl7) : ?>
+    <?php foreach ($tbl7 as $tl7): ?>
       <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
-      <p class="text-center"><?= $tl7->$tabel7_field2; ?> | <?= $tl7->$tabel7_field8; ?> | <?= $tl7->$tabel7_field7; ?></p>
+      <p class="text-center"><?= $tl7->$tabel7_field2; ?> | <?= $tl7->$tabel7_field8; ?> | <?= $tl7->$tabel7_field7; ?>
+      </p>
       <p class="text-center"><?= $tl7->$tabel7_field6; ?></p>
     <?php endforeach; ?>
 
@@ -38,7 +40,7 @@
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($tbl6 as $tl6) : ?>
+        <?php foreach ($tbl6 as $tl6): ?>
           <tr>
             <td width=""><?= $tl6->$tabel6_field1; ?></td>
             <td width=""><?= $tl6->$tabel6_field2 ?></td>

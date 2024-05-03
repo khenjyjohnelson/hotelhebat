@@ -6,7 +6,7 @@ class Omnitags extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
+        
         // Set security headers
         $this->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
         $this->output->set_header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
@@ -120,6 +120,8 @@ class Omnitags extends CI_Controller
             $this->v5_title[$item['key']] = 'Data ' . $item['value'];
             $this->v6_title[$item['key']] = $item['value'] . ' Berhasil!';
         }
+
+        date_default_timezone_set($this->aliases['timezone']);
 
         $this->views = array(
             'v1' => '_layouts/template',

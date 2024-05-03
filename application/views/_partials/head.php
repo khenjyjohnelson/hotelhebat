@@ -12,15 +12,15 @@
 
   <?php endforeach; ?>
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="fontawesome/css/all.min.css">
   <script src="ckeditor/ckeditor.js"></script>
 
   <!-- css untuk datatables bertema bootstrap -->
-  <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="datatables/datatables/css/dataTables.bootstrap4.min.css">
 
   <!-- Add Intro.js CSS -->
-  <link rel="stylesheet" href="css/introjs.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.4.0/introjs.min.css">
 
   <!-- css pribadi -->
   <link rel="stylesheet" href="css/style.css">

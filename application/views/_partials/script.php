@@ -1,19 +1,21 @@
 <!-- javascript untuk semua halaman (sesuai kebutuhan) -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/all.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/chart.js"></script>
+<script src="jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="fontawesome/js/all.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- javascript untuk datatables bertema bootstrap -->
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap4.min.js"></script>
+<script src="datatables/datatables/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+
+<script src="datatables/datatables/js/dataTables.bootstrap4.min.js"></script>
 
 <!-- TableExport.js -->
-<script type="text/javascript" src="js/tableExport.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin/tableExport.min.js"></script>
 
 <!-- Add Intro.js JavaScript -->
-<script src="js/intro.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.4.0/intro.min.js"></script>
 
 <!-- fungsi datatables (wajib ada) -->
 <script type="text/javascript">
@@ -157,6 +159,39 @@
                 checkedCheckbox.parent().removeClass('active').removeClass('btn-success');
             }
         });
+
+
+
+
+    });
+
+
+
+</script>
+
+<script>
+    function exportToExcel(data, filename) {
+        /* Convert data to worksheet */
+        var ws = XLSX.utils.json_to_sheet(data);
+
+        /* Create a new workbook */
+        var wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+        /* Generate Excel file and download */
+        XLSX.writeFile(wb, filename);
+    }
+
+    // Example data
+    var data = [
+        { Name: "John", Age: 30, City: "New York" },
+        { Name: "Alice", Age: 25, City: "Los Angeles" },
+        { Name: "Bob", Age: 35, City: "Chicago" }
+    ];
+
+    // Export data to Excel when button is clicked
+    document.getElementById("export-btn").addEventListener("click", function () {
+        exportToExcel(data, "data.xlsx");
     });
 </script>
 
@@ -212,8 +247,4 @@
             }
         }
     });
-</script>
-
-<script>
-    CKEDITOR.replace('editor');
 </script>
