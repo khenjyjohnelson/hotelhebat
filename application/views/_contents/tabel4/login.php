@@ -43,7 +43,7 @@
           <p class="text-center"><a class="text-decoration-none" href="<?= site_url('tabel9/login') ?>">Login sebagai <?= $tabel9_alias ?></a></p>
 
           <!-- pesan untuk pengguna yang login -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata($this->flashdatas['v_flashdata1']) ?></p>
+          <p class="small text-center text-danger"><?= $this->session->flashdata($this->flashdatas['flash1']) ?></p>
 
           <!-- tombol login dan signup -->
           <div class="form-group d-flex justify-content-around">

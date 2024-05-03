@@ -41,7 +41,7 @@ switch (true) {
       </div>
 
       <div class="toast-body">
-        <?= $this->session->flashdata($this->flashdatas['v_flashdata1']) ?>
+        <?= $this->session->flashdata($this->flashdatas['flash1']) ?>
       </div>
     </div>
 

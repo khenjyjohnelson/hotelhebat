@@ -20,7 +20,7 @@ class Tabel3 extends Omnitags
 			'tbl3' => $this->tl3->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -43,7 +43,7 @@ class Tabel3 extends Omnitags
 			'tbl3' => $this->tl3->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -54,8 +54,8 @@ class Tabel3 extends Omnitags
 
 		$data = array(
 			$this->aliases['tabel3_field1'] => '',
-			$this->aliases['tabel3_field2'] => $this->views_post['tabel3_field2'],
-			$this->aliases['tabel3_field3'] => $this->views_post['tabel3_field3'],
+			$this->aliases['tabel3_field2'] => $this->v_post['tabel3_field2'],
+			$this->aliases['tabel3_field3'] => $this->v_post['tabel3_field3'],
 		);
 
 		// $query = 'INSERT INTO tabel3 VALUES('.$data.')';
@@ -64,11 +64,11 @@ class Tabel3 extends Omnitags
 		// $simpan = $this->tl3->simpan($query);
 
 		if ($simpan) {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_1['tabel3_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_1['tabel3_alias']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_2['tabel3_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_2['tabel3_alias']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
 		redirect(site_url('tabel3/admin'));
@@ -84,20 +84,20 @@ class Tabel3 extends Omnitags
 
 		$this->declarew();
 
-		$tabel3_field1 = $this->views_post['tabel3_field1'];
+		$tabel3_field1 = $this->v_post['tabel3_field1'];
 		$data = array(
-			$this->aliases['tabel3_field2'] => $this->views_post['tabel3_field2'],
-			$this->aliases['tabel3_field3'] => $this->views_post['tabel3_field3'],
+			$this->aliases['tabel3_field2'] => $this->v_post['tabel3_field2'],
+			$this->aliases['tabel3_field3'] => $this->v_post['tabel3_field3'],
 		);
 
 		$update = $this->tl3->update($data, $tabel3_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel3_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_3['tabel3_alias']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel3_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_4['tabel3_alias']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
 		redirect(site_url('tabel3/admin'));
@@ -114,11 +114,11 @@ class Tabel3 extends Omnitags
 		$hapus = $this->tl3->hapus($tabel3_field1);
 
 		if ($hapus) {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_5['tabel3_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_5['tabel3_alias']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_6['tabel3_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_6['tabel3_alias']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
 		redirect(site_url('tabel3/admin'));
@@ -138,7 +138,7 @@ class Tabel3 extends Omnitags
 			'tbl3' => $this->tl3->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views_v4['tabel3'], $data);
 	}

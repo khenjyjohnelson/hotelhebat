@@ -58,7 +58,7 @@
           </div>
 
           <!-- pesan untuk pengguna yang signup -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata($this->flashdatas['v_flashdata1']) ?></p>
+          <p class="small text-center text-danger"><?= $this->session->flashdata($this->flashdatas['flash1']) ?></p>
 
           <!-- tombol signup dan login -->
           <div class="form-group d-flex justify-content-around">

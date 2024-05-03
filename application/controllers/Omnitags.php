@@ -14,6 +14,7 @@ class Omnitags extends CI_Controller
         $this->output->set_header("X-Content-Type-Options: nosniff");
         $this->output->set_header("Referrer-Policy: strict-origin-when-cross-origin");
         $this->output->set_header("Permissions-Policy: geolocation=(self 'http://localhost/me/hotel')");
+        $this->load->library('upload');
     }
 
     // Di bawah ini aku berencana untuk membuat sebuah array yang menampung semua jenis alias dari field dan nama tabel
@@ -42,24 +43,23 @@ class Omnitags extends CI_Controller
     public $v_part4_msg3 = '<br><span class="h6"> (release candidate feature)</span>';
     public $v_part4_msg4 = '';  // feature released
 
-    public $aliases, $views;
+    public $aliases, $views, $flashdatas, $tempdatas;
     public $views_v1, $views_v2, $views_v3, $views_v4, $views_v5, $views_v6;
     public $views_v1_title, $views_v2_title, $views_v3_title, $views_v4_title, $views_v5_title, $views_v6_title;
-    public $views_input, $views_post, $views_get, $views_old, $views_post_old;
-    public $views_upload_path, $views_filter1, $views_filter1_get, $views_filter2, $views_filter2_get;
-    public $v_flashdata, $v_flashdata_func;
-    public $flashdatas;
-    public $flashdata1_msg_1;
-    public $flashdata1_msg_2;
-    public $flashdata1_msg_3;
-    public $flashdata1_msg_4;
-    public $flashdata1_msg_5;
-    public $flashdata1_msg_6;
-    public $v_flashdata_msg1;
-    public $v_flashdata_msg2;
-    public $v_flashdata_msg3, $v_flashdata_msg3_alt1, $v_flashdata_msg3_alt2;
-    public $v_flashdata_msg4;
-    public $v_flashdata_msg5;
+    public $v_input, $v_post, $v_get, $v_old, $v_post_old;
+    public $views_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
+    public $flash, $flash_func;
+    public $flash1_msg_1;
+    public $flash1_msg_2;
+    public $flash1_msg_3;
+    public $flash1_msg_4;
+    public $flash1_msg_5;
+    public $flash1_msg_6;
+    public $flash_msg1;
+    public $flash_msg2;
+    public $flash_msg3, $flash_msg3_alt1, $flash_msg3_alt2;
+    public $flash_msg4;
+    public $flash_msg5;
 
     public function declarew()
     {
@@ -69,35 +69,35 @@ class Omnitags extends CI_Controller
         // Create variables dynamically
         foreach ($myData1 as $item) {
             $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
-            $this->views_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
-            $this->views_post[$item['key']] = $this->input->post('txt_' . $item['value']);
-            $this->views_get[$item['key']] = $this->input->get('txt_' . $item['value']);
-            $this->views_old[$item['key'] . '_old'] = 'old_' . $item['value'];
-            $this->views_post_old[$item['key']] = $this->input->post('old_' . $item['value']);
+            $this->v_input[$item['key'] . '_input'] = $item['value'];
+            $this->v_post[$item['key']] = $this->input->post($item['value']);
+            $this->v_get[$item['key']] = $this->input->get($item['value']);
+            $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
+            $this->v_post_old[$item['key']] = $this->input->post('old_' . $item['value']);
 
-            $this->views_filter1[$item['key']] = $item['value'] . '_min';
-            $this->views_filter2[$item['key']] = $item['value'] . '_max';
+            $this->v_filter1[$item['key']] = $item['value'] . '_min';
+            $this->v_filter2[$item['key']] = $item['value'] . '_max';
 
-            $this->views_filter1_get[$item['key']] = $this->input->get($item['value'] . '_min');
-            $this->views_filter2_get[$item['key']] = $this->input->get($item['value'] . '_max');
+            $this->v_filter1_get[$item['key']] = $this->input->get($item['value'] . '_min');
+            $this->v_filter2_get[$item['key']] = $this->input->get($item['value'] . '_max');
 
-            $this->flashdata1_msg_1[$item['key']] = 'Data ' . $item['value'] . ' berhasil disimpan!';
-            $this->flashdata1_msg_2[$item['key']] = 'Data ' . $item['value'] . ' gagal disimpan!';
-            $this->flashdata1_msg_3[$item['key']] = 'Data ' . $item['value'] . ' berhasil diubah!';
-            $this->flashdata1_msg_4[$item['key']] = 'Data ' . $item['value'] . ' gagal diubah!';
-            $this->flashdata1_msg_5[$item['key']] = 'Data ' . $item['value'] . ' berhasil dihapus!';
-            $this->flashdata1_msg_6[$item['key']] = 'Data ' . $item['value'] . ' gagal dihapus!';
+            $this->flash1_msg_1[$item['key']] = 'Data ' . $item['value'] . ' berhasil disimpan!';
+            $this->flash1_msg_2[$item['key']] = 'Data ' . $item['value'] . ' gagal disimpan!';
+            $this->flash1_msg_3[$item['key']] = 'Data ' . $item['value'] . ' berhasil diubah!';
+            $this->flash1_msg_4[$item['key']] = 'Data ' . $item['value'] . ' gagal diubah!';
+            $this->flash1_msg_5[$item['key']] = 'Data ' . $item['value'] . ' berhasil dihapus!';
+            $this->flash1_msg_6[$item['key']] = 'Data ' . $item['value'] . ' gagal dihapus!';
 
-            $this->v_flashdata[$item['key']] = 'pesan_' . $item['key'];
-            $this->v_flashdata_func[$item['key']] = '$(".' . $item['key'] . '")modal("show")';
+            $this->flash[$item['key']] = 'pesan_' . $item['key'];
+            $this->flash_func[$item['key']] = '$(".' . $item['key'] . '")modal("show")';
 
-            $this->v_flashdata_msg1[$item['key']] = $item['value'] . ' tidak bisa diupload!';
-            $this->v_flashdata_msg2[$item['key']] = $item['value'] . ' tidak bisa diupload!';
-            $this->v_flashdata_msg3[$item['key']] = $item['value'] . ' salah!';
-            $this->v_flashdata_msg3_alt1[$item['key']] = $item['value'] . ' lama salah!';
-            $this->v_flashdata_msg3_alt2[$item['key']] = 'Konfirmasi' . $item['value'] . ' lama salah!';
-            $this->v_flashdata_msg4[$item['key']] = $item['value'] . ' tidak tersedia!';
-            $this->v_flashdata_msg5[$item['key']] = $item['value'] . ' telah digunakan!';
+            $this->flash_msg1[$item['key']] = $item['value'] . ' tidak bisa diupload!';
+            $this->flash_msg2[$item['key']] = $item['value'] . ' tidak bisa diupload!';
+            $this->flash_msg3[$item['key']] = $item['value'] . ' salah!';
+            $this->flash_msg3_alt1[$item['key']] = $item['value'] . ' lama salah!';
+            $this->flash_msg3_alt2[$item['key']] = 'Konfirmasi' . $item['value'] . ' lama salah!';
+            $this->flash_msg4[$item['key']] = $item['value'] . ' tidak tersedia!';
+            $this->flash_msg5[$item['key']] = $item['value'] . ' telah digunakan!';
         }
 
         $jsonData2 = file_get_contents(site_url('assets/json/school_ukk_hotel_tables.postman_environment.json'));
@@ -136,11 +136,8 @@ class Omnitags extends CI_Controller
             'v6' => 'home',
             'v6_title' => 'Selamat Datang',
 
-            'tabel4_v9' => '_contents/tabel4/login',
-            'tabel4_v9_title' => 'Login Sebagai ' . $this->aliases['tabel4_alias'],
-
-            'tabel8_v7' => '_contents/tabel8/cari',
-            'tabel8_v7_title' => 'Daftar ' . $this->aliases['tabel8_alias'],
+            'tabel4_v2' => '_contents/tabel4/login',
+            'tabel4_v2_title' => 'Login Sebagai ' . $this->aliases['tabel4_alias'],
 
             'tabel10_v2_alt' => '_contents/tabel10/daftar_tabel2',
             'tabel10_v2_alt_title' => 'Daftar ' . $this->aliases['tabel10_alias'] . ' dari ' . $this->aliases['tabel2_alias'],
@@ -149,26 +146,30 @@ class Omnitags extends CI_Controller
         );
 
         $this->flashdatas = array(
-            'v_flashdata1' => 'pesan',
-            'v_flashdata_a_func1' => '$("#element").toast("show")',
+            'flash1' => 'pesan',
+            'flash1_func1' => '$("#element").toast("show")',
 
-            // Pesan di bawah ini sudah boleh diubah
-            'v6_flashdata1_msg1' => 'Selamat datang ' . $this->session->userdata($this->aliases['tabel9_field6']) . ' ' . $this->session->userdata($this->aliases['tabel9_field2']) . '!',
-            'tabel8_v_flashdata1_msg2' => 'Ayo kita lanjutkan ke pemesanan, ' . $this->session->userdata($this->aliases['tabel9_field6']) . ' ' . $this->session->userdata($this->aliases['tabel9_field2']) . '!',
+            // Pesan unik di bawah ini menggunakan flash1 dan ditandai dengan note
+            'flash1_note1' => 'Selamat datang ' . $this->session->userdata($this->aliases['tabel9_field6']) . ' ' . $this->session->userdata($this->aliases['tabel9_field2']) . '!',
+            'flash1_note2' => 'Ayo kita lanjutkan ke pemesanan, ' . $this->session->userdata($this->aliases['tabel9_field6']) . ' ' . $this->session->userdata($this->aliases['tabel9_field2']) . '!',
 
             // Data Manupulation Flashdatas
-            'v_flashdata3' => 'pesan_tambah',
-            'v_flashdata_3_func1' => '$(".tambah").modal("show")',
+            'flash2' => 'pesan_tambah',
+            'flash2_func1' => '$(".tambah").modal("show")',
 
-            'v_flashdata4' => 'pesan_ubah',
-            'v_flashdata_4_func1' => '$(".ubah").modal("show")',
+            'flash3' => 'pesan_ubah',
+            'flash3_func1' => '$(".ubah").modal("show")',
 
-            'v_flashdata5' => 'pesan_lihat',
-            'v_flashdata_5_func1' => '$(".lihat").modal("show")',
+            'flash4' => 'pesan_lihat',
+            'flash4_func1' => '$(".lihat").modal("show")',
 
             // Notification and alert Flashdatas
-            'v_flashdata14' => 'pesan_quickTour',
-            'v_flashdata_n_func1' => '$("#quickTour").modal("show")',
+            'flash5' => 'pesan_quickTour',
+            'flash5_func1' => '$("#quickTour").modal("show")',
+        );
+
+        $this->tempdatas = array(
+
         );
     }
 }

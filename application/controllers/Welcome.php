@@ -21,21 +21,21 @@ class Welcome extends Omnitags
 			case $this->aliases['tabel9_field6_value3']:
 			case $this->aliases['tabel9_field6_value4']:
 
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['v6_flashdata1_msg1']);
-				$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flashdatas['flash1_note1']);
+				$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 
 				redirect(site_url('welcome/dashboard'));
 				break;
 
 			default:
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdatas['v6_flashdata1_msg1']);
-				$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flashdatas['flash1_note1']);
+				$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 
 				// When you're the one who's developing this app, it's quite annoying to see this message over and over again.\
 				// The feature below isn't working as expected
 				// if ($this->session->userdata($this->aliases['tabel9_field7']) < 2) {
-				// 	$this->session->set_flashdata($this->flashdatas['v_flashdata14, "Anda hanya akan mendapatkan quick tour ini sebanyak 2 kali");
-				// 	$this->session->set_flashdata($this->flashdatas['v_flashdata_b, $this->flashdatas['v_flashdata_n_func1']);
+				// 	$this->session->set_flashdata($this->flashdatas['flash5'], "Anda hanya akan mendapatkan quick tour ini sebanyak 2 kali");
+				// 	$this->session->set_flashdata($this->flashdatas['flash5'], $this->flashdatas['flash5_func1']);
 				// } else {
 				// }
 
@@ -51,7 +51,7 @@ class Welcome extends Omnitags
 					'tbl13' => $this->tl13->ambildata()->result(),
 				);
 
-				$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
+				$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
 				$this->load->view($this->views['v1'], $data);
 		}
@@ -84,7 +84,7 @@ class Welcome extends Omnitags
 			'chart_tabel8' => json_encode($chart_tabel8),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -102,7 +102,7 @@ class Welcome extends Omnitags
 			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v4'], $data);
 	}

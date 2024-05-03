@@ -26,7 +26,7 @@ class Tabel1 extends Omnitags
 			'tbl1' => $this->tl1->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views, $this->views_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->views, $this->v_input, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -45,11 +45,11 @@ class Tabel1 extends Omnitags
 			'tabel1_field4'
 		];
 		foreach ($inputs as $input) {
-			$input_value = htmlspecialchars(trim($this->views_post[$input]));
+			$input_value = htmlspecialchars(trim($this->v_post[$input]));
 			if (empty($input_value)) {
 				// Error Handling: Set error flash message for invalid input
-				$this->session->set_flashdata($this->flashdatas['v_flashdata3'], "Invalid input. Please provide valid data.");
-				$this->session->set_flashdata('modal', $this->flashdatas['v_flashdata_3_func1']);
+				$this->session->set_flashdata($this->flashdatas['flash2'], "Invalid input. Please provide valid data.");
+				$this->session->set_flashdata('modal', $this->flashdatas['flash2_func1']);
 				// Functional requirement: Redirect user to 'tabel1' page
 				redirect(site_url('tabel1/admin'));
 			}
@@ -60,9 +60,9 @@ class Tabel1 extends Omnitags
 		// Functional requirement: Construct data array from validated view inputs
 		$data = [
 			$this->aliases['tabel1_field1'] => '',
-			$this->aliases['tabel1_field2'] => $this->views_post['tabel1_field2'],
-			$this->aliases['tabel1_field3'] => $this->views_post['tabel1_field3'],
-			$this->aliases['tabel1_field4'] => $this->views_post['tabel1_field4'],
+			$this->aliases['tabel1_field2'] => $this->v_post['tabel1_field2'],
+			$this->aliases['tabel1_field3'] => $this->v_post['tabel1_field3'],
+			$this->aliases['tabel1_field4'] => $this->v_post['tabel1_field4'],
 		];
 
 		try {
@@ -72,17 +72,17 @@ class Tabel1 extends Omnitags
 
 			if ($simpan) {
 				// Functional requirement: Set success flash message
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_1['tabel1_alias']);
+				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_1['tabel1_alias']);
 			} else {
 				// Functional requirement: Set failure flash message
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_2['tabel1_alias']);
+				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_2['tabel1_alias']);
 			}
 			// Functional requirement: Set flash message for further action
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
-			$this->session->set_flashdata($this->flashdatas['v_flashdata3'], "Error occurred while adding data: " . $e->getMessage());
-			$this->session->set_flashdata('modal', $this->flashdatas['v_flashdata_3_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash2'], "Error occurred while adding data: " . $e->getMessage());
+			$this->session->set_flashdata('modal', $this->flashdatas['flash2_func1']);
 		}
 
 		// Functional requirement: Redirect user to 'tabel1' page
@@ -103,22 +103,22 @@ class Tabel1 extends Omnitags
 		];
 
 		foreach ($inputs as $input) {
-			$input_value = htmlspecialchars(trim($this->views_post[$input]));
+			$input_value = htmlspecialchars(trim($this->v_post[$input]));
 			if (empty($input_value)) {
 				// Error Handling: Set error flash message for invalid input
-				$this->session->set_flashdata($this->flashdatas['v_flashdata4'], "Invalid input. Please provide valid data.");
-				$this->session->set_flashdata('modal', $this->flashdatas['v_flashdata_4_func1']);
+				$this->session->set_flashdata($this->flashdatas['flash3'], "Invalid input. Please provide valid data.");
+				$this->session->set_flashdata('modal', $this->flashdatas['flash3_func1']);
 				// Functional requirement: Redirect user to 'tabel1' page
 				redirect(site_url('tabel1/admin'));
 			}
 		}
 
-		$tabel1_field1 = htmlspecialchars(trim($this->views_post['tabel1_field1']));
+		$tabel1_field1 = htmlspecialchars(trim($this->v_post['tabel1_field1']));
 
 		// Functional requirement: Construct data array from validated view inputs
 		$data = [
-			$this->aliases['tabel1_field2'] => $this->views_post['tabel1_field2'],
-			$this->aliases['tabel1_field3'] => $this->views_post['tabel1_field3']
+			$this->aliases['tabel1_field2'] => $this->v_post['tabel1_field2'],
+			$this->aliases['tabel1_field3'] => $this->v_post['tabel1_field3']
 		];
 
 		try {
@@ -128,17 +128,17 @@ class Tabel1 extends Omnitags
 
 			if ($update) {
 				// Functional requirement: Set success flash message
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_3['tabel1_alias']);
+				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_3['tabel1_alias']);
 			} else {
 				// Functional requirement: Set failure flash message
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_4['tabel1_alias']);
+				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_4['tabel1_alias']);
 			}
 			// Functional requirement: Set flash message for further action
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
-			$this->session->set_flashdata($this->flashdatas['v_flashdata3'], "Error occurred while updating data: " . $e->getMessage());
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash2'], "Error occurred while updating data: " . $e->getMessage());
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
 		// Functional requirement: Redirect user to 'tabel1' page
@@ -163,17 +163,17 @@ class Tabel1 extends Omnitags
 
 			if ($hapus) {
 				// Functional requirement: Set success flash message
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_5['tabel1_alias']);
+				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_5['tabel1_alias']);
 			} else {
 				// Functional requirement: Set failure flash message
-				$this->session->set_flashdata($this->flashdatas['v_flashdata1'], $this->flashdata1_msg_6['tabel1_alias']);
+				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_6['tabel1_alias']);
 			}
 			// Functional requirement: Set flash message for further action
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
-			$this->session->set_flashdata($this->flashdatas['v_flashdata1'], "Error occurred while deleting data: " . $e->getMessage());
-			$this->session->set_flashdata('toast', $this->flashdatas['v_flashdata_a_func1']);
+			$this->session->set_flashdata($this->flashdatas['flash1'], "Error occurred while deleting data: " . $e->getMessage());
+			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
 		// Functional requirement: Redirect user to 'tabel1' page
@@ -195,7 +195,7 @@ class Tabel1 extends Omnitags
 			'tbl1' => $this->tl1->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views_input, $this->views_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
 
 		$this->load->view($this->views_v4['tabel1'], $data);
 	}
