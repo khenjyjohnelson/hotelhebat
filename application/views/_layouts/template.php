@@ -78,7 +78,7 @@ switch (true) {
             </div>
 
             <!-- form mencari data pesanan, method get utk menampilkan apa yg diinput pengguna di halaman tujuan -->
-            <form action="<?= site_url('tabel8/cari') ?>" method="get">
+            <form action="<?= site_url('c_tabel8/cari') ?>" method="get">
               <div class="modal-body">
                 <div class="form-group">
                   <label>
@@ -146,10 +146,10 @@ switch (true) {
                 <img src="img/tabel7/<?= $tl7->$tabel7_field4; ?>" height="50">
                 <p class="small pt-2">
                   <?php foreach ($tbl23 as $tl23):
-                    if ($tl7->$tabel7_field13 == $tl23->$tabel23_field1) { ?>
+                    if ($tl7->$tabel7_field11 == $tl23->$tabel23_field1) { ?>
 
 
-                      <a class="text-decoration-none text-dark" href="<?= site_url('tabel23') ?>">
+                      <a class="text-decoration-none text-dark" href="<?= site_url('c_tabel23') ?>">
                         <img src="img/tabel23/<?= $tl23->$tabel23_field4 ?>" height="25"></a><br>
 
 
@@ -164,12 +164,12 @@ switch (true) {
                 <h3>Jelajahi</h3>
                 <ul class="list-unstyled">
                   <li>
-                    <a type="button" id="nextPage" class="text-decoration-none text-dark" href="<?= site_url('tabel6') ?>">
+                    <a type="button" id="nextPage" class="text-decoration-none text-dark" href="<?= site_url('c_tabel6') ?>">
                       <?= $tabel6_alias ?>
                     </a>
                   </li>
                   <li>
-                    <a type="button" id="nextPage" class="text-decoration-none text-dark" href="<?= site_url('tabel3') ?>">
+                    <a type="button" id="nextPage" class="text-decoration-none text-dark" href="<?= site_url('c_tabel3') ?>">
                       <?= $tabel3_alias ?>
                     </a>
                   </li>
@@ -194,14 +194,13 @@ switch (true) {
               <div class="col-lg-2 pt-3">
                 <h3>Ikuti</h3>
                 <ul class="list-unstyled">
-                  <li>
-                    <a class="text-decoration-none text-primary" href="<?= $tl7->$tabel7_field10 ?>" target="_blank"><i
-                        class="fab fa-facebook"></i> Facebook</a>
-                  </li>
-                  <li>
-                    <a class="text-decoration-none text-danger" href="<?= $tl7->$tabel7_field11 ?>" target="_blank"><i
-                        class="fab fa-instagram"></i> Instagram</a>
-                  </li>
+                  <?php foreach ($tbl24 as $tl24):
+                    if ($tl24->$tabel24_field2 == $tl7->$tabel7_field1) { ?>
+                      <li>
+                        <a class="text-decoration-none text-primary" href="<?= $tl24->$tabel24_field4 ?>" target="_blank">
+                          <?= $tl24->$tabel24_field3 ?></a>
+                      </li>
+                    <?php } endforeach; ?>
                 </ul>
               </div>
             </div>

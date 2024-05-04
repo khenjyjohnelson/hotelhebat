@@ -6,7 +6,7 @@
   case $tabel9_field6_value5: ?>
 
     <!-- method get supaya nilai dari form bisa tampil nanti (tidak langsung masuk ke database) -->
-    <form action="<?= site_url('tabel8') ?>" method="get">
+    <form action="<?= site_url('c_tabel8') ?>" method="get">
       <div id="tour2" class="row justify-content-center align-items-end mt-2">
         <div class="col-md-2">
           <div class="form-group">
@@ -47,7 +47,7 @@
 
 <?php foreach ($tbl7 as $tl7): ?>
   <?php foreach ($tbl13 as $tl13): ?>
-    <?php if ($tl7->$tabel7_field12 == $tl13->$tabel7_field12) { ?>
+    <?php if ($tl7->$tabel7_field10 == $tl13->$tabel7_field10) { ?>
 
       <h1 class="text-center"><?= $tl13->$tabel13_field3 ?></h1>
       <hr>

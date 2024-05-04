@@ -53,7 +53,7 @@
               <?php break;
               case $tabel8_field12_value3:
               case $tabel8_field12_value4: ?>
-                <a class="btn btn-light text-info" href="<?= site_url('tabel8/print/' . $tl8->$tabel8_field1) ?>" target="_blank">
+                <a class="btn btn-light text-info" href="<?= site_url('c_tabel8/print/' . $tl8->$tabel8_field1) ?>" target="_blank">
                   <i class="fas fa-print"></i>
                 </a>
             <?php break;
@@ -81,7 +81,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('tabel10/tambah') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url('c_tabel10/tambah') ?>" method="post" enctype="multipart/form-data">
 
           <div class="modal-body">
             <div class="row">

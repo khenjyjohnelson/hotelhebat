@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include 'Omnitags.php';
 
-class Tabel23 extends Omnitags
+class C_tabel23 extends Omnitags
 {
 	// Halaman publik
 	public function index($tabel7_field1 = 1)
@@ -17,7 +17,7 @@ class Tabel23 extends Omnitags
 			$this->v_part5 => $this->tl12->dekor('tabel23')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
 			'tbl23' => $this->tl23->ambildata()->result(),
-			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
@@ -40,7 +40,7 @@ class Tabel23 extends Omnitags
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel23')->result(),
 			'tbl23' => $this->tl23->ambildata()->result(),
-			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
@@ -92,7 +92,7 @@ class Tabel23 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel23/admin'));
+		redirect(site_url('c_tabel23/admin'));
 	}
 
 	public function update() //update tidak diperlukan di sini
@@ -138,7 +138,7 @@ class Tabel23 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 
-		redirect(site_url('tabel23/admin'));
+		redirect(site_url('c_tabel23/admin'));
 	}
 
 	public function hapus($tabel23_field1 = null)
@@ -160,7 +160,7 @@ class Tabel23 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel23/admin'));
+		redirect(site_url('c_tabel23/admin'));
 	}
 
 	// Cetak semua data
@@ -174,7 +174,7 @@ class Tabel23 extends Omnitags
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl23->dekor('tabel23')->result(),
 			'tbl23' => $this->tl23->ambildata()->result(),
-			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);

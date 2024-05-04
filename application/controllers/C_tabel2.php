@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 include 'Omnitags.php';
 
 
-class Tabel2 extends Omnitags
+class C_tabel2 extends Omnitags
 {
 	// Halaman publik
 	
@@ -27,7 +27,7 @@ class Tabel2 extends Omnitags
 			$this->v_part3 => $this->v2['tabel2'],
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl2' => $this->tl2->ambil_tabel9_field1($param5)->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
 
@@ -62,7 +62,7 @@ class Tabel2 extends Omnitags
 			$this->v_part3 => $this->v2['tabel2'],
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl2' => $this->tl2->filter_tabel4($param1, $param2, $param3, $param4, $param5)->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
 
@@ -95,7 +95,7 @@ class Tabel2 extends Omnitags
 			$this->v_part3 => $this->v3['tabel2'],
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl2' => $this->tl2->ambildata()->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
 
@@ -116,7 +116,7 @@ class Tabel2 extends Omnitags
 	// 	$this->declarew();
 
 	// 	$hapus = $this->tl2->hapus($tabel2_field1);
-	// 	redirect(site_url('tabel2/admin'));
+	// 	redirect(site_url('c_tabel2/admin'));
 	// }
 
 	// Cetak semua data
@@ -129,7 +129,7 @@ class Tabel2 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl2' => $this->tl2->ambildata()->result(),
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
@@ -155,7 +155,7 @@ class Tabel2 extends Omnitags
 			$this->v_part3 => $this->v3['tabel2'],
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl2' => $this->tl2->filter($param1, $param2, $param3, $param4)->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
 

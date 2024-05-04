@@ -12,7 +12,7 @@
 <hr>
 
 <button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
-<a class="btn btn-info mb-4" href="<?= site_url('tabel3/laporan') ?>" target="_blank">
+<a class="btn btn-info mb-4" href="<?= site_url('c_tabel3/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <div class="table-responsive">
@@ -58,7 +58,7 @@
         </button>
       </div>
 
-      <form action="<?= site_url('tabel3/tambah') ?>" method="post">
+      <form action="<?= site_url('c_tabel3/tambah') ?>" method="post">
         <div class="modal-body">
           <div class="form-group">
             <label><?= $tabel3_field2_alias ?></label>
@@ -98,7 +98,7 @@
         </div>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
-        <form action="<?= site_url('tabel3/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url('c_tabel3/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <div class="form-group">
               <label><?= $tabel3_field2_alias ?></label>

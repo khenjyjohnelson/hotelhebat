@@ -147,4 +147,5 @@ $autoload['model'] = array(
   'M_tabel12' => 'tl12',
   'M_tabel13' => 'tl13',
   'M_tabel23' => 'tl23',
+  'M_tabel24' => 'tl24',
 );

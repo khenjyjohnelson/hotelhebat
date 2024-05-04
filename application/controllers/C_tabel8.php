@@ -10,7 +10,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include 'Omnitags.php';
 session_write_close();
-class Tabel8 extends Omnitags
+class C_tabel8 extends Omnitags
 {
 	// Halaman publik/khusus akun
 	public function index($tabel7_field1 = 1)
@@ -24,7 +24,7 @@ class Tabel8 extends Omnitags
 					$this->v_part2 => $this->head,
 					$this->v_part3 => $this->v1['tabel8'],
 					$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
-					'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+					'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 					'tbl6' => $this->tl6->ambildata()->result(),
 
 					'tabel8_field10_value' => $this->v_get['tabel8_field10'],
@@ -67,7 +67,7 @@ class Tabel8 extends Omnitags
 			$this->v_part3 => $this->v2['tabel8'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl8' => $this->tl8->ambil_tabel9_field1($tabel9_field1)->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
 			'tbl5' => $this->tl5->ambildata()->result(),
@@ -96,7 +96,7 @@ class Tabel8 extends Omnitags
 			$this->v_part3 => $this->v2['tabel2'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel2')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl8' => $this->tl8->filter_tabel4($param1, $param2, $param3, $param4, $tabel9_field1)->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
@@ -128,7 +128,7 @@ class Tabel8 extends Omnitags
 			$this->v_part3 => $this->v3['tabel8'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl8' => $this->tl8->ambildata()->result(),
 			'tbl5' => $this->tl5->ambildata()->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
@@ -170,7 +170,7 @@ class Tabel8 extends Omnitags
             $this->session->set_flashdata($this->flashdatas['flash1'], "Invalid input. Please provide valid data.");
             $this->session->set_flashdata($this->flashdatas['flash1'], $this->flashdatas['flash1_func1']);
             // Functional requirement: Redirect user to 'tabel8' confirmation page
-            redirect(site_url('tabel8/konfirmasi'));
+            redirect(site_url('c_tabel8/konfirmasi'));
         }
     }
 
@@ -225,7 +225,7 @@ class Tabel8 extends Omnitags
     }
 
     // Functional requirement: Redirect user to 'tabel8' confirmation page
-    redirect(site_url('tabel8/konfirmasi'));
+    redirect(site_url('c_tabel8/konfirmasi'));
 }
 
 
@@ -277,7 +277,7 @@ class Tabel8 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel8/admin'));
+		redirect(site_url('c_tabel8/admin'));
 	}
 	
 
@@ -308,7 +308,7 @@ class Tabel8 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel8/admin'));
+		redirect(site_url('c_tabel8/admin'));
 	}
 
 	public function filter($tabel7_field1 = 1)
@@ -327,7 +327,7 @@ class Tabel8 extends Omnitags
 			$this->v_part3 => $this->v3['tabel8'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl8' => $this->tl8->filter($param1, $param2, $param3, $param4)->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
 			'tbl5' => $this->tl5->ambildata()->result(),
@@ -354,7 +354,7 @@ class Tabel8 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl8' => $this->tl8->ambildata()->result(),
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
@@ -374,7 +374,7 @@ class Tabel8 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl8' => $this->tl8->ambil_tabel8_field1($tabel8_field1)->result(),
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
@@ -411,7 +411,7 @@ class Tabel8 extends Omnitags
 			$this->v_part3 => $this->v1['tabel8'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 
 			// mencari dan menampilkan id pesanan berdasarkan id_pesanan yang telah diinput
 			'tbl8' => $this->tl8->cari($param1, $param2)->result(),
@@ -436,7 +436,7 @@ class Tabel8 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel8')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan
 			'tbl8' => $this->tl8->ambil_tabel9_field3($tabel9_field3)->last_row(),
@@ -484,6 +484,6 @@ class Tabel8 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel8/admin'));
+		redirect(site_url('c_tabel8/admin'));
 	}
 }

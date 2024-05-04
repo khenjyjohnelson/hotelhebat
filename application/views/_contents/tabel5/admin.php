@@ -12,7 +12,7 @@
 <hr>
 
 <button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
-<a class="btn btn-info mb-4" href="<?= site_url('tabel5/laporan') ?>" target="_blank">
+<a class="btn btn-info mb-4" href="<?= site_url('c_tabel5/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <div class="table-responsive">
@@ -94,7 +94,7 @@
         </button>
       </div>
 
-      <form action="<?= site_url('tabel5/tambah') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= site_url('c_tabel5/tambah') ?>" method="post" enctype="multipart/form-data">
         <div class="modal-body">
 
           <!-- memilih salah satu tipe kamar yang ada -->
@@ -158,7 +158,7 @@
               </button>
             </div>
 
-            <form action="<?= site_url('tabel5/update') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= site_url('c_tabel5/update') ?>" method="post" enctype="multipart/form-data">
               <div class="modal-body">
                 <div class="form-group">
 
@@ -286,7 +286,7 @@
             </div>
 
             <!-- form untuk mengubah nilai status sebuah kamar -->
-            <form action="<?= site_url('tabel11/tambah') ?>" method="post">
+            <form action="<?= site_url('c_tabel11/tambah') ?>" method="post">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
@@ -393,7 +393,7 @@
             </div>
 
             <!-- form untuk mengubah nilai status sebuah kamar -->
-            <form action="<?= site_url('tabel11/tambah') ?>" method="post">
+            <form action="<?= site_url('c_tabel11/tambah') ?>" method="post">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">

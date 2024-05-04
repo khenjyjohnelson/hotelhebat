@@ -1,6 +1,6 @@
 <?php foreach ($tbl7 as $tl7): ?>
   <?php foreach ($tbl23 as $tl23):
-    if ($tl7->$tabel7_field13 == $tl23->$tabel23_field1) { ?>
+    if ($tl7->$tabel7_field11 == $tl23->$tabel23_field1) { ?>
       <img src="img/tabel23/<?= $tl23->$tabel23_field4 ?>" class="img-fluid rounded">
 
       <h1 class="text-center"><?= $tabel23_alias ?>       <a target="_blank" href="<?= $tl23->$tabel23_field5 ?>"><?= $tl23->$tabel23_field2 ?></a></h1>

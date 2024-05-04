@@ -18,7 +18,7 @@
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
 
         <!-- form login -->
-        <form action="<?= site_url('tabel4/ceklogin') ?>" method="post">
+        <form action="<?= site_url('c_tabel4/ceklogin') ?>" method="post">
           <!-- <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -40,7 +40,7 @@
             <input class="form-control" type="password" name="<?= $tabel4_field4_input ?>" placeholder="Masukkan <?= $tabel4_field4_alias ?>">
           </div>
 
-          <p class="text-center"><a class="text-decoration-none" href="<?= site_url('tabel9/login') ?>">Login sebagai <?= $tabel9_alias ?></a></p>
+          <p class="text-center"><a class="text-decoration-none" href="<?= site_url('c_tabel9/login') ?>">Login sebagai <?= $tabel9_alias ?></a></p>
 
           <!-- pesan untuk pengguna yang login -->
           <p class="small text-center text-danger"><?= $this->session->flashdata($this->flashdatas['flash1']) ?></p>

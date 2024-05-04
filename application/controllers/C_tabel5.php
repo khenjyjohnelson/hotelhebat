@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include 'Omnitags.php';
 
-class Tabel5 extends Omnitags
+class C_tabel5 extends Omnitags
 {
 	// Halaman publik
 
@@ -22,7 +22,8 @@ class Tabel5 extends Omnitags
 			$this->v_part3 => $this->v3['tabel5'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel5')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl5' => $this->tl5->ambildata()->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
 			'tbl4' => $this->tl4->ambildata()->result()
@@ -53,7 +54,7 @@ class Tabel5 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel5/admin'));
+		redirect(site_url('c_tabel5/admin'));
 	}
 
 	public function update()
@@ -77,8 +78,8 @@ class Tabel5 extends Omnitags
 			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_4['tabel5_alias']);
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
-		
-			redirect(site_url('tabel5/admin'));
+
+		redirect(site_url('c_tabel5/admin'));
 	}
 
 	public function hapus($tabel5_field1 = null)
@@ -95,7 +96,7 @@ class Tabel5 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel5/admin'));
+		redirect(site_url('c_tabel5/admin'));
 	}
 
 	// Cetak semua data
@@ -108,7 +109,8 @@ class Tabel5 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel5')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl5' => $this->tl5->ambildata()->result()
 		);
 
@@ -118,5 +120,5 @@ class Tabel5 extends Omnitags
 	}
 
 	// Cetak satu data
-	
+
 }

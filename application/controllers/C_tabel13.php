@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include 'Omnitags.php';
 
-class Tabel13 extends Omnitags
+class C_tabel13 extends Omnitags
 {
 	// Halaman publik
 
@@ -22,7 +22,7 @@ class Tabel13 extends Omnitags
 			$this->v_part3 => $this->v3['tabel13'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel13')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl13' => $this->tl13->ambildata()->result(),
 		);
 
@@ -75,7 +75,7 @@ class Tabel13 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel13/admin'));
+		redirect(site_url('c_tabel13/admin'));
 	}
 
 	public function update() //update tidak diperlukan di sini
@@ -121,7 +121,7 @@ class Tabel13 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 
-		redirect(site_url('tabel13/admin'));
+		redirect(site_url('c_tabel13/admin'));
 	}
 
 	public function hapus($tabel13_field1 = null)
@@ -143,7 +143,7 @@ class Tabel13 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel13/admin'));
+		redirect(site_url('c_tabel13/admin'));
 	}
 
 	// Cetak semua data
@@ -156,7 +156,7 @@ class Tabel13 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl13->dekor('tabel13')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl13' => $this->tl13->ambildata()->result()
 		);
 

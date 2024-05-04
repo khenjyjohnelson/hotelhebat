@@ -15,7 +15,7 @@
 <table class="mb-4">
 
   <!-- method get supaya nilai dari filter bisa tampil nanti -->
-  <form action="<?= site_url('tabel8/filter') ?>" method="get">
+  <form action="<?= site_url('c_tabel8/filter') ?>" method="get">
     <tr>
 
       <td class="pr-2"><?= $tabel8_field10_alias ?></td>
@@ -40,7 +40,7 @@
         <button class="btn btn-success" type="submit">
           <a type="submit"><i class="fas fa-search"></i></a>
         </button>
-        <a class="btn btn-danger" type="button" href="<?= site_url('tabel8/admin') ?>">
+        <a class="btn btn-danger" type="button" href="<?= site_url('c_tabel8/admin') ?>">
           <i class="fas fa-redo"></i></a>
       </td>
 
@@ -114,7 +114,7 @@
                 </a>
               <?php break;
               case $tabel8_field12_value5: ?>
-                <a class="btn btn-light text-danger" onclick="return confirm('Hapus pesanan?')" href="<?= site_url('tabel8/hapus/' . $tl8->$tabel8_field1) ?>">
+                <a class="btn btn-light text-danger" onclick="return confirm('Hapus pesanan?')" href="<?= site_url('c_tabel8/hapus/' . $tl8->$tabel8_field1) ?>">
                   <i class="fas fa-trash"></i>
                 </a>
             <?php break;
@@ -123,7 +123,7 @@
         https://stackoverflow.com/questions/32778670/codeigniter-load-view-in-new-tab#:~:text=Say%20you%20want%20it%20to,_blank%22%20in%20the%20form%20tag.&text=That%27s%20all.
         terimakasih pada link di atas
         -->
-            <a class="btn btn-light text-info" href="<?= site_url('tabel8/print/' . $tl8->$tabel8_field1) ?>" target="_blank">
+            <a class="btn btn-light text-info" href="<?= site_url('c_tabel8/print/' . $tl8->$tabel8_field1) ?>" target="_blank">
               <i class="fas fa-print"></i>
             </a>
           </td>
@@ -151,7 +151,7 @@
             </div>
 
             <!-- form untuk mengubah nilai status sebuah pesanan -->
-            <form action="<?= site_url('tabel8/update_status') ?>" method="post">
+            <form action="<?= site_url('c_tabel8/update_status') ?>" method="post">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
@@ -269,7 +269,7 @@
             </div>
 
             <!-- form untuk mengubah nilai status sebuah pesanan -->
-            <form action="<?= site_url('tabel8/book') ?>" method="post">
+            <form action="<?= site_url('c_tabel8/book') ?>" method="post">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">

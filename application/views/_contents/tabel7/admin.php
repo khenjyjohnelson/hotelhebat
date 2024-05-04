@@ -32,12 +32,14 @@
         data-target="#<?= $tabel23 . $tl7->$tabel7_field1 ?>">
         <i class="fas fa-edit"></i> <?= $tabel23_alias ?></a>
 
-      <a class="btn btn-info mb-4" href="<?= site_url('tabel12/admin') ?>">
+      <a class="btn btn-info mb-4" href="<?= site_url('c_tabel12/admin') ?>">
         <i class="fas fa-edit"></i> Kelola <?= $tabel12_alias ?></a>
+      <a class="btn btn-info mb-4" href="<?= site_url('c_tabel24/admin') ?>">
+        <i class="fas fa-edit"></i> <?= $tabel24_alias ?></a>
 
 
 
-      <form action="<?= site_url('tabel7/update') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= site_url('c_tabel7/update') ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label><?= $tabel7_field2_alias ?></label>
           <input class="form-control tabel7" required type="text" name="<?= $tabel7_field2_input ?>"
@@ -70,18 +72,6 @@
         </div>
 
         <div class="form-group">
-          <label><?= $tabel7_field10_alias ?></label>
-          <input class="form-control tabel7" required type="text" name="<?= $tabel7_field10_input ?>"
-            placeholder="Masukkan <?= $tabel7_field10_alias ?>" value="<?= $tl7->$tabel7_field10; ?>">
-        </div>
-
-        <div class="form-group">
-          <label><?= $tabel7_field11_alias ?></label>
-          <input class="form-control tabel7" required type="text" name="<?= $tabel7_field11_input ?>"
-            placeholder="Masukkan <?= $tabel7_field11_alias ?>" value="<?= $tl7->$tabel7_field11; ?>">
-        </div>
-
-        <div class="form-group">
           <button class="btn btn-success" onclick="return confirm('Ubah data website?')" type="submit">Simpan
             Perubahan</button>
         </div>
@@ -98,12 +88,12 @@
 
 <!-- modal edit event-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel13 . $tl7->$tabel7_field1 ?>" class="modal fade tabel7_field12">
+  <div id="<?= $tabel13 . $tl7->$tabel7_field1 ?>" class="modal fade tabel7_field10">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Edit <?= $tabel13_alias ?>   <?= $tl7->$tabel7_field1; ?></h5>
-          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url('tabel13/admin') ?>">
+          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url('c_tabel13/admin') ?>">
             <i class="fas fa-edit"></i> Kelola</a>
 
           <button class="close" data-dismiss="modal">
@@ -111,17 +101,17 @@
           </button>
         </div>
 
-        <form action="<?= site_url('tabel7/update_tabel7_field12') ?>" method="post">
+        <form action="<?= site_url('c_tabel7/update_tabel7_field10') ?>" method="post">
           <div class="modal-body">
 
             <div class="form-group">
-              <label>Pilih <?= $tabel7_field12_alias ?></label>
-              <select class="form-control" required name="<?= $tabel7_field12_input ?>">
+              <label>Pilih <?= $tabel7_field10_alias ?></label>
+              <select class="form-control" required name="<?= $tabel7_field10_input ?>">
 
                 <?php foreach ($tbl13 as $tl13): ?>
-                  <?php if ($tl7->$tabel7_field12 == $tl13->$tabel7_field12) { ?>
+                  <?php if ($tl7->$tabel7_field10 == $tl13->$tabel7_field10) { ?>
 
-                    <option selected hidden value="<?= $tl13->$tabel7_field12 ?>"><?= $tl13->$tabel7_field12 ?> -
+                    <option selected hidden value="<?= $tl13->$tabel7_field10 ?>"><?= $tl13->$tabel7_field10 ?> -
                       <?= $tl13->$tabel13_field2; ?>
                     </option>
                   <?php } ?>
@@ -131,7 +121,7 @@
 
                 <?php foreach ($tbl13 as $tl13): ?>
 
-                  <option value="<?= $tl13->$tabel7_field12 ?>"><?= $tl13->$tabel7_field12 ?> -
+                  <option value="<?= $tl13->$tabel7_field10 ?>"><?= $tl13->$tabel7_field10 ?> -
                     <?= $tl13->$tabel13_field2; ?>
                   </option>
 
@@ -144,7 +134,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_tabel7_field12') ?>
+            <?= $this->session->flashdata('pesan_tabel7_field10') ?>
           </p>
 
           <div class="modal-footer">
@@ -171,7 +161,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('tabel7/update_tabel7_field3') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url('c_tabel7/update_tabel7_field3') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="form-group">
@@ -215,7 +205,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('tabel7/update_tabel7_field4') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url('c_tabel7/update_tabel7_field4') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="form-group">
@@ -260,7 +250,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('tabel7/update_tabel7_field5') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url('c_tabel7/update_tabel7_field5') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="form-group">
@@ -293,12 +283,12 @@
 
 <!-- modal edit lisensi-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel23 . $tl7->$tabel7_field1 ?>" class="modal fade tabel7_field13">
+  <div id="<?= $tabel23 . $tl7->$tabel7_field1 ?>" class="modal fade tabel7_field11">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Edit <?= $tabel23_alias ?>   <?= $tl7->$tabel7_field1; ?></h5>
-          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url('tabel23/admin') ?>">
+          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url('c_tabel23/admin') ?>">
             <i class="fas fa-edit"></i> Kelola</a>
 
           <button class="close" data-dismiss="modal">
@@ -306,17 +296,17 @@
           </button>
         </div>
 
-        <form action="<?= site_url('tabel7/update_tabel7_field13') ?>" method="post">
+        <form action="<?= site_url('c_tabel7/update_tabel7_field11') ?>" method="post">
           <div class="modal-body">
 
             <div class="form-group">
-              <label>Pilih <?= $tabel7_field13_alias ?></label>
-              <select class="form-control" required name="<?= $tabel7_field13_input ?>">
+              <label>Pilih <?= $tabel7_field11_alias ?></label>
+              <select class="form-control" required name="<?= $tabel7_field11_input ?>">
 
                 <?php foreach ($tbl23 as $tl23): ?>
-                  <?php if ($tl7->$tabel7_field13 == $tl23->$tabel7_field13) { ?>
+                  <?php if ($tl7->$tabel7_field11 == $tl23->$tabel7_field11) { ?>
 
-                    <option selected hidden value="<?= $tl23->$tabel7_field13 ?>"><?= $tl23->$tabel7_field13 ?> -
+                    <option selected hidden value="<?= $tl23->$tabel7_field11 ?>"><?= $tl23->$tabel7_field11 ?> -
                       <?= $tl23->$tabel23_field2; ?>
                     </option>
                   <?php } ?>
@@ -326,7 +316,7 @@
 
                 <?php foreach ($tbl23 as $tl23): ?>
 
-                  <option value="<?= $tl23->$tabel7_field13 ?>"><?= $tl23->$tabel7_field13 ?> |
+                  <option value="<?= $tl23->$tabel7_field11 ?>"><?= $tl23->$tabel7_field11 ?> |
                     <?= $tl23->$tabel23_field2; ?>
                   </option>
 
@@ -338,8 +328,8 @@
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p id="p_<?= $tabel7_field13 ?>" class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_tabel7_field13') ?>
+          <p id="p_<?= $tabel7_field11 ?>" class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_tabel7_field11') ?>
           </p>
 
           <div class="modal-footer">

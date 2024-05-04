@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include 'Omnitags.php';
 
-class Tabel1 extends Omnitags
+class C_tabel1 extends Omnitags
 {
 	// Halaman publik
 
@@ -22,7 +22,7 @@ class Tabel1 extends Omnitags
 			$this->v_part3 => $this->v3['tabel1'],
 			$this->v_part5 => $this->tl12->dekor('tabel1')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl1' => $this->tl1->ambildata()->result()
 		);
 
@@ -51,7 +51,7 @@ class Tabel1 extends Omnitags
 				$this->session->set_flashdata($this->flashdatas['flash2'], "Invalid input. Please provide valid data.");
 				$this->session->set_flashdata('modal', $this->flashdatas['flash2_func1']);
 				// Functional requirement: Redirect user to 'tabel1' page
-				redirect(site_url('tabel1/admin'));
+				redirect(site_url('c_tabel1/admin'));
 			}
 		}
 
@@ -86,7 +86,7 @@ class Tabel1 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel1' page
-		redirect(site_url('tabel1/admin'));
+		redirect(site_url('c_tabel1/admin'));
 	}
 
 
@@ -109,7 +109,7 @@ class Tabel1 extends Omnitags
 				$this->session->set_flashdata($this->flashdatas['flash3'], "Invalid input. Please provide valid data.");
 				$this->session->set_flashdata('modal', $this->flashdatas['flash3_func1']);
 				// Functional requirement: Redirect user to 'tabel1' page
-				redirect(site_url('tabel1/admin'));
+				redirect(site_url('c_tabel1/admin'));
 			}
 		}
 
@@ -142,7 +142,7 @@ class Tabel1 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel1' page
-		redirect(site_url('tabel1/admin'));
+		redirect(site_url('c_tabel1/admin'));
 	}
 
 
@@ -177,7 +177,7 @@ class Tabel1 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel1' page
-		redirect(site_url('tabel1/admin'));
+		redirect(site_url('c_tabel1/admin'));
 	}
 
 
@@ -191,7 +191,7 @@ class Tabel1 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel1')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl1' => $this->tl1->ambildata()->result()
 		);
 

@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include 'Omnitags.php';
 
-class Tabel6 extends Omnitags
+class C_tabel6 extends Omnitags
 {
 	// Halaman publik
 	public function index($tabel7_field1 = 1)
@@ -16,7 +16,7 @@ class Tabel6 extends Omnitags
 			$this->v_part3 => $this->v1['tabel6'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel6')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl6' => $this->tl6->ambildata()->result(),
 			'tbl1' => $this->tl1->ambildata()->result()
 		);
@@ -39,7 +39,7 @@ class Tabel6 extends Omnitags
 			$this->v_part3 => $this->v3['tabel6'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel6')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
 
@@ -71,7 +71,7 @@ class Tabel6 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel6/admin'));
+		redirect(site_url('c_tabel6/admin'));
 	}
 
 	public function update()
@@ -100,7 +100,7 @@ class Tabel6 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel6/admin'));
+		redirect(site_url('c_tabel6/admin'));
 	}
 
 	public function hapus($tabel6_field1 = null)
@@ -121,7 +121,7 @@ class Tabel6 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel6/admin'));
+		redirect(site_url('c_tabel6/admin'));
 	}
 
 	// Cetak semua data
@@ -134,7 +134,7 @@ class Tabel6 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel6')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl6' => $this->tl6->ambildata()->result()
 		);
 

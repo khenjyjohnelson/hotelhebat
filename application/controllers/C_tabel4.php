@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include 'Omnitags.php';
 
-class Tabel4 extends Omnitags
+class C_tabel4 extends Omnitags
 {
 	// Halaman publik
 
@@ -22,7 +22,7 @@ class Tabel4 extends Omnitags
 			$this->v_part3 => $this->v3['tabel4'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel4')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl4' => $this->tl4->ambildata()->result(),
 			'tbl5' => $this->tl5->ambildata()->result(),
 			'tbl6' => $this->tl6->ambildata()->result()
@@ -66,10 +66,10 @@ class Tabel4 extends Omnitags
 			// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
 			if ($this->session->userdata($this->aliases['tabel4_field3'])) {
 
-				redirect(site_url('tabel4/admin'));
+				redirect(site_url('c_tabel4/admin'));
 			} else {
 
-				redirect(site_url('tabel4/login'));
+				redirect(site_url('c_tabel4/login'));
 			}
 
 			// jika input konfirm tidak sama dengan input password
@@ -119,7 +119,7 @@ class Tabel4 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel4/admin'));
+		redirect(site_url('c_tabel4/admin'));
 	}
 
 	public function hapus($tabel4_field1 = null)
@@ -136,7 +136,7 @@ class Tabel4 extends Omnitags
 			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 		}
 
-		redirect(site_url('tabel4/admin'));
+		redirect(site_url('c_tabel4/admin'));
 	}
 
 	// Cetak semua data
@@ -149,7 +149,7 @@ class Tabel4 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel4')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl4' => $this->tl4->ambildata()->result()
 		);
 
@@ -169,7 +169,7 @@ class Tabel4 extends Omnitags
 			$this->v_part3 => $this->v2['tabel4'],
 			$this->v_part5 => $this->tl12->dekor('tabel4')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl4' => $this->tl4->ambil_tabel4_field1($tabel4_field1)->result()
 		);
 
@@ -187,7 +187,7 @@ class Tabel4 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part5 => $this->tl12->dekor('tabel4')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
@@ -204,7 +204,7 @@ class Tabel4 extends Omnitags
 			$this->v_part2 => $this->head,
 			$this->v_part5 => $this->tl12->dekor('v3')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
@@ -364,14 +364,14 @@ class Tabel4 extends Omnitags
 
 
 				$this->session->set_flashdata($this->flashdatas['flash1'], $this->aliases['tabel4_field4_alias'] . ' salah!');
-				redirect(site_url('tabel4/login'));
+				redirect(site_url('c_tabel4/login'));
 			}
 
 			// jika jumlah data lebih dari 0
 		} else {
 
 			$this->session->set_flashdata($this->flashdatas['flash1'], $this->aliases['tabel4_field1_alias'] . ' tidak tersedia!');
-			redirect(site_url('tabel4/login'));
+			redirect(site_url('c_tabel4/login'));
 		}
 
 		// // mencari apakah jumlah data kurang dari 0
@@ -399,14 +399,14 @@ class Tabel4 extends Omnitags
 		// 	} else {
 
 		// 		$this->session->set_flashdata($this->flashdatas['flash1'], 'Password Salah!');
-		// 		redirect(site_url('tabel9/login'));
+		// 		redirect(site_url('c_tabel9/login'));
 		// 	}
 
 		// 	// jika jumlah data lebih dari 0
 		// } else {
 
 		// 	$this->session->set_flashdata($this->flashdatas['flash1'], 'Email tidak tersedia!');
-		// 	redirect(site_url('tabel9/login'));
+		// 	redirect(site_url('c_tabel9/login'));
 		// }
 
 

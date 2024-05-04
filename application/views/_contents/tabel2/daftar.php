@@ -15,7 +15,7 @@
 
 <!-- method get supaya nilai dari filter bisa tampil nanti -->
 <!-- tabel fiter history -->
-<form action="<?= site_url('tabel2/filter_tabel4/admin') ?>" method="get">
+<form action="<?= site_url('c_tabel2/filter_tabel4/admin') ?>" method="get">
 
   <div class="row">
     <div class="col-md-auto">
@@ -77,7 +77,7 @@
         </div>
         <div class="col-auto">
           <div class="input-group">
-            <a class="btn btn-danger text-light" type="button" href="<?= site_url('tabel2/daftar') ?>">
+            <a class="btn btn-danger text-light" type="button" href="<?= site_url('c_tabel2/daftar') ?>">
               <i class="fas fa-redo"></i></a>
           </div>
         </div>

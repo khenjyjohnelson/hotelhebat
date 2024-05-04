@@ -11,7 +11,7 @@
 <h1><?= $title ?><?= $phase ?></h1>
 <hr>
 
-<a class="btn btn-info mb-4" href="<?= site_url('tabel11/laporan') ?>" target="_blank">
+<a class="btn btn-info mb-4" href="<?= site_url('c_tabel11/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <div class="table-responsive">
@@ -41,7 +41,7 @@
           <td><?= $tl11->$tabel11_field6 ?></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal" data-target="#lihat<?= $tl11->$tabel11_field1; ?>">
               <i class="fas fa-eye"></i></a>
-              <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel11 ?>?')" href="<?= site_url('tabel11/hapus/' . $tl11->$tabel11_field1) ?>">
+              <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel11 ?>?')" href="<?= site_url('c_tabel11/hapus/' . $tl11->$tabel11_field1) ?>">
               <i class="fas fa-trash"></i></a>
         </tr>
       <?php endforeach; ?>

@@ -32,17 +32,19 @@
     <table class="table">
       <thead class="thead">
         <tr>
-          <th><?= $tabel23_field1_alias ?></th>
-          <th><?= $tabel23_field2_alias ?></th>
-          <th><?= $tabel23_field3_alias ?></th>
+          <th><?= $tabel24_field1_alias ?></th>
+          <th><?= $tabel24_field2_alias ?></th>
+          <th><?= $tabel24_field3_alias ?></th>
+          <th><?= $tabel24_field4_alias ?></th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($tbl23 as $tl23) : ?>
+        <?php foreach ($tbl24 as $tl24) : ?>
           <tr>
-            <td width=""><?= $tl23->$tabel23_field1; ?></td>
-            <td width=""><?= $tl23->$tabel23_field2 ?></td>
-            <td width=""><?= $tl23->$tabel23_field3 ?></td>
+            <td width=""><?= $tl24->$tabel24_field1; ?></td>
+            <td width=""><?= $tl24->$tabel24_field2 ?></td>
+            <td width=""><?= $tl24->$tabel24_field3 ?></td>
+            <td width=""><?= $tl24->$tabel24_field4 ?></td>
           </tr>
         <?php endforeach ?>
       </tbody>

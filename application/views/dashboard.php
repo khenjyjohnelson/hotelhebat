@@ -31,7 +31,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl9 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel9/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel9/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -40,12 +40,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel4_alias ?>
+              <?= $tabel7_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl4 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel4/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel7/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl6 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel6/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel6/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl5 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel5/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel5/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl3 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel3/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel3/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl1 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel1/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel1/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl5 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel5/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel5/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl8 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel8/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel8/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -147,7 +147,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl10 ?>
             </p>
-            <a class="text-white" href="<?= site_url('tabel10/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url('c_tabel10/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -184,56 +184,49 @@
 
 <h2 class="mt-4">Detail Website</h2>
 <hr>
-<?php foreach ($tbl7 as $tl7): ?>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>
-          <?= $tabel7_field2_alias ?> :
-        </label>
-        <p>
-          <?= $tl7->$tabel7_field2; ?>
-        </p>
+
+<div class="row">
+  <div class="col-md-6">
+
+    <?php foreach ($tbl7 as $tl7): ?>
+      <div class="table-responsive">
+        <table class="table table-light" id="data">
+          <thead></thead>
+          <tbody>
+            <tr>
+              <td class="table-secondary table-active"><?= $tabel7_field2_alias ?></td>
+              <td class="table-light"><?= $tl7->$tabel7_field2 ?></td>
+            </tr>
+
+            <tr>
+              <td class="table-secondary table-active"><?= $tabel7_field6_alias ?></td>
+              <td class="table-light"><?= $tl7->$tabel7_field6 ?></td>
+            </tr>
+
+            <tr>
+              <td class="table-secondary table-active"><?= $tabel7_field7_alias ?></td>
+              <td class="table-light"><?= $tl7->$tabel7_field7 ?></td>
+            </tr>
+
+            <tr>
+              <td class="table-secondary table-active"><?= $tabel7_field8_alias ?></td>
+              <td class="table-light"><?= $tl7->$tabel7_field8 ?></td>
+            </tr>
+
+            <?php foreach ($tbl24 as $tl24):
+              if ($tl24->$tabel24_field2 == $tl7->$tabel7_field1) { ?>
+                <tr>
+                  <td class="table-secondary table-active"><?= $tl24->$tabel24_field3 ?></td>
+                  <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $tl24->$tabel24_field4 ?>" target="_blank">
+                    Visit</a>
+                </tr>
+              <?php }endforeach; ?>
+
+          </tbody>
+          <tfoot></tfoot>
+        </table>
       </div>
 
-      <div class="form-group">
-        <label>
-          <?= $tabel7_field6_alias ?> :
-        </label>
-        <p>
-          <?= $tl7->$tabel7_field6; ?>
-        </p>
-      </div>
-
-      <div class="form-group">
-        <label>
-          <?= $tabel7_field7_alias ?> :
-        </label>
-        <p>
-          <?= $tl7->$tabel7_field7; ?>
-        </p>
-      </div>
-
-      <div class="form-group">
-        <label>
-          <?= $tabel7_field8_alias ?> :
-        </label>
-        <p>
-          <?= $tl7->$tabel7_field8; ?>
-        </p>
-      </div>
-
-      <div class="form-group">
-        <a class="text-decoration-none text-primary" href="<?= $tl7->$tabel7_field10; ?>" target="_blank">
-          <?= $tabel7_field10_alias ?>
-        </a>
-      </div>
-
-      <div class="form-group">
-        <a class="text-decoration-none text-danger" href="<?= $tl7->$tabel7_field11; ?>" target="_blank">
-          <?= $tabel7_field11_alias ?>
-        </a>
-      </div>
     </div>
 
     <div class="col-md-6">
@@ -242,5 +235,5 @@
   </div>
 
 
-  
+
 <?php endforeach; ?>
