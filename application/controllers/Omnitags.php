@@ -69,7 +69,7 @@ class Omnitags extends CI_Controller
         foreach ($myData1 as $item) {
             $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
             $this->v_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
-            $this->v_post[$item['key']] = $this->input->post('txt_' . $item['value']);
+            $this->v_post[$item['key']] = htmlspecialchars($this->input->post('txt_' . $item['value']));
             $this->v_get[$item['key']] = $this->input->get('txt_' . $item['value']);
             $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
             $this->v_post_old[$item['key']] = $this->input->post('old_' . $item['value']);

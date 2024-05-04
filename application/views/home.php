@@ -57,7 +57,7 @@
         </div>
         
         <div class="col-md-6">
-          <p><?= $tl13->$tabel13_field5 ?></p>
+          <p><?= html_entity_decode($tl13->$tabel13_field5) ?></p>
         </div>
       </div>
 
@@ -78,7 +78,7 @@
   <hr>
   <div class="row">
     <div class="col-md-6">
-      <p><?= $tl7->$tabel7_field9 ?></p>
+      <p><?= html_entity_decode($tl7->$tabel7_field9) ?></p>
     </div>
 
     <div class="col-md-6">

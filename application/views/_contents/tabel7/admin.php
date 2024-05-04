@@ -28,11 +28,13 @@
       <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
         data-target="#<?= $tabel13 . $tl7->$tabel7_field1 ?>">
         <i class="fas fa-edit"></i> <?= $tabel13_alias ?></a>
+      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
+        data-target="#<?= $tabel23 . $tl7->$tabel7_field1 ?>">
+        <i class="fas fa-edit"></i> <?= $tabel23_alias ?></a>
 
       <a class="btn btn-info mb-4" href="<?= site_url('tabel12/admin') ?>">
         <i class="fas fa-edit"></i> Kelola <?= $tabel12_alias ?></a>
-      <a class="btn btn-info mb-4" href="<?= site_url('tabel13/admin') ?>">
-        <i class="fas fa-edit"></i> Kelola <?= $tabel13_alias ?></a>
+
 
 
       <form action="<?= site_url('tabel7/update') ?>" method="post" enctype="multipart/form-data">
@@ -51,7 +53,8 @@
 
         <div class="form-group">
           <label><?= $tabel7_field7_alias ?></label>
-          <input class="form-control tabel7" required type="text" name="<?= $tabel7_field7_input ?>" value="<?= $tl7->$tabel7_field7; ?>">
+          <input class="form-control tabel7" required type="text" name="<?= $tabel7_field7_input ?>"
+            value="<?= $tl7->$tabel7_field7; ?>">
         </div>
 
         <div class="form-group">
@@ -62,7 +65,7 @@
 
         <div class="form-group">
           <label><?= $tabel7_field9_alias ?></label>
-          <textarea class="form-control tabel7" required name="<?= $tabel7_field9_input ?>"
+          <textarea id="editor1" class="form-control tabel7" required name="<?= $tabel7_field9_input ?>"
             rows="5"><?= $tl7->$tabel7_field9; ?></textarea>
         </div>
 
@@ -100,6 +103,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Edit <?= $tabel13_alias ?>   <?= $tl7->$tabel7_field1; ?></h5>
+          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url('tabel13/admin') ?>">
+            <i class="fas fa-edit"></i> Kelola</a>
 
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
@@ -143,6 +148,7 @@
           </p>
 
           <div class="modal-footer">
+
             <button class="btn btn-success" type="submit">Simpan
               Perubahan</button>
           </div>
@@ -277,6 +283,67 @@
 
           <div class="modal-footer">
             <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel7_field5 ?>?')" type="submit">Simpan
+              Perubahan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<?php endforeach; ?>
+
+<!-- modal edit lisensi-->
+<?php foreach ($tbl7 as $tl7): ?>
+  <div id="<?= $tabel23 . $tl7->$tabel7_field1 ?>" class="modal fade tabel7_field13">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit <?= $tabel23_alias ?>   <?= $tl7->$tabel7_field1; ?></h5>
+          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url('tabel23/admin') ?>">
+            <i class="fas fa-edit"></i> Kelola</a>
+
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <form action="<?= site_url('tabel7/update_tabel7_field13') ?>" method="post">
+          <div class="modal-body">
+
+            <div class="form-group">
+              <label>Pilih <?= $tabel7_field13_alias ?></label>
+              <select class="form-control" required name="<?= $tabel7_field13_input ?>">
+
+                <?php foreach ($tbl23 as $tl23): ?>
+                  <?php if ($tl7->$tabel7_field13 == $tl23->$tabel7_field13) { ?>
+
+                    <option selected hidden value="<?= $tl23->$tabel7_field13 ?>"><?= $tl23->$tabel7_field13 ?> -
+                      <?= $tl23->$tabel23_field2; ?>
+                    </option>
+                  <?php } ?>
+                <?php endforeach ?>
+
+                <option value="0">Tidak ada</option>
+
+                <?php foreach ($tbl23 as $tl23): ?>
+
+                  <option value="<?= $tl23->$tabel7_field13 ?>"><?= $tl23->$tabel7_field13 ?> |
+                    <?= $tl23->$tabel23_field2; ?>
+                  </option>
+
+                <?php endforeach ?>
+
+              </select>
+              <input type="hidden" name="<?= $tabel7_field1_input ?>" value="<?= $tl7->$tabel7_field1; ?>">
+            </div>
+          </div>
+
+          <!-- memunculkan notifikasi modal -->
+          <p id="p_<?= $tabel7_field13 ?>" class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_tabel7_field13') ?>
+          </p>
+
+          <div class="modal-footer">
+            <button class="btn btn-success" type="submit">Simpan
               Perubahan</button>
           </div>
         </form>

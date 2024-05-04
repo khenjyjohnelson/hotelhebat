@@ -94,7 +94,7 @@
 
           <div class="form-group">
             <label><?= $tabel13_field5_alias ?></label>
-            <textarea class="form-control" name="<?= $tabel13_field5_input ?>" placeholder="Masukkan <?= $tabel13_field5_alias ?>" required cols="30" rows="10"></textarea>
+            <textarea id="editor1" class="form-control" name="<?= $tabel13_field5_input ?>" placeholder="Masukkan <?= $tabel13_field5_alias ?>" required cols="30" rows="10"></textarea>
           </div>
 
         </div>
@@ -155,7 +155,7 @@
 
             <div class="form-group">
               <label><?= $tabel13_field3_alias ?></label>
-              <textarea class="form-control" name="<?= $tabel13_field5_input ?>" placeholder="Masukkan <?= $tabel13_field5_alias ?>" required cols="30"
+              <textarea class="ckeditor form-control" name="<?= $tabel13_field5_input ?>" placeholder="Masukkan <?= $tabel13_field5_alias ?>" required cols="30"
                 rows="10"><?= $tl13->$tabel13_field5; ?></textarea>
             </div>
 

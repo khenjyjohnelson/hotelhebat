@@ -21,7 +21,7 @@ class Tabel7 extends Omnitags
 			$this->v_part3 => $this->v3['tabel7'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel7')->result(),
-			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl13' => $this->tl13->ambildata()->result(),
 		);
 
@@ -78,6 +78,27 @@ class Tabel7 extends Omnitags
 		}
 
 		redirect(site_url('tabel7/admin'));
+	}
+
+	public function update_tabel7_field13()
+	{
+		$this->declarew();
+
+		$tabel7_field1 = $this->v_post['tabel7_field1'];
+		$data = array(
+			$this->aliases['tabel7_field13'] => $this->v_post['tabel7_field13'],
+		);
+
+		$update = $this->tl7->update($data, $tabel7_field1);
+
+		if ($update) {
+			$this->session->set_flashdata($this->flash['tabel7_field13'], $this->flash1_msg_3['tabel7_field13_alias']);
+			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field13']);
+		} else {
+			$this->session->set_flashdata($this->flash['tabel7_field13'], $this->flash1_msg_4['tabel7_field13_alias']);
+			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field13']);
+		}
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function update_tabel7_field3()
@@ -167,7 +188,6 @@ class Tabel7 extends Omnitags
 		} else {
 			$this->session->set_flashdata($this->flash['tabel7_field4'], $this->flash1_msg_4['tabel7_field4']);
 			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field4']);
-			redirect($_SERVER['HTTP_REFERER']);
 		}
 
 		redirect(site_url('tabel7/admin'));
