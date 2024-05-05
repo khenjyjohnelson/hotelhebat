@@ -12,9 +12,12 @@ class C_tabel4 extends Omnitags
 	
 
 	// Halaman admin
-	public function admin($tabel7_field1 = 1)
+	public function admin()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v3_title['tabel4_alias'],
@@ -140,9 +143,12 @@ class C_tabel4 extends Omnitags
 	}
 
 	// Cetak semua data
-	public function laporan($tabel7_field1 = 1)
+	public function laporan()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v4_title['tabel4_alias'],
@@ -158,15 +164,18 @@ class C_tabel4 extends Omnitags
 		$this->load->view($this->v4['tabel4'], $data);
 	}
 
-	public function profil($tabel7_field1 = 1)
+	public function detail()
 	{
 		$this->declarew();
 
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
+
 		$tabel4_field1 = $this->session->userdata($this->aliases['tabel4_field1']);
 		$data1 = array(
-			$this->v_part1 => $this->v2_title['tabel4_alias2'],
+			$this->v_part1 => $this->v6_title['tabel4_alias2'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->v2['tabel4'],
+			$this->v_part3 => $this->v6['tabel4'],
 			$this->v_part5 => $this->tl12->dekor('tabel4')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
 			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
@@ -178,9 +187,12 @@ class C_tabel4 extends Omnitags
 		$this->load->view($this->views['v1'], $data);
 	}
 
-	public function login($tabel7_field1 = 1)
+	public function login()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->views['tabel4_v2_title'],
@@ -195,9 +207,12 @@ class C_tabel4 extends Omnitags
 		$this->load->view($this->views['tabel4_v2'], $data);
 	}
 
-	public function signup($tabel7_field1 = 1)
+	public function signup()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->views['v3_title'],
@@ -344,7 +359,7 @@ class C_tabel4 extends Omnitags
 				// $this->session->set_userdata($this->aliases['tabel9_field6'], $tabel9_field6);
 
 
-				redirect(site_url('welcome'));
+				redirect(site_url('home'));
 
 				// jika password salah
 			} else {
@@ -393,7 +408,7 @@ class C_tabel4 extends Omnitags
 		// 		$this->session->set_userdata('hp', $hp);
 		// 		$this->session->set_userdata('level', $level);
 
-		// 		redirect(site_url('welcome'));
+		// 		redirect(site_url('home'));
 
 		// 		// jika password salah
 		// 	} else {
@@ -418,6 +433,6 @@ class C_tabel4 extends Omnitags
 
 		// menghapus session
 		session_destroy();
-		redirect(site_url('welcome'));
+		redirect(site_url('home'));
 	}
 }

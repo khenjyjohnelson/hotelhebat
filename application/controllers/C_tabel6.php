@@ -6,9 +6,12 @@ include 'Omnitags.php';
 class C_tabel6 extends Omnitags
 {
 	// Halaman publik
-	public function index($tabel7_field1 = 1)
+	public function index()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v1_title['tabel6_alias'],
@@ -29,9 +32,12 @@ class C_tabel6 extends Omnitags
 	// Halaman khusus akun
 
 	// Halaman admin
-	public function admin($tabel7_field1 = 1)
+	public function admin()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v3_title['tabel6_alias'],
@@ -110,7 +116,7 @@ class C_tabel6 extends Omnitags
 		$tabel6 = $this->tl6->ambil_tabel6_field1($tabel6_field1)->result();
 		$tabel6_field3 = $tabel6[0]->img;
 
-		unlink($this->views['tabel6_field3_upload_path'] . $tabel6_field3);
+		unlink($this->v_upload_path['tabel6_field3'] . $tabel6_field3);
 		$hapus = $this->tl6->hapus($tabel6_field1);
 
 		if ($hapus) {
@@ -125,9 +131,12 @@ class C_tabel6 extends Omnitags
 	}
 
 	// Cetak semua data
-	public function laporan($tabel7_field1 = 1)
+	public function laporan()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v4_title['tabel6_alias'],

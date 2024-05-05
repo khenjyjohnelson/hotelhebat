@@ -40,7 +40,7 @@
             untuk mencetak bukti <?= $tabel8_alias ?></p>
 
           <div class="d-flex justify-content-center">
-            <a class="text-decoration-none" href="<?= site_url('welcome') ?>">
+            <a class="text-decoration-none" href="<?= site_url('home') ?>">
               Kembali ke beranda
             </a>
 
@@ -57,7 +57,7 @@
           <h1 class="text-center">Anda tidak melakukan <?= $tabel8_alias ?> apapun</h1>
 
           <div class="d-flex justify-content-center">
-            <a class="text-decoration-none" href="<?= site_url('welcome') ?>">
+            <a class="text-decoration-none" href="<?= site_url('home') ?>">
               Kembali ke beranda
             </a>
 

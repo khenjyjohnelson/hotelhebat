@@ -11,9 +11,12 @@ class C_tabel24 extends Omnitags
 
 
 	// Halaman admin
-	public function admin($tabel7_field1 = 1)
+	public function admin()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v3_title['tabel24_alias'],
@@ -111,9 +114,12 @@ class C_tabel24 extends Omnitags
 	}
 
 	// Cetak semua data
-	public function laporan($tabel7_field1 = 1)
+	public function laporan()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v4_title['tabel24_alias'],

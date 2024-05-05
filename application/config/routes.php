@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | There are three reserved routes:
 |
-|	$route['default_controller'] = 'welcome';
+|	$route['default_controller'] = 'home';
 |
 | This route indicates which controller class should be loaded if the
 | URI contains no data. In the above example, the "welcome" class
@@ -52,4 +52,83 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['export'] = 'export_controller/exportExcel';
+
+$route['dashboard'] = 'welcome/dashboard';
+$route['home'] = 'welcome';
+
+$jsonData1 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel.postman_environment.json'));
+$myData1 = json_decode($jsonData1, true)['values'];
+
+// Create variables dynamically
+foreach ($myData1 as $item1) {
+    $aliases[$item1['key']] = $item1['value']; // Variable variable to create dynamic variables
+}
+
+// Define routes dynamically based on JSON data
+$jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel_tables.postman_environment.json'));
+$myData2 = json_decode($jsonData2, true)['values'];
+
+foreach ($myData2 as $item) {
+    $prefix = 'c_' . $item['key'] . '/';
+
+    // Routes tampilan
+    $views = [
+        'index' => 'index',
+        'daftar' => 'daftar',
+        'admin' => 'admin',
+        'laporan' => 'laporan',
+        'print' => 'print',
+        'konfirmasi' => 'konfirmasi',
+        'detail' => 'detail'
+    ];
+
+    foreach ($views as $key => $value) {
+        $route[$item['value'] . '/' . $key] = $prefix . $value;
+    }
+
+    // Routes fungsi umum
+    $common_functions = [
+        'tambah',
+        'update',
+        'hapus',
+        'filter'
+    ];
+
+    foreach ($common_functions as $value) {
+        $route[$item['value'] . '/' . $value] = $prefix . $value;
+    }
+
+    // Routes fungsi unik
+    $unique_functions = [
+        'login',
+        'logout',
+        'update_profil',
+        'update_password',
+        'ceklogin',
+        'importExcel',
+        'cari',
+        'book'
+    ];
+
+    foreach ($unique_functions as $value) {
+        $route[$item['value'] . '/' . $value] = $prefix . $value;
+    }
+
+    // Routes unik tabel
+    $route[$item['value'] . '/filter_' . $aliases['tabel4']] = $prefix . 'filter_tabel4';
+
+    // Routes unik field
+    $unique_fields = [
+        $aliases['tabel4_field4'],
+        $aliases['tabel7_field10'],
+        $aliases['tabel7_field11'],
+        $aliases['tabel7_field3'],
+        $aliases['tabel7_field4'],
+        $aliases['tabel7_field5'],
+        $aliases['tabel9_field4']
+    ];
+
+    foreach ($unique_fields as $value) {
+        $route[$item['value'] . '/update_' . $value] = $prefix . 'update_' . $value;
+    }
+}

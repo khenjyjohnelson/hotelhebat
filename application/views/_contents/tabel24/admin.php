@@ -12,7 +12,7 @@
 <hr>
 
 <button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
-<a class="btn btn-info mb-4" href="<?= site_url('c_tabel24/laporan') ?>" target="_blank">
+<a class="btn btn-info mb-4" href="<?= site_url($tabel24 . '/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <?php foreach ($dekor as $dk): ?>
@@ -46,7 +46,7 @@
               data-target="#ubah<?= $tl24->$tabel24_field1; ?>">
               <i class="fas fa-edit"></i></a>
             <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel24 ?>?')"
-              href="<?= site_url('c_tabel24/hapus/' . $tl24->$tabel24_field1) ?>">
+              href="<?= site_url($tabel24 . '/hapus/' . $tl24->$tabel24_field1) ?>">
               <i class="fas fa-trash"></i></a>
           </td>
         </tr>
@@ -69,7 +69,7 @@
         </button>
       </div>
 
-      <form action="<?= site_url('c_tabel24/tambah') ?>" enctype="multipart/form-data" method="post">
+      <form action="<?= site_url($tabel24 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
           <div class="form-group">
             <label><?= $tabel24_field3_alias ?></label>
@@ -113,7 +113,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('c_tabel24/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($tabel24 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <div class="form-group">
               <label><?= $tabel24_field3_alias ?></label>

@@ -15,12 +15,12 @@
       <div class="col-md-5 login">
 
         <!-- link kembali -->
-        <a class="text-decoration-none" href="<?= site_url('welcome') ?>">Kembali ke beranda</a>
+        <a class="text-decoration-none" href="<?= site_url('home') ?>">Kembali ke beranda</a>
 
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
 
         <!-- form signup -->
-        <form action="<?= site_url('c_tabel9/tambah') ?>" method="post">
+        <form action="<?= site_url($tabel9 . '/tambah') ?>" method="post">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -63,7 +63,7 @@
           <!-- tombol signup dan login -->
           <div class="form-group d-flex justify-content-around">
             <button class="btn btn-success login" type="submit">Sign Up</button>
-            <a class="btn btn-secondary login" type="button" href="<?= site_url('c_tabel9/login') ?>">Login</a>
+            <a class="btn btn-secondary login" type="button" href="<?= site_url($tabel9 . '/login') ?>">Login</a>
           </div>
 
         </form>

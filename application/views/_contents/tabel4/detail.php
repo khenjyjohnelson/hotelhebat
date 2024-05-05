@@ -10,7 +10,7 @@
         <i class="fas fa-edit"></i> Ubah <?= $tabel4_field4_alias ?></a>
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
-      <form action="<?= site_url('c_tabel4/update_profil') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= site_url($tabel4 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label><?= $tabel4_field2_alias ?></label>
           <input class="form-control tabel7" type="text" name="<?= $tabel4_field2_input ?>"
@@ -50,7 +50,7 @@
 
 <!-- modal edit password-->
 <?php foreach ($tbl4 as $tl4): ?>
-  <div id="password<?= $tl4->$tabel4_field1 ?>" class="modal fade tabel4_field4">
+  <div id="password<?= $tl4->$tabel4_field1 ?>" class="modal fade <?= $tabel4_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -60,7 +60,7 @@
             <span>&times;</span>
           </button>
         </div>
-        <form action="<?= site_url('c_tabel4/update_tabel4_field4') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($tabel4 . '/update_' . $tabel4_field4) ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="input-group">

@@ -5,9 +5,12 @@ include 'Omnitags.php';
 class C_tabel9 extends Omnitags
 {
 	// Halaman admin
-	public function admin($tabel7_field1 = 1)
+	public function admin()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v3_title['tabel9_alias'],
@@ -15,7 +18,9 @@ class C_tabel9 extends Omnitags
 			$this->v_part3 => $this->v3['tabel9'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel9')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(),
+			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl9' => $this->tl9->ambildata()->result()
 		);
 
@@ -129,16 +134,21 @@ class C_tabel9 extends Omnitags
 	}
 
 
-	public function laporan($tabel7_field1 = 1)
+	public function laporan()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v4_title['tabel9_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel9')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(),
+			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 			'tbl9' => $this->tl9->ambildata()->result()
 		);
 
@@ -148,19 +158,25 @@ class C_tabel9 extends Omnitags
 	}
 
 
-	public function profil($tabel7_field1 = 1)
+	public function detail()
 	{
 		$this->declarew();
 
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
+
 		$tabel9_field1 = $this->session->userdata($this->aliases['tabel9_field1']);
 		$data1 = array(
-			$this->v_part1 => $this->v2_title['tabel9_alias2'],
+			$this->v_part1 => $this->v6_title['tabel9_alias2'],
 			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->v2['tabel9'],
+			$this->v_part3 => $this->v6['tabel9'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel9')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
-			'tbl9' => $this->tl9->ambil_tabel9_field1($tabel9_field1)->result()
+			'tbl23' => $this->tl23->ambildata()->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(),
+			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl9' => $this->tl9->ambil_tabel9_field1($tabel9_field1)->result(),
+			'tbl20' => $this->tl20->ambil_tabel9_field1($tabel9_field1)->result()
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
@@ -168,16 +184,21 @@ class C_tabel9 extends Omnitags
 		$this->load->view($this->views['v1'], $data);
 	}
 
-	public function login($tabel7_field1 = 1)
+	public function login()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->views['v2_title'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('v2')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(),
+			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
@@ -185,16 +206,21 @@ class C_tabel9 extends Omnitags
 		$this->load->view($this->views['v2'], $data);
 	}
 
-	public function signup($tabel7_field1 = 1)
+	public function signup()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->views['v3_title'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('v3')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			'tbl23' => $this->tl23->ambildata()->result(),
+			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(),
+			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
@@ -319,15 +345,46 @@ class C_tabel9 extends Omnitags
 				$tabel9_field5 = $tabel9[0]->hp;
 				$tabel9_field6 = $tabel9[0]->level;
 
-				$updateCount = $this->tl9->updateCount($tabel9_field1);
-
+				
 				$this->session->set_userdata($this->aliases['tabel9_field1'], $tabel9_field1);
 				$this->session->set_userdata($this->aliases['tabel9_field2'], $tabel9_field2);
 				$this->session->set_userdata($this->aliases['tabel9_field3'], $tabel9_field3);
 				$this->session->set_userdata($this->aliases['tabel9_field5'], $tabel9_field5);
 				$this->session->set_userdata($this->aliases['tabel9_field6'], $tabel9_field6);
 
-				redirect(site_url('welcome'));
+				// Function to get the device type
+				function getDeviceType($userAgent) {
+					// List of common mobile device strings
+					$mobileDevices = array('iPhone', 'iPad', 'Android', 'Windows Phone', 'BlackBerry');
+					
+					// Check if the user agent contains any of the mobile device strings
+					foreach ($mobileDevices as $device) {
+						if (stripos($userAgent, $device) !== false) {
+							return 'Mobile';
+						}
+					}
+					
+					// If no mobile device string is found, consider it as a desktop
+					return 'Desktop';
+				}
+
+				// Get the user agent string
+				$userAgent = $_SERVER['HTTP_USER_AGENT'];
+    
+				// Get the device type
+				$deviceType = getDeviceType($userAgent);
+				
+				$loginh = array(
+					$this->aliases['tabel20_field1'] => '',
+					$this->aliases['tabel20_field2'] => $this->session->userdata($this->aliases['tabel9_field1']),
+					$this->aliases['tabel20_field3'] => date("Y-m-d\TH:i:s"),
+					$this->aliases['tabel20_field4'] => date("Y-m-d\TH:i:s"),
+					$this->aliases['tabel20_field5'] => $deviceType,
+				);
+		
+				$login_history = $this->tl20->simpan($loginh);
+
+				redirect(site_url('home'));
 
 				// jika password salah
 			} else {
@@ -375,7 +432,7 @@ class C_tabel9 extends Omnitags
 		// 		$this->session->set_userdata('hp', $hp);
 		// 		$this->session->set_userdata('level', $level);
 
-		// 		redirect(site_url('welcome'));
+		// 		redirect(site_url('home'));
 
 		// 		// jika password salah
 		// 	} else {
@@ -400,6 +457,6 @@ class C_tabel9 extends Omnitags
 
 		// menghapus session
 		session_destroy();
-		redirect(site_url('welcome'));
+		redirect(site_url('home'));
 	}
 }

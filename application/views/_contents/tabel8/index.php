@@ -12,7 +12,7 @@
   <img src="img/tabel7/<?= $tl7->$tabel7_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
-<form action="<?= site_url('c_tabel8/tambah') ?>" method="post">
+<form action="<?= site_url($tabel8 . '/tambah') ?>" method="post">
 
   <!-- form ini berisi data yang sudah diinput sebelumnya dari halaman home -->
   <div class="row justify-content-center align-items-end mt-2">
@@ -142,7 +142,7 @@
 
       <div class="form-group">
         <button class="btn btn-success" onclick="return confirm('Apakah Anda Ingin Memesan <?= $tabel5_alias ?>?')" type="submit">Konfirmasi <?= $tabel8_alias ?></button>
-        <a class="btn btn-danger" type="button" href="<?= site_url('welcome') ?>">Batal</a>
+        <a class="btn btn-danger" type="button" href="<?= site_url('home') ?>">Batal</a>
       </div>
     </div>
   </div>
@@ -162,7 +162,7 @@
         </button>
       </div>
 
-      <form action="<?= site_url('c_tabel8') ?>" method="get">
+      <form action="<?= site_url($tabel8 . '') ?>" method="get">
         <div class="modal-body">
           <div class="form-group">
             <label><?= $tabel8_field8_alias ?></label>

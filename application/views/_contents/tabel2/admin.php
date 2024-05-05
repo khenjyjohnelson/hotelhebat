@@ -43,7 +43,7 @@
               <td><?= $tl2->$tabel2_field9 ?></td>
               <td><a class="btn btn-light text-info" type="button" data-toggle="modal" data-target="#lihat<?= $tl2->$tabel2_field1 ?>">
                   <i class="fas fa-eye"></i></a>
-                <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel2_alias ?>?')" href="<?= site_url('c_tabel2/hapus/' . $tl2->$tabel2_field1) ?>">
+                <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel2_alias ?>?')" href="<?= site_url($tabel2 . '/hapus/' . $tl2->$tabel2_field1) ?>">
                   <i class="fas fa-trash"></i></a>
               </td>
             </tr>

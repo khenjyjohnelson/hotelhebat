@@ -13,9 +13,12 @@ session_write_close();
 class C_tabel8 extends Omnitags
 {
 	// Halaman publik/khusus akun
-	public function index($tabel7_field1 = 1)
+	public function index()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		switch ($this->session->userdata($this->aliases['tabel9_field6'])) {
 			case $this->aliases['tabel9_field6_value5']:
@@ -56,9 +59,12 @@ class C_tabel8 extends Omnitags
 	}
 
 	// Halaman khusus akun
-	public function daftar($tabel7_field1 = 1)
+	public function daftar()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$tabel9_field1 = $this->session->userdata($this->aliases['tabel9_field1']);
 		$data1 = array(
@@ -79,9 +85,12 @@ class C_tabel8 extends Omnitags
 		$this->load->view($this->views['v1'], $data);
 	}
 
-	public function filter_tabel4($tabel7_field1 = 1)
+	public function filter_tabel4()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$tabel9_field1 = $this->session->userdata($this->aliases['tabel9_field1']);
 		// nilai min dan max sudah diinput sebelumnya
@@ -112,9 +121,12 @@ class C_tabel8 extends Omnitags
 	}
 
 	// Halaman admin
-	public function admin($tabel7_field1 = 1)
+	public function admin()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		// nilai min dan max di sini belum ada
 		$param1 = $this->v_filter1_get['tabel8_field10'];
@@ -311,9 +323,12 @@ class C_tabel8 extends Omnitags
 		redirect(site_url('c_tabel8/admin'));
 	}
 
-	public function filter($tabel7_field1 = 1)
+	public function filter()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		// nilai min dan max sudah diinput sebelumnya
 		$param1 = $this->v_filter1_get['tabel8_field10'];
@@ -345,9 +360,12 @@ class C_tabel8 extends Omnitags
 	}
 
 	// Cetak semua data
-	public function laporan($tabel7_field1 = 1)
+	public function laporan()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v4_title['tabel8_alias'],
@@ -365,9 +383,12 @@ class C_tabel8 extends Omnitags
 	}
 
 	// Cetak satu data
-	public function print($tabel8_field1 = null, $tabel7_field1 = 1)
+	public function print($tabel8_field1 = null)
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v5_title['tabel8'],
@@ -398,9 +419,12 @@ class C_tabel8 extends Omnitags
 	// 	} else {  -->
 	// 	 }  -->
 
-	public function cari($tabel7_field1 = 1)
+	public function cari()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$param1 = $this->v_get['tabel8_field1'];
 		$param2 = $this->v_get['tabel8_field4'];
@@ -426,9 +450,12 @@ class C_tabel8 extends Omnitags
 	}
 
 
-	public function konfirmasi($tabel7_field1 = 1)
+	public function konfirmasi()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$tabel9_field3 = $this->session->tempdata($this->aliases['tabel9_field3'] . '_' . $this->aliases['tabel8']);
 		$data1 = array(
@@ -451,9 +478,12 @@ class C_tabel8 extends Omnitags
 	// Pada fitur ini, saya akan mencoba menggunakan gabungan dari jumlah kamar dan tipe kamar, 
 	// Oleh karena itu bakal ada 2 fungsi yang menggunakan parameter ini yakni, book dan ubah status. 
 	// Semoga besok bisa kelar karena ini merupakan fitur yang paling rumit di antara yang lain
-	public function book($tabel7_field1 = 1)
+	public function book()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		// hanya merubah status pesanan berdasarkan id pesanan
 		$tabel8_field1 = $this->v_post['tabel8_field1'];

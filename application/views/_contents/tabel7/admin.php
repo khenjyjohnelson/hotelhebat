@@ -32,14 +32,14 @@
         data-target="#<?= $tabel23 . $tl7->$tabel7_field1 ?>">
         <i class="fas fa-edit"></i> <?= $tabel23_alias ?></a>
 
-      <a class="btn btn-info mb-4" href="<?= site_url('c_tabel12/admin') ?>">
+      <a class="btn btn-info mb-4" href="<?= site_url($tabel12 . '/admin') ?>">
         <i class="fas fa-edit"></i> Kelola <?= $tabel12_alias ?></a>
-      <a class="btn btn-info mb-4" href="<?= site_url('c_tabel24/admin') ?>">
+      <a class="btn btn-info mb-4" href="<?= site_url($tabel24 . '/admin') ?>">
         <i class="fas fa-edit"></i> <?= $tabel24_alias ?></a>
 
 
 
-      <form action="<?= site_url('c_tabel7/update') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= site_url($tabel7 . '/update') ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label><?= $tabel7_field2_alias ?></label>
           <input class="form-control tabel7" required type="text" name="<?= $tabel7_field2_input ?>"
@@ -88,12 +88,12 @@
 
 <!-- modal edit event-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel13 . $tl7->$tabel7_field1 ?>" class="modal fade tabel7_field10">
+  <div id="<?= $tabel13 . $tl7->$tabel7_field1 ?>" class="modal fade <?= $tabel7_field10 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Edit <?= $tabel13_alias ?>   <?= $tl7->$tabel7_field1; ?></h5>
-          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url('c_tabel13/admin') ?>">
+          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url($tabel13 . '/admin') ?>">
             <i class="fas fa-edit"></i> Kelola</a>
 
           <button class="close" data-dismiss="modal">
@@ -101,7 +101,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('c_tabel7/update_tabel7_field10') ?>" method="post">
+        <form action="<?= site_url($tabel7 . '/update_' . $tabel7_field10) ?>" method="post">
           <div class="modal-body">
 
             <div class="form-group">
@@ -134,7 +134,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_tabel7_field10') ?>
+            <?= $this->session->flashdata('pesan_' . $tabel7_field10) ?>
           </p>
 
           <div class="modal-footer">
@@ -150,7 +150,7 @@
 
 <!-- modal edit favicon-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel7_field3 . $tl7->$tabel7_field1; ?>" class="modal fade tabel7_field3">
+  <div id="<?= $tabel7_field3 . $tl7->$tabel7_field1; ?>" class="modal fade <?= $tabel7_field3 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -161,7 +161,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('c_tabel7/update_tabel7_field3') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($tabel7 . '/update_' . $tabel7_field3) ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="form-group">
@@ -179,7 +179,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_tabel7_field3') ?>
+            <?= $this->session->flashdata('pesan_' . $tabel7_field3) ?>
           </p>
 
           <div class="modal-footer">
@@ -194,7 +194,7 @@
 
 <!-- modal edit logo-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel7_field4 . $tl7->$tabel7_field1; ?>" class="modal fade tabel7_field4">
+  <div id="<?= $tabel7_field4 . $tl7->$tabel7_field1; ?>" class="modal fade <?= $tabel7_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -205,7 +205,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('c_tabel7/update_tabel7_field4') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($tabel7 . '/update_' . $tabel7_field4) ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="form-group">
@@ -224,7 +224,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_tabel7_field4') ?>
+            <?= $this->session->flashdata('pesan_' . $tabel7_field4) ?>
           </p>
 
           <div class="modal-footer">
@@ -239,7 +239,7 @@
 
 <!-- modal edit foto-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel7_field5 . $tl7->$tabel7_field1; ?>" class="modal fade tabel7_field5">
+  <div id="<?= $tabel7_field5 . $tl7->$tabel7_field1; ?>" class="modal fade <?= $tabel7_field5 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -250,7 +250,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('c_tabel7/update_tabel7_field5') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($tabel7 . '/update_' . $tabel7_field5) ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="form-group">
@@ -268,7 +268,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_tabel7_field5') ?>
+            <?= $this->session->flashdata('pesan_' . $tabel7_field5) ?>
           </p>
 
           <div class="modal-footer">
@@ -283,12 +283,12 @@
 
 <!-- modal edit lisensi-->
 <?php foreach ($tbl7 as $tl7): ?>
-  <div id="<?= $tabel23 . $tl7->$tabel7_field1 ?>" class="modal fade tabel7_field11">
+  <div id="<?= $tabel23 . $tl7->$tabel7_field1 ?>" class="modal fade <?= $tabel7_field11 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Edit <?= $tabel23_alias ?>   <?= $tl7->$tabel7_field1; ?></h5>
-          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url('c_tabel23/admin') ?>">
+          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url($tabel23 . '/admin') ?>">
             <i class="fas fa-edit"></i> Kelola</a>
 
           <button class="close" data-dismiss="modal">
@@ -296,7 +296,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('c_tabel7/update_tabel7_field11') ?>" method="post">
+        <form action="<?= site_url($tabel7 . '/update_' . $tabel7_field11) ?>" method="post">
           <div class="modal-body">
 
             <div class="form-group">
@@ -329,7 +329,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p id="p_<?= $tabel7_field11 ?>" class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_tabel7_field11') ?>
+            <?= $this->session->flashdata('pesan_' . $tabel7_field11) ?>
           </p>
 
           <div class="modal-footer">

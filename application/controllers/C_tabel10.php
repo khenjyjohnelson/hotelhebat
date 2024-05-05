@@ -21,9 +21,12 @@ class C_tabel10 extends Omnitags
 	
 
 	// Halaman khusus akun
-	public function daftar($tabel7_field1 = 1)
+	public function daftar()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$tabel9_field1 = $this->session->userdata($this->aliases['tabel9_field1']);
 		$data1 = array(
@@ -42,9 +45,12 @@ class C_tabel10 extends Omnitags
 		$this->load->view($this->views['v1'], $data);
 	}
 
-	public function daftar_history($tabel7_field1 = 1)
+	public function daftar_history()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$tabel9_field1 = $this->session->userdata($this->aliases['tabel9_field1']);
 		$data1 = array(
@@ -64,9 +70,12 @@ class C_tabel10 extends Omnitags
 	}
 
 	// Halaman admin
-	public function admin($tabel7_field1 = 1)
+	public function admin()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		// nilai min dan max sudah diinput sebelumnya
 		// $param1 = $this->v_filter1_get['tabel10_field7'];
@@ -93,9 +102,12 @@ class C_tabel10 extends Omnitags
 	}
 
 	// Fungsi di bawah ini sebaiknya menggunakan fungsi join untuk menampilkan data yang sesuai kebutuhan yang telah ditentukan
-	public function history($tabel7_field1 = 1)
+	public function history()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		// nilai min dan max sudah diinput sebelumnya
 		// $param1 = $this->v_filter1_get['tabel10_field7'];
@@ -198,7 +210,7 @@ class C_tabel10 extends Omnitags
 		$tabel10_field1 = $this->v_post['tabel10_field1'];
 
 		// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
-		$tabel10_field7 = date("Y-m-d") . " " . date("h:m:s", time());
+		$tabel10_field7 = date("Y-m-d\TH:i:s");
 
 		$data = array(
 			$this->aliases['tabel10_field5'] => $this->v_post['tabel10_field5'],
@@ -238,9 +250,12 @@ class C_tabel10 extends Omnitags
 	}
 
 	// Fitur filter untuk saat ini akan tidak digunakan terlebih dahulu
-	public function filter($tabel7_field1 = 1)
+	public function filter()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		// nilai min dan max sudah diinput sebelumnya
 		$tabel10_field7_filter1 = $this->v_filter1_get['tabel10_field7'];
@@ -268,9 +283,12 @@ class C_tabel10 extends Omnitags
 	}
 
 	// Cetak semua data
-	public function laporan($tabel7_field1 = 1)
+	public function laporan()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v4_title['tabel10_alias'],
@@ -292,9 +310,12 @@ class C_tabel10 extends Omnitags
 
 	// Fitur print menurutku tidak memerlukan fitur join sama sekali 
 	// karena sudah menggunakan parameter yang memilki nilai
-	public function print($tabel10_field1 = null, $tabel7_field1 = 1)
+	public function print($tabel10_field1 = null)
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v5_title['tabel10'],
@@ -332,9 +353,12 @@ class C_tabel10 extends Omnitags
 	}
 
 	// Fungsi khusus
-	public function konfirmasi($tabel7_field1 = 1)
+	public function konfirmasi()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$tabel10_field3 = $this->session->tempdata($this->aliases['tabel10_field3'] . '_' . $this->aliases['tabel10']);
 		$data1 = array(

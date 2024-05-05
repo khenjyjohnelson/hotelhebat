@@ -10,7 +10,7 @@
         <i class="fas fa-edit"></i> Ubah <?= $tabel9_field4_alias ?></a>
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
-      <form action="<?= site_url('c_tabel9/update_profil') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= site_url($tabel9 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label><?= $tabel9_field2_alias ?></label>
           <input class="form-control tabel7" type="text" name="<?= $tabel9_field2_input ?>"
@@ -50,7 +50,7 @@
 
 <!-- modal edit password-->
 <?php foreach ($tbl9 as $tl9): ?>
-  <div id="password<?= $tl9->$tabel9_field1 ?>" class="modal fade tabel9_field4">
+  <div id="password<?= $tl9->$tabel9_field1 ?>" class="modal fade <?= $tabel9_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -60,7 +60,7 @@
             <span>&times;</span>
           </button>
         </div>
-        <form action="<?= site_url('c_tabel9/update_tabel9_field4') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($tabel9 . '/update_' . $tabel9_field4) ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="input-group">
@@ -91,7 +91,7 @@
 
           <!-- pesan untuk pengguna yang sedang merubah password -->
           <!-- untuk bagian ini akan kuubah nanti -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tabel9_field4') ?></p>
+          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_' . $tabel9_field4) ?></p>
 
           <div class="modal-footer">
             <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel9_field4_alias ?>?')"
@@ -102,3 +102,38 @@
     </div>
   </div>
 <?php endforeach; ?>
+
+
+<br>
+<br>
+
+<h1><?= $tabel20_alias ?><?= $phase ?></h1>
+<hr>
+<div class="table-responsive">
+  <table class="table table-light" id="data">
+    <thead class="thead-light">
+      <tr>
+        <th>No</th>
+        <th><?= $tabel20_field2_alias ?></th>
+        <th><?= $tabel20_field5_alias ?></th>
+        <th><?= $tabel20_field3_alias ?></th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <?php foreach ($tbl20 as $tl20) : ?>
+        <tr>
+          <td></td>
+          <td><?= $tl20->$tabel20_field2 ?></td>
+          <td><?= $tl20->$tabel20_field5 ?></td>
+          <td><?= $tl20->$tabel20_field3 ?></td>
+          <td><a class="btn btn-light text-info" type="button" data-toggle="modal" data-target="#lihat<?= $tl20->$tabel20_field1; ?>">
+              <i class="fas fa-eye"></i></a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+
+  </table>
+</div>

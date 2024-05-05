@@ -26,7 +26,7 @@
           <p class="text-center"><?= $tabel10_field1_alias ?> Anda adalah <?= $tbl10->$tabel10_field1 ?></p>
 
           <div class="d-flex justify-content-center">
-            <a class="btn btn-success text-light" href="<?= site_url('c_tabel10/print/' . $tbl10->$tabel10_field1) ?>" target="_blank">
+            <a class="btn btn-success text-light" href="<?= site_url($tabel10 . '/print/' . $tbl10->$tabel10_field1) ?>" target="_blank">
               Cetak Bukti <?= $tabel10_alias ?></i></a>
           </div>
 
@@ -35,7 +35,7 @@
             untuk mencetak bukti <?= $tabel10_alias ?></p>
 
           <div class="d-flex justify-content-center">
-            <a class="text-decoration-none" href="<?= site_url('welcome') ?>">
+            <a class="text-decoration-none" href="<?= site_url('home') ?>">
               Kembali ke beranda
             </a>
 
@@ -49,7 +49,7 @@
           <h1 class="text-center">Anda tidak melakukan <?= $tabel10_alias ?> apapun</h1>
 
           <div class="d-flex justify-content-center">
-            <a class="text-decoration-none" href="<?= site_url('welcome') ?>">
+            <a class="text-decoration-none" href="<?= site_url('home') ?>">
               Kembali ke beranda
             </a>
 

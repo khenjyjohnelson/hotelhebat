@@ -13,7 +13,7 @@
       <div class="col">
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
         <div class="d-flex justify-content-center">
-          <a class="text-decoration-none" href="<?= site_url('welcome') ?>">
+          <a class="text-decoration-none" href="<?= site_url('home') ?>">
             Kembali ke beranda
           </a>
         </div>

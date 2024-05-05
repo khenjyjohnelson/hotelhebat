@@ -6,9 +6,12 @@ include 'Omnitags.php';
 class Welcome extends Omnitags
 {
 	// fungsi pertama yang akan diload oleh website
-	public function index($tabel7_field1 = 1)
+	public function index()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 		
 		// Cache control headers
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP 1.1.
@@ -24,7 +27,7 @@ class Welcome extends Omnitags
 				$this->session->set_flashdata($this->flashdatas['flash1'], $this->flashdatas['flash1_note1']);
 				$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
 
-				redirect(site_url('welcome/dashboard'));
+				redirect(site_url('dashboard'));
 				break;
 
 			default:
@@ -57,9 +60,12 @@ class Welcome extends Omnitags
 		}
 	}
 
-	public function dashboard($tabel7_field1 = 1)
+	public function dashboard()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 		
 		$chart_tabel2 = $this->tl6->getChartTabel2();
 		$chart_tabel8 = $this->tl6->getChartTabel8();
@@ -90,9 +96,12 @@ class Welcome extends Omnitags
 	}
 
 	// fungsi ketika pengguna mengunjungi halaman yang tidak sesuai dengan level
-	public function no_level($tabel7_field1 = 1)
+	public function no_level()
 	{
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->views['v4_title'],

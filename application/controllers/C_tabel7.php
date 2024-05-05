@@ -6,7 +6,7 @@ include 'Omnitags.php';
 class C_tabel7 extends Omnitags
 {
 	// Halaman admin
-	public function admin($tabel7_field1 = 1)
+	public function admin()
 	{
 		// Cache control headers
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP 1.1.
@@ -14,6 +14,9 @@ class C_tabel7 extends Omnitags
 		header("Expires: 0"); // Proxies.
 
 		$this->declarew();
+
+		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v3_title['tabel7_alias'],
@@ -42,7 +45,7 @@ class C_tabel7 extends Omnitags
 			$this->aliases['tabel7_field6'] => $this->v_post['tabel7_field6'],
 			$this->aliases['tabel7_field7'] => $this->v_post['tabel7_field7'],
 			$this->aliases['tabel7_field8'] => $this->v_post['tabel7_field8'],
-			$this->aliases['tabel7_field9'] => $this->v_post['tabel7_field9'],
+			$this->aliases['tabel7_field9'] => htmlspecialchars($this->v_post['tabel7_field9']),
 		);
 
 		$update = $this->tl7->update($data, $tabel7_field1);

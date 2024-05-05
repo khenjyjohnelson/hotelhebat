@@ -13,7 +13,7 @@
 <p class="">Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
 
 <button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
-<a class="btn btn-info mb-4" href="<?= site_url('c_tabel23/laporan') ?>" target="_blank">
+<a class="btn btn-info mb-4" href="<?= site_url($tabel23 . '/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <?php foreach ($dekor as $dk): ?>
@@ -48,7 +48,7 @@
               data-target="#ubah<?= $tl23->$tabel23_field1; ?>">
               <i class="fas fa-edit"></i></a>
             <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel23 ?>?')"
-              href="<?= site_url('c_tabel23/hapus/' . $tl23->$tabel23_field1) ?>">
+              href="<?= site_url($tabel23 . '/hapus/' . $tl23->$tabel23_field1) ?>">
               <i class="fas fa-trash"></i></a>
           </td>
         </tr>
@@ -71,7 +71,7 @@
         </button>
       </div>
 
-      <form action="<?= site_url('c_tabel23/tambah') ?>" enctype="multipart/form-data" method="post">
+      <form action="<?= site_url($tabel23 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
           <div class="form-group">
             <label><?= $tabel23_field2_alias ?></label>
@@ -124,7 +124,7 @@
           </button>
         </div>
 
-        <form action="<?= site_url('c_tabel23/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($tabel23 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="form-group">

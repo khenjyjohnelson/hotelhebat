@@ -12,7 +12,7 @@
 <hr>
 
 <button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
-<a class="btn btn-info mb-4" href="<?= site_url('c_tabel5/laporan') ?>" target="_blank">
+<a class="btn btn-info mb-4" href="<?= site_url($tabel5 . '/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <div class="table-responsive">
@@ -94,7 +94,7 @@
         </button>
       </div>
 
-      <form action="<?= site_url('c_tabel5/tambah') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= site_url($tabel5 . '/tambah') ?>" method="post" enctype="multipart/form-data">
         <div class="modal-body">
 
           <!-- memilih salah satu tipe kamar yang ada -->
@@ -158,7 +158,7 @@
               </button>
             </div>
 
-            <form action="<?= site_url('c_tabel5/update') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= site_url($tabel5 . '/update') ?>" method="post" enctype="multipart/form-data">
               <div class="modal-body">
                 <div class="form-group">
 
@@ -274,7 +274,7 @@
 <?php foreach ($tbl5 as $tl5) : ?>
   <?php foreach ($tbl6 as $tl6) : ?>
     <?php if ($tl6->$tabel5_field2 == $tl5->$tabel5_field2) { ?>
-      <div id="<?= $tabel4_field6_value1 . $tl5->$tabel5_field1 ?>" class="modal fade tabel4_field6_value1">
+      <div id="<?= $tabel4_field6_value1 . $tl5->$tabel5_field1 ?>" class="modal fade <?= $tabel4_field6_value1 ?>">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -286,7 +286,7 @@
             </div>
 
             <!-- form untuk mengubah nilai status sebuah kamar -->
-            <form action="<?= site_url('c_tabel11/tambah') ?>" method="post">
+            <form action="<?= site_url($tabel11 . '/tambah') ?>" method="post">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
@@ -359,7 +359,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tabel4_field6_value1') ?></p>
+              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_' . $tabel4_field6_value1) ?></p>
 
               <div class="modal-footer">
                 <p>Proses <?= $tabel5_alias ?> <?= $tl5->$tabel5_field1; ?>?</p>
@@ -393,7 +393,7 @@
             </div>
 
             <!-- form untuk mengubah nilai status sebuah kamar -->
-            <form action="<?= site_url('c_tabel11/tambah') ?>" method="post">
+            <form action="<?= site_url($tabel11 . '/tambah') ?>" method="post">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">

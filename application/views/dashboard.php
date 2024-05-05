@@ -31,7 +31,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl9 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel9/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel9 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -40,12 +40,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel7_alias ?>
+              <?= $tabel4_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl4 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel7/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel4 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl6 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel6/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel6 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl5 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel5/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel5 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl3 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel3/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel3 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl1 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel1/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel1 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl5 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel5/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel5 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl8 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel8/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel8 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>
@@ -147,7 +147,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl10 ?>
             </p>
-            <a class="text-white" href="<?= site_url('c_tabel10/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel10 . '/admin') ?>">Lihat Detail >></a>
           </div>
         </div>
       </div>

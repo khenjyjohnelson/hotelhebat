@@ -43,8 +43,8 @@ class Omnitags extends CI_Controller
     public $v_part4_msg4 = '';  // feature released
 
     public $aliases, $views, $flashdatas, $tempdatas;
-    public $v1, $v2, $v3, $v4, $v5, $v6;
-    public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title;
+    public $v1, $v2, $v3, $v4, $v5, $v6, $v7;
+    public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title, $v7_title;
     public $v_input, $v_post, $v_get, $v_old, $v_post_old;
     public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
@@ -69,7 +69,7 @@ class Omnitags extends CI_Controller
         foreach ($myData1 as $item) {
             $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
             $this->v_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
-            $this->v_post[$item['key']] = htmlspecialchars($this->input->post('txt_' . $item['value']));
+            $this->v_post[$item['key']] = $this->input->post('txt_' . $item['value']);
             $this->v_get[$item['key']] = $this->input->get('txt_' . $item['value']);
             $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
             $this->v_post_old[$item['key']] = $this->input->post('old_' . $item['value']);
@@ -87,8 +87,8 @@ class Omnitags extends CI_Controller
             $this->flash1_msg_5[$item['key']] = 'Data ' . $item['value'] . ' berhasil dihapus!';
             $this->flash1_msg_6[$item['key']] = 'Data ' . $item['value'] . ' gagal dihapus!';
 
-            $this->flash[$item['key']] = 'pesan_' . $item['key'];
-            $this->flash_func[$item['key']] = '$(".' . $item['key'] . '").modal("show")';
+            $this->flash[$item['key']] = 'pesan_' . $item['value'];
+            $this->flash_func[$item['key']] = '$(".' . $item['value'] . '").modal("show")';
 
             $this->flash_msg1[$item['key']] = $item['value'] . ' tidak bisa diupload!';
             $this->flash_msg2[$item['key']] = $item['value'] . ' tidak bisa diupload!';
@@ -111,14 +111,16 @@ class Omnitags extends CI_Controller
             $this->v3[$item['key']] = '_contents/' . $item['key'] . '/admin';
             $this->v4[$item['key']] = '_contents/' . $item['key'] . '/laporan';
             $this->v5[$item['key']] = '_contents/' . $item['key'] . '/print';
-            $this->v6[$item['key']] = '_contents/' . $item['key'] . '/konfirmasi';
+            $this->v6[$item['key']] = '_contents/'. $item['key'].'/detail';
+            $this->v7[$item['key']] = '_contents/' . $item['key'] . '/konfirmasi';
 
             $this->v1_title[$item['key']] = $item['value'];
             $this->v2_title[$item['key']] = 'Daftar ' . $item['value'];
             $this->v3_title[$item['key']] = 'Data ' . $item['value'];
             $this->v4_title[$item['key']] = 'Laporan ' . $item['value'];
             $this->v5_title[$item['key']] = 'Data ' . $item['value'];
-            $this->v6_title[$item['key']] = $item['value'] . ' Berhasil!';
+            $this->v6_title[$item['key']] = 'Detail ' . $item['value'];
+            $this->v7_title[$item['key']] = $item['value'] . ' Berhasil!';
         }
 
         date_default_timezone_set($this->aliases['timezone']);

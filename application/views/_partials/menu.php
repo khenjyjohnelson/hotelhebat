@@ -3,20 +3,20 @@
         case $tabel9_field6_value1:
             ?>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('welcome') ?>">Home</a>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('home') ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('c_tabel6') ?>">
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel6 . '') ?>">
                     <?= $tabel6_alias ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('c_tabel3') ?>">
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel3 . '') ?>">
                     <?= $tabel3_alias ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('c_tabel9/login') ?>">Login</a>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel9 . '/login') ?>">Login</a>
             </li>
             <?php break;
         case $tabel9_field6_value5:
@@ -32,7 +32,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link text-decoration-none font-weight-bold"
-                            href="<?= site_url('welcome/dashboard') ?>">Dashboard</a>
+                            href="<?= site_url('dashboard') ?>">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -45,10 +45,10 @@
                                         <h6 class="dropdown-header">
                                             <?= $tabel10_alias ?>
                                         </h6>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel10/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel10 . '/admin') ?>">
                                             <?= $tabel10_alias ?> Aktif
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel10/history') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel10 . '/history') ?>">
                                             <?= $tabel10_alias ?> History
                                         </a>
                                         <?php break;
@@ -56,28 +56,28 @@
                                     case $tabel9_field6_value3:
                                         ?>
                                         <h6 class="dropdown-header">Data</h6>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel6/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel6 . '/admin') ?>">
                                             <?= $tabel6_alias ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel1/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel1 . '/admin') ?>">
                                             <?= $tabel1_alias ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel3/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel3 . '/admin') ?>">
                                             <?= $tabel3_alias ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header">Operasional</h6>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel4/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel4 . '/admin') ?>">
                                             <?= $tabel4_alias ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel5/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel5 . '/admin') ?>">
                                             <?= $tabel5_alias ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel9/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel9 . '/admin') ?>">
                                             <?= $tabel9_alias ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel7/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel7 . '/admin') ?>">
                                             <?= $tabel7_alias ?>
                                         </a>
                                         <?php break;
@@ -85,22 +85,22 @@
                                         ?>
 
                                         <h6 class="dropdown-header">Kelola</h6>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel5/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel5 . '/admin') ?>">
                                             <?= $tabel5_alias ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel8/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel8 . '/admin') ?>">
                                             <?= $tabel8_alias ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel2/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel2 . '/admin') ?>">
                                             <?= $tabel2_alias ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header">Operasional</h6>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel11/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel11 . '/admin') ?>">
                                             <?= $tabel11_alias ?>
                                         </a>
                                         <h6 class="dropdown-header">Data</h6>
-                                        <a class="dropdown-item" href="<?= site_url('c_tabel6/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel6 . '/admin') ?>">
                                             <?= $tabel6_alias ?>
                                         </a>
 
@@ -155,27 +155,27 @@
                             case $tabel9_field6_value5:
                                 ?>
                                 <h6 class="dropdown-header">Jelajahi</h6>
-                                <a class="dropdown-item" href="<?= site_url('welcome') ?>">Pesan Sekarang</a>
-                                <a class="dropdown-item" href="<?= site_url('c_tabel6') ?>">
+                                <a class="dropdown-item" href="<?= site_url('home') ?>">Pesan Sekarang</a>
+                                <a class="dropdown-item" href="<?= site_url($tabel6 . '') ?>">
                                     <?= $tabel6_alias ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url('c_tabel3') ?>">
+                                <a class="dropdown-item" href="<?= site_url($tabel3 . '') ?>">
                                     <?= $tabel3_alias ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <h6 class="dropdown-header">Reservasi</h6>
-                                <a class="dropdown-item" href="<?= site_url('c_tabel8/daftar') ?>">Daftar
+                                <a class="dropdown-item" href="<?= site_url($tabel8 . '/daftar') ?>">Daftar
                                     <?= $tabel8_alias ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url('c_tabel10/daftar') ?>">Daftar
+                                <a class="dropdown-item" href="<?= site_url($tabel10 . '/daftar') ?>">Daftar
                                     <?= $tabel10_alias ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <h6 class="dropdown-header">History</h6>
-                                <a class="dropdown-item" href="<?= site_url('c_tabel2/daftar') ?>">
+                                <a class="dropdown-item" href="<?= site_url($tabel2 . '/daftar') ?>">
                                     <?= $tabel2_alias ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url('c_tabel10/daftar_history') ?>">History
+                                <a class="dropdown-item" href="<?= site_url($tabel10 . '/daftar_history') ?>">History
                                     <?= $tabel10_alias ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
@@ -191,8 +191,8 @@
                                 <?php break;
                         } ?>
 
-                        <a class="dropdown-item" href="<?= site_url('c_tabel9/profil') ?>">Profil</a>
-                        <a class="dropdown-item" href="<?= site_url('c_tabel9/logout') ?>">Logout</a>
+                        <a class="dropdown-item" href="<?= site_url($tabel9 . '/detail') ?>">Profil</a>
+                        <a class="dropdown-item" href="<?= site_url($tabel9 . '/logout') ?>">Logout</a>
 
 
                     </div>
