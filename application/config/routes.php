@@ -64,80 +64,86 @@ $myData2 = json_decode($jsonData2, true)['values'];
 foreach ($myData2 as $item2) {
     $prefix = 'c_' . $item2['key'];
 
-    $route[$item2['value']] = $prefix;
+    if (class_exists($prefix)) {
 
-    // Define routes for different functionality groups
+        $route[$item2['value']] = $prefix;
 
-    // View routes
-    $viewRoutes = [
-        'index' => 'index',
-        'daftar' => 'daftar',
-        'admin' => 'admin',
-        'laporan' => 'laporan',
-        'konfirmasi' => 'konfirmasi',
-        'profil' => 'profil'
-    ];
+        // Define routes for different functionality groups
 
-    // Common function routes
-    $commonFunctionRoutes = [
-        'tambah',
-        'update',
-        'filter'
-    ];
+        // View routes
+        $viewRoutes = [
+            'index' => 'index',
+            'daftar' => 'daftar',
+            'admin' => 'admin',
+            'laporan' => 'laporan',
+            'konfirmasi' => 'konfirmasi',
+            'profil' => 'profil'
+        ];
 
-    $uncommonFunctionRoutes = [
-        'detail',
-        'hapus',
-        'print',
-    ];
+        // Common function routes
+        $commonFunctionRoutes = [
+            'tambah',
+            'update',
+            'filter'
+        ];
 
-    // Unique function routes
-    $uniqueFunctionRoutes = [
-        'login',
-        'signup',
-        'logout',
-        'update_profil',
-        'update_password',
-        'ceklogin',
-        'importExcel',
-        'cari',
-        'book'
-    ];
+        $uncommonFunctionRoutes = [
+            'detail',
+            'hapus',
+            'print',
+        ];
 
-    $uniqueTableRoutes = [
-        'filter_'
-    ];
+        // Unique function routes
+        $uniqueFunctionRoutes = [
+            'login',
+            'signup',
+            'logout',
+            'update_profil',
+            'update_password',
+            'ceklogin',
+            'importExcel',
+            'cari',
+            'book'
+        ];
 
-    $uniqueFieldRoutes = [
-        'tabel7_field6',
-        'tabel7_field7',
-        'tabel7_field8',
-        'tabel25_field3',
-        'tabel25_field4',
-        'tabel25_field5',
-    ];
+        $uniqueTableRoutes = [
+            'filter_'
+        ];
 
-    // Assign routes for each group
-    foreach ($viewRoutes as $key => $value) {
-        $route[$item2['value'] . '/' . $key] = $prefix . '/' . $value;
-    }
+        $uniqueFieldRoutes = [
+            'tabel7_field6',
+            'tabel7_field7',
+            'tabel7_field8',
+            'tabel25_field3',
+            'tabel25_field4',
+            'tabel25_field5',
+        ];
 
-    foreach ($commonFunctionRoutes as $value) {
-        $route[$item2['value'] . '/' . $value] = $prefix . '/' . $value;
-        foreach ($uniqueFieldRoutes as $fields) {
-            $route[$item2['value'] . '/' . $value . '_' . $fields] = $prefix . '/' . $value . '_' . $fields;
+        // Assign routes for each group
+        foreach ($viewRoutes as $key => $value) {
+            $route[$item2['value'] . '/' . $key] = $prefix . '/' . $value;
         }
-    }
 
-    foreach ($uncommonFunctionRoutes as $value) {
-        $route[$item2['value'] . '/' . $value . '/(:num)'] = $prefix . '/' . $value . '/$1';
-    }
+        foreach ($commonFunctionRoutes as $value) {
+            $route[$item2['value'] . '/' . $value] = $prefix . '/' . $value;
+            foreach ($uniqueFieldRoutes as $fields) {
+                $route[$item2['value'] . '/' . $value . '_' . $fields] = $prefix . '/' . $value . '_' . $fields;
+            }
+        }
 
-    foreach ($uniqueFunctionRoutes as $value) {
-        $route[$item2['value'] . '/' . $value] = $prefix . '/' . $value;
-    }
+        foreach ($uncommonFunctionRoutes as $value) {
+            $route[$item2['value'] . '/' . $value . '/(:num)'] = $prefix . '/' . $value . '/$1';
+        }
 
-    foreach ($uniqueTableRoutes as $value) {
-        $route[$item2['value'] . '/filter_' . $value] = $prefix . '/' . 'filter_' . $item2['value'];
+        foreach ($uniqueFunctionRoutes as $value) {
+            $route[$item2['value'] . '/' . $value] = $prefix . '/' . $value;
+        }
+
+        foreach ($uniqueTableRoutes as $value) {
+            $route[$item2['value'] . '/filter_' . $value] = $prefix . '/' . 'filter_' . $item2['value'];
+        }
+
+    } else {
+        $route[$item2['value']] = 'errors/page_missing';
     }
 }

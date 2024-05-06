@@ -18,10 +18,7 @@ include 'Omnitags.php';
 class C_tabel10 extends Omnitags
 {
 	// Halaman publik
-	public function index()
-	{
-		redirect(site_url('no_page'));
-	}
+
 
 	// Halaman khusus akun
 	public function daftar()
