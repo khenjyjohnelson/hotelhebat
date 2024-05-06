@@ -5,6 +5,12 @@ include 'Omnitags.php';
 
 class C_tabel7 extends Omnitags
 {
+	// Halaman publik
+	public function index()
+	{
+		redirect(site_url('no_page'));
+	}
+
 	// Halaman detail
 	public function detail()
 	{
@@ -16,20 +22,14 @@ class C_tabel7 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->v6_title['tabel7_alias'],
-			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->v6['tabel7'],
-			$this->v_part4 => $this->v_part4_msg1,
-			$this->v_part5 => $this->tl12->dekor('tabel7')->result(),
-			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
-			$this->v_part7 => $this->tl23->ambildata()->result(),
-			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
-			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
-			'tbl7_alt' => $this->tl7->ambildata()->result(),
+			'title' => $this->v6_title['tabel7_alias'],
+			'konten' => $this->v6['tabel7'],
+			'dekor' => $this->tl12->dekor('tabel7')->result(),
 			'tbl13' => $this->tl13->ambildata()->result(),
+			'tbl25' => $this->tl25->ambildata()->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -40,51 +40,15 @@ class C_tabel7 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->v3_title['tabel7_alias'],
-			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->v3['tabel7'],
-			$this->v_part4 => $this->v_part4_msg1,
-			$this->v_part5 => $this->tl12->dekor('tabel7')->result(),
-			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
-			'tbl24' => $this->tl24->ambil_tabel7_field1($this->tabel7_field1)->result(),
+			'title' => $this->v3_title['tabel7_alias'],
+			'konten' => $this->v3['tabel7'],
+			'dekor' => $this->tl12->dekor('tabel7')->result(),
 			'tbl7_alt' => $this->tl7->ambildata()->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
-	}
-
-	public function tambah()
-	{
-		$this->declarew();
-
-		$data = array(
-			$this->aliases['tabel7_field2'] => $this->v_post['tabel7_field2'],
-			$this->aliases['tabel7_field3'] => $this->v_post['tabel7_field3'],
-			$this->aliases['tabel7_field4'] => $this->v_post['tabel7_field4'],
-			$this->aliases['tabel7_field5'] => $this->v_post['tabel7_field5'],
-			$this->aliases['tabel7_field6'] => $this->v_post['tabel7_field6'],
-			$this->aliases['tabel7_field7'] => $this->v_post['tabel7_field7'],
-			$this->aliases['tabel7_field8'] => $this->v_post['tabel7_field8'],
-			$this->aliases['tabel7_field9'] => $this->v_post['tabel7_field9'],
-			$this->aliases['tabel7_field10'] => $this->v_post['tabel7_field10'],
-			$this->aliases['tabel7_field11'] => $this->v_post['tabel7_field11'],
-			$this->aliases['tabel7_field12'] => $this->v_post['tabel7_field12'],
-			$this->aliases['tabel7_field13'] => $this->v_post['tabel7_field13'],
-		);
-
-		$simpan = $this->tl7->simpan($data);
-
-		if ($simpan) {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_1['tabel7_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_2['tabel7_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
-		}
-
-		redirect(site_url('c_tabel7/admin'));
 	}
 
 	public function update()
@@ -94,87 +58,86 @@ class C_tabel7 extends Omnitags
 		$tabel7_field1 = $this->v_post['tabel7_field1'];
 		$data = array(
 			$this->aliases['tabel7_field2'] => $this->v_post['tabel7_field2'],
-			$this->aliases['tabel7_field6'] => $this->v_post['tabel7_field6'],
-			$this->aliases['tabel7_field7'] => $this->v_post['tabel7_field7'],
+			$this->aliases['tabel7_field3'] => $this->v_post['tabel7_field3'],
+			$this->aliases['tabel7_field4'] => $this->v_post['tabel7_field4'],
+			$this->aliases['tabel7_field5'] => $this->v_post['tabel7_field5'],
+		);
+
+		$update = $this->tl7->update($data, $tabel7_field1);
+
+		if ($update) {
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel7_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+		} else {
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel7_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+		}
+
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+	public function update_tabel7_field8()
+	{
+		$this->declarew();
+
+		$tabel7_field1 = $this->v_post['tabel7_field1'];
+		$data = array(
 			$this->aliases['tabel7_field8'] => $this->v_post['tabel7_field8'],
-			$this->aliases['tabel7_field9'] => htmlspecialchars($this->v_post['tabel7_field9']),
 		);
 
 		$update = $this->tl7->update($data, $tabel7_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_3['tabel7_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->flash['tabel7_field8'], $this->flash1_msg_3['tabel7_field8_alias']);
+			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field8']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_4['tabel7_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->flash['tabel7_field8'], $this->flash1_msg_4['tabel7_field8_alias']);
+			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field8']);
 		}
 
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect(site_url('c_tabel7/detail'));
 	}
 
-	public function update_tabel7_field13()
+	public function update_tabel7_field6()
 	{
 		$this->declarew();
 
 		$tabel7_field1 = $this->v_post['tabel7_field1'];
 		$data = array(
-			$this->aliases['tabel7_field13'] => $this->v_post['tabel7_field13'],
+			$this->aliases['tabel7_field6'] => $this->v_post['tabel7_field6'],
 		);
 
 		$update = $this->tl7->update($data, $tabel7_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flash['tabel7_field13'], $this->flash1_msg_3['tabel7_field13']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field13']);
+			$this->session->set_flashdata($this->flash['tabel7_field6'], $this->flash1_msg_3['tabel7_field6_alias']);
+			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field6']);
 		} else {
-			$this->session->set_flashdata($this->flash['tabel7_field13'], $this->flash1_msg_4['tabel7_field13']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field13']);
+			$this->session->set_flashdata($this->flash['tabel7_field6'], $this->flash1_msg_4['tabel7_field6_alias']);
+			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field6']);
 		}
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	public function update_tabel7_field10()
+	public function update_tabel7_field7()
 	{
 		$this->declarew();
 
 		$tabel7_field1 = $this->v_post['tabel7_field1'];
 		$data = array(
-			$this->aliases['tabel7_field10'] => $this->v_post['tabel7_field10'],
+			$this->aliases['tabel7_field7'] => $this->v_post['tabel7_field7'],
 		);
 
 		$update = $this->tl7->update($data, $tabel7_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flash['tabel7_field10'], $this->flash1_msg_3['tabel7_field10']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field10']);
+			$this->session->set_flashdata($this->flash['tabel7_field7'], $this->flash1_msg_3['tabel7_field7_alias']);
+			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field7']);
 		} else {
-			$this->session->set_flashdata($this->flash['tabel7_field10'], $this->flash1_msg_4['tabel7_field10']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field10']);
+			$this->session->set_flashdata($this->flash['tabel7_field7'], $this->flash1_msg_4['tabel7_field7_alias']);
+			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field7']);
 		}
-
-		redirect($_SERVER['HTTP_REFERER']);
-	}
-
-	public function update_tabel7_field11()
-	{
-		$this->declarew();
-
-		$tabel7_field1 = $this->v_post['tabel7_field1'];
-		$data = array(
-			$this->aliases['tabel7_field11'] => $this->v_post['tabel7_field11'],
-		);
-
-		$update = $this->tl7->update($data, $tabel7_field1);
-
-		if ($update) {
-			$this->session->set_flashdata($this->flash['tabel7_field11'], $this->flash1_msg_3['tabel7_field11_alias']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field11']);
-		} else {
-			$this->session->set_flashdata($this->flash['tabel7_field11'], $this->flash1_msg_4['tabel7_field11_alias']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field11']);
-		}
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect(site_url($this->aliases['tabel7'] . '/detail'));
 	}
 }

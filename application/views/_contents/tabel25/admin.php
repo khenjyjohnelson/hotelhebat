@@ -25,8 +25,10 @@
       <tr>
         <th>No</th>
         <th><?= $tabel25_field1_alias ?></th>
+        <th><?= $tabel25_field2_alias ?></th>
         <th><?= $tabel25_field3_alias ?></th>
         <th><?= $tabel25_field4_alias ?></th>
+        <th><?= $tabel25_field5_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -36,8 +38,18 @@
         <tr>
           <td></td>
           <td><?= $tl25->$tabel25_field1; ?></td>
-          <td><?= $tl25->$tabel25_field3 ?></td>
-          <td><a href="<?= $tl25->$tabel25_field4 ?>" target="_blank">Visit</a>
+          <td><?= $tl25->$tabel25_field2 ?></td>
+          <td><img src="img/tabel25/<?= $tl25->$tabel25_field3 ?>" height="100">
+            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
+              data-target="#<?= $tabel25_field3 . $tl25->$tabel25_field1 ?>"><i class="fas fa-edit"></i></a>
+          </td>
+          <td><img src="img/tabel25/<?= $tl25->$tabel25_field4 ?>" height="100">
+            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
+              data-target="#<?= $tabel25_field4 . $tl25->$tabel25_field1 ?>"><i class="fas fa-edit"></i></a>
+          </td>
+          <td><img src="img/tabel25/<?= $tl25->$tabel25_field5 ?>" height="100">
+            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
+              data-target="#<?= $tabel25_field5 . $tl25->$tabel25_field1 ?>"><i class="fas fa-edit"></i></a>
           </td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl25->$tabel25_field1; ?>">
@@ -45,9 +57,12 @@
             <a class="btn btn-light text-warning" type="button" data-toggle="modal"
               data-target="#ubah<?= $tl25->$tabel25_field1; ?>">
               <i class="fas fa-edit"></i></a>
-            <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel25 ?>?')"
-              href="<?= site_url($tabel25 . '/hapus/' . $tl25->$tabel25_field1) ?>">
-              <i class="fas fa-trash"></i></a>
+
+            <?php if ($tl25->$tabel25_field2 != $tabel25_field2_value1) { ?>
+              <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel25 ?>?')"
+                href="<?= site_url($tabel25 . '/hapus/' . $tl25->$tabel25_field1) ?>">
+                <i class="fas fa-trash"></i></a>
+            <?php } ?>
           </td>
         </tr>
       <?php endforeach; ?>
@@ -72,18 +87,15 @@
       <form action="<?= site_url($tabel25 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
           <div class="form-group">
-            <label><?= $tabel25_field3_alias ?></label>
-            <input class="form-control" type="text" required name="<?= $tabel25_field3_input ?>"
-              placeholder="Masukkan <?= $tabel25_field3_alias ?>">
-            <?php foreach ($tbl7 as $tl7): ?>
-              <input type="hidden" name="<?= $tabel25_field2_input ?>" value="<?= $tl7->$tabel7_field1; ?>">
-            <?php endforeach ?>
+            <label><?= $tabel25_field2_alias ?></label>
+            <input class="form-control" type="text" required name="<?= $tabel25_field2_input ?>"
+              placeholder="Masukkan <?= $tabel25_field2_alias ?>">
           </div>
 
           <div class="form-group">
-            <label><?= $tabel25_field4_alias ?></label>
-            <input class="form-control" type="text" required name="<?= $tabel25_field4_input ?>"
-              placeholder="Masukkan <?= $tabel25_field4_alias ?>">
+            <label><?= $tabel25_field6_alias ?></label>
+            <textarea class="ckeditor form-control" name="<?= $tabel25_field6_input ?>"
+              placeholder="Masukkan <?= $tabel13_field5_alias ?>" required cols="30" rows="10"></textarea>
           </div>
 
         </div>
@@ -100,7 +112,8 @@
 </div>
 
 
-<!-- modal edit-->
+
+<!-- modal ubah-->
 <?php foreach ($tbl25 as $tl25): ?>
   <div id="ubah<?= $tl25->$tabel25_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
@@ -115,20 +128,20 @@
 
         <form action="<?= site_url($tabel25 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
+
             <div class="form-group">
-              <label><?= $tabel25_field3_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel25_field3_input ?>"
-                value="<?= $tl25->$tabel25_field3; ?>">
+              <label><?= $tabel25_field2_alias ?></label>
+              <input class="form-control" type="text" required name="<?= $tabel25_field2_input ?>"
+                value="<?= $tl25->$tabel25_field2; ?>">
               <input type="hidden" name="<?= $tabel25_field1_input ?>" value="<?= $tl25->$tabel25_field1; ?>">
-              <input type="hidden" name="<?= $tabel25_field2_input ?>" value="<?= $tl25->$tabel25_field2; ?>">
             </div>
 
             <div class="form-group">
-              <label><?= $tabel25_field4_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel25_field4_input ?>"
-                value="<?= $tl25->$tabel25_field4; ?>">
+              <label><?= $tabel25_field6_alias ?></label>
+              <textarea class="ckeditor form-control" name="<?= $tabel25_field6_input ?>"
+                placeholder="Masukkan <?= $tabel13_field5_alias ?>" required cols="30"
+                rows="10"><?= $tl25->$tabel25_field6; ?></textarea>
             </div>
-
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -136,6 +149,145 @@
 
           <div class="modal-footer">
             <button class="btn btn-success" type="submit">Simpan Perubahan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<?php endforeach; ?>
+
+
+
+
+<!-- modal edit favicon-->
+<?php foreach ($tbl25 as $tl25): ?>
+  <div id="<?= $tabel25_field3 . $tl25->$tabel25_field1; ?>" class="modal fade <?= $tabel25_field3 ?>">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit <?= $tabel25_field3_alias ?>   <?= $tl25->$tabel25_field1; ?></h5>
+
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <form action="<?= site_url($tabel25 . '/update_tabel25_field3') ?>" method="post"
+          enctype="multipart/form-data">
+          <div class="modal-body">
+
+            <div class="form-group">
+              <img src="img/tabel25/<?= $tl25->$tabel25_field3; ?>" width="300">
+            </div>
+            <hr>
+
+            <div class="form-group">
+              <label>Ubah <?= $tabel25_field3_alias ?></label>
+              <input class="form-control-file" required type="file" name="<?= $tabel25_field3_input ?>">
+              <input type="hidden" name="<?= $tabel25_field1_input ?>" value="<?= $tl25->$tabel25_field1; ?>">
+              <input type="hidden" name="<?= $tabel25_field3_old ?>" value="<?= $tl25->$tabel25_field3; ?>">
+            </div>
+          </div>
+
+          <!-- memunculkan notifikasi modal -->
+          <p class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_ubah') ?>
+          </p>
+
+          <div class="modal-footer">
+            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel25_field3 ?>?')" type="submit">Simpan
+              Perubahan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<?php endforeach; ?>
+
+<!-- modal edit logo-->
+<?php foreach ($tbl25 as $tl25): ?>
+  <div id="<?= $tabel25_field4 . $tl25->$tabel25_field1; ?>" class="modal fade <?= $tabel25_field4 ?>">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit <?= $tabel25_field4_alias ?>   <?= $tl25->$tabel25_field1; ?></h5>
+
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <form action="<?= site_url($tabel25 . '/update_tabel25_field4') ?>" method="post"
+          enctype="multipart/form-data">
+          <div class="modal-body">
+
+            <div class="form-group">
+              <img src="img/tabel25/<?= $tl25->$tabel25_field4; ?>" width="300">
+            </div>
+            <hr>
+
+
+            <div class="form-group">
+              <label>Ubah <?= $tabel25_field4_alias ?></label>
+              <input class="form-control-file" required type="file" name="<?= $tabel25_field4_input ?>">
+              <input type="hidden" name="<?= $tabel25_field1_input ?>" value="<?= $tl25->$tabel25_field1; ?>">
+              <input type="hidden" name="<?= $tabel25_field4_old ?>" value="<?= $tl25->$tabel25_field4; ?>">
+            </div>
+          </div>
+
+          <!-- memunculkan notifikasi modal -->
+          <p class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_ubah') ?>
+          </p>
+
+          <div class="modal-footer">
+            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel25_field4 ?>?')" type="submit">Simpan
+              Perubahan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<?php endforeach; ?>
+
+<!-- modal edit foto-->
+<?php foreach ($tbl25 as $tl25): ?>
+  <div id="<?= $tabel25_field5 . $tl25->$tabel25_field1; ?>" class="modal fade <?= $tabel25_field5 ?>">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit <?= $tabel25_field5_alias ?>   <?= $tl25->$tabel25_field1; ?></h5>
+
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <form action="<?= site_url($tabel25 . '/update_tabel25_field5') ?>" method="post"
+          enctype="multipart/form-data">
+          <div class="modal-body">
+
+            <div class="form-group">
+              <img src="img/tabel25/<?= $tl25->$tabel25_field5; ?>" width="300">
+            </div>
+            <hr>
+
+            <div class="form-group">
+              <label>Ubah <?= $tabel25_field5_alias ?></label>
+              <input class="form-control-file" required type="file" name="<?= $tabel25_field5_input ?>">
+              <input type="hidden" name="<?= $tabel25_field1_input ?>" value="<?= $tl25->$tabel25_field1; ?>">
+              <input type="hidden" name="<?= $tabel25_field5_old ?>" value="<?= $tl25->$tabel25_field5; ?>">
+            </div>
+          </div>
+
+          <!-- memunculkan notifikasi modal -->
+          <p class="small text-center text-danger">
+            <?= $this->session->flashdata('pesan_ubah') ?>
+          </p>
+
+          <div class="modal-footer">
+            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel25_field5 ?>?')" type="submit">Simpan
+              Perubahan</button>
           </div>
         </form>
       </div>
@@ -174,14 +326,33 @@
 
             <div class="form-group">
               <label><?= $tabel25_field3_alias ?> : </label>
-              <p><?= $tl25->$tabel25_field3; ?></p>
+            </div>
+            <div class="form-group">
+              <img src="img/tabel25/<?= $tl25->$tabel25_field3; ?>" height="200">
             </div>
             <hr>
 
             <div class="form-group">
               <label><?= $tabel25_field4_alias ?> : </label>
-              <p><?= $tl25->$tabel25_field4; ?></p>
             </div>
+            <div class="form-group">
+              <img src="img/tabel25/<?= $tl25->$tabel25_field4; ?>" height="200">
+            </div>
+            <hr>
+
+            <div class="form-group">
+              <label><?= $tabel25_field5_alias ?> : </label>
+            </div>
+            <div class="form-group">
+              <img src="img/tabel25/<?= $tl25->$tabel25_field5; ?>" height="200">
+            </div>
+            <hr>
+
+            <div class="form-group">
+              <label><?= $tabel25_field2_alias ?> : </label>
+              <p><?= html_entity_decode($tl25->$tabel25_field6); ?></p>
+            </div>
+            <hr>
 
 
           </div>

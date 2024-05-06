@@ -1,5 +1,5 @@
 <?php foreach ($tbl7 as $tl7) : ?>
-  <img src="img/tabel7/<?= $tl7->$tabel7_field5 ?>" class="img-fluid rounded">
+  <img src="img/tabel25/<?= $tl7->$tabel25_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
 <h2 class="pt-2"><?= $title ?><?= $phase ?></h2>

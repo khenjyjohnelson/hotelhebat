@@ -8,7 +8,7 @@
     <title><?= $title ?> - <?= $tl7->$tabel7_field2 ?>   <?= $this->session->userdata($tabel9_field6) ?></title>
 
     <!-- menampilkan favicon -->
-    <link rel="icon" href="img/tabel7/<?= $tl7->$tabel7_field3 ?>" type="image/jpg">
+    <link rel="icon" href="img/tabel25/<?= $tl7->$tabel25_field3 ?>" type="image/jpg">
 
   <?php endforeach; ?>
 

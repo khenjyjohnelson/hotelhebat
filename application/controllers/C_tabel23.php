@@ -11,18 +11,12 @@ class C_tabel23 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->v1_title['tabel23_alias'],
-			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->v1['tabel23'],
-			$this->v_part5 => $this->tl12->dekor('tabel23')->result(),
-			$this->v_part4 => $this->v_part4_msg1,
-			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
-			$this->v_part7 => $this->tl23->ambildata()->result(),
-			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
-			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
+			'title' => $this->v1_title['tabel23_alias'],
+			'konten' => $this->v1['tabel23'],
+			'dekor' => $this->tl12->dekor('tabel23')->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -36,18 +30,12 @@ class C_tabel23 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->v3_title['tabel23_alias'],
-			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->v3['tabel23'],
-			$this->v_part4 => $this->v_part4_msg1,
-			$this->v_part5 => $this->tl12->dekor('tabel23')->result(),
-			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
-			$this->v_part7 => $this->tl23->ambildata()->result(),
-			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
-			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
+			'title' => $this->v3_title['tabel23_alias'],
+			'konten' => $this->v3['tabel23'],
+			'dekor' => $this->tl12->dekor('tabel23')->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -69,8 +57,8 @@ class C_tabel23 extends Omnitags
 			// Tapi karena formnya sudah required saya rasa tidak perlu
 
 
-			$this->session->set_flashdata($this->flashdatas['flash2'], $this->flash_msg2['tabel23_field4_alias']);
-			$this->session->set_flashdata('modal', $this->flashdatas['flash2_func1']);
+			$this->session->set_flashdata($this->views['flash2'], $this->flash_msg2['tabel23_field4_alias']);
+			$this->session->set_flashdata('modal', $this->views['flash2_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
@@ -89,11 +77,11 @@ class C_tabel23 extends Omnitags
 		$simpan = $this->tl23->simpan($data);
 
 		if ($simpan) {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_1['tabel23_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel23_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_2['tabel23_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel23_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
 		redirect(site_url('c_tabel23/admin'));
@@ -134,11 +122,11 @@ class C_tabel23 extends Omnitags
 		$update = $this->tl23->update($data, $tabel23_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_3['tabel23_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel23_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_4['tabel23_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel23_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 
@@ -157,11 +145,11 @@ class C_tabel23 extends Omnitags
 		$hapus = $this->tl23->hapus($tabel23_field1);
 
 		if ($hapus) {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_5['tabel23_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel23_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_6['tabel23_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_6['tabel23_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
 		redirect(site_url('c_tabel23/admin'));
@@ -173,17 +161,11 @@ class C_tabel23 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->v4_title['tabel23_alias'],
-			$this->v_part2 => $this->head,
-			$this->v_part4 => $this->v_part4_msg1,
-			$this->v_part5 => $this->tl12->dekor('tabel23')->result(),
-			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
-			$this->v_part7 => $this->tl23->ambildata()->result(),
-			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
-			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
+			'title' => $this->v4_title['tabel23_alias'],
+			'dekor' => $this->tl12->dekor('tabel23')->result(),
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
 
 		$this->load->view($this->v4['tabel23'], $data);
 	}

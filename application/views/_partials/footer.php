@@ -22,10 +22,10 @@
                     <!-- menampilkan footer untuk umum  -->
                     <div class="row justify-content-center">
                         <div class="col-lg-4 pt-3">
-                            <img src="img/tabel7/<?= $tl7->$tabel7_field4; ?>" height="50">
+                            <img src="img/tabel25/<?= $tl7->$tabel25_field4; ?>" height="50">
                             <p class="small pt-2">
                                 <?php foreach ($tbl23 as $tl23):
-                                    if ($tl7->$tabel7_field11 == $tl23->$tabel23_field1) { ?>
+                                    if ($tl7->$tabel7_field7 == $tl23->$tabel23_field1) { ?>
 
 
                                         <a class="text-decoration-none text-dark" href="<?= site_url($tabel23) ?>">
@@ -61,13 +61,13 @@
                             <h3>Alamat</h3>
                             <ul class="list-unstyled">
                                 <li>
-                                    <?= $tl7->$tabel7_field8 ?>
+                                    <?= $tl7->$tabel7_field5 ?>
                                 </li>
                                 <li>
-                                    <?= $tl7->$tabel7_field7 ?>
+                                    <?= $tl7->$tabel7_field4 ?>
                                 </li>
                                 <li>
-                                    <?= $tl7->$tabel7_field6 ?>
+                                    <?= $tl7->$tabel7_field3 ?>
                                 </li>
                             </ul>
                         </div>
@@ -75,12 +75,12 @@
                         <div class="col-lg-2 pt-3">
                             <h3>Ikuti</h3>
                             <ul class="list-unstyled">
-                                <?php foreach ($tbl24 as $tl24):
-                                    if ($tl24->$tabel24_field2 == $tl7->$tabel7_field1) { ?>
+                                <?php foreach ($sosmed as $sm):
+                                    if ($sm->$tabel24_field2 == $tl7->$tabel7_field1) { ?>
                                         <li>
-                                            <a class="text-decoration-none text-primary" href="<?= $tl24->$tabel24_field4 ?>"
+                                            <a class="text-decoration-none text-primary" href="<?= $sm->$tabel24_field4 ?>"
                                                 target="_blank">
-                                                <?= $tl24->$tabel24_field3 ?></a>
+                                                <?= $sm->$tabel24_field3 ?></a>
                                         </li>
                                     <?php }endforeach; ?>
                             </ul>

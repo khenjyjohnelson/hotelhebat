@@ -43,7 +43,7 @@
           <!-- <p class="text-center"><a class="text-decoration-none" href="<?= site_url($tabel4 . '/login') ?>">Login sebagai <?= $tabel4_alias ?></a></p> -->
           
           <!-- pesan untuk pengguna yang login -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata($this->flashdatas['flash1']) ?></p>
+          <p class="small text-center text-danger"><?= $this->session->flashdata($this->views['flash1']) ?></p>
           
           <!-- tombol login dan signup -->
           <div class="form-group d-flex justify-content-around">

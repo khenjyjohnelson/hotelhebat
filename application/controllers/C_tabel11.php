@@ -6,7 +6,10 @@ include 'Omnitags.php';
 class C_tabel11 extends Omnitags
 {
 	// Halaman publik
-
+	public function index()
+	{
+		redirect(site_url('no_page'));
+	}
 
 	// Halaman khusus akun
 
@@ -17,20 +20,14 @@ class C_tabel11 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->v3_title['tabel11_alias'],
-			$this->v_part2 => $this->head,
-			$this->v_part3 => $this->v3['tabel11'],
-			$this->v_part4 => $this->v_part4_msg1,
-			$this->v_part5 => $this->tl12->dekor('tabel11')->result(),
-			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
-			$this->v_part7 => $this->tl23->ambildata()->result(),
-			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
-			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
+			'title' => $this->v3_title['tabel11_alias'],
+			'konten' => $this->v3['tabel11'],
+			'dekor' => $this->tl12->dekor('tabel11')->result(),
 			'tbl11' => $this->tl11->ambildata()->result(),
 			'tbl4' => $this->tl4->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -61,11 +58,11 @@ class C_tabel11 extends Omnitags
 		$simpan = $this->tl11->simpan($data);
 
 		if ($simpan) {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_1['tabel11_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel11_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_2['tabel11_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel11_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
 		redirect(site_url('c_tabel5/admin'));
@@ -84,11 +81,11 @@ class C_tabel11 extends Omnitags
 		$update = $this->tl11->update($data, $tabel11_field1);
 
 		if ($update) {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_3['tabel11_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel11_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_4['tabel11_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel11_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		}
 		-
 			redirect(site_url('c_tabel11/admin'));
@@ -101,11 +98,11 @@ class C_tabel11 extends Omnitags
 		$hapus = $this->tl11->hapus($tabel11_field1);
 
 		if ($hapus) {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_5['tabel11_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel11_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->flashdatas['flash1'], $this->flash1_msg_6['tabel11_alias']);
-			$this->session->set_flashdata('toast', $this->flashdatas['flash1_func1']);
+			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_6['tabel11_alias']);
+			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
 		redirect(site_url('c_tabel11/admin'));
@@ -117,18 +114,12 @@ class C_tabel11 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			$this->v_part1 => $this->v4_title['tabel11_alias'],
-			$this->v_part2 => $this->head,
-			$this->v_part4 => $this->v_part4_msg1,
-			$this->v_part5 => $this->tl12->dekor('tabel11')->result(),
-			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
-			$this->v_part7 => $this->tl23->ambildata()->result(),
-			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
-			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
+			'title' => $this->v4_title['tabel11_alias'],
+			'dekor' => $this->tl12->dekor('tabel11')->result(),
 			'tbl11' => $this->tl11->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
 
 		$this->load->view($this->v4['tabel11'], $data);
 	}

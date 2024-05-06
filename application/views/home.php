@@ -1,5 +1,5 @@
 <?php foreach ($tbl7 as $tl7): ?>
-  <img src="img/tabel7/<?= $tl7->$tabel7_field5 ?>" class="img-fluid rounded">
+  <img src="img/tabel25/<?= $tl7->$tabel25_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
 <?php switch ($this->session->userdata($tabel9_field6)) {
@@ -47,7 +47,7 @@
 
 <?php foreach ($tbl7 as $tl7): ?>
   <?php foreach ($tbl13 as $tl13): ?>
-    <?php if ($tl7->$tabel7_field10 == $tl13->$tabel7_field10) { ?>
+    <?php if ($tl7->$tabel7_field6 == $tl13->$tabel7_field6) { ?>
 
       <h1 class="text-center"><?= $tl13->$tabel13_field3 ?></h1>
       <hr>
@@ -78,7 +78,7 @@
   <hr>
   <div class="row">
     <div class="col-md-6">
-      <p><?= html_entity_decode($tl7->$tabel7_field9) ?></p>
+      <p><?= html_entity_decode($tl7->$tabel25_field6) ?></p>
     </div>
 
     <div class="col-md-6">

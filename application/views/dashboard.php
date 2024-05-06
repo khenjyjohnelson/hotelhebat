@@ -228,25 +228,25 @@
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel7_field6_alias ?></td>
-              <td class="table-light"><?= $tl7->$tabel7_field6 ?></td>
+              <td class="table-secondary table-active"><?= $tabel7_field3_alias ?></td>
+              <td class="table-light"><?= $tl7->$tabel7_field3 ?></td>
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel7_field7_alias ?></td>
-              <td class="table-light"><?= $tl7->$tabel7_field7 ?></td>
+              <td class="table-secondary table-active"><?= $tabel7_field4_alias ?></td>
+              <td class="table-light"><?= $tl7->$tabel7_field4 ?></td>
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel7_field8_alias ?></td>
-              <td class="table-light"><?= $tl7->$tabel7_field8 ?></td>
+              <td class="table-secondary table-active"><?= $tabel7_field5_alias ?></td>
+              <td class="table-light"><?= $tl7->$tabel7_field5 ?></td>
             </tr>
 
-            <?php foreach ($tbl24 as $tl24):
-              if ($tl24->$tabel24_field2 == $tl7->$tabel7_field1) { ?>
+            <?php foreach ($sosmed as $sm):
+              if ($sm->$tabel24_field2 == $tl7->$tabel7_field1) { ?>
                 <tr>
-                  <td class="table-secondary table-active"><?= $tl24->$tabel24_field3 ?></td>
-                  <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $tl24->$tabel24_field4 ?>" target="_blank">
+                  <td class="table-secondary table-active"><?= $sm->$tabel24_field3 ?></td>
+                  <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $sm->$tabel24_field4 ?>" target="_blank">
                     Visit</a>
                 </tr>
               <?php }endforeach; ?>
@@ -259,7 +259,7 @@
     </div>
 
     <div class="col-md-6">
-      <img class="img-thumbnail rounded" src="img/tabel7/<?= $tl7->$tabel7_field5 ?>">
+      <img class="img-thumbnail rounded" src="img/tabel25/<?= $tl7->$tabel25_field5 ?>">
     </div>
   </div>
 

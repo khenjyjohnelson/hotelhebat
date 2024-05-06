@@ -24,29 +24,16 @@ class Omnitags extends CI_Controller
     // Aku ada rencana untuk menggunakan Toastr untuk menampilkan notifikasi toast
     // Ini adalah link : https://codeseven.github.io/toastr/demo.html
 
-    public $head = '_partials/head';
-
     // Di bawah ini adalah fungsi config
     public $file_type1 = 'png|jpg|jpeg';
     public $file_type2 = 'pdf';
+    public $phase_0 = '<br><span class="h6"> (phase pre-alpha feature)</span>';
+    public $phase_1 = '<br><span class="h6"> (phase alpha feature)</span>';
+    public $phase_2 = '<br><span class="h6"> (phase beta feature)</span>';
+    public $phase_3 = '<br><span class="h6"> (release candidate feature)</span>';
+    public $phase_4 = '';  // feature released
 
-    // Di bawah ini adalah bagian part dari views
-    public $v_part1 = 'title';
-    public $v_part2 = 'head';
-    public $v_part3 = 'konten';
-    public $v_part4 = 'phase';
-    public $v_part5 = 'dekor';
-    public $v_part6 = 'tema';
-    public $v_part7 = 'lisensi';
-    public $v_part8 = 'sosmed';
-    public $v_part9 = 'tbl7';
-    public $v_part4_msg0 = '<br><span class="h6"> (phase pre-alpha feature)</span>';
-    public $v_part4_msg1 = '<br><span class="h6"> (phase alpha feature)</span>';
-    public $v_part4_msg2 = '<br><span class="h6"> (phase beta feature)</span>';
-    public $v_part4_msg3 = '<br><span class="h6"> (release candidate feature)</span>';
-    public $v_part4_msg4 = '';  // feature released
-
-    public $aliases, $views, $flashdatas, $tempdatas;
+    public $aliases, $views, $flashdatas, $tempdatas, $show;
     public $v1, $v2, $v3, $v4, $v5, $v6, $v7;
     public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title, $v7_title;
     public $v_input, $v_post, $v_get, $v_old, $v_post_old;
@@ -103,6 +90,9 @@ class Omnitags extends CI_Controller
             $this->flash_msg4[$item['key']] = $item['value'] . ' tidak tersedia!';
             $this->flash_msg5[$item['key']] = $item['value'] . ' telah digunakan!';
         }
+        
+        date_default_timezone_set($this->aliases['timezone']);
+        $this->tabel7_field1 = 1;
 
         $jsonData2 = file_get_contents(site_url('assets/json/school_ukk_hotel_tables.postman_environment.json'));
         $myData2 = json_decode($jsonData2, true)['values'];
@@ -128,11 +118,6 @@ class Omnitags extends CI_Controller
             $this->v7_title[$item['key']] = $item['value'] . ' Berhasil!';
         }
 
-        date_default_timezone_set($this->aliases['timezone']);
-
-        $this->tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
-        $this->tabel7_field1 = $this->tabel7[0]->id;
-
         $this->views = array(
             'v1' => '_layouts/template',
             'v1_title' => '',
@@ -156,9 +141,13 @@ class Omnitags extends CI_Controller
             'tabel10_v2_alt_title' => 'Daftar ' . $this->aliases['tabel10_alias'] . ' dari ' . $this->aliases['tabel2_alias'],
             'tabel10_v3_alt' => '_contents/tabel10/admin_tabel2',
             'tabel10_v3_alt_title' => 'Data ' . $this->aliases['tabel10_alias'] . ' dari ' . $this->aliases['tabel2_alias'],
-        );
 
-        $this->flashdatas = array(
+            'head' => '_partials/head',
+            'phase' => $this->phase_1,
+			'tbl23' => $this->tl23->ambildata()->result(),
+			'sosmed' => $this->tl24->ambil_tabel7_field1($this->tabel7_field1)->result(),
+			'tbl7' => $this->tl25->tema($this->tabel7_field1)->result(),
+
             'flash1' => 'pesan',
             'flash1_func1' => '$("#element").toast("show")',
 

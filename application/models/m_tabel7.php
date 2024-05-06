@@ -16,13 +16,6 @@ class M_tabel7 extends CI_Model
 		return $this->db->get($this->aliases['tabel7']);
 	}
 
-	public function ambil_tabel7_field12($param1)
-	{
-		$this->db->where($this->aliases['tabel7_field12'], $param1);
-		$this->db->order_by($this->aliases['tabel7_field1'], 'DESC');
-		return $this->db->get($this->aliases['tabel7']);
-	}
-
 	public function simpan($data)
 	{
 		return $this->db->insert($this->aliases['tabel7'], $data);

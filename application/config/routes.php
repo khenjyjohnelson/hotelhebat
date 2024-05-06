@@ -57,52 +57,36 @@ $route['home'] = 'welcome';
 $route['no_level'] = 'welcome/no_level';
 $route['dashboard'] = 'welcome/dashboard';
 
-$jsonData1 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel.postman_environment.json'));
-$myData1 = json_decode($jsonData1, true)['values'];
-
-// Create variables dynamically
-foreach ($myData1 as $item1) {
-    $aliases[$item1['key']] = $item1['value']; // Variable variable to create dynamic variables
-}
-
 // Define routes dynamically based on JSON data
 $jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel_tables.postman_environment.json'));
 $myData2 = json_decode($jsonData2, true)['values'];
 
-foreach ($myData2 as $item) {
-    $prefix = 'c_' . $item['key'] . '/';
+foreach ($myData2 as $item2) {
+    $prefix = 'c_' . $item2['key'] . '/';
 
-    // Routes tampilan
-    $views = [
+    // Define routes for different functionality groups
+
+    // View routes
+    $viewRoutes = [
         'index' => 'index',
         'daftar' => 'daftar',
         'admin' => 'admin',
         'laporan' => 'laporan',
         'print' => 'print',
         'konfirmasi' => 'konfirmasi',
-        'detail' => 'detail',
+        'detail' => 'detail'
     ];
 
-    $route[$item['value']] = 'c_' . $item['key'];
-
-    foreach ($views as $key => $value) {
-        $route[$item['value'] . '/' . $key] = $prefix . $value;
-    }
-
-    // Routes fungsi umum
-    $common_functions = [
+    // Common function routes
+    $commonFunctionRoutes = [
         'tambah',
         'update',
         'hapus',
         'filter'
     ];
 
-    foreach ($common_functions as $value) {
-        $route[$item['value'] . '/' . $value] = $prefix . $value;
-    }
-
-    // Routes fungsi unik
-    $unique_functions = [
+    // Unique function routes
+    $uniqueFunctionRoutes = [
         'login',
         'logout',
         'update_profil',
@@ -113,26 +97,36 @@ foreach ($myData2 as $item) {
         'book'
     ];
 
-    foreach ($unique_functions as $value) {
-        $route[$item['value'] . '/' . $value] = $prefix . $value;
-    }
-
-    // Routes unik tabel
-    $route[$item['value'] . '/filter_' . $aliases['tabel4']] = $prefix . 'filter_tabel4';
-
-    // Routes unik field
-    $unique_fields = [
-        $aliases['tabel4_field4'],
-        $aliases['tabel7_field3'],
-        $aliases['tabel7_field4'],
-        $aliases['tabel7_field5'],
-        $aliases['tabel7_field10'],
-        $aliases['tabel7_field11'],
-        $aliases['tabel7_field13'],
-        $aliases['tabel9_field4']
+    $uniqueTableRoutes = [
+        'filter_'
     ];
 
-    foreach ($unique_fields as $value) {
-        $route[$item['value'] . '/update_' . $value] = $prefix . 'update_' . $value;
+    $uniqueFieldRoutes = [
+        'tabel7_field6',
+        'tabel7_field7',
+        'tabel7_field8',
+        'tabel25_field3',
+        'tabel25_field4',
+        'tabel25_field5',
+    ];
+
+    // Assign routes for each group
+    foreach ($viewRoutes as $key => $value) {
+        $route[$item2['value'] . '/' . $key] = $prefix . $value;
+    }
+
+    foreach ($commonFunctionRoutes as $value) {
+        $route[$item2['value'] . '/' . $value] = $prefix . $value;
+        foreach ($uniqueFieldRoutes as $fields) {
+            $route[$item2['value'] . '/' . $value . '_' . $fields] = $prefix . $value . '_' . $fields;
+        }
+    }
+
+    foreach ($uniqueFunctionRoutes as $value) {
+        $route[$item2['value'] . '/' . $value] = $prefix . $value;
+    }
+
+    foreach ($uniqueTableRoutes as $value) {
+        $route[$item2['value'] . '/filter_' . $value] = $prefix . 'filter_' . $item2['value'];
     }
 }

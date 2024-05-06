@@ -22,8 +22,8 @@
   <div class="container" style="border-style: dashed;">
     <?php foreach ($tbl7 as $tl7) : ?>
       <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
-      <p class="text-center"><?= $tl7->$tabel7_field2; ?> | <?= $tl7->$tabel7_field8; ?> | <?= $tl7->$tabel7_field7; ?></p>
-      <p class="text-center"><?= $tl7->$tabel7_field6; ?></p>
+      <p class="text-center"><?= $tl7->$tabel7_field2; ?> | <?= $tl7->$tabel7_field5; ?> | <?= $tl7->$tabel7_field4; ?></p>
+      <p class="text-center"><?= $tl7->$tabel7_field3; ?></p>
     <?php endforeach; ?>
 
     <!-- menampilkan data pesanan sebagai ps -->

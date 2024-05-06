@@ -40,7 +40,7 @@
           <td><?= $tl7_alt->$tabel7_field1; ?></td>
           <td><?= $tl7_alt->$tabel7_field2 ?></td>
           <td><?= $tl7_alt->$tabel7_field4 ?></td>
-          <td><img src="img/tabel7/<?= $tl7_alt->$tabel7_field3 ?>" width="100"></td>
+          <td><img src="img/tabel25/<?= $tl7_alt->$tabel7_field3 ?>" width="100"></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl7_alt->$tabel7_field1; ?>">
               <i class="fas fa-eye"></i></a>
@@ -104,61 +104,6 @@
 </div>
 
 
-<!-- modal edit foto-->
-<?php foreach ($tbl7_alt as $tl7_alt): ?>
-  <div id="ubah<?= $tl7_alt->$tabel7_field1; ?>" class="modal fade ubah">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tl7_alt->$tabel7_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel7 . '/update') ?>" method="post" enctype="multipart/form-data">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <label><?= $tabel7_field2_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel7_field2_input ?>"
-                value="<?= $tl7_alt->$tabel7_field2; ?>">
-              <input type="hidden" name="<?= $tabel7_field1_input ?>" value="<?= $tl7_alt->$tabel7_field1; ?>">
-              * Meski ingin mengubah <?= $tabel7_field2_alias ?> saja, tetap harus mengupload ulang <?= $tabel7_field3_alias ?> juga
-            </div>
-            
-            <div class="form-group">
-              <label><?= $tabel7_field4_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel7_field4_input ?>"
-                value="<?= $tl7_alt->$tabel7_field4; ?>">
-            </div>
-
-            <div class="form-group">
-              <img src="img/tabel7/<?= $tl7_alt->$tabel7_field3; ?>" width="300">
-            </div>
-            <hr>
-            
-            <div class="form-group">
-              <label>Ubah <?= $tabel7_field3_alias ?></label>
-              <input class="form-control-file" type="file" name="<?= $tabel7_field3_input ?>">
-              <input type="hidden" name="<?= $tabel7_field3_old ?>" value="<?= $tl7_alt->$tabel7_field3; ?>">
-            </div>
-          </div>
-
-          <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
-
-          <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Simpan Perubahan</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-<?php endforeach; ?>
-
-
 <!-- modal lihat -->
 <?php foreach ($tbl7_alt as $tl7_alt): ?>
   <div id="lihat<?= $tl7_alt->$tabel7_field1; ?>" class="modal fade lihat" role="dialog">
@@ -197,7 +142,7 @@
               <label><?= $tabel7_field3_alias ?> : </label>
             </div>
             <div class="form-group">
-              <img src="img/tabel7/<?= $tl7_alt->$tabel7_field3; ?>" width="450">
+              <img src="img/tabel25/<?= $tl7_alt->$tabel7_field3; ?>" width="450">
             </div>
 
 
