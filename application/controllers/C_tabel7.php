@@ -12,7 +12,7 @@ class C_tabel7 extends Omnitags
 	}
 
 	// Halaman detail
-	public function detail()
+	public function profil()
 	{
 		// Cache control headers
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP 1.1.
@@ -95,7 +95,7 @@ class C_tabel7 extends Omnitags
 			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field8']);
 		}
 
-		redirect(site_url('c_tabel7/detail'));
+		redirect(site_url('c_tabel7/profil'));
 	}
 
 	public function update_tabel7_field6()
@@ -138,6 +138,6 @@ class C_tabel7 extends Omnitags
 			$this->session->set_flashdata($this->flash['tabel7_field7'], $this->flash1_msg_4['tabel7_field7_alias']);
 			$this->session->set_flashdata('modal', $this->flash_func['tabel7_field7']);
 		}
-		redirect(site_url($this->aliases['tabel7'] . '/detail'));
+		redirect(site_url($this->aliases['tabel7'] . '/profil'));
 	}
 }

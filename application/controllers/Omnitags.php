@@ -27,15 +27,15 @@ class Omnitags extends CI_Controller
     // Di bawah ini adalah fungsi config
     public $file_type1 = 'png|jpg|jpeg';
     public $file_type2 = 'pdf';
-    public $phase_0 = '<br><span class="h6"> (phase pre-alpha feature)</span>';
-    public $phase_1 = '<br><span class="h6"> (phase alpha feature)</span>';
-    public $phase_2 = '<br><span class="h6"> (phase beta feature)</span>';
-    public $phase_3 = '<br><span class="h6"> (release candidate feature)</span>';
+    public $phase_0 = '<br><span class="h6"> (pre-alpha phase)</span>';
+    public $phase_1 = '<br><span class="h6"> (alpha phase)</span>';
+    public $phase_2 = '<br><span class="h6"> (beta phase)</span>';
+    public $phase_3 = '<br><span class="h6"> (release candidate phase)</span>';
     public $phase_4 = '';  // feature released
 
     public $aliases, $views, $flashdatas, $tempdatas, $show;
-    public $v1, $v2, $v3, $v4, $v5, $v6, $v7;
-    public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title, $v7_title;
+    public $v1, $v2, $v3, $v4, $v5, $v6, $v7, $v8;
+    public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title, $v7_title, $v8_title;
     public $v_input, $v_post, $v_get, $v_old, $v_post_old;
     public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
@@ -106,16 +106,18 @@ class Omnitags extends CI_Controller
             $this->v3[$item['key']] = '_contents/' . $item['key'] . '/admin';
             $this->v4[$item['key']] = '_contents/' . $item['key'] . '/laporan';
             $this->v5[$item['key']] = '_contents/' . $item['key'] . '/print';
-            $this->v6[$item['key']] = '_contents/'. $item['key'].'/detail';
+            $this->v6[$item['key']] = '_contents/'. $item['key'].'/profil';
             $this->v7[$item['key']] = '_contents/' . $item['key'] . '/konfirmasi';
+            $this->v8[$item['key']] = '_contents/' . $item['key'] . '/detail';
 
             $this->v1_title[$item['key']] = $item['value'];
             $this->v2_title[$item['key']] = 'Daftar ' . $item['value'];
             $this->v3_title[$item['key']] = 'Data ' . $item['value'];
             $this->v4_title[$item['key']] = 'Laporan ' . $item['value'];
             $this->v5_title[$item['key']] = 'Data ' . $item['value'];
-            $this->v6_title[$item['key']] = 'Detail ' . $item['value'];
+            $this->v6_title[$item['key']] = 'Profil ' . $item['value'];
             $this->v7_title[$item['key']] = $item['value'] . ' Berhasil!';
+            $this->v8_title[$item['key']] = 'Detail' . $item['value'];
         }
 
         $this->views = array(

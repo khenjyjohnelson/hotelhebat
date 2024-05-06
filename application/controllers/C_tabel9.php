@@ -148,7 +148,7 @@ class C_tabel9 extends Omnitags
 	}
 
 
-	public function detail()
+	public function profil()
 	{
 		$this->declarew();
 

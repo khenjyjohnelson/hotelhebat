@@ -4,7 +4,7 @@
 
 <?php $this->load->view($head) ?>
 
-<body class="login">
+<body>
   <?php foreach ($tbl7 as $tl7): ?>
     <div id="background-image">
       <img src="img/tabel25/<?= $tl7->$tabel25_field5 ?>">

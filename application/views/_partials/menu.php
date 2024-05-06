@@ -77,7 +77,7 @@
                                             <?= $tabel9_alias ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= site_url($tabel7 . '/detail') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel7 . '/profil') ?>">
                                             <?= $tabel7_alias ?>
                                         </a>
                                         <?php break;
@@ -191,7 +191,7 @@
                                 <?php break;
                         } ?>
 
-                        <a class="dropdown-item" href="<?= site_url($tabel9 . '/detail') ?>">Profil</a>
+                        <a class="dropdown-item" href="<?= site_url($tabel9 . '/profil') ?>">Profil</a>
                         <a class="dropdown-item" href="<?= site_url($tabel9 . '/logout') ?>">Logout</a>
 
 

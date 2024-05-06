@@ -75,7 +75,7 @@ foreach ($myData2 as $item2) {
         'admin' => 'admin',
         'laporan' => 'laporan',
         'konfirmasi' => 'konfirmasi',
-        'detail' => 'detail'
+        'profil' => 'profil'
     ];
 
     // Common function routes
@@ -86,6 +86,7 @@ foreach ($myData2 as $item2) {
     ];
 
     $uncommonFunctionRoutes = [
+        'detail',
         'hapus',
         'print',
     ];

@@ -155,7 +155,7 @@ class C_tabel4 extends Omnitags
 		$this->load->view($this->v4['tabel4'], $data);
 	}
 
-	public function detail()
+	public function profil()
 	{
 		$this->declarew();
 
