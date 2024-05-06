@@ -28,7 +28,7 @@
                                     if ($tl7->$tabel7_field11 == $tl23->$tabel23_field1) { ?>
 
 
-                                        <a class="text-decoration-none text-dark" href="<?= site_url($tabel23 . '') ?>">
+                                        <a class="text-decoration-none text-dark" href="<?= site_url($tabel23) ?>">
                                             <img src="img/tabel23/<?= $tl23->$tabel23_field4 ?>" height="25"></a><br>
 
 
@@ -44,13 +44,13 @@
                             <ul class="list-unstyled">
                                 <li>
                                     <a type="button" id="nextPage" class="text-decoration-none text-dark"
-                                        href="<?= site_url($tabel6 . '') ?>">
+                                        href="<?= site_url($tabel6) ?>">
                                         <?= $tabel6_alias ?>
                                     </a>
                                 </li>
                                 <li>
                                     <a type="button" id="nextPage" class="text-decoration-none text-dark"
-                                        href="<?= site_url($tabel3 . '') ?>">
+                                        href="<?= site_url($tabel3) ?>">
                                         <?= $tabel3_alias ?>
                                     </a>
                                 </li>

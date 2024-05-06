@@ -6,12 +6,12 @@
                 <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('home') ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel6 . '') ?>">
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel6) ?>">
                     <?= $tabel6_alias ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel3 . '') ?>">
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel3) ?>">
                     <?= $tabel3_alias ?>
                 </a>
             </li>
@@ -77,7 +77,7 @@
                                             <?= $tabel9_alias ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= site_url($tabel7 . '/admin') ?>">
+                                        <a class="dropdown-item" href="<?= site_url($tabel7 . '/detail') ?>">
                                             <?= $tabel7_alias ?>
                                         </a>
                                         <?php break;
@@ -156,10 +156,10 @@
                                 ?>
                                 <h6 class="dropdown-header">Jelajahi</h6>
                                 <a class="dropdown-item" href="<?= site_url('home') ?>">Pesan Sekarang</a>
-                                <a class="dropdown-item" href="<?= site_url($tabel6 . '') ?>">
+                                <a class="dropdown-item" href="<?= site_url($tabel6) ?>">
                                     <?= $tabel6_alias ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url($tabel3 . '') ?>">
+                                <a class="dropdown-item" href="<?= site_url($tabel3) ?>">
                                     <?= $tabel3_alias ?>
                                 </a>
                                 <div class="dropdown-divider"></div>

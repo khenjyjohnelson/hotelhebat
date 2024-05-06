@@ -114,10 +114,8 @@
     <thead class="thead-light">
       <tr>
         <th>No</th>
-        <th><?= $tabel20_field2_alias ?></th>
         <th><?= $tabel20_field5_alias ?></th>
         <th><?= $tabel20_field3_alias ?></th>
-        <th>Aksi</th>
       </tr>
     </thead>
 
@@ -125,12 +123,8 @@
       <?php foreach ($tbl20 as $tl20) : ?>
         <tr>
           <td></td>
-          <td><?= $tl20->$tabel20_field2 ?></td>
           <td><?= $tl20->$tabel20_field5 ?></td>
           <td><?= $tl20->$tabel20_field3 ?></td>
-          <td><a class="btn btn-light text-info" type="button" data-toggle="modal" data-target="#lihat<?= $tl20->$tabel20_field1; ?>">
-              <i class="fas fa-eye"></i></a>
-          </td>
         </tr>
       <?php endforeach; ?>
     </tbody>

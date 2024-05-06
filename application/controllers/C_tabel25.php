@@ -25,7 +25,7 @@ class C_tabel24 extends Omnitags
 			$this->v_part7 => $this->tl23->ambildata()->result(),
 			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
 			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
-			'tbl24' => $this->tl24->ambildata()->result(),
+			'tbl25' => $this->tl25->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);
@@ -126,7 +126,7 @@ class C_tabel24 extends Omnitags
 			$this->v_part7 => $this->tl23->ambildata()->result(),
 			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
 			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
-			'tbl24' => $this->tl24->ambildata()->result(),
+			'tbl25' => $this->tl25->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->aliases, $this->v_input, $this->v_old, $this->views, $this->flashdatas);

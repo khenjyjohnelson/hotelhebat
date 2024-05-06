@@ -26,14 +26,14 @@ switch (true) {
 <body>
 
   <!-- menampilkan data pengaturan sebagai p -->
-  <?php foreach ($tbl7 as $tl7): ?>
+  <?php foreach ($tema as $tm): ?>
 
-    <!-- toast -->
-    <div class="toast fade" id="element" data-delay="5000">
+     <!-- toast -->
+    <div class="toast fade" id="element" style="position: absolute; top: 80; right: 15; z-index: 1000" data-delay="5000">
       <div class="toast-header">
-        <img class="rounded mr-2" src="img/tabel7/<?= $tl7->$tabel7_field3 ?>" width="15px" draggable="false">
+        <img class="rounded mr-2" src="img/tabel7/<?= $tm->$tabel25_field3 ?>" width="15px" draggable="false">
         <strong class="mr-auto">
-          <?= $tl7->$tabel7_field2 ?>
+          <?= $tm->$tabel25_field2 ?>
         </strong>
         <button type="button" class="close" data-dismiss="toast">
           <span>&times;</span>
@@ -41,14 +41,14 @@ switch (true) {
       </div>
 
       <div class="toast-body">
-        <?= $this->session->flashdata($this->flashdatas['flash1']) ?>
+        <?= $this->session->flashdata('pesan') ?>
       </div>
     </div>
 
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
       <a class="navbar-brand font-weight-bold" href="<?= site_url('home') ?>">
-        <img src="img/tabel7/<?= $tl7->$tabel7_field4; ?>" height="50">
+        <img src="img/tabel7/<?= $tm->$tabel25_field4; ?>" height="50">
       </a>
 
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarku">
@@ -65,10 +65,7 @@ switch (true) {
     <!-- komponen berada tengah halaman -->
     <div class="container" id="konten">
 
-
-      <?php $this->load->view('_partials/middle') ?>
-
-      <div class="konten">
+      <div style="margin-top: 100px;">
         <!-- konten sesuai controller -->
         <?php $this->load->view($konten) ?>
       </div>

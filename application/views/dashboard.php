@@ -16,12 +16,10 @@
 </h1>
 <hr>
 <div class="row">
-
   <!-- menampilkan data untuk administrator -->
 
   <?php switch ($this->session->userdata($tabel9_field6)) {
     case $tabel9_field6_value3: ?>
-
       <div class="col-lg-3 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
@@ -31,7 +29,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl9 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel9 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel9 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -45,11 +43,42 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl4 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel4 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel4 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
 
+      <div class="col-lg-3 mt-2">
+        <div class="card text-white bg-danger">
+          <div class="card-body">
+            <h5 class="card-title">
+              <?= $tabel20_alias ?>
+            </h5>
+            <p class="card-text" style="font-size: 32;">
+              <?= $tbl4 ?>
+            </p>
+            <a class="text-white" href="<?= site_url($tabel20 . '/admin') ?>">Detail >></a>
+          </div>
+        </div>
+      </div>
+      <?php break;
+
+    default: ?>
+
+
+  <?php } ?>
+</div>
+
+<br>
+<hr>
+
+
+<div class="row">
+
+  <!-- menampilkan data untuk administrator -->
+
+  <?php switch ($this->session->userdata($tabel9_field6)) {
+    case $tabel9_field6_value3: ?>
       <div class="col-lg-3 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
@@ -59,7 +88,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl6 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel6 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel6 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -73,7 +102,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl5 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel5 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel5 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -87,7 +116,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel3 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -101,7 +130,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel1 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel1 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -117,7 +146,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl5 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel5 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel5 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -131,7 +160,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl8 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel8 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel8 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -147,7 +176,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl10 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel10 . '/admin') ?>">Lihat Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel10 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>

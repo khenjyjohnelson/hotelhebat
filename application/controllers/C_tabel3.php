@@ -10,18 +10,16 @@ class C_tabel3 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
-        $tabel7_field1 = $tabel7[0]->id;
-
 		$data1 = array(
 			$this->v_part1 => $this->v1_title['tabel3_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part3 => $this->v1['tabel3'],
 			$this->v_part5 => $this->tl12->dekor('tabel3')->result(),
 			$this->v_part4 => $this->v_part4_msg1,
-			'tbl23' => $this->tl23->ambildata()->result(),
-			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(),
-			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
+			$this->v_part7 => $this->tl23->ambildata()->result(),
+			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
+			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
 			'tbl3' => $this->tl3->ambildata()->result()
 		);
 
@@ -38,18 +36,16 @@ class C_tabel3 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
-        $tabel7_field1 = $tabel7[0]->id;
-
 		$data1 = array(
 			$this->v_part1 => $this->v3_title['tabel3_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part3 => $this->v3['tabel3'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel3')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(),
-			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(),
-			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
+			$this->v_part7 => $this->tl23->ambildata()->result(),
+			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
+			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
 			'tbl3' => $this->tl3->ambildata()->result()
 		);
 
@@ -139,17 +135,15 @@ class C_tabel3 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
-        $tabel7_field1 = $tabel7[0]->id;
-
 		$data1 = array(
 			$this->v_part1 => $this->v4_title['tabel3_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel3')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(),
-			'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(),
-			'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
+			$this->v_part7 => $this->tl23->ambildata()->result(),
+			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
+			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
 			'tbl3' => $this->tl3->ambildata()->result()
 		);
 

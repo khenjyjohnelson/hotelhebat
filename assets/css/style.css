@@ -9,8 +9,7 @@
 	box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
 	font-family: Poppy;
 	height: 100%;
 }
@@ -52,7 +51,7 @@ div.login {
 	margin-bottom: 40px;
 }
 
-.tabel7 {
+.pengaturan {
 	width: 90%;
 }
 
@@ -81,7 +80,7 @@ hr {
 	height: 30px; /* Adjust height as desired */
 }
 
-.toast.fade {
+.toast {
 	position: absolute;
 	top: 80;
 	right: 15;

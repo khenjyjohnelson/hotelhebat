@@ -11,11 +11,11 @@
   <div class="container">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-md-auto">
-        <div class="d-flex justify-content-center">
-          <?php foreach ($dekor as $dk): ?>
-            <img src="img/tabel12/<?= $dk->$tabel12_field3 ?>" width="40%" class="rounded">
-            <?php endforeach ?>
-          </div>  
+      <div class="d-flex justify-content-center">
+        <?php foreach ($dekor as $dk): ?>
+          <img src="img/tabel12/<?= $dk->$tabel12_field3 ?>" width="40%" class="rounded">
+          <?php endforeach ?>
+        </div>
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
         <div class="d-flex justify-content-center">
           <a class="text-decoration-none" href="<?= site_url('home') ?>">

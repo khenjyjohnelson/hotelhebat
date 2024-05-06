@@ -162,7 +162,7 @@
         </button>
       </div>
 
-      <form action="<?= site_url($tabel8 . '') ?>" method="get">
+      <form action="<?= site_url($tabel8) ?>" method="get">
         <div class="modal-body">
           <div class="form-group">
             <label><?= $tabel8_field8_alias ?></label>

@@ -35,6 +35,7 @@
 
         // yg ini yang menggunakan toast
         <?= $this->session->flashdata('toast') ?>
+        
         // yg di bawah ini adalah semua yg berhubungan dgn modal
         <?= $this->session->flashdata('modal') ?>
 
@@ -168,36 +169,6 @@
 
 
 </script>
-
-<script>
-    function exportToExcel(data, filename) {
-        /* Convert data to worksheet */
-        var ws = XLSX.utils.json_to_sheet(data);
-
-        /* Create a new workbook */
-        var wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-
-        /* Generate Excel file and download */
-        XLSX.writeFile(wb, filename);
-    }
-
-    // Example data
-    var data = [
-        { Name: "John", Age: 30, City: "New York" },
-        { Name: "Alice", Age: 25, City: "Los Angeles" },
-        { Name: "Bob", Age: 35, City: "Chicago" }
-    ];
-
-    // Export data to Excel when button is clicked
-    document.getElementById("export-btn").addEventListener("click", function () {
-        exportToExcel(data, "data.xlsx");
-    });
-</script>
-
-
-
-
 
 <script>
     var ctx = document.getElementById('myChart_tabel8_tabel2').getContext('2d');

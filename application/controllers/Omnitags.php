@@ -36,6 +36,10 @@ class Omnitags extends CI_Controller
     public $v_part3 = 'konten';
     public $v_part4 = 'phase';
     public $v_part5 = 'dekor';
+    public $v_part6 = 'tema';
+    public $v_part7 = 'lisensi';
+    public $v_part8 = 'sosmed';
+    public $v_part9 = 'tbl7';
     public $v_part4_msg0 = '<br><span class="h6"> (phase pre-alpha feature)</span>';
     public $v_part4_msg1 = '<br><span class="h6"> (phase alpha feature)</span>';
     public $v_part4_msg2 = '<br><span class="h6"> (phase beta feature)</span>';
@@ -59,6 +63,7 @@ class Omnitags extends CI_Controller
     public $flash_msg3, $flash_msg3_alt1, $flash_msg3_alt2;
     public $flash_msg4;
     public $flash_msg5;
+    public $tabel7, $tabel7_field1;
 
     public function declarew()
     {
@@ -125,6 +130,9 @@ class Omnitags extends CI_Controller
 
         date_default_timezone_set($this->aliases['timezone']);
 
+        $this->tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
+        $this->tabel7_field1 = $this->tabel7[0]->id;
+
         $this->views = array(
             'v1' => '_layouts/template',
             'v1_title' => '',
@@ -138,6 +146,8 @@ class Omnitags extends CI_Controller
             'v5_title' => 'Dashboard',
             'v6' => 'home',
             'v6_title' => 'Selamat Datang',
+            'v7' => '404',
+            'v7_title' => 'Halaman Tidak Ada',
 
             'tabel4_v2' => '_contents/tabel4/login',
             'tabel4_v2_title' => 'Login Sebagai ' . $this->aliases['tabel4_alias'],

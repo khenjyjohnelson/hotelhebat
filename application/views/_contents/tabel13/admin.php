@@ -10,7 +10,7 @@
 
 <h1><?= $title ?><?= $phase ?></h1>
 <hr>
-<p class="">Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
+<p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
 
 <button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
 <a class="btn btn-info mb-4" href="<?= site_url($tabel13 . '/laporan') ?>" target="_blank">

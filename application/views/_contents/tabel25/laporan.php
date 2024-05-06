@@ -32,21 +32,19 @@
     <table class="table">
       <thead class="thead">
         <tr>
-          <th><?= $tabel20_field1_alias ?></th>
-          <th><?= $tabel20_field2_alias ?></th>
-          <th><?= $tabel20_field3_alias ?></th>
-          <th><?= $tabel20_field4_alias ?></th>
-          <th><?= $tabel20_field5_alias ?></th>
+          <th><?= $tabel25_field1_alias ?></th>
+          <th><?= $tabel25_field2_alias ?></th>
+          <th><?= $tabel25_field3_alias ?></th>
+          <th><?= $tabel25_field4_alias ?></th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($tbl20 as $tl20) : ?>
+        <?php foreach ($tbl25 as $tl25) : ?>
           <tr>
-            <td width=""><?= $tl20->$tabel20_field1 ?></td>
-            <td width=""><?= $tl20->$tabel20_field2 ?></td>
-            <td width=""><?= $tl20->$tabel20_field3 ?></td>
-            <td width=""><?= $tl20->$tabel20_field4 ?></td>
-            <td width=""><?= $tl20->$tabel20_field5 ?></td>
+            <td width=""><?= $tl25->$tabel25_field1; ?></td>
+            <td width=""><?= $tl25->$tabel25_field2 ?></td>
+            <td width=""><?= $tl25->$tabel25_field3 ?></td>
+            <td width=""><?= $tl25->$tabel25_field4 ?></td>
           </tr>
         <?php endforeach ?>
       </tbody>

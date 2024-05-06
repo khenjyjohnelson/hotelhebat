@@ -11,7 +11,7 @@ class M_tabel24 extends CI_Model
 
 	public function ambil_tabel7_field1($param1)
 	{
-		$this->db->where($this->aliases['tabel7_field1'], $param1);
+		$this->db->where($this->aliases['tabel24_field2'], $param1);
 		$this->db->order_by($this->aliases['tabel24_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel24']);
 	}

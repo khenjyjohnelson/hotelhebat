@@ -7,17 +7,14 @@ class C_tabel13 extends Omnitags
 {
 	// Halaman publik
 
-	
+
 	// Halaman khusus akun
 
-	
+
 	// Halaman admin
 	public function admin()
 	{
 		$this->declarew();
-
-		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
-        $tabel7_field1 = $tabel7[0]->id;
 
 		$data1 = array(
 			$this->v_part1 => $this->v3_title['tabel13_alias'],
@@ -25,7 +22,10 @@ class C_tabel13 extends Omnitags
 			$this->v_part3 => $this->v3['tabel13'],
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl12->dekor('tabel13')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
+			$this->v_part7 => $this->tl23->ambildata()->result(),
+			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
+			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
 			'tbl13' => $this->tl13->ambildata()->result(),
 		);
 
@@ -154,15 +154,15 @@ class C_tabel13 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel7 = $this->tl7->ambil_tabel7_field12($this->aliases['tabel7_field12_value1'])->result();
-        $tabel7_field1 = $tabel7[0]->id;
-
 		$data1 = array(
 			$this->v_part1 => $this->v4_title['tabel13_alias'],
 			$this->v_part2 => $this->head,
 			$this->v_part4 => $this->v_part4_msg1,
 			$this->v_part5 => $this->tl13->dekor('tabel13')->result(),
-			'tbl23' => $this->tl23->ambildata()->result(), 'tbl24' => $this->tl24->ambildata($tabel7_field1)->result(), 'tbl7' => $this->tl7->ambil_tabel7_field1($tabel7_field1)->result(),
+			$this->v_part6 => $this->tl25->tema($this->tabel7_field1)->result(),
+			$this->v_part7 => $this->tl23->ambildata()->result(),
+			$this->v_part8 => $this->tl24->ambil_tabel7_field1()->result(),
+			$this->v_part9 => $this->tl7->ambil_tabel7_field1($this->tabel7_field1)->result(),
 			'tbl13' => $this->tl13->ambildata()->result()
 		);
 

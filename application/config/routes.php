@@ -50,11 +50,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'welcome';
-$route['404_override'] = '';
+$route['404_override'] = 'welcome/no_page';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['dashboard'] = 'welcome/dashboard';
 $route['home'] = 'welcome';
+$route['no_level'] = 'welcome/no_level';
+$route['dashboard'] = 'welcome/dashboard';
 
 $jsonData1 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel.postman_environment.json'));
 $myData1 = json_decode($jsonData1, true)['values'];
@@ -79,8 +80,10 @@ foreach ($myData2 as $item) {
         'laporan' => 'laporan',
         'print' => 'print',
         'konfirmasi' => 'konfirmasi',
-        'detail' => 'detail'
+        'detail' => 'detail',
     ];
+
+    $route[$item['value']] = 'c_' . $item['key'];
 
     foreach ($views as $key => $value) {
         $route[$item['value'] . '/' . $key] = $prefix . $value;
@@ -120,11 +123,12 @@ foreach ($myData2 as $item) {
     // Routes unik field
     $unique_fields = [
         $aliases['tabel4_field4'],
-        $aliases['tabel7_field10'],
-        $aliases['tabel7_field11'],
         $aliases['tabel7_field3'],
         $aliases['tabel7_field4'],
         $aliases['tabel7_field5'],
+        $aliases['tabel7_field10'],
+        $aliases['tabel7_field11'],
+        $aliases['tabel7_field13'],
         $aliases['tabel9_field4']
     ];
 
