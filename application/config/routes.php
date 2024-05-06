@@ -93,6 +93,7 @@ foreach ($myData2 as $item2) {
     // Unique function routes
     $uniqueFunctionRoutes = [
         'login',
+        'signup',
         'logout',
         'update_profil',
         'update_password',

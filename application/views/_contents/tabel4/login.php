@@ -5,12 +5,17 @@
 <?php $this->load->view($head) ?>
 
 <body class="login">
+  <?php foreach ($tbl7 as $tl7): ?>
+    <div id="background-image">
+      <img src="img/tabel25/<?= $tl7->$tabel25_field5 ?>">
+    </div>
+  <?php endforeach ?>
 
   <div class="container">
 
     <!-- membuat konten berada tepat di tengah2 halaman  -->
     <div class="row justify-content-center align-items-center h-100">
-      <div class="col-md-5 login">
+      <div class="col-lg-5 login">
 
         <!-- link kembali -->
         <a class="text-decoration-none" href="<?= site_url('home') ?>">Kembali ke beranda</a>
@@ -30,17 +35,20 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input class="form-control" type="text" name="<?= $tabel4_field1_input ?>" placeholder="Masukkan <?= $tabel4_field1_alias ?>">
+            <input class="form-control" type="text" name="<?= $tabel4_field1_input ?>"
+              placeholder="Masukkan <?= $tabel4_field1_alias ?>">
           </div>
 
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <input class="form-control" type="password" name="<?= $tabel4_field4_input ?>" placeholder="Masukkan <?= $tabel4_field4_alias ?>">
+            <input class="form-control" type="password" name="<?= $tabel4_field4_input ?>"
+              placeholder="Masukkan <?= $tabel4_field4_alias ?>">
           </div>
 
-          <p class="text-center"><a class="text-decoration-none" href="<?= site_url($tabel9 . '/login') ?>">Login sebagai <?= $tabel9_alias ?></a></p>
+          <p class="text-center"><a class="text-decoration-none" href="<?= site_url($tabel9 . '/login') ?>">Login
+              sebagai <?= $tabel9_alias ?></a></p>
 
           <!-- pesan untuk pengguna yang login -->
           <p class="small text-center text-danger"><?= $this->session->flashdata($this->views['flash1']) ?></p>
@@ -54,6 +62,37 @@
       </div>
     </div>
   </div>
+
+
+  <style>
+    /* Apply styles to the background image container */
+    #background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      /* Ensure the background image is behind other content */
+    }
+
+    /* Apply blur effect to the background image */
+    #background-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(5px);
+      /* Adjust blur intensity as needed */
+    }
+
+    /* Other styles for your form and other content */
+    .container {
+      position: relative;
+      /* Ensure other content stays on top */
+      z-index: 1;
+      /* Ensure other content stays on top */
+    }
+  </style>
 
   <script src="jquery.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
