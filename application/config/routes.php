@@ -74,7 +74,6 @@ foreach ($myData2 as $item2) {
         'daftar' => 'daftar',
         'admin' => 'admin',
         'laporan' => 'laporan',
-        'print' => 'print',
         'konfirmasi' => 'konfirmasi',
         'detail' => 'detail'
     ];
@@ -83,8 +82,12 @@ foreach ($myData2 as $item2) {
     $commonFunctionRoutes = [
         'tambah',
         'update',
-        'hapus',
         'filter'
+    ];
+
+    $uncommonFunctionRoutes = [
+        'hapus',
+        'print',
     ];
 
     // Unique function routes
@@ -122,6 +125,10 @@ foreach ($myData2 as $item2) {
         foreach ($uniqueFieldRoutes as $fields) {
             $route[$item2['value'] . '/' . $value . '_' . $fields] = $prefix . '/' . $value . '_' . $fields;
         }
+    }
+
+    foreach ($uncommonFunctionRoutes as $value) {
+        $route[$item2['value'] . '/' . $value . '/(:num)'] = $prefix . '/' . $value . '/$1';
     }
 
     foreach ($uniqueFunctionRoutes as $value) {

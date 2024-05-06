@@ -232,6 +232,7 @@
               <label>Ubah <?= $tabel25_field3_alias ?></label>
               <input class="form-control-file" required type="file" name="<?= $tabel25_field3_input ?>">
               <input type="hidden" name="<?= $tabel25_field1_input ?>" value="<?= $tl7->$tabel25_field1; ?>">
+              <input type="hidden" name="<?= $tabel25_field2_input ?>" value="<?= $tl25->$tabel25_field2; ?>">
               <input type="hidden" name="<?= $tabel25_field3_old ?>" value="<?= $tl7->$tabel25_field3; ?>">
             </div>
           </div>
@@ -278,6 +279,7 @@
               <label>Ubah <?= $tabel25_field4_alias ?></label>
               <input class="form-control-file" required type="file" name="<?= $tabel25_field4_input ?>">
               <input type="hidden" name="<?= $tabel25_field1_input ?>" value="<?= $tl7->$tabel25_field1; ?>">
+              <input type="hidden" name="<?= $tabel25_field2_input ?>" value="<?= $tl25->$tabel25_field2; ?>">
               <input type="hidden" name="<?= $tabel25_field4_old ?>" value="<?= $tl7->$tabel25_field4; ?>">
             </div>
           </div>
@@ -323,6 +325,7 @@
               <label>Ubah <?= $tabel25_field5_alias ?></label>
               <input class="form-control-file" required type="file" name="<?= $tabel25_field5_input ?>">
               <input type="hidden" name="<?= $tabel25_field1_input ?>" value="<?= $tl7->$tabel25_field1; ?>">
+              <input type="hidden" name="<?= $tabel25_field2_input ?>" value="<?= $tl25->$tabel25_field2; ?>">
               <input type="hidden" name="<?= $tabel25_field5_old ?>" value="<?= $tl7->$tabel25_field5; ?>">
             </div>
           </div>
