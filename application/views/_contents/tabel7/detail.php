@@ -30,7 +30,7 @@
     <?php foreach ($tbl7 as $tl7): ?>
       <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
         data-target="#<?= $tabel7_field8 . $tl7->$tabel7_field1 ?>">
-        <i class="fas fa-edit"></i> <?= $tabel7_field8_alias ?></a>
+        <i class="fas fa-edit"></i> <?= $tabel25_alias ?></a>
       <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
         data-target="#<?= $tabel13 . $tl7->$tabel7_field1 ?>">
         <i class="fas fa-edit"></i> <?= $tabel13_alias ?></a>
@@ -105,7 +105,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <label>Pilih <?= $tabel7_field8_alias ?></label>
+              <label>Pilih <?= $tabel25_alias ?></label>
               <select class="form-control" required name="<?= $tabel7_field8_input ?>">
 
                 <?php foreach ($tbl25 as $tl25): ?>

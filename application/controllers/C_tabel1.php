@@ -8,7 +8,18 @@ class C_tabel1 extends Omnitags
 	// Halaman publik
 	public function index()
 	{
-		redirect(site_url('no_page'));
+		$this->declarew();
+
+		$data1 = array(
+			'title' => $this->v1_title['tabel1_alias'],
+			'konten' => $this->v1['tabel1'],
+			'dekor' => $this->tl12->dekor('tabel1')->result(),
+			'tbl1' => $this->tl1->ambildata()->result()
+		);
+
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+
+		$this->load->view($this->views['v1'], $data);
 	}
 
 	// Halaman khusus akun
@@ -30,8 +41,6 @@ class C_tabel1 extends Omnitags
 
 		$this->load->view($this->views['v1'], $data);
 	}
-
-
 
 	function tambah()
 	{

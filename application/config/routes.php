@@ -62,7 +62,9 @@ $jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel_tables.po
 $myData2 = json_decode($jsonData2, true)['values'];
 
 foreach ($myData2 as $item2) {
-    $prefix = 'c_' . $item2['key'] . '/';
+    $prefix = 'c_' . $item2['key'];
+
+    $route[$item2['value']] = $prefix;
 
     // Define routes for different functionality groups
 
@@ -112,21 +114,21 @@ foreach ($myData2 as $item2) {
 
     // Assign routes for each group
     foreach ($viewRoutes as $key => $value) {
-        $route[$item2['value'] . '/' . $key] = $prefix . $value;
+        $route[$item2['value'] . '/' . $key] = $prefix . '/' . $value;
     }
 
     foreach ($commonFunctionRoutes as $value) {
-        $route[$item2['value'] . '/' . $value] = $prefix . $value;
+        $route[$item2['value'] . '/' . $value] = $prefix . '/' . $value;
         foreach ($uniqueFieldRoutes as $fields) {
-            $route[$item2['value'] . '/' . $value . '_' . $fields] = $prefix . $value . '_' . $fields;
+            $route[$item2['value'] . '/' . $value . '_' . $fields] = $prefix . '/' . $value . '_' . $fields;
         }
     }
 
     foreach ($uniqueFunctionRoutes as $value) {
-        $route[$item2['value'] . '/' . $value] = $prefix . $value;
+        $route[$item2['value'] . '/' . $value] = $prefix . '/' . $value;
     }
 
     foreach ($uniqueTableRoutes as $value) {
-        $route[$item2['value'] . '/filter_' . $value] = $prefix . 'filter_' . $item2['value'];
+        $route[$item2['value'] . '/filter_' . $value] = $prefix . '/' . 'filter_' . $item2['value'];
     }
 }

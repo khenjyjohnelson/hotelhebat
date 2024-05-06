@@ -36,6 +36,7 @@
           <th><?= $tabel25_field2_alias ?></th>
           <th><?= $tabel25_field3_alias ?></th>
           <th><?= $tabel25_field4_alias ?></th>
+          <th><?= $tabel25_field5_alias ?></th>
         </tr>
       </thead>
       <tbody>
@@ -43,8 +44,9 @@
           <tr>
             <td width=""><?= $tl25->$tabel25_field1; ?></td>
             <td width=""><?= $tl25->$tabel25_field2 ?></td>
-            <td width=""><?= $tl25->$tabel25_field3 ?></td>
-            <td width=""><?= $tl25->$tabel25_field4 ?></td>
+            <td width=""><img src="img/tabel25/<?= $tl25->$tabel25_field3 ?>" height="100"></td>
+            <td width=""><img src="img/tabel25/<?= $tl25->$tabel25_field4 ?>" height="100"></td>
+            <td width=""><img src="img/tabel25/<?= $tl25->$tabel25_field5 ?>" height="100"></td>
           </tr>
         <?php endforeach ?>
       </tbody>

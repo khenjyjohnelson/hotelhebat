@@ -86,6 +86,8 @@ class C_tabel25 extends Omnitags
 	{
 		$this->declarew();
 
+		$param = $this->v_post['tabel25_field2'] . "_";	
+
 		$table = $this->tl25->ambil_tabel25_field1($this->v_post['tabel25_field1'])->result();
 		$tabel25_field3 = $table[0]->favicon;
 		unlink($this->v_upload_path['tabel25'] . $tabel25_field3);
@@ -93,7 +95,7 @@ class C_tabel25 extends Omnitags
 		$config['upload_path'] = $this->v_upload_path['tabel25'];
 		// nama file dan ekstensi telah ditetapkan dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->aliases['tabel25_field3'];
+		$config['file_name'] = $param . $this->aliases['tabel25_field3'];
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -112,7 +114,7 @@ class C_tabel25 extends Omnitags
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel25_field3'] => $this->aliases['tabel25_field3'] . "." . $file_extension,
+			$this->aliases['tabel25_field3'] => $param . $this->aliases['tabel25_field3'] . "." . $file_extension,
 		);
 
 		$update = $this->tl25->update($data, $tabel25_field1);
@@ -133,6 +135,8 @@ class C_tabel25 extends Omnitags
 	{
 		$this->declarew();
 
+		$param = $this->v_post['tabel25_field2'] . "_";	
+
 		$table = $this->tl25->ambil_tabel25_field1($this->v_post['tabel25_field1'])->result();
 		$tabel25_field4 = $table[0]->logo;
 		unlink($this->v_upload_path['tabel25'] . $tabel25_field4);
@@ -140,7 +144,7 @@ class C_tabel25 extends Omnitags
 		$config['upload_path'] = $this->v_upload_path['tabel25'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->aliases['tabel25_field4'];
+		$config['file_name'] = $param . $this->aliases['tabel25_field4'];
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -159,7 +163,7 @@ class C_tabel25 extends Omnitags
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel25_field4'] => $this->aliases['tabel25_field4'] . "." . $file_extension,
+			$this->aliases['tabel25_field4'] => $param . $this->aliases['tabel25_field4'] . "." . $file_extension,
 		);
 
 		$update = $this->tl25->update($data, $tabel25_field1);
@@ -179,6 +183,8 @@ class C_tabel25 extends Omnitags
 	{
 		$this->declarew();
 
+		$param = $this->v_post['tabel25_field2'] . "_";		
+
 		$table = $this->tl25->ambil_tabel25_field1($this->v_post['tabel25_field1'])->result();
 		$tabel25_field5 = $table[0]->foto;
 		unlink($this->v_upload_path['tabel25'] . $tabel25_field5);
@@ -186,7 +192,7 @@ class C_tabel25 extends Omnitags
 		$config['upload_path'] = $this->v_upload_path['tabel25'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->aliases['tabel25_field5'];
+		$config['file_name'] = $param . $this->aliases['tabel25_field5'];
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -205,7 +211,7 @@ class C_tabel25 extends Omnitags
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel25_field5'] => $this->aliases['tabel25_field5'] . "." . $file_extension,
+			$this->aliases['tabel25_field5'] => $param . $this->aliases['tabel25_field5'] . "." . $file_extension,
 		);
 
 		$update = $this->tl25->update($data, $tabel25_field1);
