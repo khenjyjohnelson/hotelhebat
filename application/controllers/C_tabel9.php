@@ -228,7 +228,7 @@ class C_tabel9 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	public function update_tabel9_field4()
+	public function update_password()
 	{
 		$this->declarew();
 
@@ -248,11 +248,10 @@ class C_tabel9 extends Omnitags
 				$tabel9_field4 = $this->v_post['tabel9_field4'];
 
 				// jika konfirmasi password sama dengan password baru
-				if ($this->input->post('konfirm') === $tabel9_field4) {
+				if ($this->input->post('konfirm') === $this->v_post['tabel9_field4']) {
 					$this->load->library('encryption');
 
 					$data = array(
-
 						// mengubah password menjadi password berenkripsi
 						$this->aliases['tabel9_field4'] => password_hash($tabel9_field4, PASSWORD_DEFAULT),
 					);
@@ -316,27 +315,52 @@ class C_tabel9 extends Omnitags
 				$this->session->set_userdata($this->aliases['tabel9_field6'], $tabel9_field6);
 
 				// Function to get the device type
-				function getDeviceType($userAgent)
+				// Function to get the device type and operating system
+				function getDeviceTypeAndOS($userAgent)
 				{
 					// List of common mobile device strings
-					$mobileDevices = array('iPhone', 'iPad', 'Android', 'Windows Phone', 'BlackBerry');
+					$mobileDevices = array(
+						'iPhone',
+						'iPad',
+						'iPod',
+						'Android',
+						'Windows Phone',
+						'BlackBerry',
+					);
+
+					// List of common desktop operating system strings
+					$desktopOS = array(
+						'Windows',
+						'Linux',
+						'Macintosh',
+						'Mac OS X',
+						'Mac OS'
+					);
 
 					// Check if the user agent contains any of the mobile device strings
 					foreach ($mobileDevices as $device) {
 						if (stripos($userAgent, $device) !== false) {
-							return 'Mobile';
+							return $device . ' (Mobile)';
 						}
 					}
 
-					// If no mobile device string is found, consider it as a desktop
-					return 'Desktop';
+					// Check if the user agent contains any of the desktop operating system strings
+					foreach ($desktopOS as $os) {
+						if (stripos($userAgent, $os) !== false) {
+							return 'Desktop on ' . $os;
+						}
+					}
+
+					// If no specific device category is found, consider it as a desktop with unknown OS
+					return 'Desktop (Unknown OS)';
 				}
+
 
 				// Get the user agent string
 				$userAgent = $_SERVER['HTTP_USER_AGENT'];
 
 				// Get the device type
-				$deviceType = getDeviceType($userAgent);
+				$deviceType = getDeviceTypeAndOS($userAgent);
 
 				$loginh = array(
 					$this->aliases['tabel20_field1'] => '',

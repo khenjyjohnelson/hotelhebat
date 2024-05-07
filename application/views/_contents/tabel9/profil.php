@@ -60,14 +60,14 @@
             <span>&times;</span>
           </button>
         </div>
-        <form action="<?= site_url($tabel9 . '/update_' . $tabel9_field4) ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($tabel9 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <input class="form-control" type="password" required name="txt<?= $tabel9_field4 ?>"
+              <input class="form-control" type="password" required name="<?= $tabel9_field4_old ?>"
                 placeholder="Masukkan <?= $tabel9_field4_alias ?> lama">
               <input type="hidden" name="<?= $tabel9_field1_input ?>" value="<?= $tl9->$tabel9_field1; ?>">
             </div>
@@ -76,8 +76,25 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <input class="form-control" type="password" required name="<?= $tabel9_field4_input ?>"
-                placeholder="Masukkan <?= $tabel9_field4_alias ?> baru">
+              <input class="form-control" id="psw" type="password" required name="<?= $tabel9_field4_input ?>"
+                placeholder="Masukkan <?= $tabel9_field4_alias ?> baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+            </div>
+
+            <div id="message">
+              <label class="checkpass">Password must contain the following:</label><br>
+              <div class="row">
+                <div class="col-md-6">
+                  <label id="letter" class="checkpass invalid">A <b>lowercase</b> letter</label><br>
+                  <label id="capital" class="checkpass invalid">A <b>capital (uppercase)</b> letter</label><br>
+
+                </div>
+                <div class="col-md-6">
+                  <label id="number" class="checkpass invalid">A <b>number</b></label><br>
+                  <label id="length" class="checkpass invalid">Minimum <b>8 characters</b></label>
+
+                </div>
+              </div>
             </div>
 
             <div class="input-group">
@@ -120,7 +137,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl20 as $tl20) : ?>
+      <?php foreach ($tbl20 as $tl20): ?>
         <tr>
           <td></td>
           <td><?= $tl20->$tabel20_field5 ?></td>

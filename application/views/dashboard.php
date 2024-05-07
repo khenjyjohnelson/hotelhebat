@@ -20,7 +20,7 @@
 
   <?php switch ($this->session->userdata($tabel9_field6)) {
     case $tabel9_field6_value3: ?>
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
@@ -79,7 +79,7 @@
 
   <?php switch ($this->session->userdata($tabel9_field6)) {
     case $tabel9_field6_value3: ?>
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
@@ -93,7 +93,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
@@ -107,7 +107,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
@@ -121,7 +121,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
@@ -137,7 +137,7 @@
       <?php break;
 
     case $tabel9_field6_value4: ?>
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
@@ -151,7 +151,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-primary">
           <div class="card-body">
             <h5 class="card-title">
@@ -167,7 +167,7 @@
       <?php break;
 
     case $tabel9_field6_value2: ?>
-      <div class="col-lg-3 mt-2">
+      <div class="col-md-4 mt-2">
         <div class="card text-white bg-success">
           <div class="card-body">
             <h5 class="card-title">
@@ -198,8 +198,8 @@
   case $tabel9_field6_value4:
     ?>
     <div class="row mt-4">
-      <div class="col px-2 px-sm-3 dashboard-stat-box" style="height: 58vh">
-        <canvas id="myChart_tabel8_tabel2" width="200" height="100"></canvas>
+      <div class="col-md-6 px-2 px-sm-3 dashboard-stat-box">
+        <canvas id="myChart_tabel8_tabel2" width="200" height="125"></canvas>
       </div>
     </div>
     <?php break;

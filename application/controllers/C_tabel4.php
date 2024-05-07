@@ -251,20 +251,19 @@ class C_tabel4 extends Omnitags
 			$tabel4 = $cek_id->result();
 			$cek_tabel4_field4 = $tabel4[0]->password;
 
-			$old_tabel4_field4 = $this->input->post('old_password');
+			$old_tabel4_field4 = $this->v_post_old['tabel4_field4'];
 
 			// memverifikasi password lama dengan password di database
 			if (password_verify($old_tabel4_field4, $cek_tabel4_field4)) {
-				$param8 = $this->v_post['tabel4_field8'];
+				$tabel4_field4 = $this->v_post['tabel4_field4'];
 
 				// jika konfirmasi password sama dengan password baru
-				if ($this->input->post('konfirm') === $param8) {
+				if ($this->input->post('konfirm') === $this->v_post['tabel4_field4']) {
 					$this->load->library('encryption');
 
 					$data = array(
-
 						// mengubah password menjadi password berenkripsi
-						$this->aliases['tabel4_field4'] => password_hash($param8, PASSWORD_DEFAULT),
+						$this->aliases['tabel4_field4'] => password_hash($tabel4_field4, PASSWORD_DEFAULT),
 					);
 
 					$update = $this->tl4->update($data, $tabel4_field1);

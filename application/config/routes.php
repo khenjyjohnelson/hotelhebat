@@ -61,89 +61,144 @@ $route['dashboard'] = 'welcome/dashboard';
 $jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel_tables.postman_environment.json'));
 $myData2 = json_decode($jsonData2, true)['values'];
 
+
 foreach ($myData2 as $item2) {
     $prefix = 'c_' . $item2['key'];
+    $cachedControllers = [];
 
-    if (class_exists($prefix)) {
+    $routeKey = $item2['value'];
+    $controller = $prefix;
 
-        $route[$item2['value']] = $prefix;
+    if (!isset($cachedControllers[$routeKey])) {
+        $cachedControllers[$routeKey] = class_exists($routeKey);
+    }
 
-        // Define routes for different functionality groups
+    if (!$cachedControllers[$routeKey]) {
+        $route[$routeKey] = $controller;
+    } else {
+    }
+        
+    // Define routes for different functionality groups
 
-        // View routes
-        $viewRoutes = [
-            'index' => 'index',
-            'daftar' => 'daftar',
-            'admin' => 'admin',
-            'laporan' => 'laporan',
-            'konfirmasi' => 'konfirmasi',
-            'profil' => 'profil'
-        ];
+    // View routes
+    $viewRoutes = [
+        'index' => 'index',
+        'daftar' => 'daftar',
+        'admin' => 'admin',
+        'laporan' => 'laporan',
+        'konfirmasi' => 'konfirmasi',
+        'profil' => 'profil'
+    ];
 
-        // Common function routes
-        $commonFunctionRoutes = [
-            'tambah',
-            'update',
-            'filter'
-        ];
+    // Common function routes
+    $commonFunctionRoutes = [
+        'tambah' => 'tambah',
+        'update' => 'update',
+        'filter' => 'filter'
+    ];
 
-        $uncommonFunctionRoutes = [
-            'detail',
-            'hapus',
-            'print',
-        ];
+    $uncommonFunctionRoutes = [
+        'detail' => 'detail',
+        'hapus' => 'hapus',
+        'print' => 'print',
+    ];
 
-        // Unique function routes
-        $uniqueFunctionRoutes = [
-            'login',
-            'signup',
-            'logout',
-            'update_profil',
-            'update_password',
-            'ceklogin',
-            'importExcel',
-            'cari',
-            'book'
-        ];
+    // Unique function routes
+    $uniqueFunctionRoutes = [
+        'login' => 'login',
+        'signup' => 'signup',
+        'logout' => 'logout',
+        'update_profil' => 'update_profil',
+        'update_pass' => 'update_password',
+        'ceklogin' => 'ceklogin',
+        'importExcel' => 'importExcel',
+        'cari' => 'cari',
+        'book' => 'book'
+    ];
 
-        $uniqueTableRoutes = [
-            'filter_'
-        ];
+    $uniqueFieldRoutes = [
+        'tabel7_field6' => 'tabel7_field6',
+        'tabel7_field7' => 'tabel7_field7',
+        'tabel7_field8' => 'tabel7_field8',
+        'tabel25_field3' => 'tabel7_field3',
+        'tabel25_field4' => 'tabel7_field4',
+        'tabel25_field5' => 'tabel7_field5',
+    ];
 
-        $uniqueFieldRoutes = [
-            'tabel7_field6',
-            'tabel7_field7',
-            'tabel7_field8',
-            'tabel25_field3',
-            'tabel25_field4',
-            'tabel25_field5',
-        ];
+    // Assign routes for each group
+    // Check if any view routes don't exist
 
-        // Assign routes for each group
-        foreach ($viewRoutes as $key => $value) {
-            $route[$item2['value'] . '/' . $key] = $prefix . '/' . $value;
+    foreach ($viewRoutes as $key => $value) {
+        $routeKey1 = $item2['value'] . '/' . $key;
+        $controller1 = $prefix . '/' . $value;
+
+        if (!isset($cachedControllers[$routeKey1])) {
+            $cachedControllers[$routeKey1] = class_exists($routeKey1);
         }
 
-        foreach ($commonFunctionRoutes as $value) {
-            $route[$item2['value'] . '/' . $value] = $prefix . '/' . $value;
-            foreach ($uniqueFieldRoutes as $fields) {
-                $route[$item2['value'] . '/' . $value . '_' . $fields] = $prefix . '/' . $value . '_' . $fields;
+        if (!$cachedControllers[$routeKey1]) {
+            $route[$routeKey1] = $controller1;
+        } else {
+            $route[$routeKey1] = 'welcome/no_page';
+        }
+    }
+
+    foreach ($commonFunctionRoutes as $key => $value) {
+        $routeKey1 = $item2['value'] . '/' . $key;
+        $controller1 = $prefix . '/' . $value;
+
+        if (!isset($cachedControllers[$routeKey1])) {
+            $cachedControllers[$routeKey1] = class_exists($routeKey1);
+        }
+
+        if (!$cachedControllers[$routeKey1]) {
+            $route[$routeKey1] = $controller1;
+        } else {
+            $route[$routeKey1] = 'welcome/no_page';
+        }
+
+        foreach ($uniqueFieldRoutes as $key2 => $fields) {
+            $routeKey2 = $item2['value'] . '/' . $value . '_' . $key2;
+            $controller2 = $prefix . '/' . $value . '_' . $fields;
+
+            if (!isset($cachedControllers[$routeKey2])) {
+                $cachedControllers[$routeKey2] = class_exists($routeKey2);
+            }
+
+            if ($cachedControllers[$routeKey2]) {
+                $route[$routeKey2] = $controller2;
+            } else {
             }
         }
+    }
 
-        foreach ($uncommonFunctionRoutes as $value) {
-            $route[$item2['value'] . '/' . $value . '/(:num)'] = $prefix . '/' . $value . '/$1';
+    foreach ($uncommonFunctionRoutes as $key => $value) {
+        $routeKey1 = $item2['value'] . '/' . $key . '/(:num)';
+        $controller1 = $prefix . '/' . $value . '/$1';
+
+        if (!isset($cachedControllers[$routeKey1])) {
+            $cachedControllers[$routeKey1] = class_exists($routeKey1);
         }
 
-        foreach ($uniqueFunctionRoutes as $value) {
-            $route[$item2['value'] . '/' . $value] = $prefix . '/' . $value;
+        if (!$cachedControllers[$routeKey1]) {
+            $route[$routeKey1] = $controller1;
+        } else {
+            $route[$routeKey1] = 'welcome/no_page';
+        }
+    }
+
+    foreach ($uniqueFunctionRoutes as $key => $value) {
+        $routeKey1 = $item2['value'] . '/' . $key;
+        $controller1 = $prefix . '/' . $value;
+
+        if (!isset($cachedControllers[$routeKey1])) {
+            $cachedControllers[$routeKey1] = class_exists($routeKey1);
         }
 
-        foreach ($uniqueTableRoutes as $value) {
-            $route[$item2['value'] . '/filter_' . $value] = $prefix . '/' . 'filter_' . $item2['value'];
+        if (!$cachedControllers[$routeKey1]) {
+            $route[$routeKey1] = $controller1;
+        } else {
+            $route[$routeKey1] = 'welcome/no_page';
         }
-
-    } else {
-        $route[$item2['value']] = 'errors/page_missing';
     }
 }

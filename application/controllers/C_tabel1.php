@@ -37,7 +37,7 @@ class C_tabel1 extends Omnitags
 			'tbl1' => $this->tl1->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->aliases, $this->views, $this->v_input, $this->views, $this->flashdatas);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}

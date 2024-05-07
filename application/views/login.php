@@ -79,6 +79,7 @@
       object-fit: cover;
       filter: blur(5px);
       /* Adjust blur intensity as needed */
+      transform: scale(1.1);
     }
 
     /* Other styles for your form and other content */
