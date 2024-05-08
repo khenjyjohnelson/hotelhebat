@@ -50,7 +50,7 @@ class Omnitags extends CI_Controller
     public $flash_msg3, $flash_msg3_alt1, $flash_msg3_alt2;
     public $flash_msg4;
     public $flash_msg5;
-    public $tabel7, $tabel7_field1;
+    public $tabel_a1, $tabel_a1_field1;
 
     public function declarew()
     {
@@ -92,7 +92,7 @@ class Omnitags extends CI_Controller
         }
         
         date_default_timezone_set($this->aliases['timezone']);
-        $this->tabel7_field1 = 1;
+        $this->tabel_a1_field1 = 1;
 
         $jsonData2 = file_get_contents(site_url('assets/json/school_ukk_hotel_tables.postman_environment.json'));
         $myData2 = json_decode($jsonData2, true)['values'];
@@ -136,26 +136,26 @@ class Omnitags extends CI_Controller
             'v7' => '404',
             'v7_title' => 'Halaman Tidak Ada',
 
-            'tabel4_v2' => '_contents/tabel4/login',
-            'tabel4_v2_title' => 'Login Sebagai ' . $this->aliases['tabel4_alias'],
+            'tabel_c1_v2' => '_contents/tabel_c1/login',
+            'tabel_c1_v2_title' => 'Login Sebagai ' . $this->aliases['tabel_c1_alias'],
 
-            'tabel10_v2_alt' => '_contents/tabel10/daftar_tabel2',
-            'tabel10_v2_alt_title' => 'Daftar ' . $this->aliases['tabel10_alias'] . ' dari ' . $this->aliases['tabel2_alias'],
-            'tabel10_v3_alt' => '_contents/tabel10/admin_tabel2',
-            'tabel10_v3_alt_title' => 'Data ' . $this->aliases['tabel10_alias'] . ' dari ' . $this->aliases['tabel2_alias'],
+            'tabel_f3_v2_alt' => '_contents/tabel_f3/daftar_tabel_f1',
+            'tabel_f3_v2_alt_title' => 'Daftar ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
+            'tabel_f3_v3_alt' => '_contents/tabel_f3/admin_tabel_f1',
+            'tabel_f3_v3_alt_title' => 'Data ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
 
             'head' => '_partials/head',
             'phase' => $this->phase_1,
-			'tbl23' => $this->tl23->ambildata()->result(),
-			'sosmed' => $this->tl24->ambil_tabel7_field1($this->tabel7_field1)->result(),
-			'tbl7' => $this->tl25->tema($this->tabel7_field1)->result(),
+			'tbl_b5' => $this->tl_b5->ambildata()->result(),
+			'sosmed' => $this->tl_b6->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
+			'tbl_a1' => $this->tl_b7->tema($this->tabel_a1_field1)->result(),
 
             'flash1' => 'pesan',
             'flash1_func1' => '$("#element").toast("show")',
 
             // Pesan unik di bawah ini menggunakan flash1 dan ditandai dengan note
-            'flash1_note1' => 'Selamat datang ' . $this->session->userdata($this->aliases['tabel9_field6']) . ' ' . $this->session->userdata($this->aliases['tabel9_field2']) . '!',
-            'flash1_note2' => 'Ayo kita lanjutkan ke pemesanan, ' . $this->session->userdata($this->aliases['tabel9_field6']) . ' ' . $this->session->userdata($this->aliases['tabel9_field2']) . '!',
+            'flash1_note1' => 'Selamat datang ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!',
+            'flash1_note2' => 'Ayo kita lanjutkan ke pemesanan, ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!',
 
             // Data Manupulation Flashdatas
             'flash2' => 'pesan_tambah',

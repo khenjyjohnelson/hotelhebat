@@ -110,19 +110,16 @@ foreach ($myData2 as $item2) {
         'logout' => 'logout',
         'update_profil' => 'update_profil',
         'update_pass' => 'update_password',
+        'update_id_event' => 'update_id_event',
+        'update_id_lisensi' => 'update_id_lisensi',
+        'update_id_tema' => 'update_id_tema',
+        'update_favicon' => 'update_favicon',
+        'update_logo' => 'update_logo',
+        'update_foto' => 'update_foto',
         'ceklogin' => 'ceklogin',
         'importExcel' => 'importExcel',
         'cari' => 'cari',
         'book' => 'book'
-    ];
-
-    $uniqueFieldRoutes = [
-        'tabel7_field6' => 'tabel7_field6',
-        'tabel7_field7' => 'tabel7_field7',
-        'tabel7_field8' => 'tabel7_field8',
-        'tabel25_field3' => 'tabel7_field3',
-        'tabel25_field4' => 'tabel7_field4',
-        'tabel25_field5' => 'tabel7_field5',
     ];
 
     // Assign routes for each group
@@ -155,20 +152,6 @@ foreach ($myData2 as $item2) {
             $route[$routeKey1] = $controller1;
         } else {
             $route[$routeKey1] = 'welcome/no_page';
-        }
-
-        foreach ($uniqueFieldRoutes as $key2 => $fields) {
-            $routeKey2 = $item2['value'] . '/' . $value . '_' . $key2;
-            $controller2 = $prefix . '/' . $value . '_' . $fields;
-
-            if (!isset($cachedControllers[$routeKey2])) {
-                $cachedControllers[$routeKey2] = class_exists($routeKey2);
-            }
-
-            if ($cachedControllers[$routeKey2]) {
-                $route[$routeKey2] = $controller2;
-            } else {
-            }
         }
     }
 

@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cari daftar <?= $tabel8_alias ?> Anda</h5>
+                <h5 class="modal-title">Cari daftar <?= $tabel_f2_alias ?> Anda</h5>
 
                 <button class="close" data-dismiss="modal">
                     <span>&times;</span>
@@ -11,22 +11,22 @@
             </div>
 
             <!-- form mencari data pesanan, method get utk menampilkan apa yg diinput pengguna di halaman tujuan -->
-            <form action="<?= site_url($tabel8 . '/cari') ?>" method="get">
+            <form action="<?= site_url($tabel_f2 . '/cari') ?>" method="get">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>
-                            <?= $tabel8_field1_alias ?>
+                            <?= $tabel_f2_field1_alias ?>
                         </label>
-                        <input class="form-control" type="text" required name="<?= $tabel8_field1_input ?>"
-                            placeholder="Masukkan <?= $tabel8_field1_alias ?>">
+                        <input class="form-control" type="text" required name="<?= $tabel_f2_field1_input ?>"
+                            placeholder="Masukkan <?= $tabel_f2_field1_alias ?>">
                     </div>
 
                     <div class="form-group">
                         <label>
-                            <?= $tabel8_field4_alias ?>
+                            <?= $tabel_f2_field4_alias ?>
                         </label>
-                        <input class="form-control" type="email" required name="<?= $tabel8_field4_input ?>"
-                            placeholder="Masukkan <?= $tabel8_field4_alias ?> Anda">
+                        <input class="form-control" type="email" required name="<?= $tabel_f2_field4_input ?>"
+                            placeholder="Masukkan <?= $tabel_f2_field4_alias ?> Anda">
                     </div>
                 </div>
 

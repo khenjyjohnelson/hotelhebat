@@ -5,9 +5,9 @@
 <?php $this->load->view($head) ?>
 
 <body class="login">
-  <?php foreach ($tbl7 as $tl7): ?>
+  <?php foreach ($tbl_a1 as $tl_a1): ?>
     <div id="background-image">
-      <img src="img/tabel25/<?= $tl7->$tabel25_field5 ?>">
+      <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>">
     </div>
   <?php endforeach ?>
 
@@ -21,7 +21,7 @@
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
 
         <!-- form login -->
-        <form action="<?= site_url($tabel9 . '/ceklogin') ?>" method="post">
+        <form action="<?= site_url($tabel_c2 . '/ceklogin') ?>" method="post">
           <!-- <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -33,19 +33,19 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input class="form-control" type="text" name="<?= $tabel9_field3_input ?>"
-              placeholder="Masukkan <?= $tabel9_field3_alias ?>">
+            <input class="form-control" type="text" name="<?= $tabel_c2_field3_input ?>"
+              placeholder="Masukkan <?= $tabel_c2_field3_alias ?>">
           </div>
 
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <input class="form-control" type="password" name="<?= $tabel9_field4_input ?>"
-              placeholder="Masukkan <?= $tabel9_field4_alias ?>">
+            <input class="form-control" type="password" name="<?= $tabel_c2_field4_input ?>"
+              placeholder="Masukkan <?= $tabel_c2_field4_alias ?>">
           </div>
 
-          <!-- <p class="text-center"><a class="text-decoration-none" href="<?= site_url($tabel4 . '/login') ?>">Login sebagai <?= $tabel4_alias ?></a></p> -->
+          <!-- <p class="text-center"><a class="text-decoration-none" href="<?= site_url($tabel_c1 . '/login') ?>">Login sebagai <?= $tabel_c1_alias ?></a></p> -->
 
           <!-- pesan untuk pengguna yang login -->
           <p class="small text-center text-danger"><?= $this->session->flashdata($this->views['flash1']) ?></p>
@@ -53,7 +53,7 @@
           <!-- tombol login dan signup -->
           <div class="form-group d-flex justify-content-around">
             <button class="btn btn-success login" type="submit">Login</button>
-            <a class="btn btn-secondary login" type="button" href="<?= site_url($tabel9 . '/signup') ?>">Sign Up</a>
+            <a class="btn btn-secondary login" type="button" href="<?= site_url($tabel_c2 . '/signup') ?>">Sign Up</a>
           </div>
         </form>
       </div>

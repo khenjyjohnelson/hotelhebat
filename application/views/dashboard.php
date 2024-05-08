@@ -1,8 +1,8 @@
 <!-- mengarahkan ke no_level jika user tidak memiliki level -->
-<?php switch ($this->session->userdata($tabel9_field6)) {
-  case $tabel9_field6_value2:
-  case $tabel9_field6_value3:
-  case $tabel9_field6_value4:
+<?php switch ($this->session->userdata($tabel_c2_field6)) {
+  case $tabel_c2_field6_value2:
+  case $tabel_c2_field6_value3:
+  case $tabel_c2_field6_value4:
     break;
 
   default:
@@ -18,18 +18,18 @@
 <div class="row">
   <!-- menampilkan data untuk administrator -->
 
-  <?php switch ($this->session->userdata($tabel9_field6)) {
-    case $tabel9_field6_value3: ?>
+  <?php switch ($this->session->userdata($tabel_c2_field6)) {
+    case $tabel_c2_field6_value3: ?>
       <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel9_alias ?>
+              <?= $tabel_c2_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl9 ?>
+              <?= $tbl_c2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel9 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_c2 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -38,12 +38,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel4_alias ?>
+              <?= $tabel_c1_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl4 ?>
+              <?= $tbl_c1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel4 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_c1 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -52,12 +52,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel20_alias ?>
+              <?= $tabel_d3_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl4 ?>
+              <?= $tbl_c1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel20 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_d3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -77,18 +77,18 @@
 
   <!-- menampilkan data untuk administrator -->
 
-  <?php switch ($this->session->userdata($tabel9_field6)) {
-    case $tabel9_field6_value3: ?>
+  <?php switch ($this->session->userdata($tabel_c2_field6)) {
+    case $tabel_c2_field6_value3: ?>
       <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel6_alias ?>
+              <?= $tabel_e4_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl6 ?>
+              <?= $tbl_e4 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel6 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_e4 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -97,12 +97,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel5_alias ?>
+              <?= $tabel_e3_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl5 ?>
+              <?= $tbl_e3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel5 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_e3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -111,12 +111,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel3_alias ?>
+              <?= $tabel_e2_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl3 ?>
+              <?= $tbl_e2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_e2 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -125,28 +125,28 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel1_alias ?>
+              <?= $tabel_e1_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl1 ?>
+              <?= $tbl_e1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel1 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_e1 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
       <?php break;
 
-    case $tabel9_field6_value4: ?>
+    case $tabel_c2_field6_value4: ?>
       <div class="col-md-4 mt-2">
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel5_alias ?>
+              <?= $tabel_e3_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl5 ?>
+              <?= $tbl_e3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel5 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_e3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -155,28 +155,28 @@
         <div class="card text-white bg-primary">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel8_alias ?>
+              <?= $tabel_f2_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl8 ?>
+              <?= $tbl_f2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel8 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_f2 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
       <?php break;
 
-    case $tabel9_field6_value2: ?>
+    case $tabel_c2_field6_value2: ?>
       <div class="col-md-4 mt-2">
         <div class="card text-white bg-success">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel10_alias ?>
+              <?= $tabel_f3_alias ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
-              <?= $tbl10 ?>
+              <?= $tbl_f3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel10 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($tabel_f3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -192,14 +192,14 @@
 <!-- The charts shown will be different for each user level -->
 <h2 class="mt-4">Statistik</h2>
 <hr>
-<?php switch ($this->session->userdata($tabel9_field6)) {
-  case $tabel9_field6_value2:
-  case $tabel9_field6_value3:
-  case $tabel9_field6_value4:
+<?php switch ($this->session->userdata($tabel_c2_field6)) {
+  case $tabel_c2_field6_value2:
+  case $tabel_c2_field6_value3:
+  case $tabel_c2_field6_value4:
     ?>
     <div class="row mt-4">
       <div class="col-md-6 px-2 px-sm-3 dashboard-stat-box">
-        <canvas id="myChart_tabel8_tabel2" width="200" height="125"></canvas>
+        <canvas id="myChart_tabel_f2_tabel_f1" width="200" height="125"></canvas>
       </div>
     </div>
     <?php break;
@@ -217,36 +217,36 @@
 <div class="row">
   <div class="col-md-6">
 
-    <?php foreach ($tbl7 as $tl7): ?>
+    <?php foreach ($tbl_a1 as $tl_a1): ?>
       <div class="table-responsive">
         <table class="table table-light" id="data">
           <thead></thead>
           <tbody>
             <tr>
-              <td class="table-secondary table-active"><?= $tabel7_field2_alias ?></td>
-              <td class="table-light"><?= $tl7->$tabel7_field2 ?></td>
+              <td class="table-secondary table-active"><?= $tabel_a1_field2_alias ?></td>
+              <td class="table-light"><?= $tl_a1->$tabel_a1_field2 ?></td>
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel7_field3_alias ?></td>
-              <td class="table-light"><?= $tl7->$tabel7_field3 ?></td>
+              <td class="table-secondary table-active"><?= $tabel_a1_field3_alias ?></td>
+              <td class="table-light"><?= $tl_a1->$tabel_a1_field3 ?></td>
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel7_field4_alias ?></td>
-              <td class="table-light"><?= $tl7->$tabel7_field4 ?></td>
+              <td class="table-secondary table-active"><?= $tabel_a1_field4_alias ?></td>
+              <td class="table-light"><?= $tl_a1->$tabel_a1_field4 ?></td>
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel7_field5_alias ?></td>
-              <td class="table-light"><?= $tl7->$tabel7_field5 ?></td>
+              <td class="table-secondary table-active"><?= $tabel_a1_field5_alias ?></td>
+              <td class="table-light"><?= $tl_a1->$tabel_a1_field5 ?></td>
             </tr>
 
             <?php foreach ($sosmed as $sm):
-              if ($sm->$tabel24_field2 == $tl7->$tabel7_field1) { ?>
+              if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) { ?>
                 <tr>
-                  <td class="table-secondary table-active"><?= $sm->$tabel24_field3 ?></td>
-                  <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $sm->$tabel24_field4 ?>" target="_blank">
+                  <td class="table-secondary table-active"><?= $sm->$tabel_b6_field3 ?></td>
+                  <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>" target="_blank">
                     Visit</a>
                 </tr>
               <?php }endforeach; ?>
@@ -259,7 +259,7 @@
     </div>
 
     <div class="col-md-6">
-      <img class="img-thumbnail rounded" src="img/tabel25/<?= $tl7->$tabel25_field5 ?>">
+      <img class="img-thumbnail rounded" src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>">
     </div>
   </div>
 

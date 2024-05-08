@@ -168,40 +168,40 @@
 </script>
 
 <script>
-    var ctx = document.getElementById('myChart_tabel8_tabel2').getContext('2d');
-    var chartDataTabel2 = <?= $chart_tabel2 ?> // Data passed from controller
-    var chartDataTabel8 = <?= $chart_tabel8 ?> // Data passed from controller
+    var ctx = document.getElementById('myChart_tabel_f2_tabel_f1').getContext('2d');
+    var chartDatatabel_f1 = <?= $chart_tabel_f1 ?> // Data passed from controller
+    var chartDatatabel_f2 = <?= $chart_tabel_f2 ?> // Data passed from controller
 
-    var labelsTabel2 = chartDataTabel2.map(function (item) {
+    var labelstabel_f1 = chartDatatabel_f1.map(function (item) {
         return item.label;
     });
 
-    var valuesTabel2 = chartDataTabel2.map(function (item) {
+    var valuestabel_f1 = chartDatatabel_f1.map(function (item) {
         return item.value;
     });
 
-    var labelsTabel8 = chartDataTabel8.map(function (item) {
+    var labelstabel_f2 = chartDatatabel_f2.map(function (item) {
         return item.label;
     });
 
-    var valuesTabel8 = chartDataTabel8.map(function (item) {
+    var valuestabel_f2 = chartDatatabel_f2.map(function (item) {
         return item.value;
     });
 
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: labelsTabel8,
+            labels: labelstabel_f2,
             datasets: [{
-                label: 'Jumlah <?= $tabel8_alias ?> Aktif',
-                data: valuesTabel8,
+                label: 'Jumlah <?= $tabel_f2_alias ?> Aktif',
+                data: valuestabel_f2,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
             },
             {
-                label: 'Jumlah <?= $tabel2_alias ?>',
-                data: valuesTabel2,
+                label: 'Jumlah <?= $tabel_f1_alias ?>',
+                data: valuestabel_f1,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
