@@ -26,7 +26,7 @@ class C_tabel_a1 extends Omnitags
 			'tbl_b7' => $this->tl_b7->ambildata()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -43,7 +43,7 @@ class C_tabel_a1 extends Omnitags
 			'tbl_a1_alt' => $this->tl_a1->ambildata()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}

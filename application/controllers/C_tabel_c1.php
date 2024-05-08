@@ -23,7 +23,7 @@ class C_tabel_c1 extends Omnitags
 			'tbl_e4' => $this->tl_e4->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -145,7 +145,7 @@ class C_tabel_c1 extends Omnitags
 			'tbl_c1' => $this->tl_c1->ambildata()->result()
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->v4['tabel_c1'], $data);
 	}
@@ -162,7 +162,7 @@ class C_tabel_c1 extends Omnitags
 			'tbl_c1' => $this->tl_c1->ambil_tabel_c1_field1($tabel_c1_field1)->result()
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -176,7 +176,7 @@ class C_tabel_c1 extends Omnitags
 			'dekor' => $this->tl_b1->dekor('tabel_c1')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->views['tabel_c1_v2'], $data);
 	}
@@ -190,7 +190,7 @@ class C_tabel_c1 extends Omnitags
 			'dekor' => $this->tl_b1->dekor('v3')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->views['v3'], $data);
 	}

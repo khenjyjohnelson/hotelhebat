@@ -66,11 +66,11 @@ class Omnitags extends CI_Controller
             $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
             $this->v_post_old[$item['key']] = $this->input->post('old_' . $item['value']);
 
-            $this->v_filter1[$item['key']] = $item['value'] . '_min';
-            $this->v_filter2[$item['key']] = $item['value'] . '_max';
+            $this->v_filter1[$item['key'] . '_filter1'] = 'min_' . $item['value'];
+            $this->v_filter2[$item['key'] . '_filter2'] = 'max_' . $item['value'];
 
-            $this->v_filter1_get[$item['key']] = $this->input->get($item['value'] . '_min');
-            $this->v_filter2_get[$item['key']] = $this->input->get($item['value'] . '_max');
+            $this->v_filter1_get[$item['key']] = $this->input->get('min_' . $item['value']);
+            $this->v_filter2_get[$item['key']] = $this->input->get('max_' . $item['value']);
 
             $this->flash1_msg_1[$item['key']] = 'Data ' . $item['value'] . ' berhasil disimpan!';
             $this->flash1_msg_2[$item['key']] = 'Data ' . $item['value'] . ' gagal disimpan!';

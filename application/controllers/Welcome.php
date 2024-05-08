@@ -50,7 +50,7 @@ class Welcome extends Omnitags
 					'tbl_b2' => $this->tl_b2->ambildata()->result(),
 				);
 
-				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 				$this->load->view($this->views['v1'], $data);
 		}
@@ -81,7 +81,7 @@ class Welcome extends Omnitags
 			'chart_tabel_f2' => json_encode($chart_tabel_f2),
 		);
 		
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 		
 		$this->load->view($this->views['v1'], $data);
 	}
@@ -97,7 +97,7 @@ class Welcome extends Omnitags
 'tbl_a1' => $this->tl_a1->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->views['v4'], $data);
 	}
@@ -111,7 +111,7 @@ class Welcome extends Omnitags
 			'dekor' => $this->tl_b1->dekor('v7')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
 		$this->load->view($this->views['v7'], $data);
 	}
