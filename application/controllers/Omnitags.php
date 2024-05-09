@@ -6,7 +6,7 @@ class Omnitags extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        
+
         // Set security headers
         $this->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
         $this->output->set_header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
@@ -39,6 +39,7 @@ class Omnitags extends CI_Controller
     public $v_input, $v_post, $v_get, $v_old, $v_post_old;
     public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
+    public $gettime, $datetime, $elapsedTime;
     public $flash1_msg_1;
     public $flash1_msg_2;
     public $flash1_msg_3;
@@ -51,6 +52,68 @@ class Omnitags extends CI_Controller
     public $flash_msg4;
     public $flash_msg5;
     public $tabel_a1, $tabel_a1_field1;
+
+    public function add_notif($aksi, $msg1, $type1, $msg2, $type2, $extra)
+    {
+        if ($aksi) {
+            $notif = array(
+                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+                $this->aliases['tabel_b9_field3'] => $type1,
+                $this->aliases['tabel_b9_field4'] => $msg1 . $extra,
+                $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
+            );
+
+            $ambil = $this->tl_b9->simpan($notif);
+            
+            $this->session->set_flashdata($this->views['flash1'], $msg1);
+            $this->session->set_flashdata('toast', $this->views['flash1_func1']);
+            return[];
+        } else {
+            $notif = array(
+                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+                $this->aliases['tabel_b9_field3'] => $type2,
+                $this->aliases['tabel_b9_field4'] => $msg2 . $extra,
+                $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
+            );
+
+            $ambil = $this->tl_b9->simpan($notif);
+
+            $this->session->set_flashdata($this->views['flash1'], $msg2);
+            $this->session->set_flashdata('toast', $this->views['flash1_func1']);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function add_notif_flash($aksi, $field, $msg1, $type1, $msg2, $type2, $extra)
+    {
+        if ($aksi) {
+            $notif = array(
+                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+                $this->aliases['tabel_b9_field3'] => $type1,
+                $this->aliases['tabel_b9_field4'] => $msg1 . $extra,
+                $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
+            );
+
+            $ambil = $this->tl_b9->simpan($notif);
+            
+            $this->session->set_flashdata($this->flash[$field], $msg1);
+            $this->session->set_flashdata('modal', $this->flash_func[$field]);
+            return[];
+        } else {
+            $notif = array(
+                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+                $this->aliases['tabel_b9_field3'] => $type2,
+                $this->aliases['tabel_b9_field4'] => $msg2 . $extra,
+                $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
+            );
+
+            $ambil = $this->tl_b9->simpan($notif);
+
+            $this->session->set_flashdata($this->flash[$field], $msg2);
+            $this->session->set_flashdata('modal', $this->flash_func[$field]);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
 
     public function declarew()
     {
@@ -89,8 +152,9 @@ class Omnitags extends CI_Controller
             $this->flash_msg3_alt2[$item['key']] = 'Konfirmasi' . $item['value'] . ' lama salah!';
             $this->flash_msg4[$item['key']] = $item['value'] . ' tidak tersedia!';
             $this->flash_msg5[$item['key']] = $item['value'] . ' telah digunakan!';
+
         }
-        
+
         date_default_timezone_set($this->aliases['timezone']);
         $this->tabel_a1_field1 = 1;
 
@@ -106,7 +170,7 @@ class Omnitags extends CI_Controller
             $this->v3[$item['key']] = '_contents/' . $item['key'] . '/admin';
             $this->v4[$item['key']] = '_contents/' . $item['key'] . '/laporan';
             $this->v5[$item['key']] = '_contents/' . $item['key'] . '/print';
-            $this->v6[$item['key']] = '_contents/'. $item['key'].'/profil';
+            $this->v6[$item['key']] = '_contents/' . $item['key'] . '/profil';
             $this->v7[$item['key']] = '_contents/' . $item['key'] . '/konfirmasi';
             $this->v8[$item['key']] = '_contents/' . $item['key'] . '/detail';
 
@@ -117,8 +181,11 @@ class Omnitags extends CI_Controller
             $this->v5_title[$item['key']] = 'Data ' . $item['value'];
             $this->v6_title[$item['key']] = 'Profil ' . $item['value'];
             $this->v7_title[$item['key']] = $item['value'] . ' Berhasil!';
-            $this->v8_title[$item['key']] = 'Detail' . $item['value'];
+            $this->v8_title[$item['key']] = 'Detail ' . $item['value'];
         }
+
+        $notif_limit = $this->tl_b9->ambil_tabel_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']));
+        $notif_null = $this->tl_b9->ambil_tabel_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
 
         $this->views = array(
             'v1' => '_layouts/template',
@@ -146,9 +213,11 @@ class Omnitags extends CI_Controller
 
             'head' => '_partials/head',
             'phase' => $this->phase_1,
-			'tbl_b5' => $this->tl_b5->ambildata()->result(),
-			'sosmed' => $this->tl_b6->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
-			'tbl_a1' => $this->tl_b7->tema($this->tabel_a1_field1)->result(),
+            'tbl_b5' => $this->tl_b5->ambildata()->result(),
+            'sosmed' => $this->tl_b6->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
+            'tbl_a1' => $this->tl_b7->tema($this->tabel_a1_field1)->result(),
+            'tbl_b9' => $notif_limit->result(),
+            'tbl_b9_count' => $notif_null->num_rows(),
 
             'flash1' => 'pesan',
             'flash1_func1' => '$("#element").toast("show")',
@@ -175,5 +244,42 @@ class Omnitags extends CI_Controller
         $this->tempdatas = array(
 
         );
+
+        function getTimeElapsedString($datetime, $full = false)
+        {
+            $now = new DateTime();
+            $ago = new DateTime($datetime);
+            $diff = $now->diff($ago);
+
+            $diff->w = floor($diff->d / 7);
+            $diff->d -= $diff->w * 7;
+
+            $string = array(
+                'y' => 'tahun',
+                'm' => 'bulan',
+                'w' => 'minggu',
+                'd' => 'hari',
+                'h' => 'jam',
+                'i' => 'menit',
+                's' => 'detik',
+            );
+
+            foreach ($string as $k => &$v) {
+                if ($diff->$k) {
+                    $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
+                } else {
+                    unset($string[$k]);
+                }
+            }
+
+            if (!$full) {
+                $string = array_slice($string, 0, 1);
+            }
+
+            return $string ? implode(', ', $string) . ' yang lalu' : 'Baru saja';
+        }
     }
+
+
+
 }

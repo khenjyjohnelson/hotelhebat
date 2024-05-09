@@ -84,9 +84,9 @@ class C_tabel_e4 extends Omnitags
 			$this->aliases['tabel_e4_field3'] => $this->v_post['tabel_e4_field3'],
 		);
 
-		$update = $this->tl_e4->update($data, $tabel_e4_field1);
+		$aksi = $this->tl_e4->update($data, $tabel_e4_field1);
 
-		if ($update) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_e4_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
@@ -105,9 +105,9 @@ class C_tabel_e4 extends Omnitags
 		$tabel_e4_field3 = $tabel_e4[0]->img;
 
 		unlink($this->v_upload_path['tabel_e4_field3'] . $tabel_e4_field3);
-		$hapus = $this->tl_e4->hapus($tabel_e4_field1);
+		$aksi = $this->tl_e4->hapus($tabel_e4_field1);
 
-		if ($hapus) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_e4_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {

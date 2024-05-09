@@ -91,9 +91,9 @@ class C_tabel_c2 extends Omnitags
 			$this->aliases['tabel_c2_field5'] => $this->v_post['tabel_c2_field5'],
 		);
 
-		$update = $this->tl_c2->update($data, $tabel_c2_field1);
+		$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
 
-		if ($update) {
+		if ($aksi) {
 
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_c2_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
@@ -111,10 +111,10 @@ class C_tabel_c2 extends Omnitags
 	{
 		$this->declarew();
 
-		$hapus = $this->tl_c2->hapus($tabel_c2_field1);
+		$aksi = $this->tl_c2->hapus($tabel_c2_field1);
 
 
-		if ($hapus) {
+		if ($aksi) {
 
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_c2_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
@@ -202,9 +202,9 @@ class C_tabel_c2 extends Omnitags
 			$this->aliases['tabel_c2_field5'] => $this->v_post['tabel_c2_field5'],
 		);
 
-		$update = $this->tl_c2->update($data, $tabel_c2_field1);
+		$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
 
-		if ($update) {
+		if ($aksi) {
 
 			$this->session->set_flashdata($this->views['flash1'], 'Profil berhasil diubah!');
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
@@ -256,7 +256,7 @@ class C_tabel_c2 extends Omnitags
 						$this->aliases['tabel_c2_field4'] => password_hash($tabel_c2_field4, PASSWORD_DEFAULT),
 					);
 
-					$update = $this->tl_c2->update($data, $tabel_c2_field1);
+					$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
 
 					redirect($_SERVER['HTTP_REFERER']);
 

@@ -57,9 +57,9 @@ class M_tabel_f2 extends CI_Model
 
 	public function filter_tabel_c2($param1, $param2)
 	{
-		$filter = "SELECT * FROM $this->aliases['tabel_f3'] WHERE 
-		$this->aliases['tabel_c2_field1'] IN ($param2) AND
-		$this->aliases['tabel_c2_field1'] LIKE  '%$param1%' ORDER BY $this->aliases['tabel_c2_field1'] DESC";
+		$filter = "SELECT * FROM {$this->aliases['tabel_f3']} WHERE 
+		{$this->aliases['tabel_c2_field1']} IN ($param2) AND
+		{$this->aliases['tabel_c2_field1']} LIKE  '%$param1%' ORDER BY {$this->aliases['tabel_c2_field1']} DESC";
 		return $this->db->query($filter);
 	}
 

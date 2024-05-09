@@ -65,9 +65,9 @@ class C_tabel_e3 extends Omnitags
 			$this->aliases['tabel_e3_field5'] => $this->v_post['tabel_e3_field5'],
 		);
 
-		$update = $this->tl_e3->update($data, $tabel_e3_field1);
+		$aksi = $this->tl_e3->update($data, $tabel_e3_field1);
 
-		if ($update) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_e3_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
@@ -82,9 +82,9 @@ class C_tabel_e3 extends Omnitags
 	{
 		$this->declarew();
 
-		$hapus = $this->tl_e3->hapus($tabel_e3_field1);
+		$aksi = $this->tl_e3->hapus($tabel_e3_field1);
 
-		if ($hapus) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_e3_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {

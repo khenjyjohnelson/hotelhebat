@@ -161,9 +161,9 @@ class C_tabel_f3 extends Omnitags
 		if ($this->v_post['tabel_f2_field12'] === $this->aliases['tabel_f2_field12_value3']) {
 
 			// hanya merubah status pesanan
-			$update = $this->tl_f2->update($status, $tabel_f3_field4);
+			$aksi = $this->tl_f2->update($status, $tabel_f3_field4);
 
-			if ($update) {
+			if ($aksi) {
 				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_f2_alias']);
 				$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 			} else {
@@ -194,9 +194,9 @@ class C_tabel_f3 extends Omnitags
 			$this->aliases['tabel_f3_field7'] => $tabel_f3_field7,
 		);
 
-		$update = $this->tl_f3->update($data, $tabel_f3_field1);
+		$aksi = $this->tl_f3->update($data, $tabel_f3_field1);
 
-		if ($update) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_f3_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
@@ -212,9 +212,9 @@ class C_tabel_f3 extends Omnitags
 		$this->declarew();
 
 		$tabel_f3 = $this->tl_f3->ambil_tabel_f3_field1($tabel_f3_field1)->result();
-		$hapus = $this->tl_f3->hapus($tabel_f3_field1);
+		$aksi = $this->tl_f3->hapus($tabel_f3_field1);
 
-		if ($hapus) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_f3_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {

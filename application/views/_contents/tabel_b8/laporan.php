@@ -36,7 +36,6 @@
           <th><?= $tabel_b8_field2_alias ?></th>
           <th><?= $tabel_b8_field3_alias ?></th>
           <th><?= $tabel_b8_field4_alias ?></th>
-          <th><?= $tabel_b8_field5_alias ?></th>
         </tr>
       </thead>
       <tbody>
@@ -44,9 +43,8 @@
           <tr>
             <td width=""><?= $tl_b8->$tabel_b8_field1; ?></td>
             <td width=""><?= $tl_b8->$tabel_b8_field2 ?></td>
-            <td width=""><img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field3 ?>" height="100"></td>
-            <td width=""><img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field4 ?>" height="100"></td>
-            <td width=""><img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field5 ?>" height="100"></td>
+            <td width=""><?= $tl_b8->$tabel_b8_field3 ?></td>
+            <td width=""><?= $tl_b8->$tabel_b8_field4 ?></td>
           </tr>
         <?php endforeach ?>
       </tbody>

@@ -121,108 +121,80 @@
             <li class="nav-item dropdown">
                 <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
                     <i class="fas fa-bell"></i>
-                    <span>9</span>
+                    <span><?= $tbl_b9_count ?></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <div class="dropdown-header d-flex justify-content-between align-items-center">
-                        <span>4 New Notifications</span>
+                        <span><?= $tbl_b9_count ?> New Notifications</span>
                         <div>
-                            <span class="px-2"></span> <!-- Adding space between buttons -->
-                            <button class="btn btn-link">
+                            <span class="px-3"></span> <!-- Adding space between buttons -->
+                            <a href="<?= site_url($tabel_b9 . '/update') ?>" class="btn btn-link">
                                 <i class="far fa-check-circle"></i>
-                            </button>
-                            <button class="btn btn-link">
+                            </a>
+                            <!-- <a class="btn btn-link">
                                 <i class="fas fa-cog"></i>
-                            </button>
+                            </a> -->
                         </div>
                     </div>
 
                     <div class="list-group" style="min-width: 350px;">
-                        <a href="#" class="list-group-item bg-light">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-2">
-                                    <i class="text-danger fas fa-exclamation-circle"></i>
-                                </div>
-                                <div class="col-10">
-                                    <div class="text-dark">Update completed</div>
-                                    <div class="text-muted small mt-1">
-                                        Restart server 12 to complete the update.
-                                    </div>
-                                    <div class="text-muted small mt-1">30m ago</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-2">
-                                    <i class="text-warning fas fa-bell"></i>
-                                </div>
-                                <div class="col-10">
-                                    <div class="text-dark">Lorem ipsum</div>
-                                    <small class="text-muted small mt-1">
-                                        Aliquam ex eros, imperdiet vulputate hendrerit et.
-                                    </small>
-                                    <div class="text-muted small mt-1">2h ago</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-2">
-                                    <i class="text-primary fas fa-home"></i>
-                                </div>
-                                <div class="col-10">
-                                    <div class="text-dark">Login from 192.186.1.8</div>
-                                    <div class="text-muted small mt-1">5h ago</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-2">
-                                    <i class="text-success fas fa-user-plus"></i>
-                                </div>
-                                <div class="col-10">
-                                    <div class="text-dark">New connection</div>
-                                    <div class="text-muted small mt-1">
-                                        Christina accepted your request.
-                                    </div>
-                                    <div class="text-muted small mt-1">14h ago</div>
-                                </div>
-                            </div>
-                        </a>
+
+                        <?php foreach ($tbl_b9 as $tl_b9):
+
+                                if ($tl_b9->$tabel_b9_field2 == $this->session->userdata($tabel_c2_field1)) {
+                                    if ($tl_b9->$tabel_b9_field6 == NULL) { ?>
+
+                                        <a href="<?= site_url($tabel_b9 . '/detail/' . $tl_b9->$tabel_b9_field1) ?>"
+                                            class="list-group-item bg-light">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-2">
+                                                    <?= $tl_b9->$tabel_b8_field4 ?>
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="text-dark"><?= $tl_b9->$tabel_b8_field3 ?></div>
+                                                    <div class="text-muted small mt-1">
+                                                        <?= $tl_b9->$tabel_b9_field4 ?>
+                                                    </div>
+                                                    <div class="text-muted small mt-1"><?= getTimeElapsedString($tl_b9->$tabel_b9_field5) ?></div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    <?php } else { ?>
+                                        <a href="<?= site_url($tabel_b9 . '/detail/' . $tl_b9->$tabel_b9_field1) ?>" class="list-group-item">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-2">
+                                                    <?= $tl_b9->$tabel_b8_field4 ?>
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="text-dark"><?= $tl_b9->$tabel_b8_field3 ?></div>
+                                                    <div class="text-muted small mt-1">
+                                                        <?= $tl_b9->$tabel_b9_field4 ?>
+                                                    </div>
+                                                    <div class="text-muted small mt-1"><?= getTimeElapsedString($tl_b9->$tabel_b9_field5) ?></div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    <?php }
+                                } else { ?>
+
+                                    <a href="#" class="list-group-item bg-light">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <i class="text-danger fas fa-bell-slash"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">No Notifications Available</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <?php }
+                            endforeach; ?>
                     </div>
                     <div class="dropdown-header">
-                        <a href="#" class="text-muted">Show all notifications</a>
-                    </div>
-                </div>
-            </li>
-
-
-            <li class="nav-item">
-                <div class="dropdown">
-                    <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
-                        <i class="fas fa-bell"></i>
-                        <span>9</span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-right" style="max-width: 400px;">
-                        <div class="dropdown-header">4 New Notifications</div>
-                        <div class="dropdown-item">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-md-2">
-                                    <i class="fas fa-exclamation-circle"></i>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="text-dark">Update completed</div>
-                                    <div class="text-dark small mt-1"> <!-- Added truncate class -->
-                                        " Restart server 12 to complete the update. "
-                                    </div>
-                                    <div class="text-muted small mt-1">30m ago</div>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="<?= site_url($tabel_b9 . '/daftar') ?>" class="text-muted">Show all notifications</a>
                     </div>
                 </div>
             </li>

@@ -41,23 +41,23 @@ class M_tabel_f1 extends CI_Model
 	// and the filter function with AND, with that, the fiter will be fine
 	public function filter($param1, $param2, $param3, $param4)
 	{
-		$filter = "SELECT * FROM $this->aliases['tabel_f1'] WHERE 
+		$filter = "SELECT * FROM {$this->aliases['tabel_f1']} WHERE 
 		
-		$this->aliases['tabel_f1_field11'] BETWEEN '$param1' AND '$param2'
+		{$this->aliases['tabel_f1_field11']} BETWEEN '$param1' AND '$param2'
 		 OR 
-		 $this->aliases['tabel_f1_field12'] BETWEEN '$param3' AND '$param4'
-		ORDER BY $this->aliases['tabel_f1_field1'] DESC";
+		 {$this->aliases['tabel_f1_field12']} BETWEEN '$param3' AND '$param4'
+		ORDER BY {$this->aliases['tabel_f1_field1']} DESC";
 		return $this->db->query($filter);
 	}
 
 	public function filter_tabel_c1($param1, $param2, $param3, $param4, $param5)
 	{
-		$filter = "SELECT * FROM $this->aliases['tabel_f1'] WHERE 
-		$this->aliases['tabel_c2_field1'] IN ($param5) AND
-		$this->aliases['tabel_f1_field11'] BETWEEN '$param1' AND '$param2'
+		$filter = "SELECT * FROM {$this->aliases['tabel_f1']} WHERE 
+		{$this->aliases['tabel_c2_field1']} IN ($param5) AND
+		{$this->aliases['tabel_f1_field11']} BETWEEN '$param1' AND '$param2'
 		OR
-		$this->aliases['tabel_f1_field12'] BETWEEN '$param3' AND '$param4'
-		ORDER BY $this->aliases['tabel_f1_field1'] DESC";
+		{$this->aliases['tabel_f1_field12']} BETWEEN '$param3' AND '$param4'
+		ORDER BY {$this->aliases['tabel_f1_field1']} DESC";
 		return $this->db->query($filter);
 	}
 

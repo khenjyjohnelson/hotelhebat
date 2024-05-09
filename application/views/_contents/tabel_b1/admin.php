@@ -17,7 +17,7 @@
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <?php foreach ($dekor as $dk): ?>
-  <img src="img/tabel_b1/<?= $dk->$tabel_b1_field3 ?>" width="200">
+  <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" width="200">
 <?php endforeach ?>
 
 <div class="table-responsive">
@@ -27,8 +27,9 @@
         <th>No</th>
         <th><?= $tabel_b1_field1_alias ?></th>
         <th><?= $tabel_b1_field2_alias ?></th>
-        <th><?= $tabel_b1_field4_alias ?></th>
         <th><?= $tabel_b1_field3_alias ?></th>
+        <th><?= $tabel_b1_field4_alias ?></th>
+        <th><?= $tabel_b1_field5_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -39,8 +40,9 @@
           <td></td>
           <td><?= $tl_b1->$tabel_b1_field1; ?></td>
           <td><?= $tl_b1->$tabel_b1_field2 ?></td>
-          <td><?= $tl_b1->$tabel_b1_field4 ?></td>
-          <td><img src="img/tabel_b1/<?= $tl_b1->$tabel_b1_field3 ?>" width="100"></td>
+          <td><?= $tl_b1->$tabel_b1_field3 ?></td>
+          <td><img src="img/tabel_b1/<?= $tl_b1->$tabel_b1_field4?>" height="75"></td>
+          <td><h2><?= $tl_b1->$tabel_b1_field5 ?></h2></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b1->$tabel_b1_field1; ?>">
               <i class="fas fa-eye"></i></a>
@@ -79,15 +81,21 @@
           </div>
           
           <div class="form-group">
-            <label><?= $tabel_b1_field4_alias ?></label>
-            <input class="form-control" type="text" required name="<?= $tabel_b1_field4_input ?>"
-              placeholder="Masukkan <?= $tabel_b1_field4_alias ?>">
+            <label><?= $tabel_b1_field3_alias ?></label>
+            <input class="form-control" type="text" required name="<?= $tabel_b1_field3_input ?>"
+              placeholder="Masukkan <?= $tabel_b1_field3_alias ?>">
           </div>
           
           <div class="form-group">
-            <label><?= $tabel_b1_field3_alias ?></label>
-            <input class="form-control-file" required type="file" name="<?= $tabel_b1_field3_input ?>">
+            <label><?= $tabel_b1_field4_alias ?></label>
+            <input class="form-control-file" required type="file" name="<?= $tabel_b1_field4_input ?>">
             
+          </div>
+            
+          <div class="form-group">
+            <label><?= $tabel_b1_field5_alias ?></label>
+            <input class="form-control" type="text" required name="<?= $tabel_b1_field5_input ?>"
+              placeholder="Masukkan <?= $tabel_b1_field5_alias ?>">
           </div>
 
         </div>
@@ -104,7 +112,7 @@
 </div>
 
 
-<!-- modal edit foto-->
+<!-- modal edit-->
 <?php foreach ($tbl_b1 as $tl_b1): ?>
   <div id="ubah<?= $tl_b1->$tabel_b1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
@@ -125,24 +133,30 @@
               <input class="form-control" type="text" required name="<?= $tabel_b1_field2_input ?>"
                 value="<?= $tl_b1->$tabel_b1_field2; ?>">
               <input type="hidden" name="<?= $tabel_b1_field1_input ?>" value="<?= $tl_b1->$tabel_b1_field1; ?>">
-              * Meski ingin mengubah <?= $tabel_b1_field2_alias ?> saja, tetap harus mengupload ulang <?= $tabel_b1_field3_alias ?> juga
+              * Meski ingin mengubah <?= $tabel_b1_field2_alias ?> saja, tetap harus mengupload ulang <?= $tabel_b1_field4_alias ?> juga
             </div>
             
             <div class="form-group">
-              <label><?= $tabel_b1_field4_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel_b1_field4_input ?>"
-                value="<?= $tl_b1->$tabel_b1_field4; ?>">
+              <label><?= $tabel_b1_field3_alias ?></label>
+              <input class="form-control" type="text" required name="<?= $tabel_b1_field3_input ?>"
+                value="<?= $tl_b1->$tabel_b1_field3; ?>">
             </div>
 
             <div class="form-group">
-              <img src="img/tabel_b1/<?= $tl_b1->$tabel_b1_field3; ?>" width="300">
+              <img src="img/tabel_b1/<?= $tl_b1->$tabel_b1_field4; ?>" width="300">
             </div>
             <hr>
             
             <div class="form-group">
-              <label>Ubah <?= $tabel_b1_field3_alias ?></label>
-              <input class="form-control-file" type="file" name="<?= $tabel_b1_field3_input ?>">
-              <input type="hidden" name="<?= $tabel_b1_field3_old ?>" value="<?= $tl_b1->$tabel_b1_field3; ?>">
+              <label>Ubah <?= $tabel_b1_field4_alias ?></label>
+              <input class="form-control-file" type="file" name="<?= $tabel_b1_field4_input ?>">
+              <input type="hidden" name="<?= $tabel_b1_field4_old ?>" value="<?= $tl_b1->$tabel_b1_field4; ?>">
+            </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b1_field5_alias ?></label>
+              <input class="form-control" type="text" required name="<?= $tabel_b1_field5_input ?>"
+                value="<?= htmlspecialchars($tl_b1->$tabel_b1_field5); ?>">
             </div>
           </div>
 
@@ -188,17 +202,23 @@
             <hr>
 
             <div class="form-group">
-              <label><?= $tabel_b1_field4_alias ?> : </label>
-              <p><?= $tl_b1->$tabel_b1_field4; ?></p>
+              <label><?= $tabel_b1_field3_alias ?> : </label>
+              <p><?= $tl_b1->$tabel_b1_field3; ?></p>
             </div>
             <hr>
             
             <div class="form-group">
-              <label><?= $tabel_b1_field3_alias ?> : </label>
+              <label><?= $tabel_b1_field4_alias ?> : </label>
             </div>
             <div class="form-group">
-              <img src="img/tabel_b1/<?= $tl_b1->$tabel_b1_field3; ?>" width="450">
+              <img src="img/tabel_b1/<?= $tl_b1->$tabel_b1_field4; ?>" width="450">
             </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b1_field5_alias ?> : </label>
+              <p><?= $tl_b1->$tabel_b1_field5; ?></p>
+            </div>
+            <hr>
 
 
           </div>

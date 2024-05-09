@@ -34,8 +34,8 @@
         <tr>
           <th><?= $tabel_b1_field1_alias ?></th>
           <th><?= $tabel_b1_field2_alias ?></th>
-          <th><?= $tabel_b1_field4_alias ?></th>
           <th><?= $tabel_b1_field3_alias ?></th>
+          <th><?= $tabel_b1_field4_alias ?></th>
         </tr>
       </thead>
       <tbody>
@@ -43,8 +43,8 @@
           <tr>
             <td width=""><?= $tl_b1->$tabel_b1_field1 ?></td>
             <td width=""><?= $tl_b1->$tabel_b1_field2 ?></td>
-            <td width=""><?= $tl_b1->$tabel_b1_field4 ?></td>
-            <td width=""><img src="img/tabel_b1/<?= $tl_b1->$tabel_b1_field3 ?>" width="100"></td>
+            <td width=""><?= $tl_b1->$tabel_b1_field3 ?></td>
+            <td width=""><img src="img/tabel_b1/<?= $tl_b1->$tabel_b1_field4 ?>" width="100"></td>
           </tr>
         <?php endforeach ?>
       </tbody>

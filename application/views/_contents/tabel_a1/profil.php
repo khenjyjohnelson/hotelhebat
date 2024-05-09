@@ -82,7 +82,7 @@
   </div>
   <div class="col-md-6">
     <?php foreach ($dekor as $dk): ?>
-      <img src="img/tabel_b1/<?= $dk->$tabel_b1_field3 ?>" class="img-fluid">
+      <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid">
     <?php endforeach ?>
   </div>
 </div>

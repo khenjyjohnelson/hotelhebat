@@ -133,9 +133,9 @@ class C_tabel_e1 extends Omnitags
 		try {
 			// Security: Prepared Statements to prevent SQL injection
 			// Functional requirement: Update data in the database
-			$update = $this->tl_e1->update($data, $tabel_e1_field1);
+			$aksi = $this->tl_e1->update($data, $tabel_e1_field1);
 
-			if ($update) {
+			if ($aksi) {
 				// Functional requirement: Set success flash message
 				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_e1_alias']);
 			} else {
@@ -168,9 +168,9 @@ class C_tabel_e1 extends Omnitags
 
 		try {
 			// Functional requirement: Delete data from the database
-			$hapus = $this->tl_e1->hapus($tabel_e1_field1);
+			$aksi = $this->tl_e1->hapus($tabel_e1_field1);
 
-			if ($hapus) {
+			if ($aksi) {
 				// Functional requirement: Set success flash message
 				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_e1_alias']);
 			} else {

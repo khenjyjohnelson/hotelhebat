@@ -10,8 +10,12 @@
 <h1><?= $title ?><?= $phase ?></h1>
 <hr>
 
+<button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
+<a class="btn btn-info mb-4" href="<?= site_url($tabel_b8 . '/laporan') ?>" target="_blank">
+  <i class="fas fa-print"></i> Cetak Laporan</a>
+
 <?php foreach ($dekor as $dk): ?>
-  <img src="img/tabel_b1/<?= $dk->$tabel_b1_field3 ?>" width="200">
+  <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" width="200">
 <?php endforeach ?>
 
 <div class="table-responsive">
@@ -23,7 +27,6 @@
         <th><?= $tabel_b8_field2_alias ?></th>
         <th><?= $tabel_b8_field3_alias ?></th>
         <th><?= $tabel_b8_field4_alias ?></th>
-        <th><?= $tabel_b8_field5_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -34,30 +37,17 @@
           <td></td>
           <td><?= $tl_b8->$tabel_b8_field1; ?></td>
           <td><?= $tl_b8->$tabel_b8_field2 ?></td>
-          <td><img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field3 ?>" height="100">
-            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-              data-target="#<?= $tabel_b8_field3 . $tl_b8->$tabel_b8_field1 ?>"><i class="fas fa-edit"></i></a>
-          </td>
-          <td><img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field4 ?>" height="100">
-            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-              data-target="#<?= $tabel_b8_field4 . $tl_b8->$tabel_b8_field1 ?>"><i class="fas fa-edit"></i></a>
-          </td>
-          <td><img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field5 ?>" height="100">
-            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-              data-target="#<?= $tabel_b8_field5 . $tl_b8->$tabel_b8_field1 ?>"><i class="fas fa-edit"></i></a>
-          </td>
+          <td><?= $tl_b8->$tabel_b8_field3 ?></td>
+          <td><h2><?= $tl_b8->$tabel_b8_field4 ?></h2></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b8->$tabel_b8_field1; ?>">
               <i class="fas fa-eye"></i></a>
             <a class="btn btn-light text-warning" type="button" data-toggle="modal"
               data-target="#ubah<?= $tl_b8->$tabel_b8_field1; ?>">
               <i class="fas fa-edit"></i></a>
-
-            <?php if ($tl_b8->$tabel_b8_field2 != $database) { ?>
-              <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel_b8 ?>?')"
-                href="<?= site_url($tabel_b8 . '/hapus/' . $tl_b8->$tabel_b8_field1) ?>">
-                <i class="fas fa-trash"></i></a>
-            <?php } ?>
+            <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel_b8 ?>?')"
+              href="<?= site_url($tabel_b8 . '/hapus/' . $tl_b8->$tabel_b8_field1) ?>">
+              <i class="fas fa-trash"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>
@@ -88,9 +78,15 @@
           </div>
 
           <div class="form-group">
-            <label><?= $tabel_b8_field6_alias ?></label>
-            <textarea class="ckeditor form-control" name="<?= $tabel_b8_field6_input ?>"
-              placeholder="Masukkan <?= $tabel_b2_field5_alias ?>" required cols="30" rows="10"></textarea>
+            <label><?= $tabel_b8_field3_alias ?></label>
+            <input class="form-control" type="text" required name="<?= $tabel_b8_field3_input ?>"
+              placeholder="Masukkan <?= $tabel_b8_field3_alias ?>">
+          </div>
+
+          <div class="form-group">
+            <label><?= $tabel_b8_field4_alias ?></label>
+            <input class="form-control" type="text" required name="<?= $tabel_b8_field4_input ?>"
+              placeholder="Masukkan <?= $tabel_b8_field4_alias ?>">
           </div>
 
         </div>
@@ -126,16 +122,21 @@
 
             <div class="form-group">
               <label><?= $tabel_b8_field2_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel_b8_field2_input ?>"
+              <input class="form-control" type="text" readonly required name="<?= $tabel_b8_field2_input ?>"
                 value="<?= $tl_b8->$tabel_b8_field2; ?>">
               <input type="hidden" name="<?= $tabel_b8_field1_input ?>" value="<?= $tl_b8->$tabel_b8_field1; ?>">
             </div>
 
             <div class="form-group">
-              <label><?= $tabel_b8_field6_alias ?></label>
-              <textarea class="ckeditor form-control" name="<?= $tabel_b8_field6_input ?>"
-                placeholder="Masukkan <?= $tabel_b2_field5_alias ?>" required cols="30"
-                rows="10"><?= $tl_b8->$tabel_b8_field6; ?></textarea>
+              <label><?= $tabel_b8_field3_alias ?></label>
+              <input class="form-control" type="text" required name="<?= $tabel_b8_field3_input ?>"
+                value="<?= $tl_b8->$tabel_b8_field3; ?>">
+            </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b8_field4_alias ?></label>
+              <input class="form-control" type="text" required name="<?= $tabel_b8_field4_input ?>"
+                value="<?= htmlspecialchars($tl_b8->$tabel_b8_field4); ?>">
             </div>
           </div>
 
@@ -150,146 +151,6 @@
     </div>
   </div>
 <?php endforeach; ?>
-
-
-
-
-<!-- modal edit favicon-->
-<?php foreach ($tbl_b8 as $tl_b8): ?>
-  <div id="<?= $tabel_b8_field3 . $tl_b8->$tabel_b8_field1; ?>" class="modal fade <?= $tabel_b8_field3 ?>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b8_field3_alias ?>   <?= $tl_b8->$tabel_b8_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b8 . '/update_favicon') ?>" method="post" enctype="multipart/form-data">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field3; ?>" width="300">
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b8_field3_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b8_field3_input ?>">
-              <input type="hidden" name="<?= $tabel_b8_field1_input ?>" value="<?= $tl_b8->$tabel_b8_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b8_field2_input ?>" value="<?= $tl_b8->$tabel_b8_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b8_field3_old ?>" value="<?= $tl_b8->$tabel_b8_field3; ?>">
-            </div>
-          </div>
-
-          <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_ubah') ?>
-          </p>
-
-          <div class="modal-footer">
-            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel_b8_field3 ?>?')" type="submit">Simpan
-              Perubahan</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-<?php endforeach; ?>
-
-<!-- modal edit logo-->
-<?php foreach ($tbl_b8 as $tl_b8): ?>
-  <div id="<?= $tabel_b8_field4 . $tl_b8->$tabel_b8_field1; ?>" class="modal fade <?= $tabel_b8_field4 ?>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b8_field4_alias ?>   <?= $tl_b8->$tabel_b8_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b8 . '/update_logo') ?>" method="post" enctype="multipart/form-data">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field4; ?>" width="300">
-            </div>
-            <hr>
-
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b8_field4_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b8_field4_input ?>">
-              <input type="hidden" name="<?= $tabel_b8_field1_input ?>" value="<?= $tl_b8->$tabel_b8_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b8_field2_input ?>" value="<?= $tl_b8->$tabel_b8_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b8_field4_old ?>" value="<?= $tl_b8->$tabel_b8_field4; ?>">
-            </div>
-          </div>
-
-          <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_ubah') ?>
-          </p>
-
-          <div class="modal-footer">
-            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel_b8_field4 ?>?')" type="submit">Simpan
-              Perubahan</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-<?php endforeach; ?>
-
-<!-- modal edit foto-->
-<?php foreach ($tbl_b8 as $tl_b8): ?>
-  <div id="<?= $tabel_b8_field5 . $tl_b8->$tabel_b8_field1; ?>" class="modal fade <?= $tabel_b8_field5 ?>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b8_field5_alias ?>   <?= $tl_b8->$tabel_b8_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b8 . '/update_foto') ?>" method="post" enctype="multipart/form-data">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <img src="img/tabel_b8/<?= $tl_b8->$tabel_b8_field5; ?>" width="300">
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b8_field5_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b8_field5_input ?>">
-              <input type="hidden" name="<?= $tabel_b8_field1_input ?>" value="<?= $tl_b8->$tabel_b8_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b8_field2_input ?>" value="<?= $tl_b8->$tabel_b8_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b8_field5_old ?>" value="<?= $tl_b8->$tabel_b8_field5; ?>">
-            </div>
-          </div>
-
-          <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_ubah') ?>
-          </p>
-
-          <div class="modal-footer">
-            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel_b8_field5 ?>?')" type="submit">Simpan
-              Perubahan</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-<?php endforeach; ?>
-
 
 <!-- modal lihat -->
 <?php foreach ($tbl_b8 as $tl_b8): ?>
@@ -320,8 +181,14 @@
             <hr>
 
             <div class="form-group">
-              <label><?= $tabel_b8_field2_alias ?> : </label>
-              <p><?= html_entity_decode($tl_b8->$tabel_b8_field6); ?></p>
+              <label><?= $tabel_b8_field3_alias ?> : </label>
+              <p><?= $tl_b8->$tabel_b8_field3; ?></p>
+            </div>
+            <hr>
+
+            <div class="form-group">
+              <label><?= $tabel_b8_field4_alias ?> : </label>
+              <h2><?= $tl_b8->$tabel_b8_field4; ?></h2>
             </div>
             <hr>
 

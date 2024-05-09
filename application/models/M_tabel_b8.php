@@ -12,7 +12,7 @@ class M_tabel_b8 extends CI_Model
 
 	public function ambil_tabel_a1_field1($param1)
 	{
-		$this->db->where($this->aliases['tabel_b8_field2'], $param1);
+		$this->db->where($this->aliases['tabel_b8_field3'], $param1);
 		$this->db->order_by($this->aliases['tabel_b8_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_b8']);
 	}
@@ -40,7 +40,7 @@ class M_tabel_b8 extends CI_Model
 
 	public function update_tabel_e3_field7($data, $param1, $param2)
 	{
-		$this->db->where($this->aliases['tabel_b8_field2'], $param1);
+		$this->db->where($this->aliases['tabel_b8_field3'], $param1);
 		$this->db->where($this->aliases['tabel_b8_field5'], $param2);
 		return $this->db->update($this->aliases['tabel_b8'], $data);
 	}

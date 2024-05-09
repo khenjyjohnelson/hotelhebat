@@ -6,10 +6,53 @@ include 'Omnitags.php';
 class C_tabel_b9 extends Omnitags
 {
 	// Halaman publik
+	public function detail($tabel_b9_field1 = NULL)
+	{
+		$this->declarew();
 
-	
+		$tabel_b9_field2 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+
+		// menggunakan nama khusus sama dengan konfigurasi
+		$notif = array(
+			$this->aliases['tabel_b9_field6'] => date("Y-m-d\TH:i:s"),
+		);
+
+		$aksi = $this->tl_b9->update_satu($notif, $tabel_b9_field1, $tabel_b9_field2);
+
+		if ($aksi) {
+			$data1 = array(
+				'title' => $this->v8_title['tabel_b9_alias'],
+				'konten' => $this->v8['tabel_b9'],
+				'dekor' => $this->tl_b1->dekor('tabel_b9')->result(),
+				'tbl_b9_alt' => $this->tl_b9->ambil_tabel_b9_field1($tabel_b9_field1)->result(),
+			);
+
+			$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+
+			$this->load->view($this->views['v1'], $data);
+		} else {
+			redirect($_SERVER['HTTP_REFERER']);
+
+		}
+
+
+	}
+
 	// Halaman khusus akun
+	public function daftar()
+	{
+		$this->declarew();
 
+		$data1 = array(
+			'title' => $this->v2_title['tabel_b9_alias'],
+			'konten' => $this->v2['tabel_b9'],
+			'dekor' => $this->tl_b1->dekor('tabel_b9')->result(),
+		);
+
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+
+		$this->load->view($this->views['v1'], $data);
+	}
 
 	// Halaman admin
 	public function admin()
@@ -52,187 +95,29 @@ class C_tabel_b9 extends Omnitags
 	}
 
 
-	public function update() //update tidak diperlukan di sini
+	public function update()
 	{
 		$this->declarew();
 
-		$tabel_b9_field1 = $this->v_post['tabel_b9_field1'];
+		$tabel_b9_field2 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel_b9_field2'] => $this->v_post['tabel_b9_field2'],
-			$this->aliases['tabel_b9_field6'] => $this->v_post['tabel_b9_field6'],
+			$this->aliases['tabel_b9_field6'] => date("Y-m-d\TH:i:s"),
 		);
 
-		$update = $this->tl_b9->update($data, $tabel_b9_field1);
-
-		if ($update) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_b9_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_b9_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-
-		redirect(site_url('c_tabel_b9/admin'));
-	}
-
-
-	public function update_favicon()
-	{
-		$this->declarew();
-
-		$param = $this->v_post['tabel_b9_field2'] . "_";	
-
-		$table = $this->tl_b9->ambil_tabel_b9_field1($this->v_post['tabel_b9_field1'])->result();
-		$tabel_b9_field3 = $table[0]->favicon;
-		unlink($this->v_upload_path['tabel_b9'] . $tabel_b9_field3);
-
-		$config['upload_path'] = $this->v_upload_path['tabel_b9'];
-		// nama file dan ekstensi telah ditetapkan dan dapat diganti dengan file bernama sama
-		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $param . $this->aliases['tabel_b9_field3'];
-		$config['overwrite'] = TRUE;
-		$config['remove_spaces'] = TRUE;
-
-		$this->load->library('upload', $config);
-
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b9_field3_input']]['name'], PATHINFO_EXTENSION);
-
-		if (!$this->upload->do_upload($this->v_input['tabel_b9_field3_input'])) {
-			$gambar = $this->v_post_old['tabel_b9_field3'];
-		} else {
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];
-		}
-
-		$tabel_b9_field1 = $this->v_post['tabel_b9_field1'];
-
-		// menggunakan nama khusus sama dengan konfigurasi
-		$data = array(
-			$this->aliases['tabel_b9_field3'] => $param . $this->aliases['tabel_b9_field3'] . "." . $file_extension,
-		);
-
-		$update = $this->tl_b9->update($data, $tabel_b9_field1);
-
-		if ($update) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_b9_field3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_b9_field3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+		$aksi = $this->tl_b9->update($data, $tabel_b9_field2);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
-
-	public function update_logo()
-	{
-		$this->declarew();
-
-		$param = $this->v_post['tabel_b9_field2'] . "_";	
-
-		$table = $this->tl_b9->ambil_tabel_b9_field1($this->v_post['tabel_b9_field1'])->result();
-		$tabel_b9_field4 = $table[0]->logo;
-		unlink($this->v_upload_path['tabel_b9'] . $tabel_b9_field4);
-
-		$config['upload_path'] = $this->v_upload_path['tabel_b9'];
-		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
-		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $param . $this->aliases['tabel_b9_field4'];
-		$config['overwrite'] = TRUE;
-		$config['remove_spaces'] = TRUE;
-
-		$this->load->library('upload', $config);
-
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b9_field4_input']]['name'], PATHINFO_EXTENSION);
-
-		if (!$this->upload->do_upload($this->v_input['tabel_b9_field4_input'])) {
-			$gambar = $this->v_post_old['tabel_b9_field4'];
-		} else {
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];
-		}
-
-		$tabel_b9_field1 = $this->v_post['tabel_b9_field1'];
-
-		// menggunakan nama khusus sama dengan konfigurasi
-		$data = array(
-			$this->aliases['tabel_b9_field4'] => $param . $this->aliases['tabel_b9_field4'] . "." . $file_extension,
-		);
-
-		$update = $this->tl_b9->update($data, $tabel_b9_field1);
-
-		if ($update) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_b9_field4_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_b9_field4_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
-
-		redirect(site_url('c_tabel_b9/admin'));
-	}
-
-	public function update_foto()
-	{
-		$this->declarew();
-
-		$param = $this->v_post['tabel_b9_field2'] . "_";		
-
-		$table = $this->tl_b9->ambil_tabel_b9_field1($this->v_post['tabel_b9_field1'])->result();
-		$tabel_b9_field5 = $table[0]->foto;
-		unlink($this->v_upload_path['tabel_b9'] . $tabel_b9_field5);
-
-		$config['upload_path'] = $this->v_upload_path['tabel_b9'];
-		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
-		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $param . $this->aliases['tabel_b9_field5'];
-		$config['overwrite'] = TRUE;
-		$config['remove_spaces'] = TRUE;
-
-		$this->load->library('upload', $config);
-
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b9_field5_input']]['name'], PATHINFO_EXTENSION);
-
-		if (!$this->upload->do_upload($this->v_input['tabel_b9_field5_input'])) {
-			$gambar = $this->v_post_old['tabel_b9_field5'];
-		} else {
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];
-		}
-
-		$tabel_b9_field1 = $this->v_post['tabel_b9_field1'];
-
-		// menggunakan nama khusus sama dengan konfigurasi
-		$data = array(
-			$this->aliases['tabel_b9_field5'] => $param . $this->aliases['tabel_b9_field5'] . "." . $file_extension,
-		);
-
-		$update = $this->tl_b9->update($data, $tabel_b9_field1);
-
-		if ($update) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_b9_field5_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_b9_field5_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-
-		redirect(site_url('c_tabel_b9/admin'));
-	}
-
 
 	public function hapus($tabel_b9_field1 = null)
 	{
 		$this->declarew();
 
-		$hapus = $this->tl_b9->hapus($tabel_b9_field1);
+		$aksi = $this->tl_b9->hapus($tabel_b9_field1);
 
-		if ($hapus) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_b9_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {

@@ -13,7 +13,7 @@
       <div class="col-md-auto">
       <div class="d-flex justify-content-center">
         <?php foreach ($dekor as $dk): ?>
-          <img src="img/tabel_b1/<?= $dk->$tabel_b1_field3 ?>" width="40%" class="rounded">
+          <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" width="40%" class="rounded">
           <?php endforeach ?>
         </div>
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>

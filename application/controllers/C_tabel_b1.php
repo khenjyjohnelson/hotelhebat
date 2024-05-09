@@ -40,14 +40,14 @@ class C_tabel_b1 extends Omnitags
 
 		$this->load->library('upload', $config);
 
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b1_field3_input']]['name'], PATHINFO_EXTENSION);
+		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b1_field4_input']]['name'], PATHINFO_EXTENSION);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_b1_field3_input'])) {
+		if (!$this->upload->do_upload($this->v_input['tabel_b1_field4_input'])) {
 			// Di sini seharusnya ada notifikasi modal kalau upload tidak berhasil
 			// Tapi karena formnya sudah required saya rasa tidak perlu
 
 
-			$this->session->set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b1_field3_alias']);
+			$this->session->set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b1_field4_alias']);
 			$this->session->set_flashdata('modal', $this->views['flash2_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
@@ -59,18 +59,29 @@ class C_tabel_b1 extends Omnitags
 		$data = array(
 			$this->aliases['tabel_b1_field1'] => '',
 			$this->aliases['tabel_b1_field2'] => $this->v_post['tabel_b1_field2'],
-			$this->aliases['tabel_b1_field3'] => $this->v_post['tabel_b1_field2'] . "." . $file_extension,
-			$this->aliases['tabel_b1_field4'] => $this->v_post['tabel_b1_field4'],
+			$this->aliases['tabel_b1_field3'] => $this->v_post['tabel_b1_field3'],
+			$this->aliases['tabel_b1_field4'] => $this->v_post['tabel_b1_field2'] . "." . $file_extension,
+			$this->aliases['tabel_b1_field5'] => $this->v_post['tabel_b1_field5'],
 		);
 
 		$simpan = $this->tl_b1->simpan($data);
 
+		$msg1 = $this->flash1_msg_1['tabel_b2_alias'];
+		$msg2 = $this->flash1_msg_2['tabel_b2_alias'];
+		$type1 = $this->aliases['tabel_b8_field2_value4'];
+		$type2 = $this->aliases['tabel_b8_field2_value6'];
+
 		if ($simpan) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel_b1_alias']);
+			$ambil = $this->add_notif($msg1, $type1);
+			
+			$this->session->set_flashdata($this->views['flash1'], $msg1);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel_b1_alias']);
+			$ambil = $this->add_notif($msg2, $type2);
+
+			$this->session->set_flashdata($this->views['flash1'], $msg2);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 
 		redirect($_SERVER['HTTP_REFERER']);
@@ -89,10 +100,10 @@ class C_tabel_b1 extends Omnitags
 
 		$this->load->library('upload', $config);
 
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b1_field3_input']]['name'], PATHINFO_EXTENSION);
+		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b1_field4_input']]['name'], PATHINFO_EXTENSION);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_b1_field3_input'])) {
-			$gambar = $this->views['tabel_b1_field3_alt'];
+		if (!$this->upload->do_upload($this->v_input['tabel_b1_field4_input'])) {
+			$gambar = $this->v_post_old['tabel_b1_field4'];
 		} else {
 
 			$upload = $this->upload->data();
@@ -104,13 +115,14 @@ class C_tabel_b1 extends Omnitags
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_b1_field2'] => $this->v_post['tabel_b1_field2'],
-			$this->aliases['tabel_b1_field3'] => $gambar,
-			$this->aliases['tabel_b1_field4'] => $this->v_post['tabel_b1_field4'],
+			$this->aliases['tabel_b1_field3'] => $this->v_post['tabel_b1_field3'],
+			$this->aliases['tabel_b1_field4'] => $gambar,
+			$this->aliases['tabel_b1_field5'] => $this->v_post['tabel_b1_field5'],
 		);
 
-		$update = $this->tl_b1->update($data, $tabel_b1_field1);
+		$aksi = $this->tl_b1->update($data, $tabel_b1_field1);
 
-		if ($update) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_b1_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {
@@ -131,9 +143,9 @@ class C_tabel_b1 extends Omnitags
 
 		unlink($this->v_upload_path['tabel_b1'] . $img);
 
-		$hapus = $this->tl_b1->hapus($tabel_b1_field1);
+		$aksi = $this->tl_b1->hapus($tabel_b1_field1);
 
-		if ($hapus) {
+		if ($aksi) {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_b1_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		} else {

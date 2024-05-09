@@ -241,13 +241,13 @@ class C_tabel_f2 extends Omnitags
 		if ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value4']) {
 
 			// hanya merubah status pesanan
-			$update = $this->tl_f2->update($data, $tabel_f2_field1);
+			$aksi = $this->tl_f2->update($data, $tabel_f2_field1);
 
 			// jika status pesanan cek out
 		} elseif ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value5']) {
 
 			// menghapus data pesanan supaya trigger tambah_kamar dapat berjalan
-			$hapus = $this->tl_f2->hapus($tabel_f2_field1);
+			$aksi = $this->tl_f2->hapus($tabel_f2_field1);
 
 			// memasukkan nama resepsionis yang melakukan operasi
 			$data = array(
@@ -255,10 +255,10 @@ class C_tabel_f2 extends Omnitags
 			);
 
 			// mengupdate pesanan dengan nama user yang aktif
-			$update = $this->tl_f1->update_tabel_f1($data, $tabel_f2_field1);
+			$aksi = $this->tl_f1->update_tabel_f1($data, $tabel_f2_field1);
 		}
 
-		if ($update) {
+		if ($aksi) {
 
 			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_f2_field12_alias']);
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
@@ -279,7 +279,7 @@ class C_tabel_f2 extends Omnitags
 		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 		$status = $this->v_post['tabel_f2_field12'];
 
-		$hapus = $this->tl_f2->hapus($tabel_f2_field1);
+		$aksi = $this->tl_f2->hapus($tabel_f2_field1);
 
 		// memasukkan nama resepsionis yang melakukan operasi
 		$data = array(
@@ -439,7 +439,7 @@ class C_tabel_f2 extends Omnitags
 
 		);
 
-		$update = $this->tl_f2->update($data, $tabel_f2_field1);
+		$aksi = $this->tl_f2->update($data, $tabel_f2_field1);
 
 		// hanya merubah id pesanan di tabel kamar berdasarkan no kamar
 		$param = $this->v_post['tabel_f2_field13'];
