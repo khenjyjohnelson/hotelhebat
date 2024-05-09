@@ -40,6 +40,8 @@
 
       <a class="btn btn-info mb-4" href="<?= site_url($tabel_b1 . '/admin') ?>">
         <i class="fas fa-edit"></i> Kelola <?= $tabel_b1_alias ?></a>
+      <a class="btn btn-info mb-4" href="<?= site_url($tabel_b8 . '/admin') ?>">
+        <i class="fas fa-edit"></i> Kelola <?= $tabel_b8_alias ?></a>
       <a class="btn btn-info mb-4" href="<?= site_url($tabel_b6 . '/admin') ?>">
         <i class="fas fa-edit"></i> <?= $tabel_b6_alias ?></a>
 

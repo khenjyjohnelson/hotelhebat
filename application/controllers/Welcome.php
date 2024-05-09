@@ -80,9 +80,12 @@ class Welcome extends Omnitags
 			'chart_tabel_f1' => json_encode($chart_tabel_f1),
 			'chart_tabel_f2' => json_encode($chart_tabel_f2),
 		);
-		
+
+		$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
+		$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
-		
+
 		$this->load->view($this->views['v1'], $data);
 	}
 
@@ -94,7 +97,7 @@ class Welcome extends Omnitags
 		$data1 = array(
 			'title' => $this->views['v4_title'],
 			'dekor' => $this->tl_b1->dekor('v4')->result(),
-'tbl_a1' => $this->tl_a1->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
+			'tbl_a1' => $this->tl_a1->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

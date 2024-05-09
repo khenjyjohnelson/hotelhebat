@@ -9,7 +9,8 @@
 	box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
 	font-family: Poppy;
 	height: 100%;
 }
@@ -89,37 +90,68 @@ hr {
 }
 
 .checkpass {
-    font-size: 12px;
-  }
+	font-size: 12px;
+}
 
-  /* The message box is shown when the user clicks on the password field */
-  #message {
-    display: none;
-    background: #f1f1f1;
-    color: #000;
-    position: relative;
-    padding: 20px;
-    margin-top: 10px;
-  }
+/* The message box is shown when the user clicks on the password field */
+#message {
+	display: none;
+	background: #f1f1f1;
+	color: #000;
+	position: relative;
+	padding: 20px;
+	margin-top: 10px;
+}
 
-  /* Add a green text color and a checkmark when the requirements are right */
-  .valid {
-    color: green;
-  }
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+	color: green;
+}
 
-  .valid:before {
-    position: relative;
-    left: -3px;
-    content: "✔";
-  }
+.valid:before {
+	position: relative;
+	left: -3px;
+	content: "✔";
+}
 
-  /* Add a red text color and an "x" when the requirements are wrong */
-  .invalid {
-    color: red;
-  }
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+	color: red;
+}
 
-  .invalid:before {
-    position: relative;
-    left: -3px;
-    content: "✖";
-  }
+.invalid:before {
+	position: relative;
+	left: -3px;
+	content: "✖";
+}
+
+.truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.list-group-item:hover,
+.list-group-item:focus {
+	color: #16181b;
+	text-decoration: none;
+	background-color: #e9ecef;
+}
+
+.list-group-item.active,
+.list-group-item:active {
+	color: #fff;
+	text-decoration: none;
+	background-color: #007bff;
+}
+
+.list-group-item.disabled,
+.list-group-item:disabled {
+	color: #adb5bd;
+	pointer-events: none;
+	background-color: transparent;
+}
+
+.small {
+	font-size: 11px;
+}

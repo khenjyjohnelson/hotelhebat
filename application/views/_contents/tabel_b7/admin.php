@@ -58,7 +58,7 @@
               data-target="#ubah<?= $tl_b7->$tabel_b7_field1; ?>">
               <i class="fas fa-edit"></i></a>
 
-            <?php if ($tl_b7->$tabel_b7_field2 != $tabel_b7_field2_value1) { ?>
+            <?php if ($tl_b7->$tabel_b7_field2 != $database) { ?>
               <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel_b7 ?>?')"
                 href="<?= site_url($tabel_b7 . '/hapus/' . $tl_b7->$tabel_b7_field1) ?>">
                 <i class="fas fa-trash"></i></a>

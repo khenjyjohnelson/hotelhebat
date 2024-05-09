@@ -251,7 +251,7 @@
                       target="_blank">
                       Visit</a>
                 </tr>
-              <?php } endforeach; ?>
+              <?php }endforeach; ?>
 
           </tbody>
           <tfoot></tfoot>

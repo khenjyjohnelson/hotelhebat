@@ -31,8 +31,7 @@
                     ?>
 
                     <li class="nav-item">
-                        <a class="nav-link text-decoration-none font-weight-bold"
-                            href="<?= site_url('dashboard') ?>">Dashboard</a>
+                        <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('dashboard') ?>">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -118,6 +117,117 @@
                 default:
                     break;
             } ?>
+
+            <li class="nav-item dropdown">
+                <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
+                    <i class="fas fa-bell"></i>
+                    <span>9</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+                    <div class="dropdown-header d-flex justify-content-between align-items-center">
+                        <span>4 New Notifications</span>
+                        <div>
+                            <span class="px-2"></span> <!-- Adding space between buttons -->
+                            <button class="btn btn-link">
+                                <i class="far fa-check-circle"></i>
+                            </button>
+                            <button class="btn btn-link">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="list-group" style="min-width: 350px;">
+                        <a href="#" class="list-group-item bg-light">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <i class="text-danger fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">Update completed</div>
+                                    <div class="text-muted small mt-1">
+                                        Restart server 12 to complete the update.
+                                    </div>
+                                    <div class="text-muted small mt-1">30m ago</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <i class="text-warning fas fa-bell"></i>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">Lorem ipsum</div>
+                                    <small class="text-muted small mt-1">
+                                        Aliquam ex eros, imperdiet vulputate hendrerit et.
+                                    </small>
+                                    <div class="text-muted small mt-1">2h ago</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <i class="text-primary fas fa-home"></i>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">Login from 192.186.1.8</div>
+                                    <div class="text-muted small mt-1">5h ago</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <i class="text-success fas fa-user-plus"></i>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">New connection</div>
+                                    <div class="text-muted small mt-1">
+                                        Christina accepted your request.
+                                    </div>
+                                    <div class="text-muted small mt-1">14h ago</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-header">
+                        <a href="#" class="text-muted">Show all notifications</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
+                        <i class="fas fa-bell"></i>
+                        <span>9</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-right" style="max-width: 400px;">
+                        <div class="dropdown-header">4 New Notifications</div>
+                        <div class="dropdown-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-md-2">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="text-dark">Update completed</div>
+                                    <div class="text-dark small mt-1"> <!-- Added truncate class -->
+                                        " Restart server 12 to complete the update. "
+                                    </div>
+                                    <div class="text-muted small mt-1">30m ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
 
             <li class="nav-item">
                 <div class="dropdown">
