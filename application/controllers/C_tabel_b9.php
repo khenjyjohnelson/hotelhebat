@@ -34,8 +34,21 @@ class C_tabel_b9 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 
 		}
+	}
 
+	public function lihat($tabel_b9_field1 = NULL)
+	{
+		$this->declarew();
 
+		$tabel_b9_field2 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+
+		// menggunakan nama khusus sama dengan konfigurasi
+		$notif = array(
+			$this->aliases['tabel_b9_field6'] => date("Y-m-d\TH:i:s"),
+		);
+
+		$aksi = $this->tl_b9->update_satu($notif, $tabel_b9_field1, $tabel_b9_field2);
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Halaman khusus akun
@@ -103,7 +116,7 @@ class C_tabel_b9 extends Omnitags
 			$this->aliases['tabel_b9_field6'] => date("Y-m-d\TH:i:s"),
 		);
 
-		$aksi = $this->tl_b9->update($data, $tabel_b9_field2);
+		$aksi = $this->tl_b9->update_null($data, $tabel_b9_field2);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

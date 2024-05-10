@@ -29,7 +29,8 @@ class M_tabel_b9 extends CI_Model
 		JOIN {$this->aliases['tabel_b8']} 
 		ON {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field3']} = {$this->aliases['tabel_b8']}.{$this->aliases['tabel_b8_field2']}
 		WHERE {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field2']} = '$param1'
-		ORDER BY {$this->aliases['tabel_b9_field6']} ASC LIMIT 3";
+		ORDER BY CASE WHEN {$this->aliases['tabel_b9_field6']} IS NULL THEN 0
+		ELSE 1 END, {$this->aliases['tabel_b9_field6']} DESC, {$this->aliases['tabel_b9_field1']} DESC LIMIT 3";
 		return $this->db->query($sql);
 	}
 
@@ -46,7 +47,8 @@ class M_tabel_b9 extends CI_Model
 		JOIN {$this->aliases['tabel_b8']} 
 		ON {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field3']} = {$this->aliases['tabel_b8']}.{$this->aliases['tabel_b8_field2']}
 		WHERE {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field2']} = '$param1'
-		ORDER BY {$this->aliases['tabel_b9_field1']} DESC";
+		ORDER BY CASE WHEN {$this->aliases['tabel_b9_field6']} IS NULL THEN 0
+		ELSE 1 END, {$this->aliases['tabel_b9_field6']} DESC, {$this->aliases['tabel_b9_field1']} DESC";
 		return $this->db->query($sql);
 	}
 
@@ -60,6 +62,13 @@ class M_tabel_b9 extends CI_Model
 
 	public function update($data, $param1)
 	{
+		$this->db->where($this->aliases['tabel_b9_field2'], $param1);
+		return $this->db->update($this->aliases['tabel_b9'], $data);
+	}
+
+	public function update_null($data, $param1)
+	{
+		$this->db->where($this->aliases['tabel_b9_field6'], NULL);
 		$this->db->where($this->aliases['tabel_b9_field2'], $param1);
 		return $this->db->update($this->aliases['tabel_b9'], $data);
 	}

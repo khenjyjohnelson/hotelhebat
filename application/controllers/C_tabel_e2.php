@@ -80,7 +80,7 @@ class C_tabel_e2 extends Omnitags
 
 		$aksi = $this->tl_e2->update($data, $tabel_e2_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_e2');
+		$notif = $this->handle_2($aksi, 'tabel_e2', $tabel_e2_field1);
 
 		redirect(site_url('c_tabel_e2/admin'));
 	}
@@ -92,7 +92,7 @@ class C_tabel_e2 extends Omnitags
 		$tabel_e2 = $this->tl_e2->ambil_tabel_e2_field1($tabel_e2_field1)->result();
 		$tabel_e2_field3 = $tabel_e2[0]->img;
 
-		unlink($this->v_upload_path['tabel_e2_field3'] . $tabel_e2_field3);
+		unlink($this->v_upload_path['tabel_e2'] . $tabel_e2_field3);
 		$aksi = $this->tl_e2->hapus($tabel_e2_field1);
 
 		$notif = $this->handle_3($aksi, 'tabel_e2_field1', $tabel_e2_field1);

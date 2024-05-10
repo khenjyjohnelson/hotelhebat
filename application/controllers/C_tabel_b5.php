@@ -115,7 +115,7 @@ class C_tabel_b5 extends Omnitags
 
 		$aksi = $this->tl_b5->update($data, $tabel_b5_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_b5');
+		$notif = $this->handle_2($aksi, 'tabel_b5', $tabel_b5_field1);
 
 		redirect(site_url('c_tabel_b5/admin'));
 	}

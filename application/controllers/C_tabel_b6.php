@@ -72,7 +72,7 @@ class C_tabel_b6 extends Omnitags
 
 		$aksi = $this->tl_b6->update($data, $tabel_b6_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_b6');
+		$notif = $this->handle_2($aksi, 'tabel_b6', $tabel_b6_field1);
 
 		redirect(site_url('c_tabel_b6/admin'));
 	}

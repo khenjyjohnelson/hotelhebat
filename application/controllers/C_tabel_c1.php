@@ -106,7 +106,7 @@ class C_tabel_c1 extends Omnitags
 
 		$aksi = $this->tl_c1->update($data, $tabel_c1_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_c1');
+		$notif = $this->handle_2($aksi, 'tabel_c1', $tabel_c1_field1);
 
 		redirect(site_url('c_tabel_c1/admin'));
 	}
@@ -198,7 +198,7 @@ class C_tabel_c1 extends Omnitags
 
 		$aksi = $this->tl_c1->update($data, $tabel_c1_field1);
 
-		$notif = $this->handle_4($aksi, 'tabel_c1_field1');
+		$notif = $this->handle_4($aksi, 'tabel_c1_field1', $tabel_c1_field1);
 
 		// mengambil data profil yang baru dirubah
 		$tabel_c1 = $this->tl_c1->ambil_tabel_c1_field1($tabel_c1_field1)->result();

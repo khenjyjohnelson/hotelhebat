@@ -212,17 +212,17 @@ class Omnitags extends CI_Controller
         return [];
     }
 
-    public function handle_2($aksi, $object)
+    public function handle_2($aksi, $object, $value)
     {
         if ($aksi) {
             $msg = $this->flash1_msg_3[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value4'];
-            $extra = '';
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;;
             $flashtype = 'toast';
         } else {
             $msg = $this->flash1_msg_4[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value6'];
-            $extra = '';
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;;
             $flashtype = 'toast';
         }
 
@@ -238,12 +238,12 @@ class Omnitags extends CI_Controller
         if ($aksi) {
             $msg = $this->flash1_msg_5[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value4'];
-            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$object];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
             $flashtype = 'toast';
         } else {
             $msg = $this->flash1_msg_6[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value6'];
-            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$object];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
             $flashtype = 'toast';
         }
 
@@ -254,17 +254,17 @@ class Omnitags extends CI_Controller
         return [];
     }
 
-    public function handle_4($aksi, $object)
+    public function handle_4($aksi, $object, $value)
     {
         if ($aksi) {
             $msg = $this->flash1_msg_3[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value4'];
-            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$object];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
             $flashtype = 'modal';
         } else {
             $msg = $this->flash1_msg_4[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value6'];
-            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$object];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
             $flashtype = 'modal';
         }
         $this->add_notif($msg, $type, $extra);

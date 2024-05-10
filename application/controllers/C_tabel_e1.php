@@ -128,7 +128,7 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Update data in the database
 			$aksi = $this->tl_e1->update($data, $tabel_e1_field1);
 
-			$notif = $this->handle_2($aksi, 'tabel_e1');
+			$notif = $this->handle_2($aksi, 'tabel_e1', $tabel_e1_field1);
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors

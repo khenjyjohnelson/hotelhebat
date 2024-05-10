@@ -62,9 +62,9 @@ class M_tabel_e4 extends CI_Model
 		return $this->db->update($this->aliases['tabel_e4'], $data);
 	}
 
-	// public function hapus($param1)
-	// {
-	// 	$this->db->where($this->aliases['tabel_e4_field1'], $param1);
-	// 	return $this->db->delete($this->aliases['tabel_e4']);
-	// }
+	public function hapus($param1)
+	{
+		$this->db->where($this->aliases['tabel_e4_field1'], $param1);
+		return $this->db->delete($this->aliases['tabel_e4']);
+	}
 }

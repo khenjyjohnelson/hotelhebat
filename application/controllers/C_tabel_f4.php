@@ -71,7 +71,7 @@ class C_tabel_f4 extends Omnitags
 
 		$aksi = $this->tl_f4->update($data, $tabel_f4_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_f4');
+		$notif = $this->handle_2($aksi, 'tabel_f4', $tabel_f4_field1);
 
 		redirect(site_url('c_tabel_f4/admin'));
 	}

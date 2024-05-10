@@ -251,7 +251,7 @@ class C_tabel_f2 extends Omnitags
 			$aksi = $this->tl_f1->update_tabel_f1($data, $tabel_f2_field1);
 		}
 
-		$notif = $this->handle_2($aksi, 'tabel_f2_field12');
+		$notif = $this->handle_2($aksi, 'tabel_f2_field12', $tabel_f2_field1);
 
 		redirect(site_url('c_tabel_f2/admin'));
 	}
@@ -428,7 +428,7 @@ class C_tabel_f2 extends Omnitags
 		);
 		$aksi = $this->tl_e3->update($tabel_e3, $param);
 
-		$notif = $this->handle_2($aksi, 'tabel_f2');
+		$notif = $this->handle_2($aksi, 'tabel_f2', $tabel_f2_field1);
 
 		redirect(site_url('c_tabel_f2/admin'));
 	}

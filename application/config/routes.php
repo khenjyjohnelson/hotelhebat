@@ -99,6 +99,7 @@ foreach ($myData2 as $item2) {
 
     $uncommonFunctionRoutes = [
         'detail' => 'detail',
+        'lihat' => 'lihat',
         'hapus' => 'hapus',
         'print' => 'print',
     ];

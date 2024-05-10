@@ -24,29 +24,48 @@
         <th>No</th>
         <th><?= $tabel_b8_field3_alias ?></th>
         <th><?= $tabel_b9_field4_alias ?></th>
-        <th><?= $tabel_b8_field4_alias ?></th>
+        <th><?= $tabel_b9_field5_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_b9_alt as $tl_b9_alt): ?>
-        <tr>
-          <td></td>
-          <td><?= $tl_b9_alt->$tabel_b8_field3 ?></td>
-          <td><?= $tl_b9_alt->$tabel_b9_field4 ?></td>
-          <td><h4><?= $tl_b9_alt->$tabel_b8_field4 ?></h4></td>
-          <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
-              data-target="#lihat<?= $tl_b9_alt->$tabel_b9_field1; ?>">
-              <i class="fas fa-eye"></i></a>
-          </td>
-        </tr>
-      <?php endforeach; ?>
+      <?php foreach ($tbl_b9_alt as $tl_b9_alt):
+        if ($tl_b9_alt->$tabel_b9_field6 == NULL) { ?>
+          <tr class="bg-light">
+            <td></td>
+            <td><?= $tl_b9_alt->$tabel_b8_field3 ?></td>
+            <td><?= $tl_b9_alt->$tabel_b9_field4 ?></td>
+            <td><?= $tl_b9_alt->$tabel_b9_field5 ?></td>
+            <td>
+              <a class="btn btn-light text-danger"
+                href="<?= site_url($tabel_b9 . '/lihat/' . $tl_b9_alt->$tabel_b9_field1) ?>">
+                <i class="fas fa-eye"></i></a>
+              <a class="btn btn-light text-info" type="button" data-toggle="modal"
+                data-target="#lihat<?= $tl_b9_alt->$tabel_b9_field1; ?>">
+                <i class="fas fa-eye"></i></a>
+            </td>
+          <?php } else { ?>
+          <tr>
+            <td></td>
+            <td><?= $tl_b9_alt->$tabel_b8_field3 ?></td>
+            <td><?= $tl_b9_alt->$tabel_b9_field4 ?></td>
+            <td><?= $tl_b9_alt->$tabel_b9_field5 ?></td>
+            <td>
+              <a class="btn btn-light text-danger"
+                href="<?= site_url($tabel_b9 . '/lihat/' . $tl_b9_alt->$tabel_b9_field1) ?>">
+                <i class="fas fa-eye"></i></a>
+              <a class="btn btn-light text-info" type="button" data-toggle="modal"
+                data-target="#lihat<?= $tl_b9_alt->$tabel_b9_field1; ?>">
+                <i class="fas fa-eye"></i></a>
+            </td>
+          <?php }endforeach; ?>
     </tbody>
 
 
   </table>
 </div>
+
 
 <!-- modal lihat -->
 <?php foreach ($tbl_b9_alt as $tl_b9_alt): ?>

@@ -30,9 +30,9 @@ class M_tabel_e2 extends CI_Model
 		return $this->db->update($this->aliases['tabel_e2'], $data);
 	}
 
-	// public function hapus($param1)
-	// {
-	// 	$this->db->where($this->aliases['tabel_e2_field1'], $param1);
-	// 	return $this->db->delete($this->aliases['tabel_e2']);
-	// }
+	public function hapus($param1)
+	{
+		$this->db->where($this->aliases['tabel_e2_field1'], $param1);
+		return $this->db->delete($this->aliases['tabel_e2']);
+	}
 }

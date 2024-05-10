@@ -93,7 +93,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_c2');
+		$notif = $this->handle_2($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		// kembali ke halaman sebelumnya
 		redirect($_SERVER['HTTP_REFERER']);

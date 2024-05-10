@@ -33,12 +33,6 @@
 
 
         });
-
-
-
-
-
-
     });
 
     var table = $('#daterange_table').DataTable({

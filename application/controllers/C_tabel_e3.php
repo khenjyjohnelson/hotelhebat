@@ -61,7 +61,7 @@ class C_tabel_e3 extends Omnitags
 
 		$aksi = $this->tl_e3->update($data, $tabel_e3_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_e3');
+		$notif = $this->handle_2($aksi, 'tabel_e3', $tabel_e3_field1);
 
 		redirect(site_url('c_tabel_e3/admin'));
 	}
