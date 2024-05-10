@@ -1,5 +1,5 @@
 <?php foreach ($tbl_a1 as $tl_a1): ?>
-  <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
+  <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
 <?php switch ($this->session->userdata($tabel_c2_field6)) {
@@ -53,7 +53,7 @@
       <hr>
       <div class="row">
         <div class="col-md-6">
-          <img src="img/tabel_b2/<?= $tl_b2->$tabel_b2_field4 ?>" class="img-fluid rounded">
+          <img src="img/<?= $tabel_b2 ?>/<?= $tl_b2->$tabel_b2_field4 ?>" class="img-fluid rounded">
         </div>
         
         <div class="col-md-6">
@@ -83,7 +83,7 @@
 
     <div class="col-md-6">
       <?php foreach ($dekor as $dk): ?>
-        <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid rounded">
+        <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid rounded">
       <?php endforeach ?>
     </div>
   </div>

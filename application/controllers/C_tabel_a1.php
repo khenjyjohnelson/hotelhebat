@@ -21,7 +21,7 @@ class C_tabel_a1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v6_title['tabel_a1_alias'],
 			'konten' => $this->v6['tabel_a1'],
-			'dekor' => $this->tl_b1->dekor('tabel_a1')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_a1'])->result(),
 			'tbl_b2' => $this->tl_b2->ambildata()->result(),
 			'tbl_b7' => $this->tl_b7->ambildata()->result(),
 		);
@@ -39,7 +39,7 @@ class C_tabel_a1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_a1_alias'],
 			'konten' => $this->v3['tabel_a1'],
-			'dekor' => $this->tl_b1->dekor('tabel_a1')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_a1'])->result(),
 			'tbl_a1_alt' => $this->tl_a1->ambildata()->result(),
 		);
 
@@ -62,7 +62,7 @@ class C_tabel_a1 extends Omnitags
 
 		$aksi = $this->tl_a1->update($data, $tabel_a1_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_a1_field1');
+		$notif = $this->handle_2($aksi, 'tabel_a1_field1', $tabel_a1_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

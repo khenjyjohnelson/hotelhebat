@@ -13,7 +13,7 @@ class C_tabel_b5 extends Omnitags
 		$data1 = array(
 			'title' => $this->v1_title['tabel_b5_alias'],
 			'konten' => $this->v1['tabel_b5'],
-			'dekor' => $this->tl_b1->dekor('tabel_b5')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b5'])->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -32,7 +32,7 @@ class C_tabel_b5 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_b5_alias'],
 			'konten' => $this->v3['tabel_b5'],
-			'dekor' => $this->tl_b1->dekor('tabel_b5')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b5'])->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -143,7 +143,7 @@ class C_tabel_b5 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b5_alias'],
-			'dekor' => $this->tl_b1->dekor('tabel_b5')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b5'])->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

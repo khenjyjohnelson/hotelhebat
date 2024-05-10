@@ -40,6 +40,7 @@ class Omnitags extends CI_Controller
     public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
     public $notif_limit, $notif_null, $notifications, $elapsedTime, $elapsed, $elapsed2;
+    public $recommendation;
     public $flash1_msg_1;
     public $flash1_msg_2;
     public $flash1_msg_3;
@@ -135,9 +136,9 @@ class Omnitags extends CI_Controller
             'v1' => '_layouts/template',
             'v1_title' => '',
             'v2' => 'login',
-            'v2_title' => 'Login',
+            'v2_title' => 'Sign In',
             'v3' => 'signup',
-            'v3_title' => 'Sign Up',
+            'v3_title' => 'Create an Account',
             'v4' => 'no-level',
             'v4_title' => 'Anda tidak memiliki akses ke halaman ini!',
             'v5' => 'dashboard',
@@ -207,7 +208,7 @@ class Omnitags extends CI_Controller
 
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash1'], $msg);
+        $this->session->set_flashdata($this->views['flash1'], $msg. $extra);
         $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
@@ -228,7 +229,7 @@ class Omnitags extends CI_Controller
 
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash1'], $msg);
+        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
         $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
@@ -249,7 +250,7 @@ class Omnitags extends CI_Controller
 
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash1'], $msg);
+        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
         $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
@@ -259,19 +260,33 @@ class Omnitags extends CI_Controller
         if ($aksi) {
             $msg = $this->flash1_msg_3[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value4'];
-            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
+            $extra = ' (' . $this->aliases[$value . '_alias'] . ') = ' . $this->v_post[$value];
             $flashtype = 'modal';
         } else {
             $msg = $this->flash1_msg_4[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value6'];
-            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
+            $extra = ' (' . $this->aliases[$value . '_alias'] . ') = ' . $this->v_post[$value];
             $flashtype = 'modal';
         }
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->flash[$object], $msg);
-        $this->session->set_flashdata($flashtype, $this->flash_func[$object]);
+        $this->session->set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
+        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
         return [];
+    }
+
+    public function serve_image($directory, $filename) {
+        // Set the correct content type
+        header('Content-Type: image/jpeg'); // Adjust content type based on your image type
+
+        // Serve the image file
+        $file_path = FCPATH . ('assets/img/' . $directory . '/' . $filename);
+        if (file_exists($file_path)) {
+            readfile($file_path);
+        } else {
+            // Handle file not found error
+            show_404();
+        }
     }
 
     public function add_notif($msg, $type, $extra)

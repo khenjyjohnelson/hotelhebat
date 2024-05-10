@@ -9,7 +9,7 @@
 ?>
 
 <?php foreach ($tbl_a1 as $tl_a1): ?>
-  <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
+  <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
 <form action="<?= site_url($tabel_f2 . '/tambah') ?>" method="post">
@@ -122,7 +122,7 @@
     </div>
     <div class="col-md-6">
     <?php foreach ($dekor as $dk): ?>
-  <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid rounded">
+  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid rounded">
 <?php endforeach ?>
     </div>
 

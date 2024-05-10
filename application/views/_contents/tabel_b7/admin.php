@@ -16,7 +16,7 @@
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <?php foreach ($dekor as $dk): ?>
-  <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" width="200">
+  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
 <?php endforeach ?>
 
 <div class="table-responsive">
@@ -39,15 +39,15 @@
           <td></td>
           <td><?= $tl_b7->$tabel_b7_field1; ?></td>
           <td><?= $tl_b7->$tabel_b7_field2 ?></td>
-          <td><img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field3 ?>" height="100">
+          <td><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field3 ?>" width="50">
             <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
               data-target="#<?= $tabel_b7_field3 . $tl_b7->$tabel_b7_field1 ?>"><i class="fas fa-edit"></i></a>
           </td>
-          <td><img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field4 ?>" height="100">
+          <td><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field4 ?>" width="50">
             <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
               data-target="#<?= $tabel_b7_field4 . $tl_b7->$tabel_b7_field1 ?>"><i class="fas fa-edit"></i></a>
           </td>
-          <td><img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field5 ?>" height="100">
+          <td><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field5 ?>" width="100">
             <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
               data-target="#<?= $tabel_b7_field5 . $tl_b7->$tabel_b7_field1 ?>"><i class="fas fa-edit"></i></a>
           </td>
@@ -177,7 +177,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field3; ?>" width="300">
+              <img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field3; ?>" width="300">
             </div>
             <hr>
 
@@ -192,7 +192,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_ubah') ?>
+            <?= $this->session->flashdata('pesan_' . $tabel_b7_field3) ?>
           </p>
 
           <div class="modal-footer">
@@ -223,7 +223,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field4; ?>" width="300">
+              <img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field4; ?>" width="300">
             </div>
             <hr>
 
@@ -239,7 +239,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_ubah') ?>
+            <?= $this->session->flashdata('pesan_' . $tabel_b7_field4) ?>
           </p>
 
           <div class="modal-footer">
@@ -270,7 +270,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field5; ?>" width="300">
+              <img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field5; ?>" width="300">
             </div>
             <hr>
 
@@ -285,7 +285,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_ubah') ?>
+            <?= $this->session->flashdata('pesan_' . $tabel_b7_field5) ?>
           </p>
 
           <div class="modal-footer">

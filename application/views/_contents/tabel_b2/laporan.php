@@ -42,7 +42,7 @@
           <tr>
             <td width=""><?= $tl_b2->$tabel_b2_field1 ?></td>
             <td width=""><?= $tl_b2->$tabel_b2_field2 ?></td>
-            <td width=""><img src="img/tabel_b2/<?= $tl_b2->$tabel_b2_field3 ?>" width="100"></td>
+            <td width=""><img src="img/<?= $tabel_b2 ?>/<?= $tl_b2->$tabel_b2_field3 ?>" width="100"></td>
           </tr>
         <?php endforeach ?>
       </tbody>

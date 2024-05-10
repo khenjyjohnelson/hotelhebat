@@ -29,7 +29,7 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => $this->v2_title['tabel_f3_alias'],
 			'konten' => $this->v2['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor('tabel_f3')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->join_tabel_f2_tamu($tabel_c2_field1)->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 		);
@@ -47,7 +47,7 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => $this->views['tabel_f3_v2_alt_title'],
 			'konten' => $this->views['tabel_f3_v2_alt'],
-			'dekor' => $this->tl_b1->dekor('tabel_f3')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->join_tabel_f1_tamu($tabel_c2_field1)->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 		);
@@ -69,7 +69,7 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_f3_alias'],
 			'konten' => $this->v3['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor('tabel_f3')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->join_tabel_f2()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 
@@ -95,7 +95,7 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => $this->views['tabel_f3_v3_alt_title'],
 			'konten' => $this->views['tabel_f3_v3_alt'],
-			'dekor' => $this->tl_b1->dekor('tabel_f3')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->join_tabel_f1()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 
@@ -157,7 +157,7 @@ class C_tabel_f3 extends Omnitags
 			// hanya merubah status pesanan
 			$aksi2 = $this->tl_f2->update($status, $tabel_f3_field4);
 
-			$notif = $this->handle_2($aksi2, 'tabel_f2');
+			$notif = $this->handle_2($aksi2, 'tabel_f2', $tabel_f3_field4);
 
 		} else {
 			$this->session->set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_f3_alias']);
@@ -214,7 +214,7 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_f3_alias'],
 			'konten' => $this->v3['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor('tabel_f3')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->filter($tabel_f3_field7_filter1, $tabel_f3_field7_filter2)->result(),
 			'tbl_f2' => $this->tl_f2->ambildata()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
@@ -236,7 +236,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_f3_alias'],
-			'dekor' => $this->tl_b1->dekor('tabel_f3')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->ambildata()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 			'tbl_f2' => $this->tl_f2->ambildata()->result(),
@@ -257,7 +257,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v5_title['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor('tabel_f3')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->ambil_tabel_f3_field1($tabel_f3_field1)->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result()
 		);
@@ -276,13 +276,13 @@ class C_tabel_f3 extends Omnitags
 			$data2 = array(
 				'tbl_f1' => $this->tl_f1->ambildata()->result(),
 			);
-			$data = array_merge($data1, $data2, $this->aliases);
+			$data = array_merge($data1, $data2, $this->views, $this->aliases);
 			$this->load->view($this->v5['tabel_f1'], $data);
 		} else {
 			$data2 = array(
 				'tbl_f2' => $this->tl_f2->ambildata()->result(),
 			);
-			$data = array_merge($data1, $data2, $this->aliases);
+			$data = array_merge($data1, $data2, $this->views, $this->aliases);
 			$this->load->view($this->v5['tabel_f3'], $data);
 		}
 	}
@@ -294,8 +294,8 @@ class C_tabel_f3 extends Omnitags
 
 		$tabel_f3_field3 = $this->session->tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
 		$data1 = array(
-			'title' => $this->v6_title['tabel_f3_alias'],
-			'dekor' => $this->tl_b1->dekor('tabel_f3')->result(),
+			'title' => $this->v7_title['tabel_f3_alias'],
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f3'])->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan
 			'tbl_f3' => $this->tl_f3->ambil_tabel_c2_field3($tabel_f3_field3)->last_row(),
@@ -303,6 +303,6 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->v6['tabel_f3'], $data);
+		$this->load->view($this->v7['tabel_f3'], $data);
 	}
 }

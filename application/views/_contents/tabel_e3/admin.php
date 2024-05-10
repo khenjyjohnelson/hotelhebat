@@ -311,7 +311,7 @@
                     <hr>
 
                     <div class="form-group">
-                      <img src="img/tabel_e4/<?= $tl_e4->$tabel_e4_field3; ?>" width="200">
+                      <img src="img/<?= $tabel_e4 ?>/<?= $tl_e4->$tabel_e4_field3; ?>" width="200">
                     </div>
                     <hr>
 
@@ -418,7 +418,7 @@
                     <hr>
 
                     <div class="form-group">
-                      <img src="img/tabel_e4/<?= $tl_e4->$tabel_e4_field3; ?>" width="200">
+                      <img src="img/<?= $tabel_e4 ?>/<?= $tl_e4->$tabel_e4_field3; ?>" width="200">
                     </div>
                     <hr>
 

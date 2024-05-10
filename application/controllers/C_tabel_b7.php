@@ -19,7 +19,7 @@ class C_tabel_b7 extends Omnitags
 		 $data1 = array(
 			'title' => $this->v3_title['tabel_b7_alias'],
 			'konten' => $this->v3['tabel_b7'],
-			'dekor' => $this->tl_b1->dekor('tabel_b7')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b7'])->result(),
 			'tbl_b7' => $this->tl_b7->ambildata()->result(),
 		);
 
@@ -103,7 +103,7 @@ class C_tabel_b7 extends Omnitags
 
 		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
 
-		$notif = $this->handle_4($aksi, 'tabel_b7_field3', $tabel_b7_field1);
+		$notif = $this->handle_4($aksi, 'tabel_b7_field3', 'tabel_b7_field1');
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -145,7 +145,7 @@ class C_tabel_b7 extends Omnitags
 
 		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
 
-		$notif = $this->handle_4($aksi, 'tabel_b7_field4', $tabel_b7_field1);
+		$notif = $this->handle_4($aksi, 'tabel_b7_field4', 'tabel_b7_field1');
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -187,7 +187,7 @@ class C_tabel_b7 extends Omnitags
 
 		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
 
-		$notif = $this->handle_4($aksi, 'tabel_b7_field5', $tabel_b7_field1);
+		$notif = $this->handle_4($aksi, 'tabel_b7_field5', 'tabel_b7_field1');
 
 		redirect(site_url('c_tabel_b7/admin'));
 	}
@@ -211,7 +211,7 @@ class C_tabel_b7 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b7_alias'],
-			'dekor' => $this->tl_b1->dekor('tabel_b7')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b7'])->result(),
 			'tbl_b7' => $this->tl_b7->ambildata()->result(),
 		);
 

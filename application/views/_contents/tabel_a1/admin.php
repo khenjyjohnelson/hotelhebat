@@ -17,7 +17,7 @@
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
 <?php foreach ($dekor as $dk): ?>
-  <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" width="200">
+  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
 <?php endforeach ?>
 
 <div class="table-responsive">
@@ -40,7 +40,7 @@
           <td><?= $tl_a1_alt->$tabel_a1_field1; ?></td>
           <td><?= $tl_a1_alt->$tabel_a1_field2 ?></td>
           <td><?= $tl_a1_alt->$tabel_a1_field4 ?></td>
-          <td><img src="img/tabel_b7/<?= $tl_a1_alt->$tabel_a1_field3 ?>" width="100"></td>
+          <td><img src="img/<?= $tabel_b7 ?>/<?= $tl_a1_alt->$tabel_a1_field3 ?>" width="100"></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_a1_alt->$tabel_a1_field1; ?>">
               <i class="fas fa-eye"></i></a>
@@ -142,7 +142,7 @@
               <label><?= $tabel_a1_field3_alias ?> : </label>
             </div>
             <div class="form-group">
-              <img src="img/tabel_b7/<?= $tl_a1_alt->$tabel_a1_field3; ?>" width="450">
+              <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1_alt->$tabel_a1_field3; ?>" width="450">
             </div>
 
 

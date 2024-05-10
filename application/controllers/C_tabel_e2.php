@@ -13,7 +13,7 @@ class C_tabel_e2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v1_title['tabel_e2_alias'],
 			'konten' => $this->v1['tabel_e2'],
-			'dekor' => $this->tl_b1->dekor('tabel_e2')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->ambildata()->result(),
 		);
 
@@ -33,7 +33,7 @@ class C_tabel_e2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_e2_alias'],
 			'konten' => $this->v3['tabel_e2'],
-			'dekor' => $this->tl_b1->dekor('tabel_e2')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->ambildata()->result(),
 		);
 
@@ -107,7 +107,7 @@ class C_tabel_e2 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e2_alias'],
-			'dekor' => $this->tl_b1->dekor('tabel_e2')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->ambildata()->result(),
 		);
 

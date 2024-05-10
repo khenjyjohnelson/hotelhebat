@@ -44,9 +44,9 @@
           <tr>
             <td width=""><?= $tl_b7->$tabel_b7_field1; ?></td>
             <td width=""><?= $tl_b7->$tabel_b7_field2 ?></td>
-            <td width=""><img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field3 ?>" height="100"></td>
-            <td width=""><img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field4 ?>" height="100"></td>
-            <td width=""><img src="img/tabel_b7/<?= $tl_b7->$tabel_b7_field5 ?>" height="100"></td>
+            <td width=""><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field3 ?>" height="100"></td>
+            <td width=""><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field4 ?>" height="100"></td>
+            <td width=""><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field5 ?>" height="100"></td>
           </tr>
         <?php endforeach ?>
       </tbody>

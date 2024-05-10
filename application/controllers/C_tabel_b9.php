@@ -23,7 +23,7 @@ class C_tabel_b9 extends Omnitags
 			$data1 = array(
 				'title' => $this->v8_title['tabel_b9_alias'],
 				'konten' => $this->v8['tabel_b9'],
-				'dekor' => $this->tl_b1->dekor('tabel_b9')->result(),
+				'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
 				'tbl_b9_alt' => $this->tl_b9->ambil_tabel_b9_field1($tabel_b9_field1)->result(),
 			);
 
@@ -61,7 +61,7 @@ class C_tabel_b9 extends Omnitags
 		$data1 = array(
 			'title' => $this->v2_title['tabel_b9_alias'],
 			'konten' => $this->v2['tabel_b9'],
-			'dekor' => $this->tl_b1->dekor('tabel_b9')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
 			'tbl_b9_alt' => $this->tl_b9->ambil_tabel_b8($tabel_b9_field2)->result(),
 		);
 
@@ -78,7 +78,7 @@ class C_tabel_b9 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_b9_alias'],
 			'konten' => $this->v3['tabel_b9'],
-			'dekor' => $this->tl_b1->dekor('tabel_b9')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->ambildata()->result(),
 		);
 
@@ -139,7 +139,7 @@ class C_tabel_b9 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b9_alias'],
-			'dekor' => $this->tl_b1->dekor('tabel_b9')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->ambildata()->result(),
 		);
 

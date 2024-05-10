@@ -1,5 +1,5 @@
 <?php foreach ($tbl_a1 as $tl_a1) : ?>
-  <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
+  <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
 <h2 class="pt-2"><?= $title ?><?= $phase ?></h2>
@@ -10,7 +10,7 @@
     <div class="col-md-4 tabel_e2">
 
       <!-- gambar dapat ditekan untuk memunculkan modal -->
-      <img style="height: 200px;" role="button" data-toggle="modal" data-target="#lihat<?= $tl_e2->$tabel_e2_field1 ?>" class="img-thumbnail img-fluid" src="<?= "img/tabel_e2/".$tl_e2->$tabel_e2_field4; ?>">
+      <img style="height: 200px;" role="button" data-toggle="modal" data-target="#lihat<?= $tl_e2->$tabel_e2_field1 ?>" class="img-thumbnail img-fluid" src="img/<?= $tabel_e2 ?>/<?= $tl_e2->$tabel_e2_field4; ?>">
 
     </div>
   <?php endforeach; ?>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="modal-body">
-          <img class="img-thumbnail" src="<?= "img/tabel_e2/". $tl_e2->$tabel_e2_field4; ?>">
+          <img class="img-thumbnail" src="img/<?= $tabel_e2 ?>/"<?= $tl_e2->$tabel_e2_field4; ?>">
         </div>
 
         <!-- memunculkan notifikasi modal -->

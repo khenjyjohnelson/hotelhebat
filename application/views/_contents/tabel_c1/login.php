@@ -7,7 +7,7 @@
 <body>
   <?php foreach ($tbl_a1 as $tl_a1): ?>
     <div id="background-image">
-      <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>">
+      <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>">
     </div>
   <?php endforeach ?>
 

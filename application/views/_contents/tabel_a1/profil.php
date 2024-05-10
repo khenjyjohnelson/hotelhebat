@@ -82,7 +82,7 @@
   </div>
   <div class="col-md-6">
     <?php foreach ($dekor as $dk): ?>
-      <img src="img/tabel_b1/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid">
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid">
     <?php endforeach ?>
   </div>
 </div>
@@ -226,7 +226,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field3; ?>" width="300">
+              <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field3; ?>" width="300">
             </div>
             <hr>
 
@@ -272,7 +272,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field4; ?>" width="300">
+              <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field4; ?>" width="300">
             </div>
             <hr>
 
@@ -319,7 +319,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5; ?>" width="300">
+              <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5; ?>" width="300">
             </div>
             <hr>
 

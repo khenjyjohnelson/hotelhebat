@@ -57,12 +57,15 @@ $route['home'] = 'welcome';
 $route['no_level'] = 'welcome/no_level';
 $route['dashboard'] = 'welcome/dashboard';
 
+
 // Define routes dynamically based on JSON data
 $jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel_tables.postman_environment.json'));
 $myData2 = json_decode($jsonData2, true)['values'];
 
 
 foreach ($myData2 as $item2) {
+    $route['assets/img/' . $item2['value'] . '/(:any)'] = 'Omnitags/serve_image/' . $item2['key'] . '/$1';
+
     $prefix = 'c_' . $item2['key'];
     $cachedControllers = [];
 
@@ -77,7 +80,7 @@ foreach ($myData2 as $item2) {
         $route[$routeKey] = $controller;
     } else {
     }
-        
+
     // Define routes for different functionality groups
 
     // View routes

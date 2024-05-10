@@ -17,7 +17,7 @@ class C_tabel_c1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_c1_alias'],
 			'konten' => $this->v3['tabel_c1'],
-			'dekor' => $this->tl_b1->dekor('tabel_c1')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->ambildata()->result(),
 			'tbl_e3' => $this->tl_e3->ambildata()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
@@ -129,7 +129,7 @@ class C_tabel_c1 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_c1_alias'],
-			'dekor' => $this->tl_b1->dekor('tabel_c1')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->ambildata()->result(),
 		);
 
@@ -146,7 +146,7 @@ class C_tabel_c1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v6_title['tabel_c1_alias2'],
 			'konten' => $this->v6['tabel_c1'],
-			'dekor' => $this->tl_b1->dekor('tabel_c1')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->ambil_tabel_c1_field1($tabel_c1_field1)->result(),
 		);
 
@@ -161,7 +161,7 @@ class C_tabel_c1 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->views['tabel_c1_v2_title'],
-			'dekor' => $this->tl_b1->dekor('tabel_c1')->result(),
+			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_c1'])->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

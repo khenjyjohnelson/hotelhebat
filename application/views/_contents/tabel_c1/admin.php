@@ -171,7 +171,7 @@
             </div>
 
             <div class="form-group">
-              <img src="img/tabel_c1/<?= $tl_c1->$tabel_c1_field5; ?>" width="300">
+              <img src="img/<?= $tabel_c1 ?>/<?= $tl_c1->$tabel_c1_field5; ?>" width="300">
             </div>
             <hr>
 

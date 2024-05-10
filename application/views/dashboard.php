@@ -261,7 +261,7 @@
     </div>
 
     <div class="col-md-6">
-      <img class="img-thumbnail rounded" src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>">
+      <img class="img-thumbnail rounded" src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>">
     </div>
   </div>
 <?php endforeach; ?>

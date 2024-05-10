@@ -9,7 +9,7 @@
 <body class="login">
   <?php foreach ($tbl_a1 as $tl_a1): ?>
     <div id="background-image">
-      <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>">
+      <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>">
     </div>
   <?php endforeach ?>
 
@@ -89,8 +89,8 @@
 
           <!-- tombol signup dan login -->
           <div class="form-group d-flex justify-content-around">
-            <button class="btn btn-success login" type="submit">Sign Up</button>
-            <a class="btn btn-secondary login" type="button" href="<?= site_url($tabel_c2 . '/login') ?>">Login</a>
+            <a class="btn btn-light text-primary login" type="button" href="<?= site_url($tabel_c2 . '/login') ?>">Sign In</a>
+            <button class="btn btn-primary login" type="submit">Create account</button>
           </div>
 
         </form>

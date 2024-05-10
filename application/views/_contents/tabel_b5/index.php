@@ -2,11 +2,11 @@
   <?php foreach ($tbl_b5 as $tl_b5):
     if ($tl_a1->$tabel_a1_field7 == $tl_b5->$tabel_b5_field1) { ?>
 
-      <img src="img/tabel_b7/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
+      <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 
       <h1 class="text-center">
         <hr>
-        <img src="img/tabel_b5/<?= $tl_b5->$tabel_b5_field4 ?>" width="50%" class="rounded">
+        <img src="img/<?= $tabel_b5 ?>/<?= $tl_b5->$tabel_b5_field4 ?>" width="50%" class="rounded">
         <br>
         <?= $tabel_b5_alias ?> <a target="_blank" href="<?= $tl_b5->$tabel_b5_field5 ?>"><?= $tl_b5->$tabel_b5_field2 ?></a>
       </h1>
