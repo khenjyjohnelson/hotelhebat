@@ -39,7 +39,7 @@ class C_tabel_d3 extends Omnitags
 			$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
 		);
 
-		$simpan = $this->tl_d3->simpan($data);
+		$aksi = $this->tl_d3->simpan($data);
 	}
 
 	// Cetak semua data
@@ -50,7 +50,7 @@ class C_tabel_d3 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_d3_alias'],
 			'dekor' => $this->tl_b1->dekor('tabel_d3')->result(),
-			'tbl_d3' => $this->tl_d3->ambildata()->result()
+			'tbl_d3' => $this->tl_d3->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

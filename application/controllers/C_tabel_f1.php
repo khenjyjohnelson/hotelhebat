@@ -118,7 +118,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => $this->v4_title['tabel_f1_alias'],
 			'dekor' => $this->tl_b1->dekor('tabel_f1')->result(),
 			'tbl_f1' => $this->tl_f1->ambildata()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result()
+			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

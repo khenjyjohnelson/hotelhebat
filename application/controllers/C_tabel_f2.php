@@ -198,17 +198,10 @@ class C_tabel_f2 extends Omnitags
 		try {
 			// Security: Prepared Statements to prevent SQL injection
 			// Functional requirement: Save data to the database
-			$simpan = $this->tl_f2->simpan($data);
+			$aksi = $this->tl_f2->simpan($data);
 
-			if ($simpan) {
-				// Functional requirement: Set success flash message
-				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel_f2_alias']);
-			} else {
-				// Functional requirement: Set failure flash message
-				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel_f2_alias']);
-			}
-			// Functional requirement: Set flash message for further action
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+			$notif = $this->handle_1($aksi, 'tabel_f2');
+
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
 			$this->session->set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
@@ -258,15 +251,7 @@ class C_tabel_f2 extends Omnitags
 			$aksi = $this->tl_f1->update_tabel_f1($data, $tabel_f2_field1);
 		}
 
-		if ($aksi) {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_f2_field12_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_f2_field12_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_2($aksi, 'tabel_f2_field12');
 
 		redirect(site_url('c_tabel_f2/admin'));
 	}
@@ -279,7 +264,7 @@ class C_tabel_f2 extends Omnitags
 		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 		$status = $this->v_post['tabel_f2_field12'];
 
-		$aksi = $this->tl_f2->hapus($tabel_f2_field1);
+		$hapus = $this->tl_f2->hapus($tabel_f2_field1);
 
 		// memasukkan nama resepsionis yang melakukan operasi
 		$data = array(
@@ -289,15 +274,9 @@ class C_tabel_f2 extends Omnitags
 		// mengupdate history dengan nama user yang aktif
 		$update_tabel_f1 = $this->tl_f1->update_tabel_f1($data, $tabel_f2_field1);
 
-		if ($hapus && $update_tabel_f1) {
+		$aksi = $hapus && $update_tabel_f1;
 
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_f2_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_6['tabel_f2_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_3($aksi, 'tabel_f2_field1', $tabel_f2_field1);
 
 		redirect(site_url('c_tabel_f2/admin'));
 	}
@@ -341,7 +320,7 @@ class C_tabel_f2 extends Omnitags
 			'title' => $this->v4_title['tabel_f2_alias'],
 			'dekor' => $this->tl_b1->dekor('tabel_f2')->result(),
 			'tbl_f2' => $this->tl_f2->ambildata()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result()
+			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -358,7 +337,7 @@ class C_tabel_f2 extends Omnitags
 			'title' => $this->v5_title['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor('tabel_f2')->result(),
 			'tbl_f2' => $this->tl_f2->ambil_tabel_f2_field1($tabel_f2_field1)->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result()
+			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -447,18 +426,9 @@ class C_tabel_f2 extends Omnitags
 			$this->aliases['tabel_e3_field3'] => $this->v_post['tabel_f2_field1'],
 			$this->aliases['tabel_e3_field4'] => $this->aliases['tabel_e3_field4_value3'],
 		);
-		$update_tabel_e3 = $this->tl_e3->update($tabel_e3, $param);
+		$aksi = $this->tl_e3->update($tabel_e3, $param);
 
-
-		if ($update_tabel_e3) {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_f2_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_f2_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_2($aksi, 'tabel_f2');
 
 		redirect(site_url('c_tabel_f2/admin'));
 	}

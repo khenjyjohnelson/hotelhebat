@@ -62,13 +62,7 @@ class C_tabel_a1 extends Omnitags
 
 		$aksi = $this->tl_a1->update($data, $tabel_a1_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_a1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_a1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_2($aksi, 'tabel_a1_field1');
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -84,14 +78,7 @@ class C_tabel_a1 extends Omnitags
 
 		$aksi = $this->tl_a1->update($data, $tabel_a1_field1);
 
-		$field = 'tabel_a1_field8';
-		$msg1 = $this->flash1_msg_3['tabel_a1_field8_alias'];
-		$msg2 = $this->flash1_msg_4['tabel_a1_field8_alias'];
-		$type1 = $this->aliases['tabel_b8_field2_value4'];
-		$type2 = $this->aliases['tabel_b8_field2_value6'];
-		$extra = '';
-
-		$notif = $this->add_notif_flash($aksi, $field, $msg1, $type1, $msg2, $type2, $extra);
+		$notif = $this->handle_4($aksi, 'tabel_a1_field8');
 
 		redirect(site_url('c_tabel_a1/profil'));
 	}
@@ -107,17 +94,7 @@ class C_tabel_a1 extends Omnitags
 
 		$aksi = $this->tl_a1->update($data, $tabel_a1_field1);
 
-		$field = 'tabel_a1_field6';
-		$msg1 = $this->flash1_msg_3['tabel_a1_field6_alias'];
-		$msg2 = $this->flash1_msg_4['tabel_a1_field6_alias'];
-		$type1 = $this->aliases['tabel_b8_field2_value4'];
-		$type2 = $this->aliases['tabel_b8_field2_value6'];
-		$extra = '';
-
-		$notif = $this->add_notif_flash($aksi, $field, $msg1, $type1, $msg2, $type2, $extra);
-
-		$this->session->set_flashdata($this->flash['tabel_a1_field6'], $this->flash1_msg_3['tabel_a1_field6_alias']);
-		$this->session->set_flashdata('modal', $this->flash_func['tabel_a1_field6']);
+		$notif = $this->handle_4($aksi, 'tabel_a1_field6');
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -133,13 +110,8 @@ class C_tabel_a1 extends Omnitags
 
 		$aksi = $this->tl_a1->update($data, $tabel_a1_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->flash['tabel_a1_field7'], $this->flash1_msg_3['tabel_a1_field7_alias']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel_a1_field7']);
-		} else {
-			$this->session->set_flashdata($this->flash['tabel_a1_field7'], $this->flash1_msg_4['tabel_a1_field7_alias']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel_a1_field7']);
-		}
+		$notif = $this->handle_4($aksi, 'tabel_a1_field7');
+
 		redirect(site_url($this->aliases['tabel_a1'] . '/profil'));
 	}
 }

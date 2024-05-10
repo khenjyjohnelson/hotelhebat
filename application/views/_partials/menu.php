@@ -119,9 +119,10 @@
             } ?>
 
             <li class="nav-item dropdown">
-                <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
-                    <i class="fas fa-bell"></i>
-                    <span><?= $tbl_b9_count ?></span>
+                <a type="button" class="nav-link text-decoration-none h4 mt-1 font-weight-bold" data-toggle="dropdown" href="#">
+                   <i class="fas fa-bell"></i><?php if (!$tbl_b9_count) { ?><span>&nbsp;&nbsp;</span><?php
+                    } else { ?>
+                            <span><?= $tbl_b9_count ?></span><?php } ?>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
@@ -140,7 +141,8 @@
 
                     <div class="list-group" style="min-width: 350px;">
 
-                        <?php foreach ($tbl_b9 as $tl_b9):
+                        <?php if (!$tbl_b9) { ?>         <?php } else {
+                            foreach ($tbl_b9 as $tl_b9):
 
                                 if ($tl_b9->$tabel_b9_field2 == $this->session->userdata($tabel_c2_field1)) {
                                     if ($tl_b9->$tabel_b9_field6 == NULL) { ?>
@@ -156,7 +158,8 @@
                                                     <div class="text-muted small mt-1">
                                                         <?= $tl_b9->$tabel_b9_field4 ?>
                                                     </div>
-                                                    <div class="text-muted small mt-1"><?= getTimeElapsedString($tl_b9->$tabel_b9_field5) ?></div>
+                                                    <div class="text-muted small mt-1"><?= $timeElapsed ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
@@ -172,7 +175,8 @@
                                                     <div class="text-muted small mt-1">
                                                         <?= $tl_b9->$tabel_b9_field4 ?>
                                                     </div>
-                                                    <div class="text-muted small mt-1"><?= getTimeElapsedString($tl_b9->$tabel_b9_field5) ?></div>
+                                                    <div class="text-muted small mt-1"><?= $timeElapsed ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
@@ -191,7 +195,8 @@
                                         </div>
                                     </a>
                                 <?php }
-                            endforeach; ?>
+                            endforeach;
+                        } ?>
                     </div>
                     <div class="dropdown-header">
                         <a href="<?= site_url($tabel_b9 . '/daftar') ?>" class="text-muted">Show all notifications</a>

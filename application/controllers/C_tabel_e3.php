@@ -22,7 +22,7 @@ class C_tabel_e3 extends Omnitags
 			'dekor' => $this->tl_b1->dekor('tabel_e3')->result(),
 			'tbl_e3' => $this->tl_e3->ambildata()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
-			'tbl_c1' => $this->tl_c1->ambildata()->result()
+			'tbl_c1' => $this->tl_c1->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -40,15 +40,9 @@ class C_tabel_e3 extends Omnitags
 			$this->aliases['tabel_e3_field4'] => $this->v_post['tabel_e3_field4'],
 		);
 
-		$simpan = $this->tl_e3->simpan($data);
+		$aksi = $this->tl_e3->simpan($data);
 
-		if ($simpan) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel_e3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel_e3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_1($aksi, 'tabel_e3');
 
 		redirect(site_url('c_tabel_e3/admin'));
 	}
@@ -67,13 +61,7 @@ class C_tabel_e3 extends Omnitags
 
 		$aksi = $this->tl_e3->update($data, $tabel_e3_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_e3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_e3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_2($aksi, 'tabel_e3');
 
 		redirect(site_url('c_tabel_e3/admin'));
 	}
@@ -84,13 +72,7 @@ class C_tabel_e3 extends Omnitags
 
 		$aksi = $this->tl_e3->hapus($tabel_e3_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_e3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_6['tabel_e3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_3($aksi, 'tabel_e3_field1', $tabel_e3_field1);
 
 		redirect(site_url('c_tabel_e3/admin'));
 	}
@@ -103,7 +85,7 @@ class C_tabel_e3 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e3_alias'],
 			'dekor' => $this->tl_b1->dekor('tabel_e3')->result(),
-			'tbl_e3' => $this->tl_e3->ambildata()->result()
+			'tbl_e3' => $this->tl_e3->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

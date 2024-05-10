@@ -74,15 +74,9 @@ class C_tabel_b5 extends Omnitags
 			$this->aliases['tabel_b5_field5'] => $this->v_post['tabel_b5_field5'],
 		);
 
-		$simpan = $this->tl_b5->simpan($data);
+		$aksi = $this->tl_b5->simpan($data);
 
-		if ($simpan) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel_b5_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel_b5_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_1($aksi, 'tabel_b5');
 
 		redirect(site_url('c_tabel_b5/admin'));
 	}
@@ -121,14 +115,7 @@ class C_tabel_b5 extends Omnitags
 
 		$aksi = $this->tl_b5->update($data, $tabel_b5_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_b5_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_b5_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+		$notif = $this->handle_2($aksi, 'tabel_b5');
 
 		redirect(site_url('c_tabel_b5/admin'));
 	}
@@ -144,13 +131,7 @@ class C_tabel_b5 extends Omnitags
 
 		$aksi = $this->tl_b5->hapus($tabel_b5_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_b5_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_6['tabel_b5_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_3($aksi, 'tabel_b5_field1', $tabel_b5_field1);
 
 		redirect(site_url('c_tabel_b5/admin'));
 	}

@@ -16,7 +16,7 @@ class C_tabel_c2 extends Omnitags
 			'title' => $this->v3_title['tabel_c2_alias'],
 			'konten' => $this->v3['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor('tabel_c2')->result(),
-			'tbl_c2' => $this->tl_c2->ambildata()->result()
+			'tbl_c2' => $this->tl_c2->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -52,7 +52,7 @@ class C_tabel_c2 extends Omnitags
 					$this->aliases['tabel_c2_field6'] => $this->v_post['tabel_c2_field6'],
 				);
 
-				$simpan = $this->tl_c2->simpan($data);
+				$aksi = $this->tl_c2->simpan($data);
 
 				// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
 				if ($this->session->userdata($this->aliases['tabel_c2_field3'])) {
@@ -93,15 +93,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
 
-		if ($aksi) {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_c2_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_c2_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_2($aksi, 'tabel_c2');
 
 		// kembali ke halaman sebelumnya
 		redirect($_SERVER['HTTP_REFERER']);
@@ -113,17 +105,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->hapus($tabel_c2_field1);
 
-
-		if ($aksi) {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_c2_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_6['tabel_c2_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
-
+		$notif = $this->handle_3($aksi, 'tabel_c2_field1', $tabel_c2_field1);
 
 		redirect(site_url('c_tabel_c2/admin'));
 	}
@@ -136,7 +118,7 @@ class C_tabel_c2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_c2_alias'],
 			'dekor' => $this->tl_b1->dekor('tabel_c2')->result(),
-			'tbl_c2' => $this->tl_c2->ambildata()->result()
+			'tbl_c2' => $this->tl_c2->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -155,7 +137,7 @@ class C_tabel_c2 extends Omnitags
 			'konten' => $this->v6['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor('tabel_c2')->result(),
 			'tbl_c2' => $this->tl_c2->ambil_tabel_c2_field1($tabel_c2_field1)->result(),
-			'tbl_d3' => $this->tl_d3->ambil_tabel_c2_field1($tabel_c2_field1)->result()
+			'tbl_d3' => $this->tl_d3->ambil_tabel_c2_field1($tabel_c2_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

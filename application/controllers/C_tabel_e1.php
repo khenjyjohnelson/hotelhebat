@@ -14,7 +14,7 @@ class C_tabel_e1 extends Omnitags
 			'title' => $this->v1_title['tabel_e1_alias'],
 			'konten' => $this->v1['tabel_e1'],
 			'dekor' => $this->tl_b1->dekor('tabel_e1')->result(),
-			'tbl_e1' => $this->tl_e1->ambildata()->result()
+			'tbl_e1' => $this->tl_e1->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -34,7 +34,7 @@ class C_tabel_e1 extends Omnitags
 			'title' => $this->v3_title['tabel_e1_alias'],
 			'konten' => $this->v3['tabel_e1'],
 			'dekor' => $this->tl_b1->dekor('tabel_e1')->result(),
-			'tbl_e1' => $this->tl_e1->ambildata()->result()
+			'tbl_e1' => $this->tl_e1->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -77,17 +77,10 @@ class C_tabel_e1 extends Omnitags
 		try {
 			// Security: Prepared Statements to prevent SQL injection
 			// Functional requirement: Save data to database
-			$simpan = $this->tl_e1->simpan($data);
+			$aksi = $this->tl_e1->simpan($data);
 
-			if ($simpan) {
-				// Functional requirement: Set success flash message
-				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel_e1_alias']);
-			} else {
-				// Functional requirement: Set failure flash message
-				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel_e1_alias']);
-			}
-			// Functional requirement: Set flash message for further action
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+			$notif = $this->handle_1($aksi, 'tabel_e1');
+			
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
 			$this->session->set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
@@ -135,15 +128,8 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Update data in the database
 			$aksi = $this->tl_e1->update($data, $tabel_e1_field1);
 
-			if ($aksi) {
-				// Functional requirement: Set success flash message
-				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_e1_alias']);
-			} else {
-				// Functional requirement: Set failure flash message
-				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_e1_alias']);
-			}
-			// Functional requirement: Set flash message for further action
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+			$notif = $this->handle_2($aksi, 'tabel_e1');
+
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
 			$this->session->set_flashdata($this->views['flash2'], "Error occurred while updating data: " . $e->getMessage());
@@ -164,21 +150,14 @@ class C_tabel_e1 extends Omnitags
 		$tabel_e1 = $this->tl_e1->ambil_tabel_e1_field1($tabel_e1_field1)->result();
 		$tabel_e1_field3 = $tabel_e1[0]->img;
 
-		unlink($this->v_upload_path['tabel_e1_field3'] . $tabel_e1_field3);
+		unlink($this->v_upload_path['tabel_e1'] . $tabel_e1_field3);
 
 		try {
 			// Functional requirement: Delete data from the database
 			$aksi = $this->tl_e1->hapus($tabel_e1_field1);
 
-			if ($aksi) {
-				// Functional requirement: Set success flash message
-				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_e1_alias']);
-			} else {
-				// Functional requirement: Set failure flash message
-				$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_6['tabel_e1_alias']);
-			}
-			// Functional requirement: Set flash message for further action
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+			$notif = $this->handle_3($aksi, 'tabel_e1_field1', $tabel_e1_field1);
+
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
 			$this->session->set_flashdata($this->views['flash1'], "Error occurred while deleting data: " . $e->getMessage());
@@ -198,7 +177,7 @@ class C_tabel_e1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e1_alias'],
 			'dekor' => $this->tl_b1->dekor('tabel_e1')->result(),
-			'tbl_e1' => $this->tl_e1->ambildata()->result()
+			'tbl_e1' => $this->tl_e1->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

@@ -38,15 +38,9 @@ class C_tabel_b7 extends Omnitags
 			$this->aliases['tabel_b7_field6'] => htmlspecialchars($this->v_post['tabel_b7_field6']),
 		);
 
-		$simpan = $this->tl_b7->simpan($data);
+		$aksi = $this->tl_b7->simpan($data);
 
-		if ($simpan) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel_b7_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel_b7_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_1($aksi, 'tabel_b7');
 
 		redirect(site_url('c_tabel_b7/admin'));
 	}
@@ -66,13 +60,7 @@ class C_tabel_b7 extends Omnitags
 
 		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
 
-		$msg1 = $this->flash1_msg_3['tabel_b7_alias'];
-		$msg2 = $this->flash1_msg_4['tabel_b7_alias'];
-		$type1 = $this->aliases['tabel_b8_field2_value4'];
-		$type2 = $this->aliases['tabel_b8_field2_value6'];
-		$extra = ' (' . $this->aliases['tabel_b7_field1_alias'] . ') = ' . $this->v_post['tabel_b7_field1'];
-
-		$notif = $this->add_notif($aksi, $msg1, $type1, $msg2, $type2, $extra);
+		$notif = $this->handle_2($aksi, 'tabel_b7');
 
 		redirect(site_url('c_tabel_b7/admin'));
 	}
@@ -115,23 +103,7 @@ class C_tabel_b7 extends Omnitags
 
 		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
 
-		$msg1 = $this->flash1_msg_3['tabel_b7_field3_alias'];
-		$msg2 = $this->flash1_msg_4['tabel_b7_field3_alias'];
-		$type1 = $this->aliases['tabel_b8_field2_value4'];
-		$type2 = $this->aliases['tabel_b8_field2_value6'];
-
-		if ($aksi) {
-			$ambil = $this->add_notif($msg1, $type1);
-			
-			$this->session->set_flashdata($this->views['flash1'], $msg1);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$ambil = $this->add_notif($msg2, $type2);
-
-			$this->session->set_flashdata($this->views['flash1'], $msg2);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+		$notif = $this->handle_4($aksi, 'tabel_b7_field3');
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -173,25 +145,9 @@ class C_tabel_b7 extends Omnitags
 
 		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
 
-		$msg1 = $this->flash1_msg_3['tabel_b7_field4_alias'];
-		$msg2 = $this->flash1_msg_4['tabel_b7_field4_alias'];
-		$type1 = $this->aliases['tabel_b8_field2_value4'];
-		$type2 = $this->aliases['tabel_b8_field2_value6'];
+		$notif = $this->handle_4($aksi, 'tabel_b7_field4');
 
-		if ($aksi) {
-			$ambil = $this->add_notif($msg1, $type1);
-			
-			$this->session->set_flashdata($this->views['flash1'], $msg1);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$ambil = $this->add_notif($msg2, $type2);
-
-			$this->session->set_flashdata($this->views['flash1'], $msg2);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-
-		redirect(site_url('c_tabel_b7/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function update_foto()
@@ -231,14 +187,7 @@ class C_tabel_b7 extends Omnitags
 
 		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
 
-		$field = $this->aliases['tabel_b7_field5'];
-		$msg1 = $this->flash1_msg_3['tabel_b7_field5_alias'];
-		$msg2 = $this->flash1_msg_4['tabel_b7_field5_alias'];
-		$type1 = $this->aliases['tabel_b8_field2_value4'];
-		$type2 = $this->aliases['tabel_b8_field2_value6'];
-		$extra = '';
-
-		$notif = $this->add_notif_flash($aksi, $field, $msg1, $type1, $msg2, $type2, $extra);
+		$notif = $this->handle_4($aksi, 'tabel_b7_field5');
 
 		redirect(site_url('c_tabel_b7/admin'));
 	}
@@ -250,23 +199,7 @@ class C_tabel_b7 extends Omnitags
 
 		$aksi = $this->tl_b7->hapus($tabel_b7_field1);
 
-		$msg1 = $this->flash1_msg_5['tabel_b7_alias'];
-		$msg2 = $this->flash1_msg_6['tabel_b7_alias'];
-		$type1 = $this->aliases['tabel_b8_field2_value4'];
-		$type2 = $this->aliases['tabel_b8_field2_value6'];
-
-		if ($aksi) {
-			$ambil = $this->add_notif($msg1, $type1);
-			
-			$this->session->set_flashdata($this->views['flash1'], $msg1);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$ambil = $this->add_notif($msg2, $type2);
-
-			$this->session->set_flashdata($this->views['flash1'], $msg2);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+		$notif = $this->handle_3($aksi, 'tabel_b7_field1', $tabel_b7_field1);
 
 		redirect(site_url('c_tabel_b7/admin'));
 	}

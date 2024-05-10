@@ -39,7 +39,7 @@ class Omnitags extends CI_Controller
     public $v_input, $v_post, $v_get, $v_old, $v_post_old;
     public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
-    public $gettime, $datetime, $elapsedTime;
+    public $notif_limit, $notif_null, $elapsedTime, $elapsed;
     public $flash1_msg_1;
     public $flash1_msg_2;
     public $flash1_msg_3;
@@ -52,68 +52,6 @@ class Omnitags extends CI_Controller
     public $flash_msg4;
     public $flash_msg5;
     public $tabel_a1, $tabel_a1_field1;
-
-    public function add_notif($aksi, $msg1, $type1, $msg2, $type2, $extra)
-    {
-        if ($aksi) {
-            $notif = array(
-                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
-                $this->aliases['tabel_b9_field3'] => $type1,
-                $this->aliases['tabel_b9_field4'] => $msg1 . $extra,
-                $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
-            );
-
-            $ambil = $this->tl_b9->simpan($notif);
-            
-            $this->session->set_flashdata($this->views['flash1'], $msg1);
-            $this->session->set_flashdata('toast', $this->views['flash1_func1']);
-            return[];
-        } else {
-            $notif = array(
-                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
-                $this->aliases['tabel_b9_field3'] => $type2,
-                $this->aliases['tabel_b9_field4'] => $msg2 . $extra,
-                $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
-            );
-
-            $ambil = $this->tl_b9->simpan($notif);
-
-            $this->session->set_flashdata($this->views['flash1'], $msg2);
-            $this->session->set_flashdata('toast', $this->views['flash1_func1']);
-            redirect($_SERVER['HTTP_REFERER']);
-        }
-    }
-
-    public function add_notif_flash($aksi, $field, $msg1, $type1, $msg2, $type2, $extra)
-    {
-        if ($aksi) {
-            $notif = array(
-                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
-                $this->aliases['tabel_b9_field3'] => $type1,
-                $this->aliases['tabel_b9_field4'] => $msg1 . $extra,
-                $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
-            );
-
-            $ambil = $this->tl_b9->simpan($notif);
-            
-            $this->session->set_flashdata($this->flash[$field], $msg1);
-            $this->session->set_flashdata('modal', $this->flash_func[$field]);
-            return[];
-        } else {
-            $notif = array(
-                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
-                $this->aliases['tabel_b9_field3'] => $type2,
-                $this->aliases['tabel_b9_field4'] => $msg2 . $extra,
-                $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
-            );
-
-            $ambil = $this->tl_b9->simpan($notif);
-
-            $this->session->set_flashdata($this->flash[$field], $msg2);
-            $this->session->set_flashdata('modal', $this->flash_func[$field]);
-            redirect($_SERVER['HTTP_REFERER']);
-        }
-    }
 
     public function declarew()
     {
@@ -184,8 +122,14 @@ class Omnitags extends CI_Controller
             $this->v8_title[$item['key']] = 'Detail ' . $item['value'];
         }
 
-        $notif_limit = $this->tl_b9->ambil_tabel_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']));
-        $notif_null = $this->tl_b9->ambil_tabel_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
+        $this->notif_limit = $this->tl_b9->ambil_tabel_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']))->result();
+        $this->notif_null = $this->tl_b9->ambil_tabel_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
+
+        if ($this->notif_limit) {
+            $this->elapsed = $this->notif_limit[0]->created_at;
+        } else {
+            $this->elapsed = '';
+        }
 
         $this->views = array(
             'v1' => '_layouts/template',
@@ -216,8 +160,9 @@ class Omnitags extends CI_Controller
             'tbl_b5' => $this->tl_b5->ambildata()->result(),
             'sosmed' => $this->tl_b6->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
             'tbl_a1' => $this->tl_b7->tema($this->tabel_a1_field1)->result(),
-            'tbl_b9' => $notif_limit->result(),
-            'tbl_b9_count' => $notif_null->num_rows(),
+            'tbl_b9' => $this->notif_limit,
+            'tbl_b9_count' => $this->notif_null->num_rows(),
+            'timeElapsed' => $this->getTimeElapsedString($this->elapsed),
 
             'flash1' => 'pesan',
             'flash1_func1' => '$("#element").toast("show")',
@@ -244,42 +189,134 @@ class Omnitags extends CI_Controller
         $this->tempdatas = array(
 
         );
-
-        function getTimeElapsedString($datetime, $full = false)
-        {
-            $now = new DateTime();
-            $ago = new DateTime($datetime);
-            $diff = $now->diff($ago);
-
-            $diff->w = floor($diff->d / 7);
-            $diff->d -= $diff->w * 7;
-
-            $string = array(
-                'y' => 'tahun',
-                'm' => 'bulan',
-                'w' => 'minggu',
-                'd' => 'hari',
-                'h' => 'jam',
-                'i' => 'menit',
-                's' => 'detik',
-            );
-
-            foreach ($string as $k => &$v) {
-                if ($diff->$k) {
-                    $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
-                } else {
-                    unset($string[$k]);
-                }
-            }
-
-            if (!$full) {
-                $string = array_slice($string, 0, 1);
-            }
-
-            return $string ? implode(', ', $string) . ' yang lalu' : 'Baru saja';
-        }
     }
 
+    public function handle_1($aksi, $object)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_1[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = '';
+            $flashtype = 'toast';
+        } else {
+            $msg = $this->flash1_msg_2[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = '';
+            $flashtype = 'toast';
+        }
 
+        $this->add_notif($msg, $type, $extra);
 
+        $this->session->set_flashdata($this->views['flash1'], $msg);
+        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        return [];
+    }
+
+    public function handle_2($aksi, $object)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_3[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = '';
+            $flashtype = 'toast';
+        } else {
+            $msg = $this->flash1_msg_4[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = '';
+            $flashtype = 'toast';
+        }
+
+        $this->add_notif($msg, $type, $extra);
+
+        $this->session->set_flashdata($this->views['flash1'], $msg);
+        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        return [];
+    }
+    
+    public function handle_3($aksi, $object, $value)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_5[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$object];
+            $flashtype = 'toast';
+        } else {
+            $msg = $this->flash1_msg_6[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$object];
+            $flashtype = 'toast';
+        }
+
+        $this->add_notif($msg, $type, $extra);
+
+        $this->session->set_flashdata($this->views['flash1'], $msg);
+        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        return [];
+    }
+
+    public function handle_4($aksi, $object)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_3[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$object];
+            $flashtype = 'modal';
+        } else {
+            $msg = $this->flash1_msg_4[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$object];
+            $flashtype = 'modal';
+        }
+        $this->add_notif($msg, $type, $extra);
+
+        $this->session->set_flashdata($this->flash[$object], $msg);
+        $this->session->set_flashdata($flashtype, $this->flash_func[$object]);
+        return [];
+    }
+
+    public function add_notif($msg, $type, $extra)
+    {
+        $notif = array(
+            $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+            $this->aliases['tabel_b9_field3'] => $type,
+            $this->aliases['tabel_b9_field4'] => $msg . $extra,
+            $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
+        );
+
+        $ambil = $this->tl_b9->simpan($notif);
+    }
+
+    public function getTimeElapsedString($datetime, $full = false)
+    {
+        $now = new DateTime();
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+
+        $string = array(
+            'y' => 'tahun',
+            'm' => 'bulan',
+            'w' => 'minggu',
+            'd' => 'hari',
+            'h' => 'jam',
+            'i' => 'menit',
+            's' => 'detik',
+        );
+
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+
+        if (!$full) {
+            $string = array_slice($string, 0, 1);
+        }
+
+        return $string ? implode(', ', $string) . ' yang lalu' : 'Baru saja';
+    }
 }

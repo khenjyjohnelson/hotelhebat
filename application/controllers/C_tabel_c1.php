@@ -20,7 +20,7 @@ class C_tabel_c1 extends Omnitags
 			'dekor' => $this->tl_b1->dekor('tabel_c1')->result(),
 			'tbl_c1' => $this->tl_c1->ambildata()->result(),
 			'tbl_e3' => $this->tl_e3->ambildata()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result()
+			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -56,7 +56,7 @@ class C_tabel_c1 extends Omnitags
 
 			);
 
-			$simpan = $this->tl_c1->simpan($data);
+			$aksi = $this->tl_c1->simpan($data);
 
 			// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
 			if ($this->session->userdata($this->aliases['tabel_c1_field3'])) {
@@ -106,13 +106,7 @@ class C_tabel_c1 extends Omnitags
 
 		$aksi = $this->tl_c1->update($data, $tabel_c1_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_1['tabel_c1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_2['tabel_c1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_2($aksi, 'tabel_c1');
 
 		redirect(site_url('c_tabel_c1/admin'));
 	}
@@ -123,13 +117,7 @@ class C_tabel_c1 extends Omnitags
 
 		$aksi = $this->tl_c1->hapus($tabel_c1_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_c1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_c1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_3($aksi, 'tabel_c1_field1', $tabel_c1_field1);
 
 		redirect(site_url('c_tabel_c1/admin'));
 	}
@@ -142,7 +130,7 @@ class C_tabel_c1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_c1_alias'],
 			'dekor' => $this->tl_b1->dekor('tabel_c1')->result(),
-			'tbl_c1' => $this->tl_c1->ambildata()->result()
+			'tbl_c1' => $this->tl_c1->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -159,7 +147,7 @@ class C_tabel_c1 extends Omnitags
 			'title' => $this->v6_title['tabel_c1_alias2'],
 			'konten' => $this->v6['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor('tabel_c1')->result(),
-			'tbl_c1' => $this->tl_c1->ambil_tabel_c1_field1($tabel_c1_field1)->result()
+			'tbl_c1' => $this->tl_c1->ambil_tabel_c1_field1($tabel_c1_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -210,15 +198,7 @@ class C_tabel_c1 extends Omnitags
 
 		$aksi = $this->tl_c1->update($data, $tabel_c1_field1);
 
-		if ($aksi) {
-
-			$this->session->set_flashdata($this->views['flash1'], 'Profil berhasil diubah!');
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-
-			$this->session->set_flashdata($this->views['flash1'], 'Profil gagal diubah!');
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_4($aksi, 'tabel_c1_field1');
 
 		// mengambil data profil yang baru dirubah
 		$tabel_c1 = $this->tl_c1->ambil_tabel_c1_field1($tabel_c1_field1)->result();

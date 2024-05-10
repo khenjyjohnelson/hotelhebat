@@ -64,25 +64,9 @@ class C_tabel_b1 extends Omnitags
 			$this->aliases['tabel_b1_field5'] => $this->v_post['tabel_b1_field5'],
 		);
 
-		$simpan = $this->tl_b1->simpan($data);
+		$aksi = $this->tl_b1->simpan($data);
 
-		$msg1 = $this->flash1_msg_1['tabel_b2_alias'];
-		$msg2 = $this->flash1_msg_2['tabel_b2_alias'];
-		$type1 = $this->aliases['tabel_b8_field2_value4'];
-		$type2 = $this->aliases['tabel_b8_field2_value6'];
-
-		if ($simpan) {
-			$ambil = $this->add_notif($msg1, $type1);
-			
-			$this->session->set_flashdata($this->views['flash1'], $msg1);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$ambil = $this->add_notif($msg2, $type2);
-
-			$this->session->set_flashdata($this->views['flash1'], $msg2);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+		$notif = $this->handle_1($aksi, 'tabel_b1');
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -122,14 +106,7 @@ class C_tabel_b1 extends Omnitags
 
 		$aksi = $this->tl_b1->update($data, $tabel_b1_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_3['tabel_b1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_4['tabel_b1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+		$notif = $this->handle_2($aksi, 'tabel_b1');
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -145,13 +122,7 @@ class C_tabel_b1 extends Omnitags
 
 		$aksi = $this->tl_b1->hapus($tabel_b1_field1);
 
-		if ($aksi) {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_5['tabel_b1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash1_msg_6['tabel_b1_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_3($aksi, 'tabel_b1_field1', $tabel_b1_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -164,7 +135,7 @@ class C_tabel_b1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b1_alias'],
 			'dekor' => $this->tl_b1->dekor('tabel_b1')->result(),
-			'tbl_b1' => $this->tl_b1->ambildata()->result()
+			'tbl_b1' => $this->tl_b1->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

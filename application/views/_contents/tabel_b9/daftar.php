@@ -30,14 +30,14 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_b9 as $tl_b9): ?>
+      <?php foreach ($tbl_b9_alt as $tl_b9_alt): ?>
         <tr>
           <td></td>
-          <td><?= $tl_b9->$tabel_b8_field3 ?></td>
-          <td><?= $tl_b9->$tabel_b9_field4 ?></td>
-          <td><h4><?= $tl_b9->$tabel_b8_field4 ?></h4></td>
+          <td><?= $tl_b9_alt->$tabel_b8_field3 ?></td>
+          <td><?= $tl_b9_alt->$tabel_b9_field4 ?></td>
+          <td><h4><?= $tl_b9_alt->$tabel_b8_field4 ?></h4></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
-              data-target="#lihat<?= $tl_b9->$tabel_b9_field1; ?>">
+              data-target="#lihat<?= $tl_b9_alt->$tabel_b9_field1; ?>">
               <i class="fas fa-eye"></i></a>
           </td>
         </tr>
@@ -49,12 +49,12 @@
 </div>
 
 <!-- modal lihat -->
-<?php foreach ($tbl_b9 as $tl_b9): ?>
-  <div id="lihat<?= $tl_b9->$tabel_b9_field1; ?>" class="modal fade lihat" role="dialog">
+<?php foreach ($tbl_b9_alt as $tl_b9_alt): ?>
+  <div id="lihat<?= $tl_b9_alt->$tabel_b9_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title"><?= $tabel_b9_alias ?>   <?= $tl_b9->$tabel_b9_field1; ?></h5>
+          <h5 class="modal-title"><?= $tabel_b9_alias ?>   <?= $tl_b9_alt->$tabel_b9_field1; ?></h5>
 
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
@@ -66,13 +66,13 @@
           <div class="modal-body">
             <div class="form-group">
               <label><?= $tabel_b9_field3_alias ?> : </label>
-              <p><?= $tl_b9->$tabel_b9_field3; ?></p>
+              <p><?= $tl_b9_alt->$tabel_b9_field3; ?></p>
             </div>
             <hr>
 
             <div class="form-group">
               <label><?= $tabel_b9_field4_alias ?> : </label>
-              <p><?= html_entity_decode($tl_b9->$tabel_b9_field4); ?></p>
+              <p><?= html_entity_decode($tl_b9_alt->$tabel_b9_field4); ?></p>
             </div>
             <hr>
 

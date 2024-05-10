@@ -29,7 +29,7 @@
 
         <tr>
           <td class="table-secondary table-active"><?= $tabel_b9_field5_alias ?></td>
-          <td class="table-light"><?= getTimeElapsedString($tl_b9_alt->$tabel_b9_field5) ?></td>
+          <td class="table-light"><?= $timeElapsed ?></td>
         </tr>
       </tbody>
       <tfoot></tfoot>

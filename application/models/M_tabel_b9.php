@@ -23,23 +23,13 @@ class M_tabel_b9 extends CI_Model
 		return $this->db->get($this->aliases['tabel_b9']);
 	}
 
-	public function ambil_tabel_b8($param1)
-	{
-		$sql = "SELECT * FROM {$this->aliases['tabel_b9']} 
-		JOIN {$this->aliases['tabel_b8']} 
-		ON {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field3']} = {$this->aliases['tabel_b8']}.{$this->aliases['tabel_b8_field2']}
-		WHERE {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field2']} = $param1
-		ORDER BY {$this->aliases['tabel_b9_field1']} DESC";
-		return $this->db->query($sql);
-	}
-
 	public function ambil_tabel_b8_limit($param1)
 	{
 		$sql = "SELECT * FROM {$this->aliases['tabel_b9']} 
 		JOIN {$this->aliases['tabel_b8']} 
 		ON {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field3']} = {$this->aliases['tabel_b8']}.{$this->aliases['tabel_b8_field2']}
-		WHERE {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field2']} = $param1
-		ORDER BY {$this->aliases['tabel_b9_field1']} DESC LIMIT 3";
+		WHERE {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field2']} = '$param1'
+		ORDER BY {$this->aliases['tabel_b9_field6']} ASC LIMIT 3";
 		return $this->db->query($sql);
 	}
 
@@ -48,6 +38,16 @@ class M_tabel_b9 extends CI_Model
 		$this->db->where($this->aliases['tabel_b9_field2'], $this->session->userdata($this->aliases['tabel_c2_field1']));
 		$this->db->where($this->aliases['tabel_b9_field6'], NULL);
 		return $this->db->get($this->aliases['tabel_b9']);
+	}
+
+	public function ambil_tabel_b8($param1)
+	{
+		$sql = "SELECT * FROM {$this->aliases['tabel_b9']} 
+		JOIN {$this->aliases['tabel_b8']} 
+		ON {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field3']} = {$this->aliases['tabel_b8']}.{$this->aliases['tabel_b8_field2']}
+		WHERE {$this->aliases['tabel_b9']}.{$this->aliases['tabel_b9_field2']} = '$param1'
+		ORDER BY {$this->aliases['tabel_b9_field1']} DESC";
+		return $this->db->query($sql);
 	}
 
 	public function simpan($data)
