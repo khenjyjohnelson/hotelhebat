@@ -38,12 +38,12 @@
             <td><?= $tl_b9_alt->$tabel_b9_field4 ?></td>
             <td><?= $tl_b9_alt->$tabel_b9_field5 ?></td>
             <td>
-              <a class="btn btn-light text-danger"
+              <a class="btn btn-light text-warning"
                 href="<?= site_url($tabel_b9 . '/lihat/' . $tl_b9_alt->$tabel_b9_field1) ?>">
                 <i class="fas fa-eye"></i></a>
               <a class="btn btn-light text-info" type="button" data-toggle="modal"
                 data-target="#lihat<?= $tl_b9_alt->$tabel_b9_field1; ?>">
-                <i class="fas fa-eye"></i></a>
+                <i class="fab fa-readme"></i></a>
             </td>
           <?php } else { ?>
           <tr>
@@ -52,14 +52,11 @@
             <td><?= $tl_b9_alt->$tabel_b9_field4 ?></td>
             <td><?= $tl_b9_alt->$tabel_b9_field5 ?></td>
             <td>
-              <a class="btn btn-light text-danger"
-                href="<?= site_url($tabel_b9 . '/lihat/' . $tl_b9_alt->$tabel_b9_field1) ?>">
-                <i class="fas fa-eye"></i></a>
               <a class="btn btn-light text-info" type="button" data-toggle="modal"
                 data-target="#lihat<?= $tl_b9_alt->$tabel_b9_field1; ?>">
-                <i class="fas fa-eye"></i></a>
+                <i class="fab fa-readme"></i></a>
             </td>
-          <?php }endforeach; ?>
+          <?php } endforeach; ?>
     </tbody>
 
 
@@ -84,14 +81,26 @@
         <form>
           <div class="modal-body">
             <div class="form-group">
-              <label><?= $tabel_b9_field3_alias ?> : </label>
-              <p><?= $tl_b9_alt->$tabel_b9_field3; ?></p>
+              <label><?= $tabel_b8_field3_alias ?> : </label>
+              <p><?= $tl_b9_alt->$tabel_b8_field3; ?></p>
+            </div>
+            <hr>
+            
+            <div class="form-group">
+              <label><?= $tabel_b9_field4_alias ?> : </label>
+              <p><?= html_entity_decode($tl_b9_alt->$tabel_b9_field4); ?></p>
             </div>
             <hr>
 
             <div class="form-group">
-              <label><?= $tabel_b9_field4_alias ?> : </label>
-              <p><?= html_entity_decode($tl_b9_alt->$tabel_b9_field4); ?></p>
+              <label><?= $tabel_b9_field5_alias ?> : </label>
+              <p><?= $tl_b9_alt->$tabel_b9_field5; ?></p>
+            </div>
+            <hr>
+
+            <div class="form-group">
+              <label><?= $tabel_b9_field6_alias ?> : </label>
+              <p><?= $tl_b9_alt->$tabel_b9_field6; ?></p>
             </div>
             <hr>
 

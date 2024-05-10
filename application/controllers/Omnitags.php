@@ -39,7 +39,7 @@ class Omnitags extends CI_Controller
     public $v_input, $v_post, $v_get, $v_old, $v_post_old;
     public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
-    public $notif_limit, $notif_null, $elapsedTime, $elapsed;
+    public $notif_limit, $notif_null, $notifications, $elapsedTime, $elapsed, $elapsed2;
     public $flash1_msg_1;
     public $flash1_msg_2;
     public $flash1_msg_3;
@@ -124,7 +124,7 @@ class Omnitags extends CI_Controller
 
         $this->notif_limit = $this->tl_b9->ambil_tabel_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']))->result();
         $this->notif_null = $this->tl_b9->ambil_tabel_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
-
+        
         if ($this->notif_limit) {
             $this->elapsed = $this->notif_limit[0]->created_at;
         } else {
