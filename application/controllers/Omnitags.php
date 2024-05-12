@@ -40,7 +40,7 @@ class Omnitags extends CI_Controller
     public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
     public $notif_limit, $notif_null, $notifications, $elapsedTime, $elapsed, $elapsed2;
-    public $recommendation;
+    public $recommendation, $theme, $theme_id;
     public $flash1_msg_1;
     public $flash1_msg_2;
     public $flash1_msg_3;
@@ -53,15 +53,17 @@ class Omnitags extends CI_Controller
     public $flash_msg4;
     public $flash_msg5;
     public $tabel_a1, $tabel_a1_field1;
+    public $myData1, $myData2, $reverse;
 
     public function declarew()
     {
         $jsonData1 = file_get_contents(site_url('assets/json/school_ukk_hotel.postman_environment.json'));
-        $myData1 = json_decode($jsonData1, true)['values'];
+        $this->myData1 = json_decode($jsonData1, true)['values'];
 
         // Create variables dynamically
-        foreach ($myData1 as $item) {
+        foreach ($this->myData1 as $item) {
             $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
+            $this->reverse[$item['value'] . '_realname'] = $item['key'];
             $this->v_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
             $this->v_post[$item['key']] = $this->input->post('txt_' . $item['value']);
             $this->v_get[$item['key']] = $this->input->get('txt_' . $item['value']);
@@ -98,10 +100,10 @@ class Omnitags extends CI_Controller
         $this->tabel_a1_field1 = 1;
 
         $jsonData2 = file_get_contents(site_url('assets/json/school_ukk_hotel_tables.postman_environment.json'));
-        $myData2 = json_decode($jsonData2, true)['values'];
+        $this->myData2 = json_decode($jsonData2, true)['values'];
 
         // Create variables dynamically
-        foreach ($myData2 as $item) {
+        foreach ($this->myData2 as $item) {
             $this->v_upload_path[$item['key']] = './assets/img/' . $item['key'] . '/';
 
             $this->v1[$item['key']] = '_contents/' . $item['key'] . '/index';
@@ -122,6 +124,9 @@ class Omnitags extends CI_Controller
             $this->v7_title[$item['key']] = $item['value'] . ' Berhasil!';
             $this->v8_title[$item['key']] = 'Detail ' . $item['value'];
         }
+
+        $this->theme = $this->tl_b7->tema($this->tabel_a1_field1)->result();
+        $this->theme_id = $this->theme[0]->id_theme;
 
         $this->notif_limit = $this->tl_b9->ambil_tabel_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']))->result();
         $this->notif_null = $this->tl_b9->ambil_tabel_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
@@ -158,11 +163,11 @@ class Omnitags extends CI_Controller
 
             'head' => '_partials/head',
             'phase' => $this->phase_1,
-            'tbl_b5' => $this->tl_b5->ambildata()->result(),
-            'sosmed' => $this->tl_b6->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
-            'tbl_a1' => $this->tl_b7->tema($this->tabel_a1_field1)->result(),
-            'tbl_b9' => $this->notif_limit,
-            'tbl_b9_count' => $this->notif_null->num_rows(),
+            'lisensi' => $this->tl_b5->ambil_tabel_b5_field6($this->theme_id)->result(),
+            'sosmed' => $this->tl_b6->ambil_tabel_b6_field6($this->theme_id)->result(),
+            'tbl_a1' => $this->theme,
+            'notif' => $this->notif_limit,
+            'notif_count' => $this->notif_null->num_rows(),
             'timeElapsed' => $this->getTimeElapsedString($this->elapsed),
 
             'flash1' => 'pesan',

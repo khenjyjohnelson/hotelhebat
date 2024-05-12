@@ -1,6 +1,6 @@
 <?php switch ($this->session->userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
-  // case $tabel_c2_field6_value4:
+    // case $tabel_c2_field6_value4:
     break;
 
   default:
@@ -41,8 +41,10 @@
           <td><?= $tl_b1->$tabel_b1_field1; ?></td>
           <td><?= $tl_b1->$tabel_b1_field2 ?></td>
           <td><?= $tl_b1->$tabel_b1_field3 ?></td>
-          <td><img src="img/<?= $tabel_b1 ?>/<?= $tl_b1->$tabel_b1_field4?>" height="75"></td>
-          <td><h2><?= $tl_b1->$tabel_b1_field5 ?></h2></td>
+          <td><img src="img/<?= $tabel_b1 ?>/<?= $tl_b1->$tabel_b1_field4 ?>" height="75"></td>
+          <td>
+            <h2><?= $tl_b1->$tabel_b1_field5 ?></h2>
+          </td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b1->$tabel_b1_field1; ?>">
               <i class="fas fa-eye"></i></a>
@@ -79,19 +81,19 @@
             <input class="form-control" type="text" required name="<?= $tabel_b1_field2_input ?>"
               placeholder="Masukkan <?= $tabel_b1_field2_alias ?>">
           </div>
-          
+
           <div class="form-group">
             <label><?= $tabel_b1_field3_alias ?></label>
             <input class="form-control" type="text" required name="<?= $tabel_b1_field3_input ?>"
               placeholder="Masukkan <?= $tabel_b1_field3_alias ?>">
           </div>
-          
+
           <div class="form-group">
             <label><?= $tabel_b1_field4_alias ?></label>
             <input class="form-control-file" required type="file" name="<?= $tabel_b1_field4_input ?>">
-            
+
           </div>
-            
+
           <div class="form-group">
             <label><?= $tabel_b1_field5_alias ?></label>
             <input class="form-control" type="text" required name="<?= $tabel_b1_field5_input ?>"
@@ -128,14 +130,21 @@
         <form action="<?= site_url($tabel_b1 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
+            <?php foreach ($dataku as $item) {
+              if ($reverse[$item['value'] . '_realname'] = $item['key']);
+              ?>
+              
+            <?php } ?>
+
             <div class="form-group">
               <label><?= $tabel_b1_field2_alias ?></label>
               <input class="form-control" type="text" required name="<?= $tabel_b1_field2_input ?>"
                 value="<?= $tl_b1->$tabel_b1_field2; ?>">
               <input type="hidden" name="<?= $tabel_b1_field1_input ?>" value="<?= $tl_b1->$tabel_b1_field1; ?>">
-              * Meski ingin mengubah <?= $tabel_b1_field2_alias ?> saja, tetap harus mengupload ulang <?= $tabel_b1_field4_alias ?> juga
+              * Meski ingin mengubah <?= $tabel_b1_field2_alias ?> saja, tetap harus mengupload ulang
+              <?= $tabel_b1_field4_alias ?> juga
             </div>
-            
+
             <div class="form-group">
               <label><?= $tabel_b1_field3_alias ?></label>
               <input class="form-control" type="text" required name="<?= $tabel_b1_field3_input ?>"
@@ -146,7 +155,7 @@
               <img src="img/<?= $tabel_b1 ?>/<?= $tl_b1->$tabel_b1_field4; ?>" width="300">
             </div>
             <hr>
-            
+
             <div class="form-group">
               <label>Ubah <?= $tabel_b1_field4_alias ?></label>
               <input class="form-control-file" type="file" name="<?= $tabel_b1_field4_input ?>">
@@ -206,7 +215,7 @@
               <p><?= $tl_b1->$tabel_b1_field3; ?></p>
             </div>
             <hr>
-            
+
             <div class="form-group">
               <label><?= $tabel_b1_field4_alias ?> : </label>
             </div>

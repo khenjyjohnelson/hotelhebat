@@ -3,7 +3,7 @@
     <div class="container-fluid bg-light border">
         <div class="container">
 
-            <!-- menampilkan footer khusus jika level adalah tamu, admin, dan sebagainya  -->
+            <!-- Displaying footer specific to user level: guest, admin, etc. -->
             <?php switch ($this->session->userdata($tabel_c2_field6)) {
                 case $tabel_c2_field6_value3:
                 case $tabel_c2_field6_value4:
@@ -18,25 +18,29 @@
                     <?php break;
 
                 default: ?>
-
-                    <!-- menampilkan footer untuk umum  -->
+                    <!-- Displaying footer for general users -->
                     <div class="row justify-content-center">
-                        <div class="col-lg-4 pt-3">
+                        <div class="col-lg-3 pt-3">
                             <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field4; ?>" height="50">
-                            <p class="small pt-2">
-                                <?php foreach ($tbl_b5 as $tl_b5):
-                                    if ($tl_a1->$tabel_a1_field7 == $tl_b5->$tabel_b5_field1) { ?>
+                            <div class="row pt-2 py-0">
+                                <?php foreach ($lisensi as $ls): ?>
+                                    <div class="col-md-4 mt-2">
+                                        <a class="text-decoration-none text-dark"
+                                            href="<?= site_url($tabel_b5 . '/detail/' . $ls->$tabel_b5_field1) ?>">
+                                            <img src="img/<?= $tabel_b5 ?>/<?= $ls->$tabel_b5_field4 ?>" height="25">
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
 
-
-                                        <a class="text-decoration-none text-dark" href="<?= site_url($tabel_b5) ?>">
-                                            <img src="img/<?= $tabel_b5 ?>/<?= $tl_b5->$tabel_b5_field4 ?>" height="25"></a><br>
-
-
-                                    <?php }endforeach; ?>
+                            </div>
+                            <p class="small mt-2">
                                 <?= $year_code ?>
                                 <?= $tl_a1->$tabel_a1_field2 ?>.
                                 <?= $copyright_notices ?>
                             </p>
+                        </div>
+                        <div class="col-lg-1 pt3">
+
                         </div>
 
                         <div class="col-lg-3 pt-3">
@@ -75,20 +79,18 @@
                         <div class="col-lg-2 pt-3">
                             <h3>Ikuti</h3>
                             <ul class="list-unstyled">
-                                <?php foreach ($sosmed as $sm):
-                                    if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) { ?>
-                                        <li>
-                                            <a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>"
-                                                target="_blank">
-                                                <?= $sm->$tabel_b6_field3 ?></a>
-                                        </li>
-                                    <?php }endforeach; ?>
+                                <?php foreach ($sosmed as $sm): ?>
+                                    <li>
+                                        <a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>"
+                                            target="_blank">
+                                            <?= $sm->$tabel_b6_field5 ?>                 <?= $sm->$tabel_b6_field3 ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>
-            <?php }
-            ?>
-
+            <?php } ?>
         </div>
     </div>
 <?php endforeach ?>

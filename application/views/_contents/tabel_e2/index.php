@@ -33,7 +33,7 @@
         </div>
 
         <div class="modal-body">
-          <img class="img-thumbnail" src="img/<?= $tabel_e2 ?>/"<?= $tl_e2->$tabel_e2_field4; ?>">
+          <img class="img-thumbnail" width="100%" src="img/<?= $tabel_e2 ?>/<?= $tl_e2->$tabel_e2_field4; ?>">
         </div>
 
         <!-- memunculkan notifikasi modal -->

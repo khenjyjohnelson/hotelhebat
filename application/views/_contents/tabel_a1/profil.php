@@ -34,14 +34,13 @@
       <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
         data-target="#<?= $tabel_b2 . $tl_a1->$tabel_a1_field1 ?>">
         <i class="fas fa-edit"></i> <?= $tabel_b2_alias ?></a>
-      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-        data-target="#<?= $tabel_b5 . $tl_a1->$tabel_a1_field1 ?>">
-        <i class="fas fa-edit"></i> <?= $tabel_b5_alias ?></a>
 
       <a class="btn btn-info mb-4" href="<?= site_url($tabel_b1 . '/admin') ?>">
         <i class="fas fa-edit"></i> Kelola <?= $tabel_b1_alias ?></a>
       <a class="btn btn-info mb-4" href="<?= site_url($tabel_b8 . '/admin') ?>">
         <i class="fas fa-edit"></i> Kelola <?= $tabel_b8_alias ?></a>
+      <a class="btn btn-info mb-4" href="<?= site_url($tabel_b5 . '/admin') ?>">
+        <i class="fas fa-edit"></i> Kelola <?= $tabel_b5_alias ?></a>
       <a class="btn btn-info mb-4" href="<?= site_url($tabel_b6 . '/admin') ?>">
         <i class="fas fa-edit"></i> <?= $tabel_b6_alias ?></a>
 
@@ -347,7 +346,7 @@
   </div>
 <?php endforeach; ?>
 
-<!-- modal edit lisensi-->
+<!-- modal edit lisensi
 <?php foreach ($tbl_a1 as $tl_a1): ?>
   <div id="<?= $tabel_b5 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_a1_field7 ?>">
     <div class="modal-dialog">
@@ -393,7 +392,7 @@
             </div>
           </div>
 
-          <!-- memunculkan notifikasi modal -->
+           memunculkan notifikasi modal 
           <p id="p_<?= $tabel_a1_field7 ?>" class="small text-center text-danger">
             <?= $this->session->flashdata('pesan_' . $tabel_a1_field7) ?>
           </p>
@@ -406,4 +405,4 @@
       </div>
     </div>
   </div>
-<?php endforeach; ?>
+<?php endforeach; ?> -->

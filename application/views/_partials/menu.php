@@ -120,14 +120,14 @@
 
             <li class="nav-item dropdown">
                 <a type="button" class="nav-link text-decoration-none h4 mt-1 font-weight-bold" data-toggle="dropdown" href="#">
-                   <i class="fas fa-bell"></i><?php if (!$tbl_b9_count) { ?><span>&nbsp;&nbsp;</span><?php
+                   <i class="fas fa-bell"></i><?php if (!$notif_count) { ?><span>&nbsp;&nbsp;</span><?php
                     } else { ?>
-                            <span><?= $tbl_b9_count ?></span><?php } ?>
+                            <span><?= $notif_count ?></span><?php } ?>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <div class="dropdown-header d-flex justify-content-between align-items-center">
-                        <span><?= $tbl_b9_count ?> New Notifications</span>
+                        <span><?= $notif_count ?> New Notifications</span>
                         <div>
                             <span class="px-3"></span> <!-- Adding space between buttons -->
                             <a href="<?= site_url($tabel_b9 . '/update') ?>" class="btn btn-link">
@@ -141,22 +141,22 @@
 
                     <div class="list-group" style="min-width: 350px;">
 
-                        <?php if (!$tbl_b9) { ?>         <?php } else {
-                            foreach ($tbl_b9 as $tl_b9):
+                        <?php if (!$notif) { ?>         <?php } else {
+                            foreach ($notif as $nf):
 
-                                if ($tl_b9->$tabel_b9_field2 == $this->session->userdata($tabel_c2_field1)) {
-                                    if ($tl_b9->$tabel_b9_field6 == NULL) { ?>
+                                if ($nf->$tabel_b9_field2 == $this->session->userdata($tabel_c2_field1)) {
+                                    if ($nf->$tabel_b9_field6 == NULL) { ?>
 
-                                        <a href="<?= site_url($tabel_b9 . '/detail/' . $tl_b9->$tabel_b9_field1) ?>"
+                                        <a href="<?= site_url($tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>"
                                             class="list-group-item bg-light">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-2">
-                                                    <?= $tl_b9->$tabel_b8_field4 ?>
+                                                    <?= $nf->$tabel_b8_field4 ?>
                                                 </div>
                                                 <div class="col-10">
-                                                    <div class="text-dark"><?= $tl_b9->$tabel_b8_field3 ?></div>
+                                                    <div class="text-dark"><?= $nf->$tabel_b8_field3 ?></div>
                                                     <div class="text-muted small mt-1">
-                                                        <?= $tl_b9->$tabel_b9_field4 ?>
+                                                        <?= $nf->$tabel_b9_field4 ?>
                                                     </div>
                                                     <div class="text-muted small mt-1"><?= $timeElapsed ?>
                                                     </div>
@@ -165,15 +165,15 @@
                                         </a>
 
                                     <?php } else { ?>
-                                        <a href="<?= site_url($tabel_b9 . '/detail/' . $tl_b9->$tabel_b9_field1) ?>" class="list-group-item">
+                                        <a href="<?= site_url($tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>" class="list-group-item">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-2">
-                                                    <?= $tl_b9->$tabel_b8_field4 ?>
+                                                    <?= $nf->$tabel_b8_field4 ?>
                                                 </div>
                                                 <div class="col-10">
-                                                    <div class="text-dark"><?= $tl_b9->$tabel_b8_field3 ?></div>
+                                                    <div class="text-dark"><?= $nf->$tabel_b8_field3 ?></div>
                                                     <div class="text-muted small mt-1">
-                                                        <?= $tl_b9->$tabel_b9_field4 ?>
+                                                        <?= $nf->$tabel_b9_field4 ?>
                                                     </div>
                                                     <div class="text-muted small mt-1"><?= $timeElapsed ?>
                                                     </div>

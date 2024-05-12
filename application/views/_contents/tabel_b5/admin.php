@@ -28,6 +28,8 @@
         <th><?= $tabel_b5_field1_alias ?></th>
         <th><?= $tabel_b5_field2_alias ?></th>
         <th><?= $tabel_b5_field4_alias ?> dan <?= $tabel_b5_field5_alias ?></th>
+        <th><?= $tabel_b5_field6_alias ?></th>
+        <th><?= $tabel_b5_field7_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -41,6 +43,20 @@
           <td><a href="<?= $tl_b5->$tabel_b5_field5 ?>" target="_blank">
               <img src="img/<?= $tabel_b5 ?>/<?= $tl_b5->$tabel_b5_field4 ?>" width="100"></a>
           </td>
+          <td>
+            <?php if ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value1) { ?>
+              <a class="text-warning" href="<?= site_url($tabel_b5 . '/nonaktifkan/' . $tl_b5->$tabel_b5_field1) ?>">
+                <h4><i class="fas fa-toggle-on"></i></h4>
+              </a>
+            <?php } elseif ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value2) { ?>
+              <a class="text-warning" href="<?= site_url($tabel_b5 . '/aktifkan/' . $tl_b5->$tabel_b5_field1) ?>">
+                <h4><i class="fas fa-toggle-off"></i></h4>
+              </a>
+            <?php } else { ?>
+
+            <?php } ?>
+          </td>
+          <td><?= $tl_b5->$tabel_b5_field7 ?></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b5->$tabel_b5_field1; ?>">
               <i class="fas fa-eye"></i></a>
@@ -95,6 +111,16 @@
             <label><?= $tabel_b5_field5_alias ?></label>
             <input class="form-control" type="text" required name="<?= $tabel_b5_field5_input ?>"
               placeholder="Masukkan <?= $tabel_b5_field5_alias ?>">
+          </div>
+
+          <div class="form-group">
+            <label>Pilih <?= $tabel_b7_alias ?></label>
+            <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
+
+              <?php foreach ($tbl_b7 as $tl_b7): ?>
+                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+              <?php endforeach ?>
+            </select>
           </div>
 
         </div>
@@ -160,6 +186,20 @@
                 value="<?= $tl_b5->$tabel_b5_field5; ?>">
             </div>
 
+            <div class="form-group">
+              <label><?= $tabel_b7_alias ?></label>
+              <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
+                <?php foreach ($tbl_b7 as $tl_b7): ?>
+                  <?php if ($tl_b5->$tabel_b5_field7 == $tl_b7->$tabel_b7_field1) { ?>
+                    <option selected hidden value="<?= $tl_b5->$tabel_b5_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                  <?php } else { ?>
+                    <option selected hidden value="">Pilih <?= $tabel_b7_alias ?>...</option> <?php } ?>
+
+                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                <?php endforeach ?>
+              </select>
+            </div>
+
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -221,6 +261,17 @@
               <p><?= $tl_b5->$tabel_b5_field5; ?></p>
             </div>
             <hr>
+
+            <div class="form-group">
+              <label><?= $tabel_b5_field6_alias ?> : </label>
+              <p><?= $tl_b5->$tabel_b5_field6; ?></p>
+            </div>
+            <hr>
+
+            <div class="form-group">
+              <label><?= $tabel_b5_field7_alias ?> : </label>
+              <p><?= $tl_b5->$tabel_b5_field7; ?></p>
+            </div>
 
 
           </div>

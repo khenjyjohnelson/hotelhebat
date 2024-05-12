@@ -101,6 +101,8 @@ foreach ($myData2 as $item2) {
     ];
 
     $uncommonFunctionRoutes = [
+        'aktifkan' => 'aktifkan',
+        'nonaktifkan' => 'nonaktifkan',
         'detail' => 'detail',
         'lihat' => 'lihat',
         'hapus' => 'hapus',

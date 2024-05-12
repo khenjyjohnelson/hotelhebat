@@ -24,7 +24,7 @@ class C_tabel_b9 extends Omnitags
 				'title' => $this->v8_title['tabel_b9_alias'],
 				'konten' => $this->v8['tabel_b9'],
 				'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
-				'tbl_b9_alt' => $this->tl_b9->ambil_tabel_b9_field1($tabel_b9_field1)->result(),
+				'tbl_b9' => $this->tl_b9->ambil_tabel_b9_field1($tabel_b9_field1)->result(),
 			);
 
 			$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -62,7 +62,7 @@ class C_tabel_b9 extends Omnitags
 			'title' => $this->v2_title['tabel_b9_alias'],
 			'konten' => $this->v2['tabel_b9'],
 			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
-			'tbl_b9_alt' => $this->tl_b9->ambil_tabel_b8($tabel_b9_field2)->result(),
+			'tbl_b9' => $this->tl_b9->ambil_tabel_b8($tabel_b9_field2)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

@@ -25,8 +25,12 @@
       <tr>
         <th>No</th>
         <th><?= $tabel_b6_field1_alias ?></th>
+        <th><?= $tabel_b6_field2_alias ?></th>
         <th><?= $tabel_b6_field3_alias ?></th>
         <th><?= $tabel_b6_field4_alias ?></th>
+        <th><?= $tabel_b6_field5_alias ?></th>
+        <th><?= $tabel_b6_field6_alias ?></th>
+        <th><?= $tabel_b6_field7_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -36,9 +40,27 @@
         <tr>
           <td></td>
           <td><?= $tl_b6->$tabel_b6_field1; ?></td>
+          <td><?= $tl_b6->$tabel_b6_field2 ?></td>
           <td><?= $tl_b6->$tabel_b6_field3 ?></td>
           <td><a href="<?= $tl_b6->$tabel_b6_field4 ?>" target="_blank">Visit</a>
+          <td>
+            <h2><?= $tl_b6->$tabel_b6_field5 ?></h2>
           </td>
+          <td>
+            <?php if ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value1) { ?>
+              <a class="text-warning" href="<?= site_url($tabel_b6 . '/nonaktifkan/' . $tl_b6->$tabel_b6_field1) ?>">
+                <h4><i class="fas fa-toggle-on"></i></h4>
+              </a>
+
+            <?php } elseif ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value2) { ?>
+              <a class="text-warning" href="<?= site_url($tabel_b6 . '/aktifkan/' . $tl_b6->$tabel_b6_field1) ?>">
+                <h4><i class="fas fa-toggle-off"></i></h4></i>
+              </a>
+            <?php } else { ?>
+
+            <?php } ?>
+          </td>
+          <td><?= $tl_b6->$tabel_b6_field7 ?></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b6->$tabel_b6_field1; ?>">
               <i class="fas fa-eye"></i></a>
@@ -50,6 +72,7 @@
               <i class="fas fa-trash"></i></a>
           </td>
         </tr>
+
       <?php endforeach; ?>
     </tbody>
 
@@ -72,18 +95,37 @@
       <form action="<?= site_url($tabel_b6 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
           <div class="form-group">
+            <label><?= $tabel_b6_field2_alias ?></label>
+            <input class="form-control" type="text" required name="<?= $tabel_b6_field2_input ?>"
+              placeholder="Masukkan <?= $tabel_b6_field2_alias ?>">
+          </div>
+
+          <div class="form-group">
             <label><?= $tabel_b6_field3_alias ?></label>
             <input class="form-control" type="text" required name="<?= $tabel_b6_field3_input ?>"
               placeholder="Masukkan <?= $tabel_b6_field3_alias ?>">
-            <?php foreach ($tbl_a1 as $tl_a1): ?>
-              <input type="hidden" name="<?= $tabel_b6_field2_input ?>" value="<?= $tl_a1->$tabel_a1_field1; ?>">
-            <?php endforeach ?>
           </div>
 
           <div class="form-group">
             <label><?= $tabel_b6_field4_alias ?></label>
             <input class="form-control" type="text" required name="<?= $tabel_b6_field4_input ?>"
               placeholder="Masukkan <?= $tabel_b6_field4_alias ?>">
+          </div>
+
+          <div class="form-group">
+            <label><?= $tabel_b6_field5_alias ?></label>
+            <input class="form-control" type="text" required name="<?= $tabel_b6_field5_input ?>"
+              placeholder="Masukkan <?= $tabel_b6_field5_alias ?>">
+          </div>
+
+          <div class="form-group">
+            <label>Pilih <?= $tabel_b7_alias ?></label>
+            <select class="form-control" required name="<?= $tabel_b6_field7_input ?>">
+
+              <?php foreach ($tbl_b7 as $tl_b7): ?>
+                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+              <?php endforeach ?>
+            </select>
           </div>
 
         </div>
@@ -116,17 +158,42 @@
         <form action="<?= site_url($tabel_b6 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <div class="form-group">
+              <label><?= $tabel_b6_field2_alias ?></label>
+              <input class="form-control" type="text" required name="<?= $tabel_b6_field2_input ?>"
+                value="<?= $tl_b6->$tabel_b6_field2; ?>">
+            </div>
+
+            <div class="form-group">
               <label><?= $tabel_b6_field3_alias ?></label>
               <input class="form-control" type="text" required name="<?= $tabel_b6_field3_input ?>"
                 value="<?= $tl_b6->$tabel_b6_field3; ?>">
               <input type="hidden" name="<?= $tabel_b6_field1_input ?>" value="<?= $tl_b6->$tabel_b6_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b6_field2_input ?>" value="<?= $tl_b6->$tabel_b6_field2; ?>">
             </div>
 
             <div class="form-group">
               <label><?= $tabel_b6_field4_alias ?></label>
               <input class="form-control" type="text" required name="<?= $tabel_b6_field4_input ?>"
                 value="<?= $tl_b6->$tabel_b6_field4; ?>">
+            </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b6_field5_alias ?></label>
+              <input class="form-control" type="text" required name="<?= $tabel_b6_field5_input ?>"
+                value="<?= htmlspecialchars($tl_b6->$tabel_b6_field5); ?>">
+            </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b7_alias ?></label>
+              <select class="form-control" required name="<?= $tabel_b6_field7_input ?>">
+                <?php foreach ($tbl_b7 as $tl_b7): ?>
+                  <?php if ($tl_b6->$tabel_b6_field7 == $tl_b7->$tabel_b7_field1) { ?>
+                    <option selected hidden value="<?= $tl_b6->$tabel_b6_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                  <?php } else { ?>
+                    <option selected hidden value="">Pilih <?= $tabel_b7_alias ?>...</option> <?php } ?>
+
+                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                <?php endforeach ?>
+              </select>
             </div>
 
           </div>
@@ -181,6 +248,21 @@
             <div class="form-group">
               <label><?= $tabel_b6_field4_alias ?> : </label>
               <p><?= $tl_b6->$tabel_b6_field4; ?></p>
+            </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b6_field5_alias ?> : </label>
+              <p><?= $tl_b6->$tabel_b6_field5; ?></p>
+            </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b6_field6_alias ?> : </label>
+              <p><?= $tl_b6->$tabel_b6_field6; ?></p>
+            </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b6_field7_alias ?> : </label>
+              <p><?= $tl_b6->$tabel_b6_field7; ?></p>
             </div>
 
 

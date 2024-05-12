@@ -16,6 +16,14 @@ class M_tabel_b5 extends CI_Model
 		return $this->db->get($this->aliases['tabel_b5']);
 	}
 
+	public function ambil_tabel_b5_field6($param1)
+	{
+		$this->db->where($this->aliases['tabel_b5_field7'], $param1);
+		$this->db->where($this->aliases['tabel_b5_field6'], $this->aliases['tabel_b5_field6_value1']);
+		$this->db->order_by($this->aliases['tabel_b5_field1'], 'DESC');
+		return $this->db->get($this->aliases['tabel_b5']);
+	}
+
 	public function ambil_tabel_b5_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_b5_field1'], $param1);

@@ -59,7 +59,7 @@
               <i class="fas fa-edit"></i></a>
 
             <?php if ($tl_b7->$tabel_b7_field2 != $database) { ?>
-              <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel_b7 ?>?')"
+              <a class="btn btn-light text-danger" onclick="return confirm('Menghapus ini juga akan menghapus hal-hal berikut: \n<?= $tabel_b5_alias ?> \n<?= $tabel_b6_alias ?> \n<?= $tabel_b7_alias ?> \nHapus data?')"
                 href="<?= site_url($tabel_b7 . '/hapus/' . $tl_b7->$tabel_b7_field1) ?>">
                 <i class="fas fa-trash"></i></a>
             <?php } ?>

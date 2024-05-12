@@ -17,7 +17,7 @@
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
 <?php endforeach ?>
 
-<?php foreach ($tbl_b9_alt as $tl_b9_alt): ?>
+<?php foreach ($notif_alt as $tl_b9_alt): ?>
   <div class="table-responsive">
     <table class="table table-light" id="data">
       <thead></thead>
