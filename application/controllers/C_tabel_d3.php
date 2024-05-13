@@ -19,13 +19,13 @@ class C_tabel_d3 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_d3_alias'],
 			'konten' => $this->v3['tabel_d3'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_d3'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_d3'])->result(),
 			'tbl_d3' => $this->tl_d3->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -49,7 +49,7 @@ class C_tabel_d3 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_d3_alias'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_d3'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_d3'])->result(),
 			'tbl_d3' => $this->tl_d3->ambildata()->result(),
 		);
 

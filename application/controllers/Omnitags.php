@@ -130,7 +130,7 @@ class Omnitags extends CI_Controller
 
         $this->notif_limit = $this->tl_b9->ambil_tabel_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']))->result();
         $this->notif_null = $this->tl_b9->ambil_tabel_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
-        
+
         if ($this->notif_limit) {
             $this->elapsed = $this->notif_limit[0]->created_at;
         } else {
@@ -138,21 +138,6 @@ class Omnitags extends CI_Controller
         }
 
         $this->views = array(
-            'v1' => '_layouts/template',
-            'v1_title' => '',
-            'v2' => 'login',
-            'v2_title' => 'Sign In',
-            'v3' => 'signup',
-            'v3_title' => 'Create an Account',
-            'v4' => 'no-level',
-            'v4_title' => 'Anda tidak memiliki akses ke halaman ini!',
-            'v5' => 'dashboard',
-            'v5_title' => 'Dashboard',
-            'v6' => 'home',
-            'v6_title' => 'Selamat Datang',
-            'v7' => '404',
-            'v7_title' => 'Halaman Tidak Ada',
-
             'tabel_c1_v2' => '_contents/tabel_c1/login',
             'tabel_c1_v2_title' => 'Login Sebagai ' . $this->aliases['tabel_c1_alias'],
 
@@ -197,7 +182,26 @@ class Omnitags extends CI_Controller
         );
     }
 
-    public function handle_1($aksi, $object)
+    public function handle_1a($aksi, $object)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_1[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = '';
+            $flashtype = 'toast';
+        } else {
+            $msg = $this->flash1_msg_2[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = '';
+            $flashtype = 'toast';
+        }
+
+        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
+        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        return [];
+    }
+
+    public function handle_1b($aksi, $object)
     {
         if ($aksi) {
             $msg = $this->flash1_msg_1[$object . '_alias'];
@@ -213,33 +217,151 @@ class Omnitags extends CI_Controller
 
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash1'], $msg. $extra);
+        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
         $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
 
-    public function handle_2($aksi, $object, $value)
+    public function handle_1c($aksi, $object)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_1[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = '';
+            $flashtype = 'modal';
+        } else {
+            $msg = $this->flash1_msg_2[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = '';
+            $flashtype = 'modal';
+        }
+
+        $this->session->set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
+        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . '").modal("show")');
+        return [];
+    }
+
+    public function handle_1d($aksi, $object)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_1[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = '';
+            $flashtype = 'modal';
+        } else {
+            $msg = $this->flash1_msg_2[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = '';
+            $flashtype = 'modal';
+        }
+        $this->add_notif($msg, $type, $extra);
+
+        $this->session->set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
+        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . '").modal("show")');
+        return [];
+    }
+
+    public function handle_2a($aksi, $object, $value)
     {
         if ($aksi) {
             $msg = $this->flash1_msg_3[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value4'];
-            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;;
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$value];
             $flashtype = 'toast';
         } else {
             $msg = $this->flash1_msg_4[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value6'];
-            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;;
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$value];
+            $flashtype = 'toast';
+        }
+
+        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
+        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        return [];
+    }
+
+    public function handle_2b($aksi, $object, $value)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_3[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$value];
+            $flashtype = 'toast';
+        } else {
+            $msg = $this->flash1_msg_4[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $this->v_post[$value];
             $flashtype = 'toast';
         }
 
         $this->add_notif($msg, $type, $extra);
 
         $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
+        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
+        return [];
+    }
+
+    public function handle_2c($aksi, $object, $value)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_3[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = ' (' . $this->aliases[$value . '_alias'] . ') = ' . $this->v_post[$value];
+            $flashtype = 'modal';
+        } else {
+            $msg = $this->flash1_msg_4[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = ' (' . $this->aliases[$value . '_alias'] . ') = ' . $this->v_post[$value];
+            $flashtype = 'modal';
+        }
+
+        $this->session->set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
+        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
+        return [];
+    }
+
+    public function handle_2d($aksi, $object, $value)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_3[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = ' (' . $this->aliases[$value . '_alias'] . ') = ' . $this->v_post[$value];
+            $flashtype = 'modal';
+        } else {
+            $msg = $this->flash1_msg_4[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = ' (' . $this->aliases[$value . '_alias'] . ') = ' . $this->v_post[$value];
+            $flashtype = 'modal';
+        }
+        $this->add_notif($msg, $type, $extra);
+
+        $this->session->set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
+        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
+        return [];
+    }
+
+    public function handle_3a($aksi, $object, $value)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_5[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
+            ;
+            $flashtype = 'toast';
+        } else {
+            $msg = $this->flash1_msg_6[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
+            ;
+            $flashtype = 'toast';
+        }
+
+        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
         $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
-    
-    public function handle_3($aksi, $object, $value)
+
+    public function handle_3b($aksi, $object, $value)
     {
         if ($aksi) {
             $msg = $this->flash1_msg_5[$object . '_alias'];
@@ -260,17 +382,36 @@ class Omnitags extends CI_Controller
         return [];
     }
 
-    public function handle_4($aksi, $object, $value)
+    public function handle_3c($aksi, $object, $value)
     {
         if ($aksi) {
-            $msg = $this->flash1_msg_3[$object . '_alias'];
+            $msg = $this->flash1_msg_5[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value4'];
-            $extra = ' (' . $this->aliases[$value . '_alias'] . ') = ' . $this->v_post[$value];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
             $flashtype = 'modal';
         } else {
-            $msg = $this->flash1_msg_4[$object . '_alias'];
+            $msg = $this->flash1_msg_6[$object . '_alias'];
             $type = $this->aliases['tabel_b8_field2_value6'];
-            $extra = ' (' . $this->aliases[$value . '_alias'] . ') = ' . $this->v_post[$value];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
+            $flashtype = 'modal';
+        }
+
+        $this->session->set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
+        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
+        return [];
+    }
+
+    public function handle_3d($aksi, $object, $value)
+    {
+        if ($aksi) {
+            $msg = $this->flash1_msg_5[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value4'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
+            $flashtype = 'modal';
+        } else {
+            $msg = $this->flash1_msg_6[$object . '_alias'];
+            $type = $this->aliases['tabel_b8_field2_value6'];
+            $extra = ' (' . $this->aliases[$object . '_alias'] . ') = ' . $value;
             $flashtype = 'modal';
         }
         $this->add_notif($msg, $type, $extra);
@@ -280,7 +421,8 @@ class Omnitags extends CI_Controller
         return [];
     }
 
-    public function serve_image($directory, $filename) {
+    public function serve_image($directory, $filename)
+    {
         // Set the correct content type
         header('Content-Type: image/jpeg'); // Adjust content type based on your image type
 

@@ -43,20 +43,7 @@
           <td><a href="<?= $tl_b5->$tabel_b5_field5 ?>" target="_blank">
               <img src="img/<?= $tabel_b5 ?>/<?= $tl_b5->$tabel_b5_field4 ?>" width="100"></a>
           </td>
-          <td>
-            <?php if ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value1) { ?>
-              <a class="text-warning" href="<?= site_url($tabel_b5 . '/nonaktifkan/' . $tl_b5->$tabel_b5_field1) ?>">
-                <h4><i class="fas fa-toggle-on"></i></h4>
-              </a>
-            <?php } elseif ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value2) { ?>
-              <a class="text-warning" href="<?= site_url($tabel_b5 . '/aktifkan/' . $tl_b5->$tabel_b5_field1) ?>">
-                <h4><i class="fas fa-toggle-off"></i></h4>
-              </a>
-            <?php } else { ?>
-
-            <?php } ?>
-          </td>
-          <td><?= $tl_b5->$tabel_b5_field7 ?></td>
+                    <td><?= $tl_b5->$tabel_b5_field7 ?></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b5->$tabel_b5_field1; ?>">
               <i class="fas fa-eye"></i></a>

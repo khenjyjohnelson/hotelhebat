@@ -15,17 +15,43 @@ class C_tabel_b2 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->load->helper('text');
+
+		$param1 = $this->v_get['tabel_b2_field7'];
 
 		$data1 = array(
 			'title' => $this->v3_title['tabel_b2_alias'],
 			'konten' => $this->v3['tabel_b2'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b2'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
 			'tbl_b2' => $this->tl_b2->ambildata()->result(),
+			'tbl_b7' => $this->tl_b7->ambildata()->result(),
+			'tabel_b2_field7_value' => $param1
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
+	}
+
+	public function filter()
+	{
+		$this->declarew();
+		$this->load->helper('text');
+
+		$param1 = $this->v_get['tabel_b2_field7'];
+
+		$data1 = array(
+			'title' => $this->v3_title['tabel_b2_alias'],
+			'konten' => $this->v3['tabel_b2'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
+			'tbl_b2' => $this->tl_b2->filter($param1)->result(),
+			'tbl_b7' => $this->tl_b7->ambildata()->result(),
+			'tabel_b2_field7_value' => $param1
+		);
+
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+
+		$this->load->view('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -59,12 +85,12 @@ class C_tabel_b2 extends Omnitags
 			$this->aliases['tabel_b2_field2'] => $this->v_post['tabel_b2_field2'],
 			$this->aliases['tabel_b2_field3'] => $this->v_post['tabel_b2_field3'],
 			$this->aliases['tabel_b2_field4'] => $gambar,
-			$this->aliases['tabel_b2_field5'] => $this->v_post['tabel_b2_field5'],
+			$this->aliases['tabel_b2_field7'] => $this->v_post['tabel_b2_field7'],
 		);
 
 		$aksi = $this->tl_b2->simpan($data);
 
-		$notif = $this->handle_1($aksi, 'tabel_b2');
+		$notif = $this->handle_1b($aksi, 'tabel_b2');
 
 		redirect(site_url('c_tabel_b2/admin'));
 	}
@@ -99,11 +125,44 @@ class C_tabel_b2 extends Omnitags
 			$this->aliases['tabel_b2_field3'] => $this->v_post['tabel_b2_field3'],
 			$this->aliases['tabel_b2_field4'] => $gambar,
 			$this->aliases['tabel_b2_field5'] => $this->v_post['tabel_b2_field5'],
+			$this->aliases['tabel_b2_field7'] => $this->v_post['tabel_b2_field7'],
 		);
 
 		$aksi = $this->tl_b2->update($data, $tabel_b2_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_b2', $tabel_b2_field1);
+		$notif = $this->handle_2b($aksi, 'tabel_b2', $tabel_b2_field1);
+
+		redirect(site_url('c_tabel_b2/admin'));
+	}
+
+	public function aktifkan($tabel_b2_field1 = null) //update tidak diperlukan di sini
+	{
+		$this->declarew();
+
+		// menggunakan nama khusus sama dengan konfigurasi
+		$data = array(
+			$this->aliases['tabel_b2_field6'] => $this->aliases['tabel_b2_field6_value1'],
+		);
+
+		$aksi = $this->tl_b2->update($data, $tabel_b2_field1);
+
+		$notif = $this->handle_2b($aksi, 'tabel_b2_field6', $tabel_b2_field1);
+
+		redirect(site_url('c_tabel_b2/admin'));
+	}
+
+	public function nonaktifkan($tabel_b2_field1 = null) //update tidak diperlukan di sini
+	{
+		$this->declarew();
+
+		// menggunakan nama khusus sama dengan konfigurasi
+		$data = array(
+			$this->aliases['tabel_b2_field6'] => $this->aliases['tabel_b2_field6_value2'],
+		);
+
+		$aksi = $this->tl_b2->update($data, $tabel_b2_field1);
+
+		$notif = $this->handle_2b($aksi, 'tabel_b2_field6', $tabel_b2_field1);
 
 		redirect(site_url('c_tabel_b2/admin'));
 	}
@@ -119,7 +178,7 @@ class C_tabel_b2 extends Omnitags
 
 		$aksi = $this->tl_b2->hapus($tabel_b2_field1);
 
-		$notif = $this->handle_3($aksi, 'tabel_b2_field1', $tabel_b2_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_b2_field1', $tabel_b2_field1);
 
 		redirect(site_url('c_tabel_b2/admin'));
 	}

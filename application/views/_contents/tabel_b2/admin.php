@@ -20,6 +20,39 @@
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
 <?php endforeach ?>
 
+<!-- tabel fiter pesanan -->
+<table class="mb-4">
+
+  <!-- method get supaya nilai dari filter bisa tampil nanti -->
+  <form action="<?= site_url($tabel_b2 . '/filter') ?>" method="get">
+    <tr>
+
+      <td class="pr-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Pilih <?= $tabel_b7_alias ?></span>
+          </div>
+          <select class="form-control" required name="<?= $tabel_b2_field7_input ?>">
+            <option selected hidden value="<?= $tabel_b2_field7_value ?>"></option>
+            <?php foreach ($tbl_b7 as $tl_b7): ?>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
+      </td>
+
+      <td>
+        <button class="btn btn-success" type="submit">
+          <a type="submit"><i class="fas fa-search"></i></a>
+        </button>
+        <a class="btn btn-danger" type="button" href="<?= site_url($tabel_b2 . '/admin') ?>">
+          <i class="fas fa-redo"></i></a>
+      </td>
+
+    </tr>
+  </form>
+</table>
+
 <div class="table-responsive">
   <table class="table table-light" id="data">
     <thead class="thead-light">
@@ -30,6 +63,7 @@
         <th><?= $tabel_b2_field3_alias ?></th>
         <th><?= $tabel_b2_field4_alias ?></th>
         <th><?= $tabel_b2_field5_alias ?></th>
+        <th><?= $tabel_b2_field6_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -42,7 +76,20 @@
           <td><?= $tl_b2->$tabel_b2_field2 ?></td>
           <td><?= $tl_b2->$tabel_b2_field3 ?></td>
           <td><img src="img/<?= $tabel_b2 ?>/<?= $tl_b2->$tabel_b2_field4 ?>" width="100"></td>
-          <td><?= $tl_b2->$tabel_b2_field5 ?></td>
+          <td><?= truncateText($tl_b2->$tabel_b2_field5) ?></td>
+          <td>
+            <?php if ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value1) { ?>
+              <a class="text-warning" href="<?= site_url($tabel_b2 . '/nonaktifkan/' . $tl_b2->$tabel_b2_field1) ?>">
+                <h4><i class="fas fa-toggle-on"></i></h4>
+              </a>
+            <?php } elseif ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value2) { ?>
+              <a class="text-warning" href="<?= site_url($tabel_b2 . '/aktifkan/' . $tl_b2->$tabel_b2_field1) ?>">
+                <h4><i class="fas fa-toggle-off"></i></h4>
+              </a>
+            <?php } else { ?>
+
+            <?php } ?>
+          </td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b2->$tabel_b2_field1; ?>">
               <i class="fas fa-eye"></i></a>
@@ -94,7 +141,18 @@
 
           <div class="form-group">
             <label><?= $tabel_b2_field5_alias ?></label>
-            <textarea id="editor1" class="form-control" name="<?= $tabel_b2_field5_input ?>" placeholder="Masukkan <?= $tabel_b2_field5_alias ?>" required cols="30" rows="10"></textarea>
+            <textarea id="editor1" class="form-control" name="<?= $tabel_b2_field5_input ?>"
+              placeholder="Masukkan <?= $tabel_b2_field5_alias ?>" required cols="30" rows="10"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Pilih <?= $tabel_b7_alias ?></label>
+            <select class="form-control" required name="<?= $tabel_b2_field6_input ?>">
+
+              <?php foreach ($tbl_b7 as $tl_b7): ?>
+                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+              <?php endforeach ?>
+            </select>
           </div>
 
         </div>
@@ -155,8 +213,23 @@
 
             <div class="form-group">
               <label><?= $tabel_b2_field5_alias ?></label>
-              <textarea class="ckeditor form-control" name="<?= $tabel_b2_field5_input ?>" placeholder="Masukkan <?= $tabel_b2_field5_alias ?>" required cols="30"
+              <textarea class="ckeditor form-control" name="<?= $tabel_b2_field5_input ?>"
+                placeholder="Masukkan <?= $tabel_b2_field5_alias ?>" required cols="30"
                 rows="10"><?= $tl_b2->$tabel_b2_field5; ?></textarea>
+            </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b7_alias ?></label>
+              <select class="form-control" required name="<?= $tabel_b2_field7_input ?>">
+                <?php foreach ($tbl_b7 as $tl_b7): ?>
+                  <?php if ($tl_b2->$tabel_b2_field7 == $tl_b7->$tabel_b7_field1) { ?>
+                    <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                  <?php } else { ?>
+                    <option selected hidden value="">Pilih <?= $tabel_b7_alias ?>...</option> <?php } ?>
+
+                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                <?php endforeach ?>
+              </select>
             </div>
 
           </div>

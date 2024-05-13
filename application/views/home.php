@@ -19,16 +19,16 @@
         <div class="col-md-2">
           <div class="form-group">
             <label><?= $tabel_f2_field11_alias ?></label>
-            <input id="<?= $tabel_f2_field11 ?>_date" class="form-control" type="date" required name="<?= $tabel_f2_field11_input ?>"
-              min="<?= date('Y-m-d', strtotime("+1 day")); ?>">
+            <input id="<?= $tabel_f2_field11 ?>_date" class="form-control" type="date" required
+              name="<?= $tabel_f2_field11_input ?>" min="<?= date('Y-m-d', strtotime("+1 day")); ?>">
           </div>
         </div>
 
         <div class="col-md-2">
           <div class="form-group">
             <label><?= $tabel_f2_field8_alias ?></label>
-            <input class="form-control" readonly type="number" required name="<?= $tabel_f2_field8_input ?>" min="1" max="10"
-              value="1">
+            <input class="form-control" readonly type="number" required name="<?= $tabel_f2_field8_input ?>" min="1"
+              max="10" value="1">
           </div>
         </div>
 
@@ -45,25 +45,21 @@
 <?php } ?>
 
 
-<?php foreach ($tbl_a1 as $tl_a1): ?>
-  <?php foreach ($tbl_b2 as $tl_b2): ?>
-    <?php if ($tl_a1->$tabel_a1_field6 == $tl_b2->$tabel_a1_field6) { ?>
+<?php foreach ($tbl_b2 as $tl_b2): ?>
 
-      <h1 class="text-center"><?= $tl_b2->$tabel_b2_field3 ?></h1>
-      <hr>
-      <div class="row">
-        <div class="col-md-6">
-          <img src="img/<?= $tabel_b2 ?>/<?= $tl_b2->$tabel_b2_field4 ?>" class="img-fluid rounded">
-        </div>
-        
-        <div class="col-md-6">
-          <p><?= html_entity_decode($tl_b2->$tabel_b2_field5) ?></p>
-        </div>
-      </div>
+  <h1 class="text-center"><?= $tl_b2->$tabel_b2_field3 ?></h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <img src="img/<?= $tabel_b2 ?>/<?= $tl_b2->$tabel_b2_field4 ?>" class="img-fluid rounded">
+    </div>
+
+    <div class="col-md-6">
+      <p><?= html_entity_decode($tl_b2->$tabel_b2_field5) ?></p>
+    </div>
+  </div>
 
 
-    <?php } ?>
-  <?php endforeach ?>
 <?php endforeach ?>
 
 <br>

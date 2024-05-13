@@ -16,9 +16,50 @@
 <a class="btn btn-info mb-4" href="<?= site_url($tabel_b1 . '/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
+  <?php foreach ($tbl_b1 as $tl_b1) : ?> 
+<?php if(!$tl_b1->$tabel_b1_field6 == "a") { ?>
+<form action="<?= $tabel_b1 . '/tambah' ?>" method="post">
+<input type="hidden" name="<?= $tabel_b1_field1 ?>">
+</form>  
+  <?php } ?>
+<?php endforeach ?>
+
 <?php foreach ($dekor as $dk): ?>
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
 <?php endforeach ?>
+
+<!-- tabel fiter pesanan -->
+<table class="mb-4">
+
+  <!-- method get supaya nilai dari filter bisa tampil nanti -->
+  <form action="<?= site_url($tabel_b1 . '/filter') ?>" method="get">
+    <tr>
+
+      <td class="pr-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Pilih <?= $tabel_b7_alias ?></span>
+          </div>
+          <select class="form-control" required name="<?= $tabel_b1_field7_input ?>">
+            <option selected hidden value="<?= $tabel_b1_field7_value ?>"></option>
+            <?php foreach ($tbl_b7 as $tl_b7): ?>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
+      </td>
+
+      <td>
+        <button class="btn btn-success" type="submit">
+          <a type="submit"><i class="fas fa-search"></i></a>
+        </button>
+        <a class="btn btn-danger" type="button" href="<?= site_url($tabel_b1 . '/admin') ?>">
+          <i class="fas fa-redo"></i></a>
+      </td>
+
+    </tr>
+  </form>
+</table>
 
 <div class="table-responsive">
   <table class="table table-light" id="data">
@@ -30,6 +71,7 @@
         <th><?= $tabel_b1_field3_alias ?></th>
         <th><?= $tabel_b1_field4_alias ?></th>
         <th><?= $tabel_b1_field5_alias ?></th>
+        <th><?= $tabel_b1_field6_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -45,6 +87,7 @@
           <td>
             <h2><?= $tl_b1->$tabel_b1_field5 ?></h2>
           </td>
+          <td><?= $tl_b1->$tabel_b1_field6 ?></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b1->$tabel_b1_field1; ?>">
               <i class="fas fa-eye"></i></a>
@@ -100,6 +143,28 @@
               placeholder="Masukkan <?= $tabel_b1_field5_alias ?>">
           </div>
 
+          <div class="form-group">
+            <label>Pilih <?= $tabel_b1_field6_alias ?></label>
+            <select class="form-control" required name="<?= $tabel_b1_field6_input ?>">
+              <option value="a">a</option>
+              <option value="b">b</option>
+              <option value="c">c</option>
+              <option value="d">d</option>
+              <option value="f">f</option>
+              <option value="0">0</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Pilih <?= $tabel_b7_alias ?></label>
+            <select class="form-control" required name="<?= $tabel_b1_field7_input ?>">
+
+              <?php foreach ($tbl_b7 as $tl_b7): ?>
+                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+              <?php endforeach ?>
+            </select>
+          </div>
+
         </div>
 
         <!-- memunculkan notifikasi modal -->
@@ -129,13 +194,6 @@
 
         <form action="<?= site_url($tabel_b1 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
-
-            <?php foreach ($dataku as $item) {
-              if ($reverse[$item['value'] . '_realname'] = $item['key']);
-              ?>
-              
-            <?php } ?>
-
             <div class="form-group">
               <label><?= $tabel_b1_field2_alias ?></label>
               <input class="form-control" type="text" required name="<?= $tabel_b1_field2_input ?>"
@@ -166,6 +224,33 @@
               <label><?= $tabel_b1_field5_alias ?></label>
               <input class="form-control" type="text" required name="<?= $tabel_b1_field5_input ?>"
                 value="<?= htmlspecialchars($tl_b1->$tabel_b1_field5); ?>">
+            </div>
+
+            <div class="form-group">
+            <label>Pilih <?= $tabel_b1_field6_alias ?></label>
+            <select class="form-control" required name="<?= $tabel_b1_field6_input ?>">
+            <option value="<?= $tl_b1->$tabel_b1_field6 ?>"><?= $tl_b1->$tabel_b1_field6 ?></option>
+              <option value="a">a</option>
+              <option value="b">b</option>
+              <option value="c">c</option>
+              <option value="d">d</option>
+              <option value="f">f</option>
+              <option value="0">0</option>
+            </select>
+          </div>
+
+            <div class="form-group">
+              <label><?= $tabel_b7_alias ?></label>
+              <select class="form-control" required name="<?= $tabel_b1_field7_input ?>">
+                <?php foreach ($tbl_b7 as $tl_b7): ?>
+                  <?php if ($tl_b1->$tabel_b1_field7 == $tl_b7->$tabel_b7_field1) { ?>
+                    <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                  <?php } else { ?>
+                    <option selected hidden value="">Pilih <?= $tabel_b7_alias ?>...</option> <?php } ?>
+
+                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                <?php endforeach ?>
+              </select>
             </div>
           </div>
 

@@ -19,7 +19,7 @@ class C_tabel_e3 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_e3_alias'],
 			'konten' => $this->v3['tabel_e3'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e3'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e3'])->result(),
 			'tbl_e3' => $this->tl_e3->ambildata()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 			'tbl_c1' => $this->tl_c1->ambildata()->result(),
@@ -27,7 +27,7 @@ class C_tabel_e3 extends Omnitags
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -42,7 +42,7 @@ class C_tabel_e3 extends Omnitags
 
 		$aksi = $this->tl_e3->simpan($data);
 
-		$notif = $this->handle_1($aksi, 'tabel_e3');
+		$notif = $this->handle_1b($aksi, 'tabel_e3');
 
 		redirect(site_url('c_tabel_e3/admin'));
 	}
@@ -61,7 +61,7 @@ class C_tabel_e3 extends Omnitags
 
 		$aksi = $this->tl_e3->update($data, $tabel_e3_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_e3', $tabel_e3_field1);
+		$notif = $this->handle_2b($aksi, 'tabel_e3', $tabel_e3_field1);
 
 		redirect(site_url('c_tabel_e3/admin'));
 	}
@@ -72,7 +72,7 @@ class C_tabel_e3 extends Omnitags
 
 		$aksi = $this->tl_e3->hapus($tabel_e3_field1);
 
-		$notif = $this->handle_3($aksi, 'tabel_e3_field1', $tabel_e3_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_e3_field1', $tabel_e3_field1);
 
 		redirect(site_url('c_tabel_e3/admin'));
 	}
@@ -84,7 +84,7 @@ class C_tabel_e3 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e3_alias'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e3'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e3'])->result(),
 			'tbl_e3' => $this->tl_e3->ambildata()->result(),
 		);
 

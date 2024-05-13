@@ -23,7 +23,7 @@ class C_tabel_f1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v2_title['tabel_f1_alias'],
 			'konten' => $this->v2['tabel_f1'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->ambil_tabel_c2_field1($param5)->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 
@@ -36,7 +36,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 
@@ -55,7 +55,7 @@ class C_tabel_f1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v2_title['tabel_f1_alias'],
 			'konten' => $this->v2['tabel_f1'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->filter_tabel_c1($param1, $param2, $param3, $param4, $param5)->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 
@@ -68,7 +68,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	// Halaman admin
@@ -85,7 +85,7 @@ class C_tabel_f1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_f1_alias'],
 			'konten' => $this->v3['tabel_f1'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->ambildata()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 
@@ -98,7 +98,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	// public function hapus($tabel_f1_field1 = null)
@@ -116,7 +116,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_f1_alias'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->ambildata()->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 		);
@@ -139,7 +139,7 @@ class C_tabel_f1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_f1_alias'],
 			'konten' => $this->v3['tabel_f1'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_f1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->filter($param1, $param2, $param3, $param4)->result(),
 			'tbl_e4' => $this->tl_e4->ambildata()->result(),
 
@@ -152,6 +152,6 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 }

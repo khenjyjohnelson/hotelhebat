@@ -13,13 +13,13 @@ class C_tabel_e1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v1_title['tabel_e1_alias'],
 			'konten' => $this->v1['tabel_e1'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
 			'tbl_e1' => $this->tl_e1->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	// Halaman khusus akun
@@ -33,13 +33,13 @@ class C_tabel_e1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_e1_alias'],
 			'konten' => $this->v3['tabel_e1'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
 			'tbl_e1' => $this->tl_e1->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	function tambah()
@@ -79,7 +79,7 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Save data to database
 			$aksi = $this->tl_e1->simpan($data);
 
-			$notif = $this->handle_1($aksi, 'tabel_e1');
+			$notif = $this->handle_1b($aksi, 'tabel_e1');
 			
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
@@ -128,7 +128,7 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Update data in the database
 			$aksi = $this->tl_e1->update($data, $tabel_e1_field1);
 
-			$notif = $this->handle_2($aksi, 'tabel_e1', $tabel_e1_field1);
+			$notif = $this->handle_2b($aksi, 'tabel_e1', $tabel_e1_field1);
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
@@ -156,7 +156,7 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Delete data from the database
 			$aksi = $this->tl_e1->hapus($tabel_e1_field1);
 
-			$notif = $this->handle_3($aksi, 'tabel_e1_field1', $tabel_e1_field1);
+			$notif = $this->handle_3b($aksi, 'tabel_e1_field1', $tabel_e1_field1);
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
@@ -176,7 +176,7 @@ class C_tabel_e1 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e1_alias'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
 			'tbl_e1' => $this->tl_e1->ambildata()->result(),
 		);
 

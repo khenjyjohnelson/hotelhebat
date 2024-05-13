@@ -15,13 +15,13 @@ class C_tabel_c2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_c2_alias'],
 			'konten' => $this->v3['tabel_c2'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_c2'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -93,7 +93,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_c2', $tabel_c2_field1);
+		$notif = $this->handle_2b($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		// kembali ke halaman sebelumnya
 		redirect($_SERVER['HTTP_REFERER']);
@@ -105,7 +105,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->hapus($tabel_c2_field1);
 
-		$notif = $this->handle_3($aksi, 'tabel_c2_field1', $tabel_c2_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_c2_field1', $tabel_c2_field1);
 
 		redirect(site_url('c_tabel_c2/admin'));
 	}
@@ -117,7 +117,7 @@ class C_tabel_c2 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_c2_alias'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_c2'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->ambildata()->result(),
 		);
 
@@ -135,14 +135,14 @@ class C_tabel_c2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v6_title['tabel_c2_alias2'],
 			'konten' => $this->v6['tabel_c2'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_c2'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->ambil_tabel_c2_field1($tabel_c2_field1)->result(),
 			'tbl_d3' => $this->tl_d3->ambil_tabel_c2_field1($tabel_c2_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	public function login()
@@ -150,13 +150,13 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->views['v2_title'],
-			'dekor' => $this->tl_b1->dekor('v2')->result(),
+			'title' => 'Sign In',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'login')->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v2'], $data);
+		$this->load->view('login', $data);
 	}
 
 	public function signup()
@@ -164,13 +164,13 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->views['v3_title'],
-			'dekor' => $this->tl_b1->dekor('v3')->result(),
+			'title' => 'Create an Account',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup')->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v3'], $data);
+		$this->load->view('signup', $data);
 	}
 
 	public function update_profil()

@@ -23,13 +23,13 @@ class C_tabel_b9 extends Omnitags
 			$data1 = array(
 				'title' => $this->v8_title['tabel_b9_alias'],
 				'konten' => $this->v8['tabel_b9'],
-				'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
+				'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 				'tbl_b9' => $this->tl_b9->ambil_tabel_b9_field1($tabel_b9_field1)->result(),
 			);
 
 			$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-			$this->load->view($this->views['v1'], $data);
+			$this->load->view('_layouts/template', $data);
 		} else {
 			redirect($_SERVER['HTTP_REFERER']);
 
@@ -61,13 +61,13 @@ class C_tabel_b9 extends Omnitags
 		$data1 = array(
 			'title' => $this->v2_title['tabel_b9_alias'],
 			'konten' => $this->v2['tabel_b9'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->ambil_tabel_b8($tabel_b9_field2)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	// Halaman admin
@@ -78,13 +78,13 @@ class C_tabel_b9 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_b9_alias'],
 			'konten' => $this->v3['tabel_b9'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -99,7 +99,7 @@ class C_tabel_b9 extends Omnitags
 
 		$aksi = $this->tl_b9->simpan($data);
 
-		$notif = $this->handle_1($aksi, 'tabel_b9');
+		$notif = $this->handle_1b($aksi, 'tabel_b9');
 
 		redirect(site_url('c_tabel_b9/admin'));
 	}
@@ -127,7 +127,7 @@ class C_tabel_b9 extends Omnitags
 
 		$aksi = $this->tl_b9->hapus($tabel_b9_field1);
 
-		$notif = $this->handle_3($aksi, 'tabel_b9_field1', $tabel_b9_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_b9_field1', $tabel_b9_field1);
 
 		redirect(site_url('c_tabel_b9/admin'));
 	}
@@ -139,7 +139,7 @@ class C_tabel_b9 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b9_alias'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_b9'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->ambildata()->result(),
 		);
 

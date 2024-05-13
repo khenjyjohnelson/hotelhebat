@@ -42,17 +42,17 @@ class Welcome extends Omnitags
 				$data1 = array(
 					$this->declarew(),
 
-					'title' => $this->views['v6_title'],
-					'konten' => $this->views['v6'],
-					'dekor' => $this->tl_b1->dekor('v6')->result(),
+					'title' => 'Selamat Datang',
+					'konten' => 'home',
+					'dekor' => $this->tl_b1->dekor($this->theme_id, 'home')->result(),
 					'tbl_b5' => $this->tl_b5->ambildata()->result(),
 					'tbl_b7' => $this->tl_b7->ambildata()->result(),
-					'tbl_b2' => $this->tl_b2->ambildata()->result(),
+					'tbl_b2' => $this->tl_b2->ambil_tabel_b7_aktif($this->theme_id)->result(),
 				);
 
 				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-				$this->load->view($this->views['v1'], $data);
+				$this->load->view('_layouts/template', $data);
 		}
 	}
 
@@ -64,9 +64,9 @@ class Welcome extends Omnitags
 		$chart_tabel_f2 = $this->tl_e4->getCharttabel_f2();
 
 		$data1 = array(
-			'title' => $this->views['v5_title'],
-			'konten' => $this->views['v5'],
-			'dekor' => $this->tl_b1->dekor('v5')->result(),
+			'title' => 'Dashboard',
+			'konten' => 'dashboard',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'dashboard')->result(),
 			'tbl_e1' => $this->tl_e1->ambildata()->num_rows(),
 			'tbl_e2' => $this->tl_e2->ambildata()->num_rows(),
 			'tbl_c1' => $this->tl_c1->ambildata()->num_rows(),
@@ -86,7 +86,7 @@ class Welcome extends Omnitags
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	// fungsi ketika pengguna mengunjungi halaman yang tidak sesuai dengan level
@@ -95,14 +95,14 @@ class Welcome extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->views['v4_title'],
-			'dekor' => $this->tl_b1->dekor('v4')->result(),
+			'title' => 'Anda tidak memiliki akses ke halaman ini!',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no-level')->result(),
 			'tbl_a1' => $this->tl_a1->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v4'], $data);
+		$this->load->view('no-level', $data);
 	}
 
 	public function no_page()
@@ -110,12 +110,12 @@ class Welcome extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->views['v7_title'],
-			'dekor' => $this->tl_b1->dekor('v7')->result(),
+			'title' => 'Halaman Tidak Ada',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, '404')->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v7'], $data);
+		$this->load->view('404', $data);
 	}
 }

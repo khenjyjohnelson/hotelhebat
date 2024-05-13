@@ -13,13 +13,13 @@ class C_tabel_e2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v1_title['tabel_e2_alias'],
 			'konten' => $this->v1['tabel_e2'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e2'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	// Halaman khusus akun
@@ -33,13 +33,13 @@ class C_tabel_e2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v3_title['tabel_e2_alias'],
 			'konten' => $this->v3['tabel_e2'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e2'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->ambildata()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$this->load->view($this->views['v1'], $data);
+		$this->load->view('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -57,7 +57,7 @@ class C_tabel_e2 extends Omnitags
 		$aksi = $this->tl_e2->simpan($data);
 		// $aksi = $this->tl_e2->simpan($query);
 
-		$notif = $this->handle_1($aksi, 'tabel_e2');
+		$notif = $this->handle_1b($aksi, 'tabel_e2');
 
 		redirect(site_url('c_tabel_e2/admin'));
 	}
@@ -80,7 +80,7 @@ class C_tabel_e2 extends Omnitags
 
 		$aksi = $this->tl_e2->update($data, $tabel_e2_field1);
 
-		$notif = $this->handle_2($aksi, 'tabel_e2', $tabel_e2_field1);
+		$notif = $this->handle_2b($aksi, 'tabel_e2', $tabel_e2_field1);
 
 		redirect(site_url('c_tabel_e2/admin'));
 	}
@@ -95,7 +95,7 @@ class C_tabel_e2 extends Omnitags
 		unlink($this->v_upload_path['tabel_e2'] . $tabel_e2_field3);
 		$aksi = $this->tl_e2->hapus($tabel_e2_field1);
 
-		$notif = $this->handle_3($aksi, 'tabel_e2_field1', $tabel_e2_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_e2_field1', $tabel_e2_field1);
 
 		redirect(site_url('c_tabel_e2/admin'));
 	}
@@ -107,7 +107,7 @@ class C_tabel_e2 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e2_alias'],
-			'dekor' => $this->tl_b1->dekor($this->aliases['tabel_e2'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->ambildata()->result(),
 		);
 
