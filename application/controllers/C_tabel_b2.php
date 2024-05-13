@@ -15,8 +15,7 @@ class C_tabel_b2 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-		$this->load->helper('text');
-
+		
 		$param1 = $this->v_get['tabel_b2_field7'];
 
 		$data1 = array(

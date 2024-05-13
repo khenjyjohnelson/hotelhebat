@@ -51,7 +51,6 @@ class Welcome extends Omnitags
 				);
 
 				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
-				$notif = $this->handle_4b('tabel_c2', '');
 				$this->load->view('_layouts/template', $data);
 		}
 	}

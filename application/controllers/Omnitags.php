@@ -6,6 +6,8 @@ class Omnitags extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('datetime');
+        $this->load->helper('text');
 
         // Set security headers
         $this->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
@@ -131,12 +133,6 @@ class Omnitags extends CI_Controller
         $this->notif_limit = $this->tl_b9->ambil_tabel_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']))->result();
         $this->notif_null = $this->tl_b9->ambil_tabel_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
 
-        if ($this->notif_limit) {
-            $this->elapsed = $this->notif_limit[0]->created_at;
-        } else {
-            $this->elapsed = '';
-        }
-
         $this->views = array(
             'tabel_c1_v2' => '_contents/tabel_c1/login',
             'tabel_c1_v2_title' => 'Login Sebagai ' . $this->aliases['tabel_c1_alias'],
@@ -153,7 +149,6 @@ class Omnitags extends CI_Controller
             'tbl_a1' => $this->theme,
             'notif' => $this->notif_limit,
             'notif_count' => $this->notif_null->num_rows(),
-            'timeElapsed' => $this->getTimeElapsedString($this->elapsed),
 
             'flash1' => 'pesan',
             'flash1_func1' => '$("#element").toast("show")',
@@ -431,14 +426,14 @@ class Omnitags extends CI_Controller
         return [];
     }
 
-    public function handle_4b($object, $value)
+    public function handle_4b()
     {
-        $msg = '';
+        $msg = 'Selamat datang ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!';
         $type = $this->aliases['tabel_b8_field2_value5'];
         $extra = '';
         $flashtype = 'toast';
 
-        $this->add_notif_all($msg, $type, $extra, $object, $value);
+        $this->add_notif_all($msg, $type, $extra);
         $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
         $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
@@ -471,19 +466,21 @@ class Omnitags extends CI_Controller
         $ambil = $this->tl_b9->simpan($notif);
     }
 
-    public function add_notif_all($msg, $type, $extra, $object, $value)
+    public function add_notif_all($msg, $type, $extra)
     {
-        $users = $this->tl_d3->ambil_tabel_c2_field1($this->session->userdata($this->aliases['tabel_c2_field1']))->num_rows();
-        
-        if($users < 0) { 
+        $users = $this->tl_d3->ambil_tabel_c2_field1($this->session->userdata($this->aliases['tabel_c2_field1']));
+
+        if ($users->num_rows() < 2) {
             $notif = array(
-                $this->aliases['tabel_b9_field2'] => 'Selamat datang ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!', //Planningnya ini untuk semua user/user level tertentu
+                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
                 $this->aliases['tabel_b9_field3'] => $type,
                 $this->aliases['tabel_b9_field4'] => $msg . $extra,
                 $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
             );
 
             $ambil = $this->tl_b9->simpan($notif);
+        } else {
+            
         }
     }
 

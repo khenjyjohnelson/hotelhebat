@@ -354,6 +354,9 @@ class C_tabel_c2 extends Omnitags
 
 				$login_history = $this->tl_d3->simpan($loginh);
 
+				$notif = $this->handle_4b($this->session->userdata($this->aliases['tabel_c2_field6']), $this->session->userdata($this->aliases['tabel_c2_field1']));
+
+
 				redirect(site_url('home'));
 
 				// jika password salah

@@ -158,7 +158,7 @@
                                                     <div class="text-muted small mt-1">
                                                         <?= $nf->$tabel_b9_field4 ?>
                                                     </div>
-                                                    <div class="text-muted small mt-1"><?= $timeElapsed ?>
+                                                    <div class="text-muted small mt-1"><?= datetime_elapsed_string($nf->$tabel_b9_field5) ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,7 +175,7 @@
                                                     <div class="text-muted small mt-1">
                                                         <?= $nf->$tabel_b9_field4 ?>
                                                     </div>
-                                                    <div class="text-muted small mt-1"><?= $timeElapsed ?>
+                                                    <div class="text-muted small mt-1"><?= datetime_elapsed_string($nf->$tabel_b9_field5) ?>
                                                     </div>
                                                 </div>
                                             </div>
