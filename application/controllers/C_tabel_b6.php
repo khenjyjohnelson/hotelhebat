@@ -16,12 +16,36 @@ class C_tabel_b6 extends Omnitags
 	{
 		$this->declarew();
 
+		$param1 = $this->v_get['tabel_b6_field7'];
+
+		$data1 = array(
+			'title' => $this->v3_title['tabel_b5_alias'],
+			'konten' => $this->v3['tabel_b5'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b5'])->result(),
+			'tbl_b5' => $this->tl_b5->ambildata()->result(),
+			'tbl_b7' => $this->tl_b7->ambildata()->result(),
+			'tabel_b6_field7_value' => $param1,
+		);
+
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+
+		$this->load->view('_layouts/template', $data);
+	}
+
+	public function filter()
+	{
+		$this->declarew();
+		$this->load->helper('text');
+
+		$param1 = $this->v_get['tabel_b6_field7'];
+
 		$data1 = array(
 			'title' => $this->v3_title['tabel_b6_alias'],
 			'konten' => $this->v3['tabel_b6'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6'])->result(),
-			'tbl_b6' => $this->tl_b6->ambildata()->result(),
+			'tbl_b6' => $this->tl_b6->filter($param1)->result(),
 			'tbl_b7' => $this->tl_b7->ambildata()->result(),
+			'tabel_b6_field7_value' => $param1
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

@@ -51,7 +51,7 @@ class Welcome extends Omnitags
 				);
 
 				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
-
+				$notif = $this->handle_4b('tabel_c2', '');
 				$this->load->view('_layouts/template', $data);
 		}
 	}
@@ -85,6 +85,8 @@ class Welcome extends Omnitags
 		$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+
+		$notif = $this->handle_4b('tabel_c2', '');
 
 		$this->load->view('_layouts/template', $data);
 	}

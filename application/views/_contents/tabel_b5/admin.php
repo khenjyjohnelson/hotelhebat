@@ -20,6 +20,40 @@
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
 <?php endforeach ?>
 
+
+<!-- tabel fiter pesanan -->
+<table class="mb-4">
+
+  <!-- method get supaya nilai dari filter bisa tampil nanti -->
+  <form action="<?= site_url($tabel_b5 . '/filter') ?>" method="get">
+    <tr>
+
+      <td class="pr-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Pilih <?= $tabel_b7_alias ?></span>
+          </div>
+          <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
+            <option selected hidden value="<?= $tabel_b5_field7_value ?>"></option>
+            <?php foreach ($tbl_b7 as $tl_b7): ?>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
+      </td>
+
+      <td>
+        <button class="btn btn-success" type="submit">
+          <a type="submit"><i class="fas fa-search"></i></a>
+        </button>
+        <a class="btn btn-danger" type="button" href="<?= site_url($tabel_b5 . '/admin') ?>">
+          <i class="fas fa-redo"></i></a>
+      </td>
+
+    </tr>
+  </form>
+</table>
+
 <div class="table-responsive">
   <table class="table table-light" id="data">
     <thead class="thead-light">
@@ -43,7 +77,21 @@
           <td><a href="<?= $tl_b5->$tabel_b5_field5 ?>" target="_blank">
               <img src="img/<?= $tabel_b5 ?>/<?= $tl_b5->$tabel_b5_field4 ?>" width="100"></a>
           </td>
-                    <td><?= $tl_b5->$tabel_b5_field7 ?></td>
+          <td>
+            <?php if ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value1) { ?>
+              <a class="text-warning" href="<?= site_url($tabel_b5 . '/nonaktifkan/' . $tl_b5->$tabel_b5_field1) ?>">
+                <h4><i class="fas fa-toggle-on"></i></h4>
+              </a>
+
+            <?php } elseif ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value2) { ?>
+              <a class="text-warning" href="<?= site_url($tabel_b5 . '/aktifkan/' . $tl_b5->$tabel_b5_field1) ?>">
+                <h4><i class="fas fa-toggle-off"></i></h4></i>
+              </a>
+            <?php } else { ?>
+
+            <?php } ?>
+          </td>
+          <td><?= $tl_b5->$tabel_b5_field7 ?></td>
           <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
               data-target="#lihat<?= $tl_b5->$tabel_b5_field1; ?>">
               <i class="fas fa-eye"></i></a>

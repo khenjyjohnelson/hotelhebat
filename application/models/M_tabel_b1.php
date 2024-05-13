@@ -63,4 +63,10 @@ class M_tabel_b1 extends CI_Model
 		$this->db->where($this->aliases['tabel_b1_field1'], $param1);
 		return $this->db->delete($this->aliases['tabel_b1']);
 	}
+
+	public function hapus_b7($param1)
+	{
+		$this->db->where($this->aliases['tabel_b1_field7'], $param1);
+		return $this->db->delete($this->aliases['tabel_b1']);
+	}
 }

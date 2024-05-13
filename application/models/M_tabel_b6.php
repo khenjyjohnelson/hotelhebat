@@ -9,6 +9,13 @@ class M_tabel_b6 extends CI_Model
 		return $this->db->get($this->aliases['tabel_b6']);
 	}
 
+	public function filter($param1)
+	{
+		$this->db->where($this->aliases['tabel_b6_field7'], $param1);
+		$this->db->order_by($this->aliases['tabel_b6_field1'], 'DESC');
+		return $this->db->get($this->aliases['tabel_b6']);
+	}
+
 	public function ambil_tabel_a1_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_b6_field2'], $param1);
@@ -56,6 +63,12 @@ class M_tabel_b6 extends CI_Model
 	public function hapus($param1)
 	{
 		$this->db->where($this->aliases['tabel_b6_field1'], $param1);
+		return $this->db->delete($this->aliases['tabel_b6']);
+	}
+	
+	public function hapus_b7($param1)
+	{
+		$this->db->where($this->aliases['tabel_b1_field7'], $param1);
 		return $this->db->delete($this->aliases['tabel_b6']);
 	}
 }
