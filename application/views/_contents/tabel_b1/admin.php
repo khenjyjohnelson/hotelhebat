@@ -4,7 +4,7 @@
     break;
 
   default:
-    redirect(site_url() . 'welcome/no_level');
+    redirect(site_url('welcome/no_level'));
 }
 ?>
 
@@ -16,11 +16,11 @@
 <a class="btn btn-info mb-4" href="<?= site_url($tabel_b1 . '/laporan') ?>" target="_blank">
   <i class="fas fa-print"></i> Cetak Laporan</a>
 
-  <?php foreach ($tbl_b1 as $tl_b1) : ?> 
-<?php if(!$tl_b1->$tabel_b1_field6 == "a") { ?>
-<form action="<?= $tabel_b1 . '/tambah' ?>" method="post">
-<input type="hidden" name="<?= $tabel_b1_field1 ?>">
-</form>  
+<?php foreach ($tbl_b1 as $tl_b1): ?>
+  <?php if (!$tl_b1->$tabel_b1_field6 == "a") { ?>
+    <form action="<?= $tabel_b1 . '/tambah' ?>" method="post">
+      <input type="hidden" name="<?= $tabel_b1_field1 ?>">
+    </form>
   <?php } ?>
 <?php endforeach ?>
 
@@ -41,9 +41,10 @@
             <span class="input-group-text">Pilih <?= $tabel_b7_alias ?></span>
           </div>
           <select class="form-control" required name="<?= $tabel_b1_field7_input ?>">
-            <option selected hidden value="<?= $tabel_b1_field7_value ?>"></option>
+            <option selected hidden value="<?= $tabel_b1_field7_value ?>"><?= $tabel_b1_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
-              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
+                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?></option>
             <?php endforeach ?>
           </select>
         </div>
@@ -171,7 +172,7 @@
         <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan</button>
+          <?= btn_simpan() ?>
         </div>
       </form>
     </div>
@@ -227,17 +228,17 @@
             </div>
 
             <div class="form-group">
-            <label>Pilih <?= $tabel_b1_field6_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_b1_field6_input ?>">
-            <option value="<?= $tl_b1->$tabel_b1_field6 ?>"><?= $tl_b1->$tabel_b1_field6 ?></option>
-              <option value="a">a</option>
-              <option value="b">b</option>
-              <option value="c">c</option>
-              <option value="d">d</option>
-              <option value="f">f</option>
-              <option value="0">0</option>
-            </select>
-          </div>
+              <label>Pilih <?= $tabel_b1_field6_alias ?></label>
+              <select class="form-control" required name="<?= $tabel_b1_field6_input ?>">
+                <option value="<?= $tl_b1->$tabel_b1_field6 ?>"><?= $tl_b1->$tabel_b1_field6 ?></option>
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="c">c</option>
+                <option value="d">d</option>
+                <option value="f">f</option>
+                <option value="0">0</option>
+              </select>
+            </div>
 
             <div class="form-group">
               <label><?= $tabel_b7_alias ?></label>
@@ -258,7 +259,7 @@
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Simpan Perubahan</button>
+            <?= btn_update() ?>
           </div>
         </form>
       </div>
@@ -283,36 +284,11 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="form-group">
-              <label><?= $tabel_b1_field1_alias ?> : </label>
-              <p><?= $tl_b1->$tabel_b1_field1; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b1_field2_alias ?> : </label>
-              <p><?= $tl_b1->$tabel_b1_field2; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b1_field3_alias ?> : </label>
-              <p><?= $tl_b1->$tabel_b1_field3; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b1_field4_alias ?> : </label>
-            </div>
-            <div class="form-group">
-              <img src="img/<?= $tabel_b1 ?>/<?= $tl_b1->$tabel_b1_field4; ?>" width="450">
-            </div>
-
-            <div class="form-group">
-              <label><?= $tabel_b1_field5_alias ?> : </label>
-              <p><?= $tl_b1->$tabel_b1_field5; ?></p>
-            </div>
-            <hr>
+            <?= tampil_text("tabel_b1_field1", $tl_b1->$tabel_b1_field1) ?>
+            <?= tampil_text("tabel_b1_field2", $tl_b1->$tabel_b1_field2) ?>
+            <?= tampil_text("tabel_b1_field3", $tl_b1->$tabel_b1_field3) ?>
+            <?= tampil_file($tabel_b1, "tabel_b1_field4", $tl_b1->$tabel_b1_field4) ?>
+            <?= tampil_text("tabel_b1_field5", $tl_b1->$tabel_b1_field5) ?>
 
 
           </div>
@@ -321,7 +297,7 @@
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <?= btn_tutup() ?>
           </div>
         </form>
 

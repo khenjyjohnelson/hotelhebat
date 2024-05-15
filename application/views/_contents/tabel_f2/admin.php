@@ -4,7 +4,7 @@
     break;
 
   default:
-    redirect(site_url() . 'welcome/no_level');
+    redirect(site_url('welcome/no_level'));
 }
 ?>
 

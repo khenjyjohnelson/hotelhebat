@@ -10,6 +10,17 @@ class Welcome extends Omnitags
 	{
 		$this->declarew();
 
+		// Load your URLs dynamically here (e.g., from database)
+		$urls = array(
+			base_url('home'),
+		);
+
+		// Load XML helper
+		$this->load->helper('xml');
+
+		// Load the sitemap view passing URLs
+		$data['urls'] = $urls;
+
 		// Cache control headers
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP 1.1.
 		header("Pragma: no-cache"); // HTTP 1.0.

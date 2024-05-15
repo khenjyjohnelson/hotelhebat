@@ -42,7 +42,7 @@ class C_tabel_b7 extends Omnitags
 
 		$notif = $this->handle_1b($aksi, 'tabel_b7');
 
-		redirect(site_url('c_tabel_b7/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 
@@ -62,7 +62,7 @@ class C_tabel_b7 extends Omnitags
 
 		$notif = $this->handle_2b($aksi, 'tabel_b7', $tabel_b7_field1);
 
-		redirect(site_url('c_tabel_b7/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 
@@ -189,7 +189,7 @@ class C_tabel_b7 extends Omnitags
 
 		$notif = $this->handle_2f($aksi, 'tabel_b7_field5', 'tabel_b7_field1');
 
-		redirect(site_url('c_tabel_b7/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 
@@ -205,7 +205,7 @@ class C_tabel_b7 extends Omnitags
 
 		$notif = $this->handle_3b($aksi, 'tabel_b7_field1', $tabel_b7_field1);
 
-		redirect(site_url('c_tabel_b7/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 	// Cetak semua data

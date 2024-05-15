@@ -1,3 +1,19 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "Your Organization",
+  "url": "https://www.hotelkhenjy.com",
+  "logo": "https://hotelkhenjy.com/assets/img/website_themes/christmas_logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-000-000-0000",
+    "contactType": "Customer service"
+  }
+}
+</script>
+
+
 <!-- javascript untuk semua halaman (sesuai kebutuhan) -->
 <script src="jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>

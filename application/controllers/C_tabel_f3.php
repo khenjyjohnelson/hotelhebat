@@ -164,7 +164,7 @@ class C_tabel_f3 extends Omnitags
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
-		redirect(site_url('c_tabel_f3/konfirmasi'));
+redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
 	}
 
 
@@ -187,7 +187,7 @@ class C_tabel_f3 extends Omnitags
 
 		$notif = $this->handle_2b($aksi, 'tabel_f3', $tabel_f3_field1);
 
-		redirect(site_url('c_tabel_f3/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 	public function hapus($tabel_f3_field1 = null)
@@ -199,7 +199,7 @@ class C_tabel_f3 extends Omnitags
 
 		$notif = $this->handle_3b($aksi, 'tabel_f3_field1', $tabel_f3_field1);
 
-		redirect(site_url('c_tabel_f3/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 	// Fitur filter untuk saat ini akan tidak digunakan terlebih dahulu

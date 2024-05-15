@@ -60,7 +60,7 @@ class C_tabel_e1 extends Omnitags
 				$this->session->set_flashdata($this->views['flash2'], "Invalid input. Please provide valid data.");
 				$this->session->set_flashdata('modal', $this->views['flash2_func1']);
 				// Functional requirement: Redirect user to 'tabel_e1' page
-				redirect(site_url('c_tabel_e1/admin'));
+				redirect($_SERVER['HTTP_REFERER']); 
 			}
 		}
 
@@ -88,7 +88,7 @@ class C_tabel_e1 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
-		redirect(site_url('c_tabel_e1/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 
@@ -111,7 +111,7 @@ class C_tabel_e1 extends Omnitags
 				$this->session->set_flashdata($this->views['flash3'], "Invalid input. Please provide valid data.");
 				$this->session->set_flashdata('modal', $this->views['flash3_func1']);
 				// Functional requirement: Redirect user to 'tabel_e1' page
-				redirect(site_url('c_tabel_e1/admin'));
+				redirect($_SERVER['HTTP_REFERER']); 
 			}
 		}
 
@@ -137,7 +137,7 @@ class C_tabel_e1 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
-		redirect(site_url('c_tabel_e1/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 
@@ -165,7 +165,7 @@ class C_tabel_e1 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
-		redirect(site_url('c_tabel_e1/admin'));
+		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
 

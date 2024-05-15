@@ -4,7 +4,7 @@
     break;
 
   default:
-    redirect(site_url() . 'welcome/no_level');
+    redirect(site_url('welcome/no_level'));
 }
 ?>
 
@@ -12,9 +12,8 @@
 <hr>
 <p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
 
-<button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
-<a class="btn btn-info mb-4" href="<?= site_url($tabel_a1 . '/laporan') ?>" target="_blank">
-  <i class="fas fa-print"></i> Cetak Laporan</a>
+<?= btn_tambah() ?>
+<?= btn_laporan($tabel_a1) ?>
 
 <?php foreach ($dekor as $dk): ?>
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
@@ -41,20 +40,14 @@
           <td><?= $tl_a1_alt->$tabel_a1_field2 ?></td>
           <td><?= $tl_a1_alt->$tabel_a1_field4 ?></td>
           <td><img src="img/<?= $tabel_b7 ?>/<?= $tl_a1_alt->$tabel_a1_field3 ?>" width="100"></td>
-          <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
-              data-target="#lihat<?= $tl_a1_alt->$tabel_a1_field1; ?>">
-              <i class="fas fa-eye"></i></a>
-            <a class="btn btn-light text-warning" type="button" data-toggle="modal"
-              data-target="#ubah<?= $tl_a1_alt->$tabel_a1_field1; ?>">
-              <i class="fas fa-edit"></i></a>
-            <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel_a1 ?>?')"
-              href="<?= site_url($tabel_a1 . '/hapus/' . $tl_a1_alt->$tabel_a1_field1) ?>">
-              <i class="fas fa-trash"></i></a>
+          <td>
+            <?= btn_lihat($tl_a1_alt->$tabel_a1_field1) ?>
+            <?= btn_edit($tl_a1_alt->$tabel_a1_field1) ?>
+            <?= btn_hapus($tabel_a1, $tl_a1_alt->$tabel_a1_field1) ?>
+          </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
-
-
   </table>
 </div>
 
@@ -72,24 +65,9 @@
 
       <form action="<?= site_url($tabel_a1 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
-          <div class="form-group">
-            <label><?= $tabel_a1_field2_alias ?></label>
-            <input class="form-control" type="text" required name="<?= $tabel_a1_field2_input ?>"
-              placeholder="Masukkan <?= $tabel_a1_field2_alias ?>">
-          </div>
-          
-          <div class="form-group">
-            <label><?= $tabel_a1_field4_alias ?></label>
-            <input class="form-control" type="text" required name="<?= $tabel_a1_field4_input ?>"
-              placeholder="Masukkan <?= $tabel_a1_field4_alias ?>">
-          </div>
-          
-          <div class="form-group">
-            <label><?= $tabel_a1_field3_alias ?></label>
-            <input class="form-control-file" required type="file" name="<?= $tabel_a1_field3_input ?>">
-            
-          </div>
-
+          <?= add_text($tabel_a1_field2, "required") ?>
+          <?= add_text($tabel_a1_field4, "required") ?>
+          <?= add_file($tabel_a1_field3, "required") ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->
@@ -103,49 +81,25 @@
   </div>
 </div>
 
-
 <!-- modal lihat -->
 <?php foreach ($tbl_a1_alt as $tl_a1_alt): ?>
   <div id="lihat<?= $tl_a1_alt->$tabel_a1_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title"><?= $tabel_a1_alias ?>   <?= $tl_a1_alt->$tabel_a1_field1; ?></h5>
+          <h5 class="modal-title"><?= $tabel_a1_alias ?> <?= $tl_a1_alt->$tabel_a1_field1; ?></h5>
 
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
         </div>
 
-        <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="form-group">
-              <label><?= $tabel_a1_field1_alias ?> : </label>
-              <p><?= $tl_a1_alt->$tabel_a1_field1; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_a1_field2_alias ?> : </label>
-              <p><?= $tl_a1_alt->$tabel_a1_field2; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_a1_field4_alias ?> : </label>
-              <p><?= $tl_a1_alt->$tabel_a1_field4; ?></p>
-            </div>
-            <hr>
-            
-            <div class="form-group">
-              <label><?= $tabel_a1_field3_alias ?> : </label>
-            </div>
-            <div class="form-group">
-              <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1_alt->$tabel_a1_field3; ?>" width="450">
-            </div>
-
-
+            <?= tampil_text($tabel_a1_field1, $tl_a1_alt->$tabel_a1_field1) ?>
+            <?= tampil_text($tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2) ?>
+            <?= tampil_text($tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4) ?>
+            <?= tampil_file($tabel_a1, $tabel_a1_field3, $tl_a1_alt->$tabel_a1_field3) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -155,7 +109,41 @@
             <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+<?php endforeach; ?>
 
+<!-- modal edit foto -->
+<?php foreach ($tbl_a1_alt as $tl_a1_alt): ?>
+  <div id="ubah<?= $tl_a1_alt->$tabel_a1_field1; ?>" class="modal fade ubah">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit <?= $tl_a1_alt->$tabel_a1_field1; ?></h5>
+
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <form action="<?= site_url($tabel_a1 . '/update') ?>" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <input type="hidden" name="<?= $tabel_a1_field1_input ?>" value="<?= $tl_a1_alt->$tabel_a1_field1; ?>">
+            * Meski ingin mengubah <?= $tabel_a1_field2_alias ?> saja, tetap harus mengupload ulang <?= $tabel_a1_field3_alias ?> juga
+
+            <?= edit_text($tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2, "required") ?>
+            <?= edit_text($tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4, "required") ?>
+            <?= edit_file($tabel_a1_field3, $tabel_a1, $tl_a1_alt->$tabel_a1_field3, "required") ?>
+          </div>
+
+          <!-- memunculkan notifikasi modal -->
+          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+
+          <div class="modal-footer">
+            <?= btn_update() ?>
+          </div>
+        </form>
       </div>
     </div>
   </div>

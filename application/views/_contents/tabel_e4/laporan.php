@@ -4,6 +4,7 @@
     break;
 
   default:
+    redirect($_SERVER['HTTP_REFERER']); 
     redirect(site_url('welcome/no_level'));
     break;
 }

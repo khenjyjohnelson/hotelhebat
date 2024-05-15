@@ -24,6 +24,10 @@ switch (true) {
 <?php $this->load->view($head) ?>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX34Q9MK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
   <!-- menampilkan data pengaturan sebagai p -->
   <?php foreach ($tbl_a1 as $tl_a1): ?>

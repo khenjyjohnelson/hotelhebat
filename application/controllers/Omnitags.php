@@ -6,8 +6,11 @@ class Omnitags extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('tampil');
+        $this->load->helper('button');
         $this->load->helper('datetime');
         $this->load->helper('text');
+        $this->load->helper('input');
 
         // Set security headers
         $this->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
@@ -482,39 +485,5 @@ class Omnitags extends CI_Controller
         } else {
             
         }
-    }
-
-    public function getTimeElapsedString($datetime, $full = false)
-    {
-        $now = new DateTime();
-        $ago = new DateTime($datetime);
-        $diff = $now->diff($ago);
-
-        $diff->w = floor($diff->d / 7);
-        $diff->d -= $diff->w * 7;
-
-        $string = array(
-            'y' => 'tahun',
-            'm' => 'bulan',
-            'w' => 'minggu',
-            'd' => 'hari',
-            'h' => 'jam',
-            'i' => 'menit',
-            's' => 'detik',
-        );
-
-        foreach ($string as $k => &$v) {
-            if ($diff->$k) {
-                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
-            } else {
-                unset($string[$k]);
-            }
-        }
-
-        if (!$full) {
-            $string = array_slice($string, 0, 1);
-        }
-
-        return $string ? implode(', ', $string) . ' yang lalu' : 'Baru saja';
     }
 }

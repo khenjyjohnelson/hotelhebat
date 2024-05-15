@@ -101,7 +101,7 @@ class C_tabel_b9 extends Omnitags
 
 		$notif = $this->handle_1b($aksi, 'tabel_b9');
 
-		redirect(site_url('c_tabel_b9/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -129,7 +129,7 @@ class C_tabel_b9 extends Omnitags
 
 		$notif = $this->handle_3b($aksi, 'tabel_b9_field1', $tabel_b9_field1);
 
-		redirect(site_url('c_tabel_b9/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Cetak semua data

@@ -57,10 +57,10 @@ class C_tabel_c2 extends Omnitags
 				// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
 				if ($this->session->userdata($this->aliases['tabel_c2_field3'])) {
 
-					redirect(site_url('c_tabel_c2/admin'));
+					redirect($_SERVER['HTTP_REFERER']);
 				} else {
 
-					redirect(site_url('c_tabel_c2/login'));
+					redirect(site_url($this->aliases['tabel_c2'] . '/login'));
 				}
 
 				// jika input konfirm tidak sama dengan input password
@@ -107,7 +107,8 @@ class C_tabel_c2 extends Omnitags
 
 		$notif = $this->handle_3b($aksi, 'tabel_c2_field1', $tabel_c2_field1);
 
-		redirect(site_url('c_tabel_c2/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
+		
 	}
 
 
@@ -376,14 +377,14 @@ class C_tabel_c2 extends Omnitags
 				// Kalau tidak bisa merusak experience dari user
 
 				$this->session->set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_c2_field4_alias']);
-				redirect(site_url('c_tabel_c2/login'));
+				redirect(site_url($this->aliases['tabel_c2'] . '/login'));
 			}
 
 			// jika jumlah data lebih dari 0
 		} else {
 
 			$this->session->set_flashdata($this->views['flash1'], $this->flash_msg4['tabel_c2_field3']);
-			redirect(site_url('c_tabel_c2/login'));
+			redirect(site_url($this->aliases['tabel_c2'] . '/login'));
 		}
 
 		// // mencari apakah jumlah data kurang dari 0
@@ -405,20 +406,23 @@ class C_tabel_c2 extends Omnitags
 		// 		$this->session->set_userdata('hp', $hp);
 		// 		$this->session->set_userdata('level', $level);
 
-		// 		redirect(site_url('home'));
+		// 		redirect($_SERVER['HTTP_REFERER']); 
+		redirect(site_url('home'));
 
 		// 		// jika password salah
 		// 	} else {
 
 		// 		$this->session->set_flashdata($this->views['flash1'], 'Password Salah!');
-		// 		redirect(site_url('c_tabel_c2/login'));
+		// 		redirect($_SERVER['HTTP_REFERER']); 
+		redirect(site_url($this->aliases['tabel_c2'] . '/login'));
 		// 	}
 
 		// 	// jika jumlah data lebih dari 0
 		// } else {
 
 		// 	$this->session->set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
-		// 	redirect(site_url('c_tabel_c2/login'));
+		// 	redirect($_SERVER['HTTP_REFERER']); 
+		redirect(site_url($this->aliases['tabel_c2'] . '/login'));
 		// }
 
 

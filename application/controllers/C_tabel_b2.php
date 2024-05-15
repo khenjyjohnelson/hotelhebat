@@ -91,7 +91,7 @@ class C_tabel_b2 extends Omnitags
 
 		$notif = $this->handle_1b($aksi, 'tabel_b2');
 
-		redirect(site_url('c_tabel_b2/admin'));
+		redirect(site_url($this->aliases['tabel_b2'] . '/admin'));
 	}
 
 	public function update() //update tidak diperlukan di sini
@@ -131,7 +131,7 @@ class C_tabel_b2 extends Omnitags
 
 		$notif = $this->handle_2b($aksi, 'tabel_b2', $tabel_b2_field1);
 
-		redirect(site_url('c_tabel_b2/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function aktifkan($tabel_b2_field1 = null) //update tidak diperlukan di sini
@@ -147,7 +147,7 @@ class C_tabel_b2 extends Omnitags
 
 		$notif = $this->handle_2b($aksi, 'tabel_b2_field6', $tabel_b2_field1);
 
-		redirect(site_url('c_tabel_b2/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function nonaktifkan($tabel_b2_field1 = null) //update tidak diperlukan di sini
@@ -163,7 +163,7 @@ class C_tabel_b2 extends Omnitags
 
 		$notif = $this->handle_2b($aksi, 'tabel_b2_field6', $tabel_b2_field1);
 
-		redirect(site_url('c_tabel_b2/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function hapus($tabel_b2_field1 = null)
@@ -179,7 +179,7 @@ class C_tabel_b2 extends Omnitags
 
 		$notif = $this->handle_3b($aksi, 'tabel_b2_field1', $tabel_b2_field1);
 
-		redirect(site_url('c_tabel_b2/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Cetak semua data

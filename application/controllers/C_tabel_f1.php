@@ -106,7 +106,8 @@ class C_tabel_f1 extends Omnitags
 	// 	$this->declarew();
 
 	// 	$aksi = $this->tl_f1->hapus($tabel_f1_field1);
-	// 	redirect(site_url('c_tabel_f1/admin'));
+	// 	redirect($_SERVER['HTTP_REFERER']); 
+	// redirect(site_url($this->aliases['tabel_f1/admin'));
 	// }
 
 	// Cetak semua data

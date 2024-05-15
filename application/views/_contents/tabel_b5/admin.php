@@ -4,7 +4,7 @@
     break;
 
   default:
-    redirect(site_url() . 'welcome/no_level');
+    redirect(site_url('welcome/no_level'));
 }
 ?>
 
@@ -12,9 +12,8 @@
 <hr>
 <p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
 
-<button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
-<a class="btn btn-info mb-4" href="<?= site_url($tabel_b5 . '/laporan') ?>" target="_blank">
-  <i class="fas fa-print"></i> Cetak Laporan</a>
+<?= btn_tambah() ?>
+<?= btn_laporan($tabel_b5) ?>
 
 <?php foreach ($dekor as $dk): ?>
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
@@ -34,20 +33,17 @@
             <span class="input-group-text">Pilih <?= $tabel_b7_alias ?></span>
           </div>
           <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
-            <option selected hidden value="<?= $tabel_b5_field7_value ?>"></option>
+            <option selected hidden value="<?= $tabel_b5_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
-              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?></option>
             <?php endforeach ?>
           </select>
         </div>
       </td>
 
       <td>
-        <button class="btn btn-success" type="submit">
-          <a type="submit"><i class="fas fa-search"></i></a>
-        </button>
-        <a class="btn btn-danger" type="button" href="<?= site_url($tabel_b5 . '/admin') ?>">
-          <i class="fas fa-redo"></i></a>
+        <?= btn_cari() ?>
+        <?= btn_redo($tabel_b5, '/admin') ?>
       </td>
 
     </tr>
@@ -79,34 +75,22 @@
           </td>
           <td>
             <?php if ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value1) { ?>
-              <a class="text-warning" href="<?= site_url($tabel_b5 . '/nonaktifkan/' . $tl_b5->$tabel_b5_field1) ?>">
-                <h4><i class="fas fa-toggle-on"></i></h4>
-              </a>
-
+              <?= btn_toggle_on("tabel_b5", $tl_b5->$tabel_b5_field1) ?>
             <?php } elseif ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value2) { ?>
-              <a class="text-warning" href="<?= site_url($tabel_b5 . '/aktifkan/' . $tl_b5->$tabel_b5_field1) ?>">
-                <h4><i class="fas fa-toggle-off"></i></h4></i>
-              </a>
+              <?= btn_toggle_off("tabel_b5", $tl_b5->$tabel_b5_field1) ?>
             <?php } else { ?>
 
             <?php } ?>
           </td>
           <td><?= $tl_b5->$tabel_b5_field7 ?></td>
-          <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
-              data-target="#lihat<?= $tl_b5->$tabel_b5_field1; ?>">
-              <i class="fas fa-eye"></i></a>
-            <a class="btn btn-light text-warning" type="button" data-toggle="modal"
-              data-target="#ubah<?= $tl_b5->$tabel_b5_field1; ?>">
-              <i class="fas fa-edit"></i></a>
-            <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel_b5 ?>?')"
-              href="<?= site_url($tabel_b5 . '/hapus/' . $tl_b5->$tabel_b5_field1) ?>">
-              <i class="fas fa-trash"></i></a>
+          <td>
+            <?= btn_lihat($tl_b5->$tabel_b5_field1) ?>
+            <?= btn_edit($tl_b5->$tabel_b5_field1) ?>
+            <?= btn_hapus("tabel_b5", $tl_b5->$tabel_b5_field1) ?>
           </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
-
-
   </table>
 </div>
 
@@ -124,40 +108,19 @@
 
       <form action="<?= site_url($tabel_b5 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
-          <div class="form-group">
-            <label><?= $tabel_b5_field2_alias ?></label>
-            <input class="form-control" type="text" required name="<?= $tabel_b5_field2_input ?>"
-              placeholder="Masukkan <?= $tabel_b5_field2_alias ?>">
-          </div>
-
-          <div class="form-group">
-            <label><?= $tabel_b5_field3_alias ?></label>
-            <textarea id="editor1" class="form-control" name="<?= $tabel_b5_field3_input ?>"
-              placeholder="Masukkan <?= $tabel_b5_field3_alias ?>" required cols="30" rows="10"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label><?= $tabel_b5_field4_alias ?></label>
-            <input class="form-control-file" required type="file" name="<?= $tabel_b5_field4_input ?>">
-
-          </div>
-
-          <div class="form-group">
-            <label><?= $tabel_b5_field5_alias ?></label>
-            <input class="form-control" type="text" required name="<?= $tabel_b5_field5_input ?>"
-              placeholder="Masukkan <?= $tabel_b5_field5_alias ?>">
-          </div>
+          <?= add_text("tabel_b5_field2", "required") ?>
+          <?= add_textarea("tabel_b5_field3", "required") ?>
+          <?= add_file("tabel_b5_field4", "required") ?>
+          <?= add_text("tabel_b5_field5", "required") ?>
 
           <div class="form-group">
             <label>Pilih <?= $tabel_b7_alias ?></label>
             <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
-
               <?php foreach ($tbl_b7 as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
               <?php endforeach ?>
             </select>
           </div>
-
         </div>
 
         <!-- memunculkan notifikasi modal -->
@@ -171,15 +134,13 @@
   </div>
 </div>
 
-
-<!-- modal edit foto-->
+<!-- modal edit foto -->
 <?php foreach ($tbl_b5 as $tl_b5): ?>
   <div id="ubah<?= $tl_b5->$tabel_b5_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Edit <?= $tl_b5->$tabel_b5_field1; ?></h5>
-
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -188,66 +149,22 @@
         <form action="<?= site_url($tabel_b5 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <div class="form-group">
-              <label><?= $tabel_b5_field2_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel_b5_field2_input ?>"
-                value="<?= $tl_b5->$tabel_b5_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b5_field1_input ?>" value="<?= $tl_b5->$tabel_b5_field1; ?>">
-            </div>
-
-
-
-            <div class="form-group">
-              <label><?= $tabel_b5_field3_alias ?></label>
-              <textarea class="ckeditor form-control" name="<?= $tabel_b5_field3_input ?>"
-                placeholder="Masukkan <?= $tabel_b5_field3_alias ?>" required cols="30"
-                rows="10"><?= $tl_b5->$tabel_b5_field3; ?></textarea>
-            </div>
-
-            <div class="form-group">
-              <img src="img/<?= $tabel_b5 ?>/<?= $tl_b5->$tabel_b5_field4; ?>" width="300">
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b5_field4_alias ?></label>
-              <input class="form-control-file" type="file" name="<?= $tabel_b5_field4_input ?>">
-              <input type="hidden" name="<?= $tabel_b5_field4_old ?>" value="<?= $tl_b5->$tabel_b5_field4; ?>">
-            </div>
-
-            <div class="form-group">
-              <label><?= $tabel_b5_field5_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel_b5_field5_input ?>"
-                value="<?= $tl_b5->$tabel_b5_field5; ?>">
-            </div>
-
-            <div class="form-group">
-              <label><?= $tabel_b7_alias ?></label>
-              <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
-                <?php foreach ($tbl_b7 as $tl_b7): ?>
-                  <?php if ($tl_b5->$tabel_b5_field7 == $tl_b7->$tabel_b7_field1) { ?>
-                    <option selected hidden value="<?= $tl_b5->$tabel_b5_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                  <?php } else { ?>
-                    <option selected hidden value="">Pilih <?= $tabel_b7_alias ?>...</option> <?php } ?>
-
-                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                <?php endforeach ?>
-              </select>
-            </div>
+            <?= edit_text("tabel_b5_field2", $tl_b5->$tabel_b5_field2, "required") ?>
+            <?= input_hidden("tabel_b5_field1", $tl_b5->$tabel_b5_field1, "required") ?>
+            <?= edit_textarea("tabel_b5_field3", $tl_b5->$tabel_b5_field3, "required") ?>
+            <?= edit_file("tabel_b5", "tabel_b5_field4", $tl_b5->$tabel_b5_field4, "required") ?>
 
           </div>
 
-          <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
-
           <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Simpan Perubahan</button>
+            <button class="btn btn-success" type="submit">Simpan</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 <?php endforeach; ?>
+
 
 
 <!-- modal lihat -->
@@ -266,49 +183,13 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="form-group">
-              <label><?= $tabel_b5_field1_alias ?> : </label>
-              <p><?= $tl_b5->$tabel_b5_field1; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b5_field2_alias ?> : </label>
-              <p><?= $tl_b5->$tabel_b5_field2; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b5_field3_alias ?> : </label>
-              <p><?= html_entity_decode($tl_b5->$tabel_b5_field3); ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b5_field4_alias ?> : </label>
-            </div>
-            <div class="form-group">
-              <img src="img/<?= $tabel_b5 ?>/<?= $tl_b5->$tabel_b5_field4; ?>" width="450">
-            </div>
-
-            <div class="form-group">
-              <label><?= $tabel_b5_field5_alias ?> : </label>
-              <p><?= $tl_b5->$tabel_b5_field5; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b5_field6_alias ?> : </label>
-              <p><?= $tl_b5->$tabel_b5_field6; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b5_field7_alias ?> : </label>
-              <p><?= $tl_b5->$tabel_b5_field7; ?></p>
-            </div>
-
-
+            <?= tampil_text("tabel_b5_field1", $tl_b5->$tabel_b5_field1) ?>
+            <?= tampil_text("tabel_b5_field2", $tl_b5->$tabel_b5_field1) ?>
+            <?= tampil_text("tabel_b5_field3", html_entity_decode($tl_b5->$tabel_b5_field3)) ?>
+            <?= tampil_file($tabel_b5, "tabel_b5_field4", $tl_b5->$tabel_b5_field4) ?>
+            <?= tampil_text("tabel_b5_field5", $tl_b5->$tabel_b5_field5) ?>
+            <?= tampil_text("tabel_b5_field6", $tl_b5->$tabel_b5_field6) ?>
+            <?= tampil_text("tabel_b5_field7", $tl_b5->$tabel_b5_field7) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

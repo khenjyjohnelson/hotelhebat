@@ -80,7 +80,7 @@ class C_tabel_a1 extends Omnitags
 
 		$notif = $this->handle_2f($aksi, 'tabel_a1_field8', $tabel_a1_field1);
 
-		redirect(site_url('c_tabel_a1/profil'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function update_id_event()

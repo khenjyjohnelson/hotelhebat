@@ -161,7 +161,7 @@ class C_tabel_f2 extends Omnitags
 				$this->session->set_flashdata($this->views['flash1'], "Invalid input. Please provide valid data.");
 				$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_func1']);
 				// Functional requirement: Redirect user to 'tabel_f2' confirmation page
-				redirect(site_url('c_tabel_f2/konfirmasi'));
+				redirect(site_url($this->aliases['tabel_f2'] . '/konfirmasi'));
 			}
 		}
 
@@ -209,7 +209,7 @@ class C_tabel_f2 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel_f2' confirmation page
-		redirect(site_url('c_tabel_f2/konfirmasi'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -253,7 +253,7 @@ class C_tabel_f2 extends Omnitags
 
 		$notif = $this->handle_2b($aksi, 'tabel_f2_field12', $tabel_f2_field1);
 
-		redirect(site_url('c_tabel_f2/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -278,7 +278,7 @@ class C_tabel_f2 extends Omnitags
 
 		$notif = $this->handle_3b($aksi, 'tabel_f2_field1', $tabel_f2_field1);
 
-		redirect(site_url('c_tabel_f2/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function filter()
@@ -430,6 +430,6 @@ class C_tabel_f2 extends Omnitags
 
 		$notif = $this->handle_2b($aksi, 'tabel_f2', $tabel_f2_field1);
 
-		redirect(site_url('c_tabel_f2/admin'));
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 }
