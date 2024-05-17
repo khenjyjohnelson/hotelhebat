@@ -1,28 +1,28 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-if (!function_exists('tampil_text')) {
-    function tampil_text($field, $value)
+if (!function_exists('modal_header')) {
+    function modal_header($title, $subtitle)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-
         return <<<HTML
-        <div class="form-group">
-            <label>{$alias} : </label>
-            <p>{$value}</p>
+        <div class="modal-header">
+            <h5 class="modal-title">{$title} {$subtitle}</h5>
+
+            <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+            </button>
         </div>
-        <hr>
         HTML;
     }
 }
 
-if (!function_exists('tampil_file')) {
-    function tampil_file($tabel_class, $field, $value)
+if (!function_exists('modal_file')) {
+    function modal_file($tabel_class, $field, $value)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
@@ -42,8 +42,8 @@ if (!function_exists('tampil_file')) {
     }
 }
 
-if (!function_exists('tampil_icon')) {
-    function tampil_icon($field, $required)
+if (!function_exists('modal_icon')) {
+    function modal_icon($field, $required)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();

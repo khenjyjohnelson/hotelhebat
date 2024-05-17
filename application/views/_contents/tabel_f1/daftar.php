@@ -6,7 +6,6 @@
     break;
 
   default:
-    redirect($_SERVER['HTTP_REFERER']); 
     redirect(site_url('welcome/no_level'));
 }
 ?>
@@ -24,66 +23,24 @@
         <!-- Mengecek data menggunakan tanggal cek in -->
         <tr>
           <td class="pr-2"><?= $tabel_f1_field11_alias ?></td>
-          <td class="pr-2">
-            <div class="input-group input-group-sm">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Dari</span>
-              </div>
-              <input type="date" class="form-control" name="<?= $tabel_f1_field11_filter1 ?>" value="<?= $tabel_f1_field11_filter1_value ?>">
-            </div>
-          </td>
-          <td class="pr-2">
-            <div class="input-group input-group-sm">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Ke</span>
-              </div>
-              <input type="date" class="form-control" name="<?= $tabel_f1_field11_filter2 ?>" value="<?= $tabel_f1_field11_filter2_value ?>">
-            </div>
-          </td>
-        </tr>
+          <?= filter_tgl('Dari', '$tabel_f1_field11_filter1', '') ?>
+          <?= filter_tgl('Ke', '$tabel_f1_field11_filter2', '') ?>
 
+          <td>
+        <?= btn_cari() ?>
+        <?= btn_redo('tabel_f1', '/daftar') ?>
+      </td>
+        </tr>
+        
         <!-- Mengecek data menggunakan tanggal cek out -->
         <!-- method get supaya nilai dari filter bisa tampil nanti -->
         <tr>
-
+          
           <td class="pr-2"><?= $tabel_f1_field12_alias ?></td>
-          <td class="pr-2">
-            <div class="input-group input-group-sm">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Dari</span>
-              </div>
-              <input type="date" class="form-control" name="<?= $tabel_f1_field12_filter1 ?>" value="<?= $tabel_f1_field12_filter1_value ?>">
-
-            </div>
-          </td>
-          <td class="pr-2">
-            <div class="input-group input-group-sm">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Ke</span>
-              </div>
-              <input type="date" class="form-control" name="<?= $tabel_f1_field12_filter2 ?>" value="<?= $tabel_f1_field12_filter2_value ?>">
-            </div>
-          </td>
+          <?= filter_tgl('Dari', '$tabel_f1_field12_filter1', '') ?>
+          <?= filter_tgl('Ke', '$tabel_f1_field12_filter2', '') ?>
         </tr>
       </table>
-    </div>
-    <div class="col-md-auto">
-      <div class="row">
-        <div class="col-auto">
-          <div class="input-group">
-            <button class="btn btn-success text-light" type="submit">
-              <a type="submit"><i class="fas fa-search"></i></a>
-            </button>
-          </div>
-        </div>
-        <div class="col-auto">
-          <div class="input-group">
-            <a class="btn btn-danger text-light" type="button" href="<?= site_url($tabel_f1 . '/daftar') ?>">
-              <i class="fas fa-redo"></i></a>
-          </div>
-        </div>
-      </div>
-
     </div>
 
   </div>
@@ -121,8 +78,8 @@
               <td><?= $tl_f1->$tabel_f1_field7 ?></td>
               <td><?= $tl_f1->$tabel_f1_field8 ?></td>
               <td><?= $tl_f1->$tabel_f1_field9?></td>
-              <td><a class="btn btn-light text-info" type="button" data-toggle="modal" data-target="#lihat<?= $tl_f1->$tabel_f1_field1 ?>">
-                  <i class="fas fa-eye"></i></a>
+              <td>
+                <?= btn_lihat($tl_f1->$tabel_f1_field1) ?>
               </td>
             </tr>
           <?php } ?>
@@ -140,65 +97,24 @@
       <div id="lihat<?= $tl_f1->$tabel_f1_field1 ?>" class="modal fade lihat">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title"><?= $tabel_f1_alias ?> <?= $tl_f1->$tabel_f1_field1 ?></h5>
-
-              <button class="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-
+            <?= modal_header($tabel_f1_alias, $tl_f1->$tabel_f1_field1) ?>
+            
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field2_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field2 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field4_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field4 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field5_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field5 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field6_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field6 ?></p>
-                  </div>
+                  <?= tampil_text('tabel_f1_field2', $tl_f1->$tabel_f1_field2) ?>
+                  <?= tampil_text('tabel_f1_field4', $tl_f1->$tabel_f1_field4) ?>
+                  <?= tampil_text('tabel_f1_field5', $tl_f1->$tabel_f1_field5) ?>
+                  <?= tampil_text('tabel_f1_field6', $tl_f1->$tabel_f1_field6) ?>
+                  
                 </div>
-
+                
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field7_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field7 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_e4_field2_alias ?></label>
-                    <p><?= $tl_e4->$tabel_e4_field2 ?></p>
-
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field11_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field11 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field12_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field12 ?></p>
-                  </div>
+                  <?= tampil_text('tabel_f1_field7', $tl_f1->$tabel_f1_field7) ?>
+                  <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
+                  <?= tampil_text('tabel_f1_field11', $tl_f1->$tabel_f1_field11) ?>
+                  <?= tampil_text('tabel_f1_field12', $tl_f1->$tabel_f1_field12) ?>
+                  
                 </div>
               </div>
             </div>
@@ -207,7 +123,7 @@
             <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
             <div class="modal-footer">
-              <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+              <?= btn_tutup() ?>
             </div>
           </div>
         </div>

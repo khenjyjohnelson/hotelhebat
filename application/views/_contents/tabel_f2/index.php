@@ -92,20 +92,9 @@
       </div>
 
       <!-- keterangan * di bawah -->
-      <div class="form-group">
-        <label><?= $tabel_f2_field4_alias ?>*</label>
-        <input class="form-control" type="email" required name="<?= $tabel_f2_field4_input ?>" placeholder="Masukkan <?= $tabel_f2_field4_alias ?>" value="<?= $this->session->userdata($tabel_c2_field3) ?>">
-      </div>
-
-      <div class="form-group">
-        <label><?= $tabel_f2_field5_alias ?></label>
-        <input class="form-control" type="text" required name="<?= $tabel_f2_field5_input ?>" placeholder="Masukkan <?= $tabel_f2_field5_alias ?>" value="<?= $this->session->userdata($tabel_c2_field5) ?>">
-      </div>
-
-      <div class="form-group">
-        <label><?= $tabel_f2_field6_alias ?></label>
-        <input class="form-control" type="text" required name="<?= $tabel_f2_field6_input ?>" placeholder="Masukkan <?= $tabel_f2_field6_alias ?>">
-      </div>
+      <?= edit_email('tabel_f2_field4', $this->session->userdata($tabel_c2_field3), 'required') ?>
+      <?= edit_text('tabel_f2_field5', $this->session->userdata($tabel_c2_field5), 'required') ?>
+      <?= add_text('tabel_f2_field6', 'required') ?>
 
       <div class="form-group">
         <label><?= $tabel_e4_field2_alias ?></label>
@@ -154,32 +143,21 @@
 <div id="ubah" class="modal fade ubah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Ubah <?= $tabel_f2_field8_alias ?></h5>
-
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
-
+      <?= modal_header('Ubah ' . $tabel_f2_field8_alias, '') ?>
+      
       <form action="<?= site_url($tabel_f2) ?>" method="get">
         <div class="modal-body">
-          <div class="form-group">
-            <label><?= $tabel_f2_field8_alias ?></label>
-            <input class="form-control" type="number" value="<?= $tabel_f2_field8_value ?>" required name="<?= $tabel_f2_field8_input ?>" min="1" max="10" value="1">
-            <input type="hidden" name="<?= $tabel_f2_field10_input ?>" value="<?= $tabel_f2_field10_value ?>">
-            <input type="hidden" name="<?= $tabel_f2_field11_input ?>" value="<?= $tabel_f2_field11_value ?>">
-
-          </div>
-
-
+          <?= add_number('tabel_f2_field8', 'required') ?>
+          <?= input_hidden('tabel_f2_field10', $tabel_f2_field10_value, 'required') ?>
+          <?= input_hidden('tabel_f2_field11', $tabel_f2_field11_value, 'required') ?>
+          
         </div>
 
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan Perubahan</button>
+        <?= btn_update() ?>  
         </div>
       </form>
     </div>

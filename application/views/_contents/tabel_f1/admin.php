@@ -4,7 +4,6 @@
     break;
 
   default:
-    redirect($_SERVER['HTTP_REFERER']); 
     redirect(site_url('welcome/no_level'));
 }
 ?>
@@ -42,10 +41,9 @@
               <td><?= $tl_f1->$tabel_f1_field7 ?></td>
               <td><?= $tl_f1->$tabel_f1_field8 ?></td>
               <td><?= $tl_f1->$tabel_f1_field9 ?></td>
-              <td><a class="btn btn-light text-info" type="button" data-toggle="modal" data-target="#lihat<?= $tl_f1->$tabel_f1_field1 ?>">
-                  <i class="fas fa-eye"></i></a>
-                <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel_f1_alias ?>?')" href="<?= site_url($tabel_f1 . '/hapus/' . $tl_f1->$tabel_f1_field1) ?>">
-                  <i class="fas fa-trash"></i></a>
+              <td>
+                <?= btn_lihat($tl_f1->$tabel_f1_field1) ?>
+                <?= btn_hapus('$tabel_f1', $tl_f1->$tabel_f1_field1) ?>
               </td>
             </tr>
       <?php }
@@ -65,65 +63,22 @@
       <div id="lihat<?= $tl_f1->$tabel_f1_field1 ?>" class="modal fade lihat">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title"><?= $tabel_f1_alias ?> <?= $tl_f1->$tabel_f1_field1 ?></h5>
-
-              <button class="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-
+            <?= modal_header($tabel_f1_alias, $tl_f1->$tabel_f1_field1) ?>
+            
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field2_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field2 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field4_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field4 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field5_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field5 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field6_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field6 ?></p>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field7_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field7 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_e4_field2_alias ?></label>
-                    <p><?= $tl_e4->$tabel_e4_field2 ?></p>
-
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field11_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field11 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field12_alias ?></label>
-                    <p><?= $tl_f1->$tabel_f1_field12 ?></p>
-                  </div>
+                  <?= tampil_text('tabel_f1_field2', $tl_f1->$tabel_f1_field2) ?>
+                  <?= tampil_text('tabel_f1_field4', $tl_f1->$tabel_f1_field4) ?>
+                  <?= tampil_text('tabel_f1_field5', $tl_f1->$tabel_f1_field5) ?>
+                  <?= tampil_text('tabel_f1_field6', $tl_f1->$tabel_f1_field6) ?>
+                  
+                  <div class="col-md-6">
+                  <?= tampil_text('tabel_f1_field7', $tl_f1->$tabel_f1_field7) ?>
+                  <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
+                  <?= tampil_text('tabel_f1_field11', $tl_f1->$tabel_f1_field11) ?>
+                  <?= tampil_text('tabel_f1_field12', $tl_f1->$tabel_f1_field12) ?>
+                  
                 </div>
               </div>
             </div>
@@ -132,7 +87,7 @@
             <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
             <div class="modal-footer">
-              <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+              <?= btn_tutup() ?>
             </div>
           </div>
         </div>

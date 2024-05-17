@@ -11,6 +11,8 @@ class Omnitags extends CI_Controller
         $this->load->helper('datetime');
         $this->load->helper('text');
         $this->load->helper('input');
+        $this->load->helper('option');
+        $this->load->helper('modal');
 
         // Set security headers
         $this->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");

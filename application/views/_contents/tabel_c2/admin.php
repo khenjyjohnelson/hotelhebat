@@ -37,12 +37,9 @@
           <td><?= $tl_c2->$tabel_c2_field3 ?></td>
           <td><?= $tl_c2->$tabel_c2_field5 ?></td>
           <td><?= $tl_c2->$tabel_c2_field6 ?></td>
-          <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
-              data-target="#lihat<?= $tl_c2->$tabel_c2_field1; ?>">
-              <i class="fas fa-eye"></i></a>
-            <a class="btn btn-light text-warning" type="button" data-toggle="modal"
-              data-target="#ubah<?= $tl_c2->$tabel_c2_field1; ?>">
-              <i class="fas fa-edit"></i></a>
+          <td>
+            <?= btn_lihat($tl_c2->$tabel_c2_field1) ?>
+            <?= btn_edit($tl_c2->$tabel_c2_field1) ?>
 
             <!-- Sebelumnya saya sudah membahas ini di v_admin_spp
           Saya akan mempending fitur ini dengan alasan yang sama dalam waktu yang belum ditentukan -->
@@ -61,40 +58,13 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tambah <?= $tabel_c2_alias ?></h5>
-
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
+      <?= modal_header('Tambah ' . $tabel_c2_alias, '') ?>
 
       <form action="<?= site_url($tabel_c2 . '/tambah') ?>" method="post">
         <div class="modal-body">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
-            </div>
-            <input class="form-control" type="text" required name="<?= $tabel_c2_field2_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field2_alias ?>">
-          </div>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input class="form-control" type="text" required name="<?= $tabel_c2_field3_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field3_alias ?>">
-          </div>
-
-          <!-- administrator dapat menentukan password untuk akun baru -->
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
-            </div>
-            <input class="form-control" type="password" required name="<?= $tabel_c2_field4_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field4_alias ?>">
-          </div>
+          <?= add_text_prepend('tabel_c2_field1', '<i class="fas fa-user"></i>', 'required') ?>
+          <?= add_email_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
+          <?= add_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
 
           <div class="input-group">
             <div class="input-group-prepend">
@@ -104,13 +74,7 @@
               placeholder="Konfirmasi <?= $tabel_c2_field4_alias ?>">
           </div>
 
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-phone"></i></span>
-            </div>
-            <input class="form-control" type="text" required name="<?= $tabel_c2_field5_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field5_alias ?>">
-          </div>
+          <?= add_text_prepend('tabel_c2_field5', '<i class="fas fa-phone"></i>', 'required') ?>
 
           <div class="input-group">
             <div class="input-group-prepend">
@@ -144,41 +108,15 @@
   <div id="ubah<?= $tl_c2->$tabel_c2_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_c2_alias ?>   <?= $tl_c2->$tabel_c2_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header('Edit ' . $tabel_c2_alias, $tl_c2->$tabel_c2_field1) ?>
+       
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($tabel_c2 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
-              </div>
-              <input class="form-control" type="text" required name="<?= $tabel_c2_field2_input ?>"
-                value="<?= $tl_c2->$tabel_c2_field2; ?>">
-              <input type="hidden" name="<?= $tabel_c2_field1_input ?>" value="<?= $tl_c2->$tabel_c2_field1; ?>">
-            </div>
-
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-              </div>
-              <input class="form-control" type="text" required name="<?= $tabel_c2_field3_input ?>"
-                value="<?= $tl_c2->$tabel_c2_field3; ?>">
-            </div>
-
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-phone"></i></span>
-              </div>
-              <input class="form-control" type="text" required name="<?= $tabel_c2_field5_input ?>"
-                value="<?= $tl_c2->$tabel_c2_field5; ?>">
-            </div>
+            <?= input_hidden('tabel_c2_field1', $tl_c2->$tabel_c2_field1, 'required') ?>
+            <?= edit_text_prepend('tabel_c2_field2', $tl_c2->$tabel_c2_field2, '<i class="fas fa-user"></i>', 'required') ?>
+            <?= edit_text_prepend('tabel_c2_field3', $tl_c2->$tabel_c2_field3, '<i class="fas fa-envelope"></i>', 'required') ?>
+            <?= edit_text_prepend('tabel_c2_field5', $tl_c2->$tabel_c2_field5, '<i class="fas fa-phone"></i>', 'required') ?>
 
             <div class="input-group">
               <div class="input-group-prepend">
@@ -198,7 +136,7 @@
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Simpan Perubahan</button>
+            <?= btn_update() ?>
           </div>
         </form>
       </div>
@@ -211,14 +149,8 @@
   <div id="lihat<?= $tl_c2->$tabel_c2_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><?= $tabel_c2_alias ?>   <?= $tl_c2->$tabel_c2_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header($tabel_c2_alias, $tl_c2->$tabel_c2_field1) ?>
+       
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
@@ -250,7 +182,7 @@
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <?= btn_tutup() ?>
           </div>
         </form>
 

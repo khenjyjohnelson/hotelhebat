@@ -55,26 +55,20 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tambah <?= $tabel_a1_alias ?></h5>
-
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
+      <?= modal_header('Tambah ' . $tabel_a1_alias, '') ?>
 
       <form action="<?= site_url($tabel_a1 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
-          <?= add_text($tabel_a1_field2, "required") ?>
-          <?= add_text($tabel_a1_field4, "required") ?>
-          <?= add_file($tabel_a1_field3, "required") ?>
+          <?= add_text($tabel_a1_field2, 'required') ?>
+          <?= add_text($tabel_a1_field4, 'required') ?>
+          <?= add_file($tabel_a1_field3, 'required') ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan</button>
+          <?= btn_simpan() ?>
         </div>
       </form>
     </div>
@@ -86,14 +80,7 @@
   <div id="lihat<?= $tl_a1_alt->$tabel_a1_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><?= $tabel_a1_alias ?> <?= $tl_a1_alt->$tabel_a1_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header($tabel_a1_alias, $tl_a1_alt->$tabel_a1_field1) ?>
         <form>
           <div class="modal-body">
             <?= tampil_text($tabel_a1_field1, $tl_a1_alt->$tabel_a1_field1) ?>
@@ -106,7 +93,7 @@
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <?= btn_tutup() ?>
           </div>
         </form>
       </div>
@@ -119,22 +106,16 @@
   <div id="ubah<?= $tl_a1_alt->$tabel_a1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tl_a1_alt->$tabel_a1_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
+        <?= modal_header('Edit ' . $tabel_a1_field1_alias,  $tl_a1_alt->$tabel_a1_field1) ?>
 
         <form action="<?= site_url($tabel_a1 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
-            <input type="hidden" name="<?= $tabel_a1_field1_input ?>" value="<?= $tl_a1_alt->$tabel_a1_field1; ?>">
+            <?= input_hidden('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1, 'required') ?>
             * Meski ingin mengubah <?= $tabel_a1_field2_alias ?> saja, tetap harus mengupload ulang <?= $tabel_a1_field3_alias ?> juga
 
-            <?= edit_text($tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2, "required") ?>
-            <?= edit_text($tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4, "required") ?>
-            <?= edit_file($tabel_a1_field3, $tabel_a1, $tl_a1_alt->$tabel_a1_field3, "required") ?>
+            <?= edit_text($tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2, 'required') ?>
+            <?= edit_text($tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4, 'required') ?>
+            <?= edit_file($tabel_a1_field3, $tabel_a1, $tl_a1_alt->$tabel_a1_field3, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

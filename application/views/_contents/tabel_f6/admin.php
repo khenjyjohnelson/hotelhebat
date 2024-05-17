@@ -1,6 +1,6 @@
 <?php switch ($this->session->userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
-    case $tabel_c2_field6_value4:
+  case $tabel_c2_field6_value4:
     break;
 
   default:
@@ -30,7 +30,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_f4 as $tl_f4) : ?>
+      <?php foreach ($tbl_f4 as $tl_f4): ?>
         <tr>
           <td></td>
           <td><?= $tl_f4->$tabel_f4_field1; ?></td>
@@ -39,10 +39,9 @@
           <td><?= $tl_f4->$tabel_f4_field4 ?></td>
           <td><?= $tl_f4->$tabel_f4_field5 ?></td>
           <td><?= $tl_f4->$tabel_f4_field6 ?></td>
-          <td><a class="btn btn-light text-info" type="button" data-toggle="modal" data-target="#lihat<?= $tl_f4->$tabel_f4_field1; ?>">
-              <i class="fas fa-eye"></i></a>
-              <a class="btn btn-light text-danger" onclick="return confirm('Hapus data <?= $tabel_f4 ?>?')" href="<?= site_url($tabel_f4 . '/hapus/' . $tl_f4->$tabel_f4_field1) ?>">
-              <i class="fas fa-trash"></i></a>
+          <td> <?= btn_lihat($tl_f4->$tabel_f4_field1) ?>
+            <?= btn_hapus('tabel_f4', $tl_f4->$tabel_f4_field1) ?>
+          </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
@@ -53,59 +52,28 @@
 
 
 <!-- modal lihat -->
-<?php foreach ($tbl_f4 as $tl_f4) : ?>
+<?php foreach ($tbl_f4 as $tl_f4): ?>
   <div id="lihat<?= $tl_f4->$tabel_f4_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><?= $tabel_f4_alias ?> <?= $tl_f4->$tabel_f4_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
+        <?= modal_header($tabel_f4_alias . ' ' . $tl_f4->$tabel_f4_field1, '') ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="form-group">
-              <label><?= $tabel_f4_field1_alias ?> : </label>
-              <p><?= $tl_f4->$tabel_f4_field1; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_f4_field2_alias ?> : </label>
-              <p><?= $tl_f4->$tabel_f4_field2; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_f4_field3_alias ?> : </label>
-              <p><?= $tl_f4->$tabel_f4_field3; ?></p>
-            </div>
-
-            <div class="form-group">
-              <label><?= $tabel_f4_field4_alias ?> : </label>
-              <p><?= $tl_f4->$tabel_f4_field4; ?></p>
-            </div>
-
-            <div class="form-group">
-              <label><?= $tabel_f4_field5_alias ?> : </label>
-              <p><?= $tl_f4->$tabel_f4_field5; ?></p>
-            </div>
-
-            <div class="form-group">
-              <label><?= $tabel_f4_field6_alias ?> : </label>
-              <p><?= $tl_f4->$tabel_f4_field6; ?></p>
-            </div>
+            <?= tampil_text('$tabel_f4_field1', $tl_f4->$tabel_f4_field1) ?>
+            <?= tampil_text('$tabel_f4_field2', $tl_f4->$tabel_f4_field2) ?>
+            <?= tampil_text('$tabel_f4_field3', $tl_f4->$tabel_f4_field3) ?>
+            <?= tampil_text('$tabel_f4_field4', $tl_f4->$tabel_f4_field4) ?>
+            <?= tampil_text('$tabel_f4_field5', $tl_f4->$tabel_f4_field5) ?>
+            <?= tampil_text('$tabel_f4_field6', $tl_f4->$tabel_f4_field6) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <?= btn_tutup() ?>
           </div>
         </form>
 

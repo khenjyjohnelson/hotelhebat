@@ -53,14 +53,8 @@
   <div id="password<?= $tl_c2->$tabel_c2_field1 ?>" class="modal fade <?= $tabel_c2_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ubah <?= $tabel_c2_field4_alias ?> Anda</h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-        <form action="<?= site_url($tabel_c2 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
+        <?= modal_header('Ubah ' . $tabel_c2_field4_alias . ' Anda' , '') ?>
+         <form action="<?= site_url($tabel_c2 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="input-group">
@@ -72,9 +66,11 @@
               <input type="hidden" name="<?= $tabel_c2_field1_input ?>" value="<?= $tl_c2->$tabel_c2_field1; ?>">
             </div>
 
+            <!-- < input_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?> -->
+
             <div class="input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                <span class="input-group-text"></span>
               </div>
               <input class="form-control" id="psw" type="password" required name="<?= $tabel_c2_field4_input ?>"
                 placeholder="Masukkan <?= $tabel_c2_field4_alias ?> baru" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"

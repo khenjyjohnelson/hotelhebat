@@ -5,34 +5,17 @@
     <?php foreach ($tbl_c1 as $tl_c1): ?>
 
       <!-- tombol untuk memunculkan modal memperbaiki password -->
-      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-        data-target="#password<?= $tl_c1->$tabel_c1_field1 ?>">
-        <i class="fas fa-edit"></i> Ubah <?= $tabel_c1_field4_alias ?></a>
+      <?= btn_field($tabel_c1_field1 . $tl_c1->$tabel_c1_field1, '<i class="fas fa-edit"></i> Ubah ' . $tabel_c1_field4_alias) ?>
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
       <form action="<?= site_url($tabel_c1 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
+        <?= input_hidden('$tabel_c1_field1', $tl_c1->$tabel_c1_field1, 'required') ?>
+        <?= edit_text('tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>  
+        <?= edit_text('tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>  
+        <?= edit_text('tabel_c1_field5', $tl_c1->$tabel_c1_field5, 'required') ?>  
+      
         <div class="form-group">
-          <label><?= $tabel_c1_field2_alias ?></label>
-          <input class="form-control tabel_a1" type="text" name="<?= $tabel_c1_field2_input ?>"
-            value="<?= $tl_c1->$tabel_c1_field2; ?>">
-          <input type="hidden" name="<?= $tabel_c1_field1_input ?>" value="<?= $tl_c1->$tabel_c1_field1; ?>">
-        </div>
-
-        <div class="form-group">
-          <label><?= $tabel_c1_field3_alias ?>*</label>
-          <input class="form-control tabel_a1" type="text" name="<?= $tabel_c1_field3_input ?>"
-            value="<?= $tl_c1->$tabel_c1_field3; ?>">
-        </div>
-
-        <div class="form-group">
-          <label><?= $tabel_c1_field5_alias ?></label>
-          <input class="form-control tabel_a1" type="text" name="<?= $tabel_c1_field5_input ?>"
-            value="<?= $tl_c1->$tabel_c1_field5; ?>">
-        </div>
-
-        <div class="form-group">
-          <button class="btn btn-success" onclick="return confirm('Ubah data profil?')" type="submit">Simpan
-            Perubahan</button>
+          <?= btn_update() ?>
         </div>
         <small>*Merubah <?= $tabel_c1_field3_alias ?> ini tidak akan merubah <?= $tabel_c1_field3_alias ?> yang ada di
           <?= $tabel_f2_alias ?></small>
@@ -53,13 +36,8 @@
   <div id="password<?= $tl_c1->$tabel_c1_field1 ?>" class="modal fade <?= $tabel_c1_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ubah <?= $tabel_c1_field4_alias ?> Anda</h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
+        <?= modal_header('Ubah ' . $tabel_c1_field4_alias . ' Anda', '') ?>
+        
         <form action="<?= site_url($tabel_c1 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 

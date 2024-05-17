@@ -22,28 +22,9 @@
 
         <!-- form login -->
         <form action="<?= site_url($tabel_c2 . '/ceklogin') ?>" method="post">
-          <!-- <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input class="form-control" type="email" name="email" placeholder="Masukkan email">
-          </div> -->
 
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
-            </div>
-            <input class="form-control" type="text" name="<?= $tabel_c2_field3_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field3_alias ?>">
-          </div>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
-            </div>
-            <input class="form-control" type="password" name="<?= $tabel_c2_field4_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field4_alias ?>">
-          </div>
+          <?= add_text_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
+          <?= add_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
 
           <!-- <p class="text-center"><a class="text-decoration-none" href="<?= site_url($tabel_c1 . '/login') ?>">Login sebagai <?= $tabel_c1_alias ?></a></p> -->
 

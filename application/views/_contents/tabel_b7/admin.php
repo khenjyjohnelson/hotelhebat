@@ -11,9 +11,8 @@
 <h1><?= $title ?><?= $phase ?></h1>
 <hr>
 
-<button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
-<a class="btn btn-info mb-4" href="<?= site_url($tabel_b7 . '/laporan') ?>" target="_blank">
-  <i class="fas fa-print"></i> Cetak Laporan</a>
+<?= btn_tambah() ?>
+<?= btn_laporan('tabel_b7') ?>
 
 <?php foreach ($dekor as $dk): ?>
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
@@ -40,26 +39,21 @@
           <td><?= $tl_b7->$tabel_b7_field1; ?></td>
           <td><?= $tl_b7->$tabel_b7_field2 ?></td>
           <td><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field3 ?>" width="50">
-            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-              data-target="#<?= $tabel_b7_field3 . $tl_b7->$tabel_b7_field1 ?>"><i class="fas fa-edit"></i></a>
+            <?= btn_field($tabel_b7_field3 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-edit"></i>') ?>
           </td>
           <td><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field4 ?>" width="50">
-            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-              data-target="#<?= $tabel_b7_field4 . $tl_b7->$tabel_b7_field1 ?>"><i class="fas fa-edit"></i></a>
+            <?= btn_field($tabel_b7_field4 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-edit"></i>') ?>
           </td>
           <td><img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field5 ?>" width="100">
-            <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-              data-target="#<?= $tabel_b7_field5 . $tl_b7->$tabel_b7_field1 ?>"><i class="fas fa-edit"></i></a>
+            <?= btn_field($tabel_b7_field5 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-edit"></i>') ?>
           </td>
-          <td><a class="btn btn-light text-info" type="button" data-toggle="modal"
-              data-target="#lihat<?= $tl_b7->$tabel_b7_field1; ?>">
-              <i class="fas fa-eye"></i></a>
-            <a class="btn btn-light text-warning" type="button" data-toggle="modal"
-              data-target="#ubah<?= $tl_b7->$tabel_b7_field1; ?>">
-              <i class="fas fa-edit"></i></a>
+          <td>
+            <?= btn_lihat($tl_b7->$tabel_b7_field1) ?>
+            <?= btn_edit($tl_b7->$tabel_b7_field1) ?>
 
             <?php if ($tl_b7->$tabel_b7_field2 != $database) { ?>
-              <a class="btn btn-light text-danger" onclick="return confirm('Tindakan anda akan menghapus hal-hal berikut:\n<?= $tabel_b7_alias ?>\n<?= $tabel_b1_alias ?>\n<?= $tabel_b2_alias ?>\n<?= $tabel_b5_alias ?>\n<?= $tabel_b6_alias ?>\nHapus data?')"
+              <a class="btn btn-light text-danger"
+                onclick="return confirm('Tindakan anda akan menghapus hal-hal berikut:\n<?= $tabel_b7_alias ?>\n<?= $tabel_b1_alias ?>\n<?= $tabel_b2_alias ?>\n<?= $tabel_b5_alias ?>\n<?= $tabel_b6_alias ?>\nHapus data?')"
                 href="<?= site_url($tabel_b7 . '/hapus/' . $tl_b7->$tabel_b7_field1) ?>">
                 <i class="fas fa-trash"></i></a>
             <?php } ?>
@@ -76,35 +70,19 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tambah <?= $tabel_b7_alias ?></h5>
-
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
-
+      <?= modal_header('Tambah ' . $tabel_b7_alias, '') ?>
+      
       <form action="<?= site_url($tabel_b7 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
-          <div class="form-group">
-            <label><?= $tabel_b7_field2_alias ?></label>
-            <input class="form-control" type="text" required name="<?= $tabel_b7_field2_input ?>"
-              placeholder="Masukkan <?= $tabel_b7_field2_alias ?>">
-          </div>
-
-          <div class="form-group">
-            <label><?= $tabel_b7_field6_alias ?></label>
-            <textarea class="ckeditor form-control" name="<?= $tabel_b7_field6_input ?>"
-              placeholder="Masukkan <?= $tabel_b2_field5_alias ?>" required cols="30" rows="10"></textarea>
-          </div>
-
+          <?= add_text('tabel_b7_field2', 'required') ?>
+          <?= add_textarea('tabel_b7_field5', 'required') ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan</button>
+          <?= btn_simpan() ?>
         </div>
       </form>
     </div>
@@ -118,37 +96,21 @@
   <div id="ubah<?= $tl_b7->$tabel_b7_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tl_b7->$tabel_b7_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header('Edit ' . $tabel_b7_alias, $tl_b7->$tabel_b7_field1) ?>
         <form action="<?= site_url($tabel_b7 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <div class="form-group">
-              <label><?= $tabel_b7_field2_alias ?></label>
-              <input class="form-control" type="text" required name="<?= $tabel_b7_field2_input ?>"
-                value="<?= $tl_b7->$tabel_b7_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field1_input ?>" value="<?= $tl_b7->$tabel_b7_field1; ?>">
-            </div>
+            <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
+            <?= edit_text('tabel_b7_field2', $tl_b7->$tabel_b7_field2, 'required') ?>
+            <?= edit_textarea('tabel_b2_field5', $tl_b7->$tabel_b7_field6, 'required') ?>
 
-            <div class="form-group">
-              <label><?= $tabel_b7_field6_alias ?></label>
-              <textarea class="ckeditor form-control" name="<?= $tabel_b7_field6_input ?>"
-                placeholder="Masukkan <?= $tabel_b2_field5_alias ?>" required cols="30"
-                rows="10"><?= $tl_b7->$tabel_b7_field6; ?></textarea>
-            </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Simpan Perubahan</button>
+            <?= btn_update() ?>
           </div>
         </form>
       </div>
@@ -164,30 +126,14 @@
   <div id="<?= $tabel_b7_field3 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field3 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b7_field3_alias ?>   <?= $tl_b7->$tabel_b7_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b7 . '/update_favicon') ?>" method="post"
-          enctype="multipart/form-data">
+        <?= modal_header('Edit '. $tabel_b7_field3_alias, $tl_b7->$tabel_b7_field1) ?> 
+        
+        <form action="<?= site_url($tabel_b7 . '/update_favicon') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <div class="form-group">
-              <img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field3; ?>" width="300">
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b7_field3_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b7_field3_input ?>">
-              <input type="hidden" name="<?= $tabel_b7_field1_input ?>" value="<?= $tl_b7->$tabel_b7_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field2_input ?>" value="<?= $tl_b7->$tabel_b7_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field3_old ?>" value="<?= $tl_b7->$tabel_b7_field3; ?>">
-            </div>
+            <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
+            <?= input_hidden('tabel_b7_field2', $tl_b7->$tabel_b7_field2, 'required') ?>
+            <?= edit_file('tabel_b7', 'tabel_b7_field3', $tl_b7->$tabel_b7_field3, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -210,31 +156,14 @@
   <div id="<?= $tabel_b7_field4 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b7_field4_alias ?>   <?= $tl_b7->$tabel_b7_field1; ?></h5>
+        <?= modal_header('Edit ' . $tabel_b7_field4_alias, $tl_b7->$tabel_b7_field1) ?>
 
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b7 . '/update_logo') ?>" method="post"
-          enctype="multipart/form-data">
+        <form action="<?= site_url($tabel_b7 . '/update_logo') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <div class="form-group">
-              <img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field4; ?>" width="300">
-            </div>
-            <hr>
-
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b7_field4_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b7_field4_input ?>">
-              <input type="hidden" name="<?= $tabel_b7_field1_input ?>" value="<?= $tl_b7->$tabel_b7_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field2_input ?>" value="<?= $tl_b7->$tabel_b7_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field4_old ?>" value="<?= $tl_b7->$tabel_b7_field4; ?>">
-            </div>
+            <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
+            <?= input_hidden('tabel_b7_field2', $tl_b7->$tabel_b7_field2, 'required') ?>
+            <?= edit_file('tabel_b7', 'tabel_b7_field4', $tl_b7->$tabel_b7_field4, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -257,30 +186,14 @@
   <div id="<?= $tabel_b7_field5 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field5 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b7_field5_alias ?>   <?= $tl_b7->$tabel_b7_field1; ?></h5>
+        <?= modal_header('Edit ' . $tabel_b7_field5_alias, $tl_b7->$tabel_b7_field1) ?>
 
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b7 . '/update_foto') ?>" method="post"
-          enctype="multipart/form-data">
+        <form action="<?= site_url($tabel_b7 . '/update_foto') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <div class="form-group">
-              <img src="img/<?= $tabel_b7 ?>/<?= $tl_b7->$tabel_b7_field5; ?>" width="300">
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b7_field5_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b7_field5_input ?>">
-              <input type="hidden" name="<?= $tabel_b7_field1_input ?>" value="<?= $tl_b7->$tabel_b7_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field2_input ?>" value="<?= $tl_b7->$tabel_b7_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field5_old ?>" value="<?= $tl_b7->$tabel_b7_field5; ?>">
-            </div>
+            <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
+            <?= input_hidden('tabel_b7_field2', $tl_b7->$tabel_b7_field2, 'required') ?>
+            <?= edit_file('tabel_b7', 'tabel_b7_field5', $tl_b7->$tabel_b7_field5, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -304,43 +217,20 @@
   <div id="lihat<?= $tl_b7->$tabel_b7_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><?= $tabel_b7_alias ?>   <?= $tl_b7->$tabel_b7_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header($tabel_b7_alias, $tl_b7->$tabel_b7_field1) ?>
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="form-group">
-              <label><?= $tabel_b7_field1_alias ?> : </label>
-              <p><?= $tl_b7->$tabel_b7_field1; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b7_field2_alias ?> : </label>
-              <p><?= $tl_b7->$tabel_b7_field2; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_b7_field2_alias ?> : </label>
-              <p><?= html_entity_decode($tl_b7->$tabel_b7_field6); ?></p>
-            </div>
-            <hr>
-
-
+            <?= tampil_text('tabel_b7_field1', $tl_b7->$tabel_b7_field1) ?>
+            <?= tampil_text('tabel_b7_field2', $tl_b7->$tabel_b7_field2) ?>
+            <?= tampil_text('tabel_b7_field6', html_entity_decode($tl_b7->$tabel_b7_field6)) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <?= btn_tutup() ?>
           </div>
         </form>
 

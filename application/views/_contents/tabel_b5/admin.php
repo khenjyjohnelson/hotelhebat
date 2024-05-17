@@ -13,7 +13,7 @@
 <p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
 
 <?= btn_tambah() ?>
-<?= btn_laporan($tabel_b5) ?>
+<?= btn_laporan('tabel_b5') ?>
 
 <?php foreach ($dekor as $dk): ?>
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
@@ -43,7 +43,7 @@
 
       <td>
         <?= btn_cari() ?>
-        <?= btn_redo($tabel_b5, '/admin') ?>
+        <?= btn_redo('tabel_b5', '/admin') ?>
       </td>
 
     </tr>
@@ -75,9 +75,9 @@
           </td>
           <td>
             <?php if ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value1) { ?>
-              <?= btn_toggle_on("tabel_b5", $tl_b5->$tabel_b5_field1) ?>
+              <?= btn_toggle_on('tabel_b5', $tl_b5->$tabel_b5_field1) ?>
             <?php } elseif ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value2) { ?>
-              <?= btn_toggle_off("tabel_b5", $tl_b5->$tabel_b5_field1) ?>
+              <?= btn_toggle_off('tabel_b5', $tl_b5->$tabel_b5_field1) ?>
             <?php } else { ?>
 
             <?php } ?>
@@ -86,7 +86,7 @@
           <td>
             <?= btn_lihat($tl_b5->$tabel_b5_field1) ?>
             <?= btn_edit($tl_b5->$tabel_b5_field1) ?>
-            <?= btn_hapus("tabel_b5", $tl_b5->$tabel_b5_field1) ?>
+            <?= btn_hapus('tabel_b5', $tl_b5->$tabel_b5_field1) ?>
           </td>
         </tr>
       <?php endforeach; ?>
@@ -98,20 +98,14 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tambah <?= $tabel_b5_alias ?></h5>
-
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
-
+      <?= modal_header('Tambah '. $tabel_b5_alias, '') ?>
+      
       <form action="<?= site_url($tabel_b5 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
-          <?= add_text("tabel_b5_field2", "required") ?>
-          <?= add_textarea("tabel_b5_field3", "required") ?>
-          <?= add_file("tabel_b5_field4", "required") ?>
-          <?= add_text("tabel_b5_field5", "required") ?>
+          <?= add_text('tabel_b5_field2', 'required') ?>
+          <?= add_textarea('tabel_b5_field3', 'required') ?>
+          <?= add_file('tabel_b5_field4', 'required') ?>
+          <?= add_text('tabel_b5_field5', 'required') ?>
 
           <div class="form-group">
             <label>Pilih <?= $tabel_b7_alias ?></label>
@@ -127,7 +121,7 @@
         <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan</button>
+          <?= btn_simpan() ?>
         </div>
       </form>
     </div>
@@ -139,20 +133,15 @@
   <div id="ubah<?= $tl_b5->$tabel_b5_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tl_b5->$tabel_b5_field1; ?></h5>
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header('Edit ' . $tabel_b5_alias, $tl_b5->$tabel_b5_field1) ?>
+        
         <form action="<?= site_url($tabel_b5 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <?= edit_text("tabel_b5_field2", $tl_b5->$tabel_b5_field2, "required") ?>
-            <?= input_hidden("tabel_b5_field1", $tl_b5->$tabel_b5_field1, "required") ?>
-            <?= edit_textarea("tabel_b5_field3", $tl_b5->$tabel_b5_field3, "required") ?>
-            <?= edit_file("tabel_b5", "tabel_b5_field4", $tl_b5->$tabel_b5_field4, "required") ?>
+            <?= edit_text('tabel_b5_field2', $tl_b5->$tabel_b5_field2, 'required') ?>
+            <?= input_hidden('tabel_b5_field1', $tl_b5->$tabel_b5_field1, 'required') ?>
+            <?= edit_textarea('tabel_b5_field3', $tl_b5->$tabel_b5_field3, 'required') ?>
+            <?= edit_file('tabel_b5', 'tabel_b5_field4', $tl_b5->$tabel_b5_field4, 'required') ?>
 
           </div>
 
@@ -172,31 +161,25 @@
   <div id="lihat<?= $tl_b5->$tabel_b5_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><?= $tabel_b5_alias ?>   <?= $tl_b5->$tabel_b5_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header($tabel_b5_alias, $tl_b5->$tabel_b5_field1) ?>
+       
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <?= tampil_text("tabel_b5_field1", $tl_b5->$tabel_b5_field1) ?>
-            <?= tampil_text("tabel_b5_field2", $tl_b5->$tabel_b5_field1) ?>
-            <?= tampil_text("tabel_b5_field3", html_entity_decode($tl_b5->$tabel_b5_field3)) ?>
-            <?= tampil_file($tabel_b5, "tabel_b5_field4", $tl_b5->$tabel_b5_field4) ?>
-            <?= tampil_text("tabel_b5_field5", $tl_b5->$tabel_b5_field5) ?>
-            <?= tampil_text("tabel_b5_field6", $tl_b5->$tabel_b5_field6) ?>
-            <?= tampil_text("tabel_b5_field7", $tl_b5->$tabel_b5_field7) ?>
+            <?= tampil_text('tabel_b5_field1', $tl_b5->$tabel_b5_field1) ?>
+            <?= tampil_text('tabel_b5_field2', $tl_b5->$tabel_b5_field1) ?>
+            <?= tampil_text('tabel_b5_field3', html_entity_decode($tl_b5->$tabel_b5_field3)) ?>
+            <?= tampil_file($tabel_b5, 'tabel_b5_field4', $tl_b5->$tabel_b5_field4) ?>
+            <?= tampil_text('tabel_b5_field5', $tl_b5->$tabel_b5_field5) ?>
+            <?= tampil_text('tabel_b5_field6', $tl_b5->$tabel_b5_field6) ?>
+            <?= tampil_text('tabel_b5_field7', $tl_b5->$tabel_b5_field7) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <?= btn_tutup() ?>
           </div>
         </form>
 

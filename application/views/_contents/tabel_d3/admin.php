@@ -11,8 +11,7 @@
 <h1><?= $title ?><?= $phase ?></h1>
 <hr>
 
-<a class="btn btn-info mb-4" href="<?= site_url($tabel_d3 . '/laporan') ?>" target="_blank">
-  <i class="fas fa-print"></i> Cetak Laporan</a>
+<?= btn_laporan('tabel_d3') ?>
 
 <?php foreach ($dekor as $dk): ?>
   <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">

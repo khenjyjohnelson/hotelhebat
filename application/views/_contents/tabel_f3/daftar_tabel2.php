@@ -15,7 +15,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_f3 as $tl_f3) : ?>
+      <?php foreach ($tbl_f3 as $tl_f3): ?>
         <tr>
           <td></td>
           <td><?= $tl_f3->$tabel_f3_field1 ?></td>
@@ -23,13 +23,9 @@
           <td><?= $tl_f3->$tabel_f3_field5 ?></td>
           <td><?= $tl_f3->$tabel_f3_field6 ?></td>
           <td><?= $tl_f3->$tabel_f3_field7 ?></td>
-          <td><a class="btn btn-light text-info" data-toggle="modal" data-target="#lihat<?= $tl_f3->$tabel_f3_field1 ?>">
-              <i class="fas fa-eye"></i></a>
-
-            <a class="btn btn-light text-info" href="<?= site_url($tabel_f3 . '/print/' . $tl_f3->$tabel_f3_field1) ?>" target="_blank">
-              <i class="fas fa-receipt"></i></a>
-
-
+          <td>
+            <?= btn_lihat($tl_f3->$tabel_f3_field1) ?>
+            <?= btn_print('tabel_f3', $tl_f3->$tabel_f3_field1) ?>
           </td>
         </tr>
       <?php endforeach ?>
@@ -42,45 +38,21 @@
 <!-- modal lihat -->
 <!-- Tabel transaksi dan tabel history literally sudah bergabung
 Jadi tidak perlu menambahkan foreach hitory lagi -->
-<?php foreach ($tbl_f3 as $tl_f3) : ?>
-  <?php foreach ($tbl_e4 as $tl_e4) : ?>
+<?php foreach ($tbl_f3 as $tl_f3): ?>
+  <?php foreach ($tbl_e4 as $tl_e4): ?>
     <?php if ($tl_e4->$tabel_e4_field1 === $tl_f3->$tabel_e4_field1) { ?>
       <div id="lihat<?= $tl_f3->$tabel_f3_field1 ?>" class="modal fade lihat">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title"><?= $tabel_f3_alias ?> <?= $tl_f3->$tabel_f3_field1 ?></h5>
-
-              <button class="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
+            <?= modal_header($tabel_f3_alias, $tl_f3->$tabel_f3_field1) ?>
 
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label><?= $tabel_f3_field1_alias ?></label>
-                    <p><?= $tl_f3->$tabel_f3_field1 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f1_field1_alias ?></label>
-                    <p><?= $tl_f3->$tabel_f1_field1 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f3_field5_alias ?></label>
-                    <p><?= $tl_f3->$tabel_f3_field5 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f3_field6_alias ?></label>
-                    <p><?= $tl_f3->$tabel_f3_field6 ?></p>
-                  </div>
+                  <?= tampil_text('tabel_f3_field1', $tl_f3->$tabel_f3_field1) ?>
+                  <?= tampil_text('tabel_f1_field1', $tl_f1->$tabel_f1_field1) ?>
+                  <?= tampil_text('tabel_f3_field5', $tl_f3->$tabel_f3_field5) ?>
+                  <?= tampil_text('tabel_f3_field6', $tl_f3->$tabel_f3_field6) ?>
                 </div>
 
                 <!-- Di sini adalah bagian menampilkan data history -->
@@ -88,28 +60,11 @@ Jadi tidak perlu menambahkan foreach hitory lagi -->
 
 
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label><?= $tabel_f2_field6_alias ?></label>
-                    <p><?= $tl_f3->$tabel_f2_field6 ?></p>
-                  </div>
-                  <hr>
+                  <?= tampil_text('tabel_f2_field5', $tl_f3->$tabel_f2_field6) ?>
+                  <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
+                  <?= tampil_text('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
+                  <?= tampil_text('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
 
-                  <div class="form-group">
-                    <label><?= $tabel_e4_field2_alias ?></label>
-                    <p><?= $tl_e4->$tabel_e4_field2 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f2_field10_alias ?></label>
-                    <p><?= $tl_f3->$tabel_f2_field10 ?></p>
-                  </div>
-                  <hr>
-
-                  <div class="form-group">
-                    <label><?= $tabel_f2_field11_alias ?></label>
-                    <p><?= $tl_f3->$tabel_f2_field11 ?></p>
-                  </div>
                 </div>
 
               </div>
@@ -120,7 +75,7 @@ Jadi tidak perlu menambahkan foreach hitory lagi -->
 
             <div class="modal-footer">
 
-              <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+              <?= btn_tutup() ?>
             </div>
           </div>
         </div>

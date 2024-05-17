@@ -26,22 +26,9 @@
 
         <!-- form signup -->
         <form action="<?= site_url($tabel_c2 . '/tambah') ?>" method="post">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
-            </div>
-            <input class="form-control" type="text" required name="<?= $tabel_c2_field2_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field2_alias ?>">
-            <input type="hidden" name="<?= $tabel_c2_field6_input ?>" value="<?= $tabel_c2_field6_value5 ?>">
-          </div>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input class="form-control" type="email" required name="<?= $tabel_c2_field3_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field3_alias ?>">
-          </div>
+          <?= input_hidden('tabel_c2_field6', $tabel_c2_field6_value5, 'required') ?>
+          <?= add_text_prepend('tabel_c2_field2', '<i class="fas fa-user"></i>', 'required') ?>  
+          <?= add_text_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>  
 
           <div class="input-group">
             <div class="input-group-prepend">
@@ -76,13 +63,7 @@
               placeholder="Konfirmasi <?= $tabel_c2_field4_alias ?>">
           </div>
 
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-phone"></i></span>
-            </div>
-            <input class="form-control" type="text" required name="<?= $tabel_c2_field5_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field5_alias ?>">
-          </div>
+          <?= add_text_prepend('tabel_c2_field5', '<i class="fas fa-phone"></i>', 'required') ?>
 
           <!-- pesan untuk pengguna yang signup -->
           <p class="small text-center text-danger"><?= $this->session->flashdata($this->views['flash1']) ?></p>

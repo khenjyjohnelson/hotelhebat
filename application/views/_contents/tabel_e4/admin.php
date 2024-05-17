@@ -11,10 +11,9 @@
 <h1><?= $title ?><?= $phase ?></h1>
 <hr>
 
-<button class="btn btn-primary mb-4" type="button" data-toggle="modal" data-target="#tambah">+ Tambah</button>
+<?= btn_tambah() ?>
 <button class="btn btn-info mb-4" type="button" data-toggle="modal" data-target="#import">+ Import</button>
-<a class="btn btn-info mb-4" href="<?= site_url($tabel_e4 . '/laporan') ?>" target="_blank">
-  <i class="fas fa-print"></i> Cetak Laporan</a>
+<?= btn_laporan('tabel_e4') ?>
 <button type="button" class="btn btn-info mb-4" id="export-btn" target="_blank">
   <i class="fas fa-print"></i> Cetak Excel</button>
 
@@ -38,11 +37,10 @@
           <td><?= $tl_e4->$tabel_e4_field1; ?></td>
           <td><?= $tl_e4->$tabel_e4_field2 ?></td>
           <td><?= $tl_e4->$tabel_e4_field3 ?></td>
-          <td><a class="btn btn-light text-info" type="button" data-toggle="modal" data-target="#lihat<?= $tl_e4->$tabel_e4_field1; ?>">
-              <i class="fas fa-eye"></i></a>
-            <a class="btn btn-light text-warning" type="button" data-toggle="modal" data-target="#ubah<?= $tl_e4->$tabel_e4_field1; ?>">
-              <i class="fas fa-edit"></i></a>
-
+          <td>
+          <?= btn_lihat($tl_e4->$tabel_e4_field1) ?>  
+          <?= btn_edit($tl_e4->$tabel_e4_field1) ?>  
+          
             <!-- Sebelumnya saya sudah membahas ini di v_admin_spp
           Saya akan mempending fitur ini dengan alasan yang sama dalam waktu yang belum ditentukan -->
             <!-- <a class="btn btn-light text-danger" onclick="return confirm('Hapus user?')" href="< site_url($tabel_c2 . '/hapus/' . $tl_e4->$tabel_e4_field1) ?>">
@@ -61,13 +59,7 @@
 <div id="import" class="modal fade import">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Import <?= $tabel_e4_alias ?></h5>
-
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
+      <?= modal_header('Import ' . $tabel_e4_alias, '') ?>
 
       <form action="<?= site_url($tabel_e4 . '/import') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
@@ -84,7 +76,7 @@
         <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_import') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan</button>
+          <?= btn_simpan() ?>
         </div>
       </form>
     </div>
@@ -95,45 +87,16 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tambah <?= $tabel_e4_alias ?></h5>
-
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
-
+      <?= modal_header('Tambah '. $tabel_e4_alias, '') ?>
       <form action="<?= site_url($tabel_e4 . '/tambah') ?>" method="post">
         <div class="modal-body">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
-            </div>
-            <input class="form-control" type="text" required name="<?= $tabel_e4_field1_input ?>" placeholder="Masukkan <?= $tabel_e4_field1_alias ?>">
-          </div>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
-            </div>
-            <input class="form-control" type="text" required name="<?= $tabel_e4_field2_input ?>" placeholder="Masukkan <?= $tabel_e4_field2_alias ?>">
-          </div>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
-            </div>
-            <input class="form-control" type="text" required name="<?= $tabel_e4_field3_input ?>" placeholder="Masukkan <?= $tabel_e4_field3_alias ?>">
-          </div>
-
-
+          <?= add_text('tabel_e4_field2', 'required') ?>
+          <?= add_text('tabel_e4_field3', 'required') ?>
         </div>
-
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
-
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan</button>
+          <?= btn_simpan() ?>
         </div>
       </form>
     </div>
@@ -145,40 +108,21 @@
   <div id="ubah<?= $tl_e4->$tabel_e4_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_e4_alias ?> <?= $tl_e4->$tabel_e4_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
+        <?= modal_header('Edit ' . $tabel_e4_alias, $tl_e4->$tabel_e4_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($tabel_e4 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
-              </div>
-              <input class="form-control" type="text" required name="<?= $tabel_e4_field2_input ?>" placeholder="Masukkan <?= $tabel_e4_field2_alias ?>" value="<?= $tl_e4->$tabel_e4_field2 ?>">
-              <input type="hidden" name="<?= $tabel_e4_field1_input ?>" value="<?= $tl_e4->$tabel_e4_field1 ?>">
-            </div>
-
-            <!-- administrator dapat menentukan password untuk akun baru -->
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
-              </div>
-              <input class="form-control" type="text" required name="<?= $tabel_e4_field3_input ?>" placeholder="Masukkan <?= $tabel_e4_field3_alias ?>" value="<?= $tl_e4->$tabel_e4_field3 ?>">
-            </div>
-
+            <?= input_hidden('tabel_e4_field1', $tl_e4->$tabel_e4_field1, 'required') ?>
+            <?= edit_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
+            <?= edit_text('tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Simpan Perubahan</button>
+            <?= btn_update() ?>
           </div>
         </form>
       </div>
@@ -191,31 +135,15 @@
   <div id="lihat<?= $tl_e4->$tabel_e4_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><?= $tabel_e4_alias ?> <?= $tl_e4->$tabel_e4_field1; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header($tabel_e4_alias, $tl_e4->$tabel_e4_field1) ?>
+        
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
-                  <label><?= $tabel_e4_field2_alias ?> : </label>
-                  <p><?= $tl_e4->$tabel_e4_field2; ?></p>
-                </div>
-                <hr>
-
-                <div class="form-group">
-                  <label><?= $tabel_e4_field3_alias ?> : </label>
-                  <p><?= $tl_e4->$tabel_e4_field3; ?></p>
-                </div>
-                <hr>
-
+                <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
+                <?= tampil_text('tabel_e4_field3', $tl_e4->$tabel_e4_field3) ?>
               </div>
 
             </div>
@@ -225,7 +153,7 @@
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <?= btn_tutup() ?>
           </div>
         </form>
 

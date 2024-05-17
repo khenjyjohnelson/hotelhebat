@@ -189,7 +189,7 @@ class C_tabel_b2 extends Omnitags
 
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b2_alias'],
-			'dekor' => $this->tl_b2->dekor($this->aliases['tabel_b2'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
 			'tbl_b2' => $this->tl_b2->ambildata()->result(),
 		);
 

@@ -4,8 +4,7 @@
     break;
 
   default:
-    redirect($_SERVER['HTTP_REFERER']); 
-redirect(site_url('welcome/no_level'));
+    redirect(site_url('welcome/no_level'));
 }
 ?>
 
@@ -17,61 +16,28 @@ redirect(site_url('welcome/no_level'));
 
     <!-- form edit favicon, logo, dan foto -->
     <?php foreach ($tbl_a1 as $tl_a1): ?>
-      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-        data-target="#<?= $tabel_b7_field3 . $tl_a1->$tabel_b7_field1 ?>">
-        <i class="fas fa-edit"></i> <?= $tabel_b7_field3_alias ?></a>
-      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-        data-target="#<?= $tabel_b7_field4 . $tl_a1->$tabel_b7_field1 ?>">
-        <i class="fas fa-edit"></i> <?= $tabel_b7_field4_alias ?></a>
-      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-        data-target="#<?= $tabel_b7_field5 . $tl_a1->$tabel_b7_field1 ?>">
-        <i class="fas fa-edit"></i> <?= $tabel_b7_field5_alias ?></a>
+      <?= btn_field($tabel_b7_field3 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . $tabel_b7_field3_alias) ?>
+      <?= btn_field($tabel_b7_field4 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b7_field4_alias) ?>
+      <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b7_field5_alias) ?>
+
     <?php endforeach; ?>
 
     <?php foreach ($tbl_a1 as $tl_a1): ?>
-      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-        data-target="#<?= $tabel_a1_field8 . $tl_a1->$tabel_a1_field1 ?>">
-        <i class="fas fa-edit"></i> <?= $tabel_b7_alias ?></a>
-      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-        data-target="#<?= $tabel_b2 . $tl_a1->$tabel_a1_field1 ?>">
-        <i class="fas fa-edit"></i> <?= $tabel_b2_alias ?></a>
 
-      <a class="btn btn-info mb-4" href="<?= site_url($tabel_b1 . '/admin') ?>">
-        <i class="fas fa-edit"></i> Kelola <?= $tabel_b1_alias ?></a>
-      <a class="btn btn-info mb-4" href="<?= site_url($tabel_b8 . '/admin') ?>">
-        <i class="fas fa-edit"></i> Kelola <?= $tabel_b8_alias ?></a>
-      <a class="btn btn-info mb-4" href="<?= site_url($tabel_b5 . '/admin') ?>">
-        <i class="fas fa-edit"></i> Kelola <?= $tabel_b5_alias ?></a>
-      <a class="btn btn-info mb-4" href="<?= site_url($tabel_b6 . '/admin') ?>">
-        <i class="fas fa-edit"></i> <?= $tabel_b6_alias ?></a>
-
+      <?= btn_field($tabel_b7_field8 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b7_alias) ?>
+      <?= btn_field($tabel_b2 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b2_alias) ?>
+      <?= btn_kelola('tabel_b1') ?>
+      <?= btn_kelola('tabel_b8') ?>
+      <?= btn_kelola('tabel_b5') ?>
+      <?= btn_kelola('tabel_b6') ?>
 
 
       <form action="<?= site_url($tabel_a1 . '/update') ?>" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-          <label><?= $tabel_a1_field2_alias ?></label>
-          <input class="form-control tabel_a1" required type="text" name="<?= $tabel_a1_field2_input ?>"
-            value="<?= $tl_a1->$tabel_a1_field2; ?>">
-          <input type="hidden" name="<?= $tabel_a1_field1_input ?>" value="<?= $tl_a1->$tabel_a1_field1; ?>">
-        </div>
-
-        <div class="form-group">
-          <label><?= $tabel_a1_field3_alias ?></label>
-          <textarea class="form-control tabel_a1" required name="<?= $tabel_a1_field3_input ?>"
-            rows="3"><?= $tl_a1->$tabel_a1_field3; ?></textarea>
-        </div>
-
-        <div class="form-group">
-          <label><?= $tabel_a1_field4_alias ?></label>
-          <input class="form-control tabel_a1" required type="text" name="<?= $tabel_a1_field4_input ?>"
-            value="<?= $tl_a1->$tabel_a1_field4; ?>">
-        </div>
-
-        <div class="form-group">
-          <label><?= $tabel_a1_field5_alias ?></label>
-          <input class="form-control tabel_a1" required type="text" name="<?= $tabel_a1_field5_input ?>"
-            value="<?= $tl_a1->$tabel_a1_field5; ?>">
-        </div>
+        <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
+        <?= edit_text('tabel_a1_field2', $tl_a1->$tabel_a1_field2, 'required') ?>
+        <?= edit_text('tabel_a1_field3', $tl_a1->$tabel_a1_field3, 'required') ?>
+        <?= edit_text('tabel_a1_field4', $tl_a1->$tabel_a1_field4, 'required') ?>
+        <?= edit_text('tabel_a1_field5', $tl_a1->$tabel_a1_field5, 'required') ?>
 
         <div class="form-group">
           <button class="btn btn-success" onclick="return confirm('Ubah data website?')" type="submit">Simpan
@@ -93,15 +59,8 @@ redirect(site_url('welcome/no_level'));
   <div id="<?= $tabel_a1_field8 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_a1_field8 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_a1_alias ?>   <?= $tl_a1->$tabel_a1_field1; ?></h5>
-          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url($tabel_b7 . '/admin') ?>">
-            <i class="fas fa-edit"></i> Kelola</a>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
+        <?= modal_header('Edit ' . $tabel_b7_alias .
+          ' &nbsp;&nbsp;&nbsp;' . btn_kelola('tabel_b7'), $tl_a1->$tabel_a1_field1) ?>
 
         <form action="<?= site_url($tabel_a1 . '/update_id_tema') ?>" method="post">
           <div class="modal-body">
@@ -112,21 +71,16 @@ redirect(site_url('welcome/no_level'));
 
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
                   <?php if ($tl_a1->$tabel_a1_field8 == $tl_b7->$tabel_b7_field1) { ?>
-
                     <option selected hidden value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-
                   <?php } ?>
                 <?php endforeach ?>
-
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
-
                   <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?>
                   </option>
-
                 <?php endforeach ?>
 
               </select>
-              <input type="hidden" name="<?= $tabel_a1_field1_input ?>" value="<?= $tl_a1->$tabel_a1_field1; ?>">
+              <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
             </div>
           </div>
 
@@ -136,9 +90,7 @@ redirect(site_url('welcome/no_level'));
           </p>
 
           <div class="modal-footer">
-
-            <button class="btn btn-success" type="submit">Simpan
-              Perubahan</button>
+            <?= btn_update() ?>
           </div>
         </form>
       </div>
@@ -151,15 +103,8 @@ redirect(site_url('welcome/no_level'));
   <div id="<?= $tabel_b2 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_a1_field6 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b2_alias ?>   <?= $tl_a1->$tabel_a1_field1; ?></h5>
-          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url($tabel_b2 . '/admin') ?>">
-            <i class="fas fa-edit"></i> Kelola</a>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
+        <?= modal_header('Edit ' . $tabel_b2_alias .
+          ' &nbsp;&nbsp;&nbsp;' . btn_kelola('tabel_b2'), $tl_a1->$tabel_a1_field1) ?>
 
         <form action="<?= site_url($tabel_a1 . '/update_id_event') ?>" method="post">
           <div class="modal-body">
@@ -188,7 +133,7 @@ redirect(site_url('welcome/no_level'));
                 <?php endforeach ?>
 
               </select>
-              <input type="hidden" name="<?= $tabel_a1_field1_input ?>" value="<?= $tl_a1->$tabel_a1_field1; ?>">
+              <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
             </div>
           </div>
 
@@ -198,9 +143,7 @@ redirect(site_url('welcome/no_level'));
           </p>
 
           <div class="modal-footer">
-
-            <button class="btn btn-success" type="submit">Simpan
-              Perubahan</button>
+            <?= btn_update() ?>
           </div>
         </form>
       </div>
@@ -209,34 +152,18 @@ redirect(site_url('welcome/no_level'));
 <?php endforeach; ?>
 
 <!-- modal edit favicon-->
-<?php foreach ($tbl_a1 as $tl_a1): ?>
-  <div id="<?= $tabel_b7_field3 . $tl_a1->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field3 ?>">
+<?php foreach ($tbl_b7 as $tl_b7): ?>
+  <div id="<?= $tabel_b7_field3 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field3 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b7_field3_alias ?>   <?= $tl_a1->$tabel_b7_field1; ?></h5>
+        <?= modal_header('Edit ' . $tabel_b7_field3_alias, $tl_b7->$tabel_b7_field1) ?>
 
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b7 . '/update_favicon') ?>" method="post"
-          enctype="multipart/form-data">
+        <form action="<?= site_url($tabel_b7 . '/update_favicon') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <div class="form-group">
-              <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field3; ?>" width="300">
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b7_field3_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b7_field3_input ?>">
-              <input type="hidden" name="<?= $tabel_b7_field1_input ?>" value="<?= $tl_a1->$tabel_b7_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field2_input ?>" value="<?= $tl_b7->$tabel_b7_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field3_old ?>" value="<?= $tl_a1->$tabel_b7_field3; ?>">
-            </div>
+            <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
+            <?= input_hidden('tabel_b7_field2', $tl_b7->$tabel_b7_field2, 'required') ?>
+            <?= edit_file('tabel_b7', 'tabel_b7_field3', $tl_b7->$tabel_b7_field3, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -255,35 +182,18 @@ redirect(site_url('welcome/no_level'));
 <?php endforeach; ?>
 
 <!-- modal edit logo-->
-<?php foreach ($tbl_a1 as $tl_a1): ?>
-  <div id="<?= $tabel_b7_field4 . $tl_a1->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field4 ?>">
+<?php foreach ($tbl_b7 as $tl_b7): ?>
+  <div id="<?= $tabel_b7_field4 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b7_field4_alias ?>   <?= $tl_a1->$tabel_b7_field1; ?></h5>
+        <?= modal_header('Edit ' . $tabel_b7_field4_alias, $tl_b7->$tabel_b7_field1) ?>
 
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b7 . '/update_logo') ?>" method="post"
-          enctype="multipart/form-data">
+        <form action="<?= site_url($tabel_b7 . '/update_logo') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <div class="form-group">
-              <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field4; ?>" width="300">
-            </div>
-            <hr>
-
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b7_field4_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b7_field4_input ?>">
-              <input type="hidden" name="<?= $tabel_b7_field1_input ?>" value="<?= $tl_a1->$tabel_b7_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field2_input ?>" value="<?= $tl_b7->$tabel_b7_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field4_old ?>" value="<?= $tl_a1->$tabel_b7_field4; ?>">
-            </div>
+            <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
+            <?= input_hidden('tabel_b7_field2', $tl_b7->$tabel_b7_field2, 'required') ?>
+            <?= edit_file('tabel_b7', 'tabel_b7_field4', $tl_b7->$tabel_b7_field4, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -302,34 +212,18 @@ redirect(site_url('welcome/no_level'));
 <?php endforeach; ?>
 
 <!-- modal edit foto-->
-<?php foreach ($tbl_a1 as $tl_a1): ?>
-  <div id="<?= $tabel_b7_field5 . $tl_a1->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field5 ?>">
+<?php foreach ($tbl_b7 as $tl_b7): ?>
+  <div id="<?= $tabel_b7_field5 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field5 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b7_field5_alias ?>   <?= $tl_a1->$tabel_b7_field1; ?></h5>
+        <?= modal_header('Edit ' . $tabel_b7_field5_alias, $tl_b7->$tabel_b7_field1) ?>
 
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_b7 . '/update_foto') ?>" method="post"
-          enctype="multipart/form-data">
+        <form action="<?= site_url($tabel_b7 . '/update_foto') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
-            <div class="form-group">
-              <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5; ?>" width="300">
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label>Ubah <?= $tabel_b7_field5_alias ?></label>
-              <input class="form-control-file" required type="file" name="<?= $tabel_b7_field5_input ?>">
-              <input type="hidden" name="<?= $tabel_b7_field1_input ?>" value="<?= $tl_a1->$tabel_b7_field1; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field2_input ?>" value="<?= $tl_b7->$tabel_b7_field2; ?>">
-              <input type="hidden" name="<?= $tabel_b7_field5_old ?>" value="<?= $tl_a1->$tabel_b7_field5; ?>">
-            </div>
+            <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
+            <?= input_hidden('tabel_b7_field2', $tl_b7->$tabel_b7_field2, 'required') ?>
+            <?= edit_file('tabel_b7', 'tabel_b7_field5', $tl_b7->$tabel_b7_field5, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -346,64 +240,3 @@ redirect(site_url('welcome/no_level'));
     </div>
   </div>
 <?php endforeach; ?>
-
-<!-- modal edit lisensi
-<?php foreach ($tbl_a1 as $tl_a1): ?>
-  <div id="<?= $tabel_b5 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_a1_field7 ?>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit <?= $tabel_b5_alias ?>   <?= $tl_a1->$tabel_a1_field1; ?></h5>
-          &nbsp;&nbsp;&nbsp;<a class="btn btn-info" href="<?= site_url($tabel_b5 . '/admin') ?>">
-            <i class="fas fa-edit"></i> Kelola</a>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
-        <form action="<?= site_url($tabel_a1 . '/update_id_lisensi') ?>" method="post">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <label>Pilih <?= $tabel_a1_field7_alias ?></label>
-              <select class="form-control" required name="<?= $tabel_a1_field7_input ?>">
-
-                <?php foreach ($tbl_b5 as $tl_b5): ?>
-                  <?php if ($tl_a1->$tabel_a1_field7 == $tl_b5->$tabel_a1_field7) { ?>
-
-                    <option selected hidden value="<?= $tl_b5->$tabel_a1_field7 ?>"><?= $tl_b5->$tabel_a1_field7 ?> -
-                      <?= $tl_b5->$tabel_b5_field2; ?>
-                    </option>
-                  <?php } ?>
-                <?php endforeach ?>
-
-                <option value="0">Tidak ada</option>
-
-                <?php foreach ($tbl_b5 as $tl_b5): ?>
-
-                  <option value="<?= $tl_b5->$tabel_a1_field7 ?>"><?= $tl_b5->$tabel_a1_field7 ?> |
-                    <?= $tl_b5->$tabel_b5_field2; ?>
-                  </option>
-
-                <?php endforeach ?>
-
-              </select>
-              <input type="hidden" name="<?= $tabel_a1_field1_input ?>" value="<?= $tl_a1->$tabel_a1_field1; ?>">
-            </div>
-          </div>
-
-           memunculkan notifikasi modal 
-          <p id="p_<?= $tabel_a1_field7 ?>" class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel_a1_field7) ?>
-          </p>
-
-          <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Simpan
-              Perubahan</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-<?php endforeach; ?> -->

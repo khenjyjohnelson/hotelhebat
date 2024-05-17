@@ -39,16 +39,8 @@ endforeach; ?>
   <div id="lihat<?= $tl_b5->$tabel_b5_field1 ?>" class="modal fade lihat">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-
-          <!-- judul modal menggunakan $tabel_b5_field2 fasilitas -->
-          <h5 class="modal-title"><?= $tl_b5->$tabel_b5_field2; ?></h5>
-
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-
+        <?= modal_header($tl_b5->$tabel_b5_field2, '') ?>
+        
         <div class="modal-body">
           <img class="img-thumbnail" width="100%" src="img/<?= $tabel_b5 ?>/<?= $tl_b5->$tabel_b5_field4; ?>">
         </div>
@@ -57,7 +49,7 @@ endforeach; ?>
         <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <?= btn_tutup() ?>
         </div>
       </div>
     </div>
