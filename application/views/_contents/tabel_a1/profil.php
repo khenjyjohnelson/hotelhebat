@@ -8,30 +8,36 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
-<div class="row">
-  <div class="col-md-6">
-    <p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
-
-    <!-- form edit favicon, logo, dan foto -->
-    <?php foreach ($tbl_a1 as $tl_a1): ?>
+<?php foreach ($tbl_a1 as $tl_a1): ?>
+  <div class="row">
+    <div class="col-md-6">
+      <p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
       <?= btn_field($tabel_b7_field3 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . $tabel_b7_field3_alias) ?>
-      <?= btn_field($tabel_b7_field4 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b7_field4_alias) ?>
-      <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b7_field5_alias) ?>
+      <?= btn_field($tabel_b7_field4 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . $tabel_b7_field4_alias) ?>
+      <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . $tabel_b7_field5_alias) ?>
 
-    <?php endforeach; ?>
 
-    <?php foreach ($tbl_a1 as $tl_a1): ?>
-
-      <?= btn_field($tabel_b7_field8 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b7_alias) ?>
+      <?= btn_field($tabel_b7 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b7_alias) ?>
       <?= btn_field($tabel_b2 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . $tabel_b2_alias) ?>
       <?= btn_kelola('tabel_b1') ?>
       <?= btn_kelola('tabel_b8') ?>
       <?= btn_kelola('tabel_b5') ?>
       <?= btn_kelola('tabel_b6') ?>
-
-
+    </div>
+    <div class="col-md-6">
       <form action="<?= site_url($tabel_a1 . '/update') ?>" method="post" enctype="multipart/form-data">
         <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
         <?= edit_text('tabel_a1_field2', $tl_a1->$tabel_a1_field2, 'required') ?>
@@ -44,19 +50,12 @@
             Perubahan</button>
         </div>
       </form>
-    <?php endforeach; ?>
+    </div>
+
   </div>
-  <div class="col-md-6">
-    <?php foreach ($dekor as $dk): ?>
-      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid">
-    <?php endforeach ?>
-  </div>
-</div>
 
 
-<!-- modal edit tema-->
-<?php foreach ($tbl_a1 as $tl_a1): ?>
-  <div id="<?= $tabel_a1_field8 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_a1_field8 ?>">
+  <div id="<?= $tabel_b7 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_b7 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <?= modal_header('Edit ' . $tabel_b7_alias .
@@ -96,10 +95,7 @@
       </div>
     </div>
   </div>
-<?php endforeach; ?>
 
-<!-- modal edit event-->
-<?php foreach ($tbl_a1 as $tl_a1): ?>
   <div id="<?= $tabel_b2 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_a1_field6 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -179,10 +175,8 @@
       </div>
     </div>
   </div>
-<?php endforeach; ?>
 
-<!-- modal edit logo-->
-<?php foreach ($tbl_b7 as $tl_b7): ?>
+
   <div id="<?= $tabel_b7_field4 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -209,10 +203,8 @@
       </div>
     </div>
   </div>
-<?php endforeach; ?>
 
-<!-- modal edit foto-->
-<?php foreach ($tbl_b7 as $tl_b7): ?>
+
   <div id="<?= $tabel_b7_field5 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field5 ?>">
     <div class="modal-dialog">
       <div class="modal-content">

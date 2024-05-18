@@ -19,13 +19,13 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="fontawesome/js/all.min.js"></script>
 <script src="popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- javascript untuk datatables bertema bootstrap -->
 <script src="datatables/datatables/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 
 <script src="datatables/datatables/js/dataTables.bootstrap4.min.js"></script>
+
 
 <!-- TableExport.js -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin/tableExport.min.js"></script>
@@ -179,55 +179,7 @@
 
 </script>
 
-<script>
-    var ctx = document.getElementById('myChart_tabel_f2_tabel_f1').getContext('2d');
-    var chartDatatabel_f1 = <?= $chart_tabel_f1 ?> // Data passed from controller
-    var chartDatatabel_f2 = <?= $chart_tabel_f2 ?> // Data passed from controller
 
-    var labelstabel_f1 = chartDatatabel_f1.map(function (item) {
-        return item.label;
-    });
-
-    var valuestabel_f1 = chartDatatabel_f1.map(function (item) {
-        return item.value;
-    });
-
-    var labelstabel_f2 = chartDatatabel_f2.map(function (item) {
-        return item.label;
-    });
-
-    var valuestabel_f2 = chartDatatabel_f2.map(function (item) {
-        return item.value;
-    });
-
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labelstabel_f2,
-            datasets: [{
-                label: 'Jumlah <?= $tabel_f2_alias ?> Aktif',
-                data: valuestabel_f2,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Jumlah <?= $tabel_f1_alias ?>',
-                data: valuestabel_f1,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
 
 <script>
     CKEDITOR.replace('editor1');

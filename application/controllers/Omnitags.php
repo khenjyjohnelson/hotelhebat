@@ -13,6 +13,7 @@ class Omnitags extends CI_Controller
         $this->load->helper('input');
         $this->load->helper('option');
         $this->load->helper('modal');
+        $this->load->helper('js');
 
         // Set security headers
         $this->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
@@ -135,22 +136,22 @@ class Omnitags extends CI_Controller
         $this->theme = $this->tl_b7->tema($this->tabel_a1_field1)->result();
         $this->theme_id = $this->theme[0]->id_theme;
 
-        $this->notif_limit = $this->tl_b9->ambil_tabel_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']))->result();
-        $this->notif_null = $this->tl_b9->ambil_tabel_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
+        $this->notif_limit = $this->tl_b9->get_b9_with_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']))->result();
+        $this->notif_null = $this->tl_b9->get_b9_by_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
 
         $this->views = array(
             'tabel_c1_v2' => '_contents/tabel_c1/login',
             'tabel_c1_v2_title' => 'Login Sebagai ' . $this->aliases['tabel_c1_alias'],
 
-            'tabel_f3_v2_alt' => '_contents/tabel_f3/daftar_tabel_f1',
+            'tabel_f3_v2_alt' => '_contents/tabel_f3/daftar_history',
             'tabel_f3_v2_alt_title' => 'Daftar ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
             'tabel_f3_v3_alt' => '_contents/tabel_f3/admin_tabel_f1',
             'tabel_f3_v3_alt_title' => 'Data ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
 
             'head' => '_partials/head',
             'phase' => $this->phase_1,
-            'lisensi' => $this->tl_b5->ambil_tabel_b5_field6($this->theme_id)->result(),
-            'sosmed' => $this->tl_b6->ambil_tabel_b6_field6($this->theme_id)->result(),
+            'lisensi' => $this->tl_b5->get_b5_by_b5_field6_by_b5_field7($this->theme_id)->result(),
+            'sosmed' => $this->tl_b6->get_b6_by_b6_field6_by_b6_field7($this->theme_id)->result(),
             'tbl_a1' => $this->theme,
             'notif' => $this->notif_limit,
             'notif_count' => $this->notif_null->num_rows(),
@@ -468,12 +469,12 @@ class Omnitags extends CI_Controller
             $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
         );
 
-        $ambil = $this->tl_b9->simpan($notif);
+        $ambil = $this->tl_b9->insert_($notif);
     }
 
     public function add_notif_all($msg, $type, $extra)
     {
-        $users = $this->tl_d3->ambil_tabel_c2_field1($this->session->userdata($this->aliases['tabel_c2_field1']));
+        $users = $this->tl_d3->get_d3_by_c2_field1($this->session->userdata($this->aliases['tabel_c2_field1']));
 
         if ($users->num_rows() < 2) {
             $notif = array(
@@ -483,7 +484,7 @@ class Omnitags extends CI_Controller
                 $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
             );
 
-            $ambil = $this->tl_b9->simpan($notif);
+            $ambil = $this->tl_b9->insert_($notif);
         } else {
             
         }

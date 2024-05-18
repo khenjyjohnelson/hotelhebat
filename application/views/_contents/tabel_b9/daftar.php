@@ -10,12 +10,19 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
-<hr>
 
-<?php foreach ($dekor as $dk): ?>
-  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
-<?php endforeach ?>
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
+<hr>
 
 <div class="table-responsive">
   <table class="table table-light" id="data">
@@ -40,7 +47,7 @@
             <td>
               <a class="btn btn-light text-warning"
                 href="<?= site_url($tabel_b9 . '/lihat/' . $tl_b9->$tabel_b9_field1) ?>">
-                <i class="fas fa-readme"></i></a>
+                <i class="fas fa-envelope-open"></i></a>
               <?= btn_lihat($tl_b9->$tabel_b9_field1) ?>
             </td>
           <?php } else { ?>

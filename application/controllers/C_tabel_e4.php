@@ -14,8 +14,8 @@ class C_tabel_e4 extends Omnitags
 			'title' => $this->v1_title['tabel_e4_alias'],
 			'konten' => $this->v1['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4'])->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
-			'tbl_e1' => $this->tl_e1->ambildata()->result(),
+			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
+			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -34,7 +34,7 @@ class C_tabel_e4 extends Omnitags
 			'title' => $this->v3_title['tabel_e4_alias'],
 			'konten' => $this->v3['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4'])->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -54,8 +54,8 @@ class C_tabel_e4 extends Omnitags
 
 		// $query = 'INSERT INTO tipe_kamar VALUES('.$data.')';
 
-		$aksi = $this->tl_e4->simpan($data);
-		// $aksi = $this->tl_e4->simpan($query);
+		$aksi = $this->tl_e4->insert_e4($data);
+		// $aksi = $this->tl_e4->insert_e4($query);
 
 		$notif = $this->handle_1b($aksi, 'tabel_e4');
 
@@ -78,22 +78,22 @@ class C_tabel_e4 extends Omnitags
 			$this->aliases['tabel_e4_field3'] => $this->v_post['tabel_e4_field3'],
 		);
 
-		$aksi = $this->tl_e4->update($data, $tabel_e4_field1);
+		$aksi = $this->tl_e4->update_e4($data, $tabel_e4_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_e4', $tabel_e4_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
-	public function hapus($tabel_e4_field1 = null)
+	public function delete($tabel_e4_field1 = null)
 	{
 		$this->declarew();
 
-		$tabel_e4 = $this->tl_e4->ambil_tabel_e4_field1($tabel_e4_field1)->result();
+		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
 		$tabel_e4_field3 = $tabel_e4[0]->img;
 
 		unlink($this->v_upload_path['tabel_e4'] . $tabel_e4_field3);
-		$aksi = $this->tl_e4->hapus($tabel_e4_field1);
+		$aksi = $this->tl_e4->delete_e4($tabel_e4_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_e4_field1', $tabel_e4_field1);
 
@@ -108,7 +108,7 @@ class C_tabel_e4 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e4_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4'])->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

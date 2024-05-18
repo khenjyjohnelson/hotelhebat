@@ -14,7 +14,7 @@ class C_tabel_e1 extends Omnitags
 			'title' => $this->v1_title['tabel_e1_alias'],
 			'konten' => $this->v1['tabel_e1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
-			'tbl_e1' => $this->tl_e1->ambildata()->result(),
+			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -34,7 +34,7 @@ class C_tabel_e1 extends Omnitags
 			'title' => $this->v3_title['tabel_e1_alias'],
 			'konten' => $this->v3['tabel_e1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
-			'tbl_e1' => $this->tl_e1->ambildata()->result(),
+			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -77,7 +77,7 @@ class C_tabel_e1 extends Omnitags
 		try {
 			// Security: Prepared Statements to prevent SQL injection
 			// Functional requirement: Save data to database
-			$aksi = $this->tl_e1->simpan($data);
+			$aksi = $this->tl_e1->insert_e1($data);
 
 			$notif = $this->handle_1b($aksi, 'tabel_e1');
 			
@@ -126,7 +126,7 @@ class C_tabel_e1 extends Omnitags
 		try {
 			// Security: Prepared Statements to prevent SQL injection
 			// Functional requirement: Update data in the database
-			$aksi = $this->tl_e1->update($data, $tabel_e1_field1);
+			$aksi = $this->tl_e1->update_e1($data, $tabel_e1_field1);
 
 			$notif = $this->handle_2b($aksi, 'tabel_e1', $tabel_e1_field1);
 
@@ -142,19 +142,19 @@ class C_tabel_e1 extends Omnitags
 
 
 
-	public function hapus($tabel_e1_field1 = null)
+	public function delete($tabel_e1_field1 = null)
 	{
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
 
-		$tabel_e1 = $this->tl_e1->ambil_tabel_e1_field1($tabel_e1_field1)->result();
+		$tabel_e1 = $this->tl_e1->get_e1_by_e1_field1($tabel_e1_field1)->result();
 		$tabel_e1_field3 = $tabel_e1[0]->img;
 
 		unlink($this->v_upload_path['tabel_e1'] . $tabel_e1_field3);
 
 		try {
 			// Functional requirement: Delete data from the database
-			$aksi = $this->tl_e1->hapus($tabel_e1_field1);
+			$aksi = $this->tl_e1->delete_e1($tabel_e1_field1);
 
 			$notif = $this->handle_3b($aksi, 'tabel_e1_field1', $tabel_e1_field1);
 
@@ -177,7 +177,7 @@ class C_tabel_e1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e1_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
-			'tbl_e1' => $this->tl_e1->ambildata()->result(),
+			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

@@ -44,7 +44,7 @@ if (!function_exists('btn_field')) {
     function btn_field($value, $logo)
     {
         return <<<HTML
-        <a class="btn btn-light text-warning" type="button" data-toggle="modal"
+        <a class="btn mr-1 mb-4 btn-light text-warning" type="button" data-toggle="modal"
             data-target="#{$value}">
             {$logo}
         </a>
@@ -76,9 +76,9 @@ if (!function_exists('btn_lihat')) {
     function btn_lihat($value)
     {
         return <<<HTML
-        <a class="btn mr-1 btn-light text-info" type="button" data-toggle="modal"
-              data-target="#lihat{$value}">
-              <i class="fas fa-eye"></i></a>
+        <a class="btn mr-1 mb-2 btn-light text-info" type="button" data-toggle="modal"
+            data-target="#lihat{$value}">
+            <i class="fas fa-eye"></i></a>
         HTML;
     }
 }
@@ -87,12 +87,13 @@ if (!function_exists('btn_edit')) {
     function btn_edit($value)
     {
         return <<<HTML
-        <a class="btn mr-1 btn-light text-warning" type="button" data-toggle="modal"
+        <a class="btn mr-1 mb-2 btn-light text-warning" type="button" data-toggle="modal"
               data-target="#ubah{$value}">
               <i class="fas fa-edit"></i></a>
         HTML;
     }
 }
+
 
 if (!function_exists('btn_laporan')) {
 
@@ -148,7 +149,7 @@ if (!function_exists('btn_kelola')) {
         $url = site_url($controller . '/admin');
 
         return <<<HTML
-        <a class="btn btn-info mb-4" href="{$url}">
+        <a class="btn mr-1 mb-4 btn-info text-light" href="{$url}">
         <i class="fas fa-edit"></i> Kelola {$alias}</a>
         HTML;
     }
@@ -186,7 +187,7 @@ if (!function_exists('btn_hapus')) {
         $url = site_url($controller . '/hapus/' . $value);
 
         return <<<HTML
-        <a class="btn mr-1 btn-light text-danger" onclick="return confirm('Hapus data $alias?')"
+        <a class="btn mr-1 mb-2 btn-light text-danger" onclick="return confirm('Hapus data $alias?')"
               href="{$url}">
               <i class="fas fa-trash"></i></a>
         HTML;

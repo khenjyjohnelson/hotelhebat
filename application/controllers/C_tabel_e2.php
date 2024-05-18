@@ -14,7 +14,7 @@ class C_tabel_e2 extends Omnitags
 			'title' => $this->v1_title['tabel_e2_alias'],
 			'konten' => $this->v1['tabel_e2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
-			'tbl_e2' => $this->tl_e2->ambildata()->result(),
+			'tbl_e2' => $this->tl_e2->get_all_e2()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -34,7 +34,7 @@ class C_tabel_e2 extends Omnitags
 			'title' => $this->v3_title['tabel_e2_alias'],
 			'konten' => $this->v3['tabel_e2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
-			'tbl_e2' => $this->tl_e2->ambildata()->result(),
+			'tbl_e2' => $this->tl_e2->get_all_e2()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -54,8 +54,8 @@ class C_tabel_e2 extends Omnitags
 
 		// $query = 'INSERT INTO tabel_e2 VALUES('.$data.')';
 
-		$aksi = $this->tl_e2->simpan($data);
-		// $aksi = $this->tl_e2->simpan($query);
+		$aksi = $this->tl_e2->insert_e2($data);
+		// $aksi = $this->tl_e2->insert_e2($query);
 
 		$notif = $this->handle_1b($aksi, 'tabel_e2');
 
@@ -78,22 +78,22 @@ class C_tabel_e2 extends Omnitags
 			$this->aliases['tabel_e2_field3'] => $this->v_post['tabel_e2_field3'],
 		);
 
-		$aksi = $this->tl_e2->update($data, $tabel_e2_field1);
+		$aksi = $this->tl_e2->update_e2($data, $tabel_e2_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_e2', $tabel_e2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	public function hapus($tabel_e2_field1 = null)
+	public function delete($tabel_e2_field1 = null)
 	{
 		$this->declarew();
 
-		$tabel_e2 = $this->tl_e2->ambil_tabel_e2_field1($tabel_e2_field1)->result();
+		$tabel_e2 = $this->tl_e2->get_e2_by_e2_field1($tabel_e2_field1)->result();
 		$tabel_e2_field3 = $tabel_e2[0]->img;
 
 		unlink($this->v_upload_path['tabel_e2'] . $tabel_e2_field3);
-		$aksi = $this->tl_e2->hapus($tabel_e2_field1);
+		$aksi = $this->tl_e2->delete_e2($tabel_e2_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_e2_field1', $tabel_e2_field1);
 
@@ -108,7 +108,7 @@ class C_tabel_e2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e2_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
-			'tbl_e2' => $this->tl_e2->ambildata()->result(),
+			'tbl_e2' => $this->tl_e2->get_all_e2()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

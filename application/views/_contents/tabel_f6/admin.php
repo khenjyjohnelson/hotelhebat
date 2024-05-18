@@ -8,11 +8,21 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 
-<a class="btn btn-info mb-4" href="<?= site_url($tabel_f4 . '/laporan') ?>" target="_blank">
-  <i class="fas fa-print"></i> Cetak Laporan</a>
+<?= btn_laporan('tabel_f4') ?>
 
 <div class="table-responsive">
   <table class="table table-light" id="data">
@@ -56,17 +66,17 @@
   <div id="lihat<?= $tl_f4->$tabel_f4_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header($tabel_f4_alias . ' ' . $tl_f4->$tabel_f4_field1, '') ?>
+        <?= modal_header($tabel_f4_alias, $tl_f4->$tabel_f4_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <?= tampil_text('$tabel_f4_field1', $tl_f4->$tabel_f4_field1) ?>
-            <?= tampil_text('$tabel_f4_field2', $tl_f4->$tabel_f4_field2) ?>
-            <?= tampil_text('$tabel_f4_field3', $tl_f4->$tabel_f4_field3) ?>
-            <?= tampil_text('$tabel_f4_field4', $tl_f4->$tabel_f4_field4) ?>
-            <?= tampil_text('$tabel_f4_field5', $tl_f4->$tabel_f4_field5) ?>
-            <?= tampil_text('$tabel_f4_field6', $tl_f4->$tabel_f4_field6) ?>
+            <?= tampil_text('tabel_f4_field1', $tl_f4->$tabel_f4_field1) ?>
+            <?= tampil_text('tabel_f4_field2', $tl_f4->$tabel_f4_field2) ?>
+            <?= tampil_text('tabel_f4_field3', $tl_f4->$tabel_f4_field3) ?>
+            <?= tampil_text('tabel_f4_field4', $tl_f4->$tabel_f4_field4) ?>
+            <?= tampil_text('tabel_f4_field5', $tl_f4->$tabel_f4_field5) ?>
+            <?= tampil_text('tabel_f4_field6', $tl_f4->$tabel_f4_field6) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

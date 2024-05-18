@@ -20,9 +20,8 @@ class C_tabel_e3 extends Omnitags
 			'title' => $this->v3_title['tabel_e3_alias'],
 			'konten' => $this->v3['tabel_e3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e3'])->result(),
-			'tbl_e3' => $this->tl_e3->ambildata()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
-			'tbl_c1' => $this->tl_c1->ambildata()->result(),
+			'tbl_e3_e4' => $this->tl_e3->get_e3_with_e4()->result(),
+			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -40,7 +39,7 @@ class C_tabel_e3 extends Omnitags
 			$this->aliases['tabel_e3_field4'] => $this->v_post['tabel_e3_field4'],
 		);
 
-		$aksi = $this->tl_e3->simpan($data);
+		$aksi = $this->tl_e3->insert_e3($data);
 
 		$notif = $this->handle_1b($aksi, 'tabel_e3');
 
@@ -59,18 +58,18 @@ class C_tabel_e3 extends Omnitags
 			$this->aliases['tabel_e3_field5'] => $this->v_post['tabel_e3_field5'],
 		);
 
-		$aksi = $this->tl_e3->update($data, $tabel_e3_field1);
+		$aksi = $this->tl_e3->update_e3($data, $tabel_e3_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_e3', $tabel_e3_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
-	public function hapus($tabel_e3_field1 = null)
+	public function delete($tabel_e3_field1 = null)
 	{
 		$this->declarew();
 
-		$aksi = $this->tl_e3->hapus($tabel_e3_field1);
+		$aksi = $this->tl_e3->delete_e3($tabel_e3_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_e3_field1', $tabel_e3_field1);
 
@@ -85,7 +84,7 @@ class C_tabel_e3 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_e3_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e3'])->result(),
-			'tbl_e3' => $this->tl_e3->ambildata()->result(),
+			'tbl_e3' => $this->tl_e3->get_all_e3()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

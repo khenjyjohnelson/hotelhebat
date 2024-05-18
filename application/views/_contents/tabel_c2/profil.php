@@ -1,13 +1,27 @@
-<h1><?= $title ?><?= $phase ?></h1>
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
+
+<?php foreach ($tbl_c2 as $tl_c2): ?>
 <div class="row">
   <div class="col-md-6">
-    <?php foreach ($tbl_c2 as $tl_c2): ?>
+    <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
+      data-target="#password<?= $tl_c2->$tabel_c2_field1 ?>">
+      <i class="fas fa-edit"></i> Ubah <?= $tabel_c2_field4_alias ?></a>
+  </div>
+  <div class="col-md-6">
 
       <!-- tombol untuk memunculkan modal memperbaiki password -->
-      <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
-        data-target="#password<?= $tl_c2->$tabel_c2_field1 ?>">
-        <i class="fas fa-edit"></i> Ubah <?= $tabel_c2_field4_alias ?></a>
+
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
       <form action="<?= site_url($tabel_c2 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
@@ -37,24 +51,16 @@
         <small>*Merubah <?= $tabel_c2_field3_alias ?> ini tidak akan merubah <?= $tabel_c2_field3_alias ?> yang ada di
           <?= $tabel_f2_alias ?></small>
       </form>
-    <?php endforeach; ?>
+    </div>
   </div>
+  
 
-  <div class="col-md-6">
-    <?php foreach ($dekor as $dk): ?>
-      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid">
-    <?php endforeach ?>
-  </div>
-</div>
-
-
-<!-- modal edit password-->
-<?php foreach ($tbl_c2 as $tl_c2): ?>
+  
   <div id="password<?= $tl_c2->$tabel_c2_field1 ?>" class="modal fade <?= $tabel_c2_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Ubah ' . $tabel_c2_field4_alias . ' Anda' , '') ?>
-         <form action="<?= site_url($tabel_c2 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
+        <?= modal_header('Ubah ' . $tabel_c2_field4_alias . ' Anda', '') ?>
+        <form action="<?= site_url($tabel_c2 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="input-group">

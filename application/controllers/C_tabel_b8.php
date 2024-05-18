@@ -20,7 +20,7 @@ class C_tabel_b8 extends Omnitags
 			'title' => $this->v3_title['tabel_b8_alias'],
 			'konten' => $this->v3['tabel_b8'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b8'])->result(),
-			'tbl_b8' => $this->tl_b8->ambildata()->result(),
+			'tbl_b8' => $this->tl_b8->get_all_b8()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -39,7 +39,7 @@ class C_tabel_b8 extends Omnitags
 			$this->aliases['tabel_b8_field4'] => $this->v_post['tabel_b8_field4'],
 		);
 
-		$aksi = $this->tl_b8->simpan($data);
+		$aksi = $this->tl_b8->insert_b8($data);
 
 		$notif = $this->handle_1b($aksi, 'tabel_b8');
 
@@ -59,7 +59,7 @@ class C_tabel_b8 extends Omnitags
 			$this->aliases['tabel_b8_field4'] => $this->v_post['tabel_b8_field4'],
 		);
 
-		$aksi = $this->tl_b8->update($data, $tabel_b8_field1);
+		$aksi = $this->tl_b8->update_b8($data, $tabel_b8_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_a1_field1', $tabel_b8_field1);
 
@@ -67,11 +67,11 @@ class C_tabel_b8 extends Omnitags
 	}
 
 
-	public function hapus($tabel_b8_field1 = null)
+	public function delete($tabel_b8_field1 = null)
 	{
 		$this->declarew();
 
-		$aksi = $this->tl_b8->hapus($tabel_b8_field1);
+		$aksi = $this->tl_b8->delete_b8($tabel_b8_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_b8_field1', $tabel_b8_field1);
 
@@ -86,7 +86,7 @@ class C_tabel_b8 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b8_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b8'])->result(),
-			'tbl_b8' => $this->tl_b8->ambildata()->result(),
+			'tbl_b8' => $this->tl_b8->get_all_b8()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

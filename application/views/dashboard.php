@@ -10,12 +10,19 @@
 }
 ?>
 
-<h1>
-  <?= $title ?>
-  <?= $phase ?>
-</h1>
-
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
+
+
 <div class="row">
   <!-- menampilkan data untuk administrator -->
 
@@ -200,7 +207,7 @@
     ?>
     <div class="row mt-4">
       <div class="col-md-6 px-2 px-sm-3 dashboard-stat-box">
-        <canvas id="myChart_tabel_f2_tabel_f1" width="200" height="125"></canvas>
+        <canvas id="myChart_1_2" width="200" height="125"></canvas>
       </div>
     </div>
     <?php break;
@@ -251,7 +258,7 @@
                       target="_blank">
                       Visit</a>
                 </tr>
-              <?php } endforeach; ?>
+              <?php }endforeach; ?>
 
           </tbody>
           <tfoot></tfoot>
@@ -267,6 +274,8 @@
 <?php endforeach; ?>
 
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<?= chart('tabel_f1', 'tabel_f2') ?>
 
 
 <script>

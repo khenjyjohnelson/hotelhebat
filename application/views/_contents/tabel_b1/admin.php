@@ -8,7 +8,18 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 <p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
 
@@ -62,6 +73,7 @@
         <th><?= $tabel_b1_field4_alias ?></th>
         <th><?= $tabel_b1_field5_alias ?></th>
         <th><?= $tabel_b1_field6_alias ?></th>
+        <th><?= $tabel_b1_field7_alias ?></th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -78,6 +90,7 @@
             <h2><?= $tl_b1->$tabel_b1_field5 ?></h2>
           </td>
           <td><?= $tl_b1->$tabel_b1_field6 ?></td>
+          <td><?= $tl_b1->$tabel_b1_field7 ?></td>
           <td>
             <?= btn_lihat($tl_b1->$tabel_b1_field1) ?>
             <?= btn_edit($tl_b1->$tabel_b1_field1) ?>
@@ -148,13 +161,13 @@
 
         <form action="<?= site_url($tabel_b1 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
-            <?= input_hidden('tabel_b1_field1', $tl_b1->tabel_b1_field1, 'required') ?>
+            <small>* Meski ingin mengubah <?= $tabel_b1_field2_alias ?> saja, tetap harus mengupload ulang
+            <?= $tabel_b1_field4_alias ?> juga</small>
+            <?= input_hidden('tabel_b1_field1', $tl_b1->$tabel_b1_field1, 'required') ?>
             <?= edit_text('tabel_b1_field2', $tl_b1->$tabel_b1_field2, 'required') ?>
-            * Meski ingin mengubah <?= $tabel_b1_field2_alias ?> saja, tetap harus mengupload ulang
-            <?= $tabel_b1_field4_alias ?> juga
             <?= edit_text('tabel_b1_field3', $tl_b1->$tabel_b1_field3, 'required') ?>
-            <?= edit_file('tabel_b1', 'tabel_b1_field4', $tl_b1->$tabel_b1_field4, 'required') ?>
-            <?= edit_textarea('tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
+            <?= edit_file('tabel_b1', 'tabel_b1_field4', $tl_b1->$tabel_b1_field4, '') ?>
+            <?= edit_text('tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
             <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1("", ""), 'required') ?>
 
             <div class="form-group">

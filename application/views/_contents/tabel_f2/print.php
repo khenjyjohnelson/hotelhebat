@@ -23,53 +23,49 @@
   <div class="container" style="border-style: dashed;">
     <?php foreach ($tbl_a1 as $tl_a1): ?>
       <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
-      <p class="text-center"><?= $tl_a1->$tabel_a1_field2; ?> | <?= $tl_a1->$tabel_a1_field5; ?> | <?= $tl_a1->$tabel_a1_field4; ?>
+      <p class="text-center"><?= $tl_a1->$tabel_a1_field2; ?> | <?= $tl_a1->$tabel_a1_field5; ?> |
+        <?= $tl_a1->$tabel_a1_field4; ?>
       </p>
       <p class="text-center"><?= $tl_a1->$tabel_a1_field3; ?></p>
     <?php endforeach; ?>
 
     <!-- menampilkan data pesanan sebagai ps -->
-    <?php foreach ($tbl_f2 as $tl_f2):
-      foreach ($tbl_e4 as $tl_e4):
-        if ($tl_e4->$tabel_e4_field1 == $tl_f2->$tabel_f2_field7) { ?>
+    <?php foreach ($tbl_f2_e4 as $tl_f2_e4): ?>
+      <!-- menampilkan data pemesan -->
+      <table class="table">
+        <thead class="thead-">
+          <tr>
+            <th><?= $tabel_f2_field1_alias ?></th>
+            <th><?= $tabel_f2_field2_alias ?></th>
+            <th><?= $tabel_f2_field3_alias ?></th>
+            <th><?= $tabel_f2_field4_alias ?></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td width=""><?= $tl_f2_e4->$tabel_f2_field1 ?></td>
+            <td width=""><?= $tl_f2_e4->$tabel_f2_field2 ?></td>
+            <td width=""><?= $tl_f2_e4->$tabel_f2_field3 ?></td>
+            <td width=""><?= $tl_f2_e4->$tabel_f2_field4 ?></td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-          <!-- menampilkan data pemesan -->
-          <table class="table">
-            <thead class="thead-">
-              <tr>
-                <th><?= $tabel_f2_field1_alias ?></th>
-                <th><?= $tabel_f2_field2_alias ?></th>
-                <th><?= $tabel_f2_field3_alias ?></th>
-                <th><?= $tabel_f2_field4_alias ?></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td width=""><?= $tl_f2->$tabel_f2_field1 ?></td>
-                <td width=""><?= $tl_f2->$tabel_f2_field2 ?></td>
-                <td width=""><?= $tl_f2->$tabel_f2_field3 ?></td>
-                <td width=""><?= $tl_f2->$tabel_f2_field4 ?></td>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- menampilkan data tamu -->
-          <table class="table">
-            <thead class="thead">
-              <tr>
-                <th><?= $tabel_f2_field5_alias ?></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td width=""><?= $tl_f2->$tabel_f2_field5 ?></td>
-              </tr>
-            </tbody>
-          </table>
-        <?php }
-      endforeach;
-    endforeach ?>
+      <!-- menampilkan data tamu -->
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th><?= $tabel_f2_field5_alias ?></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td width=""><?= $tl_f2_e4->$tabel_f2_field5 ?></td>
+          </tr>
+        </tbody>
+      </table>
+    <?php endforeach ?>
   </div>
 
   <p class="text-center">Kirimkan bukti ini ke <?= $tabel_c2_field6_value4_alias ?> untuk diproses</p>

@@ -20,7 +20,7 @@ class C_tabel_b7 extends Omnitags
 			'title' => $this->v3_title['tabel_b7_alias'],
 			'konten' => $this->v3['tabel_b7'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
-			'tbl_b7' => $this->tl_b7->ambildata()->result(),
+			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -38,7 +38,7 @@ class C_tabel_b7 extends Omnitags
 			$this->aliases['tabel_b7_field6'] => htmlspecialchars($this->v_post['tabel_b7_field6']),
 		);
 
-		$aksi = $this->tl_b7->simpan($data);
+		$aksi = $this->tl_b7->insert_b7($data);
 
 		$notif = $this->handle_1b($aksi, 'tabel_b7');
 
@@ -58,7 +58,7 @@ class C_tabel_b7 extends Omnitags
 			$this->aliases['tabel_b7_field6'] => $this->v_post['tabel_b7_field6'],
 		);
 
-		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
+		$aksi = $this->tl_b7->update_b7($data, $tabel_b7_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_b7', $tabel_b7_field1);
 
@@ -72,7 +72,7 @@ class C_tabel_b7 extends Omnitags
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";	
 
-		$table = $this->tl_b7->ambil_tabel_b7_field1($this->v_post['tabel_b7_field1'])->result();
+		$table = $this->tl_b7->get_b7_by_b7_field1($this->v_post['tabel_b7_field1'])->result();
 		$tabel_b7_field3 = $table[0]->favicon;
 		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field3);
 
@@ -101,7 +101,7 @@ class C_tabel_b7 extends Omnitags
 			$this->aliases['tabel_b7_field3'] => $param . $this->aliases['tabel_b7_field3'] . "." . $file_extension,
 		);
 
-		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
+		$aksi = $this->tl_b7->update_b7($data, $tabel_b7_field1);
 
 		$notif = $this->handle_2f($aksi, 'tabel_b7_field3', 'tabel_b7_field1');
 
@@ -114,7 +114,7 @@ class C_tabel_b7 extends Omnitags
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";	
 
-		$table = $this->tl_b7->ambil_tabel_b7_field1($this->v_post['tabel_b7_field1'])->result();
+		$table = $this->tl_b7->get_b7_by_b7_field1($this->v_post['tabel_b7_field1'])->result();
 		$tabel_b7_field4 = $table[0]->logo;
 		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field4);
 
@@ -143,7 +143,7 @@ class C_tabel_b7 extends Omnitags
 			$this->aliases['tabel_b7_field4'] => $param . $this->aliases['tabel_b7_field4'] . "." . $file_extension,
 		);
 
-		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
+		$aksi = $this->tl_b7->update_b7($data, $tabel_b7_field1);
 
 		$notif = $this->handle_2f($aksi, 'tabel_b7_field4', 'tabel_b7_field1');
 
@@ -156,7 +156,7 @@ class C_tabel_b7 extends Omnitags
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";		
 
-		$table = $this->tl_b7->ambil_tabel_b7_field1($this->v_post['tabel_b7_field1'])->result();
+		$table = $this->tl_b7->get_b7_by_b7_field1($this->v_post['tabel_b7_field1'])->result();
 		$tabel_b7_field5 = $table[0]->foto;
 		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field5);
 
@@ -185,7 +185,7 @@ class C_tabel_b7 extends Omnitags
 			$this->aliases['tabel_b7_field5'] => $param . $this->aliases['tabel_b7_field5'] . "." . $file_extension,
 		);
 
-		$aksi = $this->tl_b7->update($data, $tabel_b7_field1);
+		$aksi = $this->tl_b7->update_b7($data, $tabel_b7_field1);
 
 		$notif = $this->handle_2f($aksi, 'tabel_b7_field5', 'tabel_b7_field1');
 
@@ -193,15 +193,15 @@ class C_tabel_b7 extends Omnitags
 	}
 
 
-	public function hapus($tabel_b7_field1 = null)
+	public function delete($tabel_b7_field1 = null)
 	{
 		$this->declarew();
 
-		$aksi = $this->tl_b7->hapus($tabel_b7_field1);
-		$tabel_b1 = $this->tl_b1->hapus_tabel_b7($tabel_b7_field1);
-		$tabel_b2 = $this->tl_b2->hapus_tabel_b7($tabel_b7_field1);
-		$tabel_b5 = $this->tl_b5->hapus_tabel_b7($tabel_b7_field1);
-		$tabel_b6 = $this->tl_b6->hapus_tabel_b7($tabel_b7_field1);
+		$aksi = $this->tl_b7->delete_b7($tabel_b7_field1);
+		$tabel_b1 = $this->tl_b1->delete__by_fieldtabel_b7($tabel_b7_field1);
+		$tabel_b2 = $this->tl_b2->delete__by_fieldtabel_b7($tabel_b7_field1);
+		$tabel_b5 = $this->tl_b5->delete__by_fieldtabel_b7($tabel_b7_field1);
+		$tabel_b6 = $this->tl_b6->delete__by_fieldtabel_b7($tabel_b7_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_b7_field1', $tabel_b7_field1);
 
@@ -216,7 +216,7 @@ class C_tabel_b7 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b7_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
-			'tbl_b7' => $this->tl_b7->ambildata()->result(),
+			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

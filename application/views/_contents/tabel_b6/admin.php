@@ -8,7 +8,18 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 
 <?= btn_tambah() ?>
@@ -106,8 +117,8 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header('Tambah '. $tabel_b6_alias, '') ?>
-      
+      <?= modal_header('Tambah ' . $tabel_b6_alias, '') ?>
+
       <form action="<?= site_url($tabel_b6 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
           <?= add_text('tabel_b6_field2', 'required') ?>
@@ -144,8 +155,8 @@
   <div id="ubah<?= $tl_b6->$tabel_b6_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Edit '. $tabel_b6_alias, $tl_b6->$tabel_b6_field1) ?>
-        
+        <?= modal_header('Edit ' . $tabel_b6_alias, $tl_b6->$tabel_b6_field1) ?>
+
         <form action="<?= site_url($tabel_b6 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
@@ -181,16 +192,13 @@
       </div>
     </div>
   </div>
-<?php endforeach; ?>
 
 
-<!-- modal lihat -->
-<?php foreach ($tbl_b6 as $tl_b6): ?>
   <div id="lihat<?= $tl_b6->$tabel_b6_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <?= modal_header($tabel_b6_alias, $tl_b6->$tabel_b6_field1) ?>
-       
+
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">

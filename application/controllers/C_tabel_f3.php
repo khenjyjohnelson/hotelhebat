@@ -30,8 +30,7 @@ class C_tabel_f3 extends Omnitags
 			'title' => $this->v2_title['tabel_f3_alias'],
 			'konten' => $this->v2['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->join_tabel_f2_tamu($tabel_c2_field1)->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4_by_c2_field1($tabel_c2_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -48,8 +47,7 @@ class C_tabel_f3 extends Omnitags
 			'title' => $this->views['tabel_f3_v2_alt_title'],
 			'konten' => $this->views['tabel_f3_v2_alt'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->join_tabel_f1_tamu($tabel_c2_field1)->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f3_f1_e4' => $this->tl_f1->get_f1_with_f3_with_e4_by_c2_field1($tabel_c2_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -70,34 +68,8 @@ class C_tabel_f3 extends Omnitags
 			'title' => $this->v3_title['tabel_f3_alias'],
 			'konten' => $this->v3['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->join_tabel_f2()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
-
-			// menggunakan nilai $min dan $max sebagai bagian dari $data
-			// 'tgl_transaksi_min' => $param1,
-			// 'tgl_transaksi_max' => $param2,
-		);
-
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
-
-		$this->load->view('_layouts/template', $data);
-	}
-
-	// Fungsi di bawah ini sebaiknya menggunakan fungsi join untuk menampilkan data yang sesuai kebutuhan yang telah ditentukan
-	public function history()
-	{
-		$this->declarew();
-
-		// nilai min dan max sudah diinput sebelumnya
-		// $param1 = $this->v_filter1_get['tabel_f3_field7'];
-		// $param2 = $this->v_filter2_get['tabel_f3_field7'];
-
-		$data1 = array(
-			'title' => $this->views['tabel_f3_v3_alt_title'],
-			'konten' => $this->views['tabel_f3_v3_alt'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->join_tabel_f1()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4()->result(),
+			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			// 'tgl_transaksi_min' => $param1,
@@ -141,21 +113,21 @@ class C_tabel_f3 extends Omnitags
 
 		// $query = 'INSERT INTO transaksi VALUES('.$data.')';
 
-		$aksi = $this->tl_f3->simpan($data);
-		// $aksi = $this->tl_f3->simpan($query);
+		$aksi = $this->tl_f3->insert_f3($data);
+		// $aksi = $this->tl_f3->insert_f3($query);
 
 		$notif = $this->handle_1b($aksi, 'tabel_f3');
 
 		// fitur mengubah status ini seharusnya berada di bagian pesanan cman saya belum bisa menemukan algoritma yang pas jadi akan disimpan untuk pengembangan di kemudian hari
 		$tabel_f3_field4 = $this->v_post['tabel_f3_field4'];
-		$status = array(
+		$data2 = array(
 			$this->aliases['tabel_f2_field12'] => $this->v_post['tabel_f2_field12'],
 		);
 
 		if ($this->v_post['tabel_f2_field12'] === $this->aliases['tabel_f2_field12_value3']) {
 
 			// hanya merubah status pesanan
-			$aksi2 = $this->tl_f2->update($status, $tabel_f3_field4);
+			$aksi2 = $this->tl_f2->update_f2($data2, $tabel_f3_field4);
 
 			$notif = $this->handle_2b($aksi2, 'tabel_f2', $tabel_f3_field4);
 
@@ -164,7 +136,7 @@ class C_tabel_f3 extends Omnitags
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
-redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
+		redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
 	}
 
 
@@ -183,23 +155,23 @@ redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
 			$this->aliases['tabel_f3_field7'] => $tabel_f3_field7,
 		);
 
-		$aksi = $this->tl_f3->update($data, $tabel_f3_field1);
+		$aksi = $this->tl_f3->update_f3($data, $tabel_f3_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_f3', $tabel_f3_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	public function hapus($tabel_f3_field1 = null)
+	public function delete($tabel_f3_field1 = null)
 	{
 		$this->declarew();
 
-		$tabel_f3 = $this->tl_f3->ambil_tabel_f3_field1($tabel_f3_field1)->result();
-		$aksi = $this->tl_f3->hapus($tabel_f3_field1);
+		$tabel_f3 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
+		$aksi = $this->tl_f3->delete_f3($tabel_f3_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_f3_field1', $tabel_f3_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Fitur filter untuk saat ini akan tidak digunakan terlebih dahulu
@@ -216,8 +188,8 @@ redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
 			'konten' => $this->v3['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->filter($tabel_f3_field7_filter1, $tabel_f3_field7_filter2)->result(),
-			'tbl_f2' => $this->tl_f2->ambildata()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f2' => $this->tl_f2->get_all_f3()->result(),
+			'tbl_e4' => $this->tl_e4->get_all_f3()->result(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			'tabel_f3_field7_filter1' => $tabel_f3_field7_filter1,
@@ -237,9 +209,9 @@ redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
 		$data1 = array(
 			'title' => $this->v4_title['tabel_f3_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->ambildata()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
-			'tbl_f2' => $this->tl_f2->ambildata()->result(),
+			'tbl_f3' => $this->tl_f3->get_all_f3()->result(),
+			'tbl_e4' => $this->tl_e4->get_all_f3()->result(),
+			'tbl_f2' => $this->tl_f2->get_all_f3()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -258,29 +230,27 @@ redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
 		$data1 = array(
 			'title' => $this->v5_title['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->ambil_tabel_f3_field1($tabel_f3_field1)->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result()
 		);
 
 
 		// Di bawah ini adalah kode untuk memisahkan antara transaksi yang id pesanannya masih berada di tabel pesanann
 		// Dan transaksi yang id pesanananya sudah berada di tabel history
 
-		$param1 = $this->tl_f3->ambil_tabel_f3_field1($tabel_f3_field1)->result();
+		$param1 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
 		$param2 = $param1[0]->id_pesanan;
 
-		$method = $this->tl_f1->ambil_tabel_f1_field2($param2);
+		$method = $this->tl_f1->get_f1_by_f1_field2($param2);
 
 
 		if ($method->num_rows() > 0) {
 			$data2 = array(
-				'tbl_f1' => $this->tl_f1->ambildata()->result(),
+				'tbl_f1_f3_e4' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
 			$this->load->view($this->v5['tabel_f1'], $data);
 		} else {
 			$data2 = array(
-				'tbl_f2' => $this->tl_f2->ambildata()->result(),
+				'tbl_f2_f3_e4' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
 			$this->load->view($this->v5['tabel_f3'], $data);
@@ -298,7 +268,7 @@ redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan
-			'tbl_f3' => $this->tl_f3->ambil_tabel_c2_field3($tabel_f3_field3)->last_row(),
+			'tbl_f3' => $this->tl_f3->get_f3_by_c2_field3($tabel_f3_field3)->last_row(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

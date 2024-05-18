@@ -8,14 +8,21 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 
 <?= btn_laporan('tabel_d3') ?>
-
-<?php foreach ($dekor as $dk): ?>
-  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
-<?php endforeach ?>
 
 <div class="table-responsive">
   <table class="table table-light" id="data">

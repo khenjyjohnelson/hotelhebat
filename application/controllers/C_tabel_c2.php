@@ -16,7 +16,7 @@ class C_tabel_c2 extends Omnitags
 			'title' => $this->v3_title['tabel_c2_alias'],
 			'konten' => $this->v3['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
-			'tbl_c2' => $this->tl_c2->ambildata()->result(),
+			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -31,7 +31,7 @@ class C_tabel_c2 extends Omnitags
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
 		$tabel_c2_field4 = $this->v_post['tabel_c2_field4'];
 
-		$method3 = $this->tl_c2->cek_tabel_c2_field3($tabel_c2_field3);
+		$method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
 
 		// mencari apakah jumlah data kurang dari 1
 		if ($method3->num_rows() < 1) {
@@ -52,7 +52,7 @@ class C_tabel_c2 extends Omnitags
 					$this->aliases['tabel_c2_field6'] => $this->v_post['tabel_c2_field6'],
 				);
 
-				$aksi = $this->tl_c2->simpan($data);
+				$aksi = $this->tl_c2->insert_c2($data);
 
 				// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
 				if ($this->session->userdata($this->aliases['tabel_c2_field3'])) {
@@ -91,7 +91,7 @@ class C_tabel_c2 extends Omnitags
 			$this->aliases['tabel_c2_field5'] => $this->v_post['tabel_c2_field5'],
 		);
 
-		$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
+		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_c2', $tabel_c2_field1);
 
@@ -99,11 +99,11 @@ class C_tabel_c2 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	public function hapus($tabel_c2_field1 = null)
+	public function delete($tabel_c2_field1 = null)
 	{
 		$this->declarew();
 
-		$aksi = $this->tl_c2->hapus($tabel_c2_field1);
+		$aksi = $this->tl_c2->delete_c2($tabel_c2_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_c2_field1', $tabel_c2_field1);
 
@@ -119,7 +119,7 @@ class C_tabel_c2 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_c2_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
-			'tbl_c2' => $this->tl_c2->ambildata()->result(),
+			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -134,11 +134,11 @@ class C_tabel_c2 extends Omnitags
 
 		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
-			'title' => $this->v6_title['tabel_c2_alias2'],
+			'title' => $this->v6_title['tabel_c2_alias'],
 			'konten' => $this->v6['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
-			'tbl_c2' => $this->tl_c2->ambil_tabel_c2_field1($tabel_c2_field1)->result(),
-			'tbl_d3' => $this->tl_d3->ambil_tabel_c2_field1($tabel_c2_field1)->result(),
+			'tbl_c2' => $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result(),
+			'tbl_d3' => $this->tl_d3->get_d3_by_c2_field1($tabel_c2_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -185,7 +185,7 @@ class C_tabel_c2 extends Omnitags
 			$this->aliases['tabel_c2_field5'] => $this->v_post['tabel_c2_field5'],
 		);
 
-		$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
+		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
 		if ($aksi) {
 
@@ -198,7 +198,7 @@ class C_tabel_c2 extends Omnitags
 		}
 
 		// mengambil data profil yang baru dirubah
-		$tabel_c2 = $this->tl_c2->ambil_tabel_c2_field1($tabel_c2_field1)->result();
+		$tabel_c2 = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
 		$tabel_c2_field2 = $tabel_c2[0]->nama;
 		$tabel_c2_field3 = $tabel_c2[0]->email;
 		$tabel_c2_field4 = $tabel_c2[0]->hp;
@@ -217,7 +217,7 @@ class C_tabel_c2 extends Omnitags
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 
-		$cek_id = $this->tl_c2->ambil_tabel_c2_field1($tabel_c2_field1);
+		$cek_id = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1);
 
 		// mencari apakah jumlah data lebih dari 0
 		if ($cek_id->num_rows() > 0) {
@@ -239,7 +239,7 @@ class C_tabel_c2 extends Omnitags
 						$this->aliases['tabel_c2_field4'] => password_hash($tabel_c2_field4, PASSWORD_DEFAULT),
 					);
 
-					$aksi = $this->tl_c2->update($data, $tabel_c2_field1);
+					$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
 					redirect($_SERVER['HTTP_REFERER']);
 
@@ -275,7 +275,7 @@ class C_tabel_c2 extends Omnitags
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
 		$tabel_c2_field4 = $this->v_post['tabel_c2_field4'];
 
-		$method3 = $this->tl_c2->cek_tabel_c2_field3($tabel_c2_field3);
+		$method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
 
 		// mencari apakah jumlah data kurang dari 0
 		if ($method3->num_rows() > 0) {
@@ -353,7 +353,7 @@ class C_tabel_c2 extends Omnitags
 					$this->aliases['tabel_d3_field5'] => $deviceType,
 				);
 
-				$login_history = $this->tl_d3->simpan($loginh);
+				$login_history = $this->tl_d3->insert_d3($loginh);
 
 				$notif = $this->handle_4b($this->session->userdata($this->aliases['tabel_c2_field6']), $this->session->userdata($this->aliases['tabel_c2_field1']));
 

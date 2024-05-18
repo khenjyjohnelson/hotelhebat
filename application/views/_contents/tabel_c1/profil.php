@@ -1,4 +1,15 @@
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 <div class="row">
   <div class="col-md-6">
@@ -9,7 +20,7 @@
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
       <form action="<?= site_url($tabel_c1 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
-        <?= input_hidden('$tabel_c1_field1', $tl_c1->$tabel_c1_field1, 'required') ?>
+        <?= input_hidden('tabel_c1_field1', $tl_c1->$tabel_c1_field1, 'required') ?>
         <?= edit_text('tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>  
         <?= edit_text('tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>  
         <?= edit_text('tabel_c1_field5', $tl_c1->$tabel_c1_field5, 'required') ?>  

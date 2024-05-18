@@ -8,7 +8,18 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 
 <!-- tabel fiter pesanan -->
@@ -52,33 +63,33 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_f2 as $tl_f2): ?>
+      <?php foreach ($tbl_f2_e4 as $tl_f2_e4): ?>
         <tr>
           <td></td>
-          <td><?= $tl_f2->$tabel_f2_field1 ?></td>
-          <td><?= $tl_f2->$tabel_f2_field6 ?></td>
-          <td><?= $tl_f2->$tabel_f2_field10 ?></td>
-          <td><?= $tl_f2->$tabel_f2_field11 ?></td>
-          <td><?= $tl_f2->$tabel_f2_field12 ?></td>
+          <td><?= $tl_f2_e4->$tabel_f2_field1 ?></td>
+          <td><?= $tl_f2_e4->$tabel_f2_field6 ?></td>
+          <td><?= $tl_f2_e4->$tabel_f2_field10 ?></td>
+          <td><?= $tl_f2_e4->$tabel_f2_field11 ?></td>
+          <td><?= $tl_f2_e4->$tabel_f2_field12 ?></td>
 
           <td>
-            <?php switch ($tl_f2->$tabel_f2_field12) {
+            <?php switch ($tl_f2_e4->$tabel_f2_field12) {
               case $tabel_f2_field12_value1: ?>
-                <?= btn_book($tl_f2->$tabel_f2_field1) ?>
+                <?= btn_book($tl_f2_e4->$tabel_f2_field1) ?>
                 <?php break;
               case $tabel_f2_field12_value3:
               case $tabel_f2_field12_value4: ?>
-                <?= btn_edit($tl_f2->$tabel_f2_field1) ?>
+                <?= btn_edit($tl_f2_e4->$tabel_f2_field1) ?>
                 <?php break;
               case $tabel_f2_field12_value5: ?>
-                <?= btn_hapus('tabel_f2', $tl_f2->$tabel_f2_field1) ?>
+                <?= btn_hapus('tabel_f2', $tl_f2_e4->$tabel_f2_field1) ?>
                 <?php break;
             } ?>
             <!-- tombol print, hasil print akan muncul di tab baru 
         https://stackoverflow.com/questions/32778670/codeigniter-load-view-in-new-tab#:~:text=Say%20you%20want%20it%20to,_blank%22%20in%20the%20form%20tag.&text=That%27s%20all.
         terimakasih pada link di atas
         -->
-            <?= btn_print('tabel_f2', $tl_f2->$tabel_f2_field1) ?>
+            <?= btn_print('tabel_f2', $tl_f2_e4->$tabel_f2_field1) ?>
           </td>
 
         </tr>
@@ -89,117 +100,32 @@
 </div>
 
 <!-- modal ubah -->
-<?php foreach ($tbl_f2 as $tl_f2): ?>
-  <div id="ubah<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade ubah">
-    <?php foreach ($tbl_e4 as $tl_e4): ?>
-      <?php if ($tl_e4->$tabel_f2_field7 === $tl_f2->$tabel_f2_field7) { ?>
+<?php foreach ($tbl_f2_e4 as $tl_f2_e4): ?>
+  <?php switch ($tl_f2_e4->$tabel_f2_field12) {
+    case $tabel_f2_field12_value1: ?>
+      <div id="book<?= $tl_f2_e4->$tabel_f2_field1 ?>" class="modal fade book">
         <div class="modal-dialog">
           <div class="modal-content">
-            <?= modal_header($tabel_f2_alias, $tl_f2->$tabel_f2_field1) ?>
-
-            <!-- form untuk mengubah nilai status sebuah pesanan -->
-            <form action="<?= site_url($tabel_f2 . '/update_status') ?>" method="post">
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
-                    <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
-                    <!-- input status berdasarkan nilai status -->
-                    <!-- seharusnya jika status masih belum bayar, resepsionis tidak bisa melakukan apa-apa terhadap pesanan -->
-                    <?php switch ($tl_f2->$tabel_f2_field12) {
-                      case $tabel_f2_field12_value2: ?>
-                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value3, 'required') ?>
-                        <?php break;
-                      case $tabel_f2_field12_value3: ?>
-                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value4, 'required') ?>
-                        <?php break;
-                      case $tabel_f2_field12_value4: ?>
-                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value5, 'required') ?>
-                        <?php break;
-                    } ?>
-                    <?= tampil_text('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-                    <?= tampil_text('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
-                    <?= tampil_text('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
-                  </div>
-
-                  <div class="col-md-6">
-                    <?= tampil_text('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-                    <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
-                    <?= tampil_text('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
-                    <?= tampil_text('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
-                  </div>
-                </div>
-              </div>
-
-              <!-- memunculkan notifikasi modal -->
-              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
-
-              <div class="modal-footer">
-                <!-- pesan yg muncul berdasarkan nilai status -->
-                <?php switch ($tl_f2->$tabel_f2_field12) {
-                  case $tabel_f2_field12_value2: ?>
-                    <p>Selesaikan Dulu <?= $tabel_f3 ?></p>
-                    <?php break;
-                  case $tabel_f2_field12_value3: ?>
-                    <p>Ubah Status Menjadi <?= $tabel_f2_field12_value4 ?>?</p>
-                    <button class="btn btn-success" type="submit">Ya</button>
-                    <?php break;
-                  case $tabel_f2_field12_value4: ?>
-                    <p>Ubah Status Menjadi <?= $tabel_f2_field12_value5 ?>?</p>
-                    <button class="btn btn-success" type="submit">Ya</button>
-                    <?php break;
-                } ?>
-              </div>
-
-            </form>
-
-          </div>
-        </div>
-      <?php }
-    endforeach; ?>
-  </div>
-<?php endforeach ?>
-
-<!-- modal book -->
-<?php foreach ($tbl_f2 as $tl_f2): ?>
-  <div id="book<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade book">
-    <?php foreach ($tbl_e4 as $tl_e4): ?>
-      <?php if ($tl_e4->$tabel_f2_field7 === $tl_f2->$tabel_f2_field7) { ?>
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <?= modal_header($tabel_f2_alias, $tl_f2->$tabel_f2_field1) ?>
+            <?= modal_header($tabel_f2_alias, $tl_f2_e4->$tabel_f2_field1) ?>
 
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($tabel_f2 . '/book') ?>" method="post">
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
-                    <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
-                    <!-- input status berdasarkan nilai status -->
-                    <!-- seharusnya jika status masih belum bayar, resepsionis tidak bisa melakukan apa-apa terhadap pesanan -->
-                    <?php switch ($tl_f2->$tabel_f2_field12) {
-                      case $tabel_f2_field12_value2: ?>
-                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value3, 'required') ?>
-                        <?php break;
-                      case $tabel_f2_field12_value3: ?>
-                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value4, 'required') ?>
-                        <?php break;
-                      case $tabel_f2_field12_value4: ?>
-                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value5, 'required') ?>
-                        <?php break;
-                    } ?>
-                    <?= tampil_text('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
-                    <?= tampil_text('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-                    <?= tampil_text('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
-                    <?= tampil_text('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
+                    <?= input_hidden('tabel_f2_field1', $tl_f2_e4->$tabel_f2_field1, 'required') ?>
+                    <?= input_hidden('tabel_f2_field7', $tl_f2_e4->$tabel_f2_field7, 'required') ?>
+                    <?= tampil_text('tabel_f2_field1', $tl_f2_e4->$tabel_f2_field1) ?>
+                    <?= tampil_text('tabel_f2_field3', $tl_f2_e4->$tabel_f2_field3) ?>
+                    <?= tampil_text('tabel_f2_field4', $tl_f2_e4->$tabel_f2_field4) ?>
+                    <?= tampil_text('tabel_f2_field5', $tl_f2_e4->$tabel_f2_field5) ?>
                   </div>
 
                   <div class="col-md-6">
-                    <?= tampil_text('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-                    <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
-                    <?= tampil_text('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
-                    <?= tampil_text('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
+                    <?= tampil_text('tabel_f2_field6', $tl_f2_e4->$tabel_f2_field6) ?>
+                    <?= tampil_text('tabel_e4_field2', $tlf2_e4->$tabel_e4_field2) ?>
+                    <?= tampil_text('tabel_f2_field10', $tl_f2_e4->$tabel_f2_field10) ?>
+                    <?= tampil_text('tabel_f2_field11', $tl_f2_e4->$tabel_f2_field11) ?>
                   </div>
                 </div>
                 <hr>
@@ -213,12 +139,12 @@
                         <!-- <select class="form-control" required name="<?= $tabel_f2_field13_input ?>"> -->
                         <!-- menampilkan nilai id_tipe kamar yang aktif -->
                         <!-- <option selected hidden value="">Pilih <?= $tabel_e3_field1_alias ?>:</option> -->
-                        <!-- <option value="<?= $tl_e3->$tabel_f2_field13 ?>"><?= $tl_e3->$tabel_f2_field13; ?> - <?= $tl_e4->$tabel_e4_field2 ?></option> -->
+                        <!-- <option value="<?= $tl_e3->$tabel_f2_field13 ?>"><?= $tl_e3->$tabel_f2_field13; ?> - <?= $tlf2_e4->$tabel_e4_field2 ?></option> -->
                         <!-- </select> -->
 
                         <?php foreach ($tbl_e3 as $tl_e3):
-                          if ($tl_f2->$tabel_f2_field7 == $tl_e3->$tabel_f2_field7) {
-                            if ($tl_e3->$tabel_f2_field7 == $tl_e4->$tabel_f2_field7) {
+                          if ($tl_f2_e4->$tabel_f2_field7 == $tl_e3->$tabel_f2_field7) {
+                            if ($tl_e3->$tabel_f2_field7 == $tlf2_e4->$tabel_f2_field7) {
                               if ($tl_e3->$tabel_e3_field4 == $tabel_e3_field4_value2) { ?>
 
                                 <div class="col-md-3 mb-4">
@@ -281,7 +207,74 @@
           </div>
         </div>
 
-      <?php }
-    endforeach ?>
-  </div>
+      </div>
+      <?php break;
+    case $tabel_f2_field12_value3:
+    case $tabel_f2_field12_value4: ?>
+      <div id="ubah<?= $tl_f2_e4->$tabel_f2_field1 ?>" class="modal fade ubah">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <?= modal_header($tabel_f2_alias, $tl_f2_e4->$tabel_f2_field1) ?>
+
+            <!-- form untuk mengubah nilai status sebuah pesanan -->
+            <form action="<?= site_url($tabel_f2 . '/update_status') ?>" method="post">
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <?= input_hidden('tabel_f2_field1', $tl_f2_e4->$tabel_f2_field1, 'required') ?>
+                    <?= input_hidden('tabel_f2_field7', $tl_f2_e4->$tabel_f2_field7, 'required') ?>
+                    <!-- input status berdasarkan nilai status -->
+                    <!-- seharusnya jika status masih belum bayar, resepsionis tidak bisa melakukan apa-apa terhadap pesanan -->
+                    <?php switch ($tl_f2_e4->$tabel_f2_field12) {
+                      case $tabel_f2_field12_value3: ?>
+                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value4, 'required') ?>
+                        <?php break;
+                      case $tabel_f2_field12_value4: ?>
+                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value5, 'required') ?>
+                        <?php break;
+                      default:
+                        break;
+                    } ?>
+                    <?= tampil_text('tabel_f2_field3', $tl_f2_e4->$tabel_f2_field3) ?>
+                    <?= tampil_text('tabel_f2_field4', $tl_f2_e4->$tabel_f2_field4) ?>
+                    <?= tampil_text('tabel_f2_field5', $tl_f2_e4->$tabel_f2_field5) ?>
+                  </div>
+
+                  <div class="col-md-6">
+                    <?= tampil_text('tabel_f2_field6', $tl_f2_e4->$tabel_f2_field6) ?>
+                    <?= tampil_text('tabel_e4_field2', $tlf2_e4->$tabel_e4_field2) ?>
+                    <?= tampil_text('tabel_f2_field10', $tl_f2_e4->$tabel_f2_field10) ?>
+                    <?= tampil_text('tabel_f2_field11', $tl_f2_e4->$tabel_f2_field11) ?>
+                  </div>
+                </div>
+              </div>
+
+              <!-- memunculkan notifikasi modal -->
+              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+
+              <div class="modal-footer">
+                <!-- pesan yg muncul berdasarkan nilai status -->
+                <?php switch ($tl_f2_e4->$tabel_f2_field12) {
+                  case $tabel_f2_field12_value3: ?>
+                    <p>Ubah Status Menjadi <?= $tabel_f2_field12_value4 ?>?</p>
+                    <button class="btn btn-success" type="submit">Ya</button>
+                    <?php break;
+                  case $tabel_f2_field12_value4: ?>
+                    <p>Ubah Status Menjadi <?= $tabel_f2_field12_value5 ?>?</p>
+                    <button class="btn btn-success" type="submit">Ya</button>
+                    <?php break;
+                  default:
+                    break;
+                } ?>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+      <?php break;
+    default:
+      break;
+  } ?>
 <?php endforeach ?>

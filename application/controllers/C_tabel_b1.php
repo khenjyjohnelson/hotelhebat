@@ -23,8 +23,8 @@ class C_tabel_b1 extends Omnitags
 			'title' => $this->v3_title['tabel_b1_alias'],
 			'konten' => $this->v3['tabel_b1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b1'])->result(),
-			'tbl_b1' => $this->tl_b1->ambildata()->result(),
-			'tbl_b7' => $this->tl_b7->ambildata()->result(),
+			'tbl_b1' => $this->tl_b1->get_all_b1()->result(),
+			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 			'tabel_b1_field7_value' => $param1,
 		);
 
@@ -45,7 +45,7 @@ class C_tabel_b1 extends Omnitags
 			'konten' => $this->v3['tabel_b1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b1'])->result(),
 			'tbl_b1' => $this->tl_b1->filter($param1)->result(),
-			'tbl_b7' => $this->tl_b7->ambildata()->result(),
+			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 			'tabel_b1_field7_value' => $param1
 		);
 
@@ -93,7 +93,7 @@ class C_tabel_b1 extends Omnitags
 			$this->aliases['tabel_b1_field7'] => $this->v_post['tabel_b1_field7'],
 		);
 
-		$aksi = $this->tl_b1->simpan($data);
+		$aksi = $this->tl_b1->insert_b1($data);
 
 		$notif = $this->handle_1b($aksi, 'tabel_b1');
 
@@ -135,23 +135,23 @@ class C_tabel_b1 extends Omnitags
 			$this->aliases['tabel_b1_field7'] => $this->v_post['tabel_b1_field7'],
 		);
 
-		$aksi = $this->tl_b1->update($data, $tabel_b1_field1);
+		$aksi = $this->tl_b1->update_b1($data, $tabel_b1_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_b1', $tabel_b1_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	public function hapus($tabel_b1_field1 = null)
+	public function delete($tabel_b1_field1 = null)
 	{
 		$this->declarew();
 
-		$tabel_b1 = $this->tl_b1->ambil_tabel_b1_field1($tabel_b1_field1)->result();
+		$tabel_b1 = $this->tl_b1->get_b1_by_b1_field1($tabel_b1_field1)->result();
 		$img = $tabel_b1[0]->img;
 
 		unlink($this->v_upload_path['tabel_b1'] . $img);
 
-		$aksi = $this->tl_b1->hapus($tabel_b1_field1);
+		$aksi = $this->tl_b1->delete_b1($tabel_b1_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_b1_field1', $tabel_b1_field1);
 
@@ -166,7 +166,7 @@ class C_tabel_b1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_b1_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b1'])->result(),
-			'tbl_b1' => $this->tl_b1->ambildata()->result(),
+			'tbl_b1' => $this->tl_b1->get_all_b1()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

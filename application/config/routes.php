@@ -116,6 +116,7 @@ foreach ($myData2 as $item2) {
         'logout' => 'logout',
         'update_profil' => 'update_profil',
         'update_pass' => 'update_password',
+        'daftar_history' => 'daftar_history',
         'update_id_event' => 'update_id_event',
         'update_id_lisensi' => 'update_id_lisensi',
         'update_id_tema' => 'update_id_tema',

@@ -12,34 +12,34 @@ class M_tabel_e1 extends CI_Model
         // Code to connect to SSH server and fetch data
     }
 	
-	public function ambildata()
+	public function get_all_e1()
 	{
 		$this->db->order_by($this->aliases['tabel_e1_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_e1']);
 	}
 
-	public function ambil_tabel_e1_field1($param1)
+	public function get_e1_by_e1_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_e1_field1'], $param1);
 		$this->db->order_by($this->aliases['tabel_e1_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_e1']);
 	}
 
-	public function simpan($data)
-	// public function simpan($query)
+	public function insert_e1($data)
+	// public function insert_e1($query)
 	{
 		// include "application/config/database.php";
 		// return mysqli_query($db(''), $query);
 		return $this->db->insert($this->aliases['tabel_e1'], $data);
 	}
 
-	public function update($data, $param1)
+	public function update_e1($data, $param1)
 	{
 		$this->db->where($this->aliases['tabel_e1_field1'], $param1);
 		return $this->db->update($this->aliases['tabel_e1'], $data);
 	}
 
-	public function hapus($param1)
+	public function delete_e1($param1)
 	{
 		$this->db->where($this->aliases['tabel_e1_field1'], $param1);
 		return $this->db->delete($this->aliases['tabel_e1']);

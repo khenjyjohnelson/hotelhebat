@@ -20,8 +20,8 @@ class C_tabel_f4 extends Omnitags
 			'title' => $this->v3_title['tabel_f4_alias'],
 			'konten' => $this->v3['tabel_f4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4'])->result(),
-			'tbl_f4' => $this->tl_f4->ambildata()->result(),
-			'tbl_c1' => $this->tl_c1->ambildata()->result(),
+			'tbl_f4' => $this->tl_f4->get_all_f4()->result(),
+			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -47,12 +47,12 @@ class C_tabel_f4 extends Omnitags
 			$this->aliases['tabel_f4_field7'] => $tabel_f4_field7,
 		);
 
-		$status = array(
+		$data2 = array(
 			$this->aliases['tabel_e3_field4'] => $this->v_post['tabel_e3_field4'],
 		);
-		$update_status = $this->tl_e3->update($status, $tabel_f4_field2);
+		$update_status = $this->tl_e3->update_e3($data2, $tabel_f4_field2);
 
-		$aksi = $this->tl_f4->simpan($data);
+		$aksi = $this->tl_f4->insert_f4($data);
 
 		$notif = $this->handle_1b($aksi, 'tabel_f4');
 
@@ -69,18 +69,18 @@ class C_tabel_f4 extends Omnitags
 			$this->aliases['tabel_f4_field3'] => $this->v_post['tabel_f4_field3'],
 		);
 
-		$aksi = $this->tl_f4->update($data, $tabel_f4_field1);
+		$aksi = $this->tl_f4->update_f4($data, $tabel_f4_field1);
 
 		$notif = $this->handle_2b($aksi, 'tabel_f4', $tabel_f4_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}
 
-	public function hapus($tabel_f4_field1 = null)
+	public function delete($tabel_f4_field1 = null)
 	{
 		$this->declarew();
 
-		$aksi = $this->tl_f4->hapus($tabel_f4_field1);
+		$aksi = $this->tl_f4->delete_f4($tabel_f4_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_f4_field1', $tabel_f4_field1);
 
@@ -95,7 +95,7 @@ class C_tabel_f4 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_f4_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4'])->result(),
-			'tbl_f4' => $this->tl_f4->ambildata()->result(),
+			'tbl_f4' => $this->tl_f4->get_all_f4()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

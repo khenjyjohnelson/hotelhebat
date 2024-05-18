@@ -1,6 +1,6 @@
 <?php switch ($this->session->userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
-  // case $tabel_c2_field6_value4:
+    // case $tabel_c2_field6_value4:
     break;
 
   default:
@@ -8,16 +8,23 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 <p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
 
 <?= btn_tambah() ?>
-<?= btn_laporan($tabel_a1) ?>
-
-<?php foreach ($dekor as $dk): ?>
-  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
-<?php endforeach ?>
+<?= btn_laporan('tabel_a1') ?>
 
 <div class="table-responsive">
   <table class="table table-light" id="data">
@@ -43,7 +50,7 @@
           <td>
             <?= btn_lihat($tl_a1_alt->$tabel_a1_field1) ?>
             <?= btn_edit($tl_a1_alt->$tabel_a1_field1) ?>
-            <?= btn_hapus($tabel_a1, $tl_a1_alt->$tabel_a1_field1) ?>
+            <?= btn_delete_($tabel_a1, $tl_a1_alt->$tabel_a1_field1) ?>
           </td>
         </tr>
       <?php endforeach; ?>
@@ -99,19 +106,17 @@
       </div>
     </div>
   </div>
-<?php endforeach; ?>
 
-<!-- modal edit foto -->
-<?php foreach ($tbl_a1_alt as $tl_a1_alt): ?>
   <div id="ubah<?= $tl_a1_alt->$tabel_a1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Edit ' . $tabel_a1_field1_alias,  $tl_a1_alt->$tabel_a1_field1) ?>
+        <?= modal_header('Edit ' . $tabel_a1_field1_alias, $tl_a1_alt->$tabel_a1_field1) ?>
 
         <form action="<?= site_url($tabel_a1 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1, 'required') ?>
-            * Meski ingin mengubah <?= $tabel_a1_field2_alias ?> saja, tetap harus mengupload ulang <?= $tabel_a1_field3_alias ?> juga
+            * Meski ingin mengubah <?= $tabel_a1_field2_alias ?> saja, tetap harus mengupload ulang
+            <?= $tabel_a1_field3_alias ?> juga
 
             <?= edit_text($tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2, 'required') ?>
             <?= edit_text($tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4, 'required') ?>

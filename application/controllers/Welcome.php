@@ -56,9 +56,9 @@ class Welcome extends Omnitags
 					'title' => 'Selamat Datang',
 					'konten' => 'home',
 					'dekor' => $this->tl_b1->dekor($this->theme_id, 'home')->result(),
-					'tbl_b5' => $this->tl_b5->ambildata()->result(),
-					'tbl_b7' => $this->tl_b7->ambildata()->result(),
-					'tbl_b2' => $this->tl_b2->ambil_tabel_b7_aktif($this->theme_id)->result(),
+					'tbl_b5' => $this->tl_b5->get_all_b5()->result(),
+					'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
+					'tbl_b2' => $this->tl_b2->get_b7_aktif($this->theme_id)->result(),
 				);
 
 				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -77,15 +77,15 @@ class Welcome extends Omnitags
 			'title' => 'Dashboard',
 			'konten' => 'dashboard',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'dashboard')->result(),
-			'tbl_e1' => $this->tl_e1->ambildata()->num_rows(),
-			'tbl_e2' => $this->tl_e2->ambildata()->num_rows(),
-			'tbl_c1' => $this->tl_c1->ambildata()->num_rows(),
-			'tbl_e3' => $this->tl_e3->ambildata()->num_rows(),
-			'tbl_e4' => $this->tl_e4->ambildata()->num_rows(),
-			'tbl_f2' => $this->tl_f2->ambildata()->num_rows(),
-			'tbl_c2' => $this->tl_c2->ambildata()->num_rows(),
-			'tbl_f3' => $this->tl_f3->ambildata()->num_rows(),
-			'tbl_d3' => $this->tl_d3->ambildata()->num_rows(),
+			'tbl_e1' => $this->tl_e1->get_all_e1()->num_rows(),
+			'tbl_e2' => $this->tl_e2->get_all_e2()->num_rows(),
+			'tbl_c1' => $this->tl_c1->get_all_c1()->num_rows(),
+			'tbl_e3' => $this->tl_e3->get_all_e3()->num_rows(),
+			'tbl_e4' => $this->tl_e4->get_all_e4()->num_rows(),
+			'tbl_f2' => $this->tl_f2->get_all_f2()->num_rows(),
+			'tbl_c2' => $this->tl_c2->get_all_c2()->num_rows(),
+			'tbl_f3' => $this->tl_f3->get_all_f3()->num_rows(),
+			'tbl_d3' => $this->tl_d3->get_all_d3()->num_rows(),
 
 			'chart_tabel_f1' => json_encode($chart_tabel_f1),
 			'chart_tabel_f2' => json_encode($chart_tabel_f2),
@@ -109,7 +109,6 @@ class Welcome extends Omnitags
 		$data1 = array(
 			'title' => 'Anda tidak memiliki akses ke halaman ini!',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no-level')->result(),
-			'tbl_a1' => $this->tl_a1->ambil_tabel_a1_field1($this->tabel_a1_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);

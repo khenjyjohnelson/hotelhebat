@@ -24,8 +24,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => $this->v2_title['tabel_f1_alias'],
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f1' => $this->tl_f1->ambil_tabel_c2_field1($param5)->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f1_e4' => $this->tl_f1->get_c2_with_e4($param5)->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,
@@ -40,7 +39,7 @@ class C_tabel_f1 extends Omnitags
 	}
 
 
-	public function filter_tabel_c1()
+	public function filter_c1()
 	{
 		$this->declarew();
 
@@ -56,8 +55,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => $this->v2_title['tabel_f1_alias'],
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f1' => $this->tl_f1->filter_tabel_c1($param1, $param2, $param3, $param4, $param5)->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f1' => $this->tl_f1->filter_c1_with_e4($param1, $param2, $param3, $param4, $param5)->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,
@@ -86,8 +84,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => $this->v3_title['tabel_f1_alias'],
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f1' => $this->tl_f1->ambildata()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,
@@ -101,11 +98,11 @@ class C_tabel_f1 extends Omnitags
 		$this->load->view('_layouts/template', $data);
 	}
 
-	// public function hapus($tabel_f1_field1 = null)
+	// public function delete($tabel_f1_field1 = null)
 	// {
 	// 	$this->declarew();
 
-	// 	$aksi = $this->tl_f1->hapus($tabel_f1_field1);
+	// 	$aksi = $this->tl_f1->delete_f1($tabel_f1_field1);
 	// 	redirect($_SERVER['HTTP_REFERER']); 
 	// redirect(site_url($this->aliases['tabel_f1/admin'));
 	// }
@@ -118,8 +115,7 @@ class C_tabel_f1 extends Omnitags
 		$data1 = array(
 			'title' => $this->v4_title['tabel_f1_alias'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f1' => $this->tl_f1->ambildata()->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -141,8 +137,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => $this->v3_title['tabel_f1_alias'],
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f1' => $this->tl_f1->filter($param1, $param2, $param3, $param4)->result(),
-			'tbl_e4' => $this->tl_e4->ambildata()->result(),
+			'tbl_f1' => $this->tl_f1->search_with_e4_between_dates($param1, $param2, $param3, $param4)->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,

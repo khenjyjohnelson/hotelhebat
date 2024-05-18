@@ -8,7 +8,18 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 
 <div class="table-responsive">
@@ -56,7 +67,7 @@ Jadi tidak perlu menambahkan foreach pesanan lagi -->
       <?php if ($tl_e4->$tabel_e4_field1 === $tl_f3->$tabel_e4_field1) { ?>
         <div class="modal-dialog">
           <div class="modal-content">
-            <?= modal_header($tabel_f3_alias . $tl_f3->$tabel_f3_field1, 'required') ?>
+            <?= modal_header($tabel_f3_alias, $tl_f3->$tabel_f3_field1) ?>
             
             <div class="modal-body">
               <div class="row">

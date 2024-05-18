@@ -3,27 +3,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_tabel_b9 extends CI_Model
 {
-	public function ambildata()
+	public function get_all_b9()
 	{
 		$this->db->order_by($this->aliases['tabel_b9_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_b9']);
 	}
 
-	public function ambil_tabel_a1_field1($param1)
+	public function get_b9_by_a1_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_b9_field2'], $param1);
 		$this->db->order_by($this->aliases['tabel_b9_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_b9']);
 	}
 
-	public function ambil_tabel_b9_field1($param1)
+	public function get_b9_by_b9_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_b9_field1'], $param1);
 		$this->db->order_by($this->aliases['tabel_b9_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_b9']);
 	}
 
-	public function ambil_tabel_b8_limit($param1)
+	public function get_b9_with_b8_limit($param1)
 	{
 		$sql = "SELECT * FROM {$this->aliases['tabel_b9']} 
 		JOIN {$this->aliases['tabel_b8']} 
@@ -34,14 +34,14 @@ class M_tabel_b9 extends CI_Model
 		return $this->db->query($sql);
 	}
 
-	public function ambil_tabel_b9_field2($param1)
+	public function get_b9_by_b9_field2($param1)
 	{
 		$this->db->where($this->aliases['tabel_b9_field2'], $this->session->userdata($this->aliases['tabel_c2_field1']));
 		$this->db->where($this->aliases['tabel_b9_field6'], NULL);
 		return $this->db->get($this->aliases['tabel_b9']);
 	}
 
-	public function ambil_tabel_b8($param1)
+	public function get_b9_with_b8_by_b9_field2($param1)
 	{
 		$sql = "SELECT * FROM {$this->aliases['tabel_b9']} 
 		JOIN {$this->aliases['tabel_b8']} 
@@ -52,15 +52,15 @@ class M_tabel_b9 extends CI_Model
 		return $this->db->query($sql);
 	}
 
-	public function simpan($data)
-	// public function simpan($query)
+	public function insert_b9($data)
+	// public function insert_b9($query)
 	{
 		// include "application/config/database.php";
 		// return mysqli_query($db(''), $query);
 		return $this->db->insert($this->aliases['tabel_b9'], $data);
 	}
 
-	public function update($data, $param1)
+	public function update_b9($data, $param1)
 	{
 		$this->db->where($this->aliases['tabel_b9_field2'], $param1);
 		return $this->db->update($this->aliases['tabel_b9'], $data);
@@ -80,14 +80,14 @@ class M_tabel_b9 extends CI_Model
 		return $this->db->update($this->aliases['tabel_b9'], $data);
 	}
 
-	public function update_tabel_e3_field7($data, $param1, $param2)
+	public function update_e3_field7($data, $param1, $param2)
 	{
 		$this->db->where($this->aliases['tabel_b9_field2'], $param1);
 		$this->db->where($this->aliases['tabel_b9_field5'], $param2);
 		return $this->db->update($this->aliases['tabel_b9'], $data);
 	}
 
-	public function hapus($param1)
+	public function delete_b9($param1)
 	{
 		$this->db->where($this->aliases['tabel_b9_field1'], $param1);
 		return $this->db->delete($this->aliases['tabel_b9']);

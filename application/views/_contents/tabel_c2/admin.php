@@ -8,11 +8,22 @@
 }
 ?>
 
-<h1><?= $title ?><?= $phase ?></h1>
+
+
+<div class="row mb-2 align-items-center">
+  <div class="col-md-6 d-flex align-items-center">
+    <h1><?= $title ?><?= $phase ?></h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <?php foreach ($dekor as $dk): ?>
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+    <?php endforeach ?>
+  </div>
+</div>
 <hr>
 
 <?= btn_tambah() ?>
-<?= btn_laporan($tabel_c2) ?>
+<?= btn_laporan('tabel_c2') ?>
 
 <div class="table-responsive">
   <table class="table table-light" id="data">
@@ -142,10 +153,9 @@
       </div>
     </div>
   </div>
-<?php endforeach; ?>
 
-<!-- modal lihat -->
-<?php foreach ($tbl_c2 as $tl_c2): ?>
+
+  
   <div id="lihat<?= $tl_c2->$tabel_c2_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -154,28 +164,10 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="form-group">
-              <label><?= $tabel_c2_field2_alias ?> : </label>
-              <p><?= $tl_c2->$tabel_c2_field2; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_c2_field3_alias ?> : </label>
-              <p><?= $tl_c2->$tabel_c2_field3; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_c2_field5_alias ?> : </label>
-              <p><?= $tl_c2->$tabel_c2_field5; ?></p>
-            </div>
-            <hr>
-
-            <div class="form-group">
-              <label><?= $tabel_c2_field6_alias ?> : </label>
-              <p><?= $tl_c2->$tabel_c2_field6; ?></p>
-            </div>
+            <?= tampil_text('tabel_c2_field2', $tl_c2->$tabel_c2_field2) ?>
+            <?= tampil_text('tabel_c2_field3', $tl_c2->$tabel_c2_field3) ?>
+            <?= tampil_text('tabel_c2_field5', $tl_c2->$tabel_c2_field5) ?>
+            <?= tampil_text('tabel_c2_field6', $tl_c2->$tabel_c2_field6) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

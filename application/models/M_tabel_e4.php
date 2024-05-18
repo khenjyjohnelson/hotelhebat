@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_tabel_e4 extends CI_Model
 {
-	public function ambildata()
+	public function get_all_e4()
 	{
 		$this->db->order_by($this->aliases['tabel_e4_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_e4']);
@@ -41,28 +41,28 @@ class M_tabel_e4 extends CI_Model
 		return $result;
 	}
 
-	public function ambil_tabel_e4_field1($param1)
+	public function get_e4_by_e4_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_e4_field1'], $param1);
 		$this->db->order_by($this->aliases['tabel_e4_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_e4']);
 	}
 
-	public function simpan($data)
-	// public function simpan($query)
+	public function insert_e4($data)
+	// public function insert_e4($query)
 	{
 		// include "application/config/database.php";
 		// return mysqli_query($db(''), $query);
 		return $this->db->insert($this->aliases['tabel_e4'], $data);
 	}
 
-	public function update($data, $param1)
+	public function update_e4($data, $param1)
 	{
 		$this->db->where($this->aliases['tabel_e4_field1'], $param1);
 		return $this->db->update($this->aliases['tabel_e4'], $data);
 	}
 
-	public function hapus($param1)
+	public function delete_e4($param1)
 	{
 		$this->db->where($this->aliases['tabel_e4_field1'], $param1);
 		return $this->db->delete($this->aliases['tabel_e4']);

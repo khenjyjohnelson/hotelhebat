@@ -296,7 +296,7 @@ if (!function_exists('edit_textarea')) {
         <div class="form-group">
             <label>{$alias}</label>
             <textarea class="ckeditor form-control" name="{$input}"
-              placeholder="Masukkan {$alias}" {required} cols="30" rows="10">{$value}</textarea>
+              placeholder="Masukkan {$alias}" {required} cols="10" rows="10">{$value}</textarea>
         </div>
         HTML;
     }
