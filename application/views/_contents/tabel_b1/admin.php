@@ -195,11 +195,7 @@
       </div>
     </div>
   </div>
-<?php endforeach; ?>
 
-
-<!-- modal lihat -->
-<?php foreach ($tbl_b1 as $tl_b1): ?>
   <div id="lihat<?= $tl_b1->$tabel_b1_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

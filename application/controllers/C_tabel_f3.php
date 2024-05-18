@@ -47,7 +47,7 @@ class C_tabel_f3 extends Omnitags
 			'title' => $this->views['tabel_f3_v2_alt_title'],
 			'konten' => $this->views['tabel_f3_v2_alt'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3_f1_e4' => $this->tl_f1->get_f1_with_f3_with_e4_by_c2_field1($tabel_c2_field1)->result(),
+			'tbl_f3' => $this->tl_f1->get_f1_with_f3_with_e4_by_c2_field1($tabel_c2_field1)->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
@@ -244,13 +244,13 @@ class C_tabel_f3 extends Omnitags
 
 		if ($method->num_rows() > 0) {
 			$data2 = array(
-				'tbl_f1_f3_e4' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
+				'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
 			$this->load->view($this->v5['tabel_f1'], $data);
 		} else {
 			$data2 = array(
-				'tbl_f2_f3_e4' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
+				'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
 			$this->load->view($this->v5['tabel_f3'], $data);

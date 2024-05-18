@@ -24,7 +24,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => $this->v2_title['tabel_f1_alias'],
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f1_e4' => $this->tl_f1->get_c2_with_e4($param5)->result(),
+			'tbl_f1' => $this->tl_f1->get_c2_with_e4($param5)->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,

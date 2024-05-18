@@ -71,12 +71,10 @@
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
                   <?php if ($tl_a1->$tabel_a1_field8 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                  <?php } ?>
-                <?php endforeach ?>
-                <?php foreach ($tbl_b7 as $tl_b7): ?>
-                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?>
-                  </option>
-                <?php endforeach ?>
+                  <?php } else { ?>
+                    <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?>
+                    </option>
+                  <?php }endforeach ?>
 
               </select>
               <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>

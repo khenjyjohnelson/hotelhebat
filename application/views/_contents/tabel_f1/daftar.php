@@ -76,19 +76,19 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($tbl_f1_e4 as $tl_f1_e4): ?>
+      <?php foreach ($tbl_f1 as $tl_f1): ?>
         <tr>
           <td></td>
-          <td><?= $tl_f1_e4->$tabel_f1_field2 ?></td>
-          <td><?= $tl_f1_e4->$tabel_f1_field3 ?></td>
-          <td><?= $tl_f1_e4->$tabel_f1_field4 ?></td>
-          <td><?= $tl_f1_e4->$tabel_f1_field5 ?></td>
-          <td><?= $tl_f1_e4->$tabel_f1_field6 ?></td>
-          <td><?= $tl_f1_e4->$tabel_f1_field7 ?></td>
-          <td><?= $tl_f1_e4->$tabel_f1_field8 ?></td>
-          <td><?= $tl_f1_e4->$tabel_f1_field9 ?></td>
+          <td><?= $tl_f1->$tabel_f1_field2 ?></td>
+          <td><?= $tl_f1->$tabel_f1_field3 ?></td>
+          <td><?= $tl_f1->$tabel_f1_field4 ?></td>
+          <td><?= $tl_f1->$tabel_f1_field5 ?></td>
+          <td><?= $tl_f1->$tabel_f1_field6 ?></td>
+          <td><?= $tl_f1->$tabel_f1_field7 ?></td>
+          <td><?= $tl_f1->$tabel_f1_field8 ?></td>
+          <td><?= $tl_f1->$tabel_f1_field9 ?></td>
           <td>
-            <?= btn_lihat($tl_f1_e4->$tabel_f1_field1) ?>
+            <?= btn_lihat($tl_f1->$tabel_f1_field1) ?>
           </td>
         </tr>
       <?php endforeach; ?>
@@ -98,27 +98,27 @@
 </div>
 
 <!-- modal lihat -->
-<?php foreach ($tbl_f1_e4 as $tl_f1_e4): ?>
-  <div id="lihat<?= $tl_f1_e4->$tabel_f1_field1 ?>" class="modal fade lihat">
+<?php foreach ($tbl_f1 as $tl_f1): ?>
+  <div id="lihat<?= $tl_f1->$tabel_f1_field1 ?>" class="modal fade lihat">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header($tabel_f1_alias, $tl_f1_e4->$tabel_f1_field1) ?>
+        <?= modal_header($tabel_f1_alias, $tl_f1->$tabel_f1_field1) ?>
 
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
-              <?= tampil_text('tabel_f1_field2', $tl_f1_e4->$tabel_f1_field2) ?>
-              <?= tampil_text('tabel_f1_field4', $tl_f1_e4->$tabel_f1_field4) ?>
-              <?= tampil_text('tabel_f1_field5', $tl_f1_e4->$tabel_f1_field5) ?>
-              <?= tampil_text('tabel_f1_field6', $tl_f1_e4->$tabel_f1_field6) ?>
+              <?= tampil_text('tabel_f1_field2', $tl_f1->$tabel_f1_field2) ?>
+              <?= tampil_text('tabel_f1_field4', $tl_f1->$tabel_f1_field4) ?>
+              <?= tampil_text('tabel_f1_field5', $tl_f1->$tabel_f1_field5) ?>
+              <?= tampil_text('tabel_f1_field6', $tl_f1->$tabel_f1_field6) ?>
 
             </div>
 
             <div class="col-md-6">
-              <?= tampil_text('tabel_f1_field7', $tl_f1_e4->$tabel_f1_field7) ?>
-              <?= tampil_text('tabel_e4_field2', $tl_f1_e4->$tabel_e4_field2) ?>
-              <?= tampil_text('tabel_f1_field11', $tl_f1_e4->$tabel_f1_field11) ?>
-              <?= tampil_text('tabel_f1_field12', $tl_f1_e4->$tabel_f1_field12) ?>
+              <?= tampil_text('tabel_f1_field7', $tl_f1->$tabel_f1_field7) ?>
+              <?= tampil_text('tabel_e4_field2', $tl_f1->$tabel_e4_field2) ?>
+              <?= tampil_text('tabel_f1_field11', $tl_f1->$tabel_f1_field11) ?>
+              <?= tampil_text('tabel_f1_field12', $tl_f1->$tabel_f1_field12) ?>
 
             </div>
           </div>

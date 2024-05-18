@@ -19,7 +19,7 @@
     <?php endforeach; ?>
 
     <!-- menampilkan data pesanan sebagai ps -->
-    <?php foreach ($tbl_f2_f3_e4 as $tl_f2_f3_e4): ?>
+    <?php foreach ($tbl_f3 as $tl_f3): ?>
       <!-- menampilkan data pemesan -->
       <table class="table">
         <thead class="thead">
@@ -32,10 +32,10 @@
         </thead>
         <tbody>
           <tr>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f2_field2 ?></td>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f2_field3 ?></a>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f2_field4 ?></td>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f2_field5 ?></td>
+            <td width=""><?= $tl_f3->$tabel_f2_field2 ?></td>
+            <td width=""><?= $tl_f3->$tabel_f2_field3 ?></a>
+            <td width=""><?= $tl_f3->$tabel_f2_field4 ?></td>
+            <td width=""><?= $tl_f3->$tabel_f2_field5 ?></td>
             </td>
           </tr>
         </tbody>
@@ -53,10 +53,10 @@
         </thead>
         <tbody>
           <tr>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f2_field6 ?></td>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_e4_field2 ?></a>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f2_field10 ?></td>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f2_field11 ?></td>
+            <td width=""><?= $tl_f3->$tabel_f2_field6 ?></td>
+            <td width=""><?= $tl_f3->$tabel_e4_field2 ?></a>
+            <td width=""><?= $tl_f3->$tabel_f2_field10 ?></td>
+            <td width=""><?= $tl_f3->$tabel_f2_field11 ?></td>
             </td>
           </tr>
         </tbody>
@@ -71,7 +71,7 @@
         </thead>
         <tbody>
           <tr>
-            <td width="">Rp <?= number_format($tl_f2_f3_e4->$tabel_f2_field9, '2', ',', '.') ?></td>
+            <td width="">Rp <?= number_format($tl_f3->$tabel_f2_field9, '2', ',', '.') ?></td>
             </td>
           </tr>
         </tbody>
@@ -91,10 +91,10 @@
         </thead>
         <tbody>
           <tr>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f3_field1 ?></td>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f3_field5 ?></a>
-            <td width="">Rp <?= number_format($tl_f2_f3_e4->$tabel_f3_field6, '2', ',', '.') ?></td>
-            <td width=""><?= $tl_f2_f3_e4->$tabel_f3_field7 ?></td>
+            <td width=""><?= $tl_f3->$tabel_f3_field1 ?></td>
+            <td width=""><?= $tl_f3->$tabel_f3_field5 ?></a>
+            <td width="">Rp <?= number_format($tl_f3->$tabel_f3_field6, '2', ',', '.') ?></td>
+            <td width=""><?= $tl_f3->$tabel_f3_field7 ?></td>
             </td>
           </tr>
         </tbody>

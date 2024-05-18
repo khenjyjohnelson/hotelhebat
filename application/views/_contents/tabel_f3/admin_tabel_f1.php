@@ -63,8 +63,6 @@
 Jadi tidak perlu menambahkan foreach hitory lagi -->
 <?php foreach ($tbl_f3 as $tl_f3) : ?>
   <div id="lihat<?= $tl_f3->$tabel_f3_field1 ?>" class="modal fade lihat" role="dialog">
-    <?php foreach ($tbl_e4 as $tl_e4) : ?>
-      <?php if ($tl_e4->$tabel_e4_field1 === $tl_f3->$tabel_e4_field1) { ?>
         <div class="modal-dialog">
           <div class="modal-content">
             <?= modal_header($tabel_f3_alias, $tl_f3->$tabel_f3_field1) ?>
@@ -97,7 +95,5 @@ Jadi tidak perlu menambahkan foreach hitory lagi -->
             </div>
           </div>
         </div>
-      <?php } ?>
-    <?php endforeach ?>
   </div>
 <?php endforeach ?>
