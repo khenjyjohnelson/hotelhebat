@@ -6,15 +6,15 @@
     break;
 
   default:
-    redirect(site_url('welcome/no_level'));
+    redirect(site_url($this->language_code . '/' . 'welcome/no_level'));
 }
 ?>
 
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
+  <div class="col-md-9 d-flex align-items-center">
     <h1><?= $title ?><?= $phase ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
@@ -32,12 +32,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_c2_alias ?>
+              <?= lang('tabel_c2_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_c2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_c2 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_c2 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -46,12 +46,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_c1_alias ?>
+              <?= lang('tabel_c1_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_c1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_c1 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_c1 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -60,12 +60,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_d3_alias ?>
+              <?= lang('tabel_d3_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_c1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_d3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_d3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -91,12 +91,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_e4_alias ?>
+              <?= lang('tabel_e4_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e4 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_e4 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -105,12 +105,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_e3_alias ?>
+              <?= lang('tabel_e3_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_e3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -119,12 +119,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_e2_alias ?>
+              <?= lang('tabel_e2_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_e2 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e2 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -133,12 +133,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_e1_alias ?>
+              <?= lang('tabel_e1_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_e1 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e1 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -149,12 +149,12 @@
         <div class="card text-white bg-danger">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_e3_alias ?>
+              <?= lang('tabel_e3_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_e3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -163,12 +163,12 @@
         <div class="card text-white bg-primary">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_f2_alias ?>
+              <?= lang('tabel_f2_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_f2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_f2 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_f2 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -179,12 +179,12 @@
         <div class="card text-white bg-success">
           <div class="card-body">
             <h5 class="card-title">
-              <?= $tabel_f3_alias ?>
+              <?= lang('tabel_f3_alias') ?>
             </h5>
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_f3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($tabel_f3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_f3 . '/admin') ?>">Detail >></a>
           </div>
         </div>
       </div>
@@ -231,22 +231,22 @@
           <thead></thead>
           <tbody>
             <tr>
-              <td class="table-secondary table-active"><?= $tabel_a1_field2_alias ?></td>
+              <td class="table-secondary table-active"><?= lang('tabel_a1_field2_alias') ?></td>
               <td class="table-light"><?= $tl_a1->$tabel_a1_field2 ?></td>
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel_a1_field3_alias ?></td>
+              <td class="table-secondary table-active"><?= lang('tabel_a1_field3_alias') ?></td>
               <td class="table-light"><?= $tl_a1->$tabel_a1_field3 ?></td>
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel_a1_field4_alias ?></td>
+              <td class="table-secondary table-active"><?= lang('tabel_a1_field4_alias') ?></td>
               <td class="table-light"><?= $tl_a1->$tabel_a1_field4 ?></td>
             </tr>
 
             <tr>
-              <td class="table-secondary table-active"><?= $tabel_a1_field5_alias ?></td>
+              <td class="table-secondary table-active"><?= lang('tabel_a1_field5_alias') ?></td>
               <td class="table-light"><?= $tl_a1->$tabel_a1_field5 ?></td>
             </tr>
 

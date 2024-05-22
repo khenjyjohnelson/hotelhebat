@@ -51,7 +51,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
-      <a class="navbar-brand font-weight-bold" href="<?= site_url('home') ?>">
+      <a class="navbar-brand font-weight-bold" href="<?= site_url($language . '/' . 'home') ?>">
         <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field4; ?>" height="50">
       </a>
 

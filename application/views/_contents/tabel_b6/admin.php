@@ -4,17 +4,17 @@
     break;
 
   default:
-    redirect(site_url('welcome/no_level'));
+    redirect(site_url($this->language_code . '/' . 'welcome/no_level'));
 }
 ?>
 
 
 
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <div class="col-md-9 d-flex align-items-center">
+    <h1><?= headings('title', 'phase') ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
@@ -34,7 +34,7 @@
 <table class="mb-4">
 
   <!-- method get supaya nilai dari filter bisa tampil nanti -->
-  <form action="<?= site_url($tabel_b6 . '/filter') ?>" method="get">
+  <form action="<?= site_url($language . '/' . $tabel_b6 . '/filter') ?>" method="get">
     <tr>
 
       <td class="pr-2">
@@ -65,15 +65,15 @@
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
-        <th>No</th>
-        <th><?= $tabel_b6_field1_alias ?></th>
-        <th><?= $tabel_b6_field2_alias ?></th>
-        <th><?= $tabel_b6_field3_alias ?></th>
-        <th><?= $tabel_b6_field4_alias ?></th>
-        <th><?= $tabel_b6_field5_alias ?></th>
-        <th><?= $tabel_b6_field6_alias ?></th>
-        <th><?= $tabel_b6_field7_alias ?></th>
-        <th>Aksi</th>
+        <th><?= lang('no') ?></th>
+        <th><?= lang('tabel_b6_field1_alias') ?></th>
+        <th><?= lang('tabel_b6_field2_alias') ?></th>
+        <th><?= lang('tabel_b6_field3_alias') ?></th>
+        <th><?= lang('tabel_b6_field4_alias') ?></th>
+        <th><?= lang('tabel_b6_field5_alias') ?></th>
+        <th><?= lang('tabel_b6_field6_alias') ?></th>
+        <th><?= lang('tabel_b6_field7_alias') ?></th>
+        <th><?= lang('action') ?></th>
       </tr>
     </thead>
 
@@ -117,9 +117,9 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header('Tambah ' . $tabel_b6_alias, '') ?>
+      <?= modal_header(lang('add') . lang('tabel_b6_alias'), '') ?>
 
-      <form action="<?= site_url($tabel_b6 . '/tambah') ?>" enctype="multipart/form-data" method="post">
+      <form action="<?= site_url($language . '/' . $tabel_b6 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
           <?= add_text('tabel_b6_field2', 'required') ?>
           <?= add_text('tabel_b6_field3', 'required') ?>
@@ -155,9 +155,9 @@
   <div id="ubah<?= $tl_b6->$tabel_b6_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Edit ' . $tabel_b6_alias, $tl_b6->$tabel_b6_field1) ?>
+        <?= modal_header(lang('update_data') . lang('tabel_b6_alias'), $tl_b6->$tabel_b6_field1) ?>
 
-        <form action="<?= site_url($tabel_b6 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b6 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b6_field1', $tl_b6->$tabel_b6_field1, 'required') ?>
@@ -197,7 +197,7 @@
   <div id="lihat<?= $tl_b6->$tabel_b6_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header($tabel_b6_alias, $tl_b6->$tabel_b6_field1) ?>
+        <?= modal_header(lang('tabel_b6_alias'), $tl_b6->$tabel_b6_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

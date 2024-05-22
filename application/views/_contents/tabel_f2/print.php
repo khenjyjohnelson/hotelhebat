@@ -5,7 +5,7 @@
     break;
 
   default:
-    redirect(site_url('welcome/no_level'));
+    redirect(site_url($this->language_code . '/' . 'welcome/no_level'));
 }
 ?>
 
@@ -22,7 +22,7 @@
   <!-- border garis putus-putus -->
   <div class="container" style="border-style: dashed;">
     <?php foreach ($tbl_a1 as $tl_a1): ?>
-      <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
+      <h1 class="text-center"><?= headings('title', 'phase') ?></h1>
       <p class="text-center"><?= $tl_a1->$tabel_a1_field2; ?> | <?= $tl_a1->$tabel_a1_field5; ?> |
         <?= $tl_a1->$tabel_a1_field4; ?>
       </p>
@@ -35,10 +35,10 @@
       <table class="table">
         <thead class="thead-">
           <tr>
-            <th><?= $tabel_f2_field1_alias ?></th>
-            <th><?= $tabel_f2_field2_alias ?></th>
-            <th><?= $tabel_f2_field3_alias ?></th>
-            <th><?= $tabel_f2_field4_alias ?></th>
+            <th><?= lang('tabel_f2_field1_alias') ?></th>
+            <th><?= lang('tabel_f2_field2_alias') ?></th>
+            <th><?= lang('tabel_f2_field3_alias') ?></th>
+            <th><?= lang('tabel_f2_field4_alias') ?></th>
           </tr>
         </thead>
         <tbody>
@@ -56,7 +56,7 @@
       <table class="table">
         <thead class="thead">
           <tr>
-            <th><?= $tabel_f2_field5_alias ?></th>
+            <th><?= lang('tabel_f2_field5_alias') ?></th>
           </tr>
         </thead>
         <tbody>

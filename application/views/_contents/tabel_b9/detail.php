@@ -6,17 +6,17 @@
     break;
 
   default:
-    redirect(site_url('welcome/no_level'));
+    redirect(site_url($this->language_code . '/' . 'welcome/no_level'));
 }
 ?>
 
 
 
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <div class="col-md-9 d-flex align-items-center">
+    <h1><?= headings('title', 'phase') ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>

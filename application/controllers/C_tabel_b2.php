@@ -19,7 +19,7 @@ class C_tabel_b2 extends Omnitags
 		$param1 = $this->v_get['tabel_b2_field7'];
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_b2_alias'],
+			'title' => 'tabel_b2_alias_v3',
 			'konten' => $this->v3['tabel_b2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
 			'tbl_b2' => $this->tl_b2->get_all_b2()->result(),
@@ -40,7 +40,7 @@ class C_tabel_b2 extends Omnitags
 		$param1 = $this->v_get['tabel_b2_field7'];
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_b2_alias'],
+			'title' => 'tabel_b2_alias_v3',
 			'konten' => $this->v3['tabel_b2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
 			'tbl_b2' => $this->tl_b2->filter($param1)->result(),
@@ -91,7 +91,7 @@ class C_tabel_b2 extends Omnitags
 
 		$notif = $this->handle_1b($aksi, 'tabel_b2');
 
-		redirect(site_url($this->aliases['tabel_b2'] . '/admin'));
+		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_b2'] . '/admin'));
 	}
 
 	public function update() //update tidak diperlukan di sini
@@ -188,7 +188,7 @@ class C_tabel_b2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_b2_alias'],
+			'title' => 'tabel_b2_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
 			'tbl_b2' => $this->tl_b2->get_all_b2()->result(),
 		);

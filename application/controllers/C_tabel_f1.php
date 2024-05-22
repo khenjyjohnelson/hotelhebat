@@ -21,7 +21,7 @@ class C_tabel_f1 extends Omnitags
 		$param5 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 
 		$data1 = array(
-			'title' => $this->v2_title['tabel_f1_alias'],
+			'title' => 'tabel_f1_alias_v2',
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->get_c2_with_e4($param5)->result(),
@@ -52,7 +52,7 @@ class C_tabel_f1 extends Omnitags
 		$param5 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 
 		$data1 = array(
-			'title' => $this->v2_title['tabel_f1_alias'],
+			'title' => 'tabel_f1_alias_v2',
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->filter_c1_with_e4($param1, $param2, $param3, $param4, $param5)->result(),
@@ -81,7 +81,7 @@ class C_tabel_f1 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel_f1_field12'];
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_f1_alias'],
+			'title' => 'tabel_f1_alias_v3',
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
@@ -104,7 +104,7 @@ class C_tabel_f1 extends Omnitags
 
 	// 	$aksi = $this->tl_f1->delete_f1($tabel_f1_field1);
 	// 	redirect($_SERVER['HTTP_REFERER']); 
-	// redirect(site_url($this->aliases['tabel_f1/admin'));
+	// redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f1/admin'));
 	// }
 
 	// Cetak semua data
@@ -113,7 +113,7 @@ class C_tabel_f1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_f1_alias'],
+			'title' => 'tabel_f1_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
 		);
@@ -134,7 +134,7 @@ class C_tabel_f1 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel_f1_field12'];
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_f1_alias'],
+			'title' => 'tabel_f1_alias_v3',
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->search_with_e4_between_dates($param1, $param2, $param3, $param4)->result(),

@@ -4,17 +4,17 @@
     break;
 
   default:
-    redirect(site_url('welcome/no_level'));
+    redirect(site_url($this->language_code . '/' . 'welcome/no_level'));
 }
 ?>
 
 
 
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <div class="col-md-9 d-flex align-items-center">
+    <h1><?= headings('title', 'phase') ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
@@ -29,13 +29,13 @@
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
-        <th>No</th>
-        <th><?= $tabel_b7_field1_alias ?></th>
-        <th><?= $tabel_b7_field2_alias ?></th>
-        <th><?= $tabel_b7_field3_alias ?></th>
-        <th><?= $tabel_b7_field4_alias ?></th>
-        <th><?= $tabel_b7_field5_alias ?></th>
-        <th>Aksi</th>
+        <th><?= lang('no') ?></th>
+        <th><?= lang('tabel_b7_field1_alias') ?></th>
+        <th><?= lang('tabel_b7_field2_alias') ?></th>
+        <th><?= lang('tabel_b7_field3_alias') ?></th>
+        <th><?= lang('tabel_b7_field4_alias') ?></th>
+        <th><?= lang('tabel_b7_field5_alias') ?></th>
+        <th><?= lang('action') ?></th>
       </tr>
     </thead>
 
@@ -61,7 +61,7 @@
             <?php if ($tl_b7->$tabel_b7_field2 != $database) { ?>
               <a class="btn btn-light text-danger"
                 onclick="return confirm('Tindakan anda akan menghapus hal-hal berikut:\n<?= $tabel_b7_alias ?>\n<?= $tabel_b1_alias ?>\n<?= $tabel_b2_alias ?>\n<?= $tabel_b5_alias ?>\n<?= $tabel_b6_alias ?>\nHapus data?')"
-                href="<?= site_url($tabel_b7 . '/hapus/' . $tl_b7->$tabel_b7_field1) ?>">
+                href="<?= site_url($language . '/' . $tabel_b7 . '/hapus/' . $tl_b7->$tabel_b7_field1) ?>">
                 <i class="fas fa-trash"></i></a>
             <?php } ?>
           </td>
@@ -77,9 +77,9 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header('Tambah ' . $tabel_b7_alias, '') ?>
+      <?= modal_header(lang('add') . lang('tabel_b7_alias'), '') ?>
       
-      <form action="<?= site_url($tabel_b7 . '/tambah') ?>" enctype="multipart/form-data" method="post">
+      <form action="<?= site_url($language . '/' . $tabel_b7 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
           <?= add_text('tabel_b7_field2', 'required') ?>
           <?= add_textarea('tabel_b7_field5', 'required') ?>
@@ -103,8 +103,8 @@
   <div id="ubah<?= $tl_b7->$tabel_b7_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Edit ' . $tabel_b7_alias, $tl_b7->$tabel_b7_field1) ?>
-        <form action="<?= site_url($tabel_b7 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <?= modal_header(lang('update_data') . lang('tabel_b7_alias'), $tl_b7->$tabel_b7_field1) ?>
+        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
@@ -128,9 +128,9 @@
   <div id="<?= $tabel_b7_field3 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field3 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Edit '. $tabel_b7_field3_alias, $tl_b7->$tabel_b7_field1) ?> 
+        <?= modal_header(lang('update_data'). lang('tabel_b7_field3_alias'), $tl_b7->$tabel_b7_field1) ?> 
         
-        <form action="<?= site_url($tabel_b7 . '/update_favicon') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_favicon') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
@@ -144,7 +144,7 @@
           </p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel_b7_field3 ?>?')" type="submit">Simpan
+            <button class="btn btn-success" onclick="return confirm(<?= lang('update_data') . lang('tabel_b7_field3') . '?' ?>)" type="submit">Simpan
               Perubahan</button>
           </div>
         </form>
@@ -157,9 +157,9 @@
   <div id="<?= $tabel_b7_field4 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Edit ' . $tabel_b7_field4_alias, $tl_b7->$tabel_b7_field1) ?>
+        <?= modal_header(lang('update_data') . lang('tabel_b7_field4_alias'), $tl_b7->$tabel_b7_field1) ?>
 
-        <form action="<?= site_url($tabel_b7 . '/update_logo') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_logo') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
@@ -173,7 +173,7 @@
           </p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel_b7_field4 ?>?')" type="submit">Simpan
+            <button class="btn btn-success" onclick="return confirm(<?= lang('update_data') . lang('tabel_b7_field4') . '?' ?>)" type="submit">Simpan
               Perubahan</button>
           </div>
         </form>
@@ -186,9 +186,9 @@
   <div id="<?= $tabel_b7_field5 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field5 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Edit ' . $tabel_b7_field5_alias, $tl_b7->$tabel_b7_field1) ?>
+        <?= modal_header(lang('update_data') . lang('tabel_b7_field5_alias'), $tl_b7->$tabel_b7_field1) ?>
 
-        <form action="<?= site_url($tabel_b7 . '/update_foto') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_foto') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
@@ -202,7 +202,7 @@
           </p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel_b7_field5 ?>?')" type="submit">Simpan
+            <button class="btn btn-success" onclick="return confirm(<?= lang('update_data') . lang('tabel_b7_field5') . '?' ?>)" type="submit">Simpan
               Perubahan</button>
           </div>
         </form>
@@ -214,7 +214,7 @@
   <div id="lihat<?= $tl_b7->$tabel_b7_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header($tabel_b7_alias, $tl_b7->$tabel_b7_field1) ?>
+        <?= modal_header(lang('tabel_b7_alias'), $tl_b7->$tabel_b7_field1) ?>
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">

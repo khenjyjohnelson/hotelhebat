@@ -8,14 +8,6 @@ class M_tabel_c2 extends CI_Model
 		$this->db->order_by($this->aliases['tabel_c2_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_c2']);
 	}
-
-	public function get_c2_field1($param1)
-	{
-		$this->db->where($this->aliases['tabel_c2_field1'], $param1);
-		$this->db->order_by($this->aliases['tabel_c2_field1'], 'DESC');
-		return $this->db->get($this->aliases['tabel_c2']);
-	}
-
 	public function get_c2_by_c2_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_c2_field1'], $param1);

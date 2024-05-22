@@ -1,8 +1,8 @@
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <div class="col-md-9 d-flex align-items-center">
+    <h1><?= headings('title', 'phase') ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
@@ -14,13 +14,13 @@
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
-        <th>No</th>
-        <th><?= $tabel_f3_field1_alias ?></th>
-        <th><?= $tabel_f3_field4_alias ?></th>
-        <th><?= $tabel_f3_field5_alias ?></th>
-        <th><?= $tabel_f3_field6_alias ?></th>
-        <th><?= $tabel_f3_field7_alias ?></th>
-        <th>Aksi</th>
+        <th><?= lang('no') ?></th>
+        <th><?= lang('tabel_f3_field1_alias') ?></th>
+        <th><?= lang('tabel_f3_field4_alias') ?></th>
+        <th><?= lang('tabel_f3_field5_alias') ?></th>
+        <th><?= lang('tabel_f3_field6_alias') ?></th>
+        <th><?= lang('tabel_f3_field7_alias') ?></th>
+        <th><?= lang('action') ?></th>
       </tr>
     </thead>
 
@@ -52,7 +52,7 @@ Jadi tidak perlu menambahkan foreach pesanan lagi -->
   <div id="lihat<?= $tl_f3->$tabel_f3_field1 ?>" class="modal fade lihat">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header($tabel_f3_alias, $tl_f3->$tabel_f3_field1) ?>
+        <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
 
         <div class="modal-body">
           <div class="row">

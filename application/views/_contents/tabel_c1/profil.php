@@ -1,10 +1,10 @@
 
 
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <div class="col-md-9 d-flex align-items-center">
+    <h1><?= headings('title', 'phase') ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
@@ -19,7 +19,7 @@
       <?= btn_field($tabel_c1_field1 . $tl_c1->$tabel_c1_field1, '<i class="fas fa-edit"></i> Ubah ' . $tabel_c1_field4_alias) ?>
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
-      <form action="<?= site_url($tabel_c1 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= site_url($language . '/' . $tabel_c1 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
         <?= input_hidden('tabel_c1_field1', $tl_c1->$tabel_c1_field1, 'required') ?>
         <?= edit_text('tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>  
         <?= edit_text('tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>  
@@ -47,9 +47,9 @@
   <div id="password<?= $tl_c1->$tabel_c1_field1 ?>" class="modal fade <?= $tabel_c1_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Ubah ' . $tabel_c1_field4_alias . ' Anda', '') ?>
+        <?= modal_header(lang('update_data') . $tabel_c1_field4_alias . ' Anda', '') ?>
         
-        <form action="<?= site_url($tabel_c1 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_c1 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="input-group">
@@ -100,7 +100,7 @@
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_' . $tabel_c1_field4) ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel_c1_field4_alias ?>?')"
+            <button class="btn btn-success" onclick="return confirm(<?= lang('update_data') . lang('tabel_c1_field4_alias') . '?' ?>)"
               type="submit">Simpan Perubahan</button>
           </div>
         </form>

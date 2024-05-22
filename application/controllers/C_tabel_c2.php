@@ -13,7 +13,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_c2_alias'],
+			'title' => 'tabel_c2_alias_v3',
 			'konten' => $this->v3['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
@@ -60,7 +60,7 @@ class C_tabel_c2 extends Omnitags
 					redirect($_SERVER['HTTP_REFERER']);
 				} else {
 
-					redirect(site_url($this->aliases['tabel_c2'] . '/login'));
+					redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 				}
 
 				// jika input konfirm tidak sama dengan input password
@@ -117,7 +117,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_c2_alias'],
+			'title' => 'tabel_c2_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
@@ -134,7 +134,7 @@ class C_tabel_c2 extends Omnitags
 
 		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
-			'title' => $this->v6_title['tabel_c2_alias'],
+			'title' => 'tabel_c2_alias_v6',
 			'konten' => $this->v6['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result(),
@@ -187,15 +187,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
-		if ($aksi) {
-
-			$this->session->set_flashdata($this->views['flash1'], 'Profil berhasil diubah!');
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		} else {
-
-			$this->session->set_flashdata($this->views['flash1'], 'Profil gagal diubah!');
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_2b($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		// mengambil data profil yang baru dirubah
 		$tabel_c2 = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
@@ -358,7 +350,7 @@ class C_tabel_c2 extends Omnitags
 				$notif = $this->handle_4b($this->session->userdata($this->aliases['tabel_c2_field6']), $this->session->userdata($this->aliases['tabel_c2_field1']));
 
 
-				redirect(site_url('home'));
+				redirect(site_url($this->language_code . '/' . 'home'));
 
 				// jika password salah
 			} else {
@@ -377,14 +369,14 @@ class C_tabel_c2 extends Omnitags
 				// Kalau tidak bisa merusak experience dari user
 
 				$this->session->set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_c2_field4_alias']);
-				redirect(site_url($this->aliases['tabel_c2'] . '/login'));
+				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 			}
 
 			// jika jumlah data lebih dari 0
 		} else {
 
 			$this->session->set_flashdata($this->views['flash1'], $this->flash_msg4['tabel_c2_field3']);
-			redirect(site_url($this->aliases['tabel_c2'] . '/login'));
+			redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		}
 
 		// // mencari apakah jumlah data kurang dari 0
@@ -407,14 +399,14 @@ class C_tabel_c2 extends Omnitags
 		// 		$this->session->set_userdata('level', $level);
 
 		// 		redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url('home'));
+		redirect(site_url($this->language_code . '/' . 'home'));
 
 		// 		// jika password salah
 		// 	} else {
 
 		// 		$this->session->set_flashdata($this->views['flash1'], 'Password Salah!');
 		// 		redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->aliases['tabel_c2'] . '/login'));
+		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		// 	}
 
 		// 	// jika jumlah data lebih dari 0
@@ -422,7 +414,7 @@ class C_tabel_c2 extends Omnitags
 
 		// 	$this->session->set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
 		// 	redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->aliases['tabel_c2'] . '/login'));
+		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		// }
 
 
@@ -434,6 +426,6 @@ class C_tabel_c2 extends Omnitags
 
 		// menghapus session
 		session_destroy();
-		redirect(site_url('home'));
+		redirect(site_url($this->language_code . '/' . 'home'));
 	}
 }

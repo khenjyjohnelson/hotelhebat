@@ -21,7 +21,7 @@ class C_tabel_b9 extends Omnitags
 
 		if ($aksi) {
 			$data1 = array(
-				'title' => $this->v8_title['tabel_b9_alias'],
+				'title' => 'tabel_b9_alias_v8',
 				'konten' => $this->v8['tabel_b9'],
 				'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 				'tbl_b9' => $this->tl_b9->get_b9_by_b9_field1($tabel_b9_field1)->result(),
@@ -59,7 +59,7 @@ class C_tabel_b9 extends Omnitags
 		$tabel_b9_field2 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 
 		$data1 = array(
-			'title' => $this->v2_title['tabel_b9_alias'],
+			'title' => 'tabel_b9_alias_v2',
 			'konten' => $this->v2['tabel_b9'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->get_b9_with_b8_by_b9_field2($tabel_b9_field2)->result(),
@@ -76,7 +76,7 @@ class C_tabel_b9 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_b9_alias'],
+			'title' => 'tabel_b9_alias_v3',
 			'konten' => $this->v3['tabel_b9'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->get_all_b9()->result(),
@@ -138,7 +138,7 @@ class C_tabel_b9 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_b9_alias'],
+			'title' => 'tabel_b9_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->get_all_b9()->result(),
 		);

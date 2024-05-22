@@ -9,7 +9,9 @@ if (!function_exists('tampil_text')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
+        $alias = lang($field . '_alias');
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
@@ -29,8 +31,10 @@ if (!function_exists('tampil_file')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
+        $alias = lang($field . '_alias');
         
+        $placeholder = lang('input');
+
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
@@ -50,14 +54,16 @@ if (!function_exists('tampil_icon')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <textarea id="editor1" class="form-control" name="{$input}" $required
-              placeholder="Masukkan {$alias}" {$required} cols="30" rows="10"></textarea>
+              placeholder="{$placeholder} {$alias}" {$required} cols="30" rows="10"></textarea>
         </div>
         HTML;
     }

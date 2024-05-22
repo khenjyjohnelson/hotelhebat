@@ -27,7 +27,7 @@ class C_tabel_f3 extends Omnitags
 
 		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
-			'title' => $this->v2_title['tabel_f3_alias'],
+			'title' => 'tabel_f3_alias_v2',
 			'konten' => $this->v2['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4_by_c2_field1($tabel_c2_field1)->result(),
@@ -44,7 +44,7 @@ class C_tabel_f3 extends Omnitags
 
 		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
-			'title' => $this->views['tabel_f3_v2_alt_title'],
+			'title' => 'tabel_f3_v2_alt_title',
 			'konten' => $this->views['tabel_f3_v2_alt'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f1->get_f1_with_f3_with_e4_by_c2_field1($tabel_c2_field1)->result(),
@@ -65,7 +65,7 @@ class C_tabel_f3 extends Omnitags
 		// $param2 = $this->v_filter2_get['tabel_f3_field7'];
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_f3_alias'],
+			'title' => 'tabel_f3_alias_v3',
 			'konten' => $this->v3['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4()->result(),
@@ -136,7 +136,7 @@ class C_tabel_f3 extends Omnitags
 			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
-		redirect(site_url($this->aliases['tabel_f3'] . '/konfirmasi'));
+		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f3'] . '/konfirmasi'));
 	}
 
 
@@ -184,7 +184,7 @@ class C_tabel_f3 extends Omnitags
 		$tabel_f3_field7_filter2 = $this->v_filter2_get['tabel_f3_field7'];
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_f3_alias'],
+			'title' => 'tabel_f3_alias_v3',
 			'konten' => $this->v3['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->filter($tabel_f3_field7_filter1, $tabel_f3_field7_filter2)->result(),
@@ -207,7 +207,7 @@ class C_tabel_f3 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_f3_alias'],
+			'title' => 'tabel_f3_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->get_all_f3()->result(),
 			'tbl_e4' => $this->tl_e4->get_all_f3()->result(),
@@ -228,7 +228,7 @@ class C_tabel_f3 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v5_title['tabel_f3'],
+			'title' => 'tabel_f3_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 		);
 
@@ -264,7 +264,7 @@ class C_tabel_f3 extends Omnitags
 
 		$tabel_f3_field3 = $this->session->tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
 		$data1 = array(
-			'title' => $this->v7_title['tabel_f3_alias'],
+			'title' => 'tabel_f3_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan

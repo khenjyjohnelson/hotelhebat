@@ -3,20 +3,20 @@
         case $tabel_c2_field6_value1:
             ?>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('home') ?>">Home</a>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . 'home') ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel_e4) ?>">
-                    <?= $tabel_e4_alias ?>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_e4) ?>">
+                    <?= lang('tabel_e4_alias') ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel_e2) ?>">
-                    <?= $tabel_e2_alias ?>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_e2) ?>">
+                    <?= lang('tabel_e2_alias') ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($tabel_c2 . '/login') ?>">Login</a>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>">Login</a>
             </li>
             <?php break;
         case $tabel_c2_field6_value5:
@@ -31,7 +31,7 @@
                     ?>
 
                     <li class="nav-item">
-                        <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('dashboard') ?>">Dashboard</a>
+                        <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . 'dashboard') ?>">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -42,65 +42,65 @@
                                     case $tabel_c2_field6_value2:
                                         ?>
                                         <h6 class="dropdown-header">
-                                            <?= $tabel_f3_alias ?>
+                                            <?= lang('tabel_f3_alias') ?>
                                         </h6>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_f3 . '/admin') ?>">
-                                            <?= $tabel_f3_alias ?> Aktif
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/admin') ?>">
+                                            <?= lang('tabel_f3_alias') ?> Aktif
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_f3 . '/history') ?>">
-                                            <?= $tabel_f3_alias ?> History
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/history') ?>">
+                                            <?= lang('tabel_f3_alias') ?> History
                                         </a>
                                         <?php break;
 
                                     case $tabel_c2_field6_value3:
                                         ?>
                                         <h6 class="dropdown-header">Data</h6>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_e4 . '/admin') ?>">
-                                            <?= $tabel_e4_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>">
+                                            <?= lang('tabel_e4_alias') ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_e1 . '/admin') ?>">
-                                            <?= $tabel_e1_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e1 . '/admin') ?>">
+                                            <?= lang('tabel_e1_alias') ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_e2 . '/admin') ?>">
-                                            <?= $tabel_e2_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e2 . '/admin') ?>">
+                                            <?= lang('tabel_e2_alias') ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header">Operasional</h6>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_c1 . '/admin') ?>">
-                                            <?= $tabel_c1_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c1 . '/admin') ?>">
+                                            <?= lang('tabel_c1_alias') ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_e3 . '/admin') ?>">
-                                            <?= $tabel_e3_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">
+                                            <?= lang('tabel_e3_alias') ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_c2 . '/admin') ?>">
-                                            <?= $tabel_c2_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/admin') ?>">
+                                            <?= lang('tabel_c2_alias') ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_a1 . '/profil') ?>">
-                                            <?= $tabel_a1_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_a1 . '/profil') ?>">
+                                            <?= lang('tabel_a1_alias') ?>
                                         </a>
                                         <?php break;
                                     case $tabel_c2_field6_value4:
                                         ?>
 
                                         <h6 class="dropdown-header">Kelola</h6>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_e3 . '/admin') ?>">
-                                            <?= $tabel_e3_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">
+                                            <?= lang('tabel_e3_alias') ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_f2 . '/admin') ?>">
-                                            <?= $tabel_f2_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f2 . '/admin') ?>">
+                                            <?= lang('tabel_f2_alias') ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_f1 . '/admin') ?>">
-                                            <?= $tabel_f1_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f1 . '/admin') ?>">
+                                            <?= lang('tabel_f1_alias') ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header">Operasional</h6>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_f4 . '/admin') ?>">
-                                            <?= $tabel_f4_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f4 . '/admin') ?>">
+                                            <?= lang('tabel_f4_alias') ?>
                                         </a>
                                         <h6 class="dropdown-header">Data</h6>
-                                        <a class="dropdown-item" href="<?= site_url($tabel_e4 . '/admin') ?>">
-                                            <?= $tabel_e4_alias ?>
+                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>">
+                                            <?= lang('tabel_e4_alias') ?>
                                         </a>
 
                                         <?php break;
@@ -130,7 +130,7 @@
                         <span><?= $notif_count ?> New Notifications</span>
                         <div>
                             <span class="px-3"></span> <!-- Adding space between buttons -->
-                            <a href="<?= site_url($tabel_b9 . '/update') ?>" class="btn btn-link">
+                            <a href="<?= site_url($language . '/' . $tabel_b9 . '/update') ?>" class="btn btn-link">
                                 <i class="far fa-check-circle"></i>
                             </a>
                             <!-- <a class="btn btn-link">
@@ -147,7 +147,7 @@
                                 if ($nf->$tabel_b9_field2 == $this->session->userdata($tabel_c2_field1)) {
                                     if ($nf->$tabel_b9_field6 == NULL) { ?>
 
-                                        <a href="<?= site_url($tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>"
+                                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>"
                                             class="list-group-item bg-light">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-2">
@@ -165,7 +165,7 @@
                                         </a>
 
                                     <?php } else { ?>
-                                        <a href="<?= site_url($tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>" class="list-group-item">
+                                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>" class="list-group-item">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-2">
                                                     <?= $nf->$tabel_b8_field4 ?>
@@ -199,7 +199,7 @@
                         } ?>
                     </div>
                     <div class="dropdown-header">
-                        <a href="<?= site_url($tabel_b9 . '/daftar') ?>" class="text-muted">Show all notifications</a>
+                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/daftar') ?>" class="text-muted">Show all notifications</a>
                     </div>
                 </div>
             </li>
@@ -242,28 +242,28 @@
                             case $tabel_c2_field6_value5:
                                 ?>
                                 <h6 class="dropdown-header">Jelajahi</h6>
-                                <a class="dropdown-item" href="<?= site_url('home') ?>">Pesan Sekarang</a>
-                                <a class="dropdown-item" href="<?= site_url($tabel_e4) ?>">
-                                    <?= $tabel_e4_alias ?>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . 'home') ?>">Pesan Sekarang</a>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4) ?>">
+                                    <?= lang('tabel_e4_alias') ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url($tabel_e2) ?>">
-                                    <?= $tabel_e2_alias ?>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e2) ?>">
+                                    <?= lang('tabel_e2_alias') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <h6 class="dropdown-header">Reservasi</h6>
-                                <a class="dropdown-item" href="<?= site_url($tabel_f2 . '/daftar') ?>">Daftar
-                                    <?= $tabel_f2_alias ?>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f2 . '/daftar') ?>">Daftar
+                                    <?= lang('tabel_f2_alias') ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url($tabel_f3 . '/daftar') ?>">Daftar
-                                    <?= $tabel_f3_alias ?>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/daftar') ?>">Daftar
+                                    <?= lang('tabel_f3_alias') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <h6 class="dropdown-header">History</h6>
-                                <a class="dropdown-item" href="<?= site_url($tabel_f1 . '/daftar') ?>">
-                                    <?= $tabel_f1_alias ?>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f1 . '/daftar') ?>">
+                                    <?= lang('tabel_f1_alias') ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url($tabel_f3 . '/daftar_history') ?>">History
-                                    <?= $tabel_f3_alias ?>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/daftar_history') ?>">History
+                                    <?= lang('tabel_f3_alias') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <?php break;
@@ -278,8 +278,8 @@
                                 <?php break;
                         } ?>
 
-                        <a class="dropdown-item" href="<?= site_url($tabel_c2 . '/profil') ?>">Profil</a>
-                        <a class="dropdown-item" href="<?= site_url($tabel_c2 . '/logout') ?>">Logout</a>
+                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/profil') ?>">Profil</a>
+                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/logout') ?>">Logout</a>
 
 
                     </div>
@@ -289,4 +289,12 @@
         default:
             break;
     } ?>
+    <li class="nav-item">
+        <form action="<?= site_url($language . '/welcome/set_language'); ?>" method="post" class="form-inline">
+            <select name="language" class="form-control" onchange="this.form.submit()">
+                <option value="id" <?= ($this->session->userdata('site_lang') == 'id') ? 'selected' : ''; ?>>ID</option>
+                <option value="zh" <?= ($this->session->userdata('site_lang') == 'zh') ? 'selected' : ''; ?>>中文</option>
+            </select>
+        </form>
+    </li>
 </ul>

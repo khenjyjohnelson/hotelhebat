@@ -6,7 +6,7 @@
   case $tabel_c2_field6_value5: ?>
 
     <!-- method get supaya nilai dari form bisa tampil nanti (tidak langsung masuk ke database) -->
-    <form action="<?= site_url($tabel_f2) ?>" method="get">
+    <form action="<?= site_url($language . '/' . $tabel_f2) ?>" method="get">
       <div id="tour2" class="row justify-content-center align-items-end mt-2">
         <div class="col-md-2">
           <div class="form-group">

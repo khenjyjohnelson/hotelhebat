@@ -15,7 +15,7 @@ class C_tabel_c1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_c1_alias'],
+			'title' => 'tabel_c1_alias_v3',
 			'konten' => $this->v3['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
@@ -61,7 +61,7 @@ class C_tabel_c1 extends Omnitags
 			// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
 			if ($this->session->userdata($this->aliases['tabel_c1_field3'])) {
 
-				redirect(site_url($this->aliases['tabel_c1'] . '/login'));
+				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
 			} else {
 				redirect($_SERVER['HTTP_REFERER']);
 
@@ -128,7 +128,7 @@ class C_tabel_c1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_c1_alias'],
+			'title' => 'tabel_c1_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
 		);
@@ -144,7 +144,7 @@ class C_tabel_c1 extends Omnitags
 
 		$tabel_c1_field1 = $this->session->userdata($this->aliases['tabel_c1_field1']);
 		$data1 = array(
-			'title' => $this->v6_title['tabel_c1_alias2'],
+			'title' => 'tabel_c1_alias2_v6',
 			'konten' => $this->v6['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result(),
@@ -201,7 +201,7 @@ class C_tabel_c1 extends Omnitags
 		$notif = $this->handle_2f($aksi, 'tabel_c1_field1', $tabel_c1_field1);
 
 		// mengambil data profil yang baru dirubah
-		$tabel_c1 = $this->tl_c1->get__c1_by_c1_field1($tabel_c1_field1)->result();
+		$tabel_c1 = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
 
 		$tabel_c1_field2 = $tabel_c1[0]->nama;
 		$tabel_c1_field3 = $tabel_c1[0]->email;
@@ -306,7 +306,7 @@ class C_tabel_c1 extends Omnitags
 				// $this->session->set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
 
 
-				redirect(site_url('home'));
+				redirect(site_url($this->language_code . '/' . 'home'));
 
 				// jika password salah
 			} else {
@@ -326,14 +326,14 @@ class C_tabel_c1 extends Omnitags
 
 
 				$this->session->set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field4_alias'] . ' salah!');
-				redirect(site_url($this->aliases['tabel_c1'] . '/login'));
+				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
 			}
 
 			// jika jumlah data lebih dari 0
 		} else {
 
 			$this->session->set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field1_alias'] . ' tidak tersedia!');
-			redirect(site_url($this->aliases['tabel_c1'] . '/login'));
+			redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
 		}
 
 		// // mencari apakah jumlah data kurang dari 0
@@ -356,14 +356,14 @@ class C_tabel_c1 extends Omnitags
 		// 		$this->session->set_userdata('level', $level);
 
 		// 		redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url('home'));
+		redirect(site_url($this->language_code . '/' . 'home'));
 
 		// 		// jika password salah
 		// 	} else {
 
 		// 		$this->session->set_flashdata($this->views['flash1'], 'Password Salah!');
 		// 		redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->aliases['tabel_c2'] . '/login'));
+		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		// 	}
 
 		// 	// jika jumlah data lebih dari 0
@@ -371,7 +371,7 @@ class C_tabel_c1 extends Omnitags
 
 		// 	$this->session->set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
 		// 	redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->aliases['tabel_c2'] . '/login'));
+		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		// }
 
 
@@ -384,6 +384,6 @@ class C_tabel_c1 extends Omnitags
 		// menghapus session
 		session_destroy();
 		redirect($_SERVER['HTTP_REFERER']);
-		redirect(site_url('home'));
+		redirect(site_url($this->language_code . '/' . 'home'));
 	}
 }

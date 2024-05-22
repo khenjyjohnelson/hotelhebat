@@ -5,6 +5,11 @@ include 'Omnitags.php';
 
 class Welcome extends Omnitags
 {
+	public function default_language()
+	{
+		redirect('/en', 'refresh');
+	}
+
 	// fungsi pertama yang akan diload oleh website
 	public function index()
 	{
@@ -35,7 +40,7 @@ class Welcome extends Omnitags
 				$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
 				$this->session->set_flashdata('toast', $this->views['flash1_func1']);
 
-				redirect(site_url('dashboard'));
+				redirect(site_url($this->language_code . '/' . 'dashboard'));
 				break;
 
 			default:
@@ -56,8 +61,6 @@ class Welcome extends Omnitags
 					'title' => 'Selamat Datang',
 					'konten' => 'home',
 					'dekor' => $this->tl_b1->dekor($this->theme_id, 'home')->result(),
-					'tbl_b5' => $this->tl_b5->get_all_b5()->result(),
-					'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 					'tbl_b2' => $this->tl_b2->get_b7_aktif($this->theme_id)->result(),
 				);
 
@@ -129,4 +132,59 @@ class Welcome extends Omnitags
 
 		$this->load->view('404', $data);
 	}
+
+	public function set_language()
+	{
+		$language = $this->input->post('language');
+		$allowed_languages = ['en', 'fr', 'id', 'zh'];
+
+		// Validate the language input
+		if (in_array($language, $allowed_languages)) {
+			// Set the selected language in session
+			$this->session->set_userdata('site_lang', $language);
+
+			// Get the HTTP referer
+			$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+
+			// Initialize the controller and function to empty
+			$controller_function = '';
+
+			if (!empty($referer)) {
+				// Parse the referer URL to get the path component
+				$parsed_url = parse_url($referer);
+				$path = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+
+				// Get the base URL path without the language segment
+				$base_url_path = parse_url(base_url(), PHP_URL_PATH);
+
+				// Extract parts of the path
+				$path_parts = explode('/', trim($path, '/'));
+
+				// Remove the base URL parts from the path
+				$base_url_parts = explode('/', trim($base_url_path, '/'));
+
+				foreach ($base_url_parts as $part) {
+					if (!empty($path_parts) && $path_parts[0] === $part) {
+						array_shift($path_parts);
+					}
+				}
+
+				// Remove the current language segment if it's the first part
+				if (!empty($path_parts) && in_array($path_parts[0], $allowed_languages)) {
+					array_shift($path_parts);
+				}
+
+				// Reconstruct the remaining path as controller/function
+				$controller_function = implode('/', $path_parts);
+			}
+
+			// Redirect to the desired URL with the new language
+			redirect(site_url($language . '/' . $controller_function));
+		} else {
+			// Handle invalid language selection
+			show_error('Invalid language selected.');
+		}
+	}
+
+
 }

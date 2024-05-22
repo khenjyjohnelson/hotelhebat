@@ -9,35 +9,64 @@ if (!function_exists('add_text')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $input = $data[$field . '_input'];
+        $alias = lang($field . '_alias');
+        $placeholder = lang($field . '_alias' . '_input');
+
+
 
         return <<<HTML
         <div class="form-group">
             <label for="{$input}">{$alias}</label>
             <input class="form-control" type="text" {$required} name="{$input}" id="{$input}"
-              placeholder="Masukkkan {$alias}">
+              placeholder="{$placeholder}">
         </div>
         HTML;
     }
 }
 
-if (!function_exists('add_number')) {
-    function add_number($field, $required)
+if (!function_exists('add_date')) {
+    function add_date($field, $required, $min, $max)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $input = $data[$field . '_input'];
+        $alias = lang($field . '_alias');
+        $placeholder = lang($field . '_alias' . '_input');
+
+
+
+        return <<<HTML
+        <div class="form-group">
+            <label for="{$input}">{$alias}</label>
+            <input class="form-control" type="date" {$required} name="{$input}" id="{$input}"
+              placeholder="{$placeholder}" min="{$min}" max="{$max}">
+        </div>
+        HTML;
+    }
+}
+
+if (!function_exists('add_number')) {
+    function add_number($field, $required, $min, $max)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
             <label for="{$input}">{$alias}</label>
             <input class="form-control" type="number" {$required} name="{$input}" id="{$input}"
-              placeholder="Masukkkan {$alias}">
+              placeholder="{$placeholder} {$alias}" min="{$min}" max="{$max}">
         </div>
         HTML;
     }
@@ -51,14 +80,16 @@ if (!function_exists('add_email')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
             <label for="{$input}">{$alias}</label>
             <input class="form-control" type="email" {$required} name="{$input}" id="{$input}"
-              placeholder="Masukkkan {$alias}">
+              placeholder="{$placeholder} {$alias}">
         </div>
         HTML;
     }
@@ -72,15 +103,17 @@ if (!function_exists('add_text_prepend')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="text" required name="{$input}" placeholder="Masukkan {$alias}">
+            <input class="form-control" type="text" required name="{$input}" placeholder="{$placeholder} {$alias}">
         </div>
         HTML;
     }
@@ -94,15 +127,17 @@ if (!function_exists('add_email_prepend')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="email" required name="{$input}" placeholder="Masukkan {$alias}">
+            <input class="form-control" type="email" required name="{$input}" placeholder="{$placeholder}">
         </div>
         HTML;
     }
@@ -116,15 +151,17 @@ if (!function_exists('add_password_prepend')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="password" required name="{$input}" placeholder="Masukkan {$alias}">
+            <input class="form-control" type="password" required name="{$input}" placeholder="{$placeholder} {$alias}">
         </div>
         HTML;
     }
@@ -138,8 +175,10 @@ if (!function_exists('input_hidden')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <input type="hidden" name="{$input}" {$required} value="{$value}">
@@ -155,14 +194,37 @@ if (!function_exists('edit_text')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $input = $data[$field . '_input'];
+        $alias = lang($field . '_alias');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
             <label for="{$input}">{$alias}</label>
             <input class="form-control" type="text" {$required} name="{$input}"
-              placeholder="Masukkan {$alias}" value="{$value}">
+              placeholder="{$placeholder}" value="{$value}">
+        </div>
+        HTML;
+    }
+}
+
+if (!function_exists('edit_date')) {
+    function edit_date($field, $value, $required, $min, $max)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $input = $data[$field . '_input'];
+        $alias = lang($field . '_alias');
+
+        return <<<HTML
+        <div class="form-group">
+            <label for="{$input}">{$alias}</label>
+            <input class="form-control" type="date" {$required} name="{$input}"
+              value="{$value}" min="{$min}" max="{$max}">
+
         </div>
         HTML;
     }
@@ -176,8 +238,10 @@ if (!function_exists('edit_text_prepend')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="input-group">
@@ -192,21 +256,23 @@ if (!function_exists('edit_text_prepend')) {
 }
 
 if (!function_exists('edit_number')) {
-    function edit_number($field, $value, $required)
+    function edit_number($field, $value, $required, $min, $max)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <input class="form-control" type="number" {$required} name="{$input}"
-              placeholder="Masukkan {$alias}" value="{$value}">
+              placeholder="{$placeholder} {$alias}" value="{$value}" min="{$min}" max="{$max}">
         </div>
         HTML;
     }
@@ -220,14 +286,16 @@ if (!function_exists('edit_email')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <input class="form-control" type="email" {$required} name="{$input}"
-              placeholder="Masukkan {$alias}" value="{$value}">
+              placeholder="{$placeholder} {$alias}" value="{$value}">
         </div>
         HTML;
     }
@@ -241,8 +309,10 @@ if (!function_exists('edit_email_prepend')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="input-group">
@@ -268,14 +338,16 @@ if (!function_exists('add_textarea')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <textarea id="editor1" class="form-control" name="{$input}" $required
-              placeholder="Masukkan {$alias}" {$required} cols="30" rows="10"></textarea>
+              placeholder="{$placeholder} {$alias}" {$required} cols="30" rows="10"></textarea>
         </div>
         HTML;
     }
@@ -289,14 +361,16 @@ if (!function_exists('edit_textarea')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <textarea class="ckeditor form-control" name="{$input}"
-              placeholder="Masukkan {$alias}" {required} cols="10" rows="10">{$value}</textarea>
+              placeholder="{$placeholder} {$alias}" {required} cols="10" rows="10">{$value}</textarea>
         </div>
         HTML;
     }
@@ -310,8 +384,10 @@ if (!function_exists('add_file')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
@@ -330,9 +406,11 @@ if (!function_exists('edit_file')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
         $old = $data[$field . "_old"];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
@@ -359,6 +437,8 @@ if (!function_exists('filter_tgl')) {
 
         $value = $data[$field . "_value"];
 
+        $placeholder = lang('input');
+
         return <<<HTML
         <td class="pr-2">
             <div class="input-group">
@@ -382,8 +462,10 @@ if (!function_exists('select_ubah')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = $data[$field . "_alias"];
-        $input = $data[$field . "_input"];
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">

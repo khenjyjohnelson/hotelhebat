@@ -1,9 +1,9 @@
 
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <div class="col-md-9 d-flex align-items-center">
+    <h1><?= headings('title', 'phase') ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
@@ -16,7 +16,7 @@
   <div class="col-md-6">
     <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
       data-target="#password<?= $tl_c2->$tabel_c2_field1 ?>">
-      <i class="fas fa-edit"></i> Ubah <?= $tabel_c2_field4_alias ?></a>
+      <i class="fas fa-edit"></i> <?= lang('update_data') . lang('tabel_c2_field4_alias') ?></a>
   </div>
   <div class="col-md-6">
 
@@ -24,32 +24,17 @@
 
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
-      <form action="<?= site_url($tabel_c2 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-          <label><?= $tabel_c2_field2_alias ?></label>
-          <input class="form-control tabel_a1" type="text" name="<?= $tabel_c2_field2_input ?>"
-            value="<?= $tl_c2->$tabel_c2_field2; ?>">
-          <input type="hidden" name="<?= $tabel_c2_field1_input ?>" value="<?= $tl_c2->$tabel_c2_field1; ?>">
-        </div>
-
-        <div class="form-group">
-          <label><?= $tabel_c2_field3_alias ?>*</label>
-          <input class="form-control tabel_a1" type="text" name="<?= $tabel_c2_field3_input ?>"
-            value="<?= $tl_c2->$tabel_c2_field3; ?>">
-        </div>
-
-        <div class="form-group">
-          <label><?= $tabel_c2_field5_alias ?></label>
-          <input class="form-control tabel_a1" type="text" name="<?= $tabel_c2_field5_input ?>"
-            value="<?= $tl_c2->$tabel_c2_field5; ?>">
-        </div>
-
-        <div class="form-group">
-          <button class="btn btn-success" onclick="return confirm('Ubah data profil?')" type="submit">Simpan
-            Perubahan</button>
-        </div>
+      <form action="<?= site_url($language . '/' . $tabel_c2 . '/update_profil') ?>" method="post" enctype="multipart/form-data">
+        <?= input_hidden('tabel_c2_field1', $tl_c2->$tabel_c2_field1, 'required') ?>
+        <?= edit_text('tabel_c2_field2', $tl_c2->$tabel_c2_field2, 'required') ?>
         <small>*Merubah <?= $tabel_c2_field3_alias ?> ini tidak akan merubah <?= $tabel_c2_field3_alias ?> yang ada di
           <?= $tabel_f2_alias ?></small>
+        <?= edit_email('tabel_c2_field3', $tl_c2->$tabel_c2_field3, 'required') ?>
+        <?= edit_text('tabel_c2_field5', $tl_c2->$tabel_c2_field5, 'required') ?>
+        
+        <div class="form-group">
+          <?= btn_update() ?>
+        </div>
       </form>
     </div>
   </div>
@@ -59,8 +44,8 @@
   <div id="password<?= $tl_c2->$tabel_c2_field1 ?>" class="modal fade <?= $tabel_c2_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Ubah ' . $tabel_c2_field4_alias . ' Anda', '') ?>
-        <form action="<?= site_url($tabel_c2 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
+        <?= modal_header(lang('update_data') . $tabel_c2_field4_alias . ' Anda', '') ?>
+        <form action="<?= site_url($language . '/' . $tabel_c2 . '/update_pass') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
 
             <div class="input-group">
@@ -113,7 +98,7 @@
           <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_' . $tabel_c2_field4) ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="return confirm('Ubah <?= $tabel_c2_field4_alias ?>?')"
+            <button class="btn btn-success" onclick="return confirm(<?= lang('update_data') . lang('tabel_c2_field4_alias') . '?'?>)"
               type="submit">Simpan Perubahan</button>
           </div>
         </form>
@@ -126,15 +111,15 @@
 <br>
 <br>
 
-<h1><?= $tabel_d3_alias ?><?= $phase ?></h1>
+<h1><?= lang('tabel_d3_alias') ?><?= $phase ?></h1>
 <hr>
 <div class="table-responsive">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
-        <th>No</th>
-        <th><?= $tabel_d3_field5_alias ?></th>
-        <th><?= $tabel_d3_field3_alias ?></th>
+        <th><?= lang('no') ?></th>
+        <th><?= lang('tabel_d3_field5_alias') ?></th>
+        <th><?= lang('tabel_d3_field3_alias') ?></th>
       </tr>
     </thead>
 

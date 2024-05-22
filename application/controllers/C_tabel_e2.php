@@ -11,7 +11,7 @@ class C_tabel_e2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v1_title['tabel_e2_alias'],
+			'title' => 'tabel_e2_alias_v1',
 			'konten' => $this->v1['tabel_e2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->get_all_e2()->result(),
@@ -31,7 +31,7 @@ class C_tabel_e2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_e2_alias'],
+			'title' => 'tabel_e2_alias_v3',
 			'konten' => $this->v3['tabel_e2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->get_all_e2()->result(),
@@ -106,7 +106,7 @@ class C_tabel_e2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_e2_alias'],
+			'title' => 'tabel_e2_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e2'])->result(),
 			'tbl_e2' => $this->tl_e2->get_all_e2()->result(),
 		);

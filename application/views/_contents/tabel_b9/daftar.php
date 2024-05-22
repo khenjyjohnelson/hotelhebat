@@ -6,17 +6,17 @@
     break;
 
   default:
-    redirect(site_url('welcome/no_level'));
+    redirect(site_url($this->language_code . '/' . 'welcome/no_level'));
 }
 ?>
 
 
 
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <div class="col-md-9 d-flex align-items-center">
+    <h1><?= headings('title', 'phase') ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
@@ -28,11 +28,11 @@
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
-        <th>No</th>
-        <th><?= $tabel_b8_field3_alias ?></th>
-        <th><?= $tabel_b9_field4_alias ?></th>
-        <th><?= $tabel_b9_field5_alias ?></th>
-        <th>Aksi</th>
+        <th><?= lang('no') ?></th>
+        <th><?= lang('tabel_b8_field3_alias') ?></th>
+        <th><?= lang('tabel_b9_field4_alias') ?></th>
+        <th><?= lang('tabel_b9_field5_alias') ?></th>
+        <th><?= lang('action') ?></th>
       </tr>
     </thead>
 
@@ -46,7 +46,7 @@
             <td><?= $tl_b9->$tabel_b9_field5 ?></td>
             <td>
               <a class="btn btn-light text-warning"
-                href="<?= site_url($tabel_b9 . '/lihat/' . $tl_b9->$tabel_b9_field1) ?>">
+                href="<?= site_url($language . '/' . $tabel_b9 . '/lihat/' . $tl_b9->$tabel_b9_field1) ?>">
                 <i class="fas fa-envelope-open"></i></a>
               <?= btn_lihat($tl_b9->$tabel_b9_field1) ?>
             </td>
@@ -72,7 +72,7 @@
   <div id="lihat<?= $tl_b9->$tabel_b9_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header($tabel_b9_alias, $tl_b9->$tabel_b9_field1) ?>
+        <?= modal_header(lang('tabel_b9_alias'), $tl_b9->$tabel_b9_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

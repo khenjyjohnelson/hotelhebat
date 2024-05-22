@@ -18,12 +18,12 @@
       <div class="col-lg-5 login">
 
         <!-- link kembali -->
-        <a class="text-decoration-none" href="<?= site_url('home') ?>">Kembali ke beranda</a>
+        <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">Kembali ke beranda</a>
 
-        <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
+        <h1 class="text-center"><?= headings('title', 'phase') ?></h1>
 
         <!-- form login -->
-        <form action="<?= site_url($tabel_c1 . '/ceklogin') ?>" method="post">
+        <form action="<?= site_url($language . '/' . $tabel_c1 . '/ceklogin') ?>" method="post">
           <!-- <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -47,7 +47,7 @@
               placeholder="Masukkan <?= $tabel_c1_field4_alias ?>">
           </div>
 
-          <p class="text-center"><a class="text-decoration-none" href="<?= site_url($tabel_c2 . '/login') ?>">Login
+          <p class="text-center"><a class="text-decoration-none" href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>">Login
               sebagai <?= $tabel_c2_alias ?></a></p>
 
           <!-- pesan untuk pengguna yang login -->

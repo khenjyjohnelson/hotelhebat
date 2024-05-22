@@ -9,7 +9,7 @@ class M_tabel_a1 extends CI_Model
 		return $this->db->get($this->aliases['tabel_a1']);
 	}
 
-	public function get_a1_field1($param1)
+	public function get_a1_by_a1_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_a1_field1'], $param1);
 		$this->db->order_by($this->aliases['tabel_a1_field1'], 'DESC');

@@ -6,7 +6,7 @@ terima kasih pada link di atas -->
   <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
-<h2 class="pt-2"><?= $title ?><?= $phase ?></h2>
+<h2 class="pt-2"><?= headings('title', 'phase') ?></h2>
 <hr>
 
 <?php foreach ($tbl_e4 as $tl_e4) : ?>
@@ -24,7 +24,7 @@ terima kasih pada link di atas -->
 
 
 <!-- method get supaya nilai dari form bisa tampil nanti (tidak langsung masuk ke database) -->
-<!-- <form action="<?= site_url($tabel_f2) ?>" method="get">
+<!-- <form action="<?= site_url($language . '/' . $tabel_f2) ?>" method="get">
   <div class="row justify-content-center align-items-end mt-2">
     <div class="col-md-1">
       <div class="form-group">

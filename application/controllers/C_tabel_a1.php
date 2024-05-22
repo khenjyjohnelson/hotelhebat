@@ -19,10 +19,10 @@ class C_tabel_a1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v6_title['tabel_a1_alias'],
+			'title' => 'tabel_a1_alias_v6',
 			'konten' => $this->v6['tabel_a1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_a1'])->result(),
-			'tbl_b2' => $this->tl_b2->get_a1_with_b7($this->theme_id)->result(),
+			'tbl_b2' => $this->tl_b2->get_b2_by_b7_field1($this->theme_id)->result(),
 			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 		);
 
@@ -95,6 +95,6 @@ class C_tabel_a1 extends Omnitags
 
 		$notif = $this->handle_2f($aksi, 'tabel_a1_field7', $tabel_a1_field1);
 
-		redirect(site_url($this->aliases['tabel_a1'] . '/profil'));
+		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_a1'] . '/profil'));
 	}
 }

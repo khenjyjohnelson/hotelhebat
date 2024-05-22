@@ -17,7 +17,7 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 
 		 $data1 = array(
-			'title' => $this->v3_title['tabel_b7_alias'],
+			'title' => 'tabel_b7_alias_v3',
 			'konten' => $this->v3['tabel_b7'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
 			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
@@ -214,7 +214,7 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_b7_alias'],
+			'title' => 'tabel_b7_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
 			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 		);

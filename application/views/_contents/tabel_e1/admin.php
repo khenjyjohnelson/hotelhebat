@@ -4,17 +4,17 @@
     break;
 
   default:
-    redirect(site_url('welcome/no_level'));
+    redirect(site_url($this->language_code . '/' . 'welcome/no_level'));
 }
 ?>
 
 
 
 <div class="row mb-2 align-items-center">
-  <div class="col-md-6 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <div class="col-md-9 d-flex align-items-center">
+    <h1><?= headings('title', 'phase') ?></h1>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
@@ -29,11 +29,11 @@
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
-        <th>No</th>
-        <th><?= $tabel_e1_field1_alias ?></th>
-        <th><?= $tabel_e1_field2_alias ?></th>
-        <th><?= $tabel_e1_field3_alias ?></th>
-        <th>Aksi</th>
+        <th><?= lang('no') ?></th>
+        <th><?= lang('tabel_e1_field1_alias') ?></th>
+        <th><?= lang('tabel_e1_field2_alias') ?></th>
+        <th><?= lang('tabel_e1_field3_alias') ?></th>
+        <th><?= lang('action') ?></th>
       </tr>
     </thead>
 
@@ -58,9 +58,9 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header('Tambah ' . $tabel_e1_alias, '') ?>
+      <?= modal_header(lang('add') . lang('tabel_e1_alias'), '') ?>
       
-      <form action="<?= site_url($tabel_e1 . '/tambah') ?>" method="post">
+      <form action="<?= site_url($language . '/' . $tabel_e1 . '/tambah') ?>" method="post">
         <div class="modal-body">
           <?= add_text('tabel_e1_field2', 'required') ?>
           <?= add_text('tabel_e1_field3', 'required') ?>
@@ -83,9 +83,9 @@
   <div id="ubah<?= $tl_e1->$tabel_e1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header('Edit ' . $tabel_e1_alias, $tl_e1->$tabel_e1_field1) ?>
+        <?= modal_header(lang('update_data') . lang('tabel_e1_alias'), $tl_e1->$tabel_e1_field1) ?>
         <!-- administrator tidak dapat mengubah password akun lain -->
-        <form action="<?= site_url($tabel_e1 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_e1 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_e1_field1', $tl_e1->$tabel_e1_field1, 'required') ?>
             <?= edit_text('tabel_e1_field2', $tl_e1->$tabel_e1_field2, 'required') ?>
@@ -108,7 +108,7 @@
   <div id="lihat<?= $tl_e1->$tabel_e1_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header($tabel_e1_alias, $tl_e1->$tabel_e1_field1) ?>
+        <?= modal_header(lang('tabel_e1_alias'), $tl_e1->$tabel_e1_field1) ?>
         
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

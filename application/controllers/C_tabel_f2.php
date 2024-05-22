@@ -20,7 +20,7 @@ class C_tabel_f2 extends Omnitags
 		switch ($this->session->userdata($this->aliases['tabel_c2_field6'])) {
 			case $this->aliases['tabel_c2_field6_value5']:
 				$data1 = array(
-					'title' => $this->v1_title['tabel_f2'],
+					'title' => 'tabel_f2_alias_v1',
 					'konten' => $this->v1['tabel_f2'],
 					'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 					'tbl_b5' => $this->tl_b5->get_all_b5()->result(),
@@ -60,7 +60,7 @@ class C_tabel_f2 extends Omnitags
 
 		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
-			'title' => $this->v2_title['tabel_f2_alias'],
+			'title' => 'tabel_f2_alias_v2',
 			'konten' => $this->v2['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_f2_with_e4_by_c2_field1($tabel_c2_field1)->result(),
@@ -84,7 +84,7 @@ class C_tabel_f2 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel_f2_field11'];
 
 		$data1 = array(
-			'title' => $this->v2_title['tabel_f1_alias'],
+			'title' => 'tabel_f1_alias_v2',
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f2' => $this->tl_f2->search_c1_with_e4_between_dates($param1, $param2, $param3, $param4, $tabel_c2_field1)->result(),
@@ -113,7 +113,7 @@ class C_tabel_f2 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel_f2_field11'];
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_f2_alias'],
+			'title' => 'tabel_f2_alias_v3',
 			'konten' => $this->v3['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_f2_with_e4()->result(),
@@ -156,7 +156,7 @@ class C_tabel_f2 extends Omnitags
 				$this->session->set_flashdata($this->views['flash1'], "Invalid input. Please provide valid data.");
 				$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_func1']);
 				// Functional requirement: Redirect user to 'tabel_f2' confirmation page
-				redirect(site_url($this->aliases['tabel_f2'] . '/konfirmasi'));
+				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f2'] . '/konfirmasi'));
 			}
 		}
 
@@ -287,7 +287,7 @@ class C_tabel_f2 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel_f2_field11'];
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_f2_alias'],
+			'title' => 'tabel_f2_alias_v3',
 			'konten' => $this->v3['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->filter($param1, $param2, $param3, $param4)->result(),
@@ -312,7 +312,7 @@ class C_tabel_f2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_f2_alias'],
+			'title' => 'tabel_f2_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_all_f2()->result(),
 			'tbl_e4' => $this->tl_e4->get_all_f2()->result(),
@@ -329,7 +329,7 @@ class C_tabel_f2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v5_title['tabel_f2'],
+			'title' => 'tabel_f2_alias_v5',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_f2_with_e4_by_f2_field1($tabel_f2_field1)->result(),
 		);
@@ -361,7 +361,7 @@ class C_tabel_f2 extends Omnitags
 		$param2 = $this->v_get['tabel_f2_field4'];
 
 		$data1 = array(
-			'title' => $this->v1['tabel_f2_alias'],
+			'title' => 'tabel_f2_alias_v1',
 			'konten' => $this->v1['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 
@@ -383,7 +383,7 @@ class C_tabel_f2 extends Omnitags
 
 		$tabel_c2_field3 = $this->session->tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2']);
 		$data1 = array(
-			'title' => $this->v7_title['tabel_f2_alias'],
+			'title' => 'tabel_f2_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan

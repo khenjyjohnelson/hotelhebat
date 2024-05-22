@@ -17,7 +17,7 @@ class C_tabel_d3 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v3_title['tabel_d3_alias'],
+			'title' => 'tabel_d3_alias_v3',
 			'konten' => $this->v3['tabel_d3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_d3'])->result(),
 			'tbl_d3' => $this->tl_d3->get_all_d3()->result(),
@@ -48,7 +48,7 @@ class C_tabel_d3 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => $this->v4_title['tabel_d3_alias'],
+			'title' => 'tabel_d3_alias_v4',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_d3'])->result(),
 			'tbl_d3' => $this->tl_d3->get_all_d3()->result(),
 		);

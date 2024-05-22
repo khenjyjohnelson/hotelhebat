@@ -16,24 +16,24 @@
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-lg-5 login">
         <!-- link kembali -->
-        <a class="text-decoration-none" href="<?= site_url('home') ?>">Kembali ke beranda</a>
+        <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">Kembali ke beranda</a>
 
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
 
         <!-- form login -->
-        <form action="<?= site_url($tabel_c2 . '/ceklogin') ?>" method="post">
+        <form action="<?= site_url($language . '/' . $tabel_c2 . '/ceklogin') ?>" method="post">
 
-          <?= add_text_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
+          <?= add_email_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
           <?= add_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
 
-          <!-- <p class="text-center"><a class="text-decoration-none" href="<?= site_url($tabel_c1 . '/login') ?>">Login sebagai <?= $tabel_c1_alias ?></a></p> -->
+          <!-- <p class="text-center"><a class="text-decoration-none" href="<?= site_url($language . '/' . $tabel_c1 . '/login') ?>">Login sebagai <?= $tabel_c1_alias ?></a></p> -->
 
           <!-- pesan untuk pengguna yang login -->
           <p class="small text-center text-danger"><?= $this->session->flashdata($this->views['flash1']) ?></p>
 
           <!-- tombol login dan signup -->
           <div class="form-group d-flex justify-content-around">
-            <a class="btn btn-light text-primary login" type="button" href="<?= site_url($tabel_c2 . '/signup') ?>">Create Account</a>
+            <a class="btn btn-light text-primary login" type="button" href="<?= site_url($language . '/' . $tabel_c2 . '/signup') ?>">Create Account</a>
             <button class="btn btn-primary login" type="submit">Sign In</button>
           </div>
         </form>
