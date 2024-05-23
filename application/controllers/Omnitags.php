@@ -492,15 +492,19 @@ class Omnitags extends CI_Controller
 
     public function handle_4b()
     {
-        $msg = 'Selamat datang ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!';
-        $type = $this->aliases['tabel_b8_field2_value5'];
-        $extra = '';
-        $flashtype = 'toast';
-
-        $this->add_notif_all($msg, $type, $extra);
-        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
-        return [];
+        if($this->session->userdata($this->aliases['tabel_c2_field1']) == ''){
+            redirect(site_url($language . '/' . 'no_level'));
+        } else {
+            $msg = 'Selamat datang ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!';
+            $type = $this->aliases['tabel_b8_field2_value5'];
+            $extra = '';
+            $flashtype = 'toast';
+    
+            $this->add_notif_all($msg, $type, $extra);
+            $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
+            $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+            return [];
+        }
     }
 
     public function serve_image($directory, $filename)

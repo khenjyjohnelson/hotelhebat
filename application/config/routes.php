@@ -10,6 +10,7 @@ $route['translate_uri_dashes'] = FALSE;
 // Language routes
 $route['^(?!en|fr|id|zh)(.*)/home$'] = 'welcome/default_language';
 $route['(en|fr|id|zh)/home'] = 'welcome';
+$route['(en|fr|id|zh)/no_level'] = 'welcome/no_level';
 $route['(en|fr|id|zh)/dashboard'] = 'welcome/dashboard';
 $route['(en|fr|id|zh)/dashboard/home'] = 'welcome/dashboard';
 $route['(en|fr|id|zh)/welcome/set_language'] = 'welcome/set_language';

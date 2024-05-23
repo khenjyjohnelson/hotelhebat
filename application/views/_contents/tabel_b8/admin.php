@@ -3,7 +3,7 @@
     break;
 
   default:
-    redirect(site_url($this->language_code . '/' . 'welcome/no_level'));
+    redirect(site_url($language . '/' . 'no_level'));
 }
 ?>
 

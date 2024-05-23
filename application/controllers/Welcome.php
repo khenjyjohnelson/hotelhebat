@@ -99,7 +99,7 @@ class Welcome extends Omnitags
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
 
-		$notif = $this->handle_4b('tabel_c2', '');
+		$notif = $this->handle_4b();
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -110,7 +110,7 @@ class Welcome extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => lang('no-access'),
+			'title' => lang('no_access'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no-level')->result(),
 		);
 
