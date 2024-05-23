@@ -8,6 +8,7 @@ $route['404_override'] = 'welcome/no_page';
 $route['translate_uri_dashes'] = FALSE;
 
 // Language routes
+$route['^(?!en|fr|id|zh)(.*)/home$'] = 'welcome/default_language';
 $route['(en|fr|id|zh)/home'] = 'welcome';
 $route['(en|fr|id|zh)/dashboard'] = 'welcome/dashboard';
 $route['(en|fr|id|zh)/dashboard/home'] = 'welcome/dashboard';
@@ -15,7 +16,7 @@ $route['(en|fr|id|zh)/welcome/set_language'] = 'welcome/set_language';
 $route['(en|fr|id|zh)'] = 'welcome';
 
 // Define routes dynamically based on JSON data
-$jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel_tables.postman_environment.json'));
+$jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel.postman_environment.json'));
 $myData2 = json_decode($jsonData2, true)['values'];
 
 foreach ($myData2 as $item2) {

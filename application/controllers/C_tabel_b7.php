@@ -17,7 +17,7 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 
 		 $data1 = array(
-			'title' => 'tabel_b7_alias_v3',
+			'title' => lang('tabel_b7_alias_v3_title'),
 			'konten' => $this->v3['tabel_b7'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
 			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
@@ -198,10 +198,10 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 
 		$aksi = $this->tl_b7->delete_b7($tabel_b7_field1);
-		$tabel_b1 = $this->tl_b1->delete__by_fieldtabel_b7($tabel_b7_field1);
-		$tabel_b2 = $this->tl_b2->delete__by_fieldtabel_b7($tabel_b7_field1);
-		$tabel_b5 = $this->tl_b5->delete__by_fieldtabel_b7($tabel_b7_field1);
-		$tabel_b6 = $this->tl_b6->delete__by_fieldtabel_b7($tabel_b7_field1);
+		$tabel_b1 = $this->tl_b1->delete_b1_by_b1_field7($tabel_b7_field1);
+		$tabel_b2 = $this->tl_b2->delete_b2_by_b2_field7($tabel_b7_field1);
+		$tabel_b5 = $this->tl_b5->delete_b5_by_b5_field7($tabel_b7_field1);
+		$tabel_b6 = $this->tl_b6->delete_b6_by_b6_field7($tabel_b7_field1);
 
 		$notif = $this->handle_3b($aksi, 'tabel_b7_field1', $tabel_b7_field1);
 
@@ -214,7 +214,7 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_b7_alias_v4',
+			'title' => lang('tabel_b7_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
 			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 		);

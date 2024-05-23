@@ -22,7 +22,7 @@
       <!-- mengecek apakah ada transaksi yang telah dilakukan -->
       <?php if (isset($tbl_f3)) { ?>
         <div class="col-md">
-          <h1 class="text-center"><?= headings('title', 'phase') ?></h1>
+          <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
           <p class="text-center"><?= $tabel_f3_field1_alias ?> Anda adalah <?= $tbl_f3->$tabel_f3_field1 ?></p>
 
           <div class="d-flex justify-content-center">
@@ -35,8 +35,8 @@
             untuk mencetak bukti <?= $tabel_f3_alias ?></p>
 
           <div class="d-flex justify-content-center">
-            <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">
-              Kembali ke beranda
+            <a class="text-decoration-none" href="<?= site_url('/') ?>">
+              <?= lang('back_to_home') ?>
             </a>
 
           </div>
@@ -49,8 +49,8 @@
           <h1 class="text-center">Anda tidak melakukan <?= $tabel_f3_alias ?> apapun</h1>
 
           <div class="d-flex justify-content-center">
-            <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">
-              Kembali ke beranda
+            <a class="text-decoration-none" href="<?= site_url('/') ?>">
+              <?= lang('back_to_home') ?>
             </a>
 
           </div>

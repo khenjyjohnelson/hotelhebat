@@ -1,6 +1,23 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+if (!function_exists('back_to_home')) {
+    function back_to_home()
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $alias = lang('back_to_home');
+        $url = site_url($data['language'] . '/home');
+
+        return <<<HTML
+        <a class="text-decoration-none" href="{$url}">{$alias}</a>
+        HTML;
+    }
+}
+
 if (!function_exists('btn_tambah')) {
     function btn_tambah()
     {

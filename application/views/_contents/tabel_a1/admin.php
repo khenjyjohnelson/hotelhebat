@@ -12,7 +12,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= headings('title', 'phase') ?></h1>
+    <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -21,7 +21,7 @@
   </div>
 </div>
 <hr>
-<p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
+<p><?= lang('images_not_change_immediately') ?></p>
 
 <?= btn_tambah() ?>
 <?= btn_laporan('tabel_a1') ?>
@@ -117,8 +117,8 @@
           enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1, 'required') ?>
-            * Meski ingin mengubah <?= $tabel_a1_field2_alias ?> saja, tetap harus mengupload ulang
-            <?= $tabel_a1_field3_alias ?> juga
+           
+            <small><?= lang('reupload_image_even_for_name_change') ?></small>
 
             <?= edit_text($tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2, 'required') ?>
             <?= edit_text($tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4, 'required') ?>

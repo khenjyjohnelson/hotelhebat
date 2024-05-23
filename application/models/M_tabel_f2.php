@@ -131,7 +131,7 @@ class M_tabel_f2 extends CI_Model
 		return $this->db->query($sql);
 	}
 
-	public function delete_f2_by_field12($param12)
+	public function delete_f2_by_f2_field12($param12)
 	{
 
 		$this->db->where($this->aliases['tabel_f2_field12'], $param12);

@@ -21,7 +21,7 @@ class C_tabel_f1 extends Omnitags
 		$param5 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 
 		$data1 = array(
-			'title' => 'tabel_f1_alias_v2',
+			'title' => lang('tabel_f1_alias_v2_title'),
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->get_c2_with_e4($param5)->result(),
@@ -52,7 +52,7 @@ class C_tabel_f1 extends Omnitags
 		$param5 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 
 		$data1 = array(
-			'title' => 'tabel_f1_alias_v2',
+			'title' => lang('tabel_f1_alias_v2_title'),
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->filter_c1_with_e4($param1, $param2, $param3, $param4, $param5)->result(),
@@ -81,7 +81,7 @@ class C_tabel_f1 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel_f1_field12'];
 
 		$data1 = array(
-			'title' => 'tabel_f1_alias_v3',
+			'title' => lang('tabel_f1_alias_v3_title'),
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
@@ -113,7 +113,7 @@ class C_tabel_f1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_f1_alias_v4',
+			'title' => lang('tabel_f1_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
 		);
@@ -134,7 +134,7 @@ class C_tabel_f1 extends Omnitags
 		$param4 = $this->v_filter2_get['tabel_f1_field12'];
 
 		$data1 = array(
-			'title' => 'tabel_f1_alias_v3',
+			'title' => lang('tabel_f1_alias_v3_title'),
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->search_with_e4_between_dates($param1, $param2, $param3, $param4)->result(),

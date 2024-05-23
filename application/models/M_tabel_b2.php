@@ -55,7 +55,7 @@ class M_tabel_b2 extends CI_Model
 		return $this->db->delete($this->aliases['tabel_b2']);
 	}
 
-	public function delete_b2_by_fieldb7($param1)
+	public function delete_b2_by_b2_field7($param1)
 	{
 		$this->db->where($this->aliases['tabel_b1_field7'], $param1);
 		return $this->db->delete($this->aliases['tabel_b2']);

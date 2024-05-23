@@ -17,7 +17,6 @@ class Omnitags extends CI_Controller
         $this->load->helper('modal');
         $this->load->helper('js');
         $this->load->helper('language');
-        $this->load->helper('title');
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->library('user_agent');
@@ -167,18 +166,8 @@ class Omnitags extends CI_Controller
             $this->flash_msg4[$item['key']] = $item['value'] . ' tidak tersedia!';
             $this->flash_msg5[$item['key']] = $item['value'] . ' telah digunakan!';
 
-        }
-
-        date_default_timezone_set($this->aliases['timezone']);
-        $this->tabel_a1_field1 = 1;
-
-        $jsonData2 = file_get_contents(site_url('assets/json/school_ukk_hotel_tables.postman_environment.json'));
-        $this->myData2 = json_decode($jsonData2, true)['values'];
-
-        // Create variables dynamically
-        foreach ($this->myData2 as $item) {
             $this->v_upload_path[$item['key']] = './assets/img/' . $item['key'] . '/';
-
+    
             $this->v1[$item['key']] = '_contents/' . $item['key'] . '/index';
             $this->v2[$item['key']] = '_contents/' . $item['key'] . '/daftar';
             $this->v3[$item['key']] = '_contents/' . $item['key'] . '/admin';
@@ -187,7 +176,7 @@ class Omnitags extends CI_Controller
             $this->v6[$item['key']] = '_contents/' . $item['key'] . '/profil';
             $this->v7[$item['key']] = '_contents/' . $item['key'] . '/konfirmasi';
             $this->v8[$item['key']] = '_contents/' . $item['key'] . '/detail';
-
+    
             $this->v1_title[$item['key']] = $item['value'];
             $this->v2_title[$item['key']] = 'Daftar ' . $item['value'];
             $this->v3_title[$item['key']] = 'Data ' . $item['value'];
@@ -197,6 +186,9 @@ class Omnitags extends CI_Controller
             $this->v7_title[$item['key']] = $item['value'] . ' Berhasil!';
             $this->v8_title[$item['key']] = 'Detail ' . $item['value'];
         }
+
+        date_default_timezone_set($this->aliases['timezone']);
+        $this->tabel_a1_field1 = 1;
 
         $this->theme = $this->tl_b7->tema($this->tabel_a1_field1)->result();
         $this->theme_id = $this->theme[0]->id_theme;

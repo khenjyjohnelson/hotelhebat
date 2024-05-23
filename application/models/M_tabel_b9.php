@@ -80,13 +80,6 @@ class M_tabel_b9 extends CI_Model
 		return $this->db->update($this->aliases['tabel_b9'], $data);
 	}
 
-	public function update_e3_field7($data, $param1, $param2)
-	{
-		$this->db->where($this->aliases['tabel_b9_field2'], $param1);
-		$this->db->where($this->aliases['tabel_b9_field5'], $param2);
-		return $this->db->update($this->aliases['tabel_b9'], $data);
-	}
-
 	public function delete_b9($param1)
 	{
 		$this->db->where($this->aliases['tabel_b9_field1'], $param1);

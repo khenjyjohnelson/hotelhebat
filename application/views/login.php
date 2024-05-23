@@ -16,7 +16,7 @@
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-lg-5 login">
         <!-- link kembali -->
-        <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">Kembali ke beranda</a>
+        <?= back_to_home() ?>
 
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
 
@@ -33,8 +33,8 @@
 
           <!-- tombol login dan signup -->
           <div class="form-group d-flex justify-content-around">
-            <a class="btn btn-light text-primary login" type="button" href="<?= site_url($language . '/' . $tabel_c2 . '/signup') ?>">Create Account</a>
-            <button class="btn btn-primary login" type="submit">Sign In</button>
+            <a class="btn btn-light text-primary login" type="button" href="<?= site_url($language . '/' . $tabel_c2 . '/signup') ?>"><?= lang('create_account') ?></a>
+            <button class="btn btn-primary login" type="submit"><?= lang('login') ?></button>
           </div>
         </form>
       </div>

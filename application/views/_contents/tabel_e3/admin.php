@@ -12,7 +12,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= headings('title', 'phase') ?></h1>
+    <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -83,7 +83,7 @@
           <div class="form-group">
             <label><?= $tabel_e4_field2_alias ?></label>
             <select class="form-control" required name="<?= $tabel_e4_field1_input ?>">
-              <option selected hidden value="">Pilih <?= $tabel_e4_field2_alias ?>...</option>
+              <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e4_field2_alias ?>...</option>
               <?php foreach ($tbl_e4 as $tl_e4): ?>
 
                 <!-- mengambil nilai tipe dari tipe kamar -->
@@ -97,7 +97,7 @@
           <div class="form-group">
             <label><?= $tabel_e3_field4_alias ?></label>
             <select class="form-control" required name="<?= $tabel_e3_field4_input ?>">
-              <option selected hidden value="">Pilih <?= $tabel_e3_field4_alias ?>...</option>
+              <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e3_field4_alias ?>...</option>
 
               <!-- memilih nilai status -->
               <option value="<?= $tabel_e3_field4_value2 ?>"><?= $tabel_e3_field4_value2_alias ?></option>
@@ -203,7 +203,7 @@
                       <select class="form-control" required name="<?= $tabel_c1_field1_input ?>">
 
                         <!-- menampilkan petugas buat assign -->
-                        <option selected hidden>Pilih <?= $tabel_c1_alias ?>...</option>
+                        <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
                         <?php
                         foreach ($tbl_c1 as $tl_c1):
                           if ($tl_c1->$tabel_c1_field6 == $tabel_c1_field6_value1) { ?>
@@ -275,7 +275,7 @@
                       <select class="form-control" required name="<?= $tabel_c1_field1_input ?>">
 
                         <!-- menampilkan petugas buat assign -->
-                        <option selected hidden>Pilih <?= $tabel_c1_alias ?>...</option>
+                        <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
                         <?php
                         foreach ($tbl_c1 as $tl_c1):
                           if ($tl_c1->$tabel_c1_field6 == $tabel_c1_field6_value1) { ?>

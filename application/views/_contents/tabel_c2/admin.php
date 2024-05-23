@@ -12,7 +12,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= headings('title', 'phase') ?></h1>
+    <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -94,7 +94,7 @@
 
             <!-- hanya admin yang bisa menentukan level user -->
             <select class="form-control" required name="<?= $tabel_c2_field6_input ?>">
-              <option value="" selected hidden>Pilih <?= $tabel_c2_field6_alias ?></option>
+              <option value="" selected hidden><?= lang('select') ?> <?= $tabel_c2_field6_alias ?></option>
               <option value="<?= $tabel_c2_field6_value5 ?>"><?= $tabel_c2_field6_value5_alias ?></option>
               <option value="<?= $tabel_c2_field6_value4 ?>"><?= $tabel_c2_field6_value4_alias ?></option>
               <option value="<?= $tabel_c2_field6_value2 ?>"><?= $tabel_c2_field6_value2_alias ?></option>

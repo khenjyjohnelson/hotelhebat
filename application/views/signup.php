@@ -20,15 +20,14 @@
       <div class="col-lg-5 login">
 
         <!-- link kembali -->
-        <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">Kembali ke beranda</a>
-
+        <?= back_to_home() ?>
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
 
         <!-- form signup -->
         <form action="<?= site_url($language . '/' . $tabel_c2 . '/tambah') ?>" method="post">
           <?= input_hidden('tabel_c2_field6', $tabel_c2_field6_value5, 'required') ?>
-          <?= add_text_prepend('tabel_c2_field2', '<i class="fas fa-user"></i>', 'required') ?>  
-          <?= add_text_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>  
+          <?= add_text_prepend('tabel_c2_field2', '<i class="fas fa-user"></i>', 'required') ?>
+          <?= add_text_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
 
           <div class="input-group">
             <div class="input-group-prepend">
@@ -70,8 +69,9 @@
 
           <!-- tombol signup dan login -->
           <div class="form-group d-flex justify-content-around">
-            <a class="btn btn-light text-primary login" type="button" href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>">Sign In</a>
-            <button class="btn btn-primary login" type="submit">Create account</button>
+            <a class="btn btn-light text-primary login" type="button"
+              href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>"><?= lang('login') ?></a>
+            <button class="btn btn-primary login" type="submit"><?= lang('create_account') ?></button>
           </div>
 
         </form>

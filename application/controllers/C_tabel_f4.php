@@ -17,7 +17,7 @@ class C_tabel_f4 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_f4_alias_v3',
+			'title' => lang('tabel_f4_alias_v3_title'),
 			'konten' => $this->v3['tabel_f4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4'])->result(),
 			'tbl_f4' => $this->tl_f4->get_all_f4()->result(),
@@ -93,7 +93,7 @@ class C_tabel_f4 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_f4_alias_v4',
+			'title' => lang('tabel_f4_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4'])->result(),
 			'tbl_f4' => $this->tl_f4->get_all_f4()->result(),
 		);

@@ -10,7 +10,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= headings('title', 'phase') ?></h1>
+    <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -22,7 +22,7 @@
 <?php foreach ($tbl_a1 as $tl_a1): ?>
   <div class="row">
     <div class="col-md-6">
-      <p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
+      <p><?= lang('images_not_change_immediately') ?></p>
       <?= btn_field($tabel_b7_field3 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field3_alias')) ?>
       <?= btn_field($tabel_b7_field4 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field4_alias')) ?>
       <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field5_alias')) ?>
@@ -61,7 +61,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <label>Pilih <?= $tabel_b7_alias ?></label>
+              <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
               <select class="form-control" required name="<?= $tabel_a1_field8_input ?>">
 
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
@@ -100,7 +100,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <label>Pilih <?= $tabel_a1_field6_alias ?></label>
+              <label><?= lang('select') ?> <?= $tabel_a1_field6_alias ?></label>
               <select class="form-control" required name="<?= $tabel_a1_field6_input ?>">
 
                 <?php foreach ($tbl_b2 as $tl_b2): ?>

@@ -19,7 +19,7 @@ class C_tabel_a1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_a1_alias_v6',
+			'title' => lang('tabel_a1_alias_v6_title'),
 			'konten' => $this->v6['tabel_a1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_a1'])->result(),
 			'tbl_b2' => $this->tl_b2->get_b2_by_b7_field1($this->theme_id)->result(),

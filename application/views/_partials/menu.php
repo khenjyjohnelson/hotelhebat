@@ -3,7 +3,7 @@
         case $tabel_c2_field6_value1:
             ?>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . 'home') ?>">Home</a>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('/') ?>"><?= lang('home') ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_e4) ?>">
@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>">Login</a>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>"><?= lang('login') ?></a>
             </li>
             <?php break;
         case $tabel_c2_field6_value5:
@@ -31,11 +31,11 @@
                     ?>
 
                     <li class="nav-item">
-                        <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . 'dashboard') ?>">Dashboard</a>
+                        <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . 'dashboard') ?>"><?= lang('dashboard') ?></a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
-                            <a class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">Master Data <i
+                            <a class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#"><?= lang('master_data') ?> <i
                                     class="fas fa-caret-down"></i></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <?php switch ($this->session->userdata($tabel_c2_field6)) {
@@ -54,7 +54,7 @@
 
                                     case $tabel_c2_field6_value3:
                                         ?>
-                                        <h6 class="dropdown-header">Data</h6>
+                                        <h6 class="dropdown-header"><?= lang('data') ?></h6>
                                         <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>">
                                             <?= lang('tabel_e4_alias') ?>
                                         </a>
@@ -65,7 +65,7 @@
                                             <?= lang('tabel_e2_alias') ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <h6 class="dropdown-header">Operasional</h6>
+                                        <h6 class="dropdown-header"><?= lang('operational') ?></h6>
                                         <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c1 . '/admin') ?>">
                                             <?= lang('tabel_c1_alias') ?>
                                         </a>
@@ -83,7 +83,7 @@
                                     case $tabel_c2_field6_value4:
                                         ?>
 
-                                        <h6 class="dropdown-header">Kelola</h6>
+                                        <h6 class="dropdown-header"><?= lang('manage') ?></h6>
                                         <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">
                                             <?= lang('tabel_e3_alias') ?>
                                         </a>
@@ -94,11 +94,11 @@
                                             <?= lang('tabel_f1_alias') ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <h6 class="dropdown-header">Operasional</h6>
+                                        <h6 class="dropdown-header"><?= lang('operational') ?></h6>
                                         <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f4 . '/admin') ?>">
                                             <?= lang('tabel_f4_alias') ?>
                                         </a>
-                                        <h6 class="dropdown-header">Data</h6>
+                                        <h6 class="dropdown-header"><?= lang('data') ?></h6>
                                         <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>">
                                             <?= lang('tabel_e4_alias') ?>
                                         </a>
@@ -127,7 +127,7 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <div class="dropdown-header d-flex justify-content-between align-items-center">
-                        <span><?= $notif_count ?> New Notifications</span>
+                        <span><?= $notif_count . lang('new_notifications') ?></span>
                         <div>
                             <span class="px-3"></span> <!-- Adding space between buttons -->
                             <a href="<?= site_url($language . '/' . $tabel_b9 . '/update') ?>" class="btn btn-link">
@@ -190,7 +190,7 @@
                                                 <i class="text-danger fas fa-bell-slash"></i>
                                             </div>
                                             <div class="col-10">
-                                                <div class="text-dark">No Notifications Available</div>
+                                                <div class="text-dark"><?= lang('no_notifications_available') ?></div>
                                             </div>
                                         </div>
                                     </a>
@@ -199,7 +199,7 @@
                         } ?>
                     </div>
                     <div class="dropdown-header">
-                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/daftar') ?>" class="text-muted">Show all notifications</a>
+                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/daftar') ?>" class="text-muted"><?= lang('show_all_notifications') ?></a>
                     </div>
                 </div>
             </li>
@@ -241,8 +241,8 @@
                         <?php switch ($this->session->userdata($tabel_c2_field6)) {
                             case $tabel_c2_field6_value5:
                                 ?>
-                                <h6 class="dropdown-header">Jelajahi</h6>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . 'home') ?>">Pesan Sekarang</a>
+                                <h6 class="dropdown-header"><?= lang('explore') ?></h6>
+                                <a class="dropdown-item" href="<?= site_url('/') ?>">Pesan Sekarang</a>
                                 <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4) ?>">
                                     <?= lang('tabel_e4_alias') ?>
                                 </a>
@@ -278,8 +278,8 @@
                                 <?php break;
                         } ?>
 
-                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/profil') ?>">Profil</a>
-                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/logout') ?>">Logout</a>
+                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/profil') ?>"><?= lang('tabel_c2_alias2') ?></a>
+                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/logout') ?>"><?= lang('logout') ?></a>
 
 
                     </div>
@@ -293,6 +293,7 @@
         <form action="<?= site_url($language . '/welcome/set_language'); ?>" method="post" class="form-inline">
             <select name="language" class="form-control" onchange="this.form.submit()">
                 <option value="id" <?= ($this->session->userdata('site_lang') == 'id') ? 'selected' : ''; ?>>ID</option>
+                <option value="fr" <?= ($this->session->userdata('site_lang') == 'fr') ? 'selected' : ''; ?>>FR</option>
                 <option value="zh" <?= ($this->session->userdata('site_lang') == 'zh') ? 'selected' : ''; ?>>中文</option>
             </select>
         </form>

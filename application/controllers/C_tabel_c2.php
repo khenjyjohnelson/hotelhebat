@@ -13,7 +13,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_c2_alias_v3',
+			'title' => lang('tabel_c2_alias_v3_title'),
 			'konten' => $this->v3['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
@@ -117,7 +117,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_c2_alias_v4',
+			'title' => lang('tabel_c2_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
@@ -134,7 +134,7 @@ class C_tabel_c2 extends Omnitags
 
 		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
-			'title' => 'tabel_c2_alias_v6',
+			'title' => lang('tabel_c2_alias_v6_title'),
 			'konten' => $this->v6['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result(),
@@ -151,7 +151,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'Sign In',
+			'title' => lang('login'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'login')->result(),
 		);
 
@@ -165,7 +165,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'Create an Account',
+			'title' => lang('signup'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup')->result(),
 		);
 

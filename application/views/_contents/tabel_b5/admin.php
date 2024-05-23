@@ -12,7 +12,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= headings('title', 'phase') ?></h1>
+    <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -21,7 +21,7 @@
   </div>
 </div>
 <hr>
-<p>Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.</p>
+<p><?= lang('images_not_change_immediately') ?></p>
 
 <?= btn_tambah() ?>
 <?= btn_laporan('tabel_b5') ?>
@@ -41,7 +41,7 @@
       <td class="pr-2">
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">Pilih <?= $tabel_b7_alias ?></span>
+            <span class="input-group-text"><?= lang('select') ?> <?= $tabel_b7_alias ?></span>
           </div>
           <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
             <option selected hidden value="<?= $tabel_b5_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
@@ -119,7 +119,7 @@
           <?= add_text('tabel_b5_field5', 'required') ?>
 
           <div class="form-group">
-            <label>Pilih <?= $tabel_b7_alias ?></label>
+            <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
             <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
               <?php foreach ($tbl_b7 as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>

@@ -18,9 +18,7 @@
           </div>  
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
         <div class="d-flex justify-content-center">
-          <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">
-            Kembali ke beranda
-          </a>
+          <?= back_to_home() ?>
         </div>
       </div>
     </div>

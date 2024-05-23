@@ -52,21 +52,13 @@ class M_tabel_b6 extends CI_Model
 		$this->db->where($this->aliases['tabel_b6_field1'], $param1);
 		return $this->db->update($this->aliases['tabel_b6'], $data);
 	}
-
-	public function update_e3_field7($data, $param1, $param2)
-	{
-		$this->db->where($this->aliases['tabel_b6_field2'], $param1);
-		$this->db->where($this->aliases['tabel_b6_field5'], $param2);
-		return $this->db->update($this->aliases['tabel_b6'], $data);
-	}
-
 	public function delete_b6($param1)
 	{
 		$this->db->where($this->aliases['tabel_b6_field1'], $param1);
 		return $this->db->delete($this->aliases['tabel_b6']);
 	}
 	
-	public function delete_b6_by_fieldb7($param1)
+	public function delete_b6_by_b1_field7($param1)
 	{
 		$this->db->where($this->aliases['tabel_b1_field7'], $param1);
 		return $this->db->delete($this->aliases['tabel_b6']);

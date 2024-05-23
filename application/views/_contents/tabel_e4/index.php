@@ -6,7 +6,7 @@ terima kasih pada link di atas -->
   <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
-<h2 class="pt-2"><?= headings('title', 'phase') ?></h2>
+<h2 class="pt-2"><?= $title ?><?= $phase ?></h2>
 <hr>
 
 <?php foreach ($tbl_e4 as $tl_e4) : ?>

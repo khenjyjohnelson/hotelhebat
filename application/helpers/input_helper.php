@@ -469,7 +469,7 @@ if (!function_exists('select_ubah')) {
 
         return <<<HTML
         <div class="form-group">
-            <label>Pilih {$alias}</label>
+            <label><?= lang('select') ?> {$alias}</label>
             <select class="form-control" required name="{$input}">
             {$selected}
             {$values}

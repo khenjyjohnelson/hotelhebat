@@ -44,25 +44,25 @@
                         </div>
 
                         <div class="col-lg-3 pt-3">
-                            <h3>Jelajahi</h3>
+                            <h3><?= lang('explore') ?></h3>
                             <ul class="list-unstyled">
                                 <li>
                                     <a type="button" id="nextPage" class="text-decoration-none text-dark"
                                         href="<?= site_url($language . '/' . $tabel_e4) ?>">
-                                        <?= $tabel_e4_alias ?>
+                                        <?= lang('tabel_e4_alias') ?>
                                     </a>
                                 </li>
                                 <li>
                                     <a type="button" id="nextPage" class="text-decoration-none text-dark"
                                         href="<?= site_url($language . '/' . $tabel_e2) ?>">
-                                        <?= $tabel_e2_alias ?>
+                                        <?= lang('tabel_e2_alias') ?>
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
                         <div class="col-lg-3 pt-3">
-                            <h3>Alamat</h3>
+                            <h3><?= lang('address') ?></h3>
                             <ul class="list-unstyled">
                                 <li>
                                     <?= $tl_a1->$tabel_a1_field5 ?>
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="col-lg-2 pt-3">
-                            <h3>Ikuti</h3>
+                            <h3><?= lang('follow') ?></h3>
                             <ul class="list-unstyled">
                                 <?php foreach ($sosmed as $sm): ?>
                                     <li>

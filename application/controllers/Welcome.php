@@ -58,7 +58,7 @@ class Welcome extends Omnitags
 				$data1 = array(
 					$this->declarew(),
 
-					'title' => 'Selamat Datang',
+					'title' => lang('welcome'),
 					'konten' => 'home',
 					'dekor' => $this->tl_b1->dekor($this->theme_id, 'home')->result(),
 					'tbl_b2' => $this->tl_b2->get_b7_aktif($this->theme_id)->result(),
@@ -77,7 +77,7 @@ class Welcome extends Omnitags
 		$chart_tabel_f2 = $this->tl_e4->getCharttabel_f2();
 
 		$data1 = array(
-			'title' => 'Dashboard',
+			'title' => lang('dashboard'),
 			'konten' => 'dashboard',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'dashboard')->result(),
 			'tbl_e1' => $this->tl_e1->get_all_e1()->num_rows(),
@@ -110,7 +110,7 @@ class Welcome extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'Anda tidak memiliki akses ke halaman ini!',
+			'title' => lang('no-access'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no-level')->result(),
 		);
 
@@ -124,7 +124,7 @@ class Welcome extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'Halaman Tidak Ada',
+			'title' => lang('page_not_found'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, '404')->result(),
 		);
 

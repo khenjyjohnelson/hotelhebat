@@ -15,7 +15,7 @@ class C_tabel_c1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_c1_alias_v3',
+			'title' => lang('tabel_c1_alias_v3_title'),
 			'konten' => $this->v3['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
@@ -128,7 +128,7 @@ class C_tabel_c1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_c1_alias_v4',
+			'title' => lang('tabel_c1_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
 		);
@@ -144,7 +144,7 @@ class C_tabel_c1 extends Omnitags
 
 		$tabel_c1_field1 = $this->session->userdata($this->aliases['tabel_c1_field1']);
 		$data1 = array(
-			'title' => 'tabel_c1_alias2_v6',
+			'title' => lang('tabel_c1_alias2_v6_title'),
 			'konten' => $this->v6['tabel_c1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
 			'tbl_c1' => $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result(),

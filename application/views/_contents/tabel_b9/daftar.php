@@ -14,7 +14,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= headings('title', 'phase') ?></h1>
+    <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -78,9 +78,9 @@
         <form>
           <div class="modal-body">
             <?= tampil_text('tabel_b8_field3', $tl_b9->$tabel_b8_field3) ?>
-            <?= tampil_text('tabel_b8_field4', html_entity_decode($tl_b9->$tabel_b8_field4)) ?>
-            <?= tampil_text('tabel_b8_field5', $tl_b9->$tabel_b8_field5) ?>
-            <?= tampil_text('tabel_b8_field6', $tl_b9->$tabel_b8_field6) ?>
+            <?= tampil_text('tabel_b9_field4', html_entity_decode($tl_b9->$tabel_b9_field4)) ?>
+            <?= tampil_text('tabel_b9_field5', $tl_b9->$tabel_b9_field5) ?>
+            <?= tampil_text('tabel_b9_field6', $tl_b9->$tabel_b9_field6) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

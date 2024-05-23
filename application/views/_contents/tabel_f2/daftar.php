@@ -10,7 +10,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= headings('title', 'phase') ?></h1>
+    <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -137,7 +137,7 @@
                       <div class="form-group">
                         <label><?= $tabel_f3_field5_alias ?></label>
                         <select class="form-control" required name="<?= $tabel_f3_field5_input ?>">
-                          <option selected hidden value="">Pilih <?= $tabel_f3_field5_alias ?>...</option>
+                          <option selected hidden value=""><?= lang('select') ?> <?= $tabel_f3_field5_alias ?>...</option>
                           <option value="<?= $tabel_f3_field5_value1 ?>"><?= $tabel_f3_field5_value1_alias ?></option>
                           <option value="<?= $tabel_f3_field5_value2 ?>"><?= $tabel_f3_field5_value2_alias ?></option>
                         </select>

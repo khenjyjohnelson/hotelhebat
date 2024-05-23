@@ -18,9 +18,8 @@
       <div class="col-lg-5 login">
 
         <!-- link kembali -->
-        <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">Kembali ke beranda</a>
-
-        <h1 class="text-center"><?= headings('title', 'phase') ?></h1>
+<?= back_to_home() ?>
+        <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
 
         <!-- form login -->
         <form action="<?= site_url($language . '/' . $tabel_c1 . '/ceklogin') ?>" method="post">

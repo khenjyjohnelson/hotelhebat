@@ -37,7 +37,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_c2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_c2 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_c2 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_c1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_c1 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_c1 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_c1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_d3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_d3 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e4 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e2 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e2 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e1 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e1 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e1 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -154,7 +154,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_e3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -168,7 +168,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_f2 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_f2 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_f2 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -184,7 +184,7 @@
             <p class="card-text" style="font-size: 32;">
               <?= $tbl_f3 ?>
             </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_f3 . '/admin') ?>">Detail >></a>
+            <a class="text-white" href="<?= site_url($language . '/' . $tabel_f3 . '/admin') ?>"><?= lang('detail') ?> >></a>
           </div>
         </div>
       </div>
@@ -198,7 +198,7 @@
 </div>
 
 <!-- The charts shown will be different for each user level -->
-<h2 class="mt-4">Statistik</h2>
+<h2 class="mt-4"><?= lang('statistics') ?></h2>
 <hr>
 <?php switch ($this->session->userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value2:

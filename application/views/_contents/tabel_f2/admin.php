@@ -12,7 +12,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= headings('title', 'phase') ?></h1>
+    <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -132,13 +132,13 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Pilih <?= $tabel_e3_field1_alias ?></label>
+                      <label><?= lang('select') ?> <?= $tabel_e3_field1_alias ?></label>
 
                       <div class="row">
 
                         <!-- <select class="form-control" required name="<?= $tabel_f2_field13_input ?>"> -->
                         <!-- menampilkan nilai id_tipe kamar yang aktif -->
-                        <!-- <option selected hidden value="">Pilih <?= $tabel_e3_field1_alias ?>:</option> -->
+                        <!-- <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e3_field1_alias ?>:</option> -->
                         <!-- <option value="<?= $tl_e3->$tabel_f2_field13 ?>"><?= $tl_e3->$tabel_f2_field13; ?> - <?= $tlf2_e4->$tabel_e4_field2 ?></option> -->
                         <!-- </select> -->
 

@@ -20,7 +20,7 @@ class C_tabel_b1 extends Omnitags
 		$param1 = $this->v_get['tabel_b1_field7'];
 
 		$data1 = array(
-			'title' => 'tabel_b1_alias_v3',
+			'title' => lang('tabel_b1_alias_v3_title'),
 			'konten' => $this->v3['tabel_b1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b1'])->result(),
 			'tbl_b1' => $this->tl_b1->get_all_b1()->result(),
@@ -41,7 +41,7 @@ class C_tabel_b1 extends Omnitags
 		$param1 = $this->v_get['tabel_b1_field7'];
 
 		$data1 = array(
-			'title' => 'tabel_b1_alias_v3',
+			'title' => lang('tabel_b1_alias_v3_title'),
 			'konten' => $this->v3['tabel_b1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b1'])->result(),
 			'tbl_b1' => $this->tl_b1->filter($param1)->result(),
@@ -164,7 +164,7 @@ class C_tabel_b1 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => 'tabel_b1_alias_v4',
+			'title' => lang('tabel_b1_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b1'])->result(),
 			'tbl_b1' => $this->tl_b1->get_all_b1()->result(),
 		);

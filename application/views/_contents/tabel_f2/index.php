@@ -93,15 +93,14 @@
       <div class="form-group">
         <label><?= $tabel_e4_field2_alias ?></label>
         <select class="form-control" required name="<?= $tabel_e4_field1_input ?>">
-          <option selected hidden value="">Pilih <?= $tabel_e4_field2_alias ?>...</option>
+          <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e4_field2_alias ?>...</option>
           <?php foreach ($tbl_e4 as $tl_e4): ?>
             <option value="<?= $tl_e4->$tabel_e4_field1; ?>"><?= $tl_e4->$tabel_e4_field2 ?></option>
           <?php endforeach ?>
         </select>
       </div>
       <!-- keterangan * -->
-      <small>*<?= $tabel_f2_field4_alias ?> dibutuhkan untuk melakukan <?= $tabel_f2_alias ?> dan
-        <?= $tabel_f3_alias ?></small>
+      <small>*<?= $tabel_f2_field4_alias . lang('required_to_do') . $tabel_f2_alias . lang('and') . $tabel_f3_alias ?></small>
 
     </div>
     <div class="col-md-6">
@@ -128,7 +127,7 @@
         <button class="btn btn-success"
           onclick="return confirm('Apakah Anda Ingin Memesan <?= lang('tabel_e3_alias') . '?' ?>')"
           type="submit">Konfirmasi <?= $tabel_f2_alias ?></button>
-        <a class="btn btn-danger" type="button" href="<?= site_url($language . '/' . 'home') ?>">Batal</a>
+        <a class="btn btn-danger" type="button" href="<?= site_url('/') ?>">Batal</a>
       </div>
     </div>
   </div>

@@ -40,8 +40,8 @@
             untuk mencetak bukti <?= $tabel_f2_alias ?></p>
 
           <div class="d-flex justify-content-center">
-            <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">
-              Kembali ke beranda
+            <a class="text-decoration-none" href="<?= site_url('/') ?>">
+              <?= lang('back_to_home') ?>
             </a>
 
           </div>
@@ -57,8 +57,8 @@
           <h1 class="text-center">Anda tidak melakukan <?= $tabel_f2_alias ?> apapun</h1>
 
           <div class="d-flex justify-content-center">
-            <a class="text-decoration-none" href="<?= site_url($language . '/' . 'home') ?>">
-              Kembali ke beranda
+            <a class="text-decoration-none" href="<?= site_url('/') ?>">
+              <?= lang('back_to_home') ?>
             </a>
 
           </div>
