@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
         data-target="#password<?= $tl_c2->$tabel_c2_field1 ?>">
-        <i class="fas fa-edit"></i> <?= lang('update_data') . lang('tabel_c2_field4_alias') ?></a>
+        <i class="fas fa-edit"></i> <?= lang('update_data') . ' ' . lang('tabel_c2_field4_alias') ?></a>
     </div>
     <div class="col-md-6">
 
@@ -59,9 +59,7 @@
           <p class="small text-center text-danger"><?= get_flashdata('pesan_' . $tabel_c2_field4) ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-success"
-              onclick="return confirm(<?= lang('update_data') . lang('tabel_c2_field4_alias') . '?' ?>)"
-              type="submit">Simpan Perubahan</button>
+            <?= btn_update_field('tabel_c2_field4') ?>
           </div>
         </form>
       </div>

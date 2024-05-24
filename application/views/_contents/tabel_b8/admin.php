@@ -91,7 +91,7 @@
   <div id="ubah<?= $tl_b8->$tabel_b8_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . lang('tabel_b8_alias'), $tl_b8->$tabel_b8_field1) ?>
+        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b8_alias'), $tl_b8->$tabel_b8_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b8 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">

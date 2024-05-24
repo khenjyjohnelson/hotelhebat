@@ -100,7 +100,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . lang('tabel_e4_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_e4_alias'), '') ?>
       <form action="<?= site_url($language . '/' . $tabel_e4 . '/tambah') ?>" method="post">
         <div class="modal-body">
           <?= add_text('tabel_e4_field2', 'required') ?>
@@ -121,7 +121,7 @@
   <div id="ubah<?= $tl_e4->$tabel_e4_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
+        <?= modal_header(lang('update_data') . ' ' . lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_e4 . '/update') ?>" method="post" enctype="multipart/form-data">

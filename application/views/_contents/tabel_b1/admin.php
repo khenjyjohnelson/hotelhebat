@@ -107,7 +107,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . lang('tabel_b1_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_b1_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_b1 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
@@ -158,7 +158,7 @@
   <div id="ubah<?= $tl_b1->$tabel_b1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . lang('tabel_b1_alias'), $tl_b1->$tabel_b1_field1) ?>
+        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b1_alias'), $tl_b1->$tabel_b1_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b1 . '/update') ?>" method="post"
           enctype="multipart/form-data">

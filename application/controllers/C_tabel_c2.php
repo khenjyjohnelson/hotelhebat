@@ -19,7 +19,7 @@ class C_tabel_c2 extends Omnitags
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -122,7 +122,7 @@ class C_tabel_c2 extends Omnitags
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_c2'], $data);
 	}
@@ -141,7 +141,7 @@ class C_tabel_c2 extends Omnitags
 			'tbl_d3' => $this->tl_d3->get_d3_by_c2_field1($tabel_c2_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -155,7 +155,7 @@ class C_tabel_c2 extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'login')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('login', $data);
 	}
@@ -169,7 +169,7 @@ class C_tabel_c2 extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('signup', $data);
 	}

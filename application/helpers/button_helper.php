@@ -90,6 +90,20 @@ if (!function_exists('btn_update')) {
     }
 }
 
+if (!function_exists('btn_update_field')) {
+    function btn_update_field($field)
+    {
+        $alias = lang('update_data');
+
+        $placeholder = $alias . ' ' . lang($field);
+
+        return <<<HTML
+        <button class="btn mr-1 btn-success" type="submit" 
+        onclick="return confirm({$placeholder})">{$alias}</button>
+        HTML;
+    }
+}
+
 if (!function_exists('btn_cari')) {
     function btn_cari()
     {

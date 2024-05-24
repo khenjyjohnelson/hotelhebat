@@ -111,7 +111,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . lang('tabel_b2_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_b2_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_b2 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
@@ -137,7 +137,7 @@
         <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan</button>
+          <?= btn_simpan() ?>
         </div>
       </form>
     </div>
@@ -149,7 +149,7 @@
   <div id="ubah<?= $tl_b2->$tabel_b2_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . lang('tabel_b2_alias'), $tl_b2->$tabel_b2_field1) ?>
+        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b2_alias'), $tl_b2->$tabel_b2_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b2 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">

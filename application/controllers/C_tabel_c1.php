@@ -23,7 +23,7 @@ class C_tabel_c1 extends Omnitags
 			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -134,7 +134,7 @@ class C_tabel_c1 extends Omnitags
 			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_c1'], $data);
 	}
@@ -151,7 +151,7 @@ class C_tabel_c1 extends Omnitags
 			'tbl_c1' => $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -165,7 +165,7 @@ class C_tabel_c1 extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_confirm);
 
 		$this->load->view($this->views['tabel_c1_v2'], $data);
 	}
@@ -179,7 +179,7 @@ class C_tabel_c1 extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_confirm);
 
 		$this->load->view('signup', $data);
 	}

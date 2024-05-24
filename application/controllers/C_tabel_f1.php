@@ -33,7 +33,7 @@ class C_tabel_f1 extends Omnitags
 			'tabel_f1_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -64,7 +64,7 @@ class C_tabel_f1 extends Omnitags
 			'tabel_f1_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -93,7 +93,7 @@ class C_tabel_f1 extends Omnitags
 			'tabel_f1_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -118,7 +118,7 @@ class C_tabel_f1 extends Omnitags
 			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_f1'], $data);
 	}
@@ -146,7 +146,7 @@ class C_tabel_f1 extends Omnitags
 			'tabel_f1_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}

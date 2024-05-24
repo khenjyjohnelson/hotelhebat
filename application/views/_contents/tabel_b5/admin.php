@@ -46,7 +46,8 @@
           <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
             <option selected hidden value="<?= $tabel_b5_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
-              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?></option>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
+                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?></option>
             <?php endforeach ?>
           </select>
         </div>
@@ -109,9 +110,10 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add'). lang('tabel_b5_alias'), '') ?>
-      
-      <form action="<?= site_url($language . '/' . $tabel_b5 . '/tambah') ?>" enctype="multipart/form-data" method="post">
+      <?= modal_header(lang('add') . ' ' . lang('tabel_b5_alias'), '') ?>
+
+      <form action="<?= site_url($language . '/' . $tabel_b5 . '/tambah') ?>" enctype="multipart/form-data"
+        method="post">
         <div class="modal-body">
           <?= add_text('tabel_b5_field2', 'required') ?>
           <?= add_textarea('tabel_b5_field3', 'required') ?>
@@ -144,9 +146,10 @@
   <div id="ubah<?= $tl_b5->$tabel_b5_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
-        
-        <form action="<?= site_url($language . '/' . $tabel_b5 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
+
+        <form action="<?= site_url($language . '/' . $tabel_b5 . '/update') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= edit_text('tabel_b5_field2', $tl_b5->$tabel_b5_field2, 'required') ?>
@@ -157,7 +160,7 @@
           </div>
 
           <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Simpan</button>
+            <?= btn_simpan() ?>
           </div>
         </form>
       </div>
@@ -173,7 +176,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <?= modal_header(lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
-       
+
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">

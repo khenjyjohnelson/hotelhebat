@@ -77,7 +77,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . lang('tabel_c1_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_c1_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_c1 . '/tambah') ?>" method="post">
         <div class="modal-body">
@@ -104,7 +104,7 @@
         <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
-          <button class="btn btn-success" type="submit">Simpan</button>
+          <?= btn_simpan() ?>
         </div>
       </form>
     </div>
@@ -116,7 +116,7 @@
   <div id="ubah<?= $tl_c1->$tabel_c1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . lang('tabel_c1_alias'), $tl_c1->$tabel_c1_field1) ?>
+        <?= modal_header(lang('update_data') . ' ' . lang('tabel_c1_alias'), $tl_c1->$tabel_c1_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_c1 . '/update') ?>" method="post"

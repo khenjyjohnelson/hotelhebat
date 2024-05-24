@@ -69,7 +69,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . lang('tabel_c2_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_c2_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_c2 . '/tambah') ?>" method="post">
         <div class="modal-body">
@@ -77,7 +77,7 @@
           <?= add_email_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
           <?= add_new_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
           <?= password_req() ?>
-          <?= add_confirm_prepend('tabel_c2_fiel4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
+          <?= add_confirm_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
           <?= add_text_prepend('tabel_c2_field5', '<i class="fas fa-phone"></i>', 'required') ?>
 
           <div class="input-group">
@@ -101,7 +101,6 @@
 
         <div class="modal-footer">
           <?= btn_simpan() ?>
-          <button class="btn btn-success" type="submit">Simpan</button>
         </div>
       </form>
     </div>
@@ -113,7 +112,7 @@
   <div id="ubah<?= $tl_c2->$tabel_c2_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . lang('tabel_c2_alias'), $tl_c2->$tabel_c2_field1) ?>
+        <?= modal_header(lang('update_data') . ' ' . lang('tabel_c2_alias'), $tl_c2->$tabel_c2_field1) ?>
        
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_c2 . '/update') ?>" method="post" enctype="multipart/form-data">

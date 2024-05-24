@@ -63,9 +63,7 @@
           <p class="small text-center text-danger"><?= get_flashdata('pesan_' . $tabel_c1_field5) ?></p>
 
           <div class="modal-footer">
-            <button class="btn btn-success"
-              onclick="return confirm(<?= lang('update_data') . lang('tabel_c1_field5_alias') . '?' ?>)"
-              type="submit">Simpan Perubahan</button>
+            <?= btn_update_field('tabel_c1_field5') ?>
           </div>
         </form>
       </div>

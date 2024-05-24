@@ -24,7 +24,7 @@ class C_tabel_e3 extends Omnitags
 			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -87,7 +87,7 @@ class C_tabel_e3 extends Omnitags
 			'tbl_e3' => $this->tl_e3->get_all_e3()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_e3'], $data);
 	}
