@@ -124,7 +124,7 @@ class C_tabel_e4 extends Omnitags
 		$this->load->library('spreadsheet_lib');
 
 		// Check if the form was submitted
-		if ($this->input->post('submit')) {
+		if (post('submit')) {
 			// Handle file upload
 			$file_path = $_FILES['filepegawai']['tmp_name'];
 

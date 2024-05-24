@@ -21,6 +21,27 @@ if (!function_exists('post')) {
     }
 }
 
+if (!function_exists('get')) {
+    function get($key = null, $xss_clean = false) {
+        if ($key === null) {
+            return $_GET;
+        }
+        
+        if (isset($_GET[$key])) {
+            $value = $_GET[$key];
+            
+            if ($xss_clean) {
+                $value = xss_clean($value);
+            }
+            
+            return $value;
+        }
+        
+        return null;
+    }
+}
+
+
 if (!function_exists('xss_clean')) {
     function xss_clean($data) {
         // Here, a simple implementation using htmlspecialchars

@@ -19,6 +19,7 @@ class Omnitags extends CI_Controller
         $this->load->helper('language');
         $this->load->helper('url');
         $this->load->helper('session');
+        $this->load->helper('output');
         $this->load->library('session');
         $this->load->library('user_agent');
 
@@ -63,9 +64,9 @@ class Omnitags extends CI_Controller
         }
 
         // Check if a language parameter is present in the URL
-        if ($this->input->get('language')) {
-            set_userdata('site_lang', $this->input->get('language'));
-            return $this->input->get('language');
+        if (get('language')) {
+            set_userdata('site_lang', get('language'));
+            return get('language');
         }
 
         // Check if language is provided in the URL segment
@@ -138,20 +139,20 @@ class Omnitags extends CI_Controller
             $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
             $this->reverse[$item['value'] . '_realname'] = $item['key'];
             $this->v_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
-            $this->v_post[$item['key']] = $this->input->post('txt_' . $item['value']);
-            $this->v_get[$item['key']] = $this->input->get('txt_' . $item['value']);
+            $this->v_post[$item['key']] = post('txt_' . $item['value']);
+            $this->v_get[$item['key']] = get('txt_' . $item['value']);
             $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
-            $this->v_post_old[$item['key']] = $this->input->post('old_' . $item['value']);
+            $this->v_post_old[$item['key']] = post('old_' . $item['value']);
             $this->v_new[$item['key'] . '_new'] = 'new_' . $item['value'];
-            $this->v_post_new[$item['key']] = $this->input->post('new_' . $item['value']);
+            $this->v_post_new[$item['key']] = post('new_' . $item['value']);
             $this->v_confirm[$item['key'] . '_confirm'] = 'confirm_' . $item['value'];
-            $this->v_post_confirm[$item['key']] = $this->input->post('confirm_' . $item['value']);
+            $this->v_post_confirm[$item['key']] = post('confirm_' . $item['value']);
 
             $this->v_filter1[$item['key'] . '_filter1'] = 'min_' . $item['value'];
             $this->v_filter2[$item['key'] . '_filter2'] = 'max_' . $item['value'];
 
-            $this->v_filter1_get[$item['key']] = $this->input->get('min_' . $item['value']);
-            $this->v_filter2_get[$item['key']] = $this->input->get('max_' . $item['value']);
+            $this->v_filter1_get[$item['key']] = get('min_' . $item['value']);
+            $this->v_filter2_get[$item['key']] = get('max_' . $item['value']);
 
             $this->flash1_msg_1[$item['key']] = 'Data ' . $item['value'] . ' berhasil disimpan!';
             $this->flash1_msg_2[$item['key']] = 'Data ' . $item['value'] . ' gagal disimpan!';

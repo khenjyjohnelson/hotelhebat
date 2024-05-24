@@ -41,7 +41,7 @@ class C_tabel_c1 extends Omnitags
 		if ($method2->num_rows() < 1) {
 
 			// jika input konfirm sama dengan input password
-			// if ($this->input->post('konfirm') === $param8) {
+			// if (post('konfirm') === $param8) {
 			// $this->load->library('encryption');
 
 			$data = array(
