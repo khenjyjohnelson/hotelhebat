@@ -7,7 +7,7 @@ class Welcome extends Omnitags
 {
 	public function default_language()
 	{
-		redirect('/en', 'refresh');
+		redirect('/id', 'refresh');
 	}
 
 	// fungsi pertama yang akan diload oleh website
@@ -32,26 +32,26 @@ class Welcome extends Omnitags
 		header("Expires: 0"); // Proxies.
 
 		// mengarahkan pengguna ke halaman masing-masing sesuai level
-		switch ($this->session->userdata($this->aliases['tabel_c2_field6'])) {
+		switch (userdata($this->aliases['tabel_c2_field6'])) {
 			case $this->aliases['tabel_c2_field6_value2']:
 			case $this->aliases['tabel_c2_field6_value3']:
 			case $this->aliases['tabel_c2_field6_value4']:
 
-				$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
-				$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+				set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
+				set_flashdata('toast', $this->views['flash1_func1']);
 
 				redirect(site_url($this->language_code . '/' . 'dashboard'));
 				break;
 
 			default:
-				$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
-				$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+				set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
+				set_flashdata('toast', $this->views['flash1_func1']);
 
 				// When you're the one who's developing this app, it's quite annoying to see this message over and over again.\
 				// The feature below isn't working as expected
-				// if ($this->session->userdata($this->aliases['tabel_c2_field7']) < 2) {
-				// 	$this->session->set_flashdata($this->views['flash5'], "Anda hanya akan mendapatkan quick tour ini sebanyak 2 kali");
-				// 	$this->session->set_flashdata($this->views['flash5'], $this->views['flash5_func1']);
+				// if (userdata($this->aliases['tabel_c2_field7']) < 2) {
+				// 	set_flashdata($this->views['flash5'], "Anda hanya akan mendapatkan quick tour ini sebanyak 2 kali");
+				// 	set_flashdata($this->views['flash5'], $this->views['flash5_func1']);
 				// } else {
 				// }
 
@@ -64,7 +64,7 @@ class Welcome extends Omnitags
 					'tbl_b2' => $this->tl_b2->get_b7_aktif($this->theme_id)->result(),
 				);
 
-				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 				$this->load->view('_layouts/template', $data);
 		}
 	}
@@ -94,10 +94,10 @@ class Welcome extends Omnitags
 			'chart_tabel_f2' => json_encode($chart_tabel_f2),
 		);
 
-		$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
-		$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+		set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
+		set_flashdata('toast', $this->views['flash1_func1']);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$notif = $this->handle_4b();
 
@@ -114,7 +114,7 @@ class Welcome extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no-level')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('no-level', $data);
 	}
@@ -128,20 +128,20 @@ class Welcome extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, '404')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('404', $data);
 	}
 
 	public function set_language()
 	{
-		$language = $this->input->post('language');
+		$language = $_POST('language');
 		$allowed_languages = ['en', 'fr', 'id', 'zh'];
 
 		// Validate the language input
 		if (in_array($language, $allowed_languages)) {
 			// Set the selected language in session
-			$this->session->set_userdata('site_lang', $language);
+			set_userdata('site_lang', $language);
 
 			// Get the HTTP referer
 			$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';

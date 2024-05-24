@@ -23,7 +23,7 @@ class C_tabel_d3 extends Omnitags
 			'tbl_d3' => $this->tl_d3->get_all_d3()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -34,7 +34,7 @@ class C_tabel_d3 extends Omnitags
 
 		$data = array(
 			$this->aliases['tabel_d3_field1'] => '',
-			$this->aliases['tabel_d3_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+			$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
 			$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
 			$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
 		);
@@ -53,7 +53,7 @@ class C_tabel_d3 extends Omnitags
 			'tbl_d3' => $this->tl_d3->get_all_d3()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_d3'], $data);
 	}

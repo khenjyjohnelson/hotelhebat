@@ -19,7 +19,7 @@ class C_tabel_c2 extends Omnitags
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -29,7 +29,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
-		$tabel_c2_field4 = $this->v_post['tabel_c2_field4'];
+		$tabel_c2_field4 = $this->v_post_new['tabel_c2_field4'];
 
 		$method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
 
@@ -37,7 +37,7 @@ class C_tabel_c2 extends Omnitags
 		if ($method3->num_rows() < 1) {
 
 			// jika input konfirm sama dengan input password
-			if ($this->input->post('konfirm') === $tabel_c2_field4) {
+			if ($this->v_post_confirm['tabel_c2_field4'] === $tabel_c2_field4) {
 				$this->load->library('encryption');
 
 				$data = array(
@@ -55,7 +55,7 @@ class C_tabel_c2 extends Omnitags
 				$aksi = $this->tl_c2->insert_c2($data);
 
 				// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
-				if ($this->session->userdata($this->aliases['tabel_c2_field3'])) {
+				if (userdata($this->aliases['tabel_c2_field3'])) {
 
 					redirect($_SERVER['HTTP_REFERER']);
 				} else {
@@ -67,7 +67,7 @@ class C_tabel_c2 extends Omnitags
 			} else {
 
 				// menampilkan flashdata dalam bentuk teks
-				$this->session->set_flashdata($this->views['flash1'], 'Konfirmasi ' . $this->aliases['tabel_c2_field4'] . ' salah!');
+				set_flashdata($this->views['flash1'], 'Konfirmasi ' . $this->aliases['tabel_c2_field4'] . ' salah!');
 
 				redirect($_SERVER['HTTP_REFERER']);
 			}
@@ -75,7 +75,7 @@ class C_tabel_c2 extends Omnitags
 			// jika jumlah data lebih dari 0
 		} else {
 
-			$this->session->set_flashdata($this->views['flash1'], $this->aliases['tabel_c2_field3'] . 'telah digunakan!');
+			set_flashdata($this->views['flash1'], $this->aliases['tabel_c2_field3'] . 'telah digunakan!');
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
@@ -122,7 +122,7 @@ class C_tabel_c2 extends Omnitags
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_c2'], $data);
 	}
@@ -132,7 +132,7 @@ class C_tabel_c2 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
 			'title' => lang('tabel_c2_alias_v6_title'),
 			'konten' => $this->v6['tabel_c2'],
@@ -141,7 +141,7 @@ class C_tabel_c2 extends Omnitags
 			'tbl_d3' => $this->tl_d3->get_d3_by_c2_field1($tabel_c2_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -155,7 +155,7 @@ class C_tabel_c2 extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'login')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('login', $data);
 	}
@@ -169,7 +169,7 @@ class C_tabel_c2 extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('signup', $data);
 	}
@@ -196,8 +196,8 @@ class C_tabel_c2 extends Omnitags
 		$tabel_c2_field4 = $tabel_c2[0]->hp;
 
 		// membuat session baru berdasarkan data yang telah diupdate
-		$this->session->set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
-		$this->session->set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
+		set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
+		set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
 
 		// kembali ke halaman sebelumnya sesuai dengan masing-masing user dengan level yang berbeda
 		redirect($_SERVER['HTTP_REFERER']);
@@ -220,10 +220,10 @@ class C_tabel_c2 extends Omnitags
 
 			// memverifikasi password lama dengan password di database
 			if (password_verify($old_tabel_c2_field4, $cek_tabel_c2_field4)) {
-				$tabel_c2_field4 = $this->v_post['tabel_c2_field4'];
+				$tabel_c2_field4 = $this->v_post_new['tabel_c2_field4'];
 
 				// jika konfirmasi password sama dengan password baru
-				if ($this->input->post('konfirm') === $this->v_post['tabel_c2_field4']) {
+				if ($this->v_post_confirm['tabel_c2_field4'] === $tabel_c2_field4) {
 					$this->load->library('encryption');
 
 					$data = array(
@@ -238,24 +238,24 @@ class C_tabel_c2 extends Omnitags
 					// jika konfirmasi password tidak sama dengan password baru
 				} else {
 
-					$this->session->set_flashdata($this->flash['tabel_c2_field4'], $this->flash_msg3_alt2['tabel_c2_field4_alias']);
-					$this->session->set_flashdata('modal', $this->flash_func['tabel_c2_field4']);
+					set_flashdata($this->flash['tabel_c2_field4'], $this->flash_msg3_alt2['tabel_c2_field4_alias']);
+					set_flashdata('modal', $this->flash_func['tabel_c2_field4']);
 					redirect($_SERVER['HTTP_REFERER']);
 				}
 
 				// jika password lama salah
 			} else {
 
-				$this->session->set_flashdata($this->flash['tabel_c2_field4'], $this->flash_msg3_alt1['tabel_c2_field4_alias']);
-				$this->session->set_flashdata('modal', $this->flash_func['tabel_c2_field4']);
+				set_flashdata($this->flash['tabel_c2_field4'], $this->flash_msg3_alt1['tabel_c2_field4_alias']);
+				set_flashdata('modal', $this->flash_func['tabel_c2_field4']);
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 
 			// jika jumlah data kurang dari 0
 		} else {
 
-			$this->session->set_flashdata($this->flash['tabel_c2_field4'], $this->flash_msg5['tabel_c2_alias2']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel_c2_field4']);
+			set_flashdata($this->flash['tabel_c2_field4'], $this->flash_msg5['tabel_c2_alias2']);
+			set_flashdata('modal', $this->flash_func['tabel_c2_field4']);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
@@ -283,11 +283,11 @@ class C_tabel_c2 extends Omnitags
 				$tabel_c2_field6 = $tabel_c2[0]->level;
 
 
-				$this->session->set_userdata($this->aliases['tabel_c2_field1'], $tabel_c2_field1);
-				$this->session->set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
-				$this->session->set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
-				$this->session->set_userdata($this->aliases['tabel_c2_field5'], $tabel_c2_field5);
-				$this->session->set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
+				set_userdata($this->aliases['tabel_c2_field1'], $tabel_c2_field1);
+				set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
+				set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
+				set_userdata($this->aliases['tabel_c2_field5'], $tabel_c2_field5);
+				set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
 
 				// Function to get the device type
 				// Function to get the device type and operating system
@@ -339,7 +339,7 @@ class C_tabel_c2 extends Omnitags
 
 				$loginh = array(
 					$this->aliases['tabel_d3_field1'] => '',
-					$this->aliases['tabel_d3_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+					$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
 					$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
 					$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
 					$this->aliases['tabel_d3_field5'] => $deviceType,
@@ -368,14 +368,14 @@ class C_tabel_c2 extends Omnitags
 				// Alasannya karena ada banyak sekali jenis pesan yang tidak boleh digunakan dalam satu tempat
 				// Kalau tidak bisa merusak experience dari user
 
-				$this->session->set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_c2_field4_alias']);
+				set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_c2_field4_alias']);
 				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 			}
 
 			// jika jumlah data lebih dari 0
 		} else {
 
-			$this->session->set_flashdata($this->views['flash1'], $this->flash_msg4['tabel_c2_field3']);
+			set_flashdata($this->views['flash1'], $this->flash_msg4['tabel_c2_field3']);
 			redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		}
 
@@ -392,11 +392,11 @@ class C_tabel_c2 extends Omnitags
 		// 		$hp = $tabel_c2[0]->hp;
 		// 		$level = $tabel_c2[0]->level;
 
-		// 		$this->session->set_userdata('id_user', $tabel_c2_field1);
-		// 		$this->session->set_userdata('nama', $nama);
-		// 		$this->session->set_userdata('email', $tabel_c2_field1);
-		// 		$this->session->set_userdata('hp', $hp);
-		// 		$this->session->set_userdata('level', $level);
+		// 		set_userdata('id_user', $tabel_c2_field1);
+		// 		set_userdata('nama', $nama);
+		// 		set_userdata('email', $tabel_c2_field1);
+		// 		set_userdata('hp', $hp);
+		// 		set_userdata('level', $level);
 
 		// 		redirect($_SERVER['HTTP_REFERER']); 
 		redirect(site_url($this->language_code . '/' . 'home'));
@@ -404,7 +404,7 @@ class C_tabel_c2 extends Omnitags
 		// 		// jika password salah
 		// 	} else {
 
-		// 		$this->session->set_flashdata($this->views['flash1'], 'Password Salah!');
+		// 		set_flashdata($this->views['flash1'], 'Password Salah!');
 		// 		redirect($_SERVER['HTTP_REFERER']); 
 		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		// 	}
@@ -412,7 +412,7 @@ class C_tabel_c2 extends Omnitags
 		// 	// jika jumlah data lebih dari 0
 		// } else {
 
-		// 	$this->session->set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
+		// 	set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
 		// 	redirect($_SERVER['HTTP_REFERER']); 
 		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		// }

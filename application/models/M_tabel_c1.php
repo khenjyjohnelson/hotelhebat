@@ -33,7 +33,7 @@ class M_tabel_c1 extends CI_Model
 	public function ceklogin($param1, $param2)
 	{
 		$this->db->where($this->aliases['tabel_c1_field1'], $param1);
-		$this->db->where($this->aliases['tabel_c1_field4'], $param2);
+		$this->db->where($this->aliases['tabel_c1_field5'], $param2);
 		$this->db->order_by($this->aliases['tabel_c1_field1'], 'DESC');
 		return $this->db->get($this->aliases['tabel_c1']);
 	}

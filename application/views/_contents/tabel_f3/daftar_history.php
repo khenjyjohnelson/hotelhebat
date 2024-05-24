@@ -78,7 +78,7 @@ Jadi tidak perlu menambahkan foreach hitory lagi -->
         </div>
 
         <!-- memunculkan notifikasi modal -->
-        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
 
         <div class="modal-footer">
 

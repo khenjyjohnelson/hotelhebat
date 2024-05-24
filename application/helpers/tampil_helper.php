@@ -23,6 +23,29 @@ if (!function_exists('tampil_text')) {
     }
 }
 
+if (!function_exists('password_req')) {
+    function password_req()
+    {
+        return <<<HTML
+        <div id="message">
+              <label class="checkpass">Password must contain the following:</label><br>
+              <div class="row">
+                <div class="col-md-6">
+                  <label id="letter" class="checkpass invalid">A <b>lowercase</b> letter</label><br>
+                  <label id="capital" class="checkpass invalid">A <b>capital (uppercase)</b> letter</label><br>
+                  
+                </div>
+                <div class="col-md-6">
+                  <label id="number" class="checkpass invalid">A <b>number</b></label><br>
+                  <label id="length" class="checkpass invalid">Minimum <b>8 characters</b></label>
+                  
+                </div>
+              </div>
+            </div>
+        HTML;
+    }
+}
+
 if (!function_exists('tampil_file')) {
     function tampil_file($tabel_class, $field, $value)
     {
@@ -32,7 +55,7 @@ if (!function_exists('tampil_file')) {
         $data = $CI->load->get_vars();
 
         $alias = lang($field . '_alias');
-        
+
         $placeholder = lang('input');
 
         return <<<HTML

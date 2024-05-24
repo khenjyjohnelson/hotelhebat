@@ -27,7 +27,7 @@ class C_tabel_b6 extends Omnitags
 			'tabel_b6_field7_value' => $param1,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -48,7 +48,7 @@ class C_tabel_b6 extends Omnitags
 			'tabel_b6_field7_value' => $param1
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -161,7 +161,7 @@ class C_tabel_b6 extends Omnitags
 			'tbl_b6' => $this->tl_b6->get_all_b6()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_b6'], $data);
 	}

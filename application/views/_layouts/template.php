@@ -5,9 +5,9 @@
 <!-- memastikan user memiliki id  -->
 <?php
 switch (true) {
-  case ($this->session->userdata($tabel_c2_field1)):
+  case (userdata($tabel_c2_field1)):
     break;
-  case ($this->session->userdata($tabel_c1_field1)):
+  case (userdata($tabel_c1_field1)):
     break;
   default:
     session_destroy();
@@ -45,7 +45,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="toast-body">
-        <?= $this->session->flashdata('pesan') ?>
+        <?= get_flashdata('pesan') ?>
       </div>
     </div>
 

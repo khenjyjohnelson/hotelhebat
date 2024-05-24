@@ -6,10 +6,10 @@
                 <div class="form-group">
                     <p>Silahkan ikuti tour berikut ini</p>
                 </div>
-                <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_quickTour') ?></p>
+                <p class="small text-center text-danger"><?= get_flashdata('pesan_quickTour') ?></p>
                 <div class="modal-footer">
                     <?php
-                    $userType = $this->session->userdata($tabel_c2_field6);
+                    $userType = userdata($tabel_c2_field6);
                     switch ($userType) {
                         case $tabel_c2_field6_value5:
                             ?>

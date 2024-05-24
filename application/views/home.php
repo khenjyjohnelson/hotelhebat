@@ -2,7 +2,7 @@
   <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>
 
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value5: ?>
 
     <!-- method get supaya nilai dari form bisa tampil nanti (tidak langsung masuk ke database) -->

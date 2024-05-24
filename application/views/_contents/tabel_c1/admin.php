@@ -1,4 +1,4 @@
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
   case $tabel_c2_field6_value4:
     break;
@@ -34,8 +34,9 @@
         <th><?= lang('tabel_c1_field1_alias') ?></th>
         <th><?= lang('tabel_c1_field2_alias') ?></th>
         <th><?= lang('tabel_c1_field3_alias') ?></th>
-        <th><?= lang('tabel_c1_field4_alias') ?></th>
-        <th><?= lang('tabel_c1_field5_alias') ?></th>
+        <th><?= lang('tabel_c1_field6_alias') ?></th>
+        <th><?= lang('tabel_c1_field7_alias') ?></th>
+        <th><?= lang('tabel_c1_field7_alias') ?></th>
         <th><?= lang('action') ?></th>
       </tr>
     </thead>
@@ -47,8 +48,9 @@
           <td><?= $tl_c1->$tabel_c1_field1; ?></td>
           <td><?= $tl_c1->$tabel_c1_field2 ?></td>
           <td><?= $tl_c1->$tabel_c1_field3 ?></td>
-          <td><?= $tl_c1->$tabel_c1_field4 ?></td>
-          <td><?= $tl_c1->$tabel_c1_field5 ?></td>
+          <td><?= $tl_c1->$tabel_c1_field6 ?></td>
+          <td><?= $tl_c1->$tabel_c1_field7 ?></td>
+          <td><?= $tl_c1->$tabel_c1_field7 ?></td>
           <td>
             <?= btn_lihat($tl_c1->$tabel_c1_field1) ?>
             <?= btn_edit($tl_c1->$tabel_c1_field1) ?>
@@ -76,33 +78,22 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <?= modal_header(lang('add') . lang('tabel_c1_alias'), '') ?>
-      
+
       <form action="<?= site_url($language . '/' . $tabel_c1 . '/tambah') ?>" method="post">
         <div class="modal-body">
 
-        <?= add_text('tabel_c1_field2', 'required') ?>
-        <?= add_email('tabel_c1_field3', 'required') ?>
-        <?= add_text('tabel_c1_field4', 'required') ?>
-
-          <!-- Di bawah ini adalah penginputan password dan konfirmasi password untuk tabel_c1, sangat opsional -->
-          <!-- <div class="form-group">
-          <label><?= $tabel_c1_field4_alias ?></label>
-            <input class="form-control" type="password" required name="<?= $tabel_c1_field4_input ?>" placeholder="Masukkan <?= $tabel_c1_field4_alias ?>">
-          </div>
+          <?= add_text('tabel_c1_field2', 'required') ?>
+          <?= add_email('tabel_c1_field3', 'required') ?>
+          <?= add_new_password('tabel_c1_field4', 'required') ?>
+          <?= add_text('tabel_c1_field5', 'required') ?>
+          <?= add_file('tabel_c1_field6', 'required') ?>
 
           <div class="form-group">
-          <label>Konfirmasi <?= $tabel_c1_field4_alias ?></label>
-            <input class="form-control" type="password" required name="konfirm" placeholder="Konfirmasi <?= $tabel_c1_field4_alias ?>">
-          </div> -->
-
-          <?= add_file('tabel_c1_field5', 'required') ?>
-
-          <div class="form-group">
-            <label><?= $tabel_c1_field6_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_c1_field6_input ?>">
-              <option value="" selected hidden><?= lang('select') ?> <?= $tabel_c1_field6_alias ?></option>
-              <option value="<?= $tabel_c1_field6_value1 ?>"><?= $tabel_c1_field6_value1_alias ?></option>
-              <option value="<?= $tabel_c1_field6_value2 ?>"><?= $tabel_c1_field6_value2_alias ?></option>
+            <label><?= $tabel_c1_field7_alias ?></label>
+            <select class="form-control" required name="<?= $tabel_c1_field7_input ?>">
+              <option value="" selected hidden><?= lang('select') ?> <?= $tabel_c1_field7_alias ?></option>
+              <option value="<?= $tabel_c1_field7_value1 ?>"><?= $tabel_c1_field7_value1_alias ?></option>
+              <option value="<?= $tabel_c1_field7_value2 ?>"><?= $tabel_c1_field7_value2_alias ?></option>
             </select>
           </div>
 
@@ -110,7 +101,7 @@
         </div>
 
         <!-- memunculkan notifikasi modal -->
-        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
           <button class="btn btn-success" type="submit">Simpan</button>
@@ -126,29 +117,30 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <?= modal_header(lang('update_data') . lang('tabel_c1_alias'), $tl_c1->$tabel_c1_field1) ?>
-        
+
         <!-- administrator tidak dapat mengubah password akun lain -->
-        <form action="<?= site_url($language . '/' . $tabel_c1 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_c1 . '/update') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_c1_field1', $tl_c1->$tabel_c1_field1, 'required') ?>
             <?= edit_text('tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>
             <?= edit_email('tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>
-            <?= edit_text('tabel_c1_field4', $tl_c1->$tabel_c1_field4, 'required') ?>
-            <?= edit_file('tabel_c1', 'tabel_c1_field5', $tl_c1->$tabel_c1_field5, 'required') ?>
+            <?= edit_text('tabel_c1_field5', $tl_c1->$tabel_c1_field5, 'required') ?>
+            <?= edit_file('tabel_c1', 'tabel_c1_field6', $tl_c1->$tabel_c1_field6, 'required') ?>
 
             <div class="form-group">
-              <label><?= $tabel_c1_field6_alias ?></label>
-              <select class="form-control" required name="<?= $tabel_c1_field6_input ?>">
-                <option value="<?= $tl_c1->$tabel_c1_field6 ?>" selected hidden><?= $tl_c1->$tabel_c1_field6 ?></option>
-                <option value="<?= $tabel_c1_field6_value1 ?>"><?= $tabel_c1_field6_value1_alias ?></option>
-                <option value="<?= $tabel_c1_field6_value2 ?>"><?= $tabel_c1_field6_value2_alias ?></option>
+              <label><?= $tabel_c1_field7_alias ?></label>
+              <select class="form-control" required name="<?= $tabel_c1_field7_input ?>">
+                <option value="<?= $tl_c1->$tabel_c1_field7 ?>" selected hidden><?= $tl_c1->$tabel_c1_field7 ?></option>
+                <option value="<?= $tabel_c1_field7_value1 ?>"><?= $tabel_c1_field7_value1_alias ?></option>
+                <option value="<?= $tabel_c1_field7_value2 ?>"><?= $tabel_c1_field7_value2_alias ?></option>
               </select>
             </div>
 
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata('pesan_ubah') ?></p>
 
           <div class="modal-footer">
             <?= btn_update() ?>
@@ -158,7 +150,7 @@
     </div>
   </div>
 
-  
+
   <div id="lihat<?= $tl_c1->$tabel_c1_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -171,17 +163,17 @@
               <div class="col-md-6">
                 <?= tampil_text('tabel_c1_field2', $tl_c1->$tabel_c1_field2) ?>
                 <?= tampil_text('tabel_c1_field3', $tl_c1->$tabel_c1_field3) ?>
-                <?= tampil_text('tabel_c1_field4', $tl_c1->$tabel_c1_field4) ?>
+                <?= tampil_text('tabel_c1_field5', $tl_c1->$tabel_c1_field5) ?>
 
               </div>
               <div class="col-md-6">
-                <?= tampil_text('tabel_c1_field5', $tl_c1->$tabel_c1_field5) ?>
+                <?= tampil_text('tabel_c1_field6', $tl_c1->$tabel_c1_field6) ?>
               </div>
             </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
             <?= btn_tutup() ?>

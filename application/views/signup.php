@@ -27,45 +27,14 @@
         <form action="<?= site_url($language . '/' . $tabel_c2 . '/tambah') ?>" method="post">
           <?= input_hidden('tabel_c2_field6', $tabel_c2_field6_value5, 'required') ?>
           <?= add_text_prepend('tabel_c2_field2', '<i class="fas fa-user"></i>', 'required') ?>
-          <?= add_text_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
-            </div>
-            <input class="form-control" id="psw" type="password" required name="<?= $tabel_c2_field4_input ?>"
-              placeholder="Masukkan <?= $tabel_c2_field4_alias ?>" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-          </div>
-
-          <div id="message">
-            <label class="checkpass">Password must contain the following:</label><br>
-            <div class="row">
-              <div class="col-md-6">
-                <label id="letter" class="checkpass invalid">A <b>lowercase</b> letter</label><br>
-                <label id="capital" class="checkpass invalid">A <b>capital (uppercase)</b> letter</label><br>
-
-              </div>
-              <div class="col-md-6">
-                <label id="number" class="checkpass invalid">A <b>number</b></label><br>
-                <label id="length" class="checkpass invalid">Minimum <b>8 characters</b></label>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
-            </div>
-            <input class="form-control" type="password" required name="konfirm"
-              placeholder="Konfirmasi <?= $tabel_c2_field4_alias ?>">
-          </div>
-
+          <?= add_email_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
+          <?= add_new_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
+          <?= password_req() ?>
+          <?= add_confirm_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
           <?= add_text_prepend('tabel_c2_field5', '<i class="fas fa-phone"></i>', 'required') ?>
 
           <!-- pesan untuk pengguna yang signup -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata($this->views['flash1']) ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata('flash1') ?></p>
 
           <!-- tombol signup dan login -->
           <div class="form-group d-flex justify-content-around">

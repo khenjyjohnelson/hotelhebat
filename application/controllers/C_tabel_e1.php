@@ -17,7 +17,7 @@ class C_tabel_e1 extends Omnitags
 			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -37,7 +37,7 @@ class C_tabel_e1 extends Omnitags
 			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -57,8 +57,8 @@ class C_tabel_e1 extends Omnitags
 			$input_value = htmlspecialchars(trim($this->v_post[$input]));
 			if (empty($input_value)) {
 				// Error Handling: Set error flash message for invalid input
-				$this->session->set_flashdata($this->views['flash2'], "Invalid input. Please provide valid data.");
-				$this->session->set_flashdata('modal', $this->views['flash2_func1']);
+				set_flashdata($this->views['flash2'], "Invalid input. Please provide valid data.");
+				set_flashdata('modal', $this->views['flash2_func1']);
 				// Functional requirement: Redirect user to 'tabel_e1' page
 				redirect($_SERVER['HTTP_REFERER']); 
 			}
@@ -83,8 +83,8 @@ class C_tabel_e1 extends Omnitags
 			
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
-			$this->session->set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
-			$this->session->set_flashdata('modal', $this->views['flash2_func1']);
+			set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
+			set_flashdata('modal', $this->views['flash2_func1']);
 		}
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
@@ -108,8 +108,8 @@ class C_tabel_e1 extends Omnitags
 			$input_value = htmlspecialchars(trim($this->v_post[$input]));
 			if (empty($input_value)) {
 				// Error Handling: Set error flash message for invalid input
-				$this->session->set_flashdata($this->views['flash3'], "Invalid input. Please provide valid data.");
-				$this->session->set_flashdata('modal', $this->views['flash3_func1']);
+				set_flashdata($this->views['flash3'], "Invalid input. Please provide valid data.");
+				set_flashdata('modal', $this->views['flash3_func1']);
 				// Functional requirement: Redirect user to 'tabel_e1' page
 				redirect($_SERVER['HTTP_REFERER']); 
 			}
@@ -132,8 +132,8 @@ class C_tabel_e1 extends Omnitags
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
-			$this->session->set_flashdata($this->views['flash2'], "Error occurred while updating data: " . $e->getMessage());
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+			set_flashdata($this->views['flash2'], "Error occurred while updating data: " . $e->getMessage());
+			set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
@@ -160,8 +160,8 @@ class C_tabel_e1 extends Omnitags
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
-			$this->session->set_flashdata($this->views['flash1'], "Error occurred while deleting data: " . $e->getMessage());
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+			set_flashdata($this->views['flash1'], "Error occurred while deleting data: " . $e->getMessage());
+			set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
@@ -180,7 +180,7 @@ class C_tabel_e1 extends Omnitags
 			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_e1'], $data);
 	}

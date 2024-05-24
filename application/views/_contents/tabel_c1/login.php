@@ -42,15 +42,15 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <input class="form-control" type="password" name="<?= $tabel_c1_field4_input ?>"
-              placeholder="Masukkan <?= $tabel_c1_field4_alias ?>">
+            <input class="form-control" type="password" name="<?= $tabel_c1_field5_input ?>"
+              placeholder="Masukkan <?= $tabel_c1_field5_alias ?>">
           </div>
 
           <p class="text-center"><a class="text-decoration-none" href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>">Login
               sebagai <?= $tabel_c2_alias ?></a></p>
 
           <!-- pesan untuk pengguna yang login -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata($this->views['flash1']) ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata('flash1') ?></p>
 
           <!-- tombol login dan signup -->
           <div class="form-group d-flex justify-content-around">

@@ -18,6 +18,7 @@ class Omnitags extends CI_Controller
         $this->load->helper('js');
         $this->load->helper('language');
         $this->load->helper('url');
+        $this->load->helper('session');
         $this->load->library('session');
         $this->load->library('user_agent');
 
@@ -50,32 +51,32 @@ class Omnitags extends CI_Controller
             $this->lang->load($preferred_lang . '_lang', $folder);
         } else {
             // Default to English if no preference or invalid preference is found
-            $this->lang->load('en_lang', 'english');
+            $this->lang->load('id_lang', 'indonesia');
         }
     }
 
     private function detect_preferred_language()
     {
         // Check if a language is set in the session
-        if ($this->session->userdata('site_lang')) {
-            return $this->session->userdata('site_lang');
+        if (userdata('site_lang')) {
+            return userdata('site_lang');
         }
 
         // Check if a language parameter is present in the URL
         if ($this->input->get('language')) {
-            $this->session->set_userdata('site_lang', $this->input->get('language'));
+            set_userdata('site_lang', $this->input->get('language'));
             return $this->input->get('language');
         }
 
         // Check if language is provided in the URL segment
         $segment = $this->uri->segment(1);
         if (!empty($segment) && in_array($segment, ['zh', 'id', 'en', 'fr'])) {
-            $this->session->set_userdata('site_lang', $segment);
+            set_userdata('site_lang', $segment);
             return $segment;
         }
 
         // Default to English if no preference is found
-        return 'en';
+        return 'id';
     }
 
     private function set_security_headers()
@@ -108,7 +109,7 @@ class Omnitags extends CI_Controller
     public $aliases, $views, $flashdatas, $tempdatas, $show;
     public $v1, $v2, $v3, $v4, $v5, $v6, $v7, $v8;
     public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title, $v7_title, $v8_title;
-    public $v_input, $v_post, $v_get, $v_old, $v_post_old;
+    public $v_input, $v_post, $v_get, $v_old, $v_post_old, $v_confirm, $v_new, $v_post_new, $v_post_confirm;
     public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
     public $flash, $flash_func;
     public $notif_limit, $notif_null, $notifications, $elapsedTime, $elapsed, $elapsed2;
@@ -141,6 +142,10 @@ class Omnitags extends CI_Controller
             $this->v_get[$item['key']] = $this->input->get('txt_' . $item['value']);
             $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
             $this->v_post_old[$item['key']] = $this->input->post('old_' . $item['value']);
+            $this->v_new[$item['key'] . '_new'] = 'new_' . $item['value'];
+            $this->v_post_new[$item['key']] = $this->input->post('new_' . $item['value']);
+            $this->v_confirm[$item['key'] . '_confirm'] = 'confirm_' . $item['value'];
+            $this->v_post_confirm[$item['key']] = $this->input->post('confirm_' . $item['value']);
 
             $this->v_filter1[$item['key'] . '_filter1'] = 'min_' . $item['value'];
             $this->v_filter2[$item['key'] . '_filter2'] = 'max_' . $item['value'];
@@ -193,8 +198,8 @@ class Omnitags extends CI_Controller
         $this->theme = $this->tl_b7->tema($this->tabel_a1_field1)->result();
         $this->theme_id = $this->theme[0]->id_theme;
 
-        $this->notif_limit = $this->tl_b9->get_b9_with_b8_limit($this->session->userdata($this->aliases['tabel_c2_field1']))->result();
-        $this->notif_null = $this->tl_b9->get_b9_by_b9_field2($this->session->userdata($this->aliases['tabel_c2_field1']));
+        $this->notif_limit = $this->tl_b9->get_b9_with_b8_limit(userdata($this->aliases['tabel_c2_field1']))->result();
+        $this->notif_null = $this->tl_b9->get_b9_by_b9_field2(userdata($this->aliases['tabel_c2_field1']));
 
         $this->views = array(
             'tabel_c1_v2' => '_contents/tabel_c1/login',
@@ -218,8 +223,8 @@ class Omnitags extends CI_Controller
             'flash1_func1' => '$("#element").toast("show")',
 
             // Pesan unik di bawah ini menggunakan flash1 dan ditandai dengan note
-            'flash1_note1' => 'Selamat datang ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!',
-            'flash1_note2' => 'Ayo kita lanjutkan ke pemesanan, ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!',
+            'flash1_note1' => 'Selamat datang ' . userdata($this->aliases['tabel_c2_field6']) . ' ' . userdata($this->aliases['tabel_c2_field2']) . '!',
+            'flash1_note2' => 'Ayo kita lanjutkan ke pemesanan, ' . userdata($this->aliases['tabel_c2_field6']) . ' ' . userdata($this->aliases['tabel_c2_field2']) . '!',
 
             // Data Manupulation Flashdatas
             'flash2' => 'pesan_tambah',
@@ -255,8 +260,8 @@ class Omnitags extends CI_Controller
             $flashtype = 'toast';
         }
 
-        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        set_flashdata($this->views['flash1'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
 
@@ -276,8 +281,8 @@ class Omnitags extends CI_Controller
 
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        set_flashdata($this->views['flash1'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
 
@@ -295,8 +300,8 @@ class Omnitags extends CI_Controller
             $flashtype = 'modal';
         }
 
-        $this->session->set_flashdata($this->views['flash2'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash2_func1']);
+        set_flashdata($this->views['flash2'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash2_func1']);
         return [];
     }
 
@@ -315,8 +320,8 @@ class Omnitags extends CI_Controller
         }
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash2'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash2_func1']);
+        set_flashdata($this->views['flash2'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash2_func1']);
         return [];
     }
 
@@ -334,8 +339,8 @@ class Omnitags extends CI_Controller
             $flashtype = 'toast';
         }
 
-        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        set_flashdata($this->views['flash1'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
 
@@ -355,8 +360,8 @@ class Omnitags extends CI_Controller
 
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        set_flashdata($this->views['flash1'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
 
@@ -374,8 +379,8 @@ class Omnitags extends CI_Controller
             $flashtype = 'modal';
         }
 
-        $this->session->set_flashdata($this->views['flash3'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash3_func1']);
+        set_flashdata($this->views['flash3'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash3_func1']);
         return [];
     }
 
@@ -394,8 +399,8 @@ class Omnitags extends CI_Controller
         }
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash3'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash3_func1']);
+        set_flashdata($this->views['flash3'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash3_func1']);
         return [];
     }
 
@@ -413,8 +418,8 @@ class Omnitags extends CI_Controller
             $flashtype = 'modal';
         }
 
-        $this->session->set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
-        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
+        set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
+        set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
         return [];
     }
 
@@ -433,8 +438,8 @@ class Omnitags extends CI_Controller
         }
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
-        $this->session->set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
+        set_flashdata($this->flash[$object . $this->v_post[$object]], $msg . $extra);
+        set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $this->v_post[$value] . '").modal("show")');
         return [];
     }
 
@@ -454,8 +459,8 @@ class Omnitags extends CI_Controller
             $flashtype = 'toast';
         }
 
-        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        set_flashdata($this->views['flash1'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
 
@@ -475,8 +480,8 @@ class Omnitags extends CI_Controller
 
         $this->add_notif($msg, $type, $extra);
 
-        $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
-        $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+        set_flashdata($this->views['flash1'], $msg . $extra);
+        set_flashdata($flashtype, $this->views['flash1_func1']);
         return [];
     }
 
@@ -492,17 +497,17 @@ class Omnitags extends CI_Controller
 
     public function handle_4b()
     {
-        if($this->session->userdata($this->aliases['tabel_c2_field1']) == ''){
-            redirect(site_url($language . '/' . 'no_level'));
+        if(userdata($this->aliases['tabel_c2_field1']) == ''){
+            redirect(site_url($this->views['language'] . '/' . 'no_level'));
         } else {
-            $msg = 'Selamat datang ' . $this->session->userdata($this->aliases['tabel_c2_field6']) . ' ' . $this->session->userdata($this->aliases['tabel_c2_field2']) . '!';
+            $msg = 'Selamat datang ' . userdata($this->aliases['tabel_c2_field6']) . ' ' . userdata($this->aliases['tabel_c2_field2']) . '!';
             $type = $this->aliases['tabel_b8_field2_value5'];
             $extra = '';
             $flashtype = 'toast';
     
             $this->add_notif_all($msg, $type, $extra);
-            $this->session->set_flashdata($this->views['flash1'], $msg . $extra);
-            $this->session->set_flashdata($flashtype, $this->views['flash1_func1']);
+            set_flashdata($this->views['flash1'], $msg . $extra);
+            set_flashdata($flashtype, $this->views['flash1_func1']);
             return [];
         }
     }
@@ -525,7 +530,7 @@ class Omnitags extends CI_Controller
     public function add_notif($msg, $type, $extra)
     {
         $notif = array(
-            $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+            $this->aliases['tabel_b9_field2'] => userdata($this->aliases['tabel_c2_field1']),
             $this->aliases['tabel_b9_field3'] => $type,
             $this->aliases['tabel_b9_field4'] => $msg . $extra,
             $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),
@@ -536,11 +541,11 @@ class Omnitags extends CI_Controller
 
     public function add_notif_all($msg, $type, $extra)
     {
-        $users = $this->tl_d3->get_d3_by_c2_field1($this->session->userdata($this->aliases['tabel_c2_field1']));
+        $users = $this->tl_d3->get_d3_by_c2_field1(userdata($this->aliases['tabel_c2_field1']));
 
         if ($users->num_rows() < 2) {
             $notif = array(
-                $this->aliases['tabel_b9_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+                $this->aliases['tabel_b9_field2'] => userdata($this->aliases['tabel_c2_field1']),
                 $this->aliases['tabel_b9_field3'] => $type,
                 $this->aliases['tabel_b9_field4'] => $msg . $extra,
                 $this->aliases['tabel_b9_field5'] => date("Y-m-d\TH:i:s"),

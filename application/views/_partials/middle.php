@@ -13,7 +13,7 @@
 
                 <!-- memunculkan notifikasi modal -->
                 <p class="small text-center text-danger">
-                    <?= $this->session->flashdata('pesan_cari') ?>
+                    <?= get_flashdata('pesan_cari') ?>
                 </p>
 
                 <div class="modal-footer">

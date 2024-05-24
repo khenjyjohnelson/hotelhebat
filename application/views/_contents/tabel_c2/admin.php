@@ -1,4 +1,4 @@
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
     // case 'tabel_c2_field6_value4_alias':
     break;
@@ -75,16 +75,9 @@
         <div class="modal-body">
           <?= add_text_prepend('tabel_c2_field1', '<i class="fas fa-user"></i>', 'required') ?>
           <?= add_email_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
-          <?= add_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
-            </div>
-            <input class="form-control" type="password" required name="konfirm"
-              placeholder="Konfirmasi <?= $tabel_c2_field4_alias ?>">
-          </div>
-
+          <?= add_new_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
+          <?= password_req() ?>
+          <?= add_confirm_prepend('tabel_c2_fiel4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
           <?= add_text_prepend('tabel_c2_field5', '<i class="fas fa-phone"></i>', 'required') ?>
 
           <div class="input-group">
@@ -104,9 +97,10 @@
         </div>
 
         <!-- memunculkan notifikasi modal -->
-        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
+          <?= btn_simpan() ?>
           <button class="btn btn-success" type="submit">Simpan</button>
         </div>
       </form>
@@ -144,7 +138,7 @@
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata('pesan_ubah') ?></p>
 
           <div class="modal-footer">
             <?= btn_update() ?>
@@ -171,7 +165,7 @@
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
             <?= btn_tutup() ?>

@@ -18,7 +18,7 @@ class C_tabel_f1 extends Omnitags
 		$param3 = $this->v_filter1_get['tabel_f1_field12'];
 		$param4 = $this->v_filter2_get['tabel_f1_field12'];
 
-		$param5 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$param5 = userdata($this->aliases['tabel_c2_field1']);
 
 		$data1 = array(
 			'title' => lang('tabel_f1_alias_v2_title'),
@@ -33,7 +33,7 @@ class C_tabel_f1 extends Omnitags
 			'tabel_f1_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -49,7 +49,7 @@ class C_tabel_f1 extends Omnitags
 		$param3 = $this->v_filter1_get['tabel_f1_field12'];
 		$param4 = $this->v_filter2_get['tabel_f1_field12'];
 
-		$param5 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$param5 = userdata($this->aliases['tabel_c2_field1']);
 
 		$data1 = array(
 			'title' => lang('tabel_f1_alias_v2_title'),
@@ -64,7 +64,7 @@ class C_tabel_f1 extends Omnitags
 			'tabel_f1_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -93,7 +93,7 @@ class C_tabel_f1 extends Omnitags
 			'tabel_f1_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -118,7 +118,7 @@ class C_tabel_f1 extends Omnitags
 			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_f1'], $data);
 	}
@@ -146,7 +146,7 @@ class C_tabel_f1 extends Omnitags
 			'tabel_f1_field12_filter2_value' => $param4,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}

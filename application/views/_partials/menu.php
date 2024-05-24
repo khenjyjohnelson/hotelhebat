@@ -1,5 +1,5 @@
 <ul class="navbar-nav ml-auto">
-    <?php switch ($this->session->userdata($tabel_c2_field6)) {
+    <?php switch (userdata($tabel_c2_field6)) {
         case $tabel_c2_field6_value1:
             ?>
             <li class="nav-item">
@@ -24,7 +24,7 @@
         case $tabel_c2_field6_value4:
         case $tabel_c2_field6_value3:
 
-            switch ($this->session->userdata($tabel_c2_field6)) {
+            switch (userdata($tabel_c2_field6)) {
                 case $tabel_c2_field6_value2:
                 case $tabel_c2_field6_value3:
                 case $tabel_c2_field6_value4:
@@ -38,7 +38,7 @@
                             <a class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#"><?= lang('master_data') ?> <i
                                     class="fas fa-caret-down"></i></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <?php switch ($this->session->userdata($tabel_c2_field6)) {
+                                <?php switch (userdata($tabel_c2_field6)) {
                                     case $tabel_c2_field6_value2:
                                         ?>
                                         <h6 class="dropdown-header">
@@ -144,7 +144,7 @@
                         <?php if (!$notif) { ?>         <?php } else {
                             foreach ($notif as $nf):
 
-                                if ($nf->$tabel_b9_field2 == $this->session->userdata($tabel_c2_field1)) {
+                                if ($nf->$tabel_b9_field2 == userdata($tabel_c2_field1)) {
                                     if ($nf->$tabel_b9_field6 == NULL) { ?>
 
                                         <a href="<?= site_url($language . '/' . $tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>"
@@ -209,7 +209,7 @@
             <li class="nav-item">
                 <div class="dropdown">
                     <!-- tombol ini akan memunculkan dropdown tanpa menggunakan button: https://stackoverflow.com/questions/38576503/how-to-remove-the-arrow-in-dropdown-in-bootstrap- terimakasih pada link di atas -->
-                    <?php switch ($this->session->userdata($tabel_c2_field6)) {
+                    <?php switch (userdata($tabel_c2_field6)) {
                         case $tabel_c2_field6_value2:
                         case $tabel_c2_field6_value3:
                             ?>
@@ -228,7 +228,7 @@
                             ?>
                             <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
                                 <h4>
-                                    <?= $this->session->userdata($tabel_c2_field2) ?> <i class="fas fa-caret-down"></i>
+                                    <?= userdata($tabel_c2_field2) ?> <i class="fas fa-caret-down"></i>
                                 </h4>
                             </a>
                             <?php break;
@@ -238,7 +238,7 @@
                             <?php break;
                     } ?>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <?php switch ($this->session->userdata($tabel_c2_field6)) {
+                        <?php switch (userdata($tabel_c2_field6)) {
                             case $tabel_c2_field6_value5:
                                 ?>
                                 <h6 class="dropdown-header"><?= lang('explore') ?></h6>
@@ -292,9 +292,9 @@
     <li class="nav-item">
         <form action="<?= site_url($language . '/welcome/set_language'); ?>" method="post" class="form-inline">
             <select name="language" class="form-control" onchange="this.form.submit()">
-                <option value="id" <?= ($this->session->userdata('site_lang') == 'id') ? 'selected' : ''; ?>>ID</option>
-                <option value="fr" <?= ($this->session->userdata('site_lang') == 'fr') ? 'selected' : ''; ?>>FR</option>
-                <option value="zh" <?= ($this->session->userdata('site_lang') == 'zh') ? 'selected' : ''; ?>>中文</option>
+                <option value="id" <?= (userdata('site_lang') == 'id') ? 'selected' : ''; ?>>ID</option>
+                <option value="fr" <?= (userdata('site_lang') == 'fr') ? 'selected' : ''; ?>>FR</option>
+                <option value="zh" <?= (userdata('site_lang') == 'zh') ? 'selected' : ''; ?>>中文</option>
             </select>
         </form>
     </li>

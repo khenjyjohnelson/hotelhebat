@@ -16,7 +16,7 @@
 
   <!-- menampilkan data pengaturan sebagai p -->
   <?php foreach ($tbl_a1 as $tl_a1): ?>
-    <title><?= $title ?> - <?= $tl_a1->$tabel_a1_field2 ?>   <?= $this->session->userdata($tabel_c2_field6) ?></title>
+    <title><?= $title ?> - <?= $tl_a1->$tabel_a1_field2 ?>   <?= userdata($tabel_c2_field6) ?></title>
 
     <!-- menampilkan favicon -->
     <link rel="icon" href="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field3 ?>" type="image/jpg">

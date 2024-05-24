@@ -48,18 +48,19 @@ class C_tabel_c1 extends Omnitags
 				$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
 				$this->aliases['tabel_c1_field2'] => $param2,
 				$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
-				$this->aliases['tabel_c1_field4'] => $this->v_post['tabel_c1_field4'],
+				$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
 				$this->aliases['tabel_c1_field6'] => $this->v_post['tabel_c1_field6'],
+				$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
 
 				// mengubah password menjadi password berenkripsi
-				// $this->aliases['tabel_c1_field4'] => password_hash($param8, PASSWORD_DEFAULT),
+				// $this->aliases['tabel_c1_field5'] => password_hash($param8, PASSWORD_DEFAULT),
 
 			);
 
 			$aksi = $this->tl_c1->insert_c1($data);
 
 			// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
-			if ($this->session->userdata($this->aliases['tabel_c1_field3'])) {
+			if (userdata($this->aliases['tabel_c1_field3'])) {
 
 				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
 			} else {
@@ -71,7 +72,7 @@ class C_tabel_c1 extends Omnitags
 			// } else {
 
 			// menampilkan flashdata dalam bentuk teks
-			// $this->session->set_flashdata($this->views['flash1'], 'Konfirmasi ' . $this->aliases['tabel_c1_field4'] . ' salah!');
+			// set_flashdata($this->views['flash1'], 'Konfirmasi ' . $this->aliases['tabel_c1_field5'] . ' salah!');
 
 			// redirect($_SERVER['HTTP_REFERER']);
 			// }
@@ -79,7 +80,7 @@ class C_tabel_c1 extends Omnitags
 			// jika jumlah data lebih dari 0
 		} else {
 
-			$this->session->set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field2'] . 'telah digunakan!');
+			set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field2'] . 'telah digunakan!');
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
@@ -100,8 +101,8 @@ class C_tabel_c1 extends Omnitags
 			$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
 			$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
 			$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
-			$this->aliases['tabel_c1_field4'] => $this->v_post['tabel_c1_field5'],
-			$this->aliases['tabel_c1_field6'] => $this->v_post['tabel_c1_field6'],
+			$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field6'],
+			$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
 		);
 
 		$aksi = $this->tl_c1->update_c1($data, $tabel_c1_field1);
@@ -142,7 +143,7 @@ class C_tabel_c1 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_c1_field1 = $this->session->userdata($this->aliases['tabel_c1_field1']);
+		$tabel_c1_field1 = userdata($this->aliases['tabel_c1_field1']);
 		$data1 = array(
 			'title' => lang('tabel_c1_alias2_v6_title'),
 			'konten' => $this->v6['tabel_c1'],
@@ -192,8 +193,8 @@ class C_tabel_c1 extends Omnitags
 		$data = array(
 			$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
 			$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
-			$this->aliases['tabel_c1_field4'] => $this->v_post['tabel_c1_field4'],
-			$this->aliases['tabel_c1_field6'] => $this->v_post['tabel_c1_field6'],
+			$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
+			$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
 		);
 
 		$aksi = $this->tl_c1->update_c1($data, $tabel_c1_field1);
@@ -205,14 +206,14 @@ class C_tabel_c1 extends Omnitags
 
 		$tabel_c1_field2 = $tabel_c1[0]->nama;
 		$tabel_c1_field3 = $tabel_c1[0]->email;
-		$tabel_c1_field4 = $tabel_c1[0]->hp;
-		$tabel_c1_field6 = $tabel_c1[0]->role;
+		$tabel_c1_field5 = $tabel_c1[0]->hp;
+		$tabel_c1_field7 = $tabel_c1[0]->role;
 
 		// membuat session baru berdasarkan data yang telah diupdate
-		$this->session->set_userdata($this->aliases['tabel_c1_field2'], $tabel_c1_field2);
-		$this->session->set_userdata($this->aliases['tabel_c1_field3'], $tabel_c1_field3);
-		$this->session->set_userdata($this->aliases['tabel_c1_field4'], $tabel_c1_field4);
-		$this->session->set_userdata($this->aliases['tabel_c1_field6'], $tabel_c1_field6);
+		set_userdata($this->aliases['tabel_c1_field2'], $tabel_c1_field2);
+		set_userdata($this->aliases['tabel_c1_field3'], $tabel_c1_field3);
+		set_userdata($this->aliases['tabel_c1_field5'], $tabel_c1_field5);
+		set_userdata($this->aliases['tabel_c1_field7'], $tabel_c1_field7);
 
 		// kembali ke halaman sebelumnya sesuai dengan masing-masing petugas dengan level yang berbeda
 		redirect($_SERVER['HTTP_REFERER']);
@@ -238,7 +239,7 @@ class C_tabel_c1 extends Omnitags
 				$tabel_c1_field4 = $this->v_post['tabel_c1_field4'];
 
 				// jika konfirmasi password sama dengan password baru
-				if ($this->input->post('konfirm') === $this->v_post['tabel_c1_field4']) {
+				if ($this->v_post_confirm['tabel_c1_field4'] === $tabel_c1_field4) {
 					$this->load->library('encryption');
 
 					$data = array(
@@ -253,24 +254,24 @@ class C_tabel_c1 extends Omnitags
 					// jika konfirmasi password tidak sama dengan password baru
 				} else {
 
-					$this->session->set_flashdata($this->flash['tabel_c1_field4'], $this->flash_msg3_alt2['tabel_c1_field4_alias']);
-					$this->session->set_flashdata('modal', $this->flash_func['tabel_c1_field4']);
+					set_flashdata($this->flash['tabel_c1_field4'], $this->flash_msg3_alt2['tabel_c1_field4_alias']);
+					set_flashdata('modal', $this->flash_func['tabel_c1_field4']);
 					redirect($_SERVER['HTTP_REFERER']);
 				}
 
 				// jika password lama salah
 			} else {
 
-				$this->session->set_flashdata($this->flash['tabel_c1_field4'], $this->flash_msg3_alt1['tabel_c1_field4_alias']);
-				$this->session->set_flashdata('modal', $this->flash_func['tabel_c1_field4']);
+				set_flashdata($this->flash['tabel_c1_field4'], $this->flash_msg3_alt1['tabel_c1_field4_alias']);
+				set_flashdata('modal', $this->flash_func['tabel_c1_field4']);
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 
 			// jika jumlah data kurang dari 0
 		} else {
 
-			$this->session->set_flashdata($this->flash['tabel_c1_field4'], $this->flash_msg5['tabel_c1_alias2']);
-			$this->session->set_flashdata('modal', $this->flash_func['tabel_c1_field4']);
+			set_flashdata($this->flash['tabel_c1_field4'], $this->flash_msg5['tabel_c1_alias2']);
+			set_flashdata('modal', $this->flash_func['tabel_c1_field4']);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
@@ -294,16 +295,16 @@ class C_tabel_c1 extends Omnitags
 				$tabel_c1_field1 = $tabel_c1[0]->id_petugas;
 				$tabel_c1_field2 = $tabel_c1[0]->nama;
 				$tabel_c1_field3 = $tabel_c1[0]->email;
-				$tabel_c1_field4 = $tabel_c1[0]->hp;
-				$tabel_c1_field6 = $tabel_c1[0]->role;
+				$tabel_c1_field5 = $tabel_c1[0]->hp;
+				$tabel_c1_field7 = $tabel_c1[0]->role;
 				// $tabel_c2_field6 = $this->aliases['tabel_c2_field6_value5'];
 
-				$this->session->set_userdata($this->aliases['tabel_c1_field1'], $tabel_c1_field1);
-				$this->session->set_userdata($this->aliases['tabel_c1_field2'], $tabel_c1_field2);
-				$this->session->set_userdata($this->aliases['tabel_c1_field3'], $tabel_c1_field3);
-				$this->session->set_userdata($this->aliases['tabel_c1_field4'], $tabel_c1_field4);
-				$this->session->set_userdata($this->aliases['tabel_c1_field6'], $tabel_c1_field6);
-				// $this->session->set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
+				set_userdata($this->aliases['tabel_c1_field1'], $tabel_c1_field1);
+				set_userdata($this->aliases['tabel_c1_field2'], $tabel_c1_field2);
+				set_userdata($this->aliases['tabel_c1_field3'], $tabel_c1_field3);
+				set_userdata($this->aliases['tabel_c1_field5'], $tabel_c1_field5);
+				set_userdata($this->aliases['tabel_c1_field7'], $tabel_c1_field7);
+				// set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
 
 
 				redirect(site_url($this->language_code . '/' . 'home'));
@@ -325,14 +326,14 @@ class C_tabel_c1 extends Omnitags
 				// Kalau tidak bisa merusak experience dari petugas
 
 
-				$this->session->set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field4_alias'] . ' salah!');
+				set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field5_alias'] . ' salah!');
 				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
 			}
 
 			// jika jumlah data lebih dari 0
 		} else {
 
-			$this->session->set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field1_alias'] . ' tidak tersedia!');
+			set_flashdata($this->views['flash1'], $this->aliases['tabel_c1_field1_alias'] . ' tidak tersedia!');
 			redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
 		}
 
@@ -349,11 +350,11 @@ class C_tabel_c1 extends Omnitags
 		// 		$hp = $tabel_c1[0]->hp;
 		// 		$level = $tabel_c1[0]->level;
 
-		// 		$this->session->set_userdata('id_petugas', $tabel_c1_field1user);
-		// 		$this->session->set_userdata('nama', $nama);
-		// 		$this->session->set_userdata('email', $tabel_c1_field1);
-		// 		$this->session->set_userdata('hp', $hp);
-		// 		$this->session->set_userdata('level', $level);
+		// 		set_userdata('id_petugas', $tabel_c1_field1user);
+		// 		set_userdata('nama', $nama);
+		// 		set_userdata('email', $tabel_c1_field1);
+		// 		set_userdata('hp', $hp);
+		// 		set_userdata('level', $level);
 
 		// 		redirect($_SERVER['HTTP_REFERER']); 
 		redirect(site_url($this->language_code . '/' . 'home'));
@@ -361,7 +362,7 @@ class C_tabel_c1 extends Omnitags
 		// 		// jika password salah
 		// 	} else {
 
-		// 		$this->session->set_flashdata($this->views['flash1'], 'Password Salah!');
+		// 		set_flashdata($this->views['flash1'], 'Password Salah!');
 		// 		redirect($_SERVER['HTTP_REFERER']); 
 		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		// 	}
@@ -369,7 +370,7 @@ class C_tabel_c1 extends Omnitags
 		// 	// jika jumlah data lebih dari 0
 		// } else {
 
-		// 	$this->session->set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
+		// 	set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
 		// 	redirect($_SERVER['HTTP_REFERER']); 
 		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		// }

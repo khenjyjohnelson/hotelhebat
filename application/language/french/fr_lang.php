@@ -51,6 +51,9 @@ $myData1 = json_decode($jsonData1, true)['values'];
 foreach ($myData1 as $item) {
     $lang[$item['key']] = $item['value'];
     $lang[$item['key'] . '_input'] = 'Entrée ' . $item['value'];
+    $lang[$item['key'] . '_old'] = 'Entrée ancienne ' . $item['value'];
+    $lang[$item['key'] . '_new'] = 'Entrée nouvelle ' . $item['value'];
+    $lang[$item['key'] . '_confirm'] = 'Entrée de confirmation ' . $item['value'];
     $lang[$item['key'] . '_btn'] = $item['value'];
 
     $lang[$item['key'] . '_v1_title'] = $item['value']; // Assuming $item['value'] is already translated

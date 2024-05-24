@@ -50,6 +50,10 @@ $myData1 = json_decode($jsonData1, true)['values'];
 foreach ($myData1 as $item) {
     $lang[$item['key']] = $item['value'];
     $lang[$item['key'] . '_input'] = 'Masukkan ' . $item['value'];
+    $lang[$item['key'] . '_old'] = 'Masukkan ' . $item['value'] . ' lama';
+    $lang[$item['key'] . '_new'] = 'Masukkan ' . $item['value'] . ' baru';
+    $lang[$item['key'] . '_confirm'] = 'Masukkan konfirmasi ' . $item['value'];
+
     $lang[$item['key'] . '_btn'] = $item['value'];
     $lang[$item['key'] . '_v1_title'] = $item['value'];
     $lang[$item['key'] . '_v2_title'] = 'Daftar ' . $item['value'];

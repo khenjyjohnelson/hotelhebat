@@ -1,6 +1,41 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+if (!function_exists('post')) {
+    function post($key = null, $xss_clean = false) {
+        if ($key === null) {
+            return $_POST;
+        }
+        
+        if (isset($_POST[$key])) {
+            $value = $_POST[$key];
+            
+            if ($xss_clean) {
+                $value = xss_clean($value);
+            }
+            
+            return $value;
+        }
+        
+        return null;
+    }
+}
+
+if (!function_exists('xss_clean')) {
+    function xss_clean($data) {
+        // Here, a simple implementation using htmlspecialchars
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                $data[$key] = xss_clean($value);
+            }
+        } else {
+            $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+        }
+        
+        return $data;
+    }
+}
+
 if (!function_exists('add_text')) {
     function add_text($field, $required)
     {
@@ -60,13 +95,13 @@ if (!function_exists('add_number')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
             <label for="{$input}">{$alias}</label>
             <input class="form-control" type="number" {$required} name="{$input}" id="{$input}"
-              placeholder="{$placeholder} {$alias}" min="{$min}" max="{$max}">
+              placeholder="{$placeholder}" min="{$min}" max="{$max}">
         </div>
         HTML;
     }
@@ -83,13 +118,37 @@ if (!function_exists('add_email')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
             <label for="{$input}">{$alias}</label>
             <input class="form-control" type="email" {$required} name="{$input}" id="{$input}"
-              placeholder="{$placeholder} {$alias}">
+              placeholder="{$placeholder}">
+        </div>
+        HTML;
+    }
+}
+
+if (!function_exists('add_new_password')) {
+    function add_new_password($field, $required)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $alias = lang($field . '_alias');
+        $input = $data[$field . '_input'];
+
+        $placeholder = lang($field . '_alias' . '_input');
+
+        return <<<HTML
+        <div class="form-group">
+            <label for="{$input}">{$alias}</label>
+            <input class="form-control" type="password" {$required} name="{$input}" id="{$input}" placeholder="{$placeholder}"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
         </div>
         HTML;
     }
@@ -103,17 +162,16 @@ if (!function_exists('add_text_prepend')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="text" required name="{$input}" placeholder="{$placeholder} {$alias}">
+            <input class="form-control" type="text" {$required} name="{$input}" placeholder="{$placeholder}">
         </div>
         HTML;
     }
@@ -127,7 +185,6 @@ if (!function_exists('add_email_prepend')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
         $placeholder = lang($field . '_alias' . '_input');
@@ -137,7 +194,32 @@ if (!function_exists('add_email_prepend')) {
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="email" required name="{$input}" placeholder="{$placeholder}">
+            <input class="form-control" type="email" {$required} name="{$input}" placeholder="{$placeholder}">
+        </div>
+        HTML;
+    }
+}
+
+if (!function_exists('add_new_password_prepend')) {
+    function add_new_password_prepend($field, $icon, $required)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $input = $data[$field . '_new'];
+
+        $placeholder = lang($field . '_alias' . '_new');
+
+        return <<<HTML
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">{$icon}</span>
+            </div>
+            <input class="form-control" id="psw" type="password" {$required} name="{$input}" placeholder="{$placeholder}"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
         </div>
         HTML;
     }
@@ -151,17 +233,85 @@ if (!function_exists('add_password_prepend')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="password" required name="{$input}" placeholder="{$placeholder} {$alias}">
+            <input class="form-control" type="password" {$required} name="{$input}" placeholder="{$placeholder}">
+        </div>
+        HTML;
+    }
+}
+
+if (!function_exists('add_old_prepend')) {
+    function add_old_prepend($field, $icon, $type, $required)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $input = $data[$field . '_old'];
+
+        $placeholder = lang($field . '_alias' . '_old');
+
+        return <<<HTML
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">{$icon}</span>
+            </div>
+            <input class="form-control" type="{$type}" {$required} name="{$input}" placeholder="{$placeholder}">
+        </div>
+        HTML;
+    }
+}
+
+if (!function_exists('add_new_prepend')) {
+    function add_new_prepend($field, $icon, $type, $required)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $input = $data[$field . '_new'];
+
+        $placeholder = lang($field . '_alias' . '_new');
+
+        return <<<HTML
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">{$icon}</span>
+            </div>
+            <input class="form-control" type="{$type}" {$required} name="{$input}" placeholder="{$placeholder}">
+        </div>
+        HTML;
+    }
+}
+
+if (!function_exists('add_confirm_prepend')) {
+    function add_confirm_prepend($field, $icon, $type, $required)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $input = $data[$field . '_confirm'];
+
+        $placeholder = lang($field . '_alias' . '_confirm');
+
+        return <<<HTML
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">{$icon}</span>
+            </div>
+            <input class="form-control" type="{$type}" {$required} name="{$input}" placeholder="{$placeholder}">
         </div>
         HTML;
     }
@@ -178,7 +328,7 @@ if (!function_exists('input_hidden')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <input type="hidden" name="{$input}" {$required} value="{$value}">
@@ -241,14 +391,14 @@ if (!function_exists('edit_text_prepend')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="input-group">
             <div class="input-group-prepend">
             <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="email" required name="{$input}"
+            <input class="form-control" type="email" {$required} name="{$input}"
             value="{$value}">
         </div>
         HTML;
@@ -266,13 +416,13 @@ if (!function_exists('edit_number')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <input class="form-control" type="number" {$required} name="{$input}"
-              placeholder="{$placeholder} {$alias}" value="{$value}" min="{$min}" max="{$max}">
+              placeholder="{$placeholder}" value="{$value}" min="{$min}" max="{$max}">
         </div>
         HTML;
     }
@@ -289,13 +439,13 @@ if (!function_exists('edit_email')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <input class="form-control" type="email" {$required} name="{$input}"
-              placeholder="{$placeholder} {$alias}" value="{$value}">
+              placeholder="{$placeholder}" value="{$value}">
         </div>
         HTML;
     }
@@ -312,14 +462,14 @@ if (!function_exists('edit_email_prepend')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="input-group">
             <div class="input-group-prepend">
             <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="email" required name="{$input}"
+            <input class="form-control" type="email" {$required} name="{$input}"
             value="{$value}">
         </div>
         HTML;
@@ -341,13 +491,13 @@ if (!function_exists('add_textarea')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <textarea id="editor1" class="form-control" name="{$input}" $required
-              placeholder="{$placeholder} {$alias}" {$required} cols="30" rows="10"></textarea>
+              placeholder="{$placeholder}" {$required} cols="30" rows="10"></textarea>
         </div>
         HTML;
     }
@@ -364,13 +514,13 @@ if (!function_exists('edit_textarea')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
             <textarea class="ckeditor form-control" name="{$input}"
-              placeholder="{$placeholder} {$alias}" {required} cols="10" rows="10">{$value}</textarea>
+              placeholder="{$placeholder}" {required} cols="10" rows="10">{$value}</textarea>
         </div>
         HTML;
     }
@@ -387,7 +537,7 @@ if (!function_exists('add_file')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
@@ -410,7 +560,7 @@ if (!function_exists('edit_file')) {
         $input = $data[$field . '_input'];
         $old = $data[$field . "_old"];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
@@ -437,7 +587,7 @@ if (!function_exists('filter_tgl')) {
 
         $value = $data[$field . "_value"];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <td class="pr-2">
@@ -465,12 +615,12 @@ if (!function_exists('select_ubah')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
-        $placeholder = lang('input');
+        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
             <label><?= lang('select') ?> {$alias}</label>
-            <select class="form-control" required name="{$input}">
+            <select class="form-control" {$required} name="{$input}">
             {$selected}
             {$values}
             </select>

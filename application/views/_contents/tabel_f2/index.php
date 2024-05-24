@@ -1,4 +1,4 @@
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   // case $tabel_c2_field6_value3:
   case $tabel_c2_field6_value5:
     break;
@@ -73,10 +73,10 @@
         <label><?= $tabel_f2_field3_alias ?></label>
         <input class="form-control" type="text" required name="<?= $tabel_f2_field3_input ?>"
           placeholder="Masukkan <?= $tabel_f2_field3_alias ?>"
-          value="<?= $this->session->userdata($tabel_c2_field2) ?>">
-        <?php if ($this->session->userdata($tabel_c2_field1)) { ?>
+          value="<?= userdata($tabel_c2_field2) ?>">
+        <?php if (userdata($tabel_c2_field1)) { ?>
           <input type="hidden" name="<?= $tabel_c2_field1_input ?>"
-            value="<?= $this->session->userdata($tabel_c2_field1) ?>">
+            value="<?= userdata($tabel_c2_field1) ?>">
         <?php } else { ?>
 
           <!-- value 0 di id_user untuk pengguna tanpa akun -->
@@ -86,8 +86,8 @@
       </div>
 
       <!-- keterangan * di bawah -->
-      <?= edit_email('tabel_f2_field4', $this->session->userdata($tabel_c2_field3), 'required') ?>
-      <?= edit_text('tabel_f2_field5', $this->session->userdata($tabel_c2_field5), 'required') ?>
+      <?= edit_email('tabel_f2_field4', userdata($tabel_c2_field3), 'required') ?>
+      <?= edit_text('tabel_f2_field5', userdata($tabel_c2_field5), 'required') ?>
       <?= add_text('tabel_f2_field6', 'required') ?>
 
       <div class="form-group">
@@ -150,7 +150,7 @@
         </div>
 
         <!-- memunculkan notifikasi modal -->
-        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_ubah') ?></p>
 
         <div class="modal-footer">
           <?= btn_update() ?>

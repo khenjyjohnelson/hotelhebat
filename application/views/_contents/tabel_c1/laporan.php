@@ -1,4 +1,4 @@
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
   case $tabel_c2_field6_value4:
     break;
@@ -35,8 +35,8 @@ redirect(site_url($language . '/' . 'no_level'));
           <th><?= lang('tabel_c1_field1_alias') ?></th>
           <th><?= lang('tabel_c1_field2_alias') ?></th>
           <th><?= lang('tabel_c1_field3_alias') ?></th>
-          <th><?= lang('tabel_c1_field4_alias') ?></th>
           <th><?= lang('tabel_c1_field5_alias') ?></th>
+          <th><?= lang('tabel_c1_field6_alias') ?></th>
         </tr>
       </thead>
       <tbody>
@@ -45,8 +45,8 @@ redirect(site_url($language . '/' . 'no_level'));
             <td width=""><?= $tl_c1->$tabel_c1_field1; ?></td>
             <td width=""><?= $tl_c1->$tabel_c1_field2 ?></td>
             <td width=""><?= $tl_c1->$tabel_c1_field3 ?></td>
-            <td width=""><?= $tl_c1->$tabel_c1_field4 ?></td>
             <td width=""><?= $tl_c1->$tabel_c1_field5 ?></td>
+            <td width=""><?= $tl_c1->$tabel_c1_field6 ?></td>
           </tr>
         <?php endforeach ?>
       </tbody>

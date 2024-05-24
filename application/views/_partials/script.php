@@ -37,10 +37,10 @@
 <script type="text/javascript">
     $(document).ready(function () {
         // yg ini yang menggunakan toast
-        <?= $this->session->flashdata('toast') ?>
+        <?= get_flashdata('toast') ?>
 
         // yg di bawah ini adalah semua yg berhubungan dgn modal
-        <?= $this->session->flashdata('modal') ?>
+        <?= get_flashdata('modal') ?>
 
         $('#data').DataTable({
             "createdRow": function (row, data, dataIndex) {

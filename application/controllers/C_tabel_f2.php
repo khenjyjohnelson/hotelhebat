@@ -17,7 +17,7 @@ class C_tabel_f2 extends Omnitags
 	{
 		$this->declarew();
 
-		switch ($this->session->userdata($this->aliases['tabel_c2_field6'])) {
+		switch (userdata($this->aliases['tabel_c2_field6'])) {
 			case $this->aliases['tabel_c2_field6_value5']:
 				$data1 = array(
 					'title' => lang('tabel_f2_alias_v1_title'),
@@ -45,10 +45,10 @@ class C_tabel_f2 extends Omnitags
 				$halaman = 'login';
 		}
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
-		$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_note2']);
-		$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+		set_flashdata($this->views['flash1'], $this->views['flash1_note2']);
+		set_flashdata('toast', $this->views['flash1_func1']);
 
 		$this->load->view($halaman, $data);
 	}
@@ -58,7 +58,7 @@ class C_tabel_f2 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v2_title'),
 			'konten' => $this->v2['tabel_f2'],
@@ -67,7 +67,7 @@ class C_tabel_f2 extends Omnitags
 
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -76,7 +76,7 @@ class C_tabel_f2 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		// nilai min dan max sudah diinput sebelumnya
 		$param1 = $this->v_filter1_get['tabel_f2_field10'];
 		$param2 = $this->v_filter2_get['tabel_f2_field10'];
@@ -96,7 +96,7 @@ class C_tabel_f2 extends Omnitags
 			'tabel_f2_field11_filter2_value' => $param4
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -126,7 +126,7 @@ class C_tabel_f2 extends Omnitags
 			'tabel_f2_field11_filter2_value' => $param4
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -153,8 +153,8 @@ class C_tabel_f2 extends Omnitags
 			$input_value = htmlspecialchars(trim($this->v_post[$input]));
 			if (empty($input_value)) {
 				// Error Handling: Set error flash message for invalid input
-				$this->session->set_flashdata($this->views['flash1'], "Invalid input. Please provide valid data.");
-				$this->session->set_flashdata($this->views['flash1'], $this->views['flash1_func1']);
+				set_flashdata($this->views['flash1'], "Invalid input. Please provide valid data.");
+				set_flashdata($this->views['flash1'], $this->views['flash1_func1']);
 				// Functional requirement: Redirect user to 'tabel_f2' confirmation page
 				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f2'] . '/konfirmasi'));
 			}
@@ -188,7 +188,7 @@ class C_tabel_f2 extends Omnitags
 		];
 
 		// Create temporary session for a specific duration
-		$this->session->set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'], $this->v_post['tabel_f2_field4'], 300);
+		set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'], $this->v_post['tabel_f2_field4'], 300);
 
 		try {
 			// Security: Prepared Statements to prevent SQL injection
@@ -199,8 +199,8 @@ class C_tabel_f2 extends Omnitags
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
-			$this->session->set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
-			$this->session->set_flashdata('modal', $this->views['flash2_func1']);
+			set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
+			set_flashdata('modal', $this->views['flash2_func1']);
 		}
 
 		// Functional requirement: Redirect user to 'tabel_f2' confirmation page
@@ -239,7 +239,7 @@ class C_tabel_f2 extends Omnitags
 
 			// memasukkan nama resepsionis yang melakukan operasi
 			$data = array(
-				$this->aliases['tabel_f1_field15'] => $this->session->userdata($this->aliases['tabel_c2_field1'])
+				$this->aliases['tabel_f1_field15'] => userdata($this->aliases['tabel_c2_field1'])
 			);
 
 			// mengupdate pesanan dengan nama user yang aktif
@@ -263,7 +263,7 @@ class C_tabel_f2 extends Omnitags
 
 		// memasukkan nama resepsionis yang melakukan operasi
 		$data = array(
-			$this->aliases['tabel_f1_field14'] => $this->session->userdata($this->aliases['tabel_c2_field2'])
+			$this->aliases['tabel_f1_field14'] => userdata($this->aliases['tabel_c2_field2'])
 		);
 
 		// mengupdate history dengan nama user yang aktif
@@ -301,7 +301,7 @@ class C_tabel_f2 extends Omnitags
 			'tabel_f2_field11_filter2_value' => $param4
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -318,7 +318,7 @@ class C_tabel_f2 extends Omnitags
 			'tbl_e4' => $this->tl_e4->get_all_f2()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_f2'], $data);
 	}
@@ -334,7 +334,7 @@ class C_tabel_f2 extends Omnitags
 			'tbl_f2' => $this->tl_f2->get_f2_with_e4_by_f2_field1($tabel_f2_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v5['tabel_f2'], $data);
 	}
@@ -349,7 +349,7 @@ class C_tabel_f2 extends Omnitags
 	// atau hanya membuka halaman saja
 	// Namun fitur di bawah tidak akan berguna jika halaman yang digunakan untuk menampilkan hasil cari berbeda dan
 	// bukan v_pesanan
-	// if (!$this->session->userdata('id_pesanan')) {}
+	// if (!userdata('id_pesanan')) {}
 	// 	} else {  -->
 	// 	 }  -->
 
@@ -371,7 +371,7 @@ class C_tabel_f2 extends Omnitags
 			'tbl_e3' => $this->tl_e3->get_all_e3()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -381,7 +381,7 @@ class C_tabel_f2 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_c2_field3 = $this->session->tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2']);
+		$tabel_c2_field3 = tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2']);
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
@@ -390,7 +390,7 @@ class C_tabel_f2 extends Omnitags
 			'tbl_f2' => $this->tl_f2->get_f2_by_c2_field3($tabel_c2_field3)->last_row(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v7['tabel_f2'], $data);
 	}

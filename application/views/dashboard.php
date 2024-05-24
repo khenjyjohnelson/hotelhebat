@@ -1,5 +1,5 @@
 <!-- mengarahkan ke no_level jika user tidak memiliki level -->
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value2:
   case $tabel_c2_field6_value3:
   case $tabel_c2_field6_value4:
@@ -27,7 +27,7 @@
 <div class="row">
   <!-- menampilkan data untuk administrator -->
 
-  <?php switch ($this->session->userdata($tabel_c2_field6)) {
+  <?php switch (userdata($tabel_c2_field6)) {
     case $tabel_c2_field6_value3: ?>
       <div class="col-md-3 mt-2">
         <div class="card text-white bg-danger">
@@ -86,7 +86,7 @@
 
   <!-- menampilkan data untuk administrator -->
 
-  <?php switch ($this->session->userdata($tabel_c2_field6)) {
+  <?php switch (userdata($tabel_c2_field6)) {
     case $tabel_c2_field6_value3: ?>
       <div class="col-md-3 mt-2">
         <div class="card text-white bg-danger">
@@ -201,7 +201,7 @@
 <!-- The charts shown will be different for each user level -->
 <h2 class="mt-4"><?= lang('statistics') ?></h2>
 <hr>
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value2:
   case $tabel_c2_field6_value3:
   case $tabel_c2_field6_value4:

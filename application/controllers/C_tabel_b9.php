@@ -10,7 +10,7 @@ class C_tabel_b9 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_b9_field2 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$notif = array(
@@ -27,7 +27,7 @@ class C_tabel_b9 extends Omnitags
 				'tbl_b9' => $this->tl_b9->get_b9_by_b9_field1($tabel_b9_field1)->result(),
 			);
 
-			$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+			$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 			$this->load->view('_layouts/template', $data);
 		} else {
@@ -40,7 +40,7 @@ class C_tabel_b9 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_b9_field2 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$notif = array(
@@ -56,7 +56,7 @@ class C_tabel_b9 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_b9_field2 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 
 		$data1 = array(
 			'title' => lang('tabel_b9_alias_v2_title'),
@@ -65,7 +65,7 @@ class C_tabel_b9 extends Omnitags
 			'tbl_b9' => $this->tl_b9->get_b9_with_b8_by_b9_field2($tabel_b9_field2)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -82,7 +82,7 @@ class C_tabel_b9 extends Omnitags
 			'tbl_b9' => $this->tl_b9->get_all_b9()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -109,7 +109,7 @@ class C_tabel_b9 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_b9_field2 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
@@ -143,7 +143,7 @@ class C_tabel_b9 extends Omnitags
 			'tbl_b9' => $this->tl_b9->get_all_b9()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_b9'], $data);
 	}

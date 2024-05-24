@@ -1,4 +1,4 @@
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
     // case 'tabel_c2_field6_value4_alias':
     break;
@@ -79,7 +79,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel_a1_field8) ?>
+            <?= get_flashdata('pesan_' . $tabel_a1_field8) ?>
           </p>
 
           <div class="modal-footer">
@@ -129,7 +129,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel_a1_field6) ?>
+            <?= get_flashdata('pesan_' . $tabel_a1_field6) ?>
           </p>
 
           <div class="modal-footer">
@@ -158,7 +158,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel_b7_field3) ?>
+            <?= get_flashdata('pesan_' . $tabel_b7_field3) ?>
           </p>
 
           <div class="modal-footer">
@@ -186,7 +186,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel_b7_field4) ?>
+            <?= get_flashdata('pesan_' . $tabel_b7_field4) ?>
           </p>
 
           <div class="modal-footer">
@@ -214,7 +214,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger">
-            <?= $this->session->flashdata('pesan_' . $tabel_b7_field5) ?>
+            <?= get_flashdata('pesan_' . $tabel_b7_field5) ?>
           </p>
 
           <div class="modal-footer">

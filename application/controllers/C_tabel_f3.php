@@ -25,7 +25,7 @@ class C_tabel_f3 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v2_title'),
 			'konten' => $this->v2['tabel_f3'],
@@ -33,7 +33,7 @@ class C_tabel_f3 extends Omnitags
 			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4_by_c2_field1($tabel_c2_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -42,7 +42,7 @@ class C_tabel_f3 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_c2_field1 = $this->session->userdata($this->aliases['tabel_c2_field1']);
+		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
 			'title' => lang('tabel_f3_v2_alt_title_title'),
 			'konten' => $this->views['tabel_f3_v2_alt'],
@@ -50,7 +50,7 @@ class C_tabel_f3 extends Omnitags
 			'tbl_f3' => $this->tl_f1->get_f1_with_f3_with_e4_by_c2_field1($tabel_c2_field1)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -76,7 +76,7 @@ class C_tabel_f3 extends Omnitags
 			// 'tgl_transaksi_max' => $param2,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -97,7 +97,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array(
 			$this->aliases['tabel_f3_field1'] => '',
-			$this->aliases['tabel_f3_field2'] => $this->session->userdata($this->aliases['tabel_c2_field1']),
+			$this->aliases['tabel_f3_field2'] => userdata($this->aliases['tabel_c2_field1']),
 			$this->aliases['tabel_f3_field3'] => $tabel_f3_field3,
 			$this->aliases['tabel_f3_field4'] => $this->v_post['tabel_f3_field4'],
 			$this->aliases['tabel_f3_field5'] => $this->v_post['tabel_f3_field5'],
@@ -105,10 +105,10 @@ class C_tabel_f3 extends Omnitags
 			$this->aliases['tabel_f3_field7'] => $tabel_f3_field7,
 		);
 
-		$this->session->set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f3'], $tabel_f3_field3, 300);
+		set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f3'], $tabel_f3_field3, 300);
 
 		// Session kembalian_transaksi sebenarnya digunakan ketika menggunakan cash, namun fungsi ini akan tetap disimpan untuk pengembangan lebih lanjut
-		// $this->session->set_tempdata('kembalian_transaksi', $kembalian, 300);
+		// set_tempdata('kembalian_transaksi', $kembalian, 300);
 
 
 		// $query = 'INSERT INTO transaksi VALUES('.$data.')';
@@ -132,8 +132,8 @@ class C_tabel_f3 extends Omnitags
 			$notif = $this->handle_2b($aksi2, 'tabel_f2', $tabel_f3_field4);
 
 		} else {
-			$this->session->set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_f3_alias']);
-			$this->session->set_flashdata('toast', $this->views['flash1_func1']);
+			set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_f3_alias']);
+			set_flashdata('toast', $this->views['flash1_func1']);
 		}
 
 		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f3'] . '/konfirmasi'));
@@ -196,7 +196,7 @@ class C_tabel_f3 extends Omnitags
 			'tabel_f3_field7_filter2' => $tabel_f3_field7_filter2,
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -214,7 +214,7 @@ class C_tabel_f3 extends Omnitags
 			'tbl_f2' => $this->tl_f2->get_all_f3()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_f3'], $data);
 	}
@@ -262,7 +262,7 @@ class C_tabel_f3 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_f3_field3 = $this->session->tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
+		$tabel_f3_field3 = tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
@@ -271,7 +271,7 @@ class C_tabel_f3 extends Omnitags
 			'tbl_f3' => $this->tl_f3->get_f3_by_c2_field3($tabel_f3_field3)->last_row(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v7['tabel_f3'], $data);
 	}

@@ -1,4 +1,4 @@
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
     // case $tabel_c2_field6_value4:
     break;
@@ -125,7 +125,7 @@
         </div>
 
         <!-- memunculkan notifikasi modal -->
-        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
 
         <div class="modal-footer">
           <?= btn_tutup() ?>

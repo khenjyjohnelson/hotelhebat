@@ -27,7 +27,7 @@ class C_tabel_b2 extends Omnitags
 			'tabel_b2_field7_value' => $param1
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -48,7 +48,7 @@ class C_tabel_b2 extends Omnitags
 			'tabel_b2_field7_value' => $param1
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -70,8 +70,8 @@ class C_tabel_b2 extends Omnitags
 			// Tapi karena formnya sudah required saya rasa tidak perlu
 
 
-			$this->session->set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b2_field4_alias']);
-			$this->session->set_flashdata('modal', $this->views['flash2_func1']);
+			set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b2_field4_alias']);
+			set_flashdata('modal', $this->views['flash2_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
@@ -193,7 +193,7 @@ class C_tabel_b2 extends Omnitags
 			'tbl_b2' => $this->tl_b2->get_all_b2()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_confirm);
 
 		$this->load->view($this->v4['tabel_b2'], $data);
 	}

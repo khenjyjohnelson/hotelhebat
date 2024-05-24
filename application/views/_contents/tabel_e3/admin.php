@@ -1,4 +1,4 @@
-<?php switch ($this->session->userdata($tabel_c2_field6)) {
+<?php switch (userdata($tabel_c2_field6)) {
   case $tabel_c2_field6_value3:
   case $tabel_c2_field6_value4:
     break;
@@ -54,11 +54,11 @@
                 <?= btn_edit($tl_e3->$tabel_e3_field1) ?>
                 <?php break;
               case $tabel_e3_field4_value4: ?>
-                <?= btn_field($tabel_c1_field6_value1 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-broom"></i>') ?>
+                <?= btn_field($tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-broom"></i>') ?>
 
                 <?php break;
               case $tabel_e3_field4_value5: ?>
-                <?= btn_field($tabel_c1_field6_value2 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-hammer"></i>') ?>
+                <?= btn_field($tabel_c1_field7_value2 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-hammer"></i>') ?>
                 <?php break;
             } ?>
           </td>
@@ -112,7 +112,7 @@
         </div>
 
         <!-- memunculkan notifikasi modal -->
-        <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_tambah') ?></p>
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
           <?= btn_simpan() ?>
@@ -155,7 +155,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_ubah') ?></p>
+              <p class="small text-center text-danger"><?= get_flashdata('pesan_ubah') ?></p>
 
               <div class="modal-footer">
                 <?= btn_update() ?>
@@ -167,8 +167,8 @@
 
       <?php break;
     case $tabel_e3_field4_value4: ?>
-      <div id="<?= $tabel_c1_field6_value1 . $tl_e3->$tabel_e3_field1 ?>"
-        class="modal fade <?= $tabel_c1_field6_value1 ?>">
+      <div id="<?= $tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1 ?>"
+        class="modal fade <?= $tabel_c1_field7_value1 ?>">
         <div class="modal-dialog">
           <div class="modal-content">
             <?= modal_header('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
@@ -178,7 +178,7 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <?= input_hidden('tabel_c2_field1', $this->session->userdata($tabel_c2_field1), 'required') ?>
+                    <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
                     <?= tampil_text('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
                     <?= tampil_text('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
                     <?= tampil_text('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
@@ -206,9 +206,9 @@
                         <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
                         <?php
                         foreach ($tbl_c1 as $tl_c1):
-                          if ($tl_c1->$tabel_c1_field6 == $tabel_c1_field6_value1) { ?>
+                          if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
-                              <?= $tl_c1->$tabel_c1_field6; ?>
+                              <?= $tl_c1->$tabel_c1_field7; ?>
                             </option>
                           <?php }
                         endforeach ?>
@@ -225,7 +225,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_' . $tabel_c1_field6_value1) ?>
+              <p class="small text-center text-danger"><?= get_flashdata('pesan_' . $tabel_c1_field7_value1) ?>
               </p>
 
               <div class="modal-footer">
@@ -241,7 +241,7 @@
 
       <?php break;
     case $tabel_e3_field4_value5: ?>
-      <div id="<?= $tabel_c1_field6_value2 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade maintenance">
+      <div id="<?= $tabel_c1_field7_value2 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade maintenance">
         <div class="modal-dialog">
           <div class="modal-content">
             <?= modal_header('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
@@ -251,7 +251,7 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <?= input_hidden('tabel_c2_field1', $this->session->userdata($tabel_c2_field1), 'required') ?>
+                    <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
                     <?= tampil_text('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
                     <?= tampil_text('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
                     <?= tampil_text('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
@@ -278,9 +278,9 @@
                         <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
                         <?php
                         foreach ($tbl_c1 as $tl_c1):
-                          if ($tl_c1->$tabel_c1_field6 == $tabel_c1_field6_value1) { ?>
+                          if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
-                              <?= $tl_c1->$tabel_c1_field6; ?>
+                              <?= $tl_c1->$tabel_c1_field7; ?>
                             </option>
                           <?php }
                         endforeach ?>
@@ -293,7 +293,7 @@
               </div>
 
               <!-- memunculkan notifikasi modal -->
-              <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_maintenance') ?></p>
+              <p class="small text-center text-danger"><?= get_flashdata('pesan_maintenance') ?></p>
 
               <div class="modal-footer">
                 <p>Proses <?= $tabel_e3_alias ?>       <?= $tl_e3->$tabel_e3_field1; ?>?</p>
@@ -323,7 +323,7 @@
           </div>
 
           <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger"><?= $this->session->flashdata('pesan_lihat') ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
 
           <div class="modal-footer">
             <?= btn_tutup() ?>
