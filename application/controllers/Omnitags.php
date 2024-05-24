@@ -16,10 +16,8 @@ class Omnitags extends CI_Controller
         $this->load->helper('option');
         $this->load->helper('modal');
         $this->load->helper('js');
-        $this->load->helper('language');
         $this->load->helper('url');
         $this->load->helper('session');
-        $this->load->helper('output');
         $this->load->library('session');
         $this->load->library('user_agent');
 
