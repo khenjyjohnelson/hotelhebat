@@ -49,13 +49,16 @@ $myData1 = json_decode($jsonData1, true)['values'];
 
 // Create variables dynamically
 foreach ($myData1 as $item) {
+    // List of placeholders
     $lang[$item['key']] = $item['value'];
     $lang[$item['key'] . '_input'] = 'Entrée ' . $item['value'];
     $lang[$item['key'] . '_old'] = 'Entrée ancienne ' . $item['value'];
     $lang[$item['key'] . '_new'] = 'Entrée nouvelle ' . $item['value'];
     $lang[$item['key'] . '_confirm'] = 'Entrée de confirmation ' . $item['value'];
     $lang[$item['key'] . '_btn'] = $item['value'];
+    $lang[$item['key'] . '_select'] = "Sélectionner " . $item['value'];
 
+    // List of titles
     $lang[$item['key'] . '_v1_title'] = $item['value']; // Assuming $item['value'] is already translated
     $lang[$item['key'] . '_v2_title'] = 'Liste de ' . $item['value']; // "Daftar" -> "Liste de"
     $lang[$item['key'] . '_v3_title'] = 'Données de ' . $item['value']; // "Data" -> "Données de"
@@ -64,4 +67,15 @@ foreach ($myData1 as $item) {
     $lang[$item['key'] . '_v6_title'] = 'Profil de ' . $item['value']; // "Profil" -> "Profil de"
     $lang[$item['key'] . '_v7_title'] = $item['value'] . ' réussi!'; // "Berhasil" -> "réussi!"
     $lang[$item['key'] . '_v8_title'] = 'Détails de ' . $item['value']; // "Detail" -> "Détails de"
+
+    // List of messages
+    $lang[$item['key'] . '_v1_msg'] = $item['value'];
+    $lang[$item['key'] . '_v2_msg'] = $item['value'];
+    $lang[$item['key'] . '_v3_msg'] = $item['value'];
+    $lang[$item['key'] . '_v4_msg'] = $item['value'];
+    $lang[$item['key'] . '_v5_msg'] = 'Envoyez cette preuve à ' . $item['value'] . ' pour traitement.';
+    $lang[$item['key'] . '_v6_msg'] = $item['value'];
+    $lang[$item['key'] . '_v7_msg'] = $item['value'];
+    $lang[$item['key'] . '_v8_msg'] = $item['value'] . ' est indisponible.';
+
 }

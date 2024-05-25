@@ -15,7 +15,6 @@ class C_tabel_b1 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-		$this->load->helper('text');
 
 		$param1 = $this->v_get['tabel_b1_field7'];
 
@@ -28,7 +27,7 @@ class C_tabel_b1 extends Omnitags
 			'tabel_b1_field7_value' => $param1,
 		);
 
-		$data = array_merge($data1, $this->myData2, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old);
+		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
 		$this->load->view('_layouts/template', $data);
 	}

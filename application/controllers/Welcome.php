@@ -7,7 +7,7 @@ class Welcome extends Omnitags
 {
 	public function default_language()
 	{
-		redirect('/id', 'refresh');
+		redirect('/en', 'refresh');
 	}
 
 	// fungsi pertama yang akan diload oleh website
@@ -135,7 +135,7 @@ class Welcome extends Omnitags
 
 	public function set_language()
 	{
-		$language = $_POST('language');
+		$language = post('language');
 		$allowed_languages = ['en', 'fr', 'id', 'zh'];
 
 		// Validate the language input

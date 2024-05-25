@@ -3,18 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 // Redirect to English version if language is not specified
 $route['default_controller'] = 'welcome/default_language';
-
+$languages = 'en|fr|id|zh';
 $route['404_override'] = 'welcome/no_page';
 $route['translate_uri_dashes'] = FALSE;
 
 // Language routes
-$route['^(?!en|fr|id|zh)(.*)/home$'] = 'welcome/default_language';
-$route['(en|fr|id|zh)/home'] = 'welcome';
-$route['(en|fr|id|zh)/no_level'] = 'welcome/no_level';
-$route['(en|fr|id|zh)/dashboard'] = 'welcome/dashboard';
-$route['(en|fr|id|zh)/dashboard/home'] = 'welcome/dashboard';
-$route['(en|fr|id|zh)/welcome/set_language'] = 'welcome/set_language';
-$route['(en|fr|id|zh)'] = 'welcome';
+$route['^(?!' . $languages . ')(.*)/home$'] = 'welcome/default_language';
+$route['(' . $languages . ')/home'] = 'welcome';
+$route['(' . $languages . ')/no_level'] = 'welcome/no_level';
+$route['(' . $languages . ')/dashboard'] = 'welcome/dashboard';
+$route['(' . $languages . ')/dashboard/home'] = 'welcome/dashboard';
+$route['(' . $languages . ')/welcome/set_language'] = 'welcome/set_language';
+$route['(' . $languages . ')'] = 'welcome';
 
 // Define routes dynamically based on JSON data
 $jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel.postman_environment.json'));
@@ -26,7 +26,7 @@ foreach ($myData2 as $item2) {
     $prefix = 'c_' . $item2['key'];
     $cachedControllers = [];
 
-    $routeKey = '(en|fr|id|zh)/' . $item2['value'];
+    $routeKey = '(' . $languages . ')/' . $item2['value'];
     $controller = $prefix;
 
     if (!isset($cachedControllers[$routeKey])) {
@@ -63,7 +63,7 @@ foreach ($myData2 as $item2) {
         'nonaktifkan' => 'nonaktifkan',
         'detail' => 'detail',
         'lihat' => 'lihat',
-        'hapus' => 'hapus',
+        'delete' => 'delete',
         'print' => 'print',
     ];
 
@@ -91,7 +91,7 @@ foreach ($myData2 as $item2) {
     // Check if any view routes don't exist
 
     foreach ($viewRoutes as $key => $value) {
-        $routeKey1 = '(en|fr|id|zh)/' . $item2['value'] . '/' . $key;
+        $routeKey1 = '(' . $languages . ')/' . $item2['value'] . '/' . $key;
         $controller1 = $prefix . '/' . $value;
 
         if (!isset($cachedControllers[$routeKey1])) {
@@ -106,7 +106,7 @@ foreach ($myData2 as $item2) {
     }
 
     foreach ($commonFunctionRoutes as $key => $value) {
-        $routeKey1 = '(en|fr|id|zh)/' . $item2['value'] . '/' . $key;
+        $routeKey1 = '(' . $languages . ')/' . $item2['value'] . '/' . $key;
         $controller1 = $prefix . '/' . $value;
 
         if (!isset($cachedControllers[$routeKey1])) {
@@ -121,8 +121,8 @@ foreach ($myData2 as $item2) {
     }
 
     foreach ($uncommonFunctionRoutes as $key => $value) {
-        $routeKey1 = '(en|fr|id|zh)/' . $item2['value'] . '/' . $key . '/(:num)';
-        $controller1 = $prefix . '/' . $value . '/$1';
+        $routeKey1 = '(' . $languages . ')/' . $item2['value'] . '/' . $key . '/(:num)';
+        $controller1 = $prefix . '/' . $value . '/$2';
 
         if (!isset($cachedControllers[$routeKey1])) {
             $cachedControllers[$routeKey1] = class_exists($routeKey1);
@@ -131,12 +131,12 @@ foreach ($myData2 as $item2) {
         if (!$cachedControllers[$routeKey1]) {
             $route[$routeKey1] = $controller1;
         } else {
-            $route[$routeKey1] = $item2['value'] . '/' . $key . '/$1';
+            $route[$routeKey1] = $item2['value'] . '/' . $key . '/$2';
         }
     }
 
     foreach ($uniqueFunctionRoutes as $key => $value) {
-        $routeKey1 = '(en|fr|id|zh)/' .  $item2['value'] . '/' . $key;
+        $routeKey1 = '(' . $languages . ')/' .  $item2['value'] . '/' . $key;
         $controller1 = $prefix . '/' . $value;
 
         if (!isset($cachedControllers[$routeKey1])) {

@@ -68,7 +68,8 @@
     <?php endforeach ?>
   </div>
 
-  <p class="text-center">Kirimkan bukti ini ke <?= $tabel_c2_field6_value4_alias ?> untuk diproses</p>
+
+  <p class="text-center"><?= lang('tabel_c2_field6_value4_alias_v5_msg') ?></p>
 
   <script src="jquery.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>

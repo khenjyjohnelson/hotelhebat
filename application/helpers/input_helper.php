@@ -624,6 +624,28 @@ if (!function_exists('filter_tgl')) {
 }
 
 
+if (!function_exists('select_add')) {
+    function select_add($field, $selected, $values, $required)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $alias = lang($field . '_alias' . '_select');
+        $input = $data[$field . '_input'];
+
+        return <<<HTML
+        <div class="form-group">
+            <label>{$alias}</label>
+            <select class="form-control" {$required} name="{$input}">
+            {$selected}
+            {$values}
+            </select>
+        </div>
+        HTML;
+    }
+}
 
 if (!function_exists('select_ubah')) {
     function select_ubah($field, $selected, $values, $required)
@@ -633,14 +655,12 @@ if (!function_exists('select_ubah')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = lang($field . '_alias');
+        $alias = lang($field . '_alias' . '_select');
         $input = $data[$field . '_input'];
-
-        $placeholder = lang($field . '_alias' . '_input');
 
         return <<<HTML
         <div class="form-group">
-            <label><?= lang('select') ?> {$alias}</label>
+            <label>{$alias}</label>
             <select class="form-control" {$required} name="{$input}">
             {$selected}
             {$values}

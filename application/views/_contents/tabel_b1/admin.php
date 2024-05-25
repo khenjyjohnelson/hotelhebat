@@ -170,7 +170,7 @@
             <?= edit_text('tabel_b1_field3', $tl_b1->$tabel_b1_field3, 'required') ?>
             <?= edit_file('tabel_b1', 'tabel_b1_field4', $tl_b1->$tabel_b1_field4, '') ?>
             <?= edit_text('tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
-            <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1("", ""), 'required') ?>
+            <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1(), 'required') ?>
 
             <div class="form-group">
               <label><?= $tabel_b7_alias ?></label>

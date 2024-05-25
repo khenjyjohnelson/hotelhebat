@@ -181,7 +181,6 @@ if (!function_exists('btn_print')) {
         $lang = $data['language'];
 
         $url = site_url($lang . '/' . $controller . '/print/' . $value);
-        $alias = lang('input');
 
         return <<<HTML
         <a class="btn btn-light text-info" href="{$url}"
@@ -274,8 +273,6 @@ if (!function_exists('btn_toggle_on')) {
         $lang = $data['language'];
 
         $url = site_url($lang . '/' . $controller . '/aktifkan/' . $value);
-
-        $alias = lang('input');
 
         return <<<HTML
 

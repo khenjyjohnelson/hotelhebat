@@ -48,13 +48,16 @@ $myData1 = json_decode($jsonData1, true)['values'];
 
 // Create variables dynamically
 foreach ($myData1 as $item) {
+    // List of placeholders
     $lang[$item['key']] = $item['value'];
     $lang[$item['key'] . '_input'] = '输入' . $item['value'];
     $lang[$item['key'] . '_old'] = '输入旧' . $item['value'];
     $lang[$item['key'] . '_new'] = '输入新' . $item['value'];
     $lang[$item['key'] . '_confirm'] = '输入确认' . $item['value'];
     $lang[$item['key'] . '_btn'] = $item['value'];
+    $lang[$item['key'] . '_select'] = "选择" . $item['value'];
 
+    // List of titles
     $lang[$item['key'] . '_v1_title'] = $item['value']; // Assuming $item['value'] is already translated
     $lang[$item['key'] . '_v2_title'] = '列表' . $item['value']; // "Daftar" -> "列表"
     $lang[$item['key'] . '_v3_title'] = '数据' . $item['value']; // "Data" -> "数据"
@@ -63,4 +66,14 @@ foreach ($myData1 as $item) {
     $lang[$item['key'] . '_v6_title'] = '个人资料' . $item['value']; // "Profil" -> "个人资料"
     $lang[$item['key'] . '_v7_title'] = $item['value'] . '成功!'; // "Berhasil" -> "成功"
     $lang[$item['key'] . '_v8_title'] = '详情' . $item['value']; // "Detail" -> "详情"
+    
+    // List of messages
+    $lang[$item['key'] . '_v1_msg'] = $item['value'];
+    $lang[$item['key'] . '_v2_msg'] = $item['value'];
+    $lang[$item['key'] . '_v3_msg'] = $item['value'];
+    $lang[$item['key'] . '_v4_msg'] = $item['value'];
+    $lang[$item['key'] . '_v5_msg'] = '将此证据发送给' . $item['value'] .'以便处理。';
+    $lang[$item['key'] . '_v6_msg'] = $item['value'];
+    $lang[$item['key'] . '_v7_msg'] = $item['value'];
+    $lang[$item['key'] . '_v8_msg'] = $item['value'] . '不可用。';
 }

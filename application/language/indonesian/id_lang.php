@@ -48,13 +48,16 @@ $myData1 = json_decode($jsonData1, true)['values'];
 
 // Create variables dynamically
 foreach ($myData1 as $item) {
+    // List of placeholders
     $lang[$item['key']] = $item['value'];
     $lang[$item['key'] . '_input'] = 'Masukkan ' . $item['value'];
     $lang[$item['key'] . '_old'] = 'Masukkan ' . $item['value'] . ' lama';
     $lang[$item['key'] . '_new'] = 'Masukkan ' . $item['value'] . ' baru';
     $lang[$item['key'] . '_confirm'] = 'Masukkan konfirmasi ' . $item['value'];
-
     $lang[$item['key'] . '_btn'] = $item['value'];
+    $lang[$item['key'] . '_select'] = "Pilih " . $item['value'];
+
+    // List of titles
     $lang[$item['key'] . '_v1_title'] = $item['value'];
     $lang[$item['key'] . '_v2_title'] = 'Daftar ' . $item['value'];
     $lang[$item['key'] . '_v3_title'] = 'Data ' . $item['value'];
@@ -63,4 +66,15 @@ foreach ($myData1 as $item) {
     $lang[$item['key'] . '_v6_title'] = 'Profil ' . $item['value'];
     $lang[$item['key'] . '_v7_title'] = $item['value'] . ' Berhasil!';
     $lang[$item['key'] . '_v8_title'] = 'Detail ' . $item['value'];
+
+    // List of messages
+    $lang[$item['key'] . '_v1_msg'] = $item['value'];
+    $lang[$item['key'] . '_v2_msg'] = $item['value'];
+    $lang[$item['key'] . '_v3_msg'] = $item['value'];
+    $lang[$item['key'] . '_v4_msg'] = $item['value'];
+    $lang[$item['key'] . '_v5_msg'] = 'Kirim bukti ini ke ' . $item['value'] . ' untuk diproses.';
+    $lang[$item['key'] . '_v6_msg'] = $item['value'];
+    $lang[$item['key'] . '_v7_msg'] = $item['value'];
+    $lang[$item['key'] . '_v8_msg'] = $item['value'] . ' tidak tersedia.';
+
 }

@@ -44,7 +44,7 @@
             <span class="input-group-text"><?= lang('select') ?> <?= $tabel_b7_alias ?></span>
           </div>
           <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
-            <option selected hidden value="<?= $tabel_b5_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
+            <option selected hidden value="<?= $tabel_b5_field7_value ?>"><?= $tabel_b5_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
               <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
                 <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?></option>
@@ -87,9 +87,9 @@
           </td>
           <td>
             <?php if ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value1) { ?>
-              <?= btn_toggle_on('tabel_b5', $tl_b5->$tabel_b5_field1) ?>
-            <?php } elseif ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value2) { ?>
               <?= btn_toggle_off('tabel_b5', $tl_b5->$tabel_b5_field1) ?>
+            <?php } elseif ($tl_b5->$tabel_b5_field6 == $tabel_b5_field6_value2) { ?>
+              <?= btn_toggle_on('tabel_b5', $tl_b5->$tabel_b5_field1) ?>
             <?php } else { ?>
 
             <?php } ?>

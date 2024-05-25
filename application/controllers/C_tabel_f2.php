@@ -40,7 +40,7 @@ class C_tabel_f2 extends Omnitags
 				$data1 = array(
 					'title' => 'login',
 					'dekor' => $this->tl_b1->dekor($this->theme_id, 'login')->result(),
-					'tbl_b5' => $this->tl_b5->get_all_f2()->result(),
+					'tbl_b5' => $this->tl_b5->get_all_b5()->result(),
 				);
 				$halaman = 'login';
 		}
@@ -117,7 +117,7 @@ class C_tabel_f2 extends Omnitags
 			'konten' => $this->v3['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_f2_with_e4()->result(),
-			'tbl_e3' => $this->tl_e3->get_all_f2()->result(),
+			'tbl_e3' => $this->tl_e3->get_all_e3()->result(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			'tabel_f2_field10_filter1_value' => $param1,
@@ -291,8 +291,8 @@ class C_tabel_f2 extends Omnitags
 			'konten' => $this->v3['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->filter($param1, $param2, $param3, $param4)->result(),
-			'tbl_e4' => $this->tl_e4->get_all_f2()->result(),
-			'tbl_e3' => $this->tl_e3->get_all_f2()->result(),
+			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
+			'tbl_e3' => $this->tl_e3->get_all_e3()->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f2_field10_filter1_value' => $param1,
@@ -315,7 +315,7 @@ class C_tabel_f2 extends Omnitags
 			'title' => lang('tabel_f2_alias_v4_title'),
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_all_f2()->result(),
-			'tbl_e4' => $this->tl_e4->get_all_f2()->result(),
+			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
 		);
 
 		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
