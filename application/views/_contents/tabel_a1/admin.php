@@ -67,9 +67,9 @@
       <form action="<?= site_url($language . '/' . $tabel_a1 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
         <div class="modal-body">
-          <?= add_text($tabel_a1_field2, 'required') ?>
-          <?= add_text($tabel_a1_field4, 'required') ?>
-          <?= add_file($tabel_a1_field3, 'required') ?>
+          <?= add_text('tabel_a1_field2', 'required') ?>
+          <?= add_text('tabel_a1_field4', 'required') ?>
+          <?= add_file('tabel_a1_field3', 'required') ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->

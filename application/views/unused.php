@@ -13,22 +13,22 @@
                     switch ($userType) {
                         case $tabel_c2_field6_value5:
                             ?>
-                            <a id="introTamu" data-dismiss="modal" class="btn btn-success">Mulai Tour</a>
+                            <a id="introTamu" class="btn-close" data-bs-dismiss="modal" class="btn btn-success">Mulai Tour</a>
                             <?php
                             break;
                         case $tabel_c2_field6_value3:
                             ?>
-                            <a id="introAdministrator" data-dismiss="modal" class="btn btn-success">Mulai Tour</a>
+                            <a id="introAdministrator" class="btn-close" data-bs-dismiss="modal" class="btn btn-success">Mulai Tour</a>
                             <?php
                             break;
                         case $tabel_c2_field6_value2:
                             ?>
-                            <a id="introAccounting" data-dismiss="modal" class="btn btn-success">Mulai Tour</a>
+                            <a id="introAccounting" class="btn-close" data-bs-dismiss="modal" class="btn btn-success">Mulai Tour</a>
                             <?php
                             break;
                         default:
                             ?>
-                            <a id="introTamu" data-dismiss="modal" class="btn btn-success">Mulai Tour</a>
+                            <a id="introTamu" class="btn-close" data-bs-dismiss="modal" class="btn btn-success">Mulai Tour</a>
                             <?php
                     }
                     ?>

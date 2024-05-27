@@ -26,12 +26,12 @@
         <!-- form signup -->
         <form action="<?= site_url($language . '/' . $tabel_c2 . '/tambah') ?>" method="post">
           <?= input_hidden('tabel_c2_field6', $tabel_c2_field6_value5, 'required') ?>
-          <?= add_text_prepend('tabel_c2_field2', '<i class="fas fa-user"></i>', 'required') ?>
-          <?= add_email_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
-          <?= add_new_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
+          <?= input_form('text', 'tabel_c2_field2', '', 'required') ?>
+          <?= input_form('email', 'tabel_c2_field3', '', 'required') ?>
+          <?= add_new_password('tabel_c2_field4', 'required') ?>
           <?= password_req() ?>
-          <?= add_confirm_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
-          <?= add_text_prepend('tabel_c2_field5', '<i class="fas fa-phone"></i>', 'required') ?>
+          <?= add_confirm('tabel_c2_field4', 'password', 'required') ?>
+          <?= input_form('text', 'tabel_c2_field5', '', 'required') ?>
 
           <!-- pesan untuk pengguna yang signup -->
           <p class="small text-center text-danger"><?= get_flashdata('flash1') ?></p>

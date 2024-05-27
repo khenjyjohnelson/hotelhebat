@@ -61,7 +61,7 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
+              <label class><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
               <select class="form-control" required name="<?= $tabel_a1_field8_input ?>">
 
                 <?php foreach ($tbl_b7 as $tl_b7): ?>

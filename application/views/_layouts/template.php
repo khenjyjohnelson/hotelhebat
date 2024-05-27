@@ -18,7 +18,7 @@ switch (true) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="auto">
 
 <!-- header -->
 <?php $this->load->view($head) ?>

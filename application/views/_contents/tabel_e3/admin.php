@@ -25,6 +25,7 @@
 <?= btn_tambah() ?>
 <?= btn_laporan('tabel_e3') ?>
 
+
 <div class="table-responsive">
   <table class="table table-light" id="data">
     <thead class="thead-light">
@@ -199,7 +200,7 @@
                   <div class="col-md-6">
                     <!-- ini adalah fitur untuk assign petugas -->
                     <div class="form-group">
-                      <label><?= $tabel_c1_field2_alias ?></label>
+                      <label><?= $tabel_c1_alias ?></label>
                       <select class="form-control" required name="<?= $tabel_c1_field1_input ?>">
 
                         <!-- menampilkan petugas buat assign -->
@@ -219,7 +220,7 @@
                   karena menurutku textarea masih kurang cukup
                 dan aku juga membutuhkan bantuan ahli UI UX untuk menentukan keputusan terbaik -->
 
-                    <?= add_textarea('tabel_f3_field6', 'required') ?>
+                    <?= add_text('tabel_f4_field6', 'required') ?>
                   </div>
                 </div>
               </div>

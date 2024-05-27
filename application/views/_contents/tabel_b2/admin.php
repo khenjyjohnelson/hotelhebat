@@ -47,7 +47,8 @@
             <option selected hidden value="<?= $tabel_b2_field7_value ?>"><?= $tabel_b2_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
               <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
-                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?></option>
+                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
+              </option>
             <?php endforeach ?>
           </select>
         </div>
@@ -113,7 +114,8 @@
     <div class="modal-content">
       <?= modal_header(lang('add') . ' ' . lang('tabel_b2_alias'), '') ?>
 
-      <form action="<?= site_url($language . '/' . $tabel_b2 . '/tambah') ?>" enctype="multipart/form-data" method="post">
+      <form action="<?= site_url($language . '/' . $tabel_b2 . '/tambah') ?>" enctype="multipart/form-data"
+        method="post">
         <div class="modal-body">
 
           <?= add_text('tabel_b2_field2', 'required') ?>
@@ -151,7 +153,8 @@
       <div class="modal-content">
         <?= modal_header(lang('update_data') . ' ' . lang('tabel_b2_alias'), $tl_b2->$tabel_b2_field1) ?>
 
-        <form action="<?= site_url($language . '/' . $tabel_b2 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b2 . '/update') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_b2_field1', $tl_b2->$tabel_b2_field1, 'required') ?>
             <small><?= lang('reupload_image_even_for_name_change') ?></small>
@@ -163,17 +166,17 @@
             <?= edit_textarea('tabel_b2_field5', $tl_b2->$tabel_b2_field5, 'required') ?>
 
             <div class="form-group">
-              <label><?= $tabel_b7_alias ?></label>
               <select class="form-control" required name="<?= $tabel_b2_field7_input ?>">
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
                   <?php if ($tl_b2->$tabel_b2_field7 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                   <?php } else { ?>
-                    <option selected hidden value=""><?= lang('select') ?> <?= $tabel_b7_alias ?>...</option> <?php } ?>
+                    <option selected hidden value=""><?= lang('select') ?>       <?= $tabel_b7_alias ?>...</option> <?php } ?>
 
                   <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                 <?php endforeach ?>
               </select>
+              <label class="form-label"><?= $tabel_b7_alias ?></label>
             </div>
 
           </div>
@@ -190,12 +193,12 @@
   </div>
 
 
-  
+
   <div id="lihat<?= $tl_b2->$tabel_b2_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <?= modal_header(lang('tabel_b2_alias'), $tl_b2->$tabel_b2_field1) ?>
-        
+
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
