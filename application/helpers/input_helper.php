@@ -60,27 +60,6 @@ if (!function_exists('xss_clean')) {
     }
 }
 
-if (!function_exists('input_form')) {
-    function input_form($type, $field, $value, $required)
-    {
-        // Get CodeIgniter instance
-        $CI =& get_instance();
-        // Fetch the view variables
-        $data = $CI->load->get_vars();
-
-        $input = $data[$field . '_input'];
-        $alias = lang($field . '_alias');
-
-        return <<<HTML
-        <div class="form-group">
-            <input class="form-control float" type="{$type}" {$required} name="{$input}" id="{$input}"
-            value="{$value}">
-            <label for="{$input}" class="form-label">{$alias}</label>
-        </div>
-        HTML;
-    }
-}
-
 if (!function_exists('add_text')) {
     function add_text($field, $required)
     {
@@ -91,14 +70,10 @@ if (!function_exists('add_text')) {
 
         $input = $data[$field . '_input'];
         $alias = lang($field . '_alias');
-        $placeholder = lang($field . '_alias' . '_input');
-
-
 
         return <<<HTML
         <div class="form-group">
-            <input class="form-control float" type="text" {$required} name="{$input}" id="{$input}"
-            placeholder="">
+            <input class="form-control float" type="text" {$required} name="{$input}" id="{$input}">
             <label for="{$input}" class="form-label" class="form-label">{$alias}</label>
         </div>
         HTML;
@@ -122,7 +97,7 @@ if (!function_exists('add_date')) {
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="date" {$required} name="{$input}" id="{$input}"
-            placeholder="" min="{$min}" max="{$max}">
+            min="{$min}" max="{$max}">
             <label for="{$input}" class="form-label">{$alias}</label>
         </div>
         HTML;
@@ -145,7 +120,7 @@ if (!function_exists('add_number')) {
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="number" {$required} name="{$input}" id="{$input}"
-            placeholder="" min="{$min}" max="{$max}">
+            min="{$min}" max="{$max}">
             <label for="{$input}" class="form-label">{$alias}</label>
         </div>
         HTML;
@@ -167,8 +142,7 @@ if (!function_exists('add_email')) {
 
         return <<<HTML
         <div class="form-group">
-            <input class="form-control float" type="email" {$required} name="{$input}" id="{$input}"
-            placeholder="">
+            <input class="form-control float" type="email" {$required} name="{$input}" id="{$input}">
             <label for="{$input}" class="form-label">{$alias}</label>
         </div>
         HTML;
@@ -190,7 +164,7 @@ if (!function_exists('add_new_password')) {
 
         return <<<HTML
         <div class="form-group">
-            <input class="form-control float" type="password" {$required} name="{$input}" id="{$input}" placeholder=""
+            <input class="form-control float" type="password" {$required} name="{$input}" id="{$input}"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             <label for="{$input}" class="form-label">{$alias}</label>
@@ -213,7 +187,7 @@ if (!function_exists('add_confirm')) {
 
         return <<<HTML
         <div class="form-group">
-            <input class="form-control float" type="{$type}" {$required} name="{$input}" placeholder="">
+            <input class="form-control float" type="{$type}" {$required} name="{$input}">
             <label for="{$input}" class="form-label">{$alias}</label>
         </div>
         HTML;
@@ -237,7 +211,7 @@ if (!function_exists('add_text_prepend')) {
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="text" {$required} name="{$input}" placeholder="">
+            <input class="form-control" type="text" {$required} name="{$input}">
         </div>
         HTML;
     }
@@ -260,7 +234,7 @@ if (!function_exists('add_email_prepend')) {
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="email" {$required} name="{$input}" placeholder="">
+            <input class="form-control" type="email" {$required} name="{$input}">
         </div>
         HTML;
     }
@@ -283,7 +257,7 @@ if (!function_exists('add_new_password_prepend')) {
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" id="psw" type="password" {$required} name="{$input}" placeholder=""
+            <input class="form-control" id="psw" type="password" {$required} name="{$input}"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
         </div>
@@ -308,7 +282,7 @@ if (!function_exists('add_password_prepend')) {
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="password" {$required} name="{$input}" placeholder="">
+            <input class="form-control" type="password" {$required} name="{$input}">
         </div>
         HTML;
     }
@@ -331,7 +305,7 @@ if (!function_exists('add_old_prepend')) {
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="{$type}" {$required} name="{$input}" placeholder="">
+            <input class="form-control" type="{$type}" {$required} name="{$input}">
         </div>
         HTML;
     }
@@ -354,7 +328,7 @@ if (!function_exists('add_new_prepend')) {
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="{$type}" {$required} name="{$input}" placeholder="">
+            <input class="form-control" type="{$type}" {$required} name="{$input}">
         </div>
         HTML;
     }
@@ -377,7 +351,7 @@ if (!function_exists('add_confirm_prepend')) {
             <div class="input-group-prepend">
                 <span class="input-group-text">{$icon}</span>
             </div>
-            <input class="form-control" type="{$type}" {$required} name="{$input}" placeholder="">
+            <input class="form-control" type="{$type}" {$required} name="{$input}">
         </div>
         HTML;
     }
@@ -417,7 +391,7 @@ if (!function_exists('edit_text')) {
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="text" {$required} name="{$input}"
-            placeholder="" value="{$value}">
+            value="{$value}">
             <label for="{$input}" class="form-label">{$alias}</label>
         </div>
         HTML;
@@ -486,7 +460,7 @@ if (!function_exists('edit_number')) {
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="number" {$required} name="{$input}"
-            placeholder="" value="{$value}" min="{$min}" max="{$max}">
+            value="{$value}" min="{$min}" max="{$max}">
             <label class="form-label">{$alias}</label>
         </div>
         HTML;
@@ -509,7 +483,7 @@ if (!function_exists('edit_email')) {
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="email" {$required} name="{$input}"
-            placeholder="" value="{$value}">
+            value="{$value}">
             <label class="form-label">{$alias}</label>
         </div>
         HTML;
@@ -562,7 +536,7 @@ if (!function_exists('add_textarea')) {
         <div class="form-group">
             <label>{$alias}</label>
             <textarea id="editor1" class="form-control float" name="{$input}" $required
-            placeholder="" {$required} cols="30" rows="10"></textarea>
+            {$required} cols="30" rows="10"></textarea>
         </div>
         HTML;
     }
@@ -585,7 +559,7 @@ if (!function_exists('edit_textarea')) {
         <div class="form-group">
             <label>{$alias}</label>
             <textarea class="ckeditor form-control float" name="{$input}"
-            placeholder="" {required} cols="10" rows="10">{$value}</textarea>
+            {required} cols="10" rows="10">{$value}</textarea>
         </div>
         HTML;
     }
