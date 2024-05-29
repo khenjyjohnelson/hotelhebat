@@ -19,7 +19,7 @@
     <div class="col-md-2">
       <?= edit_min_max('date', 'tabel_f2_field10', $tabel_f2_field10_value, 'required', date('Y-m-d'), '') ?>
     </div>
-    
+
     <!-- Seperti di bawah bentuk input array ke depannya cman itu perlu dipending dulu -->
     <!-- <div class="col-md-2">
       <div class="form-group">
@@ -27,7 +27,7 @@
         <input class="form-control" type="date" required name="<?= $tabel_f2_field11_input ?>" value=" $cek_out ?>">
       </div>
     </div> -->
-    
+
     <div class="col-md-2">
       <?= edit_min_max('date', 'tabel_f2_field11', $tabel_f2_field11_value, 'required', date('Y-m-d', strtotime("+1 day")), '') ?>
     </div>
@@ -69,35 +69,27 @@
     <div class="col-md-6">
 
       <!-- menentukan id_user jika user sudah membuat akun atau belum -->
-      <div class="form-group">
-        <label><?= $tabel_f2_field3_alias ?></label>
-        <input class="form-control" type="text" required name="<?= $tabel_f2_field3_input ?>"
-          placeholder="Masukkan <?= $tabel_f2_field3_alias ?>"
-          value="<?= userdata($tabel_c2_field2) ?>">
-        <?php if (userdata($tabel_c2_field1)) { ?>
-          <input type="hidden" name="<?= $tabel_c2_field1_input ?>"
-            value="<?= userdata($tabel_c2_field1) ?>">
-        <?php } else { ?>
+      <?= input_edit('text', 'tabel_f2_field3', userdata($tabel_c2_field2), 'required') ?>
 
-          <!-- value 0 di id_user untuk pengguna tanpa akun -->
-          <input type="hidden" name="<?= $tabel_c2_field1_input ?>" value="0">
 
-        <?php } ?>
-      </div>
-
+      <?php if (userdata($tabel_c2_field1)) { ?>
+        <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
+      <?php } else { ?>
+        <?= input_hidden('tabel_c2_field1', '0', 'required') ?>
+      <?php } ?>
       <!-- keterangan * di bawah -->
       <?= input_edit('email', 'tabel_f2_field4', userdata($tabel_c2_field3), 'required') ?>
       <?= input_edit('text', 'tabel_f2_field5', userdata($tabel_c2_field5), 'required') ?>
       <?= input_add('text', 'tabel_f2_field6', 'required') ?>
 
       <div class="form-group">
-        <label><?= $tabel_e4_field2_alias ?></label>
-        <select class="form-control" required name="<?= $tabel_e4_field1_input ?>">
+        <select class="form-control float" required name="<?= $tabel_e4_field1_input ?>">
           <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e4_field2_alias ?>...</option>
           <?php foreach ($tbl_e4 as $tl_e4): ?>
             <option value="<?= $tl_e4->$tabel_e4_field1; ?>"><?= $tl_e4->$tabel_e4_field2 ?></option>
           <?php endforeach ?>
         </select>
+        <label class="form-label"><?= $tabel_e4_field2_alias ?></label>
       </div>
       <!-- keterangan * -->
       <small>*<?= $tabel_f2_field4_alias . lang('required_to_do') . $tabel_f2_alias . lang('and') . $tabel_f3_alias ?></small>

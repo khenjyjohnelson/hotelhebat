@@ -42,7 +42,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><?= lang('select') ?> <?= $tabel_b7_alias ?></span>
           </div>
-          <select class="form-control" required name="<?= $tabel_b1_field7_input ?>">
+          <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
             <option selected hidden value="<?= $tabel_b1_field7_value ?>"><?= $tabel_b1_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
               <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
@@ -119,7 +119,7 @@
 
           <div class="form-group">
             <label><?= lang('select') ?> <?= $tabel_b1_field6_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_b1_field6_input ?>">
+            <select class="form-control float" required name="<?= $tabel_b1_field6_input ?>">
               <option value="a">a</option>
               <option value="b">b</option>
               <option value="c">c</option>
@@ -131,7 +131,7 @@
 
           <div class="form-group">
             <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_b1_field7_input ?>">
+            <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
 
               <?php foreach ($tbl_b7 as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
@@ -173,17 +173,17 @@
             <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1(), 'required') ?>
 
             <div class="form-group">
-              <label><?= $tabel_b7_alias ?></label>
-              <select class="form-control" required name="<?= $tabel_b1_field7_input ?>">
+              <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
                   <?php if ($tl_b1->$tabel_b1_field7 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                  <?php } else { ?>
-                    <option selected hidden value=""><?= lang('select') ?> <?= $tabel_b7_alias ?>...</option> <?php } ?>
-
-                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                <?php endforeach ?>
-              </select>
+                    <?php } else { ?>
+                      <option selected hidden value=""><?= lang('select') ?> <?= $tabel_b7_alias ?>...</option> <?php } ?>
+                      
+                      <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                      <?php endforeach ?>
+                    </select>
+                    <label class="form-label"><?= $tabel_b7_alias ?></label>
             </div>
           </div>
 

@@ -82,30 +82,30 @@
 
           <!-- memilih salah satu tipe kamar yang ada -->
           <div class="form-group">
-            <label><?= $tabel_e4_field2_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_e4_field1_input ?>">
+            <select class="form-control float" required name="<?= $tabel_e4_field1_input ?>">
               <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e4_field2_alias ?>...</option>
               <?php foreach ($tbl_e4 as $tl_e4): ?>
-
+                
                 <!-- mengambil nilai tipe dari tipe kamar -->
                 <option value="<?= $tl_e3->$tabel_e3_field2 ?>"><?= $tl_e3->$tabel_e4_field2; ?></option>
-
-              <?php endforeach ?>
-
-            </select>
+                
+                <?php endforeach ?>
+                
+              </select>
+              <label class="form-label"><?= $tabel_e4_field2_alias ?></label>
           </div>
 
           <div class="form-group">
-            <label><?= $tabel_e3_field4_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_e3_field4_input ?>">
+            <select class="form-control float" required name="<?= $tabel_e3_field4_input ?>">
               <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e3_field4_alias ?>...</option>
-
+              
               <!-- memilih nilai status -->
               <option value="<?= $tabel_e3_field4_value2 ?>"><?= $tabel_e3_field4_value2_alias ?></option>
               <option value="<?= $tabel_e3_field4_value4 ?>"><?= $tabel_e3_field4_value4_alias ?></option>
               <option value="<?= $tabel_e3_field4_value5 ?>"><?= $tabel_e3_field4_value5_alias ?></option>
-
+              
             </select>
+            <label class="form-label"><?= $tabel_e3_field4_alias ?></label>
           </div>
 
           <?= add_min_max('number', 'tabel_e3_field5', 'required', '0', '') ?>
@@ -139,16 +139,16 @@
                 <?= input_hidden('tabel_e4_field1', $tl_e3->$tabel_e3_field2, 'required') ?>
 
                 <div class="form-group">
-                  <label><?= $tabel_e3_field4_alias ?></label>
-                  <select class="form-control" required name="<?= $tabel_e3_field4_input ?>">
+                  <select class="form-control float" required name="<?= $tabel_e3_field4_input ?>">
                     <option selected hidden value="<?= $tl_e3->$tabel_e3_field4; ?>"><?= $tl_e3->$tabel_e3_field4; ?>
-                    </option>
-
-                    <!-- memilih nilai status -->
-                    <option value="<?= $tabel_e3_field4_value4 ?>"><?= $tabel_e3_field4_value4_alias ?></option>
-                    <option value="<?= $tabel_e3_field4_value5 ?>"><?= $tabel_e3_field4_value5_alias ?></option>
-
-                  </select>
+                  </option>
+                  
+                  <!-- memilih nilai status -->
+                  <option value="<?= $tabel_e3_field4_value4 ?>"><?= $tabel_e3_field4_value4_alias ?></option>
+                  <option value="<?= $tabel_e3_field4_value5 ?>"><?= $tabel_e3_field4_value5_alias ?></option>
+                  
+                </select>
+                <label class="form-label"><?= $tabel_e3_field4_alias ?></label>
                 </div>
 
                 <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
@@ -200,20 +200,20 @@
                   <div class="col-md-6">
                     <!-- ini adalah fitur untuk assign petugas -->
                     <div class="form-group">
-                      <label><?= $tabel_c1_alias ?></label>
-                      <select class="form-control" required name="<?= $tabel_c1_field1_input ?>">
-
-                        <!-- menampilkan petugas buat assign -->
-                        <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
-                        <?php
+                      <select class="form-control float" required name="<?= $tabel_c1_field1_input ?>">
+                        
+                      <!-- menampilkan petugas buat assign -->
+                      <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
+                      <?php
                         foreach ($tbl_c1 as $tl_c1):
                           if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
-                              <?= $tl_c1->$tabel_c1_field7; ?>
-                            </option>
+                            <?= $tl_c1->$tabel_c1_field7; ?>
+                          </option>
                           <?php }
                         endforeach ?>
                       </select>
+                      <label class="form-label"><?= $tabel_c1_alias ?></label>
                     </div>
 
                     <!-- Aku masih ada rencana untuk mengubah textbox keterangan ini dengan dropbox 
@@ -272,20 +272,20 @@
                   <div class="col-md-6">
                     <!-- ini adalah fitur untuk assign petugas -->
                     <div class="form-group">
-                      <label><?= $tabel_c1_alias ?></label>
-                      <select class="form-control" required name="<?= $tabel_c1_field1_input ?>">
-
-                        <!-- menampilkan petugas buat assign -->
-                        <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
-                        <?php
+                      <select class="form-control float" required name="<?= $tabel_c1_field1_input ?>">
+                        
+                      <!-- menampilkan petugas buat assign -->
+                      <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
+                      <?php
                         foreach ($tbl_c1 as $tl_c1):
                           if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
-                              <?= $tl_c1->$tabel_c1_field7; ?>
-                            </option>
+                            <?= $tl_c1->$tabel_c1_field7; ?>
+                          </option>
                           <?php }
                         endforeach ?>
                       </select>
+                      <label class="form-label"><?= $tabel_c1_alias ?></label>
                     </div>
 
                     <?= input_textarea('tabel_e3_field5', '', 'required') ?>

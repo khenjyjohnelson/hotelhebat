@@ -81,18 +81,15 @@
           <?= input_add('text', 'tabel_c2_field5', 'required') ?>
 
           <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-users"></i></span>
-            </div>
-
             <!-- hanya admin yang bisa menentukan level user -->
-            <select class="form-control" required name="<?= $tabel_c2_field6_input ?>">
+            <select class="form-control float" placeholder="" required name="<?= $tabel_c2_field6_input ?>" id="tabel_c2_field6_input">
               <option value="" selected hidden><?= lang('select') ?> <?= $tabel_c2_field6_alias ?></option>
               <option value="<?= $tabel_c2_field6_value5 ?>"><?= $tabel_c2_field6_value5_alias ?></option>
               <option value="<?= $tabel_c2_field6_value4 ?>"><?= $tabel_c2_field6_value4_alias ?></option>
               <option value="<?= $tabel_c2_field6_value2 ?>"><?= $tabel_c2_field6_value2_alias ?></option>
               <option value="<?= $tabel_c2_field6_value3 ?>"><?= $tabel_c2_field6_value3_alias ?></option>
             </select>
+            <label class="form-label" for="$tabel_c2_field6_input"><?= $tabel_c2_field6_alias ?></label>
           </div>
         </div>
 
@@ -123,16 +120,14 @@
             <?= input_edit('text', 'tabel_c2_field5', $tl_c2->$tabel_c2_field5, 'required') ?>
 
             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-users"></i></span>
-              </div>
-              <select class="form-control" required name="<?= $tabel_c2_field6_input ?>">
+              <select class="form-control float" required name="<?= $tabel_c2_field6_input ?>" id="tabel_c2_field6_input">
                 <option selected hidden><?= $tl_c2->$tabel_c2_field6; ?></option>
                 <option value="<?= $tabel_c2_field6_value5 ?>"><?= $tabel_c2_field6_value5_alias ?></option>
                 <option value="<?= $tabel_c2_field6_value4 ?>"><?= $tabel_c2_field6_value4_alias ?></option>
                 <option value="<?= $tabel_c2_field6_value2 ?>"><?= $tabel_c2_field6_value2_alias ?></option>
                 <option value="<?= $tabel_c2_field6_value3 ?>"><?= $tabel_c2_field6_value3_alias ?></option>
               </select>
+              <label class="form-label" for="$tabel_c2_field6_input"><?= $tabel_c2_field6_alias ?></label>
             </div>
           </div>
 

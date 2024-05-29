@@ -20,10 +20,6 @@
           
           <div class="col-md-2">
             <?= edit_min_max('number', 'tabel_f2_field11', '1', 'required readonly', '1', '10') ?>
-            <div class="form-group">
-            <label><?= $tabel_f2_field8_alias ?></label>
-            <input class="form-control" readonly type="number" required name="<?= $tabel_f2_field8_input ?>" min="1"
-              max="10" value="1">
           </div>
         </div>
 

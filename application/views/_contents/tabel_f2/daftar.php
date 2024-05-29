@@ -116,13 +116,7 @@
 
                     <div class="col-md-6">
                       <?= tampil_text('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-
-                      <div class="form-group">
-                        <label><?= $tabel_e4_field2_alias ?></label>
-                        <p><?= $tl_f2->$tabel_e4_field2 ?></p>
-                      </div>
-                      <hr>
-
+                      <?= tampil_text('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
                       <?= tampil_text('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
                       <?= tampil_text('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
                     </div>
@@ -135,12 +129,12 @@
                       <?= tampil_text('tabel_f2_field9', 'Rp ' . number_format($tl_f2->$tabel_f2_field9, '2', ',', '.')) ?>
 
                       <div class="form-group">
-                        <label><?= $tabel_f3_field5_alias ?></label>
-                        <select class="form-control" required name="<?= $tabel_f3_field5_input ?>">
+                        <select class="form-control float" required name="<?= $tabel_f3_field5_input ?>">
                           <option selected hidden value=""><?= lang('select') ?> <?= $tabel_f3_field5_alias ?>...</option>
                           <option value="<?= $tabel_f3_field5_value1 ?>"><?= $tabel_f3_field5_value1_alias ?></option>
                           <option value="<?= $tabel_f3_field5_value2 ?>"><?= $tabel_f3_field5_value2_alias ?></option>
                         </select>
+                        <label class="form-label"><?= $tabel_f3_field5_alias ?></label>
                       </div>
 
                       <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>

@@ -89,12 +89,12 @@
           <?= add_file('tabel_c1_field6', 'required') ?>
 
           <div class="form-group">
-            <label><?= $tabel_c1_field7_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_c1_field7_input ?>">
+            <select class="form-control float" required name="<?= $tabel_c1_field7_input ?>">
               <option value="" selected hidden><?= lang('select') ?> <?= $tabel_c1_field7_alias ?></option>
               <option value="<?= $tabel_c1_field7_value1 ?>"><?= $tabel_c1_field7_value1_alias ?></option>
               <option value="<?= $tabel_c1_field7_value2 ?>"><?= $tabel_c1_field7_value2_alias ?></option>
             </select>
+            <label class="form-label"><?= $tabel_c1_field7_alias ?></label>
           </div>
 
 
@@ -129,12 +129,12 @@
             <?= edit_file('tabel_c1', 'tabel_c1_field6', $tl_c1->$tabel_c1_field6, 'required') ?>
 
             <div class="form-group">
-              <label><?= $tabel_c1_field7_alias ?></label>
-              <select class="form-control" required name="<?= $tabel_c1_field7_input ?>">
+              <select class="form-control float" required name="<?= $tabel_c1_field7_input ?>">
                 <option value="<?= $tl_c1->$tabel_c1_field7 ?>" selected hidden><?= $tl_c1->$tabel_c1_field7 ?></option>
                 <option value="<?= $tabel_c1_field7_value1 ?>"><?= $tabel_c1_field7_value1_alias ?></option>
                 <option value="<?= $tabel_c1_field7_value2 ?>"><?= $tabel_c1_field7_value2_alias ?></option>
               </select>
+              <label class="form-label"><?= $tabel_c1_field7_alias ?></label>
             </div>
 
           </div>
