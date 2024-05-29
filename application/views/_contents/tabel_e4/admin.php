@@ -21,15 +21,6 @@
 </div>
 <hr>
 
-<div class="form-floating mb-3">
-    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-    <label for="floatingInput">Email address</label>
-  </div>
-  <div class="form-floating">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-    <label for="floatingPassword">Password</label>
-  </div>
-
 
 <?= btn_tambah() ?>
 <button class="btn btn-info mb-4" type="button" data-toggle="modal" data-target="#import">+ Import</button>
@@ -113,8 +104,8 @@
       <?= modal_header(lang('add') . ' ' . lang('tabel_e4_alias'), '') ?>
       <form action="<?= site_url($language . '/' . $tabel_e4 . '/tambah') ?>" method="post">
         <div class="modal-body">
-          <?= add_text('tabel_e4_field2', 'required') ?>
-          <?= add_text('tabel_e4_field3', 'required') ?>
+          <?= input_add('text', 'tabel_e4_field2', 'required') ?>
+          <?= input_add('text', 'tabel_e4_field3', 'required') ?>
         </div>
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
@@ -137,8 +128,8 @@
         <form action="<?= site_url($language . '/' . $tabel_e4 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_e4_field1', $tl_e4->$tabel_e4_field1, 'required') ?>
-            <?= edit_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
-            <?= edit_text('tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
+            <?= input_edit('text', 'tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
+            <?= input_edit('text', 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

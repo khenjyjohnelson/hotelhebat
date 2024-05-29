@@ -27,7 +27,7 @@ if (!function_exists('password_req')) {
     function password_req()
     {
         return <<<HTML
-        <div id="message">
+        <div id="message" class="mb-3">
               <label class="checkpass">Password must contain the following:</label><br>
               <div class="row">
                 <div class="col-md-6">

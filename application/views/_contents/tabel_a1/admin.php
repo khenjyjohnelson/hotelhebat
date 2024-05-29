@@ -67,8 +67,8 @@
       <form action="<?= site_url($language . '/' . $tabel_a1 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
         <div class="modal-body">
-          <?= add_text('tabel_a1_field2', 'required') ?>
-          <?= add_text('tabel_a1_field4', 'required') ?>
+          <?= input_add('text', 'tabel_a1_field2', 'required') ?>
+          <?= input_add('text', 'tabel_a1_field4', 'required') ?>
           <?= add_file('tabel_a1_field3', 'required') ?>
         </div>
 
@@ -120,8 +120,8 @@
            
             <small><?= lang('reupload_image_even_for_name_change') ?></small>
 
-            <?= edit_text($tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2, 'required') ?>
-            <?= edit_text($tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4, 'required') ?>
+            <?= input_edit('text', $tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2, 'required') ?>
+            <?= input_edit('text', $tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4, 'required') ?>
             <?= edit_file($tabel_a1_field3, $tabel_a1, $tl_a1_alt->$tabel_a1_field3, 'required') ?>
           </div>
 

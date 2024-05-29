@@ -118,10 +118,10 @@
         method="post">
         <div class="modal-body">
 
-          <?= add_text('tabel_b2_field2', 'required') ?>
-          <?= add_text('tabel_b2_field3', 'required') ?>
+          <?= input_add('text', 'tabel_b2_field2', 'required') ?>
+          <?= input_add('text', 'tabel_b2_field3', 'required') ?>
           <?= add_file('tabel_b2_field4', 'required') ?>
-          <?= add_textarea('tabel_b2_field5', 'required') ?>
+          <?= input_textarea('tabel_b2_field5', '', 'required') ?>
 
           <div class="form-group">
             <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
@@ -160,10 +160,10 @@
             <small><?= lang('reupload_image_even_for_name_change') ?></small>
 
 
-            <?= edit_text('tabel_b2_field2', $tl_b2->$tabel_b2_field2, 'required') ?>
-            <?= edit_text('tabel_b2_field3', $tl_b2->$tabel_b2_field3, 'required') ?>
+            <?= input_edit('text', 'tabel_b2_field2', $tl_b2->$tabel_b2_field2, 'required') ?>
+            <?= input_edit('text', 'tabel_b2_field3', $tl_b2->$tabel_b2_field3, 'required') ?>
             <?= edit_file('tabel_b2', 'tabel_b2_field4', $tl_b2->$tabel_b2_field4, 'required') ?>
-            <?= edit_textarea('tabel_b2_field5', $tl_b2->$tabel_b2_field5, 'required') ?>
+            <?= input_textarea('tabel_b2_field5', $tl_b2->$tabel_b2_field5, 'required') ?>
 
             <div class="form-group">
               <select class="form-control" required name="<?= $tabel_b2_field7_input ?>">

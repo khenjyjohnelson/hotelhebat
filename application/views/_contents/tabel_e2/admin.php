@@ -63,8 +63,8 @@
       
       <form action="<?= site_url($language . '/' . $tabel_e2 . '/tambah') ?>" method="post">
         <div class="modal-body">
-          <?= add_text('tabel_e2_field2', 'required') ?>
-          <?= add_text('tabel_e2_field3', 'required') ?>
+          <?= input_add('text', 'tabel_e2_field2', 'required') ?>
+          <?= input_add('text', 'tabel_e2_field3', 'required') ?>
 
         </div>
 
@@ -90,8 +90,8 @@
         <form action="<?= site_url($language . '/' . $tabel_e2 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_e2_field1', $tl_e2->$tabel_e2_field1, 'required') ?>
-            <?= edit_text('tabel_e2_field2', $tl_e2->$tabel_e2_field2, 'required') ?>
-            <?= edit_text('tabel_e2_field3', $tl_e2->$tabel_e2_field3, 'required') ?>
+            <?= input_edit('text', 'tabel_e2_field2', $tl_e2->$tabel_e2_field2, 'required') ?>
+            <?= input_edit('text', 'tabel_e2_field3', $tl_e2->$tabel_e2_field3, 'required') ?>
           </div>
 
 

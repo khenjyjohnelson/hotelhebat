@@ -20,9 +20,9 @@
       <form action="<?= site_url($language . '/' . $tabel_c1 . '/update_profil') ?>" method="post"
         enctype="multipart/form-data">
         <?= input_hidden('tabel_c1_field1', $tl_c1->$tabel_c1_field1, 'required') ?>
-        <?= edit_text('tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>
-        <?= edit_text('tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>
-        <?= edit_text('tabel_c1_field6', $tl_c1->$tabel_c1_field6, 'required') ?>
+        <?= input_edit('text', 'tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>
+        <?= input_edit('text', 'tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>
+        <?= input_edit('text', 'tabel_c1_field6', $tl_c1->$tabel_c1_field6, 'required') ?>
 
         <div class="form-group">
           <?= btn_update() ?>
@@ -52,10 +52,10 @@
           enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_c1_field1', $tl_c1->$tabel_c1_field1, 'required') ?>
-            <?= add_old_prepend('tabel_c1_field4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
-            <?= add_new_password_prepend('tabel_c1_field4', '<i class="fas fa-key"></i>', 'required') ?>
+            <?= add_old('password', 'tabel_c1_field4', 'required') ?>
+            <?= add_new_password('tabel_c1_field4', 'required') ?>
             <?= password_req() ?>
-            <?= add_confirm_prepend('tabel_c1_field4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
+            <?= add_confirm('password', 'tabel_c1_field4', 'required') ?>
           </div>
 
           <!-- pesan untuk pengguna yang sedang merubah password -->

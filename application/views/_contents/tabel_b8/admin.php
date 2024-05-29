@@ -68,9 +68,9 @@
       
       <form action="<?= site_url($language . '/' . $tabel_b8 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
-          <?= add_text('tabel_b8_field2', 'required') ?>
-          <?= add_text('tabel_b8_field3', 'required') ?>
-          <?= add_text('tabel_b8_field4', 'required') ?>
+          <?= input_add('text', 'tabel_b8_field2', 'required') ?>
+          <?= input_add('text', 'tabel_b8_field3', 'required') ?>
+          <?= input_add('text', 'tabel_b8_field4', 'required') ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->
@@ -96,9 +96,9 @@
         <form action="<?= site_url($language . '/' . $tabel_b8 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_b8_field1', $tl_b8->$tabel_b8_field1, 'required') ?>
-            <?= edit_text('tabel_b8', 'tabel_b8_field2', $tl_b8->$tabel_b8_field2) ?>
-            <?= edit_text('tabel_b8', 'tabel_b8_field3', $tl_b8->$tabel_b8_field3) ?>
-            <?= edit_textarea('tabel_b8_field4', htmlspecialchars($tl_b8->$tabel_b8_field4), 'required') ?>
+            <?= input_edit('text', 'tabel_b8', 'tabel_b8_field2', $tl_b8->$tabel_b8_field2) ?>
+            <?= input_edit('text', 'tabel_b8', 'tabel_b8_field3', $tl_b8->$tabel_b8_field3) ?>
+            <?= input_textarea('tabel_b8_field4', htmlspecialchars($tl_b8->$tabel_b8_field4), 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

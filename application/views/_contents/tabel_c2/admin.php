@@ -73,12 +73,12 @@
 
       <form action="<?= site_url($language . '/' . $tabel_c2 . '/tambah') ?>" method="post">
         <div class="modal-body">
-          <?= add_text_prepend('tabel_c2_field1', '<i class="fas fa-user"></i>', 'required') ?>
-          <?= add_email_prepend('tabel_c2_field3', '<i class="fas fa-envelope"></i>', 'required') ?>
-          <?= add_new_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
+          <?= input_add('text', 'tabel_c2_field1', 'required') ?>
+          <?= input_add('email', 'tabel_c2_field3', 'required') ?>
+          <?= add_new_password('tabel_c2_field4', 'required') ?>
           <?= password_req() ?>
-          <?= add_confirm_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
-          <?= add_text_prepend('tabel_c2_field5', '<i class="fas fa-phone"></i>', 'required') ?>
+          <?= add_confirm('password', 'tabel_c2_field4', 'required') ?>
+          <?= input_add('text', 'tabel_c2_field5', 'required') ?>
 
           <div class="input-group">
             <div class="input-group-prepend">
@@ -118,9 +118,9 @@
         <form action="<?= site_url($language . '/' . $tabel_c2 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_c2_field1', $tl_c2->$tabel_c2_field1, 'required') ?>
-            <?= edit_text_prepend('tabel_c2_field2', $tl_c2->$tabel_c2_field2, '<i class="fas fa-user"></i>', 'required') ?>
-            <?= edit_text_prepend('tabel_c2_field3', $tl_c2->$tabel_c2_field3, '<i class="fas fa-envelope"></i>', 'required') ?>
-            <?= edit_text_prepend('tabel_c2_field5', $tl_c2->$tabel_c2_field5, '<i class="fas fa-phone"></i>', 'required') ?>
+            <?= input_edit('text', 'tabel_c2_field2', $tl_c2->$tabel_c2_field2, 'required') ?>
+            <?= input_edit('text', 'tabel_c2_field3', $tl_c2->$tabel_c2_field3, 'required') ?>
+            <?= input_edit('text', 'tabel_c2_field5', $tl_c2->$tabel_c2_field5, 'required') ?>
 
             <div class="input-group">
               <div class="input-group-prepend">

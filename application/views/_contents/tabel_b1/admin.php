@@ -112,10 +112,10 @@
       <form action="<?= site_url($language . '/' . $tabel_b1 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
         <div class="modal-body">
-          <?= add_text('tabel_b1_field2', 'required') ?>
-          <?= add_text('tabel_b1_field3', 'required') ?>
+          <?= input_add('text', 'tabel_b1_field2', 'required') ?>
+          <?= input_add('text', 'tabel_b1_field3', 'required') ?>
           <?= add_file('tabel_b1_field4', 'required') ?>
-          <?= add_text('tabel_b1_field5', 'required') ?>
+          <?= input_add('text', 'tabel_b1_field5', 'required') ?>
 
           <div class="form-group">
             <label><?= lang('select') ?> <?= $tabel_b1_field6_alias ?></label>
@@ -166,10 +166,10 @@
             <small><?= lang('reupload_image_even_for_name_change') ?></small>
             
             <?= input_hidden('tabel_b1_field1', $tl_b1->$tabel_b1_field1, 'required') ?>
-            <?= edit_text('tabel_b1_field2', $tl_b1->$tabel_b1_field2, 'required') ?>
-            <?= edit_text('tabel_b1_field3', $tl_b1->$tabel_b1_field3, 'required') ?>
+            <?= input_edit('text', 'tabel_b1_field2', $tl_b1->$tabel_b1_field2, 'required') ?>
+            <?= input_edit('text', 'tabel_b1_field3', $tl_b1->$tabel_b1_field3, 'required') ?>
             <?= edit_file('tabel_b1', 'tabel_b1_field4', $tl_b1->$tabel_b1_field4, '') ?>
-            <?= edit_text('tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
+            <?= input_edit('text', 'tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
             <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1(), 'required') ?>
 
             <div class="form-group">

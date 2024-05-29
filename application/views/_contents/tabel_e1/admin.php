@@ -62,9 +62,9 @@
       
       <form action="<?= site_url($language . '/' . $tabel_e1 . '/tambah') ?>" method="post">
         <div class="modal-body">
-          <?= add_text('tabel_e1_field2', 'required') ?>
-          <?= add_text('tabel_e1_field3', 'required') ?>
-          <?= add_text('tabel_e1_field4', 'required') ?>
+          <?= input_add('text', 'tabel_e1_field2', 'required') ?>
+          <?= input_add('text', 'tabel_e1_field3', 'required') ?>
+          <?= input_add('text', 'tabel_e1_field4', 'required') ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->
@@ -88,8 +88,8 @@
         <form action="<?= site_url($language . '/' . $tabel_e1 . '/update') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_e1_field1', $tl_e1->$tabel_e1_field1, 'required') ?>
-            <?= edit_text('tabel_e1_field2', $tl_e1->$tabel_e1_field2, 'required') ?>
-            <?= edit_text('tabel_e1_field3', $tl_e1->$tabel_e1_field3, 'required') ?>
+            <?= input_edit('text', 'tabel_e1_field2', $tl_e1->$tabel_e1_field2, 'required') ?>
+            <?= input_edit('text', 'tabel_e1_field3', $tl_e1->$tabel_e1_field3, 'required') ?>
           </div>
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= get_flashdata('pesan_ubah') ?></p>

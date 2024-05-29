@@ -108,7 +108,7 @@
             </select>
           </div>
 
-          <?= add_number('tabel_e3_field5', 'required', '0', '') ?>
+          <?= add_min_max('number', 'tabel_e3_field5', 'required', '0', '') ?>
 
         </div>
 
@@ -135,7 +135,7 @@
 
             <form action="<?= site_url($language . '/' . $tabel_e3 . '/update') ?>" method="post" enctype="multipart/form-data">
               <div class="modal-body">
-                <?= edit_text('tabel_e4_field2', $tl_e3->$tabel_e4_field2, 'required readonly') ?>
+                <?= input_edit('text', 'tabel_e4_field2', $tl_e3->$tabel_e4_field2, 'required readonly') ?>
                 <?= input_hidden('tabel_e4_field1', $tl_e3->$tabel_e3_field2, 'required') ?>
 
                 <div class="form-group">
@@ -152,7 +152,7 @@
                 </div>
 
                 <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
-                <?= edit_textarea('tabel_e3_field5', $tl_e3->$tabel_e3_field5, 'required') ?>
+                <?= input_textarea('tabel_e3_field5', $tl_e3->$tabel_e3_field5, 'required') ?>
               </div>
 
               <!-- memunculkan notifikasi modal -->
@@ -220,7 +220,7 @@
                   karena menurutku textarea masih kurang cukup
                 dan aku juga membutuhkan bantuan ahli UI UX untuk menentukan keputusan terbaik -->
 
-                    <?= add_text('tabel_f4_field6', 'required') ?>
+                    <?= input_add('text', 'tabel_f4_field6', 'required') ?>
                   </div>
                 </div>
               </div>
@@ -288,7 +288,7 @@
                       </select>
                     </div>
 
-                    <?= add_textarea('tabel_e3_field5', 'required') ?>
+                    <?= input_textarea('tabel_e3_field5', '', 'required') ?>
                   </div>
                 </div>
               </div>

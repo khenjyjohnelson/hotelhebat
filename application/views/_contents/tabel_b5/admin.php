@@ -115,10 +115,10 @@
       <form action="<?= site_url($language . '/' . $tabel_b5 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
         <div class="modal-body">
-          <?= add_text('tabel_b5_field2', 'required') ?>
-          <?= add_textarea('tabel_b5_field3', 'required') ?>
+          <?= input_add('text', 'tabel_b5_field2', 'required') ?>
+          <?= input_textarea('tabel_b5_field3', '', 'required') ?>
           <?= add_file('tabel_b5_field4', 'required') ?>
-          <?= add_text('tabel_b5_field5', 'required') ?>
+          <?= input_add('text', 'tabel_b5_field5', 'required') ?>
 
           <div class="form-group">
             <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
@@ -152,9 +152,9 @@
           enctype="multipart/form-data">
           <div class="modal-body">
 
-            <?= edit_text('tabel_b5_field2', $tl_b5->$tabel_b5_field2, 'required') ?>
+            <?= input_edit('text', 'tabel_b5_field2', $tl_b5->$tabel_b5_field2, 'required') ?>
             <?= input_hidden('tabel_b5_field1', $tl_b5->$tabel_b5_field1, 'required') ?>
-            <?= edit_textarea('tabel_b5_field3', $tl_b5->$tabel_b5_field3, 'required') ?>
+            <?= input_textarea('tabel_b5_field3', $tl_b5->$tabel_b5_field3, 'required') ?>
             <?= edit_file('tabel_b5', 'tabel_b5_field4', $tl_b5->$tabel_b5_field4, 'required') ?>
 
           </div>

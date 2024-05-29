@@ -17,7 +17,7 @@
   <!-- form ini berisi data yang sudah diinput sebelumnya dari halaman home -->
   <div class="row justify-content-center align-items-end mt-2">
     <div class="col-md-2">
-      <?= edit_date('tabel_f2_field10', $tabel_f2_field10_value, 'required', date('Y-m-d'), '') ?>
+      <?= edit_min_max('date', 'tabel_f2_field10', $tabel_f2_field10_value, 'required', date('Y-m-d'), '') ?>
     </div>
     
     <!-- Seperti di bawah bentuk input array ke depannya cman itu perlu dipending dulu -->
@@ -29,11 +29,11 @@
     </div> -->
     
     <div class="col-md-2">
-      <?= edit_date('tabel_f2_field11', $tabel_f2_field11_value, 'required', date('Y-m-d', strtotime("+1 day")), '') ?>
+      <?= edit_min_max('date', 'tabel_f2_field11', $tabel_f2_field11_value, 'required', date('Y-m-d', strtotime("+1 day")), '') ?>
     </div>
 
     <div class="col-md-2">
-      <?= edit_number('tabel_f2_field8', $tabel_f2_field8_value, 'required readonly', '1', '10') ?>
+      <?= edit_min_max('number', 'tabel_f2_field8', $tabel_f2_field8_value, 'required readonly', '1', '10') ?>
     </div>
 
 
@@ -86,9 +86,9 @@
       </div>
 
       <!-- keterangan * di bawah -->
-      <?= edit_email('tabel_f2_field4', userdata($tabel_c2_field3), 'required') ?>
-      <?= edit_text('tabel_f2_field5', userdata($tabel_c2_field5), 'required') ?>
-      <?= add_text('tabel_f2_field6', 'required') ?>
+      <?= input_edit('email', 'tabel_f2_field4', userdata($tabel_c2_field3), 'required') ?>
+      <?= input_edit('text', 'tabel_f2_field5', userdata($tabel_c2_field5), 'required') ?>
+      <?= input_add('text', 'tabel_f2_field6', 'required') ?>
 
       <div class="form-group">
         <label><?= $tabel_e4_field2_alias ?></label>
@@ -143,7 +143,7 @@
 
       <form action="<?= site_url($language . '/' . $tabel_f2) ?>" method="get">
         <div class="modal-body">
-          <?= add_number('tabel_f2_field8', 'required', '1', '10') ?>
+          <?= add_min_max('number', 'tabel_f2_field8', 'required', '1', '10') ?>
           <?= input_hidden('tabel_f2_field10', $tabel_f2_field10_value, 'required') ?>
           <?= input_hidden('tabel_f2_field11', $tabel_f2_field11_value, 'required') ?>
 

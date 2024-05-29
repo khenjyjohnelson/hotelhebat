@@ -24,11 +24,11 @@
         enctype="multipart/form-data">
 
         <?= input_hidden('tabel_c2_field1', $tl_c2->$tabel_c2_field1, 'required') ?>
-        <?= edit_text('tabel_c2_field2', $tl_c2->$tabel_c2_field2, 'required') ?>
+        <?= input_edit('text', 'tabel_c2_field2', $tl_c2->$tabel_c2_field2, 'required') ?>
         <small>*Merubah <?= $tabel_c2_field3_alias ?> ini tidak akan merubah <?= $tabel_c2_field3_alias ?> yang ada di
           <?= $tabel_f2_alias ?></small>
-        <?= edit_email('tabel_c2_field3', $tl_c2->$tabel_c2_field3, 'required') ?>
-        <?= edit_text('tabel_c2_field5', $tl_c2->$tabel_c2_field5, 'required') ?>
+        <?= input_edit('email', 'tabel_c2_field3', $tl_c2->$tabel_c2_field3, 'required') ?>
+        <?= input_edit('text', 'tabel_c2_field5', $tl_c2->$tabel_c2_field5, 'required') ?>
 
         <div class="form-group">
           <?= btn_update() ?>
@@ -47,11 +47,11 @@
           enctype="multipart/form-data">
           <div class="modal-body">
 
-            <?= input_hidden('tabel_c2_field1', $tl_c2->$tabel_c2_field1, 'required') ?>\
-            <?= add_old_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
-            <?= add_new_password_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'required') ?>
+            <?= input_hidden('tabel_c2_field1', $tl_c2->$tabel_c2_field1, 'required') ?>
+            <?= add_old('password', 'tabel_c2_field4', 'required') ?>
+            <?= add_new_password('tabel_c2_field4', 'required') ?>
             <?= password_req() ?>
-            <?= add_confirm_prepend('tabel_c2_field4', '<i class="fas fa-key"></i>', 'password', 'required') ?>
+            <?= add_confirm('password', 'tabel_c2_field4', 'required') ?>
           </div>
 
           <!-- pesan untuk pengguna yang sedang merubah password -->

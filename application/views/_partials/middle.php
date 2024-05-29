@@ -7,8 +7,8 @@
             <!-- form mencari data pesanan, method get utk menampilkan apa yg diinput pengguna di halaman tujuan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/cari') ?>" method="get">
                 <div class="modal-body">
-                    <?= add_text('tabel_f2_field1', 'required') ?>
-                    <?= add_text('tabel_f2_field4', 'required') ?>
+                    <?= input_add('text', 'tabel_f2_field1', 'required') ?>
+                    <?= input_add('text', 'tabel_f2_field4', 'required') ?>
                 </div>
 
                 <!-- memunculkan notifikasi modal -->

@@ -82,10 +82,10 @@
       <form action="<?= site_url($language . '/' . $tabel_c1 . '/tambah') ?>" method="post">
         <div class="modal-body">
 
-          <?= add_text('tabel_c1_field2', 'required') ?>
-          <?= add_email('tabel_c1_field3', 'required') ?>
+          <?= input_add('text', 'tabel_c1_field2', 'required') ?>
+          <?= input_add('email', 'tabel_c1_field3', 'required') ?>
           <?= add_new_password('tabel_c1_field4', 'required') ?>
-          <?= add_text('tabel_c1_field5', 'required') ?>
+          <?= input_add('text', 'tabel_c1_field5', 'required') ?>
           <?= add_file('tabel_c1_field6', 'required') ?>
 
           <div class="form-group">
@@ -123,9 +123,9 @@
           enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_c1_field1', $tl_c1->$tabel_c1_field1, 'required') ?>
-            <?= edit_text('tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>
-            <?= edit_email('tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>
-            <?= edit_text('tabel_c1_field5', $tl_c1->$tabel_c1_field5, 'required') ?>
+            <?= input_edit('text', 'tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>
+            <?= input_edit('email', 'tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>
+            <?= input_edit('text', 'tabel_c1_field5', $tl_c1->$tabel_c1_field5, 'required') ?>
             <?= edit_file('tabel_c1', 'tabel_c1_field6', $tl_c1->$tabel_c1_field6, 'required') ?>
 
             <div class="form-group">

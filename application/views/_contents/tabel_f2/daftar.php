@@ -145,7 +145,7 @@
 
                       <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
                       <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value3, 'required') ?>
-                      <?= edit_number('tabel_f3_field6', $tl_f2->$tabel_f2_field9, 'required readonly', '0', '') ?>
+                      <?= edit_min_max('number', 'tabel_f3_field6', $tl_f2->$tabel_f2_field9, 'required readonly', '0', '') ?>
                     </div>
 
                   </div>
