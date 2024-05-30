@@ -10,7 +10,8 @@
     <div class="col-md-4 tabel_e2">
 
       <!-- gambar dapat ditekan untuk memunculkan modal -->
-      <img style="height: 200px;" role="button" data-toggle="modal" data-target="#lihat<?= $tl_e2->$tabel_e2_field1 ?>" class="img-thumbnail img-fluid" src="img/<?= $tabel_e2 ?>/<?= $tl_e2->$tabel_e2_field4; ?>">
+      <img style="height: 200px;" role="button" data-toggle="tooltip" data-placement="bottom" title="<?= $tl_e2->$tabel_e2_field2 ?>"
+       class="img-thumbnail img-fluid" src="img/<?= $tabel_e2 ?>/<?= $tl_e2->$tabel_e2_field4; ?>">
 
     </div>
   <?php endforeach; ?>

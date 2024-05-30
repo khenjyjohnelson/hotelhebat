@@ -44,7 +44,7 @@ class C_tabel_f3 extends Omnitags
 
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
-			'title' => lang('tabel_f3_v2_alt_title_title'),
+			'title' => lang('tabel_f3_alias_past'),
 			'konten' => $this->views['tabel_f3_v2_alt'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f1->get_f1_with_f3_with_e4_by_c2_field1($tabel_c2_field1)->result(),

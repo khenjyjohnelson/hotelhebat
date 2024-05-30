@@ -154,7 +154,7 @@
   <div id="lihat<?= $tl_c1->$tabel_c1_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_c1_alias'), $tl_c1->$tabel - $tabel_c1_field1) ?>
+        <?= modal_header(lang('tabel_c1_alias'), $tl_c1->$tabel_c1_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

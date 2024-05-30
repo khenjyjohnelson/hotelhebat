@@ -86,15 +86,15 @@
 <!-- modal lihat -->
 <?php foreach ($tbl_a1_alt as $tl_a1_alt): ?>
   <div id="lihat<?= $tl_a1_alt->$tabel_a1_field1; ?>" class="modal fade lihat" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog">
       <div class="modal-content">
         <?= modal_header(lang('tabel_a1_alias'), $tl_a1_alt->$tabel_a1_field1) ?>
         <form>
           <div class="modal-body">
-            <?= tampil_text($tabel_a1_field1, $tl_a1_alt->$tabel_a1_field1) ?>
-            <?= tampil_text($tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2) ?>
-            <?= tampil_text($tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4) ?>
-            <?= tampil_file($tabel_a1, $tabel_a1_field3, $tl_a1_alt->$tabel_a1_field3) ?>
+            <?= tampil_text('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1) ?>
+            <?= tampil_text('tabel_a1_field2', $tl_a1_alt->$tabel_a1_field2) ?>
+            <?= tampil_text('tabel_a1_field4', $tl_a1_alt->$tabel_a1_field4) ?>
+            <?= tampil_file($tabel_a1, 'tabel_a1_field3', $tl_a1_alt->$tabel_a1_field3) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -120,9 +120,9 @@
            
             <small><?= lang('reupload_image_even_for_name_change') ?></small>
 
-            <?= input_edit('text', $tabel_a1_field2, $tl_a1_alt->$tabel_a1_field2, 'required') ?>
-            <?= input_edit('text', $tabel_a1_field4, $tl_a1_alt->$tabel_a1_field4, 'required') ?>
-            <?= edit_file($tabel_a1_field3, $tabel_a1, $tl_a1_alt->$tabel_a1_field3, 'required') ?>
+            <?= input_edit('text', 'tabel_a1_field2', $tl_a1_alt->$tabel_a1_field2, 'required') ?>
+            <?= input_edit('text', 'tabel_a1_field4', $tl_a1_alt->$tabel_a1_field4, 'required') ?>
+            <?= edit_file($tabel_a1, 'tabel_a1_field3', $tl_a1_alt->$tabel_a1_field3, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

@@ -9,18 +9,15 @@
     <form action="<?= site_url($language . '/' . $tabel_f2) ?>" method="get">
       <div id="tour2" class="row justify-content-center align-items-end mt-2">
         <div class="col-md-2">
-          <?= add_min_max('date', 'tabel_f2_field10','required oninput="myFunction()', date('Y-m-d'), '') ?>
-          <?= add_min_max('date', 'tabel_f2_field11', 'required', date('Y-m-d', strtotime("+1 day")), '') ?>
-          
+          <?= add_min_max('date', 'tabel_f2_field10', 'required oninput="myFunction()"', date('Y-m-d'), '') ?>
         </div>
-        
+
         <div class="col-md-2">
-          
-          </div>
-          
-          <div class="col-md-2">
-            <?= edit_min_max('number', 'tabel_f2_field11', '1', 'required readonly', '1', '10') ?>
-          </div>
+          <?= add_min_max('date', 'tabel_f2_field11', 'required', date('Y-m-d', strtotime("+1 day")), '') ?>
+        </div>
+
+        <div class="col-md-2">
+          <?= edit_min_max('number', 'tabel_f2_field11', '1', 'required readonly', '1', '10') ?>
         </div>
 
         <div class="col-md-1">
@@ -82,7 +79,7 @@ Tapi ketika user sudah login saja, jika tidak, maka menampilkan tombol login -->
 
 <script>
   function myFunction() {
-    let x = document.getElementById("<?= $tabel_f2_field10 ?>").value;
+    let x = document.getElementById("<?= $tabel_f2_field10_input ?>").value;
 
     // Create a Date object with the value from cek_in_date
     let startDate = new Date(x);
@@ -94,8 +91,8 @@ Tapi ketika user sudah login saja, jika tidak, maka menampilkan tombol login -->
     let formattedDate = startDate.toISOString().split('T')[0];
 
 
-    document.getElementById("<?= $tabel_f2_field11 ?>").min = formattedDate;
-    document.getElementById("<?= $tabel_f2_field11 ?>").value = formattedDate;
+    document.getElementById("<?= $tabel_f2_field11_input ?>").min = formattedDate;
+    document.getElementById("<?= $tabel_f2_field11_input ?>").value = formattedDate;
 
   }
 </script>

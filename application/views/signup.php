@@ -13,7 +13,7 @@
     </div>
   <?php endforeach ?>
 
-  <div class="container">
+  <div class="container pb-5">
 
     <!-- membuat konten berada tepat di tengah2 halaman  -->
     <div class="row justify-content-center align-items-center h-100">
@@ -37,12 +37,22 @@
           <p class="small text-center text-danger"><?= get_flashdata('flash1') ?></p>
 
           <!-- tombol signup dan login -->
-          <div class="form-group d-flex justify-content-around">
-            <a class="btn btn-light text-primary login" type="button"
-              href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>"><?= lang('login') ?></a>
-            <button class="btn btn-primary login" type="submit"><?= lang('create_account') ?></button>
-          </div>
+          <div class="form-group">
+            <div class="d-flex justify-content-center mb-4">
+              <button class="btn btn-primary login" type="submit">
+                <?= lang('create_account') ?>
+              </button>
+            </div>
 
+            <div class="text-center">
+              <span><?= lang('already_have_account') ?></span>
+              <a class="text-primary text-decoration-none login" type="button"
+                href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>">
+                <?= lang('login') ?>
+              </a>
+            </div>
+
+          </div>
         </form>
 
       </div>
@@ -77,6 +87,16 @@
       /* Ensure other content stays on top */
       z-index: 1;
       /* Ensure other content stays on top */
+    }
+
+
+    /* Media query for screens smaller than 768px (typical mobile screens) */
+    @media (max-width: 767px) {
+
+      /* Style to make the button width 100% */
+      .btn.login {
+        width: 100%;
+      }
     }
   </style>
 

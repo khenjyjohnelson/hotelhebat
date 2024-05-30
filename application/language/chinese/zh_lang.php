@@ -29,9 +29,15 @@ $lang['master_data'] = "主数据";
 $lang['data'] = "数据";
 $lang['manage'] = "管理";
 
+$lang['dont_have_account'] = "没有账户吗？";
+$lang['already_have_account'] = "已经有账户了吗？";
+
 $lang['explore'] = '探索';
 $lang['address'] = '地址';
 $lang['follow'] = '跟随';
+$lang['order_now'] = '立即订购';
+$lang['reservations'] = '预订';
+$lang['history'] = '历史';
 
 $lang['no_access'] = "您没有权限访问此页面！";
 $lang['page_not_found'] = "页面不存在！";
@@ -51,11 +57,12 @@ foreach ($myData1 as $item) {
     // List of placeholders
     $lang[$item['key']] = $item['value'];
     $lang[$item['key'] . '_input'] = '输入' . $item['value'];
-    $lang[$item['key'] . '_old'] = '输入旧' . $item['value'];
-    $lang[$item['key'] . '_new'] = '输入新' . $item['value'];
-    $lang[$item['key'] . '_confirm'] = '输入确认' . $item['value'];
+    $lang[$item['key'] . '_old'] = '旧' . $item['value'];
+    $lang[$item['key'] . '_new'] = '新' . $item['value'];
+    $lang[$item['key'] . '_confirm'] = '确认' . $item['value'];
     $lang[$item['key'] . '_btn'] = $item['value'];
     $lang[$item['key'] . '_select'] = "选择" . $item['value'];
+    $lang[$item['key'] . '_past'] = '过去的 ' . $item['value'];
 
     // List of titles
     $lang[$item['key'] . '_v1_title'] = $item['value']; // Assuming $item['value'] is already translated

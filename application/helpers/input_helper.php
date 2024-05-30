@@ -302,11 +302,9 @@ if (!function_exists('filter_tgl')) {
 
         return <<<HTML
         <td class="pr-2">
-            <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">{$posisi}</span>
-            </div>
-            <input type="date" class="form-control float" {$required} name="{$field}" value="{$value}">
+            <div class="form-group">
+                <input type="date" class="form-control float" {$required} name="{$field}" id="{$field}" value="{$value}">
+                <label for="{$field}" class="form-label">{$posisi}</label>
             </div>
         </td>
         HTML;
@@ -357,25 +355,5 @@ if (!function_exists('select_ubah')) {
             <label class="form-label">{$alias}</label>
         </div>
         HTML;
-    }
-}
-
-if (!function_exists('select_input')) {
-    function select_input($options, $selected_value, $field1, $field2, $alias, $input_name, $input_id = null, $input_class = 'form-control', $required)
-    {
-        $html = '<div class="form-group">';
-        $html .= '<select class="' . $input_class . '" name="' . $input_name . '" id="' . $input_id . '" ' . $required . '>';
-
-        foreach ($options as $value => $display) {
-            $selected = ($selected_value == $value) ? 'selected' : '';
-            $html .= '<option value="' . $value . '" ' . $selected . '>' . $display . '</option>';
-        }
-        
-        $html .= '</select>';
-        $html .= '<label class="form-label">' . $alias . '</label>';
-        $html .= '</div>';
-
-
-        return $html;
     }
 }

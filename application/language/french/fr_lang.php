@@ -29,9 +29,15 @@ $lang['master_data'] = "Données maîtresses";
 $lang['data'] = "Données";
 $lang['manage'] = "Gérer";
 
+$lang['already_have_account'] = "Déjà un compte ?";
+$lang['dont_have_account'] = "Pas de compte ?";
+
 $lang['explore'] = 'Explorer';
 $lang['address'] = 'Adresse';
 $lang['follow'] = 'Suivre';
+$lang['order_now'] = 'Commandez maintenant';
+$lang['reservations'] = 'Réservations';
+$lang['history'] = 'Historique';
 
 $lang['no_access'] = "Vous n'avez pas accès à cette page !";
 $lang['page_not_found'] = "Page non trouvée !";
@@ -52,11 +58,12 @@ foreach ($myData1 as $item) {
     // List of placeholders
     $lang[$item['key']] = $item['value'];
     $lang[$item['key'] . '_input'] = 'Entrée ' . $item['value'];
-    $lang[$item['key'] . '_old'] = 'Entrée ancienne ' . $item['value'];
-    $lang[$item['key'] . '_new'] = 'Entrée nouvelle ' . $item['value'];
-    $lang[$item['key'] . '_confirm'] = 'Entrée de confirmation ' . $item['value'];
+    $lang[$item['key'] . '_old'] = 'Ancien ' . $item['value'];
+    $lang[$item['key'] . '_new'] = 'Nouveau ' . $item['value'];
+    $lang[$item['key'] . '_confirm'] = 'Confirmer le ' . $item['value'];
     $lang[$item['key'] . '_btn'] = $item['value'];
     $lang[$item['key'] . '_select'] = "Sélectionner " . $item['value'];
+    $lang[$item['key'] . '_past'] = $item['value'] . ' passée';
 
     // List of titles
     $lang[$item['key'] . '_v1_title'] = $item['value']; // Assuming $item['value'] is already translated

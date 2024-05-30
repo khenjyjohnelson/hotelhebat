@@ -14,11 +14,12 @@
 </script>
 
 
+
 <!-- javascript untuk semua halaman (sesuai kebutuhan) -->
+<script src="popper.min.js"></script>
 <script src="jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="fontawesome/js/all.min.js"></script>
-<script src="popper.min.js"></script>
 
 <!-- javascript untuk datatables bertema bootstrap -->
 <script src="datatables/datatables/js/jquery.dataTables.min.js"></script>
@@ -54,6 +55,14 @@
     var table = $('#daterange_table').DataTable({
 
     })
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 
 

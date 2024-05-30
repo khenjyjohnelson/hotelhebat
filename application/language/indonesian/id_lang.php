@@ -29,9 +29,15 @@ $lang['master_data'] = "Data Master";
 $lang['data'] = "Data";
 $lang['manage'] = "Kelola";
 
+$lang['dont_have_account'] = "Belum memiliki akun?";
+$lang['already_have_account'] = "Sudah memiliki akun?";
+
 $lang['explore'] = 'Jelajahi';
 $lang['address'] = 'Alamat';
 $lang['follow'] = 'Ikuti';
+$lang['order_now'] = 'Pesan sekarang';
+$lang['reservations'] = 'Reservasi';
+$lang['history'] = 'Riwayat';
 
 $lang['no_access'] = "Anda tidak memiliki akses ke halaman ini!";
 $lang['page_not_found'] = "Halaman Tidak Ada!";
@@ -51,11 +57,12 @@ foreach ($myData1 as $item) {
     // List of placeholders
     $lang[$item['key']] = $item['value'];
     $lang[$item['key'] . '_input'] = 'Masukkan ' . $item['value'];
-    $lang[$item['key'] . '_old'] = 'Masukkan ' . $item['value'] . ' lama';
-    $lang[$item['key'] . '_new'] = 'Masukkan ' . $item['value'] . ' baru';
-    $lang[$item['key'] . '_confirm'] = 'Masukkan konfirmasi ' . $item['value'];
+    $lang[$item['key'] . '_old'] = $item['value'] . ' lama';
+    $lang[$item['key'] . '_new'] = $item['value'] . ' baru';
+    $lang[$item['key'] . '_confirm'] = 'Konfirmasi ' . $item['value'];
     $lang[$item['key'] . '_btn'] = $item['value'];
     $lang[$item['key'] . '_select'] = "Pilih " . $item['value'];
+    $lang[$item['key'] . '_past'] = $item['value'] . ' lama';
 
     // List of titles
     $lang[$item['key'] . '_v1_title'] = $item['value'];

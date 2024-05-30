@@ -36,10 +36,10 @@
     <div class="col-md-6">
       <form action="<?= site_url($language . '/' . $tabel_a1 . '/update') ?>" method="post" enctype="multipart/form-data">
         <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
-        <?= edit_text('tabel_a1_field2', $tl_a1->$tabel_a1_field2, 'required') ?>
-        <?= edit_text('tabel_a1_field3', $tl_a1->$tabel_a1_field3, 'required') ?>
-        <?= edit_text('tabel_a1_field4', $tl_a1->$tabel_a1_field4, 'required') ?>
-        <?= edit_text('tabel_a1_field5', $tl_a1->$tabel_a1_field5, 'required') ?>
+        <?= input_edit('text', 'tabel_a1_field2', $tl_a1->$tabel_a1_field2, 'required') ?>
+        <?= input_edit('text', 'tabel_a1_field3', $tl_a1->$tabel_a1_field3, 'required') ?>
+        <?= input_edit('text', 'tabel_a1_field4', $tl_a1->$tabel_a1_field4, 'required') ?>
+        <?= input_edit('text', 'tabel_a1_field5', $tl_a1->$tabel_a1_field5, 'required') ?>
 
         <div class="form-group">
           <button class="btn btn-success" onclick="return confirm('Ubah data website?')" type="submit">Simpan

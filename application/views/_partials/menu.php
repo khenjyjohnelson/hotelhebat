@@ -2,20 +2,20 @@
     <?php switch (userdata($tabel_c2_field6)) {
         case $tabel_c2_field6_value1:
             ?>
-            <li class="nav-item">
+            <li class="nav-item pb-2">
                 <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('/') ?>"><?= lang('home') ?></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pb-2">
                 <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_e4) ?>">
                     <?= lang('tabel_e4_alias') ?>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pb-2">
                 <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_e2) ?>">
                     <?= lang('tabel_e2_alias') ?>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pb-2">
                 <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>"><?= lang('login') ?></a>
             </li>
             <?php break;
@@ -30,10 +30,10 @@
                 case $tabel_c2_field6_value4:
                     ?>
 
-                    <li class="nav-item">
+                    <li class="nav-item pb-2">
                         <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . 'dashboard') ?>"><?= lang('dashboard') ?></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item pb-2">
                         <div class="dropdown">
                             <a class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#"><?= lang('master_data') ?> <i
                                     class="fas fa-caret-down"></i></a>
@@ -45,10 +45,10 @@
                                             <?= lang('tabel_f3_alias') ?>
                                         </h6>
                                         <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/admin') ?>">
-                                            <?= lang('tabel_f3_alias') ?> Aktif
+                                            <?= lang('tabel_f3_alias') ?>
                                         </a>
                                         <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/history') ?>">
-                                            <?= lang('tabel_f3_alias') ?> History
+                                            <?= lang('tabel_f3_alias_past') ?>
                                         </a>
                                         <?php break;
 
@@ -118,7 +118,7 @@
                     break;
             } ?>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item pb-2 dropdown">
                 <a type="button" class="nav-link text-decoration-none h4 mt-1 font-weight-bold" data-toggle="dropdown" href="#">
                    <i class="fas fa-bell"></i><?php if (!$notif_count) { ?><span>&nbsp;&nbsp;</span><?php
                     } else { ?>
@@ -206,7 +206,7 @@
 
 
 
-            <li class="nav-item">
+            <li class="nav-item pb-2">
                 <div class="dropdown">
                     <!-- tombol ini akan memunculkan dropdown tanpa menggunakan button: https://stackoverflow.com/questions/38576503/how-to-remove-the-arrow-in-dropdown-in-bootstrap- terimakasih pada link di atas -->
                     <?php switch (userdata($tabel_c2_field6)) {
@@ -242,7 +242,7 @@
                             case $tabel_c2_field6_value5:
                                 ?>
                                 <h6 class="dropdown-header"><?= lang('explore') ?></h6>
-                                <a class="dropdown-item" href="<?= site_url('/') ?>">Pesan Sekarang</a>
+                                <a class="dropdown-item" href="<?= site_url('/') ?>"><?= lang('order_now') ?></a>
                                 <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4) ?>">
                                     <?= lang('tabel_e4_alias') ?>
                                 </a>
@@ -250,20 +250,20 @@
                                     <?= lang('tabel_e2_alias') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header">Reservasi</h6>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f2 . '/daftar') ?>">Daftar
+                                <h6 class="dropdown-header"><?= lang('reservations') ?></h6>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f2 . '/daftar') ?>">
                                     <?= lang('tabel_f2_alias') ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/daftar') ?>">Daftar
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/daftar') ?>">
                                     <?= lang('tabel_f3_alias') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header">History</h6>
+                                <h6 class="dropdown-header"><?= lang('history') ?></h6>
                                 <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f1 . '/daftar') ?>">
                                     <?= lang('tabel_f1_alias') ?>
                                 </a>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/daftar_history') ?>">History
-                                    <?= lang('tabel_f3_alias') ?>
+                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/daftar_history') ?>">
+                                    <?= lang('tabel_f3_alias_past') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <?php break;
@@ -289,7 +289,7 @@
         default:
             break;
     } ?>
-    <li class="nav-item">
+    <li class="nav-item pb-2">
         <form action="<?= site_url($language . '/welcome/set_language'); ?>" method="post" class="form-inline">
             <select name="language" class="form-control" onchange="this.form.submit()">
                 <option value="en" <?= (userdata('site_lang') == 'en') ? 'selected' : ''; ?>>EN</option>

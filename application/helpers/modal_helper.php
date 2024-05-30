@@ -4,13 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 if (!function_exists('modal_header')) {
     function modal_header($title, $subtitle)
     {
-        // Get CodeIgniter instance
-        $CI =& get_instance();
-        // Fetch the view variables
-        $data = $CI->load->get_vars();
-
-        $placeholder = lang('input');
-
         return <<<HTML
         <div class="modal-header">
             <h5 class="modal-title">{$title} {$subtitle}</h5>
@@ -26,15 +19,8 @@ if (!function_exists('modal_header')) {
 if (!function_exists('modal_file')) {
     function modal_file($tabel_class, $field, $value)
     {
-        // Get CodeIgniter instance
-        $CI =& get_instance();
-        // Fetch the view variables
-        $data = $CI->load->get_vars();
-
         $alias = lang($field . '_alias');
         
-        $placeholder = lang('input');
-
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
