@@ -25,11 +25,20 @@ class C_tabel_b9 extends Omnitags
 				'konten' => $this->v8['tabel_b9'],
 				'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 				'tbl_b9' => $this->tl_b9->get_b9_by_b9_field1($tabel_b9_field1)->result(),
+				'notif' => $this->notif_limit,
+				'notif_count' => $this->notif_null->num_rows(),
 			);
 
 			$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
 
-			$this->load->view('_layouts/template', $data);
+			if ($this->input->get('refresh') !== 'true') {
+				// Redirect to the same method with a refresh parameter
+				$this->load->view('_layouts/template', $data);
+				redirect(current_url() . '?refresh=true');
+			} else {
+				$this->load->view('_layouts/template', $data);
+			}
+
 		} else {
 			redirect($_SERVER['HTTP_REFERER']);
 

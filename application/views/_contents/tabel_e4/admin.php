@@ -105,7 +105,7 @@
       <form action="<?= site_url($language . '/' . $tabel_e4 . '/tambah') ?>" method="post">
         <div class="modal-body">
           <?= input_add('text', 'tabel_e4_field2', 'required') ?>
-          <?= input_add('text', 'tabel_e4_field3', 'required') ?>
+          <?= add_file('tabel_e4_field3', 'required') ?>
         </div>
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
@@ -129,7 +129,7 @@
           <div class="modal-body">
             <?= input_hidden('tabel_e4_field1', $tl_e4->$tabel_e4_field1, 'required') ?>
             <?= input_edit('text', 'tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
-            <?= input_edit('text', 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
+            <?= edit_file('tabel_e4', 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -155,7 +155,7 @@
             <div class="row">
               <div class="col-md-6">
                 <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
-                <?= tampil_text('tabel_e4_field3', $tl_e4->$tabel_e4_field3) ?>
+                <?= tampil_file($tabel_e4, 'tabel_e4_field3', $tl_e4->$tabel_e4_field3) ?>
               </div>
 
             </div>
