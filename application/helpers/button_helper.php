@@ -65,6 +65,20 @@ if (!function_exists('btn_book')) {
     }
 }
 
+if (!function_exists('view_switcher')) {
+    function view_switcher()
+    {
+        return <<<HTML
+        <div class="btn-group mb-4" role="group" aria-label="View Toggle">
+        <button type="button" class="btn btn-primary view-toggle active" data-target="card-view"><i
+            class="fas fa-th-large"></i></button>
+        <button type="button" class="btn btn-primary view-toggle" data-target="table-view"><i
+            class="fas fa-table"></i></button>
+        </div>
+        HTML;
+    }
+}
+
 if (!function_exists('btn_field')) {
     function btn_field($value, $logo)
     {

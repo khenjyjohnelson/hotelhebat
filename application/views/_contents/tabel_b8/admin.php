@@ -21,10 +21,28 @@
 </div>
 <hr>
 
-<?= btn_tambah() ?>
-<?= btn_laporan('tabel_b8') ?>
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_tambah() ?>
+    <?= btn_laporan('tabel_b8') ?>
+  </div>
 
-<div class="table-responsive">
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
+
+
+
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_b8 as $tl_b8):
+    echo card_file($tl_b8->$tabel_b8_field1, $tl_b8->$tabel_b8_field2, $tl_b8->$tabel_b8_field5, $tabel_b8, $tl_b8->$tabel_b8_field3, 'bg-danger');
+  endforeach; ?>
+</div>
+
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -64,9 +82,10 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add'). lang('tabel_b8_alias'), '') ?>
-      
-      <form action="<?= site_url($language . '/' . $tabel_b8 . '/tambah') ?>" enctype="multipart/form-data" method="post">
+      <?= modal_header(lang('add') . lang('tabel_b8_alias'), '') ?>
+
+      <form action="<?= site_url($language . '/' . $tabel_b8 . '/tambah') ?>" enctype="multipart/form-data"
+        method="post">
         <div class="modal-body">
           <?= input_add('text', 'tabel_b8_field2', 'required') ?>
           <?= input_add('text', 'tabel_b8_field3', 'required') ?>
@@ -93,7 +112,8 @@
       <div class="modal-content">
         <?= modal_header(lang('update_data') . ' ' . lang('tabel_b8_alias'), $tl_b8->$tabel_b8_field1) ?>
 
-        <form action="<?= site_url($language . '/' . $tabel_b8 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b8 . '/update') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_b8_field1', $tl_b8->$tabel_b8_field1, 'required') ?>
             <?= input_edit('text', 'tabel_b8', 'tabel_b8_field2', $tl_b8->$tabel_b8_field2) ?>
@@ -113,12 +133,12 @@
   </div>
 
 
-  
+
   <div id="lihat<?= $tl_b8->$tabel_b8_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <?= modal_header(lang('tabel_b8_alias'), $tl_b8->$tabel_b8_field1) ?>
-       
+
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">

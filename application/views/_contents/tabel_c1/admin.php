@@ -22,10 +22,28 @@
 </div>
 <hr>
 
-<?= btn_tambah() ?>
-<?= btn_laporan('tabel_c1') ?>
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_tambah() ?>
+    <?= btn_laporan('tabel_c1') ?>
+  </div>
 
-<div class="table-responsive">
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
+
+
+
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_c1 as $tl_c1):
+    echo card_file($tl_c1->$tabel_c1_field1, $tl_c1->$tabel_c1_field2, $tl_c1->$tabel_c1_field5, $tabel_c1, $tl_c1->$tabel_c1_field6, 'bg-danger');
+  endforeach; ?>
+</div>
+
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>

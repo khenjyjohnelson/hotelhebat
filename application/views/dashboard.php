@@ -29,47 +29,10 @@
 
   <?php switch (userdata($tabel_c2_field6)) {
     case $tabel_c2_field6_value3: ?>
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_c2_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_c2 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_c2 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
+      <?= card_count($tabel_c2_alias, 'tabel_c2', 'bg-danger', $tbl_c2) ?>
+      <?= card_count($tabel_c1_alias, 'tabel_c1', 'bg-danger', $tbl_c1) ?>
+      <?= card_count($tabel_d3_alias, 'tabel_d3', 'bg-danger', $tbl_d3) ?>
 
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_c1_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_c1 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_c1 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_d3_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_c1 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_d3 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
       <?php break;
 
     default: ?>
@@ -88,107 +51,19 @@
 
   <?php switch (userdata($tabel_c2_field6)) {
     case $tabel_c2_field6_value3: ?>
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_e4_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_e4 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_e3_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_e3 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_e2_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_e2 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e2 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_e1_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_e1 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e1 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
+      <?= card_count($tabel_e4_alias, 'tabel_e4', 'bg-danger', $tbl_e4) ?>
+      <?= card_count($tabel_e3_alias, 'tabel_e3', 'bg-danger', $tbl_e3) ?>
+      <?= card_count($tabel_e2_alias, 'tabel_e2', 'bg-danger', $tbl_e2) ?>
+      <?= card_count($tabel_e1_alias, 'tabel_e1', 'bg-danger', $tbl_e1) ?>
       <?php break;
 
     case $tabel_c2_field6_value4: ?>
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_e3_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_e3 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-primary">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_f2_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_f2 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_f2 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
+      <?= card_count($tabel_e3_alias, 'tabel_e3', 'bg-danger', $tbl_e3) ?>
+      <?= card_count($tabel_f2_alias, 'tabel_f2', 'bg-danger', $tbl_f2) ?>
       <?php break;
 
     case $tabel_c2_field6_value2: ?>
-      <div class="col-md-3 mt-2">
-        <div class="card text-white bg-success">
-          <div class="card-body">
-            <h5 class="card-title">
-              <?= lang('tabel_f3_alias') ?>
-            </h5>
-            <p class="card-text" style="font-size: 32;">
-              <?= $tbl_f3 ?>
-            </p>
-            <a class="text-white" href="<?= site_url($language . '/' . $tabel_f3 . '/admin') ?>"><?= lang('detail') ?> >></a>
-          </div>
-        </div>
-      </div>
+      <?= card_count($tabel_f3_alias, 'tabel_f3', 'bg-danger', $tbl_f3) ?>
       <?php break;
 
 
@@ -231,28 +106,14 @@
         <table class="table table-light" id="data">
           <thead></thead>
           <tbody>
-            <tr>
-              <td class="table-secondary table-active"><?= lang('tabel_a1_field2_alias') ?></td>
-              <td class="table-light"><?= $tl_a1->$tabel_a1_field2 ?></td>
-            </tr>
-
-            <tr>
-              <td class="table-secondary table-active"><?= lang('tabel_a1_field3_alias') ?></td>
-              <td class="table-light"><?= $tl_a1->$tabel_a1_field3 ?></td>
-            </tr>
-
-            <tr>
-              <td class="table-secondary table-active"><?= lang('tabel_a1_field4_alias') ?></td>
-              <td class="table-light"><?= $tl_a1->$tabel_a1_field4 ?></td>
-            </tr>
-
-            <tr>
-              <td class="table-secondary table-active"><?= lang('tabel_a1_field5_alias') ?></td>
-              <td class="table-light"><?= $tl_a1->$tabel_a1_field5 ?></td>
-            </tr>
-
+            <?= row_data('tabel_a1_field2', $tl_a1->$tabel_a1_field2) ?>
+            <?= row_data('tabel_a1_field3', $tl_a1->$tabel_a1_field3) ?>
+            <?= row_data('tabel_a1_field4', $tl_a1->$tabel_a1_field4) ?>
+            <?= row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) ?>
+            
             <?php foreach ($sosmed as $sm):
               if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) { ?>
+                <?= row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) ?>
                 <tr>
                   <td class="table-secondary table-active"><?= $sm->$tabel_b6_field3 ?></td>
                   <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>"

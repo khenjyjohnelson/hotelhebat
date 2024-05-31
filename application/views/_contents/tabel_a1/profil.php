@@ -19,6 +19,7 @@
   </div>
 </div>
 <hr>
+
 <?php foreach ($tbl_a1 as $tl_a1): ?>
   <div class="row">
     <div class="col-md-6">
@@ -28,6 +29,7 @@
       <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field5_alias')) ?>
       <?= btn_field($tabel_b7, '<i class="fas fa-edit"></i>' . lang('tabel_b7_alias')) ?>
       <?= btn_kelola('tabel_b1') ?>
+      <?= btn_kelola('tabel_b2') ?>
       <?= btn_kelola('tabel_b8') ?>
       <?= btn_kelola('tabel_b5') ?>
       <?= btn_kelola('tabel_b6') ?>

@@ -21,40 +21,72 @@
   </div>
 </div>
 <hr>
-
-<?= btn_tambah() ?>
-<?= btn_laporan('tabel_b6') ?>
-
 <!-- tabel fiter pesanan -->
 <table class="mb-4">
 
-  <!-- method get supaya nilai dari filter bisa tampil nanti -->
-  <form action="<?= site_url($language . '/' . $tabel_b6 . '/filter') ?>" method="get">
-    <tr>
+<!-- method get supaya nilai dari filter bisa tampil nanti -->
+<form action="<?= site_url($language . '/' . $tabel_b6 . '/filter') ?>" method="get">
+  <tr>
 
-      <td class="pr-2">
-        <div class="form-group">
-          <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
-            <?php foreach ($tbl_b7 as $tl_b7): ?>
-              <option selected hidden value="<?= $tabel_b6_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
-              <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
-                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
-              </option>
-              <?php endforeach ?>
-            </select>
-            <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
-        </div>
-      </td>
+    <td class="pr-2">
+      <div class="form-group">
+        <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
+          <?php foreach ($tbl_b7 as $tl_b7): ?>
+            <option selected hidden value="<?= $tabel_b6_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
+            <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
+              <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
+            </option>
+          <?php endforeach ?>
+        </select>
+        <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?>
+          <?= $tabel_b7_alias ?></label>
+      </div>
+    </td>
 
-      <td>
-        <?= btn_cari() ?>
-        <?= btn_redo('tabel_b6', '/admin') ?>
-      </td>
-    </tr>
-  </form>
+    <td>
+      <?= btn_cari() ?>
+      <?= btn_redo('tabel_b6', '/admin') ?>
+    </td>
+  </tr>
+</form>
 </table>
 
-<div class="table-responsive">
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_tambah() ?>
+    <?= btn_laporan('tabel_b6') ?>
+
+    
+  </div>
+
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
+
+
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_b6 as $tl_b6): ?>
+    <?php
+      $btn_class = '';
+      if ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value1) {
+        $btn_class = btn_toggle_off('tabel_b6', $tl_b6->$tabel_b6_field1);
+      } elseif ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value2) {
+        $btn_class = btn_toggle_on('tabel_b6', $tl_b6->$tabel_b6_field1);
+      }
+      echo card_regular(
+        $tl_b6->$tabel_b6_field1,
+        $tl_b6->$tabel_b6_field2,
+        '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>' . $btn_class,
+        'bg-secondary'
+      );
+    ?>
+  <?php endforeach; ?>
+</div>
+
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -112,7 +144,8 @@
     <div class="modal-content">
       <?= modal_header(lang('add') . ' ' . lang('tabel_b6_alias'), '') ?>
 
-      <form action="<?= site_url($language . '/' . $tabel_b6 . '/tambah') ?>" enctype="multipart/form-data" method="post">
+      <form action="<?= site_url($language . '/' . $tabel_b6 . '/tambah') ?>" enctype="multipart/form-data"
+        method="post">
         <div class="modal-body">
           <?= input_add('text', 'tabel_b6_field2', 'required') ?>
           <?= input_add('text', 'tabel_b6_field3', 'required') ?>
@@ -150,7 +183,8 @@
       <div class="modal-content">
         <?= modal_header(lang('update_data') . ' ' . lang('tabel_b6_alias'), $tl_b6->$tabel_b6_field1) ?>
 
-        <form action="<?= site_url($language . '/' . $tabel_b6 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b6 . '/update') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b6_field1', $tl_b6->$tabel_b6_field1, 'required') ?>
@@ -164,13 +198,13 @@
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
                   <?php if ($tl_b6->$tabel_b6_field7 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b6->$tabel_b6_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                    <?php } else { ?>
-                      <option selected hidden value=""><?= lang('select') ?> <?= $tabel_b7_alias ?>...</option> <?php } ?>
-                      
-                      <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                      <?php endforeach ?>
-                    </select>
-                    <label class="form-label"><?= $tabel_b7_alias ?></label>
+                  <?php } else { ?>
+                    <option selected hidden value=""><?= lang('select') ?>       <?= $tabel_b7_alias ?>...</option> <?php } ?>
+
+                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                <?php endforeach ?>
+              </select>
+              <label class="form-label"><?= $tabel_b7_alias ?></label>
             </div>
 
           </div>

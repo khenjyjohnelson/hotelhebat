@@ -12,6 +12,7 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
     <h1><?= $title ?><?= $phase ?></h1>
+
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -22,23 +23,40 @@
 <hr>
 
 
-<?= btn_tambah() ?>
-<button class="btn btn-info mb-4" type="button" data-toggle="modal" data-target="#import">+ Import</button>
-<?= btn_laporan('tabel_e4') ?>
-<button type="button" class="btn btn-info mb-4" id="export-btn" target="_blank">
-  <i class="fas fa-print"></i> Cetak Excel</button>
 
 
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_tambah() ?>
+    <?= btn_laporan('tabel_e4') ?>
+    <!-- <button class="btn btn-info   b-4" type="button" data-toggle="modal" data-target="#import">+ Import</button>
+    <button type="button" class="btn btn-info mb-4" id="export-btn" target="_blank">
+      <i class="fas fa-print"></i> Cetak Excel</button> -->
+
+  </div>
+
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
 
 
-<div class="table-responsive">
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_e4 as $tl_e4):
+    echo card_file($tl_e4->$tabel_e4_field1, $tl_e4->$tabel_e4_field2, 'Rp ' . number_format($tl_e4->$tabel_e4_field5, '2', ',', '.'), $tabel_e4, $tl_e4->$tabel_e4_field3, 'bg-danger');
+  endforeach; ?>
+</div>
+
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
         <th><?= lang('no') ?></th>
         <th><?= lang('tabel_e4_field1_alias') ?></th>
         <th><?= lang('tabel_e4_field2_alias') ?></th>
-        <th><?= lang('tabel_e4_field3_alias') ?></th>
+        <th><?= lang('tabel_e4_field4_alias') ?></th>
+        <th><?= lang('tabel_e4_field5_alias') ?></th>
         <th><?= lang('action') ?></th>
       </tr>
     </thead>
@@ -49,7 +67,8 @@
           <td></td>
           <td><?= $tl_e4->$tabel_e4_field1; ?></td>
           <td><?= $tl_e4->$tabel_e4_field2 ?></td>
-          <td><?= $tl_e4->$tabel_e4_field3 ?></td>
+          <td><?= $tl_e4->$tabel_e4_field4 ?></td>
+          <td><?= $tl_e4->$tabel_e4_field5 ?></td>
           <td>
             <?= btn_lihat($tl_e4->$tabel_e4_field1) ?>
             <?= btn_edit($tl_e4->$tabel_e4_field1) ?>
@@ -74,7 +93,8 @@
     <div class="modal-content">
       <?= modal_header('Import ' . lang('tabel_e4_alias'), '') ?>
 
-      <form action="<?= site_url($language . '/' . $tabel_e4 . '/import') ?>" enctype="multipart/form-data" method="post">
+      <form action="<?= site_url($language . '/' . $tabel_e4 . '/import') ?>" enctype="multipart/form-data"
+        method="post">
         <div class="modal-body">
 
           <div class="form-group">
@@ -125,7 +145,8 @@
         <?= modal_header(lang('update_data') . ' ' . lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
-        <form action="<?= site_url($language . '/' . $tabel_e4 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_e4 . '/update') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_e4_field1', $tl_e4->$tabel_e4_field1, 'required') ?>
             <?= input_edit('text', 'tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
@@ -143,7 +164,7 @@
     </div>
   </div>
 
-  
+
   <div id="lihat<?= $tl_e4->$tabel_e4_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

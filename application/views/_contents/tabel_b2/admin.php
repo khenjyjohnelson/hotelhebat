@@ -21,42 +21,79 @@
   </div>
 </div>
 <hr>
-<p><?= lang('images_not_change_immediately') ?></p>
 
-
-<?= btn_tambah() ?>
-<?= btn_laporan('tabel_b2') ?>
 <!-- tabel fiter pesanan -->
 <table class="mb-4">
 
-  <!-- method get supaya nilai dari filter bisa tampil nanti -->
-  <form action="<?= site_url($language . '/' . $tabel_b2 . '/filter') ?>" method="get">
-    <tr>
+<!-- method get supaya nilai dari filter bisa tampil nanti -->
+<form action="<?= site_url($language . '/' . $tabel_b2 . '/filter') ?>" method="get">
+  <tr>
 
-      <td class="pr-2">
-        <div class="form-group">
-          <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>" id="<?= $tabel_b2_field7_input ?>">
-            <option selected hidden value="<?= $tabel_b2_field7_value ?>"><?= $tabel_b2_field7_value ?></option>
-            <?php foreach ($tbl_b7 as $tl_b7): ?>
-              <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
-                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
-              </option>
-            <?php endforeach ?>
-          </select>
-            <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
-        </div>
-      </td>
+    <td class="pr-2">
+      <div class="form-group">
+        <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
+          id="<?= $tabel_b2_field7_input ?>">
+          <option selected hidden value="<?= $tabel_b2_field7_value ?>"><?= $tabel_b2_field7_value ?></option>
+          <?php foreach ($tbl_b7 as $tl_b7): ?>
+            <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
+              <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
+            </option>
+          <?php endforeach ?>
+        </select>
+        <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?>
+          <?= $tabel_b7_alias ?></label>
+      </div>
+    </td>
 
-      <td>
-        <?= btn_cari() ?>
-        <?= btn_redo('tabel_b2', '/admin') ?>
-      </td>
+    <td>
+      <?= btn_cari() ?>
+      <?= btn_redo('tabel_b2', '/admin') ?>
+    </td>
 
-    </tr>
-  </form>
+  </tr>
+</form>
 </table>
 
-<div class="table-responsive">
+
+<p><?= lang('images_not_change_immediately') ?></p>
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_tambah() ?>
+    <?= btn_laporan('tabel_b2') ?>
+    
+  </div>
+
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
+
+
+
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_b2 as $tl_b2): ?>
+    <?php
+      $btn_class = '';
+      if ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value1) {
+        $btn_class = btn_toggle_off('tabel_b2', $tl_b2->$tabel_b2_field1);
+      } elseif ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value2) {
+        $btn_class = btn_toggle_on('tabel_b2', $tl_b2->$tabel_b2_field1);
+      }
+      echo card_file(
+        $tl_b2->$tabel_b2_field1,
+        $tl_b2->$tabel_b2_field2,
+        $btn_class,
+        $tabel_b2,
+        $tl_b2->$tabel_b2_field4,
+        'bg-danger'
+      );
+    ?>
+  <?php endforeach; ?>
+</div>
+
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -117,13 +154,15 @@
           <?= input_textarea('tabel_b2_field5', '', 'required') ?>
 
           <div class="form-group">
-            <select class="form-control float" required name="<?= $tabel_b2_field6_input ?>" id="<?= $tabel_b2_field6_input ?>">
-              
-            <?php foreach ($tbl_b7 as $tl_b7): ?>
-              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+            <select class="form-control float" required name="<?= $tabel_b2_field6_input ?>"
+              id="<?= $tabel_b2_field6_input ?>">
+
+              <?php foreach ($tbl_b7 as $tl_b7): ?>
+                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
               <?php endforeach ?>
             </select>
-            <label for="<?= $tabel_b2_field6_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
+            <label for="<?= $tabel_b2_field6_input ?>" class="form-label"><?= lang('select') ?>
+              <?= $tabel_b7_alias ?></label>
           </div>
 
         </div>
@@ -159,7 +198,8 @@
             <?= input_textarea('tabel_b2_field5', $tl_b2->$tabel_b2_field5, 'required') ?>
 
             <div class="form-group">
-              <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>" id="<?= $tabel_b2_field6_input ?>">
+              <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
+                id="<?= $tabel_b2_field6_input ?>">
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
                   <?php if ($tl_b2->$tabel_b2_field7 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>

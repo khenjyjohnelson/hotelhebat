@@ -188,6 +188,17 @@
 
 </script>
 
+<script>
+    $(document).ready(function () {
+        $('.view-toggle').on('click', function () {
+            var target = $(this).data('target');
+            $('.data-view').removeClass('active').hide();
+            $('#' + target).addClass('active').show();
+        });
+    });
+</script>
+
+
 
 
 <script>

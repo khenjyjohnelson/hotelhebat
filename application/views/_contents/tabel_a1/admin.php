@@ -23,10 +23,28 @@
 <hr>
 <p><?= lang('images_not_change_immediately') ?></p>
 
-<?= btn_tambah() ?>
-<?= btn_laporan('tabel_a1') ?>
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_tambah() ?>
+    <?= btn_laporan('tabel_a1') ?>
+  </div>
 
-<div class="table-responsive">
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
+
+
+
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_a1 as $tl_a1):
+    echo card_file($tl_a1->$tabel_a1_field1, $tl_a1->$tabel_a1_field2, $tl_a1->$tabel_a1_field4, $tabel_a1, $tl_a1->$tabel_a1_field3, 'bg-danger');
+  endforeach; ?>
+</div>
+
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -117,7 +135,7 @@
           enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1, 'required') ?>
-           
+
             <small><?= lang('reupload_image_even_for_name_change') ?></small>
 
             <?= input_edit('text', 'tabel_a1_field2', $tl_a1_alt->$tabel_a1_field2, 'required') ?>
