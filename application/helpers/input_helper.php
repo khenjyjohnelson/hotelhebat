@@ -276,15 +276,19 @@ if (!function_exists('edit_file')) {
         $old = $data[$field . "_old"];
 
         return <<<HTML
-        <div class="form-group">
-            <img src="img/{$tabel}/{$value}" width="300">
-        </div>
-        <hr>
-
-        <div class="form-group">
-            <label>Ubah {$alias}</label>
-            <input class="form-control-file" {$required} type="file" name="{$input}" placeholder="">
-            <input type="hidden" name="{$old}" value="{$value}">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <img src="img/{$tabel}/{$value}" class="img-thumbnail w-100">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label>Ubah {$alias}</label>
+                    <input class="form-control-file" {$required} type="file" name="{$input}" placeholder="">
+                    <input type="hidden" name="{$old}" value="{$value}">
+                </div>
+            </div>
         </div>
         HTML;
     }

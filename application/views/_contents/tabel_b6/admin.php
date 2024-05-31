@@ -25,11 +25,6 @@
 <?= btn_tambah() ?>
 <?= btn_laporan('tabel_b6') ?>
 
-<?php foreach ($dekor as $dk): ?>
-  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
-<?php endforeach ?>
-
-
 <!-- tabel fiter pesanan -->
 <table class="mb-4">
 

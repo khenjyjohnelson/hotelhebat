@@ -60,18 +60,18 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <label class><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
-              <select class="form-control" required name="<?= $tabel_a1_field6_input ?>">
-
-                <?php foreach ($tbl_b7 as $tl_b7): ?>
-                  <?php if ($tl_a1->$tabel_a1_field6 == $tl_b7->$tabel_b7_field1) { ?>
-                    <option selected hidden value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+              <select class="form-control float" required name="<?= $tabel_a1_field6_input ?>" id="<?= $tabel_a1_field6_input ?>">
+                
+              <?php foreach ($tbl_b7 as $tl_b7): ?>
+                <?php if ($tl_a1->$tabel_a1_field6 == $tl_b7->$tabel_b7_field1) { ?>
+                  <option selected hidden value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                   <?php } else { ?>
                     <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?>
-                    </option>
+                  </option>
                   <?php }endforeach ?>
-
-              </select>
+                  
+                </select>
+                <label for="<?= $tabel_a1_field6_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
               <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
             </div>
           </div>

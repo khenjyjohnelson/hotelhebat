@@ -136,7 +136,7 @@
 
                       <div class="row">
 
-                        <!-- <select class="form-control" required name="<?= $tabel_f2_field13_input ?>"> -->
+                        <!-- <select class="form-control float" required name="<?= $tabel_f2_field13_input ?>"> -->
                         <!-- menampilkan nilai id_tipe kamar yang aktif -->
                         <!-- <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e3_field1_alias ?>:</option> -->
                         <!-- <option value="<?= $tl_e3->$tabel_f2_field13 ?>"><?= $tl_e3->$tabel_f2_field13; ?> - <?= $tlf2_e4->$tabel_e4_field2 ?></option> -->

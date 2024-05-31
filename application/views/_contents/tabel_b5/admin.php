@@ -26,11 +26,6 @@
 <?= btn_tambah() ?>
 <?= btn_laporan('tabel_b5') ?>
 
-<?php foreach ($dekor as $dk): ?>
-  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
-<?php endforeach ?>
-
-
 <!-- tabel fiter pesanan -->
 <table class="mb-4">
 
@@ -40,7 +35,7 @@
 
       <td class="pr-2">
         <div class="form-group">
-          <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
+          <select class="form-control float" required name="<?= $tabel_b5_field7_input ?>">
             <option selected hidden value="<?= $tabel_b5_field7_value ?>"><?= $tabel_b5_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
               <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
@@ -119,12 +114,12 @@
           <?= input_add('text', 'tabel_b5_field5', 'required') ?>
 
           <div class="form-group">
-            <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_b5_field7_input ?>">
+            <select class="form-control float" required name="<?= $tabel_b5_field7_input ?>" if="<?= $tabel_b5_field7_input ?>">
               <?php foreach ($tbl_b7 as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-              <?php endforeach ?>
-            </select>
+                <?php endforeach ?>
+              </select>
+              <label for="<?= $tabel_b5_field7_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
           </div>
         </div>
 

@@ -26,11 +26,6 @@
 
 <?= btn_tambah() ?>
 <?= btn_laporan('tabel_b2') ?>
-
-<?php foreach ($dekor as $dk): ?>
-  <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200">
-<?php endforeach ?>
-
 <!-- tabel fiter pesanan -->
 <table class="mb-4">
 
@@ -40,7 +35,7 @@
 
       <td class="pr-2">
         <div class="form-group">
-          <select class="form-control" required name="<?= $tabel_b2_field7_input ?>">
+          <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>" id="<?= $tabel_b2_field7_input ?>">
             <option selected hidden value="<?= $tabel_b2_field7_value ?>"><?= $tabel_b2_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
               <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
@@ -122,13 +117,13 @@
           <?= input_textarea('tabel_b2_field5', '', 'required') ?>
 
           <div class="form-group">
-            <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
-            <select class="form-control" required name="<?= $tabel_b2_field6_input ?>">
-
-              <?php foreach ($tbl_b7 as $tl_b7): ?>
-                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+            <select class="form-control float" required name="<?= $tabel_b2_field6_input ?>" id="<?= $tabel_b2_field6_input ?>">
+              
+            <?php foreach ($tbl_b7 as $tl_b7): ?>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
               <?php endforeach ?>
             </select>
+            <label for="<?= $tabel_b2_field6_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
           </div>
 
         </div>
@@ -164,7 +159,7 @@
             <?= input_textarea('tabel_b2_field5', $tl_b2->$tabel_b2_field5, 'required') ?>
 
             <div class="form-group">
-              <select class="form-control" required name="<?= $tabel_b2_field7_input ?>">
+              <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>" id="<?= $tabel_b2_field6_input ?>">
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
                   <?php if ($tl_b2->$tabel_b2_field7 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
@@ -174,7 +169,7 @@
                   <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                 <?php endforeach ?>
               </select>
-              <label class="form-label"><?= $tabel_b7_alias ?></label>
+              <label for="<?= $tabel_b2_field6_input ?>" class="form-label"><?= $tabel_b7_alias ?></label>
             </div>
 
           </div>
