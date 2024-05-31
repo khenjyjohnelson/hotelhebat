@@ -82,7 +82,7 @@
       <form action="<?= site_url($language . '/' . $tabel_b7 . '/tambah') ?>" enctype="multipart/form-data" method="post">
         <div class="modal-body">
           <?= input_add('text', 'tabel_b7_field2', 'required') ?>
-          <?= input_textarea('tabel_b7_field5', '', 'required') ?>
+          <?= input_textarea('tabel_b7_field6', '', 'required') ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->
@@ -109,7 +109,7 @@
 
             <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
             <?= input_edit('text', 'tabel_b7_field2', $tl_b7->$tabel_b7_field2, 'required') ?>
-            <?= input_textarea('tabel_b2_field5', $tl_b7->$tabel_b7_field6, 'required') ?>
+            <?= input_textarea('tabel_b7_field6', $tl_b7->$tabel_b7_field6, 'required') ?>
 
           </div>
 

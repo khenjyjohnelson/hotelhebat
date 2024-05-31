@@ -236,7 +236,7 @@ if (!function_exists('input_textarea')) {
         return <<<HTML
         <div class="form-group">
             <label>{$alias}</label>
-            <textarea id="editor1" class="form-control float" name="{$input}" placeholder="" $required
+            <textarea class="ckeditor form-control" name="{$input}" placeholder="" $required
             {$required} cols="30" rows="10">{$value}</textarea>
         </div>
         HTML;

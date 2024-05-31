@@ -38,10 +38,7 @@
     <tr>
 
       <td class="pr-2">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><?= lang('select') ?> <?= $tabel_b7_alias ?></span>
-          </div>
+        <div class="form-group">
           <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
             <option selected hidden value="<?= $tabel_b1_field7_value ?>"><?= $tabel_b1_field7_value ?></option>
             <?php foreach ($tbl_b7 as $tl_b7): ?>
@@ -50,6 +47,7 @@
               </option>
             <?php endforeach ?>
           </select>
+            <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
         </div>
       </td>
 

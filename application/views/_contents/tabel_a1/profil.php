@@ -26,8 +26,7 @@
       <?= btn_field($tabel_b7_field3 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field3_alias')) ?>
       <?= btn_field($tabel_b7_field4 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field4_alias')) ?>
       <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field5_alias')) ?>
-      <?= btn_field($tabel_b7 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . lang('tabel_b7_alias')) ?>
-      <?= btn_field($tabel_b2 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i>' . lang('tabel_b2_alias')) ?>
+      <?= btn_field($tabel_b7, '<i class="fas fa-edit"></i>' . lang('tabel_b7_alias')) ?>
       <?= btn_kelola('tabel_b1') ?>
       <?= btn_kelola('tabel_b8') ?>
       <?= btn_kelola('tabel_b5') ?>
@@ -51,7 +50,7 @@
   </div>
 
 
-  <div id="<?= $tabel_b7 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_b7 ?>">
+  <div id="<?= $tabel_b7 ?>" class="modal fade <?= $tabel_b7 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
         <?= modal_header(lang('update_data') . ' ' . lang('tabel_b7_alias') .
@@ -62,65 +61,15 @@
 
             <div class="form-group">
               <label class><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
-              <select class="form-control" required name="<?= $tabel_a1_field8_input ?>">
+              <select class="form-control" required name="<?= $tabel_a1_field6_input ?>">
 
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
-                  <?php if ($tl_a1->$tabel_a1_field8 == $tl_b7->$tabel_b7_field1) { ?>
+                  <?php if ($tl_a1->$tabel_a1_field6 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                   <?php } else { ?>
                     <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?>
                     </option>
                   <?php }endforeach ?>
-
-              </select>
-              <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
-            </div>
-          </div>
-
-          <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger">
-            <?= get_flashdata('pesan_' . $tabel_a1_field8) ?>
-          </p>
-
-          <div class="modal-footer">
-            <?= btn_update() ?>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div id="<?= $tabel_b2 . $tl_a1->$tabel_a1_field1 ?>" class="modal fade <?= $tabel_a1_field6 ?>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b2_alias') .
-          ' &nbsp;&nbsp;&nbsp;' . btn_kelola('tabel_b2'), $tl_a1->$tabel_a1_field1) ?>
-
-        <form action="<?= site_url($language . '/' . $tabel_a1 . '/update_id_event') ?>" method="post">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <label><?= lang('select') ?> <?= $tabel_a1_field6_alias ?></label>
-              <select class="form-control" required name="<?= $tabel_a1_field6_input ?>">
-
-                <?php foreach ($tbl_b2 as $tl_b2): ?>
-                  <?php if ($tl_a1->$tabel_a1_field6 == $tl_b2->$tabel_a1_field6) { ?>
-
-                    <option selected hidden value="<?= $tl_b2->$tabel_a1_field6 ?>"><?= $tl_b2->$tabel_a1_field6 ?> -
-                      <?= $tl_b2->$tabel_b2_field2; ?>
-                    </option>
-                  <?php } ?>
-                <?php endforeach ?>
-
-                <option value="0">Tidak ada</option>
-
-                <?php foreach ($tbl_b2 as $tl_b2): ?>
-
-                  <option value="<?= $tl_b2->$tabel_a1_field6 ?>"><?= $tl_b2->$tabel_a1_field6 ?> -
-                    <?= $tl_b2->$tabel_b2_field2; ?>
-                  </option>
-
-                <?php endforeach ?>
 
               </select>
               <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>

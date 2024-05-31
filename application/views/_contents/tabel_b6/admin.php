@@ -38,18 +38,16 @@
     <tr>
 
       <td class="pr-2">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><?= lang('select') ?> <?= $tabel_b7_alias ?></span>
-          </div>
+        <div class="form-group">
           <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
             <?php foreach ($tbl_b7 as $tl_b7): ?>
               <option selected hidden value="<?= $tabel_b6_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
               <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
                 <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
               </option>
-            <?php endforeach ?>
-          </select>
+              <?php endforeach ?>
+            </select>
+            <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
         </div>
       </td>
 

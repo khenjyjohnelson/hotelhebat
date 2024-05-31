@@ -31,26 +31,3 @@ if (!function_exists('modal_file')) {
         HTML;
     }
 }
-
-if (!function_exists('modal_icon')) {
-    function modal_icon($field, $required)
-    {
-        // Get CodeIgniter instance
-        $CI =& get_instance();
-        // Fetch the view variables
-        $data = $CI->load->get_vars();
-
-        $alias = lang($field . '_alias');
-        $input = $data[$field . '_input'];
-
-        $placeholder = lang('input');
-
-        return <<<HTML
-        <div class="form-group">
-            <label>{$alias}</label>
-            <textarea id="editor1" class="form-control" name="{$input}" $required
-              placeholder="{$placeholder} {$alias}" {$required} cols="30" rows="10"></textarea>
-        </div>
-        HTML;
-    }
-}

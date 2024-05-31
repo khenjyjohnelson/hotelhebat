@@ -13,7 +13,7 @@ class M_tabel_b7 extends CI_Model
 	{
 		$sql = "SELECT * FROM {$this->aliases['tabel_a1']} 
 		JOIN {$this->aliases['tabel_b7']} 
-		ON {$this->aliases['tabel_a1']}.{$this->aliases['tabel_a1_field8']} = {$this->aliases['tabel_b7']}.{$this->aliases['tabel_b7_field1']}
+		ON {$this->aliases['tabel_a1']}.{$this->aliases['tabel_a1_field6']} = {$this->aliases['tabel_b7']}.{$this->aliases['tabel_b7_field1']}
 		WHERE {$this->aliases['tabel_a1']}.{$this->aliases['tabel_a1_field1']} = $param1";
 		return $this->db->query($sql);
 	}
