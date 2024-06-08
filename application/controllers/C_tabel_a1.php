@@ -27,7 +27,7 @@ class C_tabel_a1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	public function update()

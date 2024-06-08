@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $this->load->view($head) ?>
+<?php load_view($head) ?>
 
 <body class="login">
   <?php foreach ($tbl_a1 as $tl_a1): ?>

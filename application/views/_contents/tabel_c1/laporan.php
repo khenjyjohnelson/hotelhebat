@@ -14,7 +14,7 @@ redirect(site_url($language . '/' . 'no_level'));
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $this->load->view($head) ?>
+<?php load_view($head) ?>
 
 <body>
 

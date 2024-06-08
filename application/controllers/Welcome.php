@@ -65,7 +65,7 @@ class Welcome extends Omnitags
 				);
 
 				$data = array_merge($data1, $this->package);
-				$this->load->view('_layouts/template', $data);
+				load_view_data('_layouts/template', $data);
 		}
 	}
 
@@ -101,7 +101,7 @@ class Welcome extends Omnitags
 
 		$notif = $this->handle_4b();
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// fungsi ketika pengguna mengunjungi halaman yang tidak sesuai dengan level

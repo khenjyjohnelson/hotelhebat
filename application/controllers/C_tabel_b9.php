@@ -33,10 +33,10 @@ class C_tabel_b9 extends Omnitags
 
 			if ($this->input->get('refresh') !== 'true') {
 				// Redirect to the same method with a refresh parameter
-				$this->load->view('_layouts/template', $data);
+				load_view_data('_layouts/template', $data);
 				redirect(current_url() . '?refresh=true');
 			} else {
-				$this->load->view('_layouts/template', $data);
+				load_view_data('_layouts/template', $data);
 			}
 
 		} else {
@@ -76,7 +76,7 @@ class C_tabel_b9 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// Halaman admin
@@ -93,7 +93,7 @@ class C_tabel_b9 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -154,7 +154,7 @@ class C_tabel_b9 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v4['tabel_b9'], $data);
+		load_view_data($this->v4['tabel_b9'], $data);
 	}
 
 	// Cetak satu data

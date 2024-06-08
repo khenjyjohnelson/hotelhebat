@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $this->load->view($head) ?>
+<?php load_view($head) ?>
 
 <!-- signup dan login memiliki style yg sama -->
 

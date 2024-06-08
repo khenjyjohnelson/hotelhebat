@@ -21,7 +21,7 @@ switch (true) {
 <html lang="en" data-bs-theme="auto">
 
 <!-- header -->
-<?php $this->load->view($head) ?>
+<?php load_view($head) ?>
 
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -61,7 +61,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- menu navbar berdasarkan level user -->
       <div class="collapse navbar-collapse" id="navbarku">
-        <?php $this->load->view('_partials/menu'); ?>
+        <?php load_view('_partials/menu'); ?>
       </div>
 
     </nav>
@@ -71,15 +71,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div style="margin-top: 100px;">
         <!-- konten sesuai controller -->
-        <?php $this->load->view($konten) ?>
+        <?php load_view($konten) ?>
       </div>
 
     </div>
 
-    <?php $this->load->view('_partials/footer') ?>
+    <?php load_view('_partials/footer') ?>
 
 
-    <?php $this->load->view('_partials/script') ?>
+    <?php load_view('_partials/script') ?>
 
   <?php endforeach; ?>
 

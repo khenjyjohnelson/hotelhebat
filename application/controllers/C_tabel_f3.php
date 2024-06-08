@@ -35,7 +35,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	public function daftar_history()
@@ -52,7 +52,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// Halaman admin
@@ -78,7 +78,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 
@@ -198,7 +198,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// Cetak semua data
@@ -216,7 +216,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v4['tabel_f3'], $data);
+		load_view_data($this->v4['tabel_f3'], $data);
 	}
 
 	// Cetak satu data
@@ -247,13 +247,13 @@ class C_tabel_f3 extends Omnitags
 				'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
-			$this->load->view($this->v5['tabel_f1'], $data);
+			load_view_data($this->v5['tabel_f1'], $data);
 		} else {
 			$data2 = array(
 				'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
-			$this->load->view($this->v5['tabel_f3'], $data);
+			load_view_data($this->v5['tabel_f3'], $data);
 		}
 	}
 
@@ -273,6 +273,6 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v7['tabel_f3'], $data);
+		load_view_data($this->v7['tabel_f3'], $data);
 	}
 }

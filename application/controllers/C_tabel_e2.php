@@ -19,7 +19,7 @@ class C_tabel_e2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// Halaman khusus akun
@@ -39,7 +39,7 @@ class C_tabel_e2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -113,7 +113,7 @@ class C_tabel_e2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v4['tabel_e2'], $data);
+		load_view_data($this->v4['tabel_e2'], $data);
 	}
 
 	// Cetak satu data

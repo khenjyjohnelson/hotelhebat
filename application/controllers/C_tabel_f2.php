@@ -50,7 +50,7 @@ class C_tabel_f2 extends Omnitags
 		set_flashdata($this->views['flash1'], $this->views['flash1_note2']);
 		set_flashdata('toast', $this->views['flash1_func1']);
 
-		$this->load->view($halaman, $data);
+		load_view_data($halaman, $data);
 	}
 
 	// Halaman khusus akun
@@ -69,7 +69,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	public function filter_c1()
@@ -98,7 +98,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// Halaman admin
@@ -128,7 +128,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -303,7 +303,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// Cetak semua data
@@ -320,7 +320,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v4['tabel_f2'], $data);
+		load_view_data($this->v4['tabel_f2'], $data);
 	}
 
 	// Cetak satu data
@@ -336,7 +336,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v5['tabel_f2'], $data);
+		load_view_data($this->v5['tabel_f2'], $data);
 	}
 
 
@@ -373,7 +373,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 
@@ -392,7 +392,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v7['tabel_f2'], $data);
+		load_view_data($this->v7['tabel_f2'], $data);
 	}
 
 	// Ini adalah fitur untuk membooking kamar berdasarkan pesanan oleh resepsionis

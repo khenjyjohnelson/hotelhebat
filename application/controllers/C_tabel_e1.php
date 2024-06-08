@@ -22,7 +22,7 @@ class C_tabel_e1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	function tambah()
@@ -165,6 +165,6 @@ class C_tabel_e1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v4['tabel_e1'], $data);
+		load_view_data($this->v4['tabel_e1'], $data);
 	}
 }

@@ -25,7 +25,7 @@ class C_tabel_c1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	public function tambah()
@@ -136,7 +136,7 @@ class C_tabel_c1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v4['tabel_c1'], $data);
+		load_view_data($this->v4['tabel_c1'], $data);
 	}
 
 	public function profil()
@@ -153,7 +153,7 @@ class C_tabel_c1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	public function login()
@@ -167,7 +167,7 @@ class C_tabel_c1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->views['tabel_c1_v2'], $data);
+		load_view_data($this->views['tabel_c1_v2'], $data);
 	}
 
 	public function signup()

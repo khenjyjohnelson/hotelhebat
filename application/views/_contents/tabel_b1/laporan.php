@@ -9,7 +9,7 @@ if (!in_array(userdata($tabel_c2_field6), [$tabel_c2_field6_value3, $tabel_c2_fi
 <html lang="en">
 <head>
     <base href="<?= base_url('assets/') ?>">
-    <?php $this->load->view($head) ?>
+    <?php load_view($head) ?>
 </head>
 <body>
     <div class="container" style="border-style: dashed;">

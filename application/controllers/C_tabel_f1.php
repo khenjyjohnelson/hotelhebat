@@ -35,7 +35,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 
@@ -66,7 +66,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// Halaman admin
@@ -95,7 +95,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 
 	// public function delete($tabel_f1_field1 = null)
@@ -120,7 +120,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view($this->v4['tabel_f1'], $data);
+		load_view_data($this->v4['tabel_f1'], $data);
 	}
 
 	public function filter()
@@ -148,6 +148,6 @@ class C_tabel_f1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('_layouts/template', $data);
+		load_view_data('_layouts/template', $data);
 	}
 }

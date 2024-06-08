@@ -8,8 +8,6 @@
 }
 ?>
 
-
-
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
     <h1><?= xss_clean($title) ?><?= $phase ?></h1>
