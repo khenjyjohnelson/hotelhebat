@@ -39,7 +39,17 @@
 
 <div id="card-view" class="row data-view active">
   <?php foreach ($tbl_a1 as $tl_a1):
-    echo card_file($tl_a1->$tabel_a1_field1, $tl_a1->$tabel_a1_field2, $tl_a1->$tabel_a1_field4, $tabel_a1, $tl_a1->$tabel_a1_field3, 'bg-danger');
+    echo card_file(
+      $tl_a1->$tabel_a1_field1,
+      $tl_a1->$tabel_a1_field2,
+      $tl_a1->$tabel_a1_field4,
+      btn_lihat($tl_a1_alt->$tabel_a1_field1) . ' ' .
+      btn_edit($tl_a1_alt->$tabel_a1_field1). ' ' .
+      btn_hapus($tabel_a1, $tl_a1_alt->$tabel_a1_field1),
+      $tabel_a1,
+      $tl_a1->$tabel_a1_field3,
+      'bg-danger'
+    );
   endforeach; ?>
 </div>
 
@@ -109,10 +119,18 @@
         <?= modal_header(lang('tabel_a1_alias'), $tl_a1_alt->$tabel_a1_field1) ?>
         <form>
           <div class="modal-body">
-            <?= tampil_text('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1) ?>
-            <?= tampil_text('tabel_a1_field2', $tl_a1_alt->$tabel_a1_field2) ?>
-            <?= tampil_text('tabel_a1_field4', $tl_a1_alt->$tabel_a1_field4) ?>
-            <?= tampil_file($tabel_a1, 'tabel_a1_field3', $tl_a1_alt->$tabel_a1_field3) ?>
+            <div class="table-responsive">
+              <table class="table table-light" id="data">
+                <thead></thead>
+                <tbody>
+                  <?= row_data('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1) ?>
+                  <?= row_data('tabel_a1_field2', $tl_a1_alt->$tabel_a1_field2) ?>
+                  <?= row_data('tabel_a1_field4', $tl_a1_alt->$tabel_a1_field4) ?>
+                  <?= row_file($tabel_a1, 'tabel_a1_field3', $tl_a1_alt->$tabel_a1_field3) ?>
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->

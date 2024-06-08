@@ -75,30 +75,33 @@
         <?= modal_header(lang('tabel_f1_alias'), $tl_f1->$tabel_f1_field1) ?>
 
         <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <?= tampil_text('tabel_f1_field2', $tl_f1->$tabel_f1_field2) ?>
-              <?= tampil_text('tabel_f1_field4', $tl_f1->$tabel_f1_field4) ?>
-              <?= tampil_text('tabel_f1_field5', $tl_f1->$tabel_f1_field5) ?>
-              <?= tampil_text('tabel_f1_field6', $tl_f1->$tabel_f1_field6) ?>
+          <div class="table-responsive">
+            <table class="table table-light" id="data">
+              <thead></thead>
+              <tbody>
+                <?= row_data('tabel_f1_field2', $tl_f1->$tabel_f1_field2) ?>
+                <?= row_data('tabel_f1_field4', $tl_f1->$tabel_f1_field4) ?>
+                <?= row_data('tabel_f1_field5', $tl_f1->$tabel_f1_field5) ?>
+                <?= row_data('tabel_f1_field6', $tl_f1->$tabel_f1_field6) ?>
 
-              <div class="col-md-6">
-                <?= tampil_text('tabel_f1_field7', $tl_f1->$tabel_f1_field7) ?>
-                <?= tampil_text('tabel_e4_field2', $tl_f1->$tabel_e4_field2) ?>
-                <?= tampil_text('tabel_f1_field11', $tl_f1->$tabel_f1_field11) ?>
-                <?= tampil_text('tabel_f1_field12', $tl_f1->$tabel_f1_field12) ?>
+                <?= row_data('tabel_f1_field7', $tl_f1->$tabel_f1_field7) ?>
+                <?= row_data('tabel_e4_field2', $tl_f1->$tabel_e4_field2) ?>
+                <?= row_data('tabel_f1_field11', $tl_f1->$tabel_f1_field11) ?>
+                <?= row_data('tabel_f1_field12', $tl_f1->$tabel_f1_field12) ?>
 
-              </div>
-            </div>
+              </tbody>
+              <tfoot></tfoot>
+            </table>
           </div>
+        </div>
 
-          <!-- memunculkan notifikasi modal -->
-          <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
+        <!-- memunculkan notifikasi modal -->
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
 
-          <div class="modal-footer">
-            <?= btn_tutup() ?>
-          </div>
+        <div class="modal-footer">
+          <?= btn_tutup() ?>
         </div>
       </div>
     </div>
-  <?php endforeach ?>
+  </div>
+<?php endforeach ?>

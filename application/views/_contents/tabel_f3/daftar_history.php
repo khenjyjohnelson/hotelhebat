@@ -54,37 +54,40 @@ Jadi tidak perlu menambahkan foreach hitory lagi -->
         <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
 
         <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <?= tampil_text('tabel_f3_field1', $tl_f3->$tabel_f3_field1) ?>
-              <?= tampil_text('tabel_f1_field1', $tl_f3->$tabel_f1_field1) ?>
-              <?= tampil_text('tabel_f3_field5', $tl_f3->$tabel_f3_field5) ?>
-              <?= tampil_text('tabel_f3_field6', $tl_f3->$tabel_f3_field6) ?>
-            </div>
+          <div class="table-responsive">
+            <table class="table table-light" id="data">
+              <thead></thead>
+              <tbody>
 
-            <!-- Di sini adalah bagian menampilkan data history -->
+                <?= row_data('tabel_f3_field1', $tl_f3->$tabel_f3_field1) ?>
+                <?= row_data('tabel_f1_field1', $tl_f3->$tabel_f1_field1) ?>
+                <?= row_data('tabel_f3_field5', $tl_f3->$tabel_f3_field5) ?>
+                <?= row_data('tabel_f3_field6', $tl_f3->$tabel_f3_field6) ?>
+
+                <!-- Di sini adalah bagian menampilkan data history -->
 
 
 
-            <div class="col-md-6">
-              <?= tampil_text('tabel_f2_field5', $tl_f3->$tabel_f2_field6) ?>
-              <?= tampil_text('tabel_e4_field2', $tl_f3->$tabel_e4_field2) ?>
-              <?= tampil_text('tabel_f2_field10', $tl_f3->$tabel_f2_field10) ?>
-              <?= tampil_text('tabel_f2_field11', $tl_f3->$tabel_f2_field11) ?>
-
-            </div>
-
+                <?= row_data('tabel_f2_field5', $tl_f3->$tabel_f2_field6) ?>
+                <?= row_data('tabel_e4_field2', $tl_f3->$tabel_e4_field2) ?>
+                <?= row_data('tabel_f2_field10', $tl_f3->$tabel_f2_field10) ?>
+                <?= row_data('tabel_f2_field11', $tl_f3->$tabel_f2_field11) ?>
+              </tbody>
+              <tfoot></tfoot>
+            </table>
           </div>
         </div>
 
-        <!-- memunculkan notifikasi modal -->
-        <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
+      </div>
 
-        <div class="modal-footer">
+      <!-- memunculkan notifikasi modal -->
+      <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
 
-          <?= btn_tutup() ?>
-        </div>
+      <div class="modal-footer">
+
+        <?= btn_tutup() ?>
       </div>
     </div>
+  </div>
   </div>
 <?php endforeach ?>

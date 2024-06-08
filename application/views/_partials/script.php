@@ -191,6 +191,8 @@
 <script>
     $(document).ready(function () {
         $('.view-toggle').on('click', function () {
+            $('.view-toggle').removeClass('active');
+            $(this).addClass('active');
             var target = $(this).data('target');
             $('.data-view').removeClass('active').hide();
             $('#' + target).addClass('active').show();

@@ -38,7 +38,16 @@
 
 <div id="card-view" class="row data-view active">
   <?php foreach ($tbl_c1 as $tl_c1):
-    echo card_file($tl_c1->$tabel_c1_field1, $tl_c1->$tabel_c1_field2, $tl_c1->$tabel_c1_field5, $tabel_c1, $tl_c1->$tabel_c1_field6, 'bg-danger');
+    echo card_file(
+      $tl_c1->$tabel_c1_field1,
+      $tl_c1->$tabel_c1_field2,
+      $tl_c1->$tabel_c1_field5,
+      btn_lihat($tl_c1->$tabel_c1_field1) . ' ' .
+      btn_edit($tl_c1->$tabel_c1_field1),
+      $tabel_c1,
+      $tl_c1->$tabel_c1_field6,
+      'bg-danger'
+    );
   endforeach; ?>
 </div>
 
@@ -176,16 +185,17 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="row">
-              <div class="col-md-6">
-                <?= tampil_text('tabel_c1_field2', $tl_c1->$tabel_c1_field2) ?>
-                <?= tampil_text('tabel_c1_field3', $tl_c1->$tabel_c1_field3) ?>
-                <?= tampil_text('tabel_c1_field5', $tl_c1->$tabel_c1_field5) ?>
-
-              </div>
-              <div class="col-md-6">
-                <?= tampil_text('tabel_c1_field6', $tl_c1->$tabel_c1_field6) ?>
-              </div>
+            <div class="table-responsive">
+              <table class="table table-light" id="data">
+                <thead></thead>
+                <tbody>
+                  <?= row_data('tabel_c1_field2', $tl_c1->$tabel_c1_field2) ?>
+                  <?= row_data('tabel_c1_field3', $tl_c1->$tabel_c1_field3) ?>
+                  <?= row_data('tabel_c1_field5', $tl_c1->$tabel_c1_field5) ?>
+                  <?= row_data('tabel_c1_field6', $tl_c1->$tabel_c1_field6) ?>
+                </tbody>
+                <tfoot></tfoot>
+              </table>
             </div>
           </div>
 

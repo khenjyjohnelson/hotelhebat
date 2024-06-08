@@ -24,31 +24,31 @@
 <!-- tabel fiter pesanan -->
 <table class="mb-4">
 
-<!-- method get supaya nilai dari filter bisa tampil nanti -->
-<form action="<?= site_url($language . '/' . $tabel_b6 . '/filter') ?>" method="get">
-  <tr>
+  <!-- method get supaya nilai dari filter bisa tampil nanti -->
+  <form action="<?= site_url($language . '/' . $tabel_b6 . '/filter') ?>" method="get">
+    <tr>
 
-    <td class="pr-2">
-      <div class="form-group">
-        <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
-          <?php foreach ($tbl_b7 as $tl_b7): ?>
-            <option selected hidden value="<?= $tabel_b6_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
-            <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
-              <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
-            </option>
-          <?php endforeach ?>
-        </select>
-        <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?>
-          <?= $tabel_b7_alias ?></label>
-      </div>
-    </td>
+      <td class="pr-2">
+        <div class="form-group">
+          <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
+            <?php foreach ($tbl_b7 as $tl_b7): ?>
+              <option selected hidden value="<?= $tabel_b6_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
+                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
+              </option>
+            <?php endforeach ?>
+          </select>
+          <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?>
+            <?= $tabel_b7_alias ?></label>
+        </div>
+      </td>
 
-    <td>
-      <?= btn_cari() ?>
-      <?= btn_redo('tabel_b6', '/admin') ?>
-    </td>
-  </tr>
-</form>
+      <td>
+        <?= btn_cari() ?>
+        <?= btn_redo('tabel_b6', '/admin') ?>
+      </td>
+    </tr>
+  </form>
 </table>
 
 <div class="row">
@@ -56,7 +56,7 @@
     <?= btn_tambah() ?>
     <?= btn_laporan('tabel_b6') ?>
 
-    
+
   </div>
 
   <div class="col-md-2 d-flex justify-content-end">
@@ -69,18 +69,18 @@
 <div id="card-view" class="row data-view active">
   <?php foreach ($tbl_b6 as $tl_b6): ?>
     <?php
-      $btn_class = '';
-      if ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value1) {
-        $btn_class = btn_toggle_off('tabel_b6', $tl_b6->$tabel_b6_field1);
-      } elseif ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value2) {
-        $btn_class = btn_toggle_on('tabel_b6', $tl_b6->$tabel_b6_field1);
-      }
-      echo card_regular(
-        $tl_b6->$tabel_b6_field1,
-        $tl_b6->$tabel_b6_field2,
-        '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>' . $btn_class,
-        'bg-secondary'
-      );
+    $btn_class = '';
+    if ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value1) {
+      $btn_class = btn_toggle_off('tabel_b6', $tl_b6->$tabel_b6_field1);
+    } elseif ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value2) {
+      $btn_class = btn_toggle_on('tabel_b6', $tl_b6->$tabel_b6_field1);
+    }
+    echo card_regular(
+      $tl_b6->$tabel_b6_field1,
+      $tl_b6->$tabel_b6_field2,
+      '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>' . $btn_class,
+      'bg-secondary'
+    );
     ?>
   <?php endforeach; ?>
 </div>
@@ -229,15 +229,22 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-light" id="data">
+                <thead></thead>
+                <tbody>
+                  <?= row_data('tabel_b6_field1', $tl_b6->$tabel_b6_field1) ?>
+                  <?= row_data('tabel_b6_field2', $tl_b6->$tabel_b6_field1) ?>
+                  <?= row_data('tabel_b6_field3', $tl_b6->$tabel_b6_field3) ?>
+                  <?= row_data('tabel_b6_field4', $tl_b6->$tabel_b6_field4) ?>
+                  <?= row_data('tabel_b6_field5', $tl_b6->$tabel_b6_field5) ?>
+                  <?= row_data('tabel_b6_field6', $tl_b6->$tabel_b6_field6) ?>
+                  <?= row_data('tabel_b6_field7', $tl_b6->$tabel_b6_field7) ?>
 
-            <?= tampil_text('tabel_b6_field1', $tl_b6->$tabel_b6_field1) ?>
-            <?= tampil_text('tabel_b6_field2', $tl_b6->$tabel_b6_field1) ?>
-            <?= tampil_text('tabel_b6_field3', $tl_b6->$tabel_b6_field3) ?>
-            <?= tampil_text('tabel_b6_field4', $tl_b6->$tabel_b6_field4) ?>
-            <?= tampil_text('tabel_b6_field5', $tl_b6->$tabel_b6_field5) ?>
-            <?= tampil_text('tabel_b6_field6', $tl_b6->$tabel_b6_field6) ?>
-            <?= tampil_text('tabel_b6_field7', $tl_b6->$tabel_b6_field7) ?>
-
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->

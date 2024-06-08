@@ -58,6 +58,11 @@ class M_tabel_b1 extends CI_Model
 		return $this->db->update($this->aliases['tabel_b1'], $data);
 	}
 
+	public function update_all_b1($data)
+	{
+		return $this->db->update($this->aliases['tabel_b1'], $data);
+	}
+
 	public function delete_b1($param1)
 	{
 		$this->db->where($this->aliases['tabel_b1_field1'], $param1);

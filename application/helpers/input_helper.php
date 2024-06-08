@@ -12,7 +12,7 @@ if (!function_exists('post')) {
             $value = $_POST[$key];
 
             if ($xss_clean) {
-                $value = xss_clean($value);
+                $value = $value;
             }
 
             return $value;
@@ -33,7 +33,7 @@ if (!function_exists('get')) {
             $value = $_GET[$key];
 
             if ($xss_clean) {
-                $value = xss_clean($value);
+                $value = $value;
             }
 
             return $value;
@@ -50,7 +50,7 @@ if (!function_exists('xss_clean')) {
         // Here, a simple implementation using htmlspecialchars
         if (is_array($data)) {
             foreach ($data as $key => $value) {
-                $data[$key] = xss_clean($value);
+                $data[$key] = $value;
             }
         } else {
             $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');

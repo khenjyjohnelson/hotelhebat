@@ -38,6 +38,13 @@ class M_tabel_b5 extends CI_Model
 		return $this->db->get($this->aliases['tabel_b5']);
 	}
 
+	public function get_b5_by_b5_field7($param1)
+	{
+		$this->db->where($this->aliases['tabel_b5_field7'], $param1);
+		$this->db->order_by($this->aliases['tabel_b5_field1'], 'DESC');
+		return $this->db->get($this->aliases['tabel_b5']);
+	}
+
 	public function insert_b5($data)
 	// public function insert_b5($query)
 	{
@@ -49,6 +56,11 @@ class M_tabel_b5 extends CI_Model
 	public function update_b5($data, $param1)
 	{
 		$this->db->where($this->aliases['tabel_b5_field1'], $param1);
+		return $this->db->update($this->aliases['tabel_b5'], $data);
+	}
+
+	public function update_all_b5($data)
+	{
 		return $this->db->update($this->aliases['tabel_b5'], $data);
 	}
 

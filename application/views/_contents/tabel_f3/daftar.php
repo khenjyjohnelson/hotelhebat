@@ -55,24 +55,26 @@ Jadi tidak perlu menambahkan foreach pesanan lagi -->
         <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
 
         <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <?= tampil_text('tabel_f3_field1', $tl_f3->$tabel_f3_field1) ?>
-              <?= tampil_text('tabel_f3_field4', $tl_f3->$tabel_f3_field4) ?>
-              <?= tampil_text('tabel_f3_field5', $tl_f3->$tabel_f3_field5) ?>
-              <?= tampil_text('tabel_f3_field6', $tl_f3->$tabel_f3_field6) ?>
-            </div>
+          <div class="table-responsive">
+            <table class="table table-light" id="data">
+              <thead></thead>
+              <tbody>
+                <?= row_data('tabel_f3_field1', $tl_f3->$tabel_f3_field1) ?>
+                <?= row_data('tabel_f3_field4', $tl_f3->$tabel_f3_field4) ?>
+                <?= row_data('tabel_f3_field5', $tl_f3->$tabel_f3_field5) ?>
+                <?= row_data('tabel_f3_field6', $tl_f3->$tabel_f3_field6) ?>
 
-            <!-- Di sini adalah bagian menampilkan data pesanan -->
-            <div class="col-md-6">
-              <?= tampil_text('tabel_f2_field6', $tl_f3->$tabel_f2_field6) ?>
-              <?= tampil_text('tabel_e4_field2', $tl_f3->$tabel_e4_field2) ?>
+                <!-- Di sini adalah bagian menampilkan data pesanan -->
+                <?= row_data('tabel_f2_field6', $tl_f3->$tabel_f2_field6) ?>
+                <?= row_data('tabel_e4_field2', $tl_f3->$tabel_e4_field2) ?>
 
-              <?= tampil_text('tabel_f2_field10', $tl_f3->$tabel_f2_field10) ?>
-              <?= tampil_text('tabel_f2_field11', $tl_f3->$tabel_f2_field11) ?>
-
-            </div>
+                <?= row_data('tabel_f2_field10', $tl_f3->$tabel_f2_field10) ?>
+                <?= row_data('tabel_f2_field11', $tl_f3->$tabel_f2_field11) ?>
+              </tbody>
+              <tfoot></tfoot>
+            </table>
           </div>
+
         </div>
 
         <!-- memunculkan notifikasi modal -->

@@ -64,7 +64,7 @@ class Welcome extends Omnitags
 					'tbl_b2' => $this->tl_b2->get_b7_aktif($this->theme_id)->result(),
 				);
 
-				$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+				$data = array_merge($data1, $this->package);
 				$this->load->view('_layouts/template', $data);
 		}
 	}
@@ -97,7 +97,7 @@ class Welcome extends Omnitags
 		set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
 		set_flashdata('toast', $this->views['flash1_func1']);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$notif = $this->handle_4b();
 
@@ -114,7 +114,7 @@ class Welcome extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no-level')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view('no-level', $data);
 	}
@@ -128,7 +128,7 @@ class Welcome extends Omnitags
 			'dekor' => $this->tl_b1->dekor($this->theme_id, '404')->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view('404', $data);
 	}

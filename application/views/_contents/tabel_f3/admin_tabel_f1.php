@@ -37,7 +37,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_f3 as $tl_f3) : ?>
+      <?php foreach ($tbl_f3 as $tl_f3): ?>
         <tr>
           <td></td>
           <td><?= $tl_f3->$tabel_f3_field1 ?></td>
@@ -61,39 +61,40 @@
 <!-- modal lihat -->
 <!-- Tabel transaksi dan tabel history literally sudah bergabung
 Jadi tidak perlu menambahkan foreach hitory lagi -->
-<?php foreach ($tbl_f3 as $tl_f3) : ?>
+<?php foreach ($tbl_f3 as $tl_f3): ?>
   <div id="lihat<?= $tl_f3->$tabel_f3_field1 ?>" class="modal fade lihat" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
-            
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <?= tampil_text('tabel_f3_field1', $tl_f3->$tabel_f3_field1) ?>
-                  <?= tampil_text('tabel_f3_field4', $tl_f3->$tabel_f3_field4) ?>
-                  <?= tampil_text('tabel_f3_field5', $tl_f3->$tabel_f3_field5) ?>
-                  <?= tampil_text('tabel_f3_field6', 'Rp' . number_format($tl_f3->$tabel_f3_field6, '2', ',', '.')) ?>
-                </div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
+
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table table-light" id="data">
+              <thead></thead>
+              <tbody>
+                <?= row_data('tabel_f3_field1', $tl_f3->$tabel_f3_field1) ?>
+                <?= row_data('tabel_f3_field4', $tl_f3->$tabel_f3_field4) ?>
+                <?= row_data('tabel_f3_field5', $tl_f3->$tabel_f3_field5) ?>
+                <?= row_data('tabel_f3_field6', 'Rp' . number_format($tl_f3->$tabel_f3_field6, '2', ',', '.')) ?>
 
                 <!-- Di sini adalah bagian menampilkan data history -->
-                <div class="col-md-6">
-                  <?= tampil_text('tabel_f2_field6', $tl_f3->$tabel_f2_field6) ?>
-                  <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
-                  <?= tampil_text('tabel_f2_field10', $tl_f3->$tabel_f2_field10) ?>
-                  <?= tampil_text('tabel_f2_field11', $tl_f3->$tabel_f2_field11) ?>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- memunculkan notifikasi modal -->
-            <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
-
-            <div class="modal-footer">
-              <?= btn_tutup() ?>
-            </div>
+                <?= row_data('tabel_f2_field6', $tl_f3->$tabel_f2_field6) ?>
+                <?= row_data('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
+                <?= row_data('tabel_f2_field10', $tl_f3->$tabel_f2_field10) ?>
+                <?= row_data('tabel_f2_field11', $tl_f3->$tabel_f2_field11) ?>
+              </tbody>
+              <tfoot></tfoot>
+            </table>
           </div>
         </div>
+
+        <!-- memunculkan notifikasi modal -->
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
+
+        <div class="modal-footer">
+          <?= btn_tutup() ?>
+        </div>
+      </div>
+    </div>
   </div>
 <?php endforeach ?>

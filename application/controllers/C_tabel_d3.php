@@ -23,7 +23,7 @@ class C_tabel_d3 extends Omnitags
 			'tbl_d3' => $this->tl_d3->get_all_d3()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -53,7 +53,7 @@ class C_tabel_d3 extends Omnitags
 			'tbl_d3' => $this->tl_d3->get_all_d3()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view($this->v4['tabel_d3'], $data);
 	}

@@ -7,11 +7,12 @@ $lang['add'] = "Add";
 $lang['print_report'] = "Print Report";
 $lang['save_data'] = "Save";
 $lang['update_data'] = "Save Changes";
+$lang['change_data'] = "Make changes to";
 $lang['close_dialog'] = "Close";
 
-$lang['new_notifications'] = " New Notifications";
+$lang['new_notifications'] = "new notifications";
 $lang['show_all_notifications'] = "Show all notifications";
-$lang['no_notifications_available'] = 'No Notifications Available';
+$lang['no_notifications_available'] = 'No notifications available';
 
 $lang['home'] = "Home";
 $lang['login'] = "Login";
@@ -49,7 +50,9 @@ $lang['and'] = "and";
 $lang['images_not_change_immediately'] = "Some images will not change immediately, cache needs to be cleared first.";
 $lang['reupload_image_even_for_name_change'] = "* Even if you only want to change the name, you still need to re-upload the image as well.";
 
-$jsonData1 = file_get_contents(site_url('assets/json/school_ukk_hotel.postman_environment.json'));
+$lang['back_to_activity'] = 'Back to Activity';
+
+$jsonData1 = file_get_contents(site_url('assets/json/app.postman_environment.json'));
 $myData1 = json_decode($jsonData1, true)['values'];
 
 // Create variables dynamically
@@ -64,13 +67,20 @@ foreach ($myData1 as $item) {
     $lang[$item['key'] . '_select'] = "Select " . $item['value'];
     $lang[$item['key'] . '_past'] = 'Past ' . $item['value'];
 
+    $lang[$item['key'] . '_flash1_msg_1'] = $item['value'] . ' successfully saved!';
+    $lang[$item['key'] . '_flash1_msg_2'] = $item['value'] . ' failed to save!';
+    $lang[$item['key'] . '_flash1_msg_3'] = $item['value'] . ' successfully updated!';
+    $lang[$item['key'] . '_flash1_msg_4'] = $item['value'] . ' failed to update!';
+    $lang[$item['key'] . '_flash1_msg_5'] = $item['value'] . ' successfully deleted!';
+    $lang[$item['key'] . '_flash1_msg_6'] = $item['value'] . ' failed to delete!';
+
     // List of titles
     $lang[$item['key'] . '_v1_title'] = $item['value']; // Assuming $item['value'] is already in English
     $lang[$item['key'] . '_v2_title'] = "List of " . $item['value']; // "Daftar" -> "List of"
-    $lang[$item['key'] . '_v3_title'] = "Data " . $item['value']; // "Data" remains "Data"
-    $lang[$item['key'] . '_v4_title'] = "Report " . $item['value']; // "Laporan" -> "Report"
-    $lang[$item['key'] . '_v5_title'] = "Data " . $item['value']; // "Data" remains "Data"
-    $lang[$item['key'] . '_v6_title'] = "Profile " . $item['value']; // "Profil" -> "Profile"
+    $lang[$item['key'] . '_v3_title'] = $item['value'] . " Data"; // "Data" remains "Data"
+    $lang[$item['key'] . '_v4_title'] = $item['value'] . " Report"; // "Laporan" -> "Report"
+    $lang[$item['key'] . '_v5_title'] = $item['value'] . " Data"; // "Data" remains "Data"
+    $lang[$item['key'] . '_v6_title'] = $item['value'] . " Profile"; // "Profil" -> "Profile"
     $lang[$item['key'] . '_v7_title'] = $item['value'] . " Successful!"; // "Berhasil!" -> "Successful!"
     $lang[$item['key'] . '_v8_title'] = "Details of " . $item['value']; // "Detail" -> "Details of"
 

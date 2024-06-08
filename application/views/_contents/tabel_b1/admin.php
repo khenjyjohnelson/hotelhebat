@@ -24,33 +24,33 @@
 <!-- tabel fiter pesanan -->
 <table class="mb-4">
 
-<!-- method get supaya nilai dari filter bisa tampil nanti -->
-<form action="<?= site_url($language . '/' . $tabel_b1 . '/filter') ?>" method="get">
-  <tr>
+  <!-- method get supaya nilai dari filter bisa tampil nanti -->
+  <form action="<?= site_url($language . '/' . $tabel_b1 . '/filter') ?>" method="get">
+    <tr>
 
-    <td class="pr-2">
-      <div class="form-group">
-        <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>"
-          id="<?= $tabel_b1_field7_input ?>">
-          <option selected hidden value="<?= $tabel_b1_field7_value ?>"><?= $tabel_b1_field7_value ?></option>
-          <?php foreach ($tbl_b7 as $tl_b7): ?>
-            <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
-              <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
-            </option>
-          <?php endforeach ?>
-        </select>
-        <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?>
-          <?= $tabel_b7_alias ?></label>
-      </div>
-    </td>
+      <td class="pr-2">
+        <div class="form-group">
+          <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>"
+            id="<?= $tabel_b1_field7_input ?>">
+            <option selected hidden value="<?= $tabel_b1_field7_value ?>"><?= $tabel_b1_field7_value ?></option>
+            <?php foreach ($tbl_b7 as $tl_b7): ?>
+              <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
+                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
+              </option>
+            <?php endforeach ?>
+          </select>
+          <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?>
+            <?= $tabel_b7_alias ?></label>
+        </div>
+      </td>
 
-    <td>
-      <?= btn_cari() ?>
-      <?= btn_redo('tabel_b1', '/admin') ?>
-    </td>
+      <td>
+        <?= btn_cari() ?>
+        <?= btn_redo('tabel_b1', '/admin') ?>
+      </td>
 
-  </tr>
-</form>
+    </tr>
+  </form>
 </table>
 
 <p><?= lang('images_not_change_immediately') ?></p>
@@ -59,7 +59,7 @@
   <div class="col-md-10">
     <?= btn_tambah() ?>
     <?= btn_laporan('tabel_b1') ?>
-    
+
   </div>
 
   <div class="col-md-2 d-flex justify-content-end">
@@ -71,7 +71,17 @@
 
 <div id="card-view" class="row data-view active">
   <?php foreach ($tbl_b1 as $tl_b1):
-    echo card_file($tl_b1->$tabel_b1_field1, $tl_b1->$tabel_b1_field2, $tl_b1->$tabel_b1_field5, $tabel_b1, $tl_b1->$tabel_b1_field4, 'bg-danger');
+    echo card_file(
+      $tl_b1->$tabel_b1_field1,
+      $tl_b1->$tabel_b1_field2,
+      $tl_b1->$tabel_b1_field5,
+      btn_lihat($tl_b1->$tabel_b1_field1) . ' ' .
+      btn_edit($tl_b1->$tabel_b1_field1) . ' ' .
+      btn_hapus('tabel_b1', $tl_b1->$tabel_b1_field1),
+      $tabel_b1,
+      $tl_b1->$tabel_b1_field4,
+      'bg-danger'
+    );
   endforeach; ?>
 </div>
 
@@ -219,15 +229,22 @@
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
-          <div class="modal-body">
+          <form class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-light" id="data">
+                <thead></thead>
+                <tbody>
+                  <?= row_data('tabel_b1_field1', $tl_b1->$tabel_b1_field1) ?>
+                  <?= row_data('tabel_b1_field2', $tl_b1->$tabel_b1_field2) ?>
+                  <?= row_data('tabel_b1_field3', $tl_b1->$tabel_b1_field3) ?>
+                  <?= row_file($tabel_b1, 'tabel_b1_field4', $tl_b1->$tabel_b1_field4) ?>
+                  <?= row_data('tabel_b1_field5', $tl_b1->$tabel_b1_field5) ?>
 
-            <?= tampil_text('tabel_b1_field1', $tl_b1->$tabel_b1_field1) ?>
-            <?= tampil_text('tabel_b1_field2', $tl_b1->$tabel_b1_field2) ?>
-            <?= tampil_text('tabel_b1_field3', $tl_b1->$tabel_b1_field3) ?>
-            <?= tampil_file($tabel_b1, 'tabel_b1_field4', $tl_b1->$tabel_b1_field4) ?>
-            <?= tampil_text('tabel_b1_field5', $tl_b1->$tabel_b1_field5) ?>
-
-          </div>
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
+          </form>div>
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>

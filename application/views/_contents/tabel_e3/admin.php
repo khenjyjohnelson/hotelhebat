@@ -77,7 +77,8 @@
     <div class="modal-content">
       <?= modal_header(lang('add') . ' ' . lang('tabel_e3_alias'), '') ?>
 
-      <form action="<?= site_url($language . '/' . $tabel_e3 . '/tambah') ?>" method="post" enctype="multipart/form-data">
+      <form action="<?= site_url($language . '/' . $tabel_e3 . '/tambah') ?>" method="post"
+        enctype="multipart/form-data">
         <div class="modal-body">
 
           <!-- memilih salah satu tipe kamar yang ada -->
@@ -85,25 +86,25 @@
             <select class="form-control float" required name="<?= $tabel_e4_field1_input ?>">
               <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e4_field2_alias ?>...</option>
               <?php foreach ($tbl_e4 as $tl_e4): ?>
-                
+
                 <!-- mengambil nilai tipe dari tipe kamar -->
                 <option value="<?= $tl_e3->$tabel_e3_field2 ?>"><?= $tl_e3->$tabel_e4_field2; ?></option>
-                
-                <?php endforeach ?>
-                
-              </select>
-              <label class="form-label"><?= $tabel_e4_field2_alias ?></label>
+
+              <?php endforeach ?>
+
+            </select>
+            <label class="form-label"><?= $tabel_e4_field2_alias ?></label>
           </div>
 
           <div class="form-group">
             <select class="form-control float" required name="<?= $tabel_e3_field4_input ?>">
               <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e3_field4_alias ?>...</option>
-              
+
               <!-- memilih nilai status -->
               <option value="<?= $tabel_e3_field4_value2 ?>"><?= $tabel_e3_field4_value2_alias ?></option>
               <option value="<?= $tabel_e3_field4_value4 ?>"><?= $tabel_e3_field4_value4_alias ?></option>
               <option value="<?= $tabel_e3_field4_value5 ?>"><?= $tabel_e3_field4_value5_alias ?></option>
-              
+
             </select>
             <label class="form-label"><?= $tabel_e3_field4_alias ?></label>
           </div>
@@ -133,7 +134,8 @@
           <div class="modal-content">
             <?= modal_header('Edit' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
 
-            <form action="<?= site_url($language . '/' . $tabel_e3 . '/update') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= site_url($language . '/' . $tabel_e3 . '/update') ?>" method="post"
+              enctype="multipart/form-data">
               <div class="modal-body">
                 <?= input_edit('text', 'tabel_e4_field2', $tl_e3->$tabel_e4_field2, 'required readonly') ?>
                 <?= input_hidden('tabel_e4_field1', $tl_e3->$tabel_e3_field2, 'required') ?>
@@ -141,14 +143,14 @@
                 <div class="form-group">
                   <select class="form-control float" required name="<?= $tabel_e3_field4_input ?>">
                     <option selected hidden value="<?= $tl_e3->$tabel_e3_field4; ?>"><?= $tl_e3->$tabel_e3_field4; ?>
-                  </option>
-                  
-                  <!-- memilih nilai status -->
-                  <option value="<?= $tabel_e3_field4_value4 ?>"><?= $tabel_e3_field4_value4_alias ?></option>
-                  <option value="<?= $tabel_e3_field4_value5 ?>"><?= $tabel_e3_field4_value5_alias ?></option>
-                  
-                </select>
-                <label class="form-label"><?= $tabel_e3_field4_alias ?></label>
+                    </option>
+
+                    <!-- memilih nilai status -->
+                    <option value="<?= $tabel_e3_field4_value4 ?>"><?= $tabel_e3_field4_value4_alias ?></option>
+                    <option value="<?= $tabel_e3_field4_value5 ?>"><?= $tabel_e3_field4_value5_alias ?></option>
+
+                  </select>
+                  <label class="form-label"><?= $tabel_e3_field4_alias ?></label>
                 </div>
 
                 <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
@@ -168,8 +170,7 @@
 
       <?php break;
     case $tabel_e3_field4_value4: ?>
-      <div id="<?= $tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1 ?>"
-        class="modal fade <?= $tabel_c1_field7_value1 ?>">
+      <div id="<?= $tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade <?= $tabel_c1_field7_value1 ?>">
         <div class="modal-dialog">
           <div class="modal-content">
             <?= modal_header('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
@@ -180,12 +181,12 @@
                 <div class="row">
                   <div class="col-md-6">
                     <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
-                    <?= tampil_text('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
-                    <?= tampil_text('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
-                    <?= tampil_text('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
+                    <?= row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
+                    <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
+                    <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
 
-                    <?= tampil_file($tabel_e4, 'tabel_e4_field3', $tl_e3->$tabel_e4_field3) ?>
-                    <?= tampil_text('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
+                    <?= row_file($tabel_e4, 'tabel_e4_field3', $tl_e3->$tabel_e4_field3) ?>
+                    <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
 
                     <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
                     <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
@@ -201,15 +202,15 @@
                     <!-- ini adalah fitur untuk assign petugas -->
                     <div class="form-group">
                       <select class="form-control float" required name="<?= $tabel_c1_field1_input ?>">
-                        
-                      <!-- menampilkan petugas buat assign -->
-                      <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
-                      <?php
+
+                        <!-- menampilkan petugas buat assign -->
+                        <option selected hidden><?= lang('select') ?>       <?= $tabel_c1_alias ?>...</option>
+                        <?php
                         foreach ($tbl_c1 as $tl_c1):
                           if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
-                            <?= $tl_c1->$tabel_c1_field7; ?>
-                          </option>
+                              <?= $tl_c1->$tabel_c1_field7; ?>
+                            </option>
                           <?php }
                         endforeach ?>
                       </select>
@@ -253,12 +254,12 @@
                 <div class="row">
                   <div class="col-md-6">
                     <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
-                    <?= tampil_text('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
-                    <?= tampil_text('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
-                    <?= tampil_text('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
+                    <?= row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
+                    <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
+                    <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
 
-                    <?= tampil_file($tabel_e4, 'tabel_e4_field3', $tl_e3->$tabel_e4_field3) ?>
-                    <?= tampil_text('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
+                    <?= row_file($tabel_e4, 'tabel_e4_field3', $tl_e3->$tabel_e4_field3) ?>
+                    <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
                     <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
                     <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
                 jika sebaliknya, maka kamar akan menjadi <?= $tabel_e3_field4_value3_alias ?> -->
@@ -273,15 +274,15 @@
                     <!-- ini adalah fitur untuk assign petugas -->
                     <div class="form-group">
                       <select class="form-control float" required name="<?= $tabel_c1_field1_input ?>">
-                        
-                      <!-- menampilkan petugas buat assign -->
-                      <option selected hidden><?= lang('select') ?> <?= $tabel_c1_alias ?>...</option>
-                      <?php
+
+                        <!-- menampilkan petugas buat assign -->
+                        <option selected hidden><?= lang('select') ?>       <?= $tabel_c1_alias ?>...</option>
+                        <?php
                         foreach ($tbl_c1 as $tl_c1):
                           if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
-                            <?= $tl_c1->$tabel_c1_field7; ?>
-                          </option>
+                              <?= $tl_c1->$tabel_c1_field7; ?>
+                            </option>
                           <?php }
                         endforeach ?>
                       </select>
@@ -318,9 +319,17 @@
         <?= modal_header(lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
         <form>
           <div class="modal-body">
-            <?= tampil_text('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
-            <?= tampil_text('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
-            <?= tampil_text('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
+            <div class="table-responsive">
+              <table class="table table-light" id="data">
+                <thead></thead>
+                <tbody>
+                  <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
+                  <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
+                  <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->

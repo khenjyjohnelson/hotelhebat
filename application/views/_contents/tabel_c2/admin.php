@@ -110,9 +110,10 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <?= modal_header(lang('update_data') . ' ' . lang('tabel_c2_alias'), $tl_c2->$tabel_c2_field1) ?>
-       
+
         <!-- administrator tidak dapat mengubah password akun lain -->
-        <form action="<?= site_url($language . '/' . $tabel_c2 . '/update') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_c2 . '/update') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
             <?= input_hidden('tabel_c2_field1', $tl_c2->$tabel_c2_field1, 'required') ?>
             <?= input_edit('text', 'tabel_c2_field2', $tl_c2->$tabel_c2_field2, 'required') ?>
@@ -143,19 +144,27 @@
   </div>
 
 
-  
+
   <div id="lihat<?= $tl_c2->$tabel_c2_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <?= modal_header(lang('tabel_c2_alias'), $tl_c2->$tabel_c2_field1) ?>
-       
+
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <?= tampil_text('tabel_c2_field2', $tl_c2->$tabel_c2_field2) ?>
-            <?= tampil_text('tabel_c2_field3', $tl_c2->$tabel_c2_field3) ?>
-            <?= tampil_text('tabel_c2_field5', $tl_c2->$tabel_c2_field5) ?>
-            <?= tampil_text('tabel_c2_field6', $tl_c2->$tabel_c2_field6) ?>
+            <div class="table-responsive">
+              <table class="table table-light" id="data">
+                <thead></thead>
+                <tbody>
+                  <?= row_data('tabel_c2_field2', $tl_c2->$tabel_c2_field2) ?>
+                  <?= row_data('tabel_c2_field3', $tl_c2->$tabel_c2_field3) ?>
+                  <?= row_data('tabel_c2_field5', $tl_c2->$tabel_c2_field5) ?>
+                  <?= row_data('tabel_c2_field6', $tl_c2->$tabel_c2_field6) ?>
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->

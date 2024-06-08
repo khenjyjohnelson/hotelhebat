@@ -17,7 +17,7 @@ $route['(' . $languages . ')/welcome/set_language'] = 'welcome/set_language';
 $route['(' . $languages . ')'] = 'welcome';
 
 // Define routes dynamically based on JSON data
-$jsonData2 = file_get_contents(FCPATH . ('assets/json/school_ukk_hotel.postman_environment.json'));
+$jsonData2 = file_get_contents(FCPATH . ('assets/json/app.postman_environment.json'));
 $myData2 = json_decode($jsonData2, true)['values'];
 
 foreach ($myData2 as $item2) {

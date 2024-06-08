@@ -7,11 +7,12 @@ $lang['add'] = "Tambah";
 $lang['print_report'] = "Cetak Laporan";
 $lang['save_data'] = "Simpan";
 $lang['update_data'] = "Simpan Perubahan";
+$lang['change_data'] = "Lakukan perubahan ke";
 $lang['close_dialog'] = "Tutup";
 
-$lang['new_notifications'] = "Notifikasi Baru";
+$lang['new_notifications'] = "notifikasi baru";
 $lang['show_all_notifications'] = "Tampilkan semua notifikasi";
-$lang['no_notifications_available'] = "Tidak Ada Notifikasi Tersedia";
+$lang['no_notifications_available'] = "Tidak ada notifikasi tersedia";
 
 $lang['home'] = "Beranda";
 $lang['login'] = "Masuk";
@@ -49,7 +50,10 @@ $lang['and'] = "dan";
 $lang['images_not_change_immediately'] = "Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.";
 $lang['reupload_image_even_for_name_change'] = "* Meski ingin mengubah nama saja, tetap harus mengupload ulang gambar juga.";
 
-$jsonData1 = file_get_contents(site_url('assets/json/school_ukk_hotel_id.postman_environment.json'));
+$lang['back_to_activity'] = 'Kembali ke Aktivitas';
+
+
+$jsonData1 = file_get_contents(site_url('assets/json/app_id.postman_environment.json'));
 $myData1 = json_decode($jsonData1, true)['values'];
 
 // Create variables dynamically
@@ -63,6 +67,13 @@ foreach ($myData1 as $item) {
     $lang[$item['key'] . '_btn'] = $item['value'];
     $lang[$item['key'] . '_select'] = "Pilih " . $item['value'];
     $lang[$item['key'] . '_past'] = $item['value'] . ' lama';
+    
+    $lang[$item['key'] . '_flash1_msg_1'] = $item['value'] . ' berhasil disimpan!';
+    $lang[$item['key'] . '_flash1_msg_2'] = $item['value'] . ' gagal disimpan!';
+    $lang[$item['key'] . '_flash1_msg_3'] = $item['value'] . ' berhasil diperbarui!';
+    $lang[$item['key'] . '_flash1_msg_4'] = $item['value'] . ' gagal diperbarui!';
+    $lang[$item['key'] . '_flash1_msg_5'] = $item['value'] . ' berhasil dihapus!';
+    $lang[$item['key'] . '_flash1_msg_6'] = $item['value'] . ' gagal dihapus!';
 
     // List of titles
     $lang[$item['key'] . '_v1_title'] = $item['value'];

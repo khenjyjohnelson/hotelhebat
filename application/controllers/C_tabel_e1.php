@@ -5,23 +5,6 @@ include 'Omnitags.php';
 
 class C_tabel_e1 extends Omnitags
 {
-	// Halaman publik
-	public function index()
-	{
-		$this->declarew();
-
-		$data1 = array(
-			'title' => lang('tabel_e1_alias_v1_title'),
-			'konten' => $this->v1['tabel_e1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
-			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
-		);
-
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
-
-		$this->load->view('_layouts/template', $data);
-	}
-
 	// Halaman khusus akun
 
 
@@ -37,7 +20,7 @@ class C_tabel_e1 extends Omnitags
 			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -180,7 +163,7 @@ class C_tabel_e1 extends Omnitags
 			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view($this->v4['tabel_e1'], $data);
 	}

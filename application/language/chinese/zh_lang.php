@@ -7,6 +7,7 @@ $lang['add'] = "添加";
 $lang['print_report'] = "打印报告";
 $lang['save_data'] = "保存";
 $lang['update_data'] = "保存更改";
+$lang['change_data'] = "修改至";
 $lang['close_dialog'] = "关闭";
 
 $lang['new_notifications'] = "新通知";
@@ -33,7 +34,7 @@ $lang['dont_have_account'] = "没有账户吗？";
 $lang['already_have_account'] = "已经有账户了吗？";
 
 $lang['explore'] = '探索';
-$lang['address'] = '地址';
+$lang['address'] = '地';
 $lang['follow'] = '跟随';
 $lang['order_now'] = '立即订购';
 $lang['reservations'] = '预订';
@@ -49,7 +50,9 @@ $lang['and'] = "和";
 $lang['images_not_change_immediately'] = "有些图片不会立即更改，需要先清除缓存。";
 $lang['reupload_image_even_for_name_change'] = "* 即使只想更改名称，也必须重新上传图片。";
 
-$jsonData1 = file_get_contents(site_url('assets/json/school_ukk_hotel_zh.postman_environment.json'));
+$lang['back_to_activity'] = '返回活动';
+
+$jsonData1 = file_get_contents(site_url('assets/json/app_zh.postman_environment.json'));
 $myData1 = json_decode($jsonData1, true)['values'];
 
 // Create variables dynamically
@@ -83,4 +86,13 @@ foreach ($myData1 as $item) {
     $lang[$item['key'] . '_v6_msg'] = $item['value'];
     $lang[$item['key'] . '_v7_msg'] = $item['value'];
     $lang[$item['key'] . '_v8_msg'] = $item['value'] . '不可用。';
+    
+    // Flash messages
+    $lang[$item['key'] . '_flash1_msg_1'] = $item['value'] . ' 保存成功！';
+    $lang[$item['key'] . '_flash1_msg_2'] = $item['value'] . ' 保存失败！';
+    $lang[$item['key'] . '_flash1_msg_3'] = $item['value'] . ' 更新成功！';
+    $lang[$item['key'] . '_flash1_msg_4'] = $item['value'] . ' 更新失败！';
+    $lang[$item['key'] . '_flash1_msg_5'] = $item['value'] . ' 删除成功！';
+    $lang[$item['key'] . '_flash1_msg_6'] = $item['value'] . ' 删除失败！';
 }
+

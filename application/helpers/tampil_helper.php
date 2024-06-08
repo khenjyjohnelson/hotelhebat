@@ -63,7 +63,7 @@ if (!function_exists('tampil_file')) {
             <label>{$alias}</label>
         </div>
         <div class="form-group">
-            <img src="img/{$tabel_class}/{$value}" width="450">
+            <img src="img/{$tabel_class}/{$value}" width="300">
         </div>
         HTML;
     }

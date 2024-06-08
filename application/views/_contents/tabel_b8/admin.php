@@ -37,7 +37,18 @@
 
 <div id="card-view" class="row data-view active">
   <?php foreach ($tbl_b8 as $tl_b8):
-    echo card_file($tl_b8->$tabel_b8_field1, $tl_b8->$tabel_b8_field2, $tl_b8->$tabel_b8_field5, $tabel_b8, $tl_b8->$tabel_b8_field3, 'bg-danger');
+    echo card_regular(
+      $tl_b8->$tabel_b8_field1,
+      'tabel_b8',
+      $tl_b8->$tabel_b8_field2,
+      '<div style="display: inline-block; width: 100%;">' .
+      card_content('tabel_b8_field3', $tl_b8->$tabel_b8_field3) .
+      '</div>',
+      btn_lihat($tl_b8->$tabel_b8_field1) . ' ' .
+      btn_edit($tl_b8->$tabel_b8_field1) . ' ' .
+      btn_hapus('tabel_b8', $tl_b8->$tabel_b8_field1),
+      'bg-danger'
+    );
   endforeach; ?>
 </div>
 
@@ -142,13 +153,20 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-light" id="data">
+                <thead></thead>
+                <tbody>
+                  <?= row_data('tabel_b8_field1', $tl_b8->$tabel_b8_field1) ?>
+                  <?= row_data('tabel_b8_field2', $tl_b8->$tabel_b8_field2) ?>
+                  <?= row_data('tabel_b8_field3', $tl_b8->$tabel_b8_field3) ?>
+                  <?= tampil_icon('tabel_b8_field4', $tl_b8->$tabel_b8_field4) ?>
 
-            <?= tampil_text('tabel_b8_field1', $tl_b8->$tabel_b8_field1) ?>
-            <?= tampil_text('tabel_b8_field2', $tl_b8->$tabel_b8_field2) ?>
-            <?= tampil_text('tabel_b8_field3', $tl_b8->$tabel_b8_field3) ?>
-            <?= tampil_icon('tabel_b8_field4', $tl_b8->$tabel_b8_field4) ?>
 
-
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->

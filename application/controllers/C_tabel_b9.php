@@ -29,7 +29,7 @@ class C_tabel_b9 extends Omnitags
 				'notif_count' => $this->notif_null->num_rows(),
 			);
 
-			$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+			$data = array_merge($data1, $this->package);
 
 			if ($this->input->get('refresh') !== 'true') {
 				// Redirect to the same method with a refresh parameter
@@ -74,7 +74,7 @@ class C_tabel_b9 extends Omnitags
 			'tbl_b9' => $this->tl_b9->get_b9_with_b8_by_b9_field2($tabel_b9_field2)->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -91,7 +91,7 @@ class C_tabel_b9 extends Omnitags
 			'tbl_b9' => $this->tl_b9->get_all_b9()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view('_layouts/template', $data);
 	}
@@ -152,7 +152,7 @@ class C_tabel_b9 extends Omnitags
 			'tbl_b9' => $this->tl_b9->get_all_b9()->result(),
 		);
 
-		$data = array_merge($data1, $this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_new, $this->v_confirm);
+		$data = array_merge($data1, $this->package);
 
 		$this->load->view($this->v4['tabel_b9'], $data);
 	}

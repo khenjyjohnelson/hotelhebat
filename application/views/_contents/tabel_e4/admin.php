@@ -43,7 +43,16 @@
 
 <div id="card-view" class="row data-view active">
   <?php foreach ($tbl_e4 as $tl_e4):
-    echo card_file($tl_e4->$tabel_e4_field1, $tl_e4->$tabel_e4_field2, 'Rp ' . number_format($tl_e4->$tabel_e4_field5, '2', ',', '.'), $tabel_e4, $tl_e4->$tabel_e4_field3, 'bg-danger');
+    echo card_file(
+      $tl_e4->$tabel_e4_field1,
+      $tl_e4->$tabel_e4_field2,
+      'Rp ' . number_format($tl_e4->$tabel_e4_field5, '2', ',', '.'),
+      btn_lihat($tl_e4->$tabel_e4_field1) . ' ' .
+      btn_edit($tl_e4->$tabel_e4_field1),
+      $tabel_e4,
+      $tl_e4->$tabel_e4_field3,
+      'bg-danger'
+    );
   endforeach; ?>
 </div>
 
@@ -173,12 +182,15 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="row">
-              <div class="col-md-6">
-                <?= tampil_text('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
-                <?= tampil_file($tabel_e4, 'tabel_e4_field3', $tl_e4->$tabel_e4_field3) ?>
-              </div>
-
+            <div class="table-responsive">
+              <table class="table table-light" id="data">
+                <thead></thead>
+                <tbody>
+                  <?= row_data('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
+                  <?= row_file($tabel_e4, 'tabel_e4_field3', $tl_e4->$tabel_e4_field3) ?>
+                </tbody>
+                <tfoot></tfoot>
+              </table>
             </div>
           </div>
 

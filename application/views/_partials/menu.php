@@ -3,21 +3,9 @@
         case $tabel_c2_field6_value1:
             ?>
             <li class="nav-item pb-2">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url('/') ?>"><?= lang('home') ?></a>
+                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/') ?>"><?= lang('home') ?></a>
             </li>
-            <li class="nav-item pb-2">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_e4) ?>">
-                    <?= lang('tabel_e4_alias') ?>
-                </a>
-            </li>
-            <li class="nav-item pb-2">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_e2) ?>">
-                    <?= lang('tabel_e2_alias') ?>
-                </a>
-            </li>
-            <li class="nav-item pb-2">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>"><?= lang('login') ?></a>
-            </li>
+            <?= nav_item(lang('login'), $tabel_c2, '/login') ?>
             <?php break;
         case $tabel_c2_field6_value5:
         case $tabel_c2_field6_value2:
@@ -30,78 +18,42 @@
                 case $tabel_c2_field6_value4:
                     ?>
 
-                    <li class="nav-item pb-2">
-                        <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/' . 'dashboard') ?>"><?= lang('dashboard') ?></a>
-                    </li>
+                    <?= nav_item(lang('dashboard'), '', '') ?>
+
                     <li class="nav-item pb-2">
                         <div class="dropdown">
-                            <a class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#"><?= lang('master_data') ?> <i
-                                    class="fas fa-caret-down"></i></a>
+                            <?= menu_logo(lang('master_data')) ?>
+
                             <div class="dropdown-menu dropdown-menu-right">
                                 <?php switch (userdata($tabel_c2_field6)) {
                                     case $tabel_c2_field6_value2:
                                         ?>
-                                        <h6 class="dropdown-header">
-                                            <?= lang('tabel_f3_alias') ?>
-                                        </h6>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/admin') ?>">
-                                            <?= lang('tabel_f3_alias') ?>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/history') ?>">
-                                            <?= lang('tabel_f3_alias_past') ?>
-                                        </a>
+                                        <h6 class="dropdown-header"><?= lang('tabel_f3_alias') ?></h6>
+                                        <?= dropdown_menu('tabel_f3', '/admin') ?>
+                                        <?= dropdown_menu_unique(lang('tabel_f3_alias_past'), $tabel_f3, '/history') ?>
                                         <?php break;
 
                                     case $tabel_c2_field6_value3:
                                         ?>
                                         <h6 class="dropdown-header"><?= lang('data') ?></h6>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>">
-                                            <?= lang('tabel_e4_alias') ?>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e1 . '/admin') ?>">
-                                            <?= lang('tabel_e1_alias') ?>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e2 . '/admin') ?>">
-                                            <?= lang('tabel_e2_alias') ?>
-                                        </a>
+                                        <?= dropdown_menu('tabel_e4', '/admin') ?>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header"><?= lang('operational') ?></h6>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c1 . '/admin') ?>">
-                                            <?= lang('tabel_c1_alias') ?>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">
-                                            <?= lang('tabel_e3_alias') ?>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/admin') ?>">
-                                            <?= lang('tabel_c2_alias') ?>
-                                        </a>
+                                        <?= dropdown_menu('tabel_c2', '/admin') ?>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_a1 . '/profil') ?>">
-                                            <?= lang('tabel_a1_alias') ?>
-                                        </a>
+                                        <?= dropdown_menu('tabel_a1', '/profil') ?>
                                         <?php break;
                                     case $tabel_c2_field6_value4:
                                         ?>
 
                                         <h6 class="dropdown-header"><?= lang('manage') ?></h6>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e3 . '/admin') ?>">
-                                            <?= lang('tabel_e3_alias') ?>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f2 . '/admin') ?>">
-                                            <?= lang('tabel_f2_alias') ?>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f1 . '/admin') ?>">
-                                            <?= lang('tabel_f1_alias') ?>
-                                        </a>
+                                        <?= dropdown_menu('tabel_f2', '/admin') ?>
+                                        <?= dropdown_menu('tabel_f1', '/admin') ?>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header"><?= lang('operational') ?></h6>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f4 . '/admin') ?>">
-                                            <?= lang('tabel_f4_alias') ?>
-                                        </a>
+                                        <?= dropdown_menu('tabel_f4', '/admin') ?>
                                         <h6 class="dropdown-header"><?= lang('data') ?></h6>
-                                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4 . '/admin') ?>">
-                                            <?= lang('tabel_e4_alias') ?>
-                                        </a>
+                                        <?= dropdown_menu('tabel_e4', '/admin') ?>
 
                                         <?php break;
                                     default:
@@ -120,14 +72,14 @@
 
             <li class="nav-item pb-2 dropdown">
                 <a type="button" class="nav-link text-decoration-none h4 mt-1 font-weight-bold" data-toggle="dropdown" href="#">
-                   <i class="fas fa-bell"></i><?php if (!$notif_count) { ?><span>&nbsp;&nbsp;</span><?php
+                    <i class="fas fa-bell"></i><?php if (!$notif_count) { ?><span>&nbsp;&nbsp;</span><?php
                     } else { ?>
-                            <span><?= $notif_count ?></span><?php } ?>
+                        <span><?= $notif_count ?></span><?php } ?>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <div class="dropdown-header d-flex justify-content-between align-items-center">
-                        <span><?= $notif_count . lang('new_notifications') ?></span>
+                        <span><?= $notif_count . ' ' . lang('new_notifications') ?></span>
                         <div>
                             <span class="px-3"></span> <!-- Adding space between buttons -->
                             <a href="<?= site_url($language . '/' . $tabel_b9 . '/update') ?>" class="btn btn-link">
@@ -139,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="list-group" style="min-width: 350px;">
+                    <div class="list-group" style="min-width: 350px; max-height: 300px; overflow-y: auto;">
 
                         <?php if (!$notif) { ?>         <?php } else {
                             foreach ($notif as $nf):
@@ -165,7 +117,8 @@
                                         </a>
 
                                     <?php } else { ?>
-                                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>" class="list-group-item">
+                                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/detail/' . $nf->$tabel_b9_field1) ?>"
+                                            class="list-group-item">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-2">
                                                     <?= $nf->$tabel_b8_field4 ?>
@@ -199,7 +152,8 @@
                         } ?>
                     </div>
                     <div class="dropdown-header">
-                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/daftar') ?>" class="text-muted"><?= lang('show_all_notifications') ?></a>
+                        <a href="<?= site_url($language . '/' . $tabel_b9 . '/daftar') ?>"
+                            class="text-muted"><?= lang('show_all_notifications') ?></a>
                     </div>
                 </div>
             </li>
@@ -211,29 +165,16 @@
                     <!-- tombol ini akan memunculkan dropdown tanpa menggunakan button: https://stackoverflow.com/questions/38576503/how-to-remove-the-arrow-in-dropdown-in-bootstrap- terimakasih pada link di atas -->
                     <?php switch (userdata($tabel_c2_field6)) {
                         case $tabel_c2_field6_value2:
-                        case $tabel_c2_field6_value3:
-                            ?>
-                            <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
-                                <h4><i class="fas fa-user-tie"></i> <i class="fas fa-caret-down"></i></h4>
-                            </a>
-
+                        case $tabel_c2_field6_value3: ?>
+                            <?= menu_logo('<i class="fas fa-user-tie"></i>') ?>
                             <?php break;
-                        case $tabel_c2_field6_value4:
-                            ?>
-                            <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
-                                <h4><i class="fas fa-user"></i> <i class="fas fa-caret-down"></i></h4>
-                            </a>
+                        case $tabel_c2_field6_value4: ?>
+                            <?= menu_logo('<i class="fas fa-user"></i>') ?>
                             <?php break;
-                        case $tabel_c2_field6_value5:
-                            ?>
-                            <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
-                                <h4>
-                                    <?= userdata($tabel_c2_field2) ?> <i class="fas fa-caret-down"></i>
-                                </h4>
-                            </a>
+                        case $tabel_c2_field6_value5: ?>
+                            <?= menu_logo(userdata($tabel_c2_field2)) ?>
                             <?php break;
-                        default:
-                            ?>
+                        default: ?>
                             <!-- Show the dropdown for other cases -->
                             <?php break;
                     } ?>
@@ -242,30 +183,15 @@
                             case $tabel_c2_field6_value5:
                                 ?>
                                 <h6 class="dropdown-header"><?= lang('explore') ?></h6>
-                                <a class="dropdown-item" href="<?= site_url('/') ?>"><?= lang('order_now') ?></a>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e4) ?>">
-                                    <?= lang('tabel_e4_alias') ?>
-                                </a>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_e2) ?>">
-                                    <?= lang('tabel_e2_alias') ?>
-                                </a>
+                                <?= dropdown_menu_unique(lang('order_now'), '', '') ?>
+                                <?= dropdown_menu('tabel_e4', '') ?>
                                 <div class="dropdown-divider"></div>
                                 <h6 class="dropdown-header"><?= lang('reservations') ?></h6>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f2 . '/daftar') ?>">
-                                    <?= lang('tabel_f2_alias') ?>
-                                </a>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/daftar') ?>">
-                                    <?= lang('tabel_f3_alias') ?>
-                                </a>
+                                <?= dropdown_menu('tabel_f2', '/daftar') ?>
+                                <?= dropdown_menu('tabel_f3', '/daftar') ?>
                                 <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header"><?= lang('history') ?></h6>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f1 . '/daftar') ?>">
-                                    <?= lang('tabel_f1_alias') ?>
-                                </a>
-                                <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_f3 . '/daftar_history') ?>">
-                                    <?= lang('tabel_f3_alias_past') ?>
-                                </a>
-                                <div class="dropdown-divider"></div>
+                                <?= dropdown_menu('tabel_f1', '/daftar') ?>
+                                <?= dropdown_menu_unique(lang('tabel_f3_alias'), $tabel_f3, '/daftar_history') ?>
                                 <?php break;
                             case $tabel_c2_field6_value2:
                             case $tabel_c2_field6_value3:
@@ -278,8 +204,8 @@
                                 <?php break;
                         } ?>
 
-                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/profil') ?>"><?= lang('tabel_c2_alias2') ?></a>
-                        <a class="dropdown-item" href="<?= site_url($language . '/' . $tabel_c2 . '/logout') ?>"><?= lang('logout') ?></a>
+                        <?= dropdown_menu_unique(lang('tabel_c2_alias2'), $tabel_c2, '/profil') ?>
+                        <?= dropdown_menu_unique(lang('logout'), $tabel_c2, '/logout') ?>
 
 
                     </div>
@@ -289,7 +215,8 @@
         default:
             break;
     } ?>
-    <li class="nav-item pb-2">
+
+<li class="nav-item pb-2">
         <form action="<?= site_url($language . '/welcome/set_language'); ?>" method="post" class="form-inline">
             <select name="language" class="form-control" onchange="this.form.submit()">
                 <option value="en" <?= (userdata('site_lang') == 'en') ? 'selected' : ''; ?>>EN</option>
