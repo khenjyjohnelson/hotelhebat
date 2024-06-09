@@ -29,7 +29,7 @@
           <!-- <p class="text-center"><a class="text-decoration-none" href="<?= site_url($language . '/' . $tabel_c1 . '/login') ?>">Login sebagai <?= $tabel_c1_alias ?></a></p> -->
 
           <!-- pesan untuk pengguna yang login -->
-          <p class="small text-center text-danger"><?= get_flashdata('flash1') ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata($flash1) ?></p>
 
           <div class="form-group">
             <div class="d-flex justify-content-center mb-4">

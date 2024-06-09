@@ -76,12 +76,55 @@ if (!function_exists('set_security_headers')) {
     function set_security_headers()
     {
         $CI =& get_instance();
-        
+
         $CI->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
         $CI->output->set_header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
         $CI->output->set_header("X-Frame-Options: SAMEORIGIN");
         $CI->output->set_header("X-Content-Type-Options: nosniff");
         $CI->output->set_header("Referrer-Policy: strict-origin-when-cross-origin");
         $CI->output->set_header("Permissions-Policy: geolocation=(self 'http://localhost/me/hotel')");
+    }
+}
+
+// Function to get the device type
+// Function to get the device type and operating system
+if (!function_exists('getDeviceTypeAndOS')) {
+    function getDeviceTypeAndOS($userAgent)
+    {
+        // List of common mobile device strings
+        $mobileDevices = array(
+            'iPhone',
+            'iPad',
+            'iPod',
+            'Android',
+            'Windows Phone',
+            'BlackBerry',
+        );
+
+        // List of common desktop operating system strings
+        $desktopOS = array(
+            'Windows',
+            'Linux',
+            'Macintosh',
+            'Mac OS X',
+            'Mac OS'
+        );
+
+        // Check if the user agent contains any of the mobile device strings
+        foreach ($mobileDevices as $device) {
+            if (stripos($userAgent, $device) !== false) {
+                return $device . ' (Mobile)';
+            }
+        }
+
+        // Check if the user agent contains any of the desktop operating system strings
+        foreach ($desktopOS as $os) {
+            if (stripos($userAgent, $os) !== false) {
+                return 'Desktop on ' . $os;
+            }
+        }
+
+        // If no specific device category is found, consider it as a desktop with unknown OS
+        return 'Desktop (Unknown OS)';
     }
 }

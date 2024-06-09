@@ -50,7 +50,7 @@
               sebagai <?= $tabel_c2_alias ?></a></p>
 
           <!-- pesan untuk pengguna yang login -->
-          <p class="small text-center text-danger"><?= get_flashdata('flash1') ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata($flash1) ?></p>
 
           <!-- tombol login dan signup -->
           <div class="form-group d-flex justify-content-around">

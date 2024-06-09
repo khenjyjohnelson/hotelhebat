@@ -34,7 +34,7 @@
           <?= input_add('text', 'tabel_c2_field5', 'required') ?>
 
           <!-- pesan untuk pengguna yang signup -->
-          <p class="small text-center text-danger"><?= get_flashdata('flash1') ?></p>
+          <p class="small text-center text-danger"><?= get_flashdata($flash1) ?></p>
 
           <!-- tombol signup dan login -->
           <div class="form-group">
