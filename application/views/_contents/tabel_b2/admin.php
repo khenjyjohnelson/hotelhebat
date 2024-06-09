@@ -119,7 +119,7 @@
           <td><?= $tl_b2->$tabel_b2_field2 ?></td>
           <td><?= $tl_b2->$tabel_b2_field3 ?></td>
           <td><img src="img/<?= $tabel_b2 ?>/<?= $tl_b2->$tabel_b2_field4 ?>" width="100"></td>
-          <td><?= truncateText($tl_b2->$tabel_b2_field5) ?></td>
+          <td><?= truncateText($tl_b2->$tabel_b2_field5, 100) ?></td>
           <td>
             <?php if ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value1) { ?>
               <?= btn_toggle_off('tabel_b2', $tl_b2->$tabel_b2_field1) ?>

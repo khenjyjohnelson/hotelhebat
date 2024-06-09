@@ -9,19 +9,27 @@ if (!class_exists('Omnitags')) {
         public function __construct()
         {
             parent::__construct();
+            //Menampilkan media
             $this->load->helper('tampil');
+            // Tampil button
             $this->load->helper('button');
-            $this->load->helper('datetime');
-            $this->load->helper('text');
+            // Kelola teks
+            $this->load->helper('media');
+            // Tampil input
             $this->load->helper('input');
-            $this->load->helper('option');
+            // Tampil modal
             $this->load->helper('modal');
+            // Tampil card
             $this->load->helper('card');
+            // Tampil dropdown
             $this->load->helper('dropdown');
-            $this->load->helper('table');
+            // Kelola js
             $this->load->helper('js');
+            // Kelola url
             $this->load->helper('url');
+            // Kelola views
             $this->load->helper('views');
+            // Kelola session
             $this->load->helper('session');
             $this->load->library('session');
             $this->load->library('user_agent');
@@ -30,67 +38,10 @@ if (!class_exists('Omnitags')) {
             $this->language_code = $this->uri->segment(1);
 
             // Load and set the language
-            $this->load_and_set_language();
+            load_and_set_language();
 
             // Set security headers
-            $this->set_security_headers();
-        }
-
-        private function load_and_set_language()
-        {
-            // Detect the preferred language
-            $preferred_lang = $this->detect_preferred_language();
-
-            // Define language folder and file mapping
-            $language_mapping = [
-                'zh' => 'chinese',
-                'id' => 'indonesian',
-                'en' => 'english',
-                'fr' => 'french'
-            ];
-
-            // Load the appropriate language file
-            if (array_key_exists($preferred_lang, $language_mapping)) {
-                $folder = $language_mapping[$preferred_lang];
-                $this->lang->load($preferred_lang . '_lang', $folder);
-            } else {
-                // Default to English if no preference or invalid preference is found
-                $this->lang->load('id_lang', 'indonesian');
-            }
-        }
-
-        private function detect_preferred_language()
-        {
-            // Check if a language is set in the session
-            if (userdata('site_lang')) {
-                return userdata('site_lang');
-            }
-
-            // Check if a language parameter is present in the URL
-            if (get('language')) {
-                set_userdata('site_lang', get('language'));
-                return get('language');
-            }
-
-            // Check if language is provided in the URL segment
-            $segment = $this->uri->segment(1);
-            if (!empty($segment) && in_array($segment, ['zh', 'id', 'en', 'fr'])) {
-                set_userdata('site_lang', $segment);
-                return $segment;
-            }
-
-            // Default to English if no preference is found
-            return 'id';
-        }
-
-        private function set_security_headers()
-        {
-            $this->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
-            $this->output->set_header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
-            $this->output->set_header("X-Frame-Options: SAMEORIGIN");
-            $this->output->set_header("X-Content-Type-Options: nosniff");
-            $this->output->set_header("Referrer-Policy: strict-origin-when-cross-origin");
-            $this->output->set_header("Permissions-Policy: geolocation=(self 'http://localhost/me/hotel')");
+            set_security_headers();
         }
 
         // Di bawah ini aku berencana untuk membuat sebuah array yang menampung semua jenis alias dari field dan nama tabel

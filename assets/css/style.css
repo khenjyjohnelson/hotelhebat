@@ -156,3 +156,24 @@ hr {
 	font-size: 11px;
 }
 
+/* Define styles for the responsive image */
+.responsive-image {
+    display: block; /* Ensure the image behaves as a block element */
+    max-width: 100%; /* Limit image width to its container */
+    height: auto; /* Maintain image aspect ratio */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Media query for screens smaller than 768px (typical mobile devices) */
+@media (max-width: 768px) {
+    .responsive-image {
+        width: 100%; /* Make image width 100% on mobile devices */
+    }
+}
+
+/* Media query for screens larger than 768px (desktop screens) */
+@media (min-width: 769px) {
+    .responsive-image {
+        width: 50%; /* Keep image width at 50% on desktop screens */
+    }
+}

@@ -29,9 +29,9 @@
 
   <?php switch (userdata($tabel_c2_field6)) {
     case $tabel_c2_field6_value3: ?>
-      <?= card_count($tabel_c2_alias, 'tabel_c2', 'bg-danger', $tbl_c2) ?>
-      <?= card_count($tabel_c1_alias, 'tabel_c1', 'bg-danger', $tbl_c1) ?>
-      <?= card_count($tabel_d3_alias, 'tabel_d3', 'bg-danger', $tbl_d3) ?>
+      <?= card_count(lang('tabel_c2_alias'), 'tabel_c2', 'bg-danger', $tbl_c2) ?>
+      <?= card_count(lang('tabel_c1_alias'), 'tabel_c1', 'bg-danger', $tbl_c1) ?>
+      <?= card_count(lang('tabel_d3_alias'), 'tabel_d3', 'bg-danger', $tbl_d3) ?>
 
       <?php break;
 
@@ -51,19 +51,19 @@
 
   <?php switch (userdata($tabel_c2_field6)) {
     case $tabel_c2_field6_value3: ?>
-      <?= card_count($tabel_e4_alias, 'tabel_e4', 'bg-danger', $tbl_e4) ?>
-      <?= card_count($tabel_e3_alias, 'tabel_e3', 'bg-danger', $tbl_e3) ?>
-      <?= card_count($tabel_e2_alias, 'tabel_e2', 'bg-danger', $tbl_e2) ?>
-      <?= card_count($tabel_e1_alias, 'tabel_e1', 'bg-danger', $tbl_e1) ?>
+      <?= card_count(lang('tabel_e4_alias'), 'tabel_e4', 'bg-danger', $tbl_e4) ?>
+      <?= card_count(lang('tabel_e3_alias'), 'tabel_e3', 'bg-danger', $tbl_e3) ?>
+      <?= card_count(lang('tabel_e2_alias'), 'tabel_e2', 'bg-danger', $tbl_e2) ?>
+      <?= card_count(lang('tabel_e1_alias'), 'tabel_e1', 'bg-danger', $tbl_e1) ?>
       <?php break;
 
     case $tabel_c2_field6_value4: ?>
-      <?= card_count($tabel_e3_alias, 'tabel_e3', 'bg-danger', $tbl_e3) ?>
-      <?= card_count($tabel_f2_alias, 'tabel_f2', 'bg-danger', $tbl_f2) ?>
+      <?= card_count(lang('tabel_e3_alias'), 'tabel_e3', 'bg-danger', $tbl_e3) ?>
+      <?= card_count(lang('tabel_f2_alias'), 'tabel_f2', 'bg-danger', $tbl_f2) ?>
       <?php break;
 
     case $tabel_c2_field6_value2: ?>
-      <?= card_count($tabel_f3_alias, 'tabel_f3', 'bg-danger', $tbl_f3) ?>
+      <?= card_count(lang('tabel_f3_alias'), 'tabel_f3', 'bg-danger', $tbl_f3) ?>
       <?php break;
 
 

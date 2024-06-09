@@ -26,7 +26,7 @@ if (!function_exists('back_to_activity')) {
         $CI =& get_instance();
         // Load session library
         $CI->load->library('session');
-        
+
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
@@ -174,8 +174,8 @@ if (!function_exists('btn_sync')) {
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
-        
-        
+
+
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
 
@@ -185,6 +185,22 @@ if (!function_exists('btn_sync')) {
         <a class="btn mr-1 mb-2 btn-primary" onclick="return confirm('Sync with {$value}?')" href="{$url}">
           <i class="fas fa-sync-alt"></i>
         </a>
+        HTML;
+    }
+}
+
+if (!function_exists('btn_read_more')) {
+    function btn_read_more($table, $id)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $url = xss_clean(site_url($data['language'] . '/' . $data[$table] . '/detail/' . $id));
+
+        return <<<HTML
+        <a class="text-decoration-none" href="{$url}"> read more</a>
         HTML;
     }
 }
@@ -247,8 +263,8 @@ if (!function_exists('btn_print')) {
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
-        
-        
+
+
         $controller = xss_clean($data[$tabel]);
 
         $lang = xss_clean($data['language']);
@@ -313,8 +329,8 @@ if (!function_exists('btn_hapus')) {
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
-        
-        
+
+
         $controller = xss_clean($data[$tabel]);
         $alias = xss_clean(lang($tabel . '_alias'));
         $lang = xss_clean($data['language']);
@@ -336,8 +352,8 @@ if (!function_exists('btn_toggle_on')) {
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
-        
-        
+
+
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
 
@@ -359,8 +375,8 @@ if (!function_exists('btn_toggle_off')) {
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
-        
-        
+
+
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
 

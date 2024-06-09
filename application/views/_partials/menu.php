@@ -40,7 +40,6 @@
                                         <h6 class="dropdown-header"><?= lang('data') ?></h6>
                                         <?= dropdown_menu('tabel_e1', '/admin') ?>
                                         <?= dropdown_menu('tabel_e2', '/admin') ?>
-                                        <?= dropdown_menu('tabel_e3', '/admin') ?>
                                         <?= dropdown_menu('tabel_e4', '/admin') ?>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header"><?= lang('operational') ?></h6>
@@ -53,14 +52,12 @@
                                         ?>
 
                                         <h6 class="dropdown-header"><?= lang('manage') ?></h6>
+                                        <?= dropdown_menu('tabel_e3', '/admin') ?>
                                         <?= dropdown_menu('tabel_f2', '/admin') ?>
                                         <?= dropdown_menu('tabel_f1', '/admin') ?>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header"><?= lang('operational') ?></h6>
                                         <?= dropdown_menu('tabel_f4', '/admin') ?>
-                                        <h6 class="dropdown-header"><?= lang('data') ?></h6>
-                                        <?= dropdown_menu('tabel_e3', '/admin') ?>
-                                        <?= dropdown_menu('tabel_e4', '/admin') ?>
 
                                         <?php break;
                                     default:
