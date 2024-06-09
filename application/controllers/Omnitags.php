@@ -146,7 +146,7 @@ if (!class_exists('Omnitags')) {
                 $this->v_new[$item['key'] . '_new'] = 'new_' . $item['value'];
                 $this->v_confirm[$item['key'] . '_confirm'] = 'confirm_' . $item['value'];
                 $this->reverse[$item['value'] . '_realname'] = $item['key'];
-                
+
                 $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
                 $this->v_post[$item['key']] = post('txt_' . $item['value']);
                 $this->v_get[$item['key']] = get('txt_' . $item['value']);
@@ -234,6 +234,70 @@ if (!class_exists('Omnitags')) {
             );
 
             $this->package = array_merge($this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_confirm, $this->reverse);
+        }
+
+        public function session_2()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                default:
+                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    break;
+            }
+        }
+
+        public function session_3()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value3']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                default:
+                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    break;
+            }
+        }
+
+        public function session_4()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value4']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                default:
+                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    break;
+            }
+        }
+
+        public function session_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                default:
+                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    break;
+            }
         }
 
         public function handle_1a($aksi, $object)

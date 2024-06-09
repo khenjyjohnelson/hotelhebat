@@ -46,6 +46,8 @@ class C_tabel_e2 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$data = array(
 			$this->aliases['tabel_e2_field1'] => '',
 			$this->aliases['tabel_e2_field2'] => $this->v_post['tabel_e2_field2'],
@@ -72,6 +74,8 @@ class C_tabel_e2 extends Omnitags
 
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_e2_field1 = $this->v_post['tabel_e2_field1'];
 		$data = array(
 			$this->aliases['tabel_e2_field2'] => $this->v_post['tabel_e2_field2'],
@@ -88,6 +92,8 @@ class C_tabel_e2 extends Omnitags
 	public function delete($tabel_e2_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_e2 = $this->tl_e2->get_e2_by_e2_field1($tabel_e2_field1)->result();
 		$tabel_e2_field3 = $tabel_e2[0]->img;

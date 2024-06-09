@@ -32,6 +32,8 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$data = array(
 			$this->aliases['tabel_b7_field1'] => '',
 			$this->aliases['tabel_b7_field2'] => $this->v_post['tabel_b7_field2'],
@@ -49,6 +51,8 @@ class C_tabel_b7 extends Omnitags
 	public function update() //update tidak diperlukan di sini
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
@@ -69,6 +73,8 @@ class C_tabel_b7 extends Omnitags
 	public function update_favicon()
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";	
 
@@ -112,6 +118,8 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$param = $this->v_post['tabel_b7_field2'] . "_";	
 
 		$table = $this->tl_b7->get_b7_by_b7_field1($this->v_post['tabel_b7_field1'])->result();
@@ -153,6 +161,8 @@ class C_tabel_b7 extends Omnitags
 	public function update_foto()
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";		
 
@@ -196,6 +206,8 @@ class C_tabel_b7 extends Omnitags
 	public function delete($tabel_b7_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$aksi = $this->tl_b7->delete_b7($tabel_b7_field1);
 		$tabel_b1 = $this->tl_b1->delete_b1_by_b1_field7($tabel_b7_field1);

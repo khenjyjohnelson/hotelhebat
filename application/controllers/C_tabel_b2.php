@@ -35,6 +35,8 @@ class C_tabel_b2 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
+		$this->session_3();
+
 		$this->load->helper('text');
 
 		$param1 = $this->v_get['tabel_b2_field7'];
@@ -56,6 +58,8 @@ class C_tabel_b2 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b2'];
 		$config['allowed_types'] = $this->file_type1;
@@ -98,6 +102,8 @@ class C_tabel_b2 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$config['upload_path'] = $this->v_upload_path['tabel_b2'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
@@ -138,6 +144,8 @@ class C_tabel_b2 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_b2_field6'] => $this->aliases['tabel_b2_field6_value1'],
@@ -154,6 +162,8 @@ class C_tabel_b2 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_b2_field6'] => $this->aliases['tabel_b2_field6_value2'],
@@ -169,6 +179,8 @@ class C_tabel_b2 extends Omnitags
 	public function delete($tabel_b2_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_b2 = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
 		$img = $tabel_b2[0]->img;

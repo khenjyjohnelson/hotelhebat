@@ -34,6 +34,8 @@ class C_tabel_a1 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_a1_field1 = $this->v_post['tabel_a1_field1'];
 		$data = array(
 			$this->aliases['tabel_a1_field2'] => $this->v_post['tabel_a1_field2'],
@@ -52,6 +54,8 @@ class C_tabel_a1 extends Omnitags
 	public function update_id_tema()
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_a1_field1 = $this->v_post['tabel_a1_field1'];
 		$data = array(

@@ -32,6 +32,8 @@ class C_tabel_c1 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$param2 = $this->v_post['tabel_c1_field2'];
 		// $param8 = $this->v_post['tabel_c1_field8'];
 
@@ -95,6 +97,8 @@ class C_tabel_c1 extends Omnitags
 
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 
 		$data = array(
@@ -115,6 +119,8 @@ class C_tabel_c1 extends Omnitags
 	public function delete($tabel_c1_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$aksi = $this->tl_c1->delete_c1($tabel_c1_field1);
 
@@ -188,6 +194,8 @@ class C_tabel_c1 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 
 		$data = array(
@@ -222,6 +230,8 @@ class C_tabel_c1 extends Omnitags
 	public function update_password()
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 
@@ -279,6 +289,8 @@ class C_tabel_c1 extends Omnitags
 	public function ceklogin()
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 		$param8 = $this->v_post['tabel_c1_field8'];

@@ -71,6 +71,8 @@ class C_tabel_b5 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$config['upload_path'] = $this->v_upload_path['tabel_b5'];
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->v_post['tabel_b5_field2'];
@@ -113,6 +115,8 @@ class C_tabel_b5 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$config['upload_path'] = $this->v_upload_path['tabel_b5'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
@@ -153,6 +157,8 @@ class C_tabel_b5 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_b5_field6'] => $this->aliases['tabel_b5_field6_value1'],
@@ -169,6 +175,8 @@ class C_tabel_b5 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_b5_field6'] => $this->aliases['tabel_b5_field6_value2'],
@@ -184,6 +192,8 @@ class C_tabel_b5 extends Omnitags
 	public function delete($tabel_b5_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_b5 = $this->tl_b5->get_b5_field1($tabel_b5_field1)->result();
 		$img = $tabel_b5[0]->img;

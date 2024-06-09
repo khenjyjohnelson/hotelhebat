@@ -35,6 +35,8 @@ class C_tabel_b6 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
+
+		$this->session_3();
 		$this->load->helper('text');
 
 		$param1 = $this->v_get['tabel_b6_field7'];
@@ -56,6 +58,9 @@ class C_tabel_b6 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
+
+		$this->session_3();
+
 		// Check if the field contains "https://" at the beginning
 		if (strpos($this->v_post['tabel_b6_field4'], 'https://') === 0) {
 			// It contains "https://" at the beginning
@@ -88,6 +93,8 @@ class C_tabel_b6 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_b6_field1 = $this->v_post['tabel_b6_field1'];
 
 		// menggunakan nama khusus sama dengan konfigurasi
@@ -110,6 +117,8 @@ class C_tabel_b6 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
 			$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value1'],
@@ -125,6 +134,8 @@ class C_tabel_b6 extends Omnitags
 	public function nonaktifkan($tabel_b6_field1 = null) //update tidak diperlukan di sini
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
@@ -142,6 +153,8 @@ class C_tabel_b6 extends Omnitags
 	public function delete($tabel_b6_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$aksi = $this->tl_b6->delete_b6($tabel_b6_field1);
 

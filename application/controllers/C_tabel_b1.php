@@ -58,6 +58,8 @@ class C_tabel_b1 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$config['upload_path'] = $this->v_upload_path['tabel_b1'];
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->v_post['tabel_b1_field2'];
@@ -103,6 +105,8 @@ class C_tabel_b1 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$config['upload_path'] = $this->v_upload_path['tabel_b1'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
@@ -144,6 +148,8 @@ class C_tabel_b1 extends Omnitags
 	public function delete($tabel_b1_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_b1 = $this->tl_b1->get_b1_by_b1_field1($tabel_b1_field1)->result();
 		$img = $tabel_b1[0]->img;

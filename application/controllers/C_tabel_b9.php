@@ -100,6 +100,8 @@ class C_tabel_b9 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$data = array(
 			$this->aliases['tabel_b9_field1'] => '',
 			$this->aliases['tabel_b9_field2'] => $this->v_post['tabel_b9_field2'],
@@ -118,6 +120,8 @@ class C_tabel_b9 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 
 		// menggunakan nama khusus sama dengan konfigurasi
@@ -133,6 +137,8 @@ class C_tabel_b9 extends Omnitags
 	public function delete($tabel_b9_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$aksi = $this->tl_b9->delete_b9($tabel_b9_field1);
 

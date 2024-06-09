@@ -30,6 +30,8 @@ class C_tabel_e1 extends Omnitags
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
 
+		$this->session_3();
+
 		// Security: Input Sanitization and Validation
 		$inputs = [
 			'tabel_e1_field2',
@@ -81,6 +83,8 @@ class C_tabel_e1 extends Omnitags
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
 
+		$this->session_3();
+
 		// Security: Input Sanitization and Validation
 		$inputs = [
 			'tabel_e1_field2',
@@ -129,6 +133,8 @@ class C_tabel_e1 extends Omnitags
 	{
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_e1 = $this->tl_e1->get_e1_by_e1_field1($tabel_e1_field1)->result();
 		$tabel_e1_field3 = $tabel_e1[0]->img;

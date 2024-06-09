@@ -136,75 +136,90 @@ class C_tabel_f2 extends Omnitags
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
 
-		// Security: Input Sanitization and Validation
-		$inputs = [
-			'tabel_f2_field4',
-			'tabel_f2_field8',
-			'tabel_f2_field10',
-			'tabel_f2_field11',
-			'tabel_f2_field2',
-			'tabel_f2_field3',
-			'tabel_f2_field5',
-			'tabel_f2_field6',
-			'tabel_f2_field7'
-		];
+		switch (userdata($this->aliases['tabel_c2_field6'])) {
+			case $this->aliases['tabel_c2_field6_value5']:
 
-		foreach ($inputs as $input) {
-			$input_value = htmlspecialchars(trim($this->v_post[$input]));
-			if (empty($input_value)) {
-				// Error Handling: Set error flash message for invalid input
-				set_flashdata($this->views['flash1'], "Invalid input. Please provide valid data.");
-				set_flashdata($this->views['flash1'], $this->views['flash1_func1']);
+				// Security: Input Sanitization and Validation
+				$inputs = [
+					'tabel_f2_field4',
+					'tabel_f2_field8',
+					'tabel_f2_field10',
+					'tabel_f2_field11',
+					'tabel_f2_field2',
+					'tabel_f2_field3',
+					'tabel_f2_field5',
+					'tabel_f2_field6',
+					'tabel_f2_field7'
+				];
+
+				foreach ($inputs as $input) {
+					$input_value = htmlspecialchars(trim($this->v_post[$input]));
+					if (empty($input_value)) {
+						// Error Handling: Set error flash message for invalid input
+						set_flashdata($this->views['flash1'], "Invalid input. Please provide valid data.");
+						set_flashdata($this->views['flash1'], $this->views['flash1_func1']);
+						// Functional requirement: Redirect user to 'tabel_f2' confirmation page
+						redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f2'] . '/konfirmasi'));
+					}
+				}
+
+				// Calculate total price based on date difference
+				$startTimeStamp = strtotime($this->v_post['tabel_f2_field10']);
+				$endTimeStamp = strtotime($this->v_post['tabel_f2_field11']);
+				$timedif = $endTimeStamp - $startTimeStamp;
+				$numberdays = $timedif / 60 / 60 / 24; // 86400 seconds in one day
+
+				$tabel_e4_field1 = $this->v_post['tabel_f2_field7'];
+				$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
+
+				// Calculate total price
+				$harga_total = ($numberdays * $tabel_e4[0]->harga);
+
+				$data = [
+					$this->aliases['tabel_f2_field1'] => '',
+					$this->aliases['tabel_f2_field2'] => $this->v_post['tabel_f2_field2'],
+					$this->aliases['tabel_f2_field3'] => $this->v_post['tabel_f2_field3'],
+					$this->aliases['tabel_f2_field4'] => $this->v_post['tabel_f2_field4'],
+					$this->aliases['tabel_f2_field5'] => $this->v_post['tabel_f2_field5'],
+					$this->aliases['tabel_f2_field6'] => $this->v_post['tabel_f2_field6'],
+					$this->aliases['tabel_f2_field7'] => $this->v_post['tabel_f2_field7'],
+					$this->aliases['tabel_f2_field8'] => $this->v_post['tabel_f2_field8'],
+					$this->aliases['tabel_f2_field9'] => $harga_total,
+					$this->aliases['tabel_f2_field10'] => $this->v_post['tabel_f2_field10'],
+					$this->aliases['tabel_f2_field11'] => $this->v_post['tabel_f2_field11'],
+					$this->aliases['tabel_f2_field12'] => $this->aliases['tabel_f2_field12_value1']
+				];
+
+				// Create temporary session for a specific duration
+				set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'], $this->v_post['tabel_f2_field4'], 300);
+
+				try {
+					// Security: Prepared Statements to prevent SQL injection
+					// Functional requirement: Save data to the database
+					$aksi = $this->tl_f2->insert_f2($data);
+
+					$notif = $this->handle_1b($aksi, 'tabel_f2');
+
+				} catch (Exception $e) {
+					// Error Handling: Handle database operation errors
+					set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
+					set_flashdata('modal', $this->views['flash2_func1']);
+				}
+
 				// Functional requirement: Redirect user to 'tabel_f2' confirmation page
-				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f2'] . '/konfirmasi'));
-			}
+				redirect($this->aliases['tabel_f2'] . '/konfirmasi');
+				break;
+
+			case $this->aliases['tabel_c2_field6_value1']:
+			case $this->aliases['tabel_c2_field6_value2']:
+			case $this->aliases['tabel_c2_field6_value3']:
+			case $this->aliases['tabel_c2_field6_value4']:
+			default:
+				redirect(site_url($this->views['language'] . '/welcome/404'));
+				break;
 		}
 
-		// Calculate total price based on date difference
-		$startTimeStamp = strtotime($this->v_post['tabel_f2_field10']);
-		$endTimeStamp = strtotime($this->v_post['tabel_f2_field11']);
-		$timedif = $endTimeStamp - $startTimeStamp;
-		$numberdays = $timedif / 60 / 60 / 24; // 86400 seconds in one day
 
-		$tabel_e4_field1 = $this->v_post['tabel_f2_field7'];
-		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
-
-		// Calculate total price
-		$harga_total = ($numberdays * $tabel_e4[0]->harga);
-
-		$data = [
-			$this->aliases['tabel_f2_field1'] => '',
-			$this->aliases['tabel_f2_field2'] => $this->v_post['tabel_f2_field2'],
-			$this->aliases['tabel_f2_field3'] => $this->v_post['tabel_f2_field3'],
-			$this->aliases['tabel_f2_field4'] => $this->v_post['tabel_f2_field4'],
-			$this->aliases['tabel_f2_field5'] => $this->v_post['tabel_f2_field5'],
-			$this->aliases['tabel_f2_field6'] => $this->v_post['tabel_f2_field6'],
-			$this->aliases['tabel_f2_field7'] => $this->v_post['tabel_f2_field7'],
-			$this->aliases['tabel_f2_field8'] => $this->v_post['tabel_f2_field8'],
-			$this->aliases['tabel_f2_field9'] => $harga_total,
-			$this->aliases['tabel_f2_field10'] => $this->v_post['tabel_f2_field10'],
-			$this->aliases['tabel_f2_field11'] => $this->v_post['tabel_f2_field11'],
-			$this->aliases['tabel_f2_field12'] => $this->aliases['tabel_f2_field12_value1']
-		];
-
-		// Create temporary session for a specific duration
-		set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'], $this->v_post['tabel_f2_field4'], 300);
-
-		try {
-			// Security: Prepared Statements to prevent SQL injection
-			// Functional requirement: Save data to the database
-			$aksi = $this->tl_f2->insert_f2($data);
-
-			$notif = $this->handle_1b($aksi, 'tabel_f2');
-
-		} catch (Exception $e) {
-			// Error Handling: Handle database operation errors
-			set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
-			set_flashdata('modal', $this->views['flash2_func1']);
-		}
-
-		// Functional requirement: Redirect user to 'tabel_f2' confirmation page
-		redirect($this->aliases['tabel_f2'] . '/konfirmasi');
 	}
 
 

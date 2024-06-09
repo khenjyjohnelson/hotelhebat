@@ -59,6 +59,7 @@
                                         <h6 class="dropdown-header"><?= lang('operational') ?></h6>
                                         <?= dropdown_menu('tabel_f4', '/admin') ?>
                                         <h6 class="dropdown-header"><?= lang('data') ?></h6>
+                                        <?= dropdown_menu('tabel_e3', '/admin') ?>
                                         <?= dropdown_menu('tabel_e4', '/admin') ?>
 
                                         <?php break;

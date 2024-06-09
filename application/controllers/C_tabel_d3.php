@@ -32,6 +32,8 @@ class C_tabel_d3 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$data = array(
 			$this->aliases['tabel_d3_field1'] => '',
 			$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),

@@ -42,24 +42,56 @@ class C_tabel_e4 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
+	/**
+	 * Handles the submission of the form for adding new data to the 'tabel_e4' table.
+	 *
+	 * This function validates the form input and if successful, inserts the data into the 'tabel_e4' table.
+	 * It then redirects the user back to the previous page with a notification message.
+	 *
+	 * @return void
+	 */
 	public function tambah()
 	{
 		$this->declarew();
 
-		$data = array(
-			$this->aliases['tabel_e4_field1'] => '',
-			$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
-			$this->aliases['tabel_e4_field3'] => $this->v_post['tabel_e4_field3'],
-		);
+		switch (userdata($this->aliases['tabel_c2_field6'])) {
+			case $this->aliases['tabel_c2_field6_value3']:
 
-		// $query = 'INSERT INTO tipe_kamar VALUES('.$data.')';
+				// Define validation rules
+				$rules = array(
+					'tabel_e4_field2' => array('label' => $this->v_input['tabel_e4_field2'], 'rules' => 'required'),
+					'tabel_e4_field3' => array('label' => $this->v_input['tabel_e4_field3'], 'rules' => 'required')
+				);
 
-		$aksi = $this->tl_e4->insert_e4($data);
-		// $aksi = $this->tl_e4->insert_e4($query);
 
-		$notif = $this->handle_1b($aksi, 'tabel_e4');
+				$this->load->helper('validate');
+				// Validate input using the helper
+				if (!validate_form($rules)) {
+					// Form validation failed, redirect back to form
+					redirect($_SERVER['HTTP_REFERER']);
+				} else {
+					// Form validation passed, proceed with data insertion
+					$data = array(
+						$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
+						$this->aliases['tabel_e4_field3'] => post('tabel_e4_field3'),
+					);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+					$aksi = $this->tl_e4->insert_e4($data);
+
+					$notif = $this->handle_1b($aksi, 'tabel_e4');
+
+					redirect($_SERVER['HTTP_REFERER']);
+				}
+				break;
+
+			case $this->aliases['tabel_c2_field6_value1']:
+			case $this->aliases['tabel_c2_field6_value2']:
+			case $this->aliases['tabel_c2_field6_value5']:
+			case $this->aliases['tabel_c2_field6_value4']:
+			default:
+				redirect(site_url($this->views['language'] . '/welcome/404'));
+				break;
+		}
 	}
 
 	public function update()
@@ -82,12 +114,27 @@ class C_tabel_e4 extends Omnitags
 
 		$notif = $this->handle_2b($aksi, 'tabel_e4', $tabel_e4_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function delete($tabel_e4_field1 = null)
 	{
 		$this->declarew();
+
+		// switch (userdata($this->aliases['tabel_c2_field6'])) {
+		// 	case $this->aliases['tabel_c2_field6_value3']:
+		// 		break;
+
+		// 	case $this->aliases['tabel_c2_field6_value1']:
+		// 	case $this->aliases['tabel_c2_field6_value2']:
+		// 	case $this->aliases['tabel_c2_field6_value5']:
+		// 	case $this->aliases['tabel_c2_field6_value4']:
+		// 	default:
+		// 		redirect(site_url($this->views['language'] . '/welcome/404'));
+		// 		break;
+		// }
+
+		$this->session_3();
 
 		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
 		$tabel_e4_field3 = $tabel_e4[0]->img;
@@ -97,7 +144,7 @@ class C_tabel_e4 extends Omnitags
 
 		$notif = $this->handle_3b($aksi, 'tabel_e4_field1', $tabel_e4_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Cetak semua data

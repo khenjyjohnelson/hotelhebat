@@ -28,6 +28,8 @@ class C_tabel_c2 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
 		$tabel_c2_field4 = $this->v_post_new['tabel_c2_field4'];
 
@@ -84,6 +86,8 @@ class C_tabel_c2 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 		$data = array(
 			$this->aliases['tabel_c2_field2'] => $this->v_post['tabel_c2_field2'],
@@ -102,6 +106,8 @@ class C_tabel_c2 extends Omnitags
 	public function delete($tabel_c2_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$aksi = $this->tl_c2->delete_c2($tabel_c2_field1);
 
@@ -178,6 +184,8 @@ class C_tabel_c2 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 		$data = array(
 			$this->aliases['tabel_c2_field2'] => $this->v_post['tabel_c2_field2'],
@@ -206,6 +214,8 @@ class C_tabel_c2 extends Omnitags
 	public function update_password()
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 
@@ -263,6 +273,8 @@ class C_tabel_c2 extends Omnitags
 	public function ceklogin()
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
 		$tabel_c2_field4 = $this->v_post['tabel_c2_field4'];

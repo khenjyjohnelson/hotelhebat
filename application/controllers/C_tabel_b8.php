@@ -32,6 +32,8 @@ class C_tabel_b8 extends Omnitags
 	{
 		$this->declarew();
 
+		$this->session_3();
+
 		$data = array(
 			$this->aliases['tabel_b8_field1'] => '',
 			$this->aliases['tabel_b8_field2'] => $this->v_post['tabel_b8_field2'],
@@ -50,6 +52,8 @@ class C_tabel_b8 extends Omnitags
 	public function update() //update tidak diperlukan di sini
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$tabel_b8_field1 = $this->v_post['tabel_b8_field1'];
 
@@ -70,6 +74,8 @@ class C_tabel_b8 extends Omnitags
 	public function delete($tabel_b8_field1 = null)
 	{
 		$this->declarew();
+
+		$this->session_3();
 
 		$aksi = $this->tl_b8->delete_b8($tabel_b8_field1);
 
