@@ -103,7 +103,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . ' ' . lang('tabel_c1_alias'), '') ?>
+      <?= modal_header_add(lang('add') . ' ' . lang('tabel_c1_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_c1 . '/tambah') ?>" method="post">
         <div class="modal-body">

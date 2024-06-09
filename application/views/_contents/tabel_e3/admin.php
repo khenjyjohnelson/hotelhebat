@@ -75,7 +75,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . ' ' . lang('tabel_e3_alias'), '') ?>
+      <?= modal_header_add(lang('add') . ' ' . lang('tabel_e3_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_e3 . '/tambah') ?>" method="post"
         enctype="multipart/form-data">

@@ -42,6 +42,8 @@
       $tl_e1->$tabel_e1_field1,
       $tl_e1->$tabel_e1_field2,
       $tl_e1->$tabel_e1_field3,
+      btn_lihat($tl_e1->$tabel_e1_field1) . ' ' .
+      btn_edit($tl_e1->$tabel_e1_field1),
       $tabel_e1,
       $tl_e1->$tabel_e1_field4,
       'bg-danger'
@@ -83,7 +85,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . ' ' . lang('tabel_e1_alias'), '') ?>
+      <?= modal_header_add(lang('add') . ' ' . lang('tabel_e1_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_e1 . '/tambah') ?>" method="post">
         <div class="modal-body">

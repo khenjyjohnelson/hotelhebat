@@ -175,8 +175,7 @@ if (!function_exists('btn_sync')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
         
-        $value = xss_clean($value);
-
+        
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
 
@@ -249,8 +248,7 @@ if (!function_exists('btn_print')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
         
-        $value = xss_clean($value);
-
+        
         $controller = xss_clean($data[$tabel]);
 
         $lang = xss_clean($data['language']);
@@ -316,8 +314,7 @@ if (!function_exists('btn_hapus')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
         
-        $value = xss_clean($value);
-
+        
         $controller = xss_clean($data[$tabel]);
         $alias = xss_clean(lang($tabel . '_alias'));
         $lang = xss_clean($data['language']);
@@ -340,8 +337,7 @@ if (!function_exists('btn_toggle_on')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
         
-        $value = xss_clean($value);
-
+        
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
 
@@ -364,8 +360,7 @@ if (!function_exists('btn_toggle_off')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
         
-        $value = xss_clean($value);
-
+        
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
 

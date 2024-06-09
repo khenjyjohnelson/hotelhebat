@@ -83,8 +83,10 @@
     echo card_file(
       $tl_b2->$tabel_b2_field1,
       $tl_b2->$tabel_b2_field2,
-      $tl_b2->$tabel_b2_field3,
       $btn_class,
+      btn_lihat($tl_b2->$tabel_b2_field1) . ' ' . 
+      btn_edit($tl_b2->$tabel_b2_field1) . ' ' . 
+      btn_hapus('tabel_b2', $tl_b2->$tabel_b2_field1),
       $tabel_b2,
       $tl_b2->$tabel_b2_field4,
       'bg-danger'
@@ -143,7 +145,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . ' ' . lang('tabel_b2_alias'), '') ?>
+      <?= modal_header_add(lang('add') . ' ' . lang('tabel_b2_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_b2 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">

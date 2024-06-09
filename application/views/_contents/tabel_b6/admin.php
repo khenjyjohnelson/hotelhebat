@@ -77,8 +77,12 @@
     }
     echo card_regular(
       $tl_b6->$tabel_b6_field1,
+      'tabel_b6',
       $tl_b6->$tabel_b6_field2,
       '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>' . $btn_class,
+      btn_lihat($tl_b6->$tabel_b6_field1) . ' ' . 
+      btn_edit($tl_b6->$tabel_b6_field1) . ' ' . 
+      btn_hapus('tabel_b6', $tl_b6->$tabel_b6_field1),
       'bg-secondary'
     );
     ?>
@@ -142,7 +146,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . ' ' . lang('tabel_b6_alias'), '') ?>
+      <?= modal_header_add(lang('add') . ' ' . lang('tabel_b6_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_b6 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
@@ -233,10 +237,9 @@
               <table class="table table-light" id="data">
                 <thead></thead>
                 <tbody>
-                  <?= row_data('tabel_b6_field1', $tl_b6->$tabel_b6_field1) ?>
-                  <?= row_data('tabel_b6_field2', $tl_b6->$tabel_b6_field1) ?>
+                  <?= row_data('tabel_b6_field2', $tl_b6->$tabel_b6_field2) ?>
                   <?= row_data('tabel_b6_field3', $tl_b6->$tabel_b6_field3) ?>
-                  <?= row_data('tabel_b6_field4', $tl_b6->$tabel_b6_field4) ?>
+                  <?= row_data('tabel_b6_field4', '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>') ?>
                   <?= row_data('tabel_b6_field5', $tl_b6->$tabel_b6_field5) ?>
                   <?= row_data('tabel_b6_field6', $tl_b6->$tabel_b6_field6) ?>
                   <?= row_data('tabel_b6_field7', $tl_b6->$tabel_b6_field7) ?>

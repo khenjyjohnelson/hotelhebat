@@ -42,7 +42,7 @@
       btn_field($tabel_b7_field3 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-globe"></i>') . ' ' .
       btn_field($tabel_b7_field4 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-rocket"></i>') . ' ' .
       btn_field($tabel_b7_field5 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-image"></i>'),
-      btn_lihat($tl_b7->$tabel_b7_field1) . ' ' . 
+      btn_lihat($tl_b7->$tabel_b7_field1) . ' ' .
       btn_edit($tl_b7->$tabel_b7_field1) . ' ' .
       ($tl_b7->$tabel_b7_field2 != $database ?
         '<a class="btn mr-1 mb-2 btn-light text-danger"
@@ -265,10 +265,7 @@
                 </tbody>
                 <tfoot></tfoot>
               </table>
-            </div>
-            </tbody>
-            <tfoot></tfoot>
-            </table>
+          
           </div>
       </div>
 

@@ -130,7 +130,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('add') . ' ' . lang('tabel_e4_alias'), '') ?>
+      <?= modal_header_add(lang('add') . ' ' . lang('tabel_e4_alias'), '') ?>
       <form action="<?= site_url($language . '/' . $tabel_e4 . '/tambah') ?>" method="post">
         <div class="modal-body">
           <?= input_add('text', 'tabel_e4_field2', 'required') ?>

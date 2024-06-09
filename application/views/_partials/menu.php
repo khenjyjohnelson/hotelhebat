@@ -5,6 +5,8 @@
             <li class="nav-item pb-2">
                 <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/') ?>"><?= lang('home') ?></a>
             </li>
+            <?= nav_item(lang('tabel_e4_alias'), $tabel_e4, '/') ?>
+            <?= nav_item(lang('tabel_e2_alias'), $tabel_e2, '/') ?>
             <?= nav_item(lang('login'), $tabel_c2, '/login') ?>
             <?php break;
         case $tabel_c2_field6_value5:
@@ -36,9 +38,13 @@
                                     case $tabel_c2_field6_value3:
                                         ?>
                                         <h6 class="dropdown-header"><?= lang('data') ?></h6>
+                                        <?= dropdown_menu('tabel_e1', '/admin') ?>
+                                        <?= dropdown_menu('tabel_e2', '/admin') ?>
+                                        <?= dropdown_menu('tabel_e3', '/admin') ?>
                                         <?= dropdown_menu('tabel_e4', '/admin') ?>
                                         <div class="dropdown-divider"></div>
                                         <h6 class="dropdown-header"><?= lang('operational') ?></h6>
+                                        <?= dropdown_menu('tabel_c1', '/admin') ?>
                                         <?= dropdown_menu('tabel_c2', '/admin') ?>
                                         <div class="dropdown-divider"></div>
                                         <?= dropdown_menu('tabel_a1', '/profil') ?>
