@@ -101,6 +101,7 @@ class Welcome extends Omnitags
 
 		$notif = $this->handle_4b();
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 

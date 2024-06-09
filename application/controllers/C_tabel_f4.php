@@ -26,6 +26,7 @@ class C_tabel_f4 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -100,6 +101,7 @@ class C_tabel_f4 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data($this->v4['tabel_f4'], $data);
 	}
 }

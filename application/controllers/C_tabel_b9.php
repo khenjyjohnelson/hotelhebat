@@ -159,6 +159,7 @@ class C_tabel_b9 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data($this->v4['tabel_b9'], $data);
 	}
 

@@ -18,7 +18,7 @@
         </div>
         <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
         <div class="d-flex justify-content-center">
-          <?= back_to_home() ?>
+          <?= back_to_activity() ?>
         </div>
       </div>
     </div>

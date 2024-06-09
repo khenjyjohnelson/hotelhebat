@@ -35,6 +35,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -52,6 +53,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -78,6 +80,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -198,6 +201,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -216,6 +220,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data($this->v4['tabel_f3'], $data);
 	}
 
@@ -273,6 +278,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data($this->v7['tabel_f3'], $data);
 	}
 }

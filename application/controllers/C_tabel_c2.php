@@ -21,6 +21,7 @@ class C_tabel_c2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -130,6 +131,7 @@ class C_tabel_c2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data($this->v4['tabel_c2'], $data);
 	}
 
@@ -149,6 +151,7 @@ class C_tabel_c2 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -273,8 +276,6 @@ class C_tabel_c2 extends Omnitags
 	public function ceklogin()
 	{
 		$this->declarew();
-
-		$this->session_3();
 
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
 		$tabel_c2_field4 = $this->v_post['tabel_c2_field4'];
