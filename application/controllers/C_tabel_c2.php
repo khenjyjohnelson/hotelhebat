@@ -279,8 +279,8 @@ class C_tabel_c2 extends Omnitags
     $this->declarew();
 
     // Get and sanitize user inputs
-    $tabel_c2_field3 = $this->security->xss_clean($this->input->post('tabel_c2_field3'));
-    $tabel_c2_field4 = $this->security->xss_clean($this->input->post('tabel_c2_field4'));
+    $tabel_c2_field3 = xss_clean($this->v_post['tabel_c2_field3']);
+    $tabel_c2_field4 = xss_clean($this->v_post['tabel_c2_field4']);
 
     // Validate email and password inputs
     if (empty($tabel_c2_field3) || empty($tabel_c2_field4)) {
