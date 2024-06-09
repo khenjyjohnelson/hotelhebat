@@ -53,45 +53,34 @@ class C_tabel_e4 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
+		$this->session_3();
 
-		switch (userdata($this->aliases['tabel_c2_field6'])) {
-			case $this->aliases['tabel_c2_field6_value3']:
-
-				// Define validation rules
-				$rules = array(
-					'tabel_e4_field2' => array('label' => $this->v_input['tabel_e4_field2'], 'rules' => 'required'),
-					'tabel_e4_field3' => array('label' => $this->v_input['tabel_e4_field3'], 'rules' => 'required')
-				);
+		// Define validation rules
+		$rules = array(
+			'tabel_e4_field2' => array('label' => $this->v_input['tabel_e4_field2'], 'rules' => 'required'),
+			'tabel_e4_field3' => array('label' => $this->v_input['tabel_e4_field3'], 'rules' => 'required')
+		);
 
 
-				$this->load->helper('validate');
-				// Validate input using the helper
-				if (!validate_form($rules)) {
-					// Form validation failed, redirect back to form
-					redirect($_SERVER['HTTP_REFERER']);
-				} else {
-					// Form validation passed, proceed with data insertion
-					$data = array(
-						$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
-						$this->aliases['tabel_e4_field3'] => post('tabel_e4_field3'),
-					);
+		$this->load->helper('validate');
+		// Validate input using the helper
+		if (!validate_form($rules)) {
+			// Form validation failed, redirect back to form
+			redirect($_SERVER['HTTP_REFERER']);
+		} else {
+			// Form validation passed, proceed with data insertion
+			$data = array(
+				$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
+				$this->aliases['tabel_e4_field3'] => post('tabel_e4_field3'),
+			);
 
-					$aksi = $this->tl_e4->insert_e4($data);
+			$aksi = $this->tl_e4->insert_e4($data);
 
-					$notif = $this->handle_1b($aksi, 'tabel_e4');
+			$notif = $this->handle_1b($aksi, 'tabel_e4');
 
-					redirect($_SERVER['HTTP_REFERER']);
-				}
-				break;
-
-			case $this->aliases['tabel_c2_field6_value1']:
-			case $this->aliases['tabel_c2_field6_value2']:
-			case $this->aliases['tabel_c2_field6_value5']:
-			case $this->aliases['tabel_c2_field6_value4']:
-			default:
-				redirect(site_url($this->views['language'] . '/welcome/404'));
-				break;
+			redirect($_SERVER['HTTP_REFERER']);
 		}
+
 	}
 
 	public function update()
@@ -103,6 +92,8 @@ class C_tabel_e4 extends Omnitags
 		// Bisa mengupload gambar dengan tulisan yang dihapus, tentunya dengan minim data double
 
 		$this->declarew();
+		$this->session_3();
+
 
 		$tabel_e4_field1 = $this->v_post['tabel_e4_field1'];
 		$data = array(

@@ -76,6 +76,7 @@ class C_tabel_b9 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -93,13 +94,13 @@ class C_tabel_b9 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
 	public function tambah()
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$data = array(
@@ -119,7 +120,6 @@ class C_tabel_b9 extends Omnitags
 	public function update()
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
@@ -137,12 +137,11 @@ class C_tabel_b9 extends Omnitags
 	public function delete($tabel_b9_field1 = null)
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$aksi = $this->tl_b9->delete_b9($tabel_b9_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_b9_field1', $tabel_b9_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_b9', $tabel_b9_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

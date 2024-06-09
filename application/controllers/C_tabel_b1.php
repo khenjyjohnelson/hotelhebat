@@ -15,7 +15,7 @@ class C_tabel_b1 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-
+		
 		$param1 = $this->v_get['tabel_b1_field7'];
 
 		$data1 = array(
@@ -29,6 +29,7 @@ class C_tabel_b1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -50,6 +51,7 @@ class C_tabel_b1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -57,7 +59,6 @@ class C_tabel_b1 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b1'];
@@ -104,7 +105,6 @@ class C_tabel_b1 extends Omnitags
 	public function update() //update tidak diperlukan di sini
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b1'];
@@ -145,10 +145,25 @@ class C_tabel_b1 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	public function sync_theme($tabel_b1_field7 = null)
+	{
+		$this->declarew();
+		$this->session_3();
+		
+		$data = array(
+			$this->aliases['tabel_b1_field7'] => $tabel_b1_field7,
+		);
+		
+		$aksi = $this->tl_b1->update_all_b1($data);
+
+		$notif = $this->handle_2b($aksi, 'tabel_b1', $tabel_b1_field7);
+
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
 	public function delete($tabel_b1_field1 = null)
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$tabel_b1 = $this->tl_b1->get_b1_by_b1_field1($tabel_b1_field1)->result();
@@ -158,7 +173,7 @@ class C_tabel_b1 extends Omnitags
 
 		$aksi = $this->tl_b1->delete_b1($tabel_b1_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_b1_field1', $tabel_b1_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_b1', $tabel_b1_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

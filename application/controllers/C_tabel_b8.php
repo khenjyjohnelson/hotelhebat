@@ -25,13 +25,13 @@ class C_tabel_b8 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
 	public function tambah()
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$data = array(
@@ -52,7 +52,6 @@ class C_tabel_b8 extends Omnitags
 	public function update() //update tidak diperlukan di sini
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$tabel_b8_field1 = $this->v_post['tabel_b8_field1'];
@@ -65,7 +64,7 @@ class C_tabel_b8 extends Omnitags
 
 		$aksi = $this->tl_b8->update_b8($data, $tabel_b8_field1);
 
-		$notif = $this->handle_2b($aksi, 'tabel_a1_field1', $tabel_b8_field1);
+		$notif = $this->handle_2b($aksi, 'tabel_a1', $tabel_b8_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}
@@ -74,12 +73,11 @@ class C_tabel_b8 extends Omnitags
 	public function delete($tabel_b8_field1 = null)
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$aksi = $this->tl_b8->delete_b8($tabel_b8_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_b8_field1', $tabel_b8_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_b8', $tabel_b8_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}

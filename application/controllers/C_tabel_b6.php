@@ -29,14 +29,13 @@ class C_tabel_b6 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
 	public function filter()
 	{
 		$this->declarew();
-
-		$this->session_3();
 		$this->load->helper('text');
 
 		$param1 = $this->v_get['tabel_b6_field7'];
@@ -45,22 +44,21 @@ class C_tabel_b6 extends Omnitags
 			'title' => lang('tabel_b6_alias_v3_title'),
 			'konten' => $this->v3['tabel_b6'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6'])->result(),
-			'tbl_b6' => $this->tl_b6->search_b6_by_b6_field7($param1)->result(),
-			'tbl_b7' => $this->tl_b7->get_all_b6()->result(),
+			'tbl_b6' => $this->tl_b6->get_b6_by_a1_field1($param1)->result(),
+			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 			'tabel_b6_field7_value' => $param1
 		);
 
 		$data = array_merge($data1, $this->package);
 
+		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
 
 	public function tambah()
 	{
 		$this->declarew();
-
 		$this->session_3();
-
 		// Check if the field contains "https://" at the beginning
 		if (strpos($this->v_post['tabel_b6_field4'], 'https://') === 0) {
 			// It contains "https://" at the beginning
@@ -79,6 +77,7 @@ class C_tabel_b6 extends Omnitags
 			$this->aliases['tabel_b6_field4'] => $tabel_b6_field4,
 			$this->aliases['tabel_b6_field5'] => $this->v_post['tabel_b6_field5'],
 			$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value2'],
+			$this->aliases['tabel_b6_field7'] => $this->v_post['tabel_b6_field7'],
 		);
 
 		$aksi = $this->tl_b6->insert_b6($data);
@@ -92,7 +91,6 @@ class C_tabel_b6 extends Omnitags
 	public function update() //update tidak diperlukan di sini
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$tabel_b6_field1 = $this->v_post['tabel_b6_field1'];
@@ -116,7 +114,6 @@ class C_tabel_b6 extends Omnitags
 	public function aktifkan($tabel_b6_field1 = null) //update tidak diperlukan di sini
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		// menggunakan nama khusus sama dengan konfigurasi
@@ -134,7 +131,6 @@ class C_tabel_b6 extends Omnitags
 	public function nonaktifkan($tabel_b6_field1 = null) //update tidak diperlukan di sini
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		// menggunakan nama khusus sama dengan konfigurasi
@@ -153,12 +149,11 @@ class C_tabel_b6 extends Omnitags
 	public function delete($tabel_b6_field1 = null)
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$aksi = $this->tl_b6->delete_b6($tabel_b6_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_b6_field1', $tabel_b6_field1);
+		$notif = $this->handle_3b($aksi, 'tabel_b6', $tabel_b6_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}

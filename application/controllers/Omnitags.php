@@ -284,6 +284,22 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        public function session_4_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                default:
+                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    break;
+            }
+        }
+
         public function session_5()
         {
             switch (userdata($this->aliases['tabel_c2_field6'])) {
