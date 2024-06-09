@@ -39,7 +39,7 @@
               </option>
             <?php endforeach ?>
           </select>
-          <label for="<?= $tabel_b6_field7_input ?>" class="form-label"><?= lang('select') ?>
+          <label for="<?= $tabel_b1_field7_input ?>" class="form-label"><?= lang('select') ?>
             <?= $tabel_b7_alias ?></label>
         </div>
       </td>
@@ -47,6 +47,11 @@
       <td>
         <?= btn_cari() ?>
         <?= btn_redo('tabel_b1', '/admin') ?>
+        <?php if ($tabel_b1_field7_value == NULL) { ?>
+
+        <?php } else { ?>
+          <?= btn_sync('tabel_b1', $tabel_b1_field7_value) ?>
+        <?php } ?>
       </td>
 
     </tr>
@@ -139,6 +144,7 @@
           <?= input_add('text', 'tabel_b1_field2', 'required') ?>
           <?= input_add('text', 'tabel_b1_field3', 'required') ?>
           <?= add_file('tabel_b1_field4', 'required') ?>
+          <?= fontawesome_link() ?>
           <?= input_add('text', 'tabel_b1_field5', 'required') ?>
 
           <div class="form-group">
@@ -182,7 +188,7 @@
   <div id="ubah<?= $tl_b1->$tabel_b1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b1_alias'), $tl_b1->$tabel_b1_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b1_alias'), $tl_b1->$tabel_b1_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b1 . '/update') ?>" method="post"
           enctype="multipart/form-data">
@@ -193,18 +199,16 @@
             <?= input_edit('text', 'tabel_b1_field2', $tl_b1->$tabel_b1_field2, 'required') ?>
             <?= input_edit('text', 'tabel_b1_field3', $tl_b1->$tabel_b1_field3, 'required') ?>
             <?= edit_file('tabel_b1', 'tabel_b1_field4', $tl_b1->$tabel_b1_field4, '') ?>
+            <?= fontawesome_link() ?>
             <?= input_edit('text', 'tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
             <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1(), 'required') ?>
 
             <div class="form-group">
               <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
-                <?php foreach ($tbl_b7 as $tl_b7): ?>
-                  <?php if ($tl_b1->$tabel_b1_field7 == $tl_b7->$tabel_b7_field1) { ?>
-                    <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                  <?php } else { ?>
-                    <option selected hidden value=""><?= lang('select') ?>       <?= $tabel_b7_alias ?>...</option> <?php } ?>
+              <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b1->$tabel_b1_field7 ?></option>
 
-                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                <?php foreach ($tbl_b7 as $tl_b7): ?>
+                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?></option>
                 <?php endforeach ?>
               </select>
               <label class="form-label"><?= $tabel_b7_alias ?></label>
@@ -239,12 +243,14 @@
                   <?= row_data('tabel_b1_field3', $tl_b1->$tabel_b1_field3) ?>
                   <?= row_file($tabel_b1, 'tabel_b1_field4', $tl_b1->$tabel_b1_field4) ?>
                   <?= row_data('tabel_b1_field5', $tl_b1->$tabel_b1_field5) ?>
+                  <?= row_data('tabel_b1_field6', $tl_b1->$tabel_b1_field6) ?>
+                  <?= row_data('tabel_b1_field7', $tl_b1->$tabel_b1_field7) ?>
 
                 </tbody>
                 <tfoot></tfoot>
               </table>
             </div>
-          </form>div>
+          </form>
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>

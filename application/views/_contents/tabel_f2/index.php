@@ -131,7 +131,7 @@
 <div id="ubah" class="modal fade ubah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header(lang('update_data') . ' ' . lang('tabel_f2_field8_alias'), '') ?>
+      <?= modal_header(lang('change_data') . ' ' . lang('tabel_f2_field8_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_f2) ?>" method="get">
         <div class="modal-body">

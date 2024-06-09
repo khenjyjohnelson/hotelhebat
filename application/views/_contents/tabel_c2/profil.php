@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
         data-target="#password<?= $tl_c2->$tabel_c2_field1 ?>">
-        <i class="fas fa-edit"></i> <?= lang('update_data') . ' ' . lang('tabel_c2_field4_alias') ?></a>
+        <i class="fas fa-edit"></i> <?= lang('tabel_c2_field4_alias') ?></a>
     </div>
     <div class="col-md-6">
 
@@ -42,7 +42,7 @@
   <div id="password<?= $tl_c2->$tabel_c2_field1 ?>" class="modal fade <?= $tabel_c2_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . $tabel_c2_field4_alias . ' Anda', '') ?>
+        <?= modal_header(lang('change_data') . ' ' . $tabel_c2_field4_alias, $tl_c2->$tabel_c2_field1) ?>
         <form action="<?= site_url($language . '/' . $tabel_c2 . '/update_pass') ?>" method="post"
           enctype="multipart/form-data">
           <div class="modal-body">

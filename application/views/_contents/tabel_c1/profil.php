@@ -14,7 +14,7 @@
     <?php foreach ($tbl_c1 as $tl_c1): ?>
 
       <!-- tombol untuk memunculkan modal memperbaiki password -->
-      <?= btn_field($tabel_c1_field1 . $tl_c1->$tabel_c1_field1, '<i class="fas fa-edit"></i> Ubah ' . $tabel_c1_field5_alias) ?>
+      <?= btn_field($tabel_c1_field1 . $tl_c1->$tabel_c1_field1, '<i class="fas fa-edit"></i>' . $tabel_c1_field5_alias) ?>
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
       <form action="<?= site_url($language . '/' . $tabel_c1 . '/update_profil') ?>" method="post"
@@ -46,7 +46,7 @@
   <div id="password<?= $tl_c1->$tabel_c1_field1 ?>" class="modal fade <?= $tabel_c1_field5 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . $tabel_c1_field5_alias . ' Anda', '') ?>
+        <?= modal_header(lang('change_data') . ' ' . $tabel_c1_field5_alias, '') ?>
 
         <form action="<?= site_url($language . '/' . $tabel_c1 . '/update_pass') ?>" method="post"
           enctype="multipart/form-data">

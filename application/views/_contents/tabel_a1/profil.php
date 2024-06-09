@@ -55,7 +55,7 @@
   <div id="<?= $tabel_b7 ?>" class="modal fade <?= $tabel_b7 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b7_alias') .
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b7_alias') .
           ' &nbsp;&nbsp;&nbsp;' . btn_kelola('tabel_b7'), $tl_a1->$tabel_a1_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_a1 . '/update_id_tema') ?>" method="post">
@@ -97,7 +97,7 @@
   <div id="<?= $tabel_b7_field3 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field3 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b7_field3_alias'), $tl_b7->$tabel_b7_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b7_field3_alias'), $tl_b7->$tabel_b7_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_favicon') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
@@ -124,7 +124,7 @@
   <div id="<?= $tabel_b7_field4 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field4 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b7_field4_alias'), $tl_b7->$tabel_b7_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b7_field4_alias'), $tl_b7->$tabel_b7_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_logo') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
@@ -151,7 +151,7 @@
   <div id="<?= $tabel_b7_field5 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field5 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b7_field5_alias'), $tl_b7->$tabel_b7_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b7_field5_alias'), $tl_b7->$tabel_b7_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_foto') ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">

@@ -182,7 +182,7 @@ if (!function_exists('btn_sync')) {
         $url = xss_clean(site_url($lang . '/' . $controller . '/sync_theme/' . $value));
 
         return <<<HTML
-        <a class="btn mr-1 mb-2 btn-primary" onclick="return confirm('Sync?')" href="{$url}">
+        <a class="btn mr-1 mb-2 btn-primary" onclick="return confirm('Sync with {$value}?')" href="{$url}">
           <i class="fas fa-sync-alt"></i>
         </a>
         HTML;

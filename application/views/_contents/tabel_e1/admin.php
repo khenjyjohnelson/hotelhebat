@@ -92,6 +92,7 @@
           <?= input_add('text', 'tabel_e1_field2', 'required') ?>
           <?= input_add('text', 'tabel_e1_field3', 'required') ?>
           <?= input_add('text', 'tabel_e1_field4', 'required') ?>
+          <?= add_file('tabel_e1_field4', 'required') ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->
@@ -110,7 +111,7 @@
   <div id="ubah<?= $tl_e1->$tabel_e1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_e1_alias'), $tl_e1->$tabel_e1_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_e1_alias'), $tl_e1->$tabel_e1_field1) ?>
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_e1 . '/update') ?>" method="post"
           enctype="multipart/form-data">
@@ -118,6 +119,7 @@
             <?= input_hidden('tabel_e1_field1', $tl_e1->$tabel_e1_field1, 'required') ?>
             <?= input_edit('text', 'tabel_e1_field2', $tl_e1->$tabel_e1_field2, 'required') ?>
             <?= input_edit('text', 'tabel_e1_field3', $tl_e1->$tabel_e1_field3, 'required') ?>
+            <?= edit_file($tabel_e1, 'tabel_e1_field4', $tl_e1->$tabel_e1_field4, 'required') ?>
           </div>
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= get_flashdata('pesan_ubah') ?></p>
@@ -148,6 +150,7 @@
                   <?= row_data('tabel_e1_field1', $tl_e1->$tabel_e1_field1) ?>
                   <?= row_data('tabel_e1_field2', $tl_e1->$tabel_e1_field2) ?>
                   <?= row_data('tabel_e1_field3', $tl_e1->$tabel_e1_field3) ?>
+                  <?= row_file($tabel_e1, 'tabel_e1_field4', $tl_e1->$tabel_e1_field4) ?>
                 </tbody>
                 <tfoot></tfoot>
               </table>

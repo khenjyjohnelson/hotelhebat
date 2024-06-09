@@ -65,6 +65,7 @@ foreach ($myData2 as $item2) {
         'lihat' => 'lihat',
         'delete' => 'delete',
         'print' => 'print',
+        'sync_theme' => 'sync_theme',
     ];
 
     // Unique function routes

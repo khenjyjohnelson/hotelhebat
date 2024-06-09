@@ -135,6 +135,8 @@
         <div class="modal-body">
           <?= input_add('text', 'tabel_e4_field2', 'required') ?>
           <?= add_file('tabel_e4_field3', 'required') ?>
+          <?= add_min_max('number', 'tabel_e4_field4', 'required', '0', '') ?>
+          <?= add_min_max('number', 'tabel_e4_field5', 'required', '0', '') ?>
         </div>
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
@@ -151,7 +153,7 @@
   <div id="ubah<?= $tl_e4->$tabel_e4_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_e4 . '/update') ?>" method="post"
@@ -160,6 +162,8 @@
             <?= input_hidden('tabel_e4_field1', $tl_e4->$tabel_e4_field1, 'required') ?>
             <?= input_edit('text', 'tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
             <?= edit_file('tabel_e4', 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
+            <?= edit_min_max('number', 'tabel_e4_field4', $tl_e4->$tabel_e4_field4, 'required', '0', '') ?>
+            <?= edit_min_max('number', 'tabel_e4_field5', $tl_e4->$tabel_e4_field5, 'required', '0', '') ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -188,6 +192,8 @@
                 <tbody>
                   <?= row_data('tabel_e4_field2', $tl_e4->$tabel_e4_field2) ?>
                   <?= row_file($tabel_e4, 'tabel_e4_field3', $tl_e4->$tabel_e4_field3) ?>
+                  <?= row_data('tabel_e4_field4', $tl_e4->$tabel_e4_field4) ?>
+                  <?= row_data('tabel_e4_field5', $tl_e4->$tabel_e4_field5) ?>
                 </tbody>
                 <tfoot></tfoot>
               </table>

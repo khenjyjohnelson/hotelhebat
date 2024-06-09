@@ -142,7 +142,7 @@
   <div id="ubah<?= $tl_c1->$tabel_c1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_c1_alias'), $tl_c1->$tabel_c1_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_c1_alias'), $tl_c1->$tabel_c1_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_c1 . '/update') ?>" method="post"
@@ -192,7 +192,7 @@
                   <?= row_data('tabel_c1_field2', $tl_c1->$tabel_c1_field2) ?>
                   <?= row_data('tabel_c1_field3', $tl_c1->$tabel_c1_field3) ?>
                   <?= row_data('tabel_c1_field5', $tl_c1->$tabel_c1_field5) ?>
-                  <?= row_data('tabel_c1_field6', $tl_c1->$tabel_c1_field6) ?>
+                  <?= row_file($tabel_c1, 'tabel_c1_field6', $tl_c1->$tabel_c1_field6) ?>
                 </tbody>
                 <tfoot></tfoot>
               </table>

@@ -47,6 +47,11 @@
       <td>
         <?= btn_cari() ?>
         <?= btn_redo('tabel_b5', '/admin') ?>
+        <?php if ($tabel_b5_field7_value == NULL) { ?>
+
+        <?php } else { ?>
+          <?= btn_sync('tabel_b5', $tabel_b5_field7_value) ?>
+        <?php } ?>
       </td>
 
     </tr>
@@ -82,8 +87,10 @@
     echo card_file(
       $tl_b5->$tabel_b5_field1,
       $tl_b5->$tabel_b5_field2,
-      $tl_b5->$tabel_b5_field3,
       $btn_class,
+      btn_lihat($tl_b5->$tabel_b5_field1) . ' ' .
+      btn_edit($tl_b5->$tabel_b5_field1) . ' ' .
+      btn_hapus('tabel_b5', $tl_b5->$tabel_b5_field1),
       $tabel_b5,
       $tl_b5->$tabel_b5_field4,
       'bg-danger'
@@ -179,7 +186,7 @@
   <div id="ubah<?= $tl_b5->$tabel_b5_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('update_data') . ' ' . lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b5 . '/update') ?>" method="post"
           enctype="multipart/form-data">
@@ -218,7 +225,7 @@
                 <thead></thead>
                 <tbody>
                   <?= row_data('tabel_b5_field1', $tl_b5->$tabel_b5_field1) ?>
-                  <?= row_data('tabel_b5_field2', $tl_b5->$tabel_b5_field1) ?>
+                  <?= row_data('tabel_b5_field2', $tl_b5->$tabel_b5_field2) ?>
                   <?= row_data('tabel_b5_field3', html_entity_decode($tl_b5->$tabel_b5_field3)) ?>
                   <?= row_file($tabel_b5, 'tabel_b5_field4', $tl_b5->$tabel_b5_field4) ?>
                   <?= row_data('tabel_b5_field5', $tl_b5->$tabel_b5_field5) ?>
