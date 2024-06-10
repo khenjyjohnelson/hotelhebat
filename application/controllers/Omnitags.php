@@ -267,8 +267,69 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        // notification not shown, will be used
+        public function handle_1a($aksi, $object, $value)
+        {
+            if ($aksi) {
+                $msg = $object . ':' . $value;
+                $type = $this->aliases['tabel_b8_field2_value1'];
+                $extra = '';
+                $flashtype = '';
+            } else {
+                $msg = $this->flash1_msg_6[$object . '_alias'];
+                $type = $this->aliases['tabel_b8_field2_value6'];
+                $extra = ' (ID = ' . $value . ')';
+                $flashtype = 'toast';
+            }
+
+            set_flashdata($this->views['flash1'], $msg . $extra);
+            set_flashdata($flashtype, $this->views['flash1_func1']);
+            return [];
+        }
+
+        // notification shown in toast, will be used
+        // added to database for all value5 users
+        public function handle_2a()
+        {
+            if (userdata($this->aliases['tabel_c2_field1']) == '') {
+                redirect(site_url($this->views['language'] . '/' . 'no_level'));
+            } else {
+                $msg = 'Selamat datang ' . userdata($this->aliases['tabel_c2_field6']) . ' ' . userdata($this->aliases['tabel_c2_field2']) . '!';
+                $type = $this->aliases['tabel_b8_field2_value2'];
+                $extra = '';
+                $flashtype = 'toast';
+
+                $this->add_notif_all($msg, $type, $extra);
+                set_flashdata($this->views['flash1'], $msg . $extra);
+                set_flashdata($flashtype, $this->views['flash1_func1']);
+                return [];
+            }
+        }
+
+        // notification not shown, will be used
+        // added to database
+        public function handle_3a($aksi, $object, $value)
+        {
+            if ($aksi) {
+                $msg = $object . ' is about ' . $value . '!';
+                $type = $this->aliases['tabel_b8_field2_value3'];
+                $extra = '';
+                $flashtype = '';
+            } else {
+                $msg = $this->flash1_msg_6[$object . '_alias'];
+                $type = $this->aliases['tabel_b8_field2_value6'];
+                $extra = ' (ID = ' . $value . ')';
+                $flashtype = 'toast';
+            }
+
+            $this->add_notif($msg, $type, $extra);
+            set_flashdata($this->views['flash1'], $msg . $extra);
+            set_flashdata($flashtype, $this->views['flash1_func1']);
+            return [];
+        }
+
         // notification using toast, will be used
-        public function handle_1a($aksi, $object)
+        public function handle_4a($aksi, $object)
         {
             if ($aksi) {
                 $msg = $this->flash1_msg_1[$object . '_alias'];
@@ -289,7 +350,7 @@ if (!class_exists('Omnitags')) {
 
         // notification using toast, will be used
         // added to database
-        public function handle_1b($aksi, $object)
+        public function handle_4b($aksi, $object)
         {
             if ($aksi) {
                 $msg = $this->flash1_msg_1[$object . '_alias'];
@@ -312,7 +373,7 @@ if (!class_exists('Omnitags')) {
 
         // notification using toast, will be used
         // id specific, added to database
-        public function handle_1c($aksi, $object, $value)
+        public function handle_4c($aksi, $object, $value)
         {
             if ($aksi) {
                 $msg = $this->flash1_msg_3[$object . '_alias'];
@@ -335,7 +396,7 @@ if (!class_exists('Omnitags')) {
 
         // notification using modal, will be used
         // id specific, modal specific, added to database
-        public function handle_1d($aksi, $object, $value)
+        public function handle_4d($aksi, $object, $value)
         {
             if ($aksi) {
                 $msg = $this->flash1_msg_3[$object . '_alias'];
@@ -357,14 +418,14 @@ if (!class_exists('Omnitags')) {
 
         // notification using toast, will be used
         // id specific, added to database
-        public function handle_1e($aksi, $object, $value)
+        public function handle_4e($aksi, $object, $value)
         {
             if ($aksi) {
                 $msg = $this->flash1_msg_5[$object . '_alias'];
                 $type = $this->aliases['tabel_b8_field2_value4'];
                 $extra = ' (ID = ' . $value . ')';
                 $flashtype = 'toast';
-            } else { 
+            } else {
                 $msg = $this->flash1_msg_6[$object . '_alias'];
                 $type = $this->aliases['tabel_b8_field2_value6'];
                 $extra = ' (ID = ' . $value . ')';
@@ -378,23 +439,113 @@ if (!class_exists('Omnitags')) {
             return [];
         }
 
-        // notification shown in toast, will be used
-        // added to database for all value5 users
-        public function handle_2a()
+        // notification not shown, will be used
+        // added to database
+        public function handle_5a($aksi, $sender, $object, $value)
         {
-            if (userdata($this->aliases['tabel_c2_field1']) == '') {
-                redirect(site_url($this->views['language'] . '/' . 'no_level'));
-            } else {
-                $msg = 'Selamat datang ' . userdata($this->aliases['tabel_c2_field6']) . ' ' . userdata($this->aliases['tabel_c2_field2']) . '!';
+            if ($aksi) {
+                $msg = $sender . ':' . $value;
                 $type = $this->aliases['tabel_b8_field2_value5'];
                 $extra = '';
                 $flashtype = 'toast';
-
-                $this->add_notif_all($msg, $type, $extra);
-                set_flashdata($this->views['flash1'], $msg . $extra);
-                set_flashdata($flashtype, $this->views['flash1_func1']);
-                return [];
+            } else {
+                $msg = $this->flash1_msg_6[$object . '_alias'];
+                $type = $this->aliases['tabel_b8_field2_value6'];
+                $extra = ' (ID = ' . $value . ')';
+                $flashtype = 'toast';
             }
+            $this->add_notif($msg, $type, $extra);
+            set_flashdata($this->views['flash1'], $msg . $extra);
+            set_flashdata($flashtype, $this->views['flash1_func1']);
+            return [];
+        }
+
+        // notification not shown, will be used
+        // added to database
+        public function handle_7a($aksi, $sender, $object, $value)
+        {
+            if ($aksi) {
+                $msg = $sender . $value . ' need your assistance!';
+                $type = $this->aliases['tabel_b8_field2_value7'];
+                $extra = ' (About ' . $object . ' with ID = ' . $value . ')';
+                $flashtype = '';
+            } else {
+                $msg = $this->flash1_msg_6[$object . '_alias'];
+                $type = $this->aliases['tabel_b8_field2_value6'];
+                $extra = ' (ID = ' . $value . ')';
+                $flashtype = 'toast';
+            }
+
+            $this->add_notif($msg, $type, $extra);
+            set_flashdata($this->views['flash1'], $msg . $extra);
+            set_flashdata($flashtype, $this->views['flash1_func1']);
+            return [];
+        }
+
+        // notification not shown, will be used
+        // added to database
+        public function handle_8a($aksi, $object, $value)
+        {
+            if ($aksi) {
+                $msg = 'Your ' . $object . ' about ' . $value . ' has been approved!';
+                $type = $this->aliases['tabel_b8_field2_value8'];
+                $extra = '';
+                $flashtype = '';
+            } else {
+                $msg = $this->flash1_msg_6[$object . '_alias'];
+                $type = $this->aliases['tabel_b8_field2_value6'];
+                $extra = ' (ID = ' . $value . ')';
+                $flashtype = 'toast';
+            }
+
+            $this->add_notif($msg, $type, $extra);
+            set_flashdata($this->views['flash1'], $msg . $extra);
+            set_flashdata($flashtype, $this->views['flash1_func1']);
+            return [];
+        }
+
+        // notification not shown, will be used
+        // added to database
+        public function handle_9a($aksi, $object, $value)
+        {
+            if ($aksi) {
+                $msg = 'Your ' . $object . ' about ' . $value . ' has been disapproved!';
+                $type = $this->aliases['tabel_b8_field2_value9'];
+                $extra = '';
+                $flashtype = '';
+            } else {
+                $msg = $this->flash1_msg_6[$object . '_alias'];
+                $type = $this->aliases['tabel_b8_field2_value6'];
+                $extra = ' (ID = ' . $value . ')';
+                $flashtype = 'toast';
+            }
+
+            $this->add_notif($msg, $type, $extra);
+            set_flashdata($this->views['flash1'], $msg . $extra);
+            set_flashdata($flashtype, $this->views['flash1_func1']);
+            return [];
+        }
+
+        // notification shown in toast, will be used
+        // added to database
+        public function handle_10a($aksi, $object, $value)
+        {
+            if ($aksi) {
+                $msg = 'The deadline of ' . $object . ' is ' . $value . '!';
+                $type = $this->aliases['tabel_b8_field2_value10'];
+                $extra = '';
+                $flashtype = '';
+            } else {
+                $msg = $this->flash1_msg_6[$object . '_alias'];
+                $type = $this->aliases['tabel_b8_field2_value6'];
+                $extra = ' (ID = ' . $value . ')';
+                $flashtype = 'toast';
+            }
+
+            $this->add_notif($msg, $type, $extra);
+            set_flashdata($this->views['flash1'], $msg . $extra);
+            set_flashdata($flashtype, $this->views['flash1_func1']);
+            return [];
         }
 
         public function serve_image($directory, $filename)

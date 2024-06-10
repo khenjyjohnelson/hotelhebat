@@ -110,7 +110,7 @@ class C_tabel_b2 extends Omnitags
 
 		$aksi = $this->tl_b2->insert_b2($data);
 
-		$notif = $this->handle_1b($aksi, 'tabel_b2');
+		$notif = $this->handle_4b($aksi, 'tabel_b2');
 
 		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_b2'] . '/admin'));
 	}
@@ -151,7 +151,7 @@ class C_tabel_b2 extends Omnitags
 
 		$aksi = $this->tl_b2->update_b2($data, $tabel_b2_field1);
 
-		$notif = $this->handle_1c($aksi, 'tabel_b2', $tabel_b2_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_b2', $tabel_b2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -168,7 +168,7 @@ class C_tabel_b2 extends Omnitags
 
 		$aksi = $this->tl_b2->update_b2($data, $tabel_b2_field1);
 
-		$notif = $this->handle_1c($aksi, 'tabel_b2_field6', $tabel_b2_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_b2_field6', $tabel_b2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -185,7 +185,7 @@ class C_tabel_b2 extends Omnitags
 
 		$aksi = $this->tl_b2->update_b2($data, $tabel_b2_field1);
 
-		$notif = $this->handle_1c($aksi, 'tabel_b2_field6', $tabel_b2_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_b2_field6', $tabel_b2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -202,7 +202,7 @@ class C_tabel_b2 extends Omnitags
 
 		$aksi = $this->tl_b2->delete_b2($tabel_b2_field1);
 
-		$notif = $this->handle_1e($aksi, 'tabel_b2', $tabel_b2_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_b2', $tabel_b2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

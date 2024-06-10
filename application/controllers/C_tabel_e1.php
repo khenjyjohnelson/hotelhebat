@@ -65,7 +65,7 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Save data to database
 			$aksi = $this->tl_e1->insert_e1($data);
 
-			$notif = $this->handle_1b($aksi, 'tabel_e1');
+			$notif = $this->handle_4b($aksi, 'tabel_e1');
 			
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
@@ -116,7 +116,7 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Update data in the database
 			$aksi = $this->tl_e1->update_e1($data, $tabel_e1_field1);
 
-			$notif = $this->handle_1c($aksi, 'tabel_e1', $tabel_e1_field1);
+			$notif = $this->handle_4c($aksi, 'tabel_e1', $tabel_e1_field1);
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors
@@ -146,7 +146,7 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Delete data from the database
 			$aksi = $this->tl_e1->delete_e1($tabel_e1_field1);
 
-			$notif = $this->handle_1e($aksi, 'tabel_e1_field1', $tabel_e1_field1);
+			$notif = $this->handle_4e($aksi, 'tabel_e1_field1', $tabel_e1_field1);
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors

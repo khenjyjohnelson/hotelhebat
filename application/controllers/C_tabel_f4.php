@@ -55,7 +55,7 @@ class C_tabel_f4 extends Omnitags
 
 		$aksi = $this->tl_f4->insert_f4($data);
 
-		$notif = $this->handle_1b($aksi, 'tabel_f4');
+		$notif = $this->handle_4b($aksi, 'tabel_f4');
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}
@@ -72,7 +72,7 @@ class C_tabel_f4 extends Omnitags
 
 		$aksi = $this->tl_f4->update_f4($data, $tabel_f4_field1);
 
-		$notif = $this->handle_1c($aksi, 'tabel_f4', $tabel_f4_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_f4', $tabel_f4_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}
@@ -83,7 +83,7 @@ class C_tabel_f4 extends Omnitags
 
 		$aksi = $this->tl_f4->delete_f4($tabel_f4_field1);
 
-		$notif = $this->handle_1e($aksi, 'tabel_f4_field1', $tabel_f4_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_f4_field1', $tabel_f4_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}

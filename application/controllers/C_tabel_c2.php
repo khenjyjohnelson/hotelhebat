@@ -98,7 +98,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
-		$notif = $this->handle_1c($aksi, 'tabel_c2', $tabel_c2_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		// kembali ke halaman sebelumnya
 		redirect($_SERVER['HTTP_REFERER']);
@@ -112,7 +112,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->delete_c2($tabel_c2_field1);
 
-		$notif = $this->handle_1e($aksi, 'tabel_c2_field1', $tabel_c2_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_c2_field1', $tabel_c2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 
@@ -203,7 +203,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
-		$notif = $this->handle_1c($aksi, 'tabel_c2', $tabel_c2_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		// mengambil data profil yang baru dirubah
 		$tabel_c2 = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
