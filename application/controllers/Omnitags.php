@@ -267,6 +267,7 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        // notification using toast, will be used
         public function handle_1a($aksi, $object)
         {
             if ($aksi) {
@@ -286,6 +287,8 @@ if (!class_exists('Omnitags')) {
             return [];
         }
 
+        // notification using toast, will be used
+        // added to database
         public function handle_1b($aksi, $object)
         {
             if ($aksi) {
@@ -307,65 +310,9 @@ if (!class_exists('Omnitags')) {
             return [];
         }
 
-        public function handle_1c($aksi, $object)
-        {
-            if ($aksi) {
-                $msg = $this->flash1_msg_1[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value4'];
-                $extra = '';
-                $flashtype = 'modal';
-            } else {
-                $msg = $this->flash1_msg_2[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value6'];
-                $extra = '';
-                $flashtype = 'modal';
-            }
-
-            set_flashdata($this->views['flash2'], $msg . $extra);
-            set_flashdata($flashtype, $this->views['flash2_func1']);
-            return [];
-        }
-
-        public function handle_1d($aksi, $object)
-        {
-            if ($aksi) {
-                $msg = $this->flash1_msg_1[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value4'];
-                $extra = '';
-                $flashtype = 'modal';
-            } else {
-                $msg = $this->flash1_msg_2[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value6'];
-                $extra = '';
-                $flashtype = 'modal';
-            }
-            $this->add_notif($msg, $type, $extra);
-
-            set_flashdata($this->views['flash2'], $msg . $extra);
-            set_flashdata($flashtype, $this->views['flash2_func1']);
-            return [];
-        }
-
-        public function handle_2a($aksi, $object, $value)
-        {
-            if ($aksi) {
-                $msg = $this->flash1_msg_3[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value4'];
-                $extra = ' (ID = ' . $value . ')';
-                $flashtype = 'toast';
-            } else {
-                $msg = $this->flash1_msg_4[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value6'];
-                $extra = ' (ID = ' . $value . ')';
-                $flashtype = 'toast';
-            }
-
-            set_flashdata($this->views['flash1'], $msg . $extra);
-            set_flashdata($flashtype, $this->views['flash1_func1']);
-            return [];
-        }
-
-        public function handle_2b($aksi, $object, $value)
+        // notification using toast, will be used
+        // id specific, added to database
+        public function handle_1c($aksi, $object, $value)
         {
             if ($aksi) {
                 $msg = $this->flash1_msg_3[$object . '_alias'];
@@ -386,65 +333,9 @@ if (!class_exists('Omnitags')) {
             return [];
         }
 
-        public function handle_2c($aksi, $object, $value)
-        {
-            if ($aksi) {
-                $msg = $this->flash1_msg_3[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value4'];
-                $extra = ' (ID = ' . $value . ')';
-                $flashtype = 'modal';
-            } else {
-                $msg = $this->flash1_msg_4[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value6'];
-                $extra = ' (ID = ' . $value . ')';
-                $flashtype = 'modal';
-            }
-
-            set_flashdata($this->views['flash3'], $msg . $extra);
-            set_flashdata($flashtype, $this->views['flash3_func1']);
-            return [];
-        }
-
-        public function handle_2d($aksi, $object, $value)
-        {
-            if ($aksi) {
-                $msg = $this->flash1_msg_3[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value4'];
-                $extra = ' (ID = ' . $value . ')';
-                $flashtype = 'modal';
-            } else {
-                $msg = $this->flash1_msg_4[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value6'];
-                $extra = ' (ID = ' . $value . ')';
-                $flashtype = 'modal';
-            }
-            $this->add_notif($msg, $type, $extra);
-
-            set_flashdata($this->views['flash3'], $msg . $extra);
-            set_flashdata($flashtype, $this->views['flash3_func1']);
-            return [];
-        }
-
-        public function handle_2e($aksi, $object, $value)
-        {
-            if ($aksi) {
-                $msg = $this->flash1_msg_3[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value4'];
-                $extra = ' (ID = ' . $value . ')';
-                $flashtype = 'modal';
-            } else {
-                $msg = $this->flash1_msg_4[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value6'];
-                $extra = ' (ID = ' . $value . ')';
-                $flashtype = 'modal';
-            }
-
-            set_flashdata($this->flash[$object], $msg . $extra);
-            set_flashdata($flashtype, '$("#' . $this->aliases[$object] . $value . '").modal("show")');
-            return [];
-        }
-
-        public function handle_2f($aksi, $object, $value)
+        // notification using modal, will be used
+        // id specific, modal specific, added to database
+        public function handle_1d($aksi, $object, $value)
         {
             if ($aksi) {
                 $msg = $this->flash1_msg_3[$object . '_alias'];
@@ -464,35 +355,16 @@ if (!class_exists('Omnitags')) {
             return [];
         }
 
-        public function handle_3a($aksi, $object, $value)
-        {
-            if ($aksi) {
-                $msg = $this->flash1_msg_5[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value4'];
-                $extra = ' (ID = ' . $value . ')';
-                ;
-                $flashtype = 'toast';
-            } else {
-                $msg = $this->flash1_msg_6[$object . '_alias'];
-                $type = $this->aliases['tabel_b8_field2_value6'];
-                $extra = ' (ID = ' . $value . ')';
-                ;
-                $flashtype = 'toast';
-            }
-
-            set_flashdata($this->views['flash1'], $msg . $extra);
-            set_flashdata($flashtype, $this->views['flash1_func1']);
-            return [];
-        }
-
-        public function handle_3b($aksi, $object, $value)
+        // notification using toast, will be used
+        // id specific, added to database
+        public function handle_1e($aksi, $object, $value)
         {
             if ($aksi) {
                 $msg = $this->flash1_msg_5[$object . '_alias'];
                 $type = $this->aliases['tabel_b8_field2_value4'];
                 $extra = ' (ID = ' . $value . ')';
                 $flashtype = 'toast';
-            } else {
+            } else { 
                 $msg = $this->flash1_msg_6[$object . '_alias'];
                 $type = $this->aliases['tabel_b8_field2_value6'];
                 $extra = ' (ID = ' . $value . ')';
@@ -506,17 +378,9 @@ if (!class_exists('Omnitags')) {
             return [];
         }
 
-        public function handle_4a($object, $value)
-        {
-            $msg = '';
-            $type = $this->aliases['tabel_b8_field2_value5'];
-            $extra = '';
-
-            $this->add_notif_all($msg, $type, $extra);
-            return [];
-        }
-
-        public function handle_4b()
+        // notification shown in toast, will be used
+        // added to database for all value5 users
+        public function handle_2a()
         {
             if (userdata($this->aliases['tabel_c2_field1']) == '') {
                 redirect(site_url($this->views['language'] . '/' . 'no_level'));
@@ -548,6 +412,7 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        // adding the actual notif
         public function add_notif($msg, $type, $extra)
         {
             $notif = array(
@@ -560,6 +425,7 @@ if (!class_exists('Omnitags')) {
             $ambil = $this->tl_b9->insert_b9($notif);
         }
 
+        // adding the actual notif to all user based on c2_field1
         public function add_notif_all($msg, $type, $extra)
         {
             $users = $this->tl_d3->get_d3_by_c2_field1(userdata($this->aliases['tabel_c2_field1']));

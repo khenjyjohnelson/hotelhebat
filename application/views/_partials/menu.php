@@ -194,8 +194,10 @@
                                 <?= dropdown_menu('tabel_f2', '/daftar') ?>
                                 <?= dropdown_menu('tabel_f3', '/daftar') ?>
                                 <div class="dropdown-divider"></div>
+                                <h6 class="dropdown-header"><?= lang('history') ?></h6>
                                 <?= dropdown_menu('tabel_f1', '/daftar') ?>
                                 <?= dropdown_menu_unique(lang('tabel_f3_alias'), $tabel_f3, '/daftar_history') ?>
+                                <div class="dropdown-divider"></div>
                                 <?php break;
                             case $tabel_c2_field6_value2:
                             case $tabel_c2_field6_value3:

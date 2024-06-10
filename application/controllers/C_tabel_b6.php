@@ -106,7 +106,7 @@ class C_tabel_b6 extends Omnitags
 
 		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
 
-		$notif = $this->handle_2b($aksi, 'tabel_b6', $tabel_b6_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_b6', $tabel_b6_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -123,7 +123,7 @@ class C_tabel_b6 extends Omnitags
 
 		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
 
-		$notif = $this->handle_2b($aksi, 'tabel_b6_field6', $tabel_b6_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -140,7 +140,7 @@ class C_tabel_b6 extends Omnitags
 
 		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
 
-		$notif = $this->handle_2b($aksi, 'tabel_b6_field6', $tabel_b6_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}
@@ -153,7 +153,7 @@ class C_tabel_b6 extends Omnitags
 
 		$aksi = $this->tl_b6->delete_b6($tabel_b6_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_b6', $tabel_b6_field1);
+		$notif = $this->handle_1e($aksi, 'tabel_b6', $tabel_b6_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}

@@ -98,7 +98,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
-		$notif = $this->handle_2b($aksi, 'tabel_c2', $tabel_c2_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		// kembali ke halaman sebelumnya
 		redirect($_SERVER['HTTP_REFERER']);
@@ -112,7 +112,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->delete_c2($tabel_c2_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_c2_field1', $tabel_c2_field1);
+		$notif = $this->handle_1e($aksi, 'tabel_c2_field1', $tabel_c2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 
@@ -203,7 +203,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
-		$notif = $this->handle_2b($aksi, 'tabel_c2', $tabel_c2_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		// mengambil data profil yang baru dirubah
 		$tabel_c2 = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
@@ -330,7 +330,7 @@ class C_tabel_c2 extends Omnitags
             $login_history = $this->tl_d3->insert_d3($loginh);
 
             // Handle notifications
-            $notif = $this->handle_4b();
+            $notif = $this->handle_2a();
 
             // Redirect to home page after successful login
             redirect(site_url($this->language_code . '/' . 'home'));
@@ -392,7 +392,7 @@ class C_tabel_c2 extends Omnitags
 
 	// 			$login_history = $this->tl_d3->insert_d3($loginh);
 
-	// 			$notif = $this->handle_4b();
+	// 			$notif = $this->handle_2a();
 
 
 	// 			redirect(site_url($this->language_code . '/' . 'home'));

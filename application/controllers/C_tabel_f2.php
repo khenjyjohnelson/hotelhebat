@@ -254,7 +254,7 @@ class C_tabel_f2 extends Omnitags
 			$aksi = $this->tl_f1->update_f1($data, $tabel_f2_field1);
 		}
 
-		$notif = $this->handle_2b($aksi, 'tabel_f2_field12', $tabel_f2_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_f2_field12', $tabel_f2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -281,7 +281,7 @@ class C_tabel_f2 extends Omnitags
 
 		$aksi = $hapus && $update_f1;
 
-		$notif = $this->handle_3b($aksi, 'tabel_f2_field1', $tabel_f2_field1);
+		$notif = $this->handle_1e($aksi, 'tabel_f2_field1', $tabel_f2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -441,7 +441,7 @@ class C_tabel_f2 extends Omnitags
 		);
 		$aksi = $this->tl_e3->update_e3($data2, $param);
 
-		$notif = $this->handle_2b($aksi, 'tabel_f2', $tabel_f2_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_f2', $tabel_f2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

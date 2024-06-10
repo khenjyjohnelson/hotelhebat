@@ -99,7 +99,7 @@ class Welcome extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$notif = $this->handle_4b();
+		$notif = $this->handle_2a();
 
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);

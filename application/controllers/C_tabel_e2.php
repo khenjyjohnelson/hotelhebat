@@ -86,7 +86,7 @@ class C_tabel_e2 extends Omnitags
 
 		$aksi = $this->tl_e2->update_e2($data, $tabel_e2_field1);
 
-		$notif = $this->handle_2b($aksi, 'tabel_e2', $tabel_e2_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_e2', $tabel_e2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -103,7 +103,7 @@ class C_tabel_e2 extends Omnitags
 		unlink($this->v_upload_path['tabel_e2'] . $tabel_e2_field3);
 		$aksi = $this->tl_e2->delete_e2($tabel_e2_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_e2_field1', $tabel_e2_field1);
+		$notif = $this->handle_1e($aksi, 'tabel_e2_field1', $tabel_e2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

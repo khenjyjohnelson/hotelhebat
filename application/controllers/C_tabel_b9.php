@@ -141,7 +141,7 @@ class C_tabel_b9 extends Omnitags
 
 		$aksi = $this->tl_b9->delete_b9($tabel_b9_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_b9', $tabel_b9_field1);
+		$notif = $this->handle_1e($aksi, 'tabel_b9', $tabel_b9_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

@@ -132,7 +132,7 @@ class C_tabel_f3 extends Omnitags
 			// hanya merubah status pesanan
 			$aksi2 = $this->tl_f2->update_f2($data2, $tabel_f3_field4);
 
-			$notif = $this->handle_2b($aksi2, 'tabel_f2', $tabel_f3_field4);
+			$notif = $this->handle_1c($aksi2, 'tabel_f2', $tabel_f3_field4);
 
 		} else {
 			set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_f3_alias']);
@@ -160,7 +160,7 @@ class C_tabel_f3 extends Omnitags
 
 		$aksi = $this->tl_f3->update_f3($data, $tabel_f3_field1);
 
-		$notif = $this->handle_2b($aksi, 'tabel_f3', $tabel_f3_field1);
+		$notif = $this->handle_1c($aksi, 'tabel_f3', $tabel_f3_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -172,7 +172,7 @@ class C_tabel_f3 extends Omnitags
 		$tabel_f3 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
 		$aksi = $this->tl_f3->delete_f3($tabel_f3_field1);
 
-		$notif = $this->handle_3b($aksi, 'tabel_f3_field1', $tabel_f3_field1);
+		$notif = $this->handle_1e($aksi, 'tabel_f3_field1', $tabel_f3_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
