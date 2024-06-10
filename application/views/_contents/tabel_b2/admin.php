@@ -246,7 +246,7 @@
                   <?= row_data('tabel_b2_field2', $tl_b2->$tabel_b2_field2) ?>
                   <?= row_data('tabel_b2_field3', $tl_b2->$tabel_b2_field3) ?>
                   <?= row_file($tabel_b2, 'tabel_b2_field4', $tl_b2->$tabel_b2_field4) ?>
-                  <?= row_data('tabel_b2_field5', $tl_b2->$tabel_b2_field5) ?>
+                  <?= row_data('tabel_b2_field5', truncateText($tl_b2->$tabel_b2_field5, 200) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1)) ?>
 
                 </tbody>
                 <tfoot></tfoot>

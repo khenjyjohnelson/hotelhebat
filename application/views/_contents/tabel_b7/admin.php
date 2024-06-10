@@ -261,7 +261,7 @@
                 <thead></thead>
                 <tbody>
                   <?= row_data('tabel_b7_field2', $tl_b7->$tabel_b7_field2) ?>
-                  <?= row_data('tabel_b7_field6', html_entity_decode($tl_b7->$tabel_b7_field6)) ?>
+                  <?= row_data('tabel_b7_field6', truncateText(html_entity_decode($tl_b7->$tabel_b7_field6), 200) . btn_read_more('tabel_b7', $tl_b7->$tabel_b7_field1)) ?>
                 </tbody>
                 <tfoot></tfoot>
               </table>

@@ -324,6 +324,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v4_title'),
+			'konten' => $this->v4['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_all_f2()->result(),
 			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
@@ -332,7 +333,7 @@ class C_tabel_f2 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v4['tabel_f2'], $data);
+		load_view_data('_layouts/printpage', $data);
 	}
 
 	// Cetak satu data
@@ -342,6 +343,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v5_title'),
+			'konten' => $this->v5['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_f2_with_e4_by_f2_field1($tabel_f2_field1)->result(),
 		);
@@ -349,7 +351,7 @@ class C_tabel_f2 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v5['tabel_f2'], $data);
+		load_view_data('_layouts/printpage', $data);
 	}
 
 
@@ -398,6 +400,7 @@ class C_tabel_f2 extends Omnitags
 		$tabel_c2_field3 = tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2']);
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v4_title'),
+			'konten' => $this->v4['tabel_b9'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan

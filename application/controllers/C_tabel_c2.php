@@ -125,6 +125,7 @@ class C_tabel_c2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_c2_alias_v4_title'),
+			'konten' => $this->v4['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),
 		);
@@ -132,7 +133,7 @@ class C_tabel_c2 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v4['tabel_c2'], $data);
+		load_view_data('_layouts/printpage', $data);
 	}
 
 
@@ -161,12 +162,14 @@ class C_tabel_c2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('login'),
+			'konten' => 'login',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'login')->result(),
 		);
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('login', $data);
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/logpage', $data);
 	}
 
 	public function signup()
@@ -175,12 +178,14 @@ class C_tabel_c2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('signup'),
+			'konten' => 'signup',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup')->result(),
 		);
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('signup', $data);
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/logpage', $data);
 	}
 
 	public function update_profil()

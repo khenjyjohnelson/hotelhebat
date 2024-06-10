@@ -89,6 +89,7 @@ class C_tabel_b8 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b8_alias_v4_title'),
+			'konten' => $this->v4['tabel_b8'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b8'])->result(),
 			'tbl_b8' => $this->tl_b8->get_all_b8()->result(),
 		);
@@ -96,7 +97,7 @@ class C_tabel_b8 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v4['tabel_b8'], $data);
+		load_view_data('_layouts/printpage', $data);
 	}
 
 	// Cetak satu data

@@ -6,7 +6,22 @@ include 'Omnitags.php';
 class C_tabel_b7 extends Omnitags
 {
 	// Halaman publik
+	public function detail($param1 = null)
+	{
+		$this->declarew();
 
+		$data1 = array(
+			'title' => lang('tabel_b7_alias_v8_title'),
+			'konten' => $this->v8['tabel_b7'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
+			'tbl_b7' => $this->tl_b7->get_b7_by_b7_field1($param1)->result()
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/template', $data);
+	}
 	
 	// Halaman khusus akun
 
@@ -222,6 +237,7 @@ class C_tabel_b7 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v4_title'),
+			'konten' => $this->v4['tabel_b7'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
 			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 		);
@@ -229,7 +245,7 @@ class C_tabel_b7 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v4['tabel_b7'], $data);
+		load_view_data('_layouts/printpage', $data);
 	}
 
 	// Cetak satu data

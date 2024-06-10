@@ -200,7 +200,7 @@ if (!function_exists('btn_read_more')) {
         $url = xss_clean(site_url($data['language'] . '/' . $data[$table] . '/detail/' . $id));
 
         return <<<HTML
-        <a class="text-decoration-none" href="{$url}"> read more</a>
+        <a class="text-decoration-none" href="{$url}" target="_blank"> Read more</a>
         HTML;
     }
 }

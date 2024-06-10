@@ -147,6 +147,7 @@ class C_tabel_e4 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_e4_alias_v4_title'),
+			'konten' => $this->v4['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4'])->result(),
 			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
 		);
@@ -154,7 +155,7 @@ class C_tabel_e4 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v4['tabel_e4'], $data);
+		load_view_data('_layouts/printpage', $data);
 	}
 
 	// Cetak satu data

@@ -9,75 +9,41 @@
 }
 ?>
 
-<!-- halaman print untuk pesanan -->
+<!-- menampilkan data pesanan sebagai ps -->
+<?php foreach ($tbl_f2 as $tl_f2): ?>
+  <!-- menampilkan data pemesan -->
+  <table class="table">
+    <thead class="thead-">
+      <tr>
+        <th><?= lang('tabel_f2_field1_alias') ?></th>
+        <th><?= lang('tabel_f2_field2_alias') ?></th>
+        <th><?= lang('tabel_f2_field3_alias') ?></th>
+        <th><?= lang('tabel_f2_field4_alias') ?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td width=""><?= $tl_f2->$tabel_f2_field1 ?></td>
+        <td width=""><?= $tl_f2->$tabel_f2_field2 ?></td>
+        <td width=""><?= $tl_f2->$tabel_f2_field3 ?></td>
+        <td width=""><?= $tl_f2->$tabel_f2_field4 ?></td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<base href="<?= base_url('assets/') ?>">
-<!DOCTYPE html>
-<html lang="en">
-
-<?php load_view($head) ?>
-
-<body>
-
-  <!-- border garis putus-putus -->
-  <div class="container" style="border-style: dashed;">
-    <?php foreach ($tbl_a1 as $tl_a1): ?>
-      <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
-      <p class="text-center"><?= $tl_a1->$tabel_a1_field2; ?> | <?= $tl_a1->$tabel_a1_field5; ?> |
-        <?= $tl_a1->$tabel_a1_field4; ?>
-      </p>
-      <p class="text-center"><?= $tl_a1->$tabel_a1_field3; ?></p>
-    <?php endforeach; ?>
-
-    <!-- menampilkan data pesanan sebagai ps -->
-    <?php foreach ($tbl_f2 as $tl_f2): ?>
-      <!-- menampilkan data pemesan -->
-      <table class="table">
-        <thead class="thead-">
-          <tr>
-            <th><?= lang('tabel_f2_field1_alias') ?></th>
-            <th><?= lang('tabel_f2_field2_alias') ?></th>
-            <th><?= lang('tabel_f2_field3_alias') ?></th>
-            <th><?= lang('tabel_f2_field4_alias') ?></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td width=""><?= $tl_f2->$tabel_f2_field1 ?></td>
-            <td width=""><?= $tl_f2->$tabel_f2_field2 ?></td>
-            <td width=""><?= $tl_f2->$tabel_f2_field3 ?></td>
-            <td width=""><?= $tl_f2->$tabel_f2_field4 ?></td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- menampilkan data tamu -->
-      <table class="table">
-        <thead class="thead">
-          <tr>
-            <th><?= lang('tabel_f2_field5_alias') ?></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td width=""><?= $tl_f2->$tabel_f2_field5 ?></td>
-          </tr>
-        </tbody>
-      </table>
-    <?php endforeach ?>
-  </div>
-
-
-  <p class="text-center"><?= lang('tabel_c2_field6_value4_alias_v5_msg') ?></p>
-
-  <script src="jquery.min.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
-  <script src="fontawesome/js/all.js"></script>
-
-  <script>
-    window.print();
-  </script>
-</body>
-
-</html>
+  <!-- menampilkan data tamu -->
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th><?= lang('tabel_f2_field5_alias') ?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td width=""><?= $tl_f2->$tabel_f2_field5 ?></td>
+      </tr>
+    </tbody>
+  </table>
+<?php endforeach ?>
+<p class="text-center"><?= lang('tabel_c2_field6_value4_alias_v5_msg') ?></p>

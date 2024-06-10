@@ -212,6 +212,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
+			'konten' => $this->v4['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			'tbl_f3' => $this->tl_f3->get_all_f3()->result(),
 			'tbl_e4' => $this->tl_e4->get_all_f3()->result(),
@@ -221,7 +222,7 @@ class C_tabel_f3 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v4['tabel_f3'], $data);
+		load_view_data('_layouts/printpage', $data);
 	}
 
 	// Cetak satu data
@@ -233,7 +234,8 @@ class C_tabel_f3 extends Omnitags
 		$this->declarew();
 
 		$data1 = array(
-			'title' => lang('tabel_f3_alias_v4_title'),
+			'title' => lang('tabel_f3_alias_v5_title'),
+			'konten' => $this->v5['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 		);
 
@@ -252,13 +254,13 @@ class C_tabel_f3 extends Omnitags
 				'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
-			load_view_data($this->v5['tabel_f1'], $data);
+			load_view_data('_layouts/printpage', $data);
 		} else {
 			$data2 = array(
 				'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
-			load_view_data($this->v5['tabel_f3'], $data);
+			load_view_data('_layouts/printpage', $data);
 		}
 	}
 
@@ -270,6 +272,7 @@ class C_tabel_f3 extends Omnitags
 		$tabel_f3_field3 = tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
+			'konten' => $this->v4['tabel_b9'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan

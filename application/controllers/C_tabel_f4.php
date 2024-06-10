@@ -95,6 +95,7 @@ class C_tabel_f4 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f4_alias_v4_title'),
+			'konten' => $this->v4['tabel_f4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4'])->result(),
 			'tbl_f4' => $this->tl_f4->get_all_f4()->result(),
 		);
@@ -102,6 +103,6 @@ class C_tabel_f4 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v4['tabel_f4'], $data);
+		load_view_data('_layouts/printpage', $data);
 	}
 }

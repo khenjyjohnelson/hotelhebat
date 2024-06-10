@@ -8,9 +8,9 @@
       default: ?>
           <div class="col-md-6 d-flex align-items-center">
             <div>
-              <h1>Selamat Datang di HOTEL HEBAT</h1>
+              <h1>Find a place that meets your needs</h1>
               <br>
-              <a href="<?= site_url($language . '/' . $tabel_f2 . '/index') ?>" class="btn btn-primary">Cek Out</a>
+              <a href="<?= site_url($language . '/' . $tabel_f2 . '/index') ?>" class="btn btn-primary">Book Now</a>
             </div>
           </div>
 
@@ -79,7 +79,7 @@
 
 
   <?php foreach ($tbl_a1 as $tl_a1): ?>
-    <h1 class="text-center">Tentang Kami</h1>
+    <h1 class="text-center">About Us</h1>
     <hr>
     <div class="row">
       <div class="col-md-6">
