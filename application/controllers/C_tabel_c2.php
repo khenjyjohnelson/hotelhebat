@@ -29,8 +29,6 @@ class C_tabel_c2 extends Omnitags
 	{
 		$this->declarew();
 
-		$this->session_3();
-
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
 		$tabel_c2_field4 = $this->v_post_new['tabel_c2_field4'];
 
@@ -78,7 +76,7 @@ class C_tabel_c2 extends Omnitags
 			// jika jumlah data lebih dari 0
 		} else {
 
-			set_flashdata($this->views['flash1'], $this->aliases['tabel_c2_field3'] . 'telah digunakan!');
+			set_flashdata($this->views['flash1'], $this->aliases['tabel_c2_field3'] . ' telah digunakan!');
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
@@ -279,72 +277,88 @@ class C_tabel_c2 extends Omnitags
 	}
 
 	public function ceklogin()
-{
-    // Ensure that necessary dependencies are loaded
-    $this->declarew();
+	{
+		// Ensure that necessary dependencies are loaded
+		$this->declarew();
 
-    // Get and sanitize user inputs
-    $tabel_c2_field3 = xss_clean($this->v_post['tabel_c2_field3']);
-    $tabel_c2_field4 = xss_clean($this->v_post['tabel_c2_field4']);
+		// Load the helper
+		$this->load->helper('validate');
 
-    // Validate email and password inputs
-    if (empty($tabel_c2_field3) || empty($tabel_c2_field4)) {
-        // Set flash message for empty inputs
-        set_flashdata($this->views['flash1'], 'Email and password are required.');
-        redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
-    }
+		$required_fields = [$this->v_input['tabel_c2_field3_input'], $this->v_input['tabel_c2_field3_input']];
 
-    // Get user data based on email
-    $method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
+		if (validate_input($required_fields, $this->views['flash1'])) {
+			$tabel_c2_field3 = xss_clean($this->v_post['tabel_c2_field3']);
+			$tabel_c2_field4 = xss_clean($this->v_post['tabel_c2_field4']);
 
-    // Check if user data exists
-    if ($method3->num_rows() > 0) {
-        $tabel_c2 = $method3->result();
-        $method4 = $tabel_c2[0]->password;
+			// Get user data based on email
+			$method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
 
-        // Verify password
-        if (password_verify($tabel_c2_field4, $method4)) {
-            // Set user session data
-            $tabel_c2_field1 = $tabel_c2[0]->id_user;
-            $tabel_c2_field2 = $tabel_c2[0]->nama;
-            $tabel_c2_field3 = $tabel_c2[0]->email;
-            $tabel_c2_field5 = $tabel_c2[0]->hp;
-            $tabel_c2_field6 = $tabel_c2[0]->level;
+			// Check if user data exists
+			if ($method3->num_rows() > 0) {
+				$tabel_c2 = $method3->result();
+				$method4 = $tabel_c2[0]->password;
 
-            set_userdata($this->aliases['tabel_c2_field1'], $tabel_c2_field1);
-            set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
-            set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
-            set_userdata($this->aliases['tabel_c2_field5'], $tabel_c2_field5);
-            set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
+				// Verify password
+				if (password_verify($tabel_c2_field4, $method4)) {
+					// Set user session data
+					$tabel_c2_field1 = $tabel_c2[0]->id_user;
+					$tabel_c2_field2 = $tabel_c2[0]->nama;
+					$tabel_c2_field3 = $tabel_c2[0]->email;
+					$tabel_c2_field5 = $tabel_c2[0]->hp;
+					$tabel_c2_field6 = $tabel_c2[0]->level;
 
-            // Record login history
-            $userAgent = $_SERVER['HTTP_USER_AGENT'];
-            $deviceType = getDeviceTypeAndOS($userAgent);
-            $loginh = array(
-                $this->aliases['tabel_d3_field1'] => '',
-                $this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
-                $this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
-                $this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
-                $this->aliases['tabel_d3_field5'] => $deviceType,
-            );
-            $login_history = $this->tl_d3->insert_d3($loginh);
+					set_userdata($this->aliases['tabel_c2_field1'], $tabel_c2_field1);
+					set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
+					set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
+					set_userdata($this->aliases['tabel_c2_field5'], $tabel_c2_field5);
+					set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
 
-            // Handle notifications
-            $notif = $this->handle_2a();
+					// Record login history
+					$userAgent = $_SERVER['HTTP_USER_AGENT'];
+					$deviceType = getDeviceTypeAndOS($userAgent);
+					$loginh = array(
+						$this->aliases['tabel_d3_field1'] => '',
+						$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
+						$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
+						$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
+						$this->aliases['tabel_d3_field5'] => $deviceType,
+					);
+					$login_history = $this->tl_d3->insert_d3($loginh);
 
-            // Redirect to home page after successful login
-            redirect(site_url($this->language_code . '/' . 'home'));
-        } else {
-            // Set flash message for incorrect password
-            set_flashdata($this->views['flash1'], 'Incorrect email or password.');
-            redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
-        }
-    } else {
-        // Set flash message for non-existent email
-        set_flashdata($this->views['flash1'], 'Email not found.');
-        redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
-    }
-}
+					// Handle notifications
+					$notif = $this->handle_2a();
+
+					// Redirect to home page after successful login
+					redirect(site_url($this->language_code . '/' . 'home'));
+				} else {
+					// Set flash message for incorrect password
+					set_flashdata($this->views['flash1'], 'Incorrect email or password.');
+					redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
+				}
+			} else {
+				// Set flash message for non-existent email
+				set_flashdata($this->views['flash1'], 'Email not found.');
+				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
+			}
+		}
+
+		// Define validation rules
+		// $rules = array(
+		// 	'tabel_c2_field3' => array('field' => $this->v_input['tabel_c2_field3_input'], 'rules' => 'required|valid_email'),
+		// 	'tabel_c2_field4' => array('field' => $this->v_input['tabel_c2_field4_input'], 'rules' => 'required')
+		// 	// Add more fields and rules as needed
+		// );
+
+		// Validate input using the helper
+		// $is_valid = validate_form($rules, $this->views['flash1']);
+
+		// Proceed with the rest of the logic if validation is successful
+		// if ($is_valid) {
+		// Get and sanitize user inputs
+
+		// }
+
+	}
 
 
 	// public function ceklogin()

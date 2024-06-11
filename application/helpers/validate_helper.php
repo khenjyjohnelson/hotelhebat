@@ -1,15 +1,45 @@
-// application/helpers/form_validation_helper.php
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-if (!function_exists('validate_form')) {
-    function validate_form($rules) {
+if (!function_exists('validate_input')) {
+    function validate_input($required_fields, $flash_key, $error_message = 'All inputs are required.')
+    {
         $CI =& get_instance();
         $CI->load->library('form_validation');
-        
-        foreach ($rules as $field => $rule) {
-            $CI->form_validation->set_rules($field, $rule['label'], $rule['rules']);
+
+        // Sanitize and validate each required field
+        foreach ($required_fields as $field) {
+            if (empty(xss_clean(post($field)))) {
+                // Set flash message for empty inputs
+                set_flashdata($flash_key, $error_message);
+                $redirect_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/';
+                redirect($redirect_url);
+                return false; // Indicate validation failure
+            }
         }
-        
-        return $CI->form_validation->run();
+
+        return true; // Indicate validation success
+    }
+}
+
+if (!function_exists('validate_form')) {
+    function validate_form($rules, $flash_key, $error_message = 'All inputs are required.')
+    {
+        $CI =& get_instance();
+        $CI->load->library('form_validation');
+
+        foreach ($rules as $field => $rule) {
+            $CI->form_validation->set_rules($field, $rule['field'], $rule['rules']);
+        }
+
+        if ($CI->form_validation->run() == FALSE) {
+            // Set flash message for validation errors
+            set_flashdata($flash_key, $error_message);
+            // Redirect back to the referrer URL
+            $redirect_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/';
+            redirect($redirect_url);
+            return false;
+        }
+
+        return true;
     }
 }
