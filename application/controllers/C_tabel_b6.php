@@ -59,6 +59,19 @@ class C_tabel_b6 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b6_field2_input'],
+				$this->v_input['tabel_b6_field3_input'],
+				$this->v_input['tabel_b6_field4_input'],
+				$this->v_input['tabel_b6_field5_input'],
+				$this->v_input['tabel_b6_field7_input']
+			),
+			$this->views['flash1']
+		);
+
+
 		// Check if the field contains "https://" at the beginning
 		if (strpos($this->v_post['tabel_b6_field4'], 'https://') === 0) {
 			// It contains "https://" at the beginning
@@ -92,6 +105,18 @@ class C_tabel_b6 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b6_field1_input'],
+				$this->v_input['tabel_b6_field2_input'],
+				$this->v_input['tabel_b6_field3_input'],
+				$this->v_input['tabel_b6_field4_input'],
+				$this->v_input['tabel_b6_field5_input'],
+				$this->v_input['tabel_b6_field7_input']
+			),
+			$this->views['flash1']
+		);
 
 		$tabel_b6_field1 = $this->v_post['tabel_b6_field1'];
 

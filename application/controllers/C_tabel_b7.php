@@ -49,6 +49,14 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		validate_input(
+			array(
+				$this->v_input['tabel_b7_field2_input'],
+				$this->v_input['tabel_b7_field6_input'],
+			),
+			$this->views['flash1']
+		);
+
 		$data = array(
 			$this->aliases['tabel_b7_field1'] => '',
 			$this->aliases['tabel_b7_field2'] => $this->v_post['tabel_b7_field2'],
@@ -67,6 +75,15 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b7_field1_input'],
+				$this->v_input['tabel_b7_field2_input'],
+				$this->v_input['tabel_b7_field6_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
@@ -88,6 +105,15 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b7_field1_input'],
+				$this->v_input['tabel_b7_field2_input'],
+				$this->v_input['tabel_b7_field3_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";	
 
@@ -132,6 +158,15 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		validate_input(
+			array(
+				$this->v_input['tabel_b7_field1_input'],
+				$this->v_input['tabel_b7_field2_input'],
+				$this->v_input['tabel_b7_field4_input'],
+			),
+			$this->views['flash1']
+		);
+
 		$param = $this->v_post['tabel_b7_field2'] . "_";	
 
 		$table = $this->tl_b7->get_b7_by_b7_field1($this->v_post['tabel_b7_field1'])->result();
@@ -174,6 +209,15 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b7_field1_input'],
+				$this->v_input['tabel_b7_field2_input'],
+				$this->v_input['tabel_b7_field5_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";		
 

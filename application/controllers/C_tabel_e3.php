@@ -33,8 +33,15 @@ class C_tabel_e3 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
-
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_e3_field2_input'],
+				$this->v_input['tabel_e3_field4_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$data = array(
 			$this->aliases['tabel_e3_field1'] => '',
@@ -52,8 +59,18 @@ class C_tabel_e3 extends Omnitags
 	public function update()
 	{
 		$this->declarew();
-
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_e3_field1_input'],
+				$this->v_input['tabel_e3_field2_input'],
+				$this->v_input['tabel_e3_field3_input'],
+				$this->v_input['tabel_e3_field4_input'],
+				$this->v_input['tabel_e3_field5_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$tabel_e3_field1 = $this->v_post['tabel_e3_field1'];
 		$data = array(
@@ -73,7 +90,6 @@ class C_tabel_e3 extends Omnitags
 	public function delete($tabel_e3_field1 = null)
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$aksi = $this->tl_e3->delete_e3($tabel_e3_field1);

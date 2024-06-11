@@ -30,51 +30,31 @@ class C_tabel_e1 extends Omnitags
 	{
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
-
 		$this->session_3();
 
-		// Security: Input Sanitization and Validation
-		$inputs = [
-			'tabel_e1_field2',
-			'tabel_e1_field3',
-			'tabel_e1_field4'
-		];
-		foreach ($inputs as $input) {
-			$input_value = htmlspecialchars(trim($this->v_post[$input]));
-			if (empty($input_value)) {
-				// Error Handling: Set error flash message for invalid input
-				set_flashdata($this->views['flash2'], "Invalid input. Please provide valid data.");
-				set_flashdata('modal', $this->views['flash2_func1']);
-				// Functional requirement: Redirect user to 'tabel_e1' page
-				redirect($_SERVER['HTTP_REFERER']); 
-			}
-		}
-
-		// Authentication and Authorization (if applicable)
+		validate_input(
+			array(
+				$this->v_input['tabel_e1_field2_input'],
+				$this->v_input['tabel_e1_field3_input'],
+				$this->v_input['tabel_e1_field4_input'],
+			),
+			$this->views['flash1']
+		);
 
 		// Functional requirement: Construct data array from validated view inputs
-		$data = [
+		$data = array(
 			$this->aliases['tabel_e1_field1'] => '',
 			$this->aliases['tabel_e1_field2'] => $this->v_post['tabel_e1_field2'],
 			$this->aliases['tabel_e1_field3'] => $this->v_post['tabel_e1_field3'],
 			$this->aliases['tabel_e1_field4'] => $this->v_post['tabel_e1_field4'],
-		];
+		);
 
-		try {
-			// Security: Prepared Statements to prevent SQL injection
-			// Functional requirement: Save data to database
-			$aksi = $this->tl_e1->insert_e1($data);
+		$aksi = $this->tl_e1->insert_e1($data);
 
-			$notif = $this->handle_4b($aksi, 'tabel_e1');
-			
-		} catch (Exception $e) {
-			// Error Handling: Handle database operation errors
-			set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
-			set_flashdata('modal', $this->views['flash2_func1']);
-		}
+		$notif = $this->handle_4b($aksi, 'tabel_e1');
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -83,49 +63,32 @@ class C_tabel_e1 extends Omnitags
 	{
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
-
 		$this->session_3();
 
-		// Security: Input Sanitization and Validation
-		$inputs = [
-			'tabel_e1_field2',
-			'tabel_e1_field3'
-		];
+		validate_input(
+			array(
+				$this->v_input['tabel_e1_field1_input'],
+				$this->v_input['tabel_e1_field2_input'],
+				$this->v_input['tabel_e1_field3_input'],
+				$this->v_input['tabel_e1_field4_input'],
+			),
+			$this->views['flash1']
+		);
 
-		foreach ($inputs as $input) {
-			$input_value = htmlspecialchars(trim($this->v_post[$input]));
-			if (empty($input_value)) {
-				// Error Handling: Set error flash message for invalid input
-				set_flashdata($this->views['flash3'], "Invalid input. Please provide valid data.");
-				set_flashdata('modal', $this->views['flash3_func1']);
-				// Functional requirement: Redirect user to 'tabel_e1' page
-				redirect($_SERVER['HTTP_REFERER']); 
-			}
-		}
-
-		$tabel_e1_field1 = htmlspecialchars(trim($this->v_post['tabel_e1_field1']));
+		$tabel_e1_field1 = $this->v_post['tabel_e1_field1'];
 
 		// Functional requirement: Construct data array from validated view inputs
-		$data = [
+		$data = array(
 			$this->aliases['tabel_e1_field2'] => $this->v_post['tabel_e1_field2'],
 			$this->aliases['tabel_e1_field3'] => $this->v_post['tabel_e1_field3']
-		];
+		);
 
-		try {
-			// Security: Prepared Statements to prevent SQL injection
-			// Functional requirement: Update data in the database
-			$aksi = $this->tl_e1->update_e1($data, $tabel_e1_field1);
+		$aksi = $this->tl_e1->update_e1($data, $tabel_e1_field1);
 
-			$notif = $this->handle_4c($aksi, 'tabel_e1', $tabel_e1_field1);
-
-		} catch (Exception $e) {
-			// Error Handling: Handle database operation errors
-			set_flashdata($this->views['flash2'], "Error occurred while updating data: " . $e->getMessage());
-			set_flashdata('toast', $this->views['flash1_func1']);
-		}
+		$notif = $this->handle_4c($aksi, 'tabel_e1', $tabel_e1_field1);
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -134,7 +97,6 @@ class C_tabel_e1 extends Omnitags
 	{
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
-
 		$this->session_3();
 
 		$tabel_e1 = $this->tl_e1->get_e1_by_e1_field1($tabel_e1_field1)->result();
@@ -155,7 +117,7 @@ class C_tabel_e1 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel_e1' page
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 

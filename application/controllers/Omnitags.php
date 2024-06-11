@@ -23,6 +23,8 @@ if (!class_exists('Omnitags')) {
             $this->load->helper('card');
             // Tampil dropdown
             $this->load->helper('dropdown');
+            // Kelola validation
+            $this->load->helper('validate');
             // Kelola js
             $this->load->helper('js');
             // Kelola url
@@ -229,6 +231,22 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value2']:
                 case $this->aliases['tabel_c2_field6_value3']:
                 case $this->aliases['tabel_c2_field6_value5']:
+                default:
+                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    break;
+            }
+        }
+
+        public function session_2_3_4_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
                 default:
                     redirect(site_url($this->views['language'] . '/welcome/404'));
                     break;

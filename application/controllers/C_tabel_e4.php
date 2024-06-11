@@ -57,32 +57,24 @@ class C_tabel_e4 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		// Define validation rules
-		$rules = array(
-			'tabel_e4_field2' => array('label' => $this->v_input['tabel_e4_field2'], 'rules' => 'required'),
-			'tabel_e4_field3' => array('label' => $this->v_input['tabel_e4_field3'], 'rules' => 'required')
+		validate_input(
+			array(
+				$this->v_input['tabel_e4_field2_input'],
+				$this->v_input['tabel_e4_field4_input'],
+			),
+			$this->views['flash1']
 		);
 
+		$data = array(
+			$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
+			$this->aliases['tabel_e4_field3'] => post('tabel_e4_field3'),
+		);
 
-		$this->load->helper('validate');
-		// Validate input using the helper
-		if (!validate_form($rules)) {
-			// Form validation failed, redirect back to form
-			redirect($_SERVER['HTTP_REFERER']);
-		} else {
-			// Form validation passed, proceed with data insertion
-			$data = array(
-				$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
-				$this->aliases['tabel_e4_field3'] => post('tabel_e4_field3'),
-			);
+		$aksi = $this->tl_e4->insert_e4($data);
 
-			$aksi = $this->tl_e4->insert_e4($data);
+		$notif = $this->handle_4b($aksi, 'tabel_e4');
 
-			$notif = $this->handle_4b($aksi, 'tabel_e4');
-
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function update()

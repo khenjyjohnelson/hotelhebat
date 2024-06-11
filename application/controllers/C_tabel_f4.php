@@ -33,6 +33,18 @@ class C_tabel_f4 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
+		$this->session_4();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_f4_field2_input'],
+				$this->v_input['tabel_f4_field3_input'],
+				$this->v_input['tabel_f4_field4_input'],
+				$this->v_input['tabel_f4_field5_input'],
+				$this->v_input['tabel_f4_field6_input'],
+			),
+			$this->views['flash1']
+		);
 
 		// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
 		$tabel_f4_field7 = date("Y-m-d") . " " . date("h:m:s", time());
@@ -63,6 +75,16 @@ class C_tabel_f4 extends Omnitags
 	public function update() //update tidak diperlukan di sini
 	{
 		$this->declarew();
+		$this->session_4();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_f4_field1_input'],
+				$this->v_input['tabel_f4_field2_input'],
+				$this->v_input['tabel_f4_field3_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$tabel_f4_field1 = $this->v_post['tabel_f4_field1'];
 		$data = array(
@@ -80,6 +102,7 @@ class C_tabel_f4 extends Omnitags
 	public function delete($tabel_f4_field1 = null)
 	{
 		$this->declarew();
+		$this->session_4();
 
 		$aksi = $this->tl_f4->delete_f4($tabel_f4_field1);
 

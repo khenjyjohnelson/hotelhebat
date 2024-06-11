@@ -32,8 +32,19 @@ class C_tabel_c1 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
-
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_c1_field2_input'],
+				$this->v_input['tabel_c1_field3_input'],
+				$this->v_input['tabel_c1_field4_input'],
+				$this->v_input['tabel_c1_field5_input'],
+				$this->v_input['tabel_c1_field6_input'],
+				$this->v_input['tabel_c1_field7_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$param2 = $this->v_post['tabel_c1_field2'];
 		// $param8 = $this->v_post['tabel_c1_field8'];
@@ -97,8 +108,19 @@ class C_tabel_c1 extends Omnitags
 		// Bisa mengupload gambar dengan tulisan yang dihapus, tentunya dengan minim data double
 
 		$this->declarew();
-
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_c1_field1_input'],
+				$this->v_input['tabel_c1_field2_input'],
+				$this->v_input['tabel_c1_field3_input'],
+				$this->v_input['tabel_c1_field5_input'],
+				$this->v_input['tabel_c1_field7_input'],
+			),
+			$this->views['flash1']
+		);
+
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 
@@ -106,7 +128,7 @@ class C_tabel_c1 extends Omnitags
 			$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
 			$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
 			$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
-			$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field6'],
+			$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
 			$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
 		);
 
@@ -120,7 +142,6 @@ class C_tabel_c1 extends Omnitags
 	public function delete($tabel_c1_field1 = null)
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$aksi = $this->tl_c1->delete_c1($tabel_c1_field1);
@@ -201,7 +222,6 @@ class C_tabel_c1 extends Omnitags
 	public function update_profil()
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
@@ -238,7 +258,6 @@ class C_tabel_c1 extends Omnitags
 	public function update_password()
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];

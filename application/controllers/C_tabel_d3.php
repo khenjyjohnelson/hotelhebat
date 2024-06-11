@@ -32,7 +32,6 @@ class C_tabel_d3 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$data = array(

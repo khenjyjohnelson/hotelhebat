@@ -29,6 +29,18 @@ class C_tabel_c2 extends Omnitags
 	{
 		$this->declarew();
 
+		validate_input(
+			array(
+				$this->v_input['tabel_c2_field2_input'],
+				$this->v_input['tabel_c2_field3_input'],
+				$this->v_input['tabel_c2_field4_input'],
+				$this->v_confirm['tabel_c2_field4_confirm'],
+				$this->v_input['tabel_c2_field5_input'],
+				$this->v_input['tabel_c2_field6_input'],
+			),
+			$this->views['flash1']
+		);
+
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
 		$tabel_c2_field4 = $this->v_post_new['tabel_c2_field4'];
 
@@ -84,8 +96,18 @@ class C_tabel_c2 extends Omnitags
 	public function update()
 	{
 		$this->declarew();
-
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_c2_field1_input'],
+				$this->v_input['tabel_c2_field2_input'],
+				$this->v_input['tabel_c2_field3_input'],
+				$this->v_input['tabel_c2_field5_input'],
+				$this->v_input['tabel_c2_field6_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 		$data = array(
@@ -105,7 +127,6 @@ class C_tabel_c2 extends Omnitags
 	public function delete($tabel_c2_field1 = null)
 	{
 		$this->declarew();
-
 		$this->session_3();
 
 		$aksi = $this->tl_c2->delete_c2($tabel_c2_field1);
@@ -189,8 +210,17 @@ class C_tabel_c2 extends Omnitags
 	public function update_profil()
 	{
 		$this->declarew();
-
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_c2_field1_input'],
+				$this->v_input['tabel_c2_field2_input'],
+				$this->v_input['tabel_c2_field3_input'],
+				$this->v_input['tabel_c2_field5_input'],
+			),
+			$this->views['flash1']
+		);
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 		$data = array(
@@ -220,8 +250,17 @@ class C_tabel_c2 extends Omnitags
 	public function update_password()
 	{
 		$this->declarew();
+		$this->session_2_3_4_5();
 
-		$this->session_3();
+		validate_input(
+			array(
+				$this->v_input['tabel_c2_field1_input'],
+				$this->v_old['tabel_c2_field4_old'],
+				$this->v_new['tabel_c2_field4_new'],
+				$this->v_confirm['tabel_c2_field4_confirm'],
+			),
+			$this->views['flash1']
+		);
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 
@@ -281,65 +320,66 @@ class C_tabel_c2 extends Omnitags
 		// Ensure that necessary dependencies are loaded
 		$this->declarew();
 
-		// Load the helper
-		$this->load->helper('validate');
+		validate_input(
+			array(
+				$this->v_input['tabel_c2_field3_input'],
+				$this->v_input['tabel_c2_field4_input']
+			),
+			$this->views['flash1']
+		);
 
-		$required_fields = [$this->v_input['tabel_c2_field3_input'], $this->v_input['tabel_c2_field3_input']];
+		$tabel_c2_field3 = xss_clean($this->v_post['tabel_c2_field3']);
+		$tabel_c2_field4 = xss_clean($this->v_post['tabel_c2_field4']);
 
-		if (validate_input($required_fields, $this->views['flash1'])) {
-			$tabel_c2_field3 = xss_clean($this->v_post['tabel_c2_field3']);
-			$tabel_c2_field4 = xss_clean($this->v_post['tabel_c2_field4']);
+		// Get user data based on email
+		$method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
 
-			// Get user data based on email
-			$method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
+		// Check if user data exists
+		if ($method3->num_rows() > 0) {
+			$tabel_c2 = $method3->result();
+			$method4 = $tabel_c2[0]->password;
 
-			// Check if user data exists
-			if ($method3->num_rows() > 0) {
-				$tabel_c2 = $method3->result();
-				$method4 = $tabel_c2[0]->password;
+			// Verify password
+			if (password_verify($tabel_c2_field4, $method4)) {
+				// Set user session data
+				$tabel_c2_field1 = $tabel_c2[0]->id_user;
+				$tabel_c2_field2 = $tabel_c2[0]->nama;
+				$tabel_c2_field3 = $tabel_c2[0]->email;
+				$tabel_c2_field5 = $tabel_c2[0]->hp;
+				$tabel_c2_field6 = $tabel_c2[0]->level;
 
-				// Verify password
-				if (password_verify($tabel_c2_field4, $method4)) {
-					// Set user session data
-					$tabel_c2_field1 = $tabel_c2[0]->id_user;
-					$tabel_c2_field2 = $tabel_c2[0]->nama;
-					$tabel_c2_field3 = $tabel_c2[0]->email;
-					$tabel_c2_field5 = $tabel_c2[0]->hp;
-					$tabel_c2_field6 = $tabel_c2[0]->level;
+				set_userdata($this->aliases['tabel_c2_field1'], $tabel_c2_field1);
+				set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
+				set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
+				set_userdata($this->aliases['tabel_c2_field5'], $tabel_c2_field5);
+				set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
 
-					set_userdata($this->aliases['tabel_c2_field1'], $tabel_c2_field1);
-					set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
-					set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
-					set_userdata($this->aliases['tabel_c2_field5'], $tabel_c2_field5);
-					set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
+				// Record login history
+				$userAgent = $_SERVER['HTTP_USER_AGENT'];
+				$deviceType = getDeviceTypeAndOS($userAgent);
+				$loginh = array(
+					$this->aliases['tabel_d3_field1'] => '',
+					$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
+					$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
+					$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
+					$this->aliases['tabel_d3_field5'] => $deviceType,
+				);
+				$login_history = $this->tl_d3->insert_d3($loginh);
 
-					// Record login history
-					$userAgent = $_SERVER['HTTP_USER_AGENT'];
-					$deviceType = getDeviceTypeAndOS($userAgent);
-					$loginh = array(
-						$this->aliases['tabel_d3_field1'] => '',
-						$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
-						$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
-						$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
-						$this->aliases['tabel_d3_field5'] => $deviceType,
-					);
-					$login_history = $this->tl_d3->insert_d3($loginh);
+				// Handle notifications
+				$notif = $this->handle_2a();
 
-					// Handle notifications
-					$notif = $this->handle_2a();
-
-					// Redirect to home page after successful login
-					redirect(site_url($this->language_code . '/' . 'home'));
-				} else {
-					// Set flash message for incorrect password
-					set_flashdata($this->views['flash1'], 'Incorrect email or password.');
-					redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
-				}
+				// Redirect to home page after successful login
+				redirect(site_url($this->language_code . '/' . 'home'));
 			} else {
-				// Set flash message for non-existent email
-				set_flashdata($this->views['flash1'], 'Email not found.');
+				// Set flash message for incorrect password
+				set_flashdata($this->views['flash1'], 'Incorrect email or password.');
 				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 			}
+		} else {
+			// Set flash message for non-existent email
+			set_flashdata($this->views['flash1'], 'Email not found.');
+			redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
 		}
 
 		// Define validation rules
