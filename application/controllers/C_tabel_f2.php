@@ -90,10 +90,10 @@ class C_tabel_f2 extends Omnitags
 
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		// nilai min dan max sudah diinput sebelumnya
-		$param1 = $this->v_filter1_get['tabel_f2_field10'];
-		$param2 = $this->v_filter2_get['tabel_f2_field10'];
-		$param3 = $this->v_filter1_get['tabel_f2_field11'];
-		$param4 = $this->v_filter2_get['tabel_f2_field11'];
+		$param1 = $this->v_get['tabel_f2_field10_filter1'];
+		$param2 = $this->v_get['tabel_f2_field10_filter2'];
+		$param3 = $this->v_get['tabel_f2_field11_filter1'];
+		$param4 = $this->v_get['tabel_f2_field11_filter2'];
 
 		$data1 = array(
 			'title' => lang('tabel_f1_alias_v2_title'),
@@ -120,10 +120,10 @@ class C_tabel_f2 extends Omnitags
 		$this->declarew();
 
 		// nilai min dan max di sini belum ada
-		$param1 = $this->v_filter1_get['tabel_f2_field10'];
-		$param2 = $this->v_filter2_get['tabel_f2_field10'];
-		$param3 = $this->v_filter1_get['tabel_f2_field11'];
-		$param4 = $this->v_filter2_get['tabel_f2_field11'];
+		$param1 = $this->v_get['tabel_f2_field10_filter1'];
+		$param2 = $this->v_get['tabel_f2_field10_filter2'];
+		$param3 = $this->v_get['tabel_f2_field11_filter1'];
+		$param4 = $this->v_get['tabel_f2_field11_filter2'];
 
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v3_title'),
@@ -316,10 +316,10 @@ class C_tabel_f2 extends Omnitags
 		);
 
 		// nilai min dan max sudah diinput sebelumnya
-		$param1 = $this->v_filter1_get['tabel_f2_field10'];
-		$param2 = $this->v_filter2_get['tabel_f2_field10'];
-		$param3 = $this->v_filter1_get['tabel_f2_field11'];
-		$param4 = $this->v_filter2_get['tabel_f2_field11'];
+		$param1 = $this->v_get['tabel_f2_field10_filter1'];
+		$param2 = $this->v_get['tabel_f2_field10_filter2'];
+		$param3 = $this->v_get['tabel_f2_field11_filter1'];
+		$param4 = $this->v_get['tabel_f2_field11_filter2'];
 
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v3_title'),

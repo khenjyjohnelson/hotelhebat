@@ -133,7 +133,7 @@ class C_tabel_b7 extends Omnitags
 		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field3_input']]['name'], PATHINFO_EXTENSION);
 
 		if (!$this->upload->do_upload($this->v_input['tabel_b7_field3_input'])) {
-			$gambar = $this->v_post_old['tabel_b7_field3'];
+			$gambar = $this->v_post['tabel_b7_field3_old'];
 		} else {
 			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
@@ -185,7 +185,7 @@ class C_tabel_b7 extends Omnitags
 		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field4_input']]['name'], PATHINFO_EXTENSION);
 
 		if (!$this->upload->do_upload($this->v_input['tabel_b7_field4_input'])) {
-			$gambar = $this->v_post_old['tabel_b7_field4'];
+			$gambar = $this->v_post['tabel_b7_field4_old'];
 		} else {
 			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
@@ -237,7 +237,7 @@ class C_tabel_b7 extends Omnitags
 		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field5_input']]['name'], PATHINFO_EXTENSION);
 
 		if (!$this->upload->do_upload($this->v_input['tabel_b7_field5_input'])) {
-			$gambar = $this->v_post_old['tabel_b7_field5'];
+			$gambar = $this->v_post['tabel_b7_field5_old'];
 		} else {
 			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];

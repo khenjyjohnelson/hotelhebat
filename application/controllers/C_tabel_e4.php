@@ -145,7 +145,7 @@ class C_tabel_e4 extends Omnitags
 		$file_extension = pathinfo($_FILES[$this->v_input['tabel_e4_field4_input']]['name'], PATHINFO_EXTENSION);
 
 		if (!$this->upload->do_upload($this->v_input['tabel_e4_field4_input'])) {
-			$gambar = $this->v_post_old['tabel_e4_field4'];
+			$gambar = $this->v_post['tabel_e4_field4_old'];
 		} else {
 
 			$upload = $this->upload->data();

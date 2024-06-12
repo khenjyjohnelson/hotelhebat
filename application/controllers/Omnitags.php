@@ -66,8 +66,8 @@ if (!class_exists('Omnitags')) {
         public $aliases, $views, $flashdatas, $tempdatas, $show, $package;
         public $v1, $v2, $v3, $v4, $v5, $v6, $v7, $v8;
         public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title, $v7_title, $v8_title;
-        public $v_input, $v_post, $v_get, $v_old, $v_post_old, $v_confirm, $v_new, $v_post_new, $v_post_confirm;
-        public $v_upload_path, $v_filter1, $v_filter1_get, $v_filter2, $v_filter2_get;
+        public $v_input, $v_post, $v_get;
+        public $v_upload_path;
         public $flash, $flash_func;
         public $notif_limit, $notif_null, $notifications, $elapsedTime, $elapsed, $elapsed2;
         public $recommendation, $theme, $theme_id;
@@ -92,24 +92,24 @@ if (!class_exists('Omnitags')) {
 
             // Create variables dynamically
             foreach ($this->myData1 as $item) {
+                $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
+                $this->reverse[$item['value'] . '_realname'] = $item['key'];
+
                 $this->v_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
                 $this->v_input[$item['key'] . '_filter1'] = 'min_' . $item['value'];
                 $this->v_input[$item['key'] . '_filter2'] = 'max_' . $item['value'];
-                $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
-                $this->v_new[$item['key'] . '_new'] = 'new_' . $item['value'];
-                $this->v_confirm[$item['key'] . '_confirm'] = 'confirm_' . $item['value'];
-                $this->reverse[$item['value'] . '_realname'] = $item['key'];
+                $this->v_input[$item['key'] . '_old'] = 'old_' . $item['value'];
+                $this->v_input[$item['key'] . '_new'] = 'new_' . $item['value'];
+                $this->v_input[$item['key'] . '_confirm'] = 'confirm_' . $item['value'];
 
-                $this->aliases[$item['key']] = $item['value']; // Variable variable to create dynamic variables
                 $this->v_post[$item['key']] = post('txt_' . $item['value']);
+                $this->v_post[$item['key'] . '_old'] = post('old_' . $item['value']);
+                $this->v_post[$item['key'] . '_new'] = post('new_' . $item['value']);
+                $this->v_post[$item['key'] . '_confirm'] = post('confirm_' . $item['value']);
+
                 $this->v_get[$item['key']] = get('txt_' . $item['value']);
-                $this->v_post_old[$item['key']] = post('old_' . $item['value']);
-                $this->v_post_new[$item['key']] = post('new_' . $item['value']);
-                $this->v_post_confirm[$item['key']] = post('confirm_' . $item['value']);
-
-
-                $this->v_filter1_get[$item['key']] = get('min_' . $item['value']);
-                $this->v_filter2_get[$item['key']] = get('max_' . $item['value']);
+                $this->v_get[$item['key'] . '_filter1'] = get('min_' . $item['value']);
+                $this->v_get[$item['key'] . '_filter2'] = get('max_' . $item['value']);
 
                 $this->flash1_msg_1[$item['key']] = lang($item['key'] . '_flash1_msg_1');
                 $this->flash1_msg_2[$item['key']] = lang($item['key'] . '_flash1_msg_2');
@@ -194,7 +194,7 @@ if (!class_exists('Omnitags')) {
 
             );
 
-            $this->package = array_merge($this->views, $this->aliases, $this->v_input, $this->v_filter1, $this->v_filter2, $this->v_old, $this->v_new, $this->v_confirm, $this->reverse);
+            $this->package = array_merge($this->views, $this->aliases, $this->v_input, $this->reverse);
         }
 
         public function session_2()

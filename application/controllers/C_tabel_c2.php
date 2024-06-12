@@ -34,7 +34,7 @@ class C_tabel_c2 extends Omnitags
 				$this->v_input['tabel_c2_field2_input'],
 				$this->v_input['tabel_c2_field3_input'],
 				$this->v_input['tabel_c2_field4_input'],
-				$this->v_confirm['tabel_c2_field4_confirm'],
+				$this->v_input['tabel_c2_field4_confirm'],
 				$this->v_input['tabel_c2_field5_input'],
 				$this->v_input['tabel_c2_field6_input'],
 			),
@@ -42,7 +42,7 @@ class C_tabel_c2 extends Omnitags
 		);
 
 		$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
-		$tabel_c2_field4 = $this->v_post_new['tabel_c2_field4'];
+		$tabel_c2_field4 = $this->v_post['tabel_c2_field4_new'];
 
 		$method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
 
@@ -50,7 +50,7 @@ class C_tabel_c2 extends Omnitags
 		if ($method3->num_rows() < 1) {
 
 			// jika input konfirm sama dengan input password
-			if ($this->v_post_confirm['tabel_c2_field4'] === $tabel_c2_field4) {
+			if ($this->v_post['tabel_c2_field4_confirm'] === $tabel_c2_field4) {
 				$this->load->library('encryption');
 
 				$data = array(
@@ -255,9 +255,9 @@ class C_tabel_c2 extends Omnitags
 		validate_input(
 			array(
 				$this->v_input['tabel_c2_field1_input'],
-				$this->v_old['tabel_c2_field4_old'],
-				$this->v_new['tabel_c2_field4_new'],
-				$this->v_confirm['tabel_c2_field4_confirm'],
+				$this->v_input['tabel_c2_field4_old'],
+				$this->v_input['tabel_c2_field4_new'],
+				$this->v_input['tabel_c2_field4_confirm'],
 			),
 			$this->views['flash1']
 		);
@@ -271,14 +271,14 @@ class C_tabel_c2 extends Omnitags
 			$tabel_c2 = $cek_id->result();
 			$cek_tabel_c2_field4 = $tabel_c2[0]->password;
 
-			$old_tabel_c2_field4 = $this->v_post_old['tabel_c2_field4'];
+			$old_tabel_c2_field4 = $this->v_post['tabel_c2_field4_old'];
 
 			// memverifikasi password lama dengan password di database
 			if (password_verify($old_tabel_c2_field4, $cek_tabel_c2_field4)) {
-				$tabel_c2_field4 = $this->v_post_new['tabel_c2_field4'];
+				$tabel_c2_field4 = $this->v_post['tabel_c2_field4_new'];
 
 				// jika konfirmasi password sama dengan password baru
-				if ($this->v_post_confirm['tabel_c2_field4'] === $tabel_c2_field4) {
+				if ($this->v_post['tabel_c2_field4_confirm'] === $tabel_c2_field4) {
 					$this->load->library('encryption');
 
 					$data = array(

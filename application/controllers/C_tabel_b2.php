@@ -162,7 +162,7 @@ class C_tabel_b2 extends Omnitags
 		$this->load->library('upload', $config);
 
 		if (!$this->upload->do_upload($this->v_input['tabel_b2_field4_input'])) {
-			$gambar = $this->v_post_old['tabel_b2_field4'];
+			$gambar = $this->v_post['tabel_b2_field4_old'];
 		} else {
 
 			$upload = $this->upload->data();

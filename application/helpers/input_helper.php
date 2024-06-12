@@ -302,13 +302,14 @@ if (!function_exists('filter_tgl')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
+        $name = $data[$field];
         $value = $data[$field . "_value"];
 
         return <<<HTML
         <td class="pr-2">
             <div class="form-group">
-                <input type="date" class="form-control float" {$required} name="{$field}" id="{$field}" value="{$value}">
-                <label for="{$field}" class="form-label">{$posisi}</label>
+                <input type="date" class="form-control float" {$required} name="{$name}" id="{$name}" value="{$value}">
+                <label for="{$name}" class="form-label">{$posisi}</label>
             </div>
         </td>
         HTML;
