@@ -110,6 +110,8 @@ class C_tabel_e1 extends Omnitags
 			$this->views['flash3']
 		);
 
+		$tabel_e1_field1 = $this->v_post['tabel_e1_field1'];
+
 		$config['upload_path'] = $this->v_upload_path['tabel_e1'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
@@ -119,15 +121,16 @@ class C_tabel_e1 extends Omnitags
 
 		$upload = upload_file($this->v_input['tabel_e1_field4_input'], $config);
 
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_e1_field4_input']]['name'], PATHINFO_EXTENSION);
-
 		if (!$upload) {
 			$gambar = $this->v_post['tabel_e1_field4_old'];
 		} else {
-			$gambar = $this->v_post['tabel_e1_field2'] . "." . $file_extension;
+			$tabel_e1 = $this->tl_e1->get_e4_by_e4_field1($tabel_e1_field1)->result();
+			$img = $tabel_e1[0]->img;
+			unlink($this->v_upload_path['tabel_e4'] . $img);
+
+			$gambar = $upload['file_name'];
 		}
 
-		$tabel_e1_field1 = $this->v_post['tabel_e1_field1'];
 
 
 		// Functional requirement: Construct data array from validated view inputs

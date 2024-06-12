@@ -22,6 +22,7 @@ if (!class_exists('Omnitags')) {
         public $phase_2 = '<br><span class="h6"> (beta phase)</span>';
         public $phase_3 = '<br><span class="h6"> (release candidate phase)</span>';
         public $phase_4 = '';  // feature released
+        public $spreadsheet_lib, $uri;
 
         public $aliases, $views, $flashdatas, $tempdatas, $show, $package;
         public $v1, $v2, $v3, $v4, $v5, $v6, $v7, $v8;

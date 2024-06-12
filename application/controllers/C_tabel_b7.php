@@ -22,7 +22,7 @@ class C_tabel_b7 extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
-	
+
 	// Halaman khusus akun
 
 
@@ -31,7 +31,7 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 
-		 $data1 = array(
+		$data1 = array(
 			'title' => lang('tabel_b7_alias_v3_title'),
 			'konten' => $this->v3['tabel_b7'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
@@ -67,7 +67,7 @@ class C_tabel_b7 extends Omnitags
 
 		$notif = $this->handle_4b($aksi, 'tabel_b7');
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -97,7 +97,7 @@ class C_tabel_b7 extends Omnitags
 
 		$notif = $this->handle_4c($aksi, 'tabel_b7', $tabel_b7_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -115,11 +115,9 @@ class C_tabel_b7 extends Omnitags
 			$this->views['flash1']
 		);
 
-		$param = $this->v_post['tabel_b7_field2'] . "_";	
+		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
-		$table = $this->tl_b7->get_b7_by_b7_field1($this->v_post['tabel_b7_field1'])->result();
-		$tabel_b7_field3 = $table[0]->favicon;
-		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field3);
+		$param = $this->v_post['tabel_b7_field2'] . "_";
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b7'];
 		// nama file dan ekstensi telah ditetapkan dan dapat diganti dengan file bernama sama
@@ -130,19 +128,19 @@ class C_tabel_b7 extends Omnitags
 
 		$upload = upload_file($this->v_input['tabel_b7_field3_input'], $config);
 
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field3_input']]['name'], PATHINFO_EXTENSION);
-
 		if (!$upload) {
-			$gambar = $this->v_post['tabel_b7_field3_old'];
+			$gambar = $upload['file_name'];
 		} else {
+			$table = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
+			$tabel_b7_field3 = $table[0]->favicon;
+			unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field3);
+
 			$gambar = $upload['file_name'];
 		}
 
-		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
-
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel_b7_field3'] => $param . $this->aliases['tabel_b7_field3'] . "." . $file_extension,
+			$this->aliases['tabel_b7_field3'] => $gambar,
 		);
 
 		$aksi = $this->tl_b7->update_b7($data, $tabel_b7_field1);
@@ -166,11 +164,9 @@ class C_tabel_b7 extends Omnitags
 			$this->views['flash1']
 		);
 
-		$param = $this->v_post['tabel_b7_field2'] . "_";	
+		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
-		$table = $this->tl_b7->get_b7_by_b7_field1($this->v_post['tabel_b7_field1'])->result();
-		$tabel_b7_field4 = $table[0]->logo;
-		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field4);
+		$param = $this->v_post['tabel_b7_field2'] . "_";
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b7'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
@@ -181,19 +177,20 @@ class C_tabel_b7 extends Omnitags
 
 		$upload = upload_file($this->v_input['tabel_b7_field4_input'], $config);
 
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field4_input']]['name'], PATHINFO_EXTENSION);
-
 		if (!$upload) {
-			$gambar = $this->v_post['tabel_b7_field4_old'];
+			$gambar = $upload['file_name'];
 		} else {
+			$table = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
+			$tabel_b7_field4 = $table[0]->logo;
+			unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field4);
+
 			$gambar = $upload['file_name'];
 		}
 
-		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel_b7_field4'] => $param . $this->aliases['tabel_b7_field4'] . "." . $file_extension,
+			$this->aliases['tabel_b7_field4'] => $gambar
 		);
 
 		$aksi = $this->tl_b7->update_b7($data, $tabel_b7_field1);
@@ -217,11 +214,9 @@ class C_tabel_b7 extends Omnitags
 			$this->views['flash1']
 		);
 
-		$param = $this->v_post['tabel_b7_field2'] . "_";		
+		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
-		$table = $this->tl_b7->get_b7_by_b7_field1($this->v_post['tabel_b7_field1'])->result();
-		$tabel_b7_field5 = $table[0]->foto;
-		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field5);
+		$param = $this->v_post['tabel_b7_field2'] . "_";
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b7'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
@@ -232,26 +227,26 @@ class C_tabel_b7 extends Omnitags
 
 		$upload = upload_file($this->v_input['tabel_b7_field5_input'], $config);
 
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field5_input']]['name'], PATHINFO_EXTENSION);
-
 		if (!$upload) {
-			$gambar = $this->v_post['tabel_b7_field5_old'];
+			$gambar = $upload['file_name'];
 		} else {
+			$table = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
+			$tabel_b7_field5 = $table[0]->foto;
+			unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field5);
+
 			$gambar = $upload['file_name'];
 		}
 
-		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
-
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel_b7_field5'] => $param . $this->aliases['tabel_b7_field5'] . "." . $file_extension,
+			$this->aliases['tabel_b7_field5'] => $gambar,
 		);
 
 		$aksi = $this->tl_b7->update_b7($data, $tabel_b7_field1);
 
 		$notif = $this->handle_4d($aksi, 'tabel_b7_field5', $tabel_b7_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -259,6 +254,14 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
+
+		$tabel_b7 = $this->tl_b7->get_b5_field1($tabel_b7_field1)->result();
+		$tabel_b7_field3 = $tabel_b7[0]->favicon;
+		$tabel_b7_field4 = $tabel_b7[0]->logo;
+		$tabel_b7_field5 = $tabel_b7[0]->foto;
+		unlink($this->v_upload_path['tabel_b5'] . $tabel_b7_field3);
+		unlink($this->v_upload_path['tabel_b5'] . $tabel_b7_field4);
+		unlink($this->v_upload_path['tabel_b5'] . $tabel_b7_field5);
 
 		$aksi = $this->tl_b7->delete_b7($tabel_b7_field1);
 		$tabel_b1 = $this->tl_b1->delete_b1_by_b1_field7($tabel_b7_field1);
@@ -268,7 +271,7 @@ class C_tabel_b7 extends Omnitags
 
 		$notif = $this->handle_4e($aksi, 'tabel_b7', $tabel_b7_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Cetak semua data

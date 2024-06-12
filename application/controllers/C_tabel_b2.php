@@ -31,7 +31,7 @@ class C_tabel_b2 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-		
+
 		$param1 = $this->v_get['tabel_b2_field7'];
 
 		$data1 = array(
@@ -52,7 +52,7 @@ class C_tabel_b2 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
-		
+
 
 		validate_input(
 			array(
@@ -147,26 +147,28 @@ class C_tabel_b2 extends Omnitags
 			$this->views['flash3']
 		);
 
+		$tabel_b2_field1 = $this->v_post['tabel_b2_field1'];
+
 		$config['upload_path'] = $this->v_upload_path['tabel_b2'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_b2_field4'];
+		$config['file_name'] = $this->v_post['tabel_b2_field2'];
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
-
-		$this->load->library('upload', $config);
 
 		$upload = upload_file($this->v_input['tabel_b2_field4_input'], $config);
 
 		if (!$upload) {
 			$gambar = $this->v_post['tabel_b2_field4_old'];
 		} else {
-
+			$tabel_b2 = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
+			$img = $tabel_b2[0]->img;
+			unlink($this->v_upload_path['tabel_b2'] . $img);
+			
 			$gambar = $upload['file_name'];
 
 		}
 
-		$tabel_b2_field1 = $this->v_post['tabel_b2_field1'];
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(

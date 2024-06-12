@@ -149,10 +149,12 @@ class C_tabel_b5 extends Omnitags
 			$this->views['flash3']
 		);
 
+		$tabel_b5_field1 = $this->v_post['tabel_b5_field1'];
+
 		$config['upload_path'] = $this->v_upload_path['tabel_b5'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_b5_field4'];
+		$config['file_name'] = $this->v_post['tabel_b5_field2'];
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -161,12 +163,12 @@ class C_tabel_b5 extends Omnitags
 		if (!$upload) {
 			$gambar = $this->v_post['tabel_b5_field4_old'];
 		} else {
-
+			$tabel_b5 = $this->tl_b5->get_b5_field1($tabel_b5_field1)->result();
+			$img = $tabel_b5[0]->img;
+			unlink($this->v_upload_path['tabel_b5'] . $img);
+			
 			$gambar = $upload['file_name'];
-
 		}
-
-		$tabel_b5_field1 = $this->v_post['tabel_b5_field1'];
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
@@ -188,11 +190,11 @@ class C_tabel_b5 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
-		
+
 		$data = array(
 			$this->aliases['tabel_b5_field7'] => $tabel_b5_field7,
 		);
-		
+
 		$aksi = $this->tl_b5->update_all_b5($data);
 
 		$notif = $this->handle_4c($aksi, 'tabel_b5', $tabel_b5_field7);

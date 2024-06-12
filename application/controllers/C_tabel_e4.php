@@ -99,7 +99,7 @@ class C_tabel_e4 extends Omnitags
 
 		$data = array(
 			$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
-			$this->aliases['tabel_e4_field3'] => post('tabel_e4_field3'),
+			$this->aliases['tabel_e4_field3'] => $gambar,
 			$this->aliases['tabel_e4_field5'] => post('tabel_e4_field5'),
 		);
 
@@ -127,10 +127,13 @@ class C_tabel_e4 extends Omnitags
 				$this->v_post['tabel_e4_field2_input'],
 				$this->v_post['tabel_e4_field3_input'],
 				$this->v_post['tabel_e4_field4_input'],
+				$this->v_post['tabel_e4_field4_old'],
 				$this->v_post['tabel_e4_field5_input'],
 			),
 			$this->views['flash3']
 		);
+
+		$tabel_e4_field1 = $this->v_post['tabel_e4_field1'];
 
 		$config['upload_path'] = $this->v_upload_path['tabel_e4'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
@@ -139,23 +142,24 @@ class C_tabel_e4 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$upload = upload_file($this->v_input['tabel_e4_field4_input'], $config);
+		$upload = upload_file($this->v_input['tabel_e4_field3_input'], $config);
 
-		$file_extension = pathinfo($_FILES[$this->v_input['tabel_e4_field4_input']]['name'], PATHINFO_EXTENSION);
 
 		if (!$upload) {
-			$gambar = $this->v_post['tabel_e4_field4_old'];
+			$gambar = $this->v_post['tabel_e4_field3_old'];
 		} else {
+			$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
+			$img = $tabel_e4[0]->img;
+			unlink($this->v_upload_path['tabel_e4'] . $img);
 
-			$gambar = $this->v_post['tabel_e4_field2'] . "." . $file_extension;
+			$gambar = $upload['file_name'];
 		}
 
 
-		$tabel_e4_field1 = $this->v_post['tabel_e4_field1'];
 		$data = array(
 			$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
-			$this->aliases['tabel_e4_field3'] => $this->v_post['tabel_e4_field3'],
-			$this->aliases['tabel_e4_field4'] => $gambar,
+			$this->aliases['tabel_e4_field3'] => $gambar,
+			$this->aliases['tabel_e4_field4'] => $this->v_post['tabel_e4_field4'],
 			$this->aliases['tabel_e4_field5'] => $this->v_post['tabel_e4_field5'],
 		);
 
