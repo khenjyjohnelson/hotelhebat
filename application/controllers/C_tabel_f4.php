@@ -43,7 +43,7 @@ class C_tabel_f4 extends Omnitags
 				$this->v_input['tabel_f4_field5_input'],
 				$this->v_input['tabel_f4_field6_input'],
 			),
-			$this->views['flash1']
+			$this->views['flash2']
 		);
 
 		// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
@@ -83,7 +83,7 @@ class C_tabel_f4 extends Omnitags
 				$this->v_input['tabel_f4_field2_input'],
 				$this->v_input['tabel_f4_field3_input'],
 			),
-			$this->views['flash1']
+			$this->views['flash3']
 		);
 
 		$tabel_f4_field1 = $this->v_post['tabel_f4_field1'];

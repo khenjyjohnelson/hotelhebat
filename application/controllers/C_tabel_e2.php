@@ -54,7 +54,7 @@ class C_tabel_e2 extends Omnitags
 				$this->v_input['tabel_e2_field2_input'],
 				$this->v_input['tabel_e2_field3_input'],
 			),
-			$this->views['flash1']
+			$this->views['flash2']
 		);
 
 		$data = array(
@@ -90,7 +90,7 @@ class C_tabel_e2 extends Omnitags
 				$this->v_input['tabel_e2_field2_input'],
 				$this->v_input['tabel_e2_field3_input'],
 			),
-			$this->views['flash1']
+			$this->views['flash3']
 		);
 
 		$tabel_e2_field1 = $this->v_post['tabel_e2_field1'];

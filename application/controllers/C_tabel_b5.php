@@ -51,7 +51,13 @@ class C_tabel_b5 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
-		$this->load->helper('text');
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b5_field7_input']
+			),
+			$this->views['flash1']
+		);
 
 		$param1 = $this->v_get['tabel_b5_field7'];
 
@@ -84,7 +90,7 @@ class C_tabel_b5 extends Omnitags
 				$this->v_input['tabel_b5_field6_input'],
 				$this->v_input['tabel_b5_field7_input']
 			),
-			$this->views['flash1']
+			$this->views['flash2']
 		);
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b5'];
@@ -141,7 +147,7 @@ class C_tabel_b5 extends Omnitags
 				$this->v_input['tabel_b5_field6_input'],
 				$this->v_input['tabel_b5_field7_input']
 			),
-			$this->views['flash1']
+			$this->views['flash3']
 		);
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b5'];

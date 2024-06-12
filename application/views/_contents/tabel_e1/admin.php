@@ -89,9 +89,18 @@
 
       <form action="<?= site_url($language . '/' . $tabel_e1 . '/tambah') ?>" method="post">
         <div class="modal-body">
-          <?= input_add('text', 'tabel_e1_field2', 'required') ?>
+          <div class="form-group">
+            <select class="form-control float" required name="<?= $tabel_e1_field2_input ?>"
+              if="<?= $tabel_e1_field2_input ?>">
+              <?php foreach ($tbl_e4 as $tl_e4): ?>
+                <option value="<?= $tl_e4->$tabel_e4_field2 ?>"><?= $tl_e4->$tabel_e4_field2 ?></option>
+              <?php endforeach ?>
+            </select>
+            <label for="<?= $tabel_e1_field2_input ?>" class="form-label"><?= lang('select') ?>
+              <?= $tabel_e4_alias ?></label>
+          </div>
+
           <?= input_add('text', 'tabel_e1_field3', 'required') ?>
-          <?= input_add('text', 'tabel_e1_field4', 'required') ?>
           <?= add_file('tabel_e1_field4', 'required') ?>
         </div>
 

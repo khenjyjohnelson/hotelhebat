@@ -43,7 +43,7 @@ class C_tabel_c1 extends Omnitags
 				$this->v_input['tabel_c1_field6_input'],
 				$this->v_input['tabel_c1_field7_input'],
 			),
-			$this->views['flash1']
+			$this->views['flash2']
 		);
 
 		$param2 = $this->v_post['tabel_c1_field2'];
@@ -118,7 +118,7 @@ class C_tabel_c1 extends Omnitags
 				$this->v_input['tabel_c1_field5_input'],
 				$this->v_input['tabel_c1_field7_input'],
 			),
-			$this->views['flash1']
+			$this->views['flash3']
 		);
 
 

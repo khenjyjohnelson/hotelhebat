@@ -36,7 +36,14 @@ class C_tabel_b1 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
-		$this->load->helper('text');
+		
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b1_field7_input']
+			),
+			$this->views['flash1']
+		);
 
 		$param1 = $this->v_get['tabel_b1_field7'];
 
@@ -60,6 +67,19 @@ class C_tabel_b1 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b1_field1_input'],
+				$this->v_input['tabel_b1_field2_input'],
+				$this->v_input['tabel_b1_field3_input'],
+				$this->v_input['tabel_b1_field4_input'],
+				$this->v_input['tabel_b1_field5_input'],
+				$this->v_input['tabel_b1_field6_input'],
+				$this->v_input['tabel_b1_field7_input']
+			),
+			$this->views['flash2']
+		);
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b1'];
 		$config['allowed_types'] = $this->file_type1;
@@ -102,10 +122,24 @@ class C_tabel_b1 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	public function update() //update tidak diperlukan di sini
+	public function update()
 	{
 		$this->declarew();
 		$this->session_3();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_b1_field1_input'],
+				$this->v_input['tabel_b1_field2_input'],
+				$this->v_input['tabel_b1_field3_input'],
+				$this->v_input['tabel_b1_field4_input'],
+				$this->v_input['tabel_b1_field4_old'],
+				$this->v_input['tabel_b1_field5_input'],
+				$this->v_input['tabel_b1_field6_input'],
+				$this->v_input['tabel_b1_field7_input']
+			),
+			$this->views['flash3']
+		);
 
 		$config['upload_path'] = $this->v_upload_path['tabel_b1'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama

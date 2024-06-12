@@ -78,6 +78,16 @@ class C_tabel_f2 extends Omnitags
 	{
 		$this->declarew();
 
+		validate_input(
+			array(
+				$this->v_filter1['tabel_f2_field10_filter1'],
+				$this->v_filter2['tabel_f2_field10_filter2'],
+				$this->v_filter1['tabel_f2_field11_filter1'],
+				$this->v_filter2['tabel_f2_field11_filter2']
+			),
+			$this->views['flash1']
+		);
+
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		// nilai min dan max sudah diinput sebelumnya
 		$param1 = $this->v_filter1_get['tabel_f2_field10'];
@@ -139,7 +149,6 @@ class C_tabel_f2 extends Omnitags
 	{
 		// Functional requirement: Declare necessary configurations
 		$this->declarew();
-
 		$this->session_5();
 
 		// Security: Input Sanitization and Validation
@@ -224,8 +233,15 @@ class C_tabel_f2 extends Omnitags
 	public function update_status()
 	{
 		$this->declarew();
-
 		$this->session_4_5();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_f2_field1'],
+				$this->v_input['tabel_f2_field12'],
+			),
+			$this->views['flash1']
+		);
 
 		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 
@@ -263,7 +279,6 @@ class C_tabel_f2 extends Omnitags
 	public function delete($tabel_f2_field1 = null)
 	{
 		$this->declarew();
-
 		$this->session_4();
 
 		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
@@ -289,6 +304,16 @@ class C_tabel_f2 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
+
+		validate_input(
+			array(
+				$this->v_filter1['tabel_f2_field10_filter1'],
+				$this->v_filter2['tabel_f2_field10_filter2'],
+				$this->v_filter1['tabel_f2_field11_filter1'],
+				$this->v_filter2['tabel_f2_field11_filter2']
+			),
+			$this->views['flash1']
+		);
 
 		// nilai min dan max sudah diinput sebelumnya
 		$param1 = $this->v_filter1_get['tabel_f2_field10'];
@@ -397,7 +422,8 @@ class C_tabel_f2 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_c2_field3 = tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2']);
+		$tabel_c2_field3 = $this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'];
+		
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v4_title'),
 			'konten' => $this->v4['tabel_b9'],
@@ -420,8 +446,16 @@ class C_tabel_f2 extends Omnitags
 	public function book()
 	{
 		$this->declarew();
-
 		$this->session_4();
+
+		validate_input(
+			array(
+				$this->v_input['tabel_f2_field1'],
+				$this->v_input['tabel_f2_field12'],
+				$this->v_input['tabel_f2_field13'],
+			),
+			$this->views['flash1']
+		);
 
 		// hanya merubah status pesanan berdasarkan id pesanan
 		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];

@@ -60,14 +60,18 @@ class C_tabel_e4 extends Omnitags
 		validate_input(
 			array(
 				$this->v_input['tabel_e4_field2_input'],
+				$this->v_input['tabel_e4_field3_input'],
 				$this->v_input['tabel_e4_field4_input'],
+				$this->v_input['tabel_e4_field5_input'],
 			),
-			$this->views['flash1']
-		);
+			$this->views['flash2']
+		);		
 
 		$data = array(
 			$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
 			$this->aliases['tabel_e4_field3'] => post('tabel_e4_field3'),
+			$this->aliases['tabel_e4_field4'] => post('tabel_e4_field4'),
+			$this->aliases['tabel_e4_field5'] => post('tabel_e4_field5'),
 		);
 
 		$aksi = $this->tl_e4->insert_e4($data);
@@ -88,11 +92,43 @@ class C_tabel_e4 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		validate_input(
+			array(
+				$this->v_input['tabel_e4_field1_input'],
+				$this->v_input['tabel_e4_field2_input'],
+				$this->v_input['tabel_e4_field3_input'],
+				$this->v_input['tabel_e4_field4_input'],
+				$this->v_input['tabel_e4_field5_input'],
+			),
+			$this->views['flash3']
+		);
+
+		$config['upload_path'] = $this->v_upload_path['tabel_e4'];
+		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+		$config['allowed_types'] = $this->file_type1;
+		$config['file_name'] = $this->v_post['tabel_e4_field2'];
+		$config['overwrite'] = TRUE;
+		$config['remove_spaces'] = TRUE;
+
+		$this->load->library('upload', $config);
+
+		$file_extension = pathinfo($_FILES[$this->v_input['tabel_e4_field4_input']]['name'], PATHINFO_EXTENSION);
+
+		if (!$this->upload->do_upload($this->v_input['tabel_e4_field4_input'])) {
+			$gambar = $this->v_post_old['tabel_e4_field4'];
+		} else {
+
+			$upload = $this->upload->data();
+			$gambar = $this->v_post['tabel_e4_field2'] . "." . $file_extension;
+		}
+
 
 		$tabel_e4_field1 = $this->v_post['tabel_e4_field1'];
 		$data = array(
 			$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
 			$this->aliases['tabel_e4_field3'] => $this->v_post['tabel_e4_field3'],
+			$this->aliases['tabel_e4_field4'] => $this->v_post['tabel_e4_field4'],
+			$this->aliases['tabel_e4_field5'] => $this->v_post['tabel_e4_field5'],
 		);
 
 		$aksi = $this->tl_e4->update_e4($data, $tabel_e4_field1);

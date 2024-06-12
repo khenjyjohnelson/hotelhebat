@@ -42,18 +42,30 @@ function get_flashdata($key) {
     return null;
 }
 
-// Function to set tempdata
-function set_tempdata($key, $value) {
-    $_SESSION['tempdata'][$key] = $value;
+// Function to set tempdata with an expiration time (in seconds)
+function set_tempdata($key, $value, $countdown) {
+    $_SESSION['tempdata'][$key] = [
+        'value' => $value,
+        'expires' => time() + $countdown
+    ];
 }
 
-// Function to get tempdata and then unset it
+// Function to get tempdata and then unset it if it hasn't expired
 function get_tempdata($key) {
     if (isset($_SESSION['tempdata'][$key])) {
-        $value = $_SESSION['tempdata'][$key];
-        unset($_SESSION['tempdata'][$key]);
-        return $value;
+        $tempdata = $_SESSION['tempdata'][$key];
+        
+        // Check if the data has expired
+        if (time() < $tempdata['expires']) {
+            $value = $tempdata['value'];
+            unset($_SESSION['tempdata'][$key]);
+            return $value;
+        } else {
+            // If expired, remove the tempdata
+            unset($_SESSION['tempdata'][$key]);
+        }
     }
     return null;
 }
+
 ?>
