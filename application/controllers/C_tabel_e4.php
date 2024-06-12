@@ -65,12 +65,42 @@ class C_tabel_e4 extends Omnitags
 				$this->v_input['tabel_e4_field5_input'],
 			),
 			$this->views['flash2']
-		);		
+		);
+
+		// Define the full path to the folder
+		$upload_path = $this->v_upload_path['tabel_e4'] . '/';
+
+		// Check if the folder exists, if not, create it
+		if (!is_dir($upload_path)) {
+			mkdir($upload_path, 0755, TRUE);
+		}
+
+		// Set the configuration for the upload
+		$config['upload_path'] = $upload_path;
+		$config['allowed_types'] = $this->file_type1;
+		$config['file_name'] = $this->v_post['tabel_e4_field2'];
+		$config['overwrite'] = TRUE;
+		$config['remove_spaces'] = TRUE;
+
+		// Load the upload library with the new configuration
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload($this->v_input['tabel_e4_field3_input'])) {
+			// Notification if upload failed
+			// Form is required so this might not be necessary
+
+			set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_e4_field3_alias']);
+			set_flashdata('modal', $this->views['flash2_func1']);
+			redirect($_SERVER['HTTP_REFERER']);
+		} else {
+			// Get upload data
+			$upload = $this->upload->data();
+			$gambar = $upload['file_name'];
+		}
 
 		$data = array(
 			$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
 			$this->aliases['tabel_e4_field3'] => post('tabel_e4_field3'),
-			$this->aliases['tabel_e4_field4'] => post('tabel_e4_field4'),
 			$this->aliases['tabel_e4_field5'] => post('tabel_e4_field5'),
 		);
 

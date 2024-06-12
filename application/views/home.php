@@ -10,7 +10,7 @@
             <div>
               <h1>Find a place that meets your needs</h1>
               <br>
-              <a href="<?= site_url($language . '/' . $tabel_f2 . '/index') ?>" class="btn btn-primary">Book Now</a>
+              <a href="<?= site_url($language . '/' . $tabel_f2 . '/index') ?>" class="btn btn-primary mb-4">Book Now</a>
             </div>
           </div>
 

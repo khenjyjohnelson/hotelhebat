@@ -93,8 +93,8 @@ if (!class_exists('Omnitags')) {
             // Create variables dynamically
             foreach ($this->myData1 as $item) {
                 $this->v_input[$item['key'] . '_input'] = 'txt_' . $item['value'];
-                $this->v_filter1[$item['key'] . '_filter1'] = 'min_' . $item['value'];
-                $this->v_filter2[$item['key'] . '_filter2'] = 'max_' . $item['value'];
+                $this->v_input[$item['key'] . '_filter1'] = 'min_' . $item['value'];
+                $this->v_input[$item['key'] . '_filter2'] = 'max_' . $item['value'];
                 $this->v_old[$item['key'] . '_old'] = 'old_' . $item['value'];
                 $this->v_new[$item['key'] . '_new'] = 'new_' . $item['value'];
                 $this->v_confirm[$item['key'] . '_confirm'] = 'confirm_' . $item['value'];
@@ -151,6 +151,14 @@ if (!class_exists('Omnitags')) {
             $this->notif_null = $this->tl_b9->get_b9_by_b9_field2(userdata($this->aliases['tabel_c2_field1']));
 
             $this->views = array(
+                'tabel_c1_v2' => '_contents/tabel_c1/login',
+                'tabel_c1_v2_title' => 'Login Sebagai ' . $this->aliases['tabel_c1_alias'],
+
+                'tabel_f3_v2_alt' => '_contents/tabel_f3/daftar_history',
+                'tabel_f3_v2_alt_title' => 'Daftar ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
+                'tabel_f3_v3_alt' => '_contents/tabel_f3/admin_tabel_f1',
+                'tabel_f3_v3_alt_title' => 'Data ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
+
                 'head' => '_partials/head',
                 'phase' => $this->phase_1,
                 'lisensi' => $this->tl_b5->get_b5_by_b5_field6_by_b5_field7($this->theme_id)->result(),
@@ -200,7 +208,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value5']:
                 case $this->aliases['tabel_c2_field6_value4']:
                 default:
-                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    redirect(site_url($this->views['language'] . '/no_level'));
                     break;
             }
         }
@@ -216,7 +224,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value5']:
                 case $this->aliases['tabel_c2_field6_value4']:
                 default:
-                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    redirect(site_url($this->views['language'] . '/no_level'));
                     break;
             }
         }
@@ -232,7 +240,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value3']:
                 case $this->aliases['tabel_c2_field6_value5']:
                 default:
-                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    redirect(site_url($this->views['language'] . '/no_level'));
                     break;
             }
         }
@@ -248,7 +256,7 @@ if (!class_exists('Omnitags')) {
 
                 case $this->aliases['tabel_c2_field6_value1']:
                 default:
-                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    redirect(site_url($this->views['language'] . '/no_level'));
                     break;
             }
         }
@@ -264,7 +272,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value2']:
                 case $this->aliases['tabel_c2_field6_value3']:
                 default:
-                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    redirect(site_url($this->views['language'] . '/no_level'));
                     break;
             }
         }
@@ -280,7 +288,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value3']:
                 case $this->aliases['tabel_c2_field6_value4']:
                 default:
-                    redirect(site_url($this->views['language'] . '/welcome/404'));
+                    redirect(site_url($this->views['language'] . '/no_level'));
                     break;
             }
         }

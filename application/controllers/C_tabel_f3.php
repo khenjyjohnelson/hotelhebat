@@ -272,7 +272,7 @@ class C_tabel_f3 extends Omnitags
 		$tabel_f3_field3 = tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
-			'konten' => $this->v4['tabel_b9'],
+			'konten' => $this->v7['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan
@@ -282,6 +282,6 @@ class C_tabel_f3 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v7['tabel_f3'], $data);
+		load_view_data('_layouts/blank', $data);
 	}
 }

@@ -80,10 +80,10 @@ class C_tabel_f2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_filter1['tabel_f2_field10_filter1'],
-				$this->v_filter2['tabel_f2_field10_filter2'],
-				$this->v_filter1['tabel_f2_field11_filter1'],
-				$this->v_filter2['tabel_f2_field11_filter2']
+				$this->v_input['tabel_f2_field10_filter1'],
+				$this->v_input['tabel_f2_field10_filter2'],
+				$this->v_input['tabel_f2_field11_filter1'],
+				$this->v_input['tabel_f2_field11_filter2']
 			),
 			$this->views['flash1']
 		);
@@ -307,10 +307,10 @@ class C_tabel_f2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_filter1['tabel_f2_field10_filter1'],
-				$this->v_filter2['tabel_f2_field10_filter2'],
-				$this->v_filter1['tabel_f2_field11_filter1'],
-				$this->v_filter2['tabel_f2_field11_filter2']
+				$this->v_input['tabel_f2_field10_filter1'],
+				$this->v_input['tabel_f2_field10_filter2'],
+				$this->v_input['tabel_f2_field11_filter1'],
+				$this->v_input['tabel_f2_field11_filter2']
 			),
 			$this->views['flash1']
 		);
@@ -426,7 +426,7 @@ class C_tabel_f2 extends Omnitags
 		
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v4_title'),
-			'konten' => $this->v4['tabel_b9'],
+			'konten' => $this->v7['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan
@@ -436,7 +436,7 @@ class C_tabel_f2 extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		set_userdata('previous_url', current_url());
-		load_view_data($this->v7['tabel_f2'], $data);
+		load_view_data('_layouts/blank', $data);
 	}
 
 	// Ini adalah fitur untuk membooking kamar berdasarkan pesanan oleh resepsionis
