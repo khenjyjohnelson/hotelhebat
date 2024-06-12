@@ -160,7 +160,7 @@ if (!class_exists('Omnitags')) {
                 'tabel_f3_v3_alt_title' => 'Data ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
 
                 'head' => '_partials/head',
-                'phase' => $this->phase_1,
+                'phase' => $this->phase_2,
                 'lisensi' => $this->tl_b5->get_b5_by_b5_field6_by_b5_field7($this->theme_id)->result(),
                 'sosmed' => $this->tl_b6->get_b6_by_b6_field6_by_b6_field7($this->theme_id)->result(),
                 'tbl_a1' => $this->theme,
