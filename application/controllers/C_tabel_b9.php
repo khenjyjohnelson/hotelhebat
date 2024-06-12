@@ -31,7 +31,7 @@ class C_tabel_b9 extends Omnitags
 
 			$data = array_merge($data1, $this->package);
 
-			if ($this->input->get('refresh') !== 'true') {
+			if (get('refresh') !== 'true') {
 				// Redirect to the same method with a refresh parameter
 				load_view_data('_layouts/template', $data);
 				redirect(current_url() . '?refresh=true');

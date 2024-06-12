@@ -80,10 +80,10 @@ class C_tabel_f2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_f2_field10_filter1'],
-				$this->v_input['tabel_f2_field10_filter2'],
-				$this->v_input['tabel_f2_field11_filter1'],
-				$this->v_input['tabel_f2_field11_filter2']
+				$this->v_post['tabel_f2_field10_filter1'],
+				$this->v_post['tabel_f2_field10_filter2'],
+				$this->v_post['tabel_f2_field11_filter1'],
+				$this->v_post['tabel_f2_field11_filter2']
 			),
 			$this->views['flash1']
 		);
@@ -237,8 +237,8 @@ class C_tabel_f2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_f2_field1'],
-				$this->v_input['tabel_f2_field12'],
+				$this->v_post['tabel_f2_field1_input'],
+				$this->v_post['tabel_f2_field12_input'],
 			),
 			$this->views['flash1']
 		);
@@ -307,10 +307,10 @@ class C_tabel_f2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_f2_field10_filter1'],
-				$this->v_input['tabel_f2_field10_filter2'],
-				$this->v_input['tabel_f2_field11_filter1'],
-				$this->v_input['tabel_f2_field11_filter2']
+				$this->v_post['tabel_f2_field10_filter1'],
+				$this->v_post['tabel_f2_field10_filter2'],
+				$this->v_post['tabel_f2_field11_filter1'],
+				$this->v_post['tabel_f2_field11_filter2']
 			),
 			$this->views['flash1']
 		);
@@ -450,9 +450,9 @@ class C_tabel_f2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_f2_field1'],
-				$this->v_input['tabel_f2_field12'],
-				$this->v_input['tabel_f2_field13'],
+				$this->v_post['tabel_f2_field1_input'],
+				$this->v_post['tabel_f2_field12_input'],
+				$this->v_post['tabel_f2_field13_input'],
 			),
 			$this->views['flash1']
 		);

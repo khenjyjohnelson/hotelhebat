@@ -4,47 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 if (!class_exists('Omnitags')) {
     class Omnitags extends CI_Controller
     {
-        protected $language_code;
-
-        public function __construct()
-        {
-            parent::__construct();
-            //Menampilkan media
-            $this->load->helper('tampil');
-            // Tampil button
-            $this->load->helper('button');
-            // Kelola teks
-            $this->load->helper('media');
-            // Tampil input
-            $this->load->helper('input');
-            // Tampil modal
-            $this->load->helper('modal');
-            // Tampil card
-            $this->load->helper('card');
-            // Tampil dropdown
-            $this->load->helper('dropdown');
-            // Kelola validation
-            $this->load->helper('validate');
-            // Kelola js
-            $this->load->helper('js');
-            // Kelola url
-            $this->load->helper('url');
-            // Kelola views
-            $this->load->helper('views');
-            // Kelola session
-            $this->load->helper('session');
-            $this->load->library('session');
-            $this->load->library('user_agent');
-
-            // Get the language code from the URL segment
-            $this->language_code = $this->uri->segment(1);
-
-            // Load and set the language
-            load_and_set_language();
-
-            // Set security headers
-            set_security_headers();
-        }
+        protected $language_code;        
 
         // Di bawah ini aku berencana untuk membuat sebuah array yang menampung semua jenis alias dari field dan nama tabel
         // Dan aku akan membuat array itu merge dengan array yang akan diload ke halaman view pada setiap
@@ -84,6 +44,55 @@ if (!class_exists('Omnitags')) {
         public $flash_msg5;
         public $tabel_a1, $tabel_a1_field1;
         public $myData1, $myData2, $reverse;
+        public $tl_a1;
+        public $tl_b1, $tl_b2, $tl_b3, $tl_b4, $tl_b5, $tl_b6, $tl_b7, $tl_b8, $tl_b9;
+        public $tl_c1, $tl_c2;
+        public $tl_d1, $tl_d2, $tl_d3;
+        public $tl_e1, $tl_e2, $tl_e3, $tl_e4;
+        public $tl_f1, $tl_f2, $tl_f3, $tl_f4;
+
+        public function __construct()
+        {
+            parent::__construct();
+            
+            //Menampilkan media
+            $this->load->helper('tampil');
+            // Tampil button
+            $this->load->helper('button');
+            // Kelola teks
+            $this->load->helper('media');
+            // Tampil input
+            $this->load->helper('input');
+            // Tampil modal
+            $this->load->helper('modal');
+            // Tampil card
+            $this->load->helper('card');
+            // Tampil dropdown
+            $this->load->helper('dropdown');
+            // Kelola validation
+            $this->load->helper('validate');
+            // Kelola js
+            $this->load->helper('js');
+            // Kelola url
+            $this->load->helper('url');
+            // Kelola views
+            $this->load->helper('views');
+            // Kelola upload
+            $this->load->helper('uplod');
+            // Kelola session
+            $this->load->helper('session');
+            $this->load->library('session');
+            $this->load->library('user_agent');
+
+            // Get the language code from the URL segment
+            $this->language_code = $this->uri->segment(1);
+
+            // Load and set the language
+            load_and_set_language();
+
+            // Set security headers
+            set_security_headers();
+        }
 
         public function declarew()
         {

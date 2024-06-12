@@ -265,7 +265,7 @@ class C_tabel_f3 extends Omnitags
 	{
 		$this->declarew();
 
-		$tabel_f3_field3 = tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
+		$tabel_f3_field3 = get_tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
 			'konten' => $this->v7['tabel_f3'],

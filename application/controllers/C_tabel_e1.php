@@ -35,9 +35,9 @@ class C_tabel_e1 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_e1_field2_input'],
-				$this->v_input['tabel_e1_field3_input'],
-				$this->v_input['tabel_e1_field4_input'],
+				$this->v_post['tabel_e1_field2_input'],
+				$this->v_post['tabel_e1_field3_input'],
+				$this->v_post['tabel_e1_field4_input'],
 			),
 			$this->views['flash2']
 		);
@@ -61,9 +61,9 @@ class C_tabel_e1 extends Omnitags
 		$config['remove_spaces'] = TRUE;
 
 		// Load the upload library with the new configuration
-		$this->load->library('upload', $config);
+		$upload = upload_file($this->v_input['tabel_e1_field4_input'], $config);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_e1_field4_input'])) {
+		if (!$upload) {
 			// Notification if upload failed
 			// Form is required so this might not be necessary
 
@@ -72,7 +72,6 @@ class C_tabel_e1 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			// Get upload data
-			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 
@@ -102,11 +101,11 @@ class C_tabel_e1 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_e1_field1_input'],
-				$this->v_input['tabel_e1_field2_input'],
-				$this->v_input['tabel_e1_field3_input'],
-				$this->v_input['tabel_e1_field4_input'],
-				$this->v_input['tabel_e1_field4_old'],
+				$this->v_post['tabel_e1_field1_input'],
+				$this->v_post['tabel_e1_field2_input'],
+				$this->v_post['tabel_e1_field3_input'],
+				$this->v_post['tabel_e1_field4_input'],
+				$this->v_post['tabel_e1_field4_old'],
 			),
 			$this->views['flash3']
 		);
@@ -118,15 +117,13 @@ class C_tabel_e1 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$this->load->library('upload', $config);
+		$upload = upload_file($this->v_input['tabel_e1_field4_input'], $config);
 
 		$file_extension = pathinfo($_FILES[$this->v_input['tabel_e1_field4_input']]['name'], PATHINFO_EXTENSION);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_e1_field4_input'])) {
+		if (!$upload) {
 			$gambar = $this->v_post['tabel_e1_field4_old'];
 		} else {
-
-			$upload = $this->upload->data();
 			$gambar = $this->v_post['tabel_e1_field2'] . "." . $file_extension;
 		}
 

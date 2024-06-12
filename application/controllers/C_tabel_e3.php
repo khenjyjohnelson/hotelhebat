@@ -37,8 +37,8 @@ class C_tabel_e3 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_e3_field2_input'],
-				$this->v_input['tabel_e3_field4_input'],
+				$this->v_post['tabel_e3_field2_input'],
+				$this->v_post['tabel_e3_field4_input'],
 			),
 			$this->views['flash2']
 		);
@@ -63,11 +63,11 @@ class C_tabel_e3 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_e3_field1_input'],
-				$this->v_input['tabel_e3_field2_input'],
-				$this->v_input['tabel_e3_field3_input'],
-				$this->v_input['tabel_e3_field4_input'],
-				$this->v_input['tabel_e3_field5_input'],
+				$this->v_post['tabel_e3_field1_input'],
+				$this->v_post['tabel_e3_field2_input'],
+				$this->v_post['tabel_e3_field3_input'],
+				$this->v_post['tabel_e3_field4_input'],
+				$this->v_post['tabel_e3_field5_input'],
 			),
 			$this->views['flash3']
 		);

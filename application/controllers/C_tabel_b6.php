@@ -39,7 +39,7 @@ class C_tabel_b6 extends Omnitags
 		
 		validate_input(
 			array(
-				$this->v_input['tabel_b6_field7_input']
+				$this->v_post['tabel_b6_field7_input']
 			),
 			$this->views['flash1']
 		);
@@ -68,11 +68,11 @@ class C_tabel_b6 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b6_field2_input'],
-				$this->v_input['tabel_b6_field3_input'],
-				$this->v_input['tabel_b6_field4_input'],
-				$this->v_input['tabel_b6_field5_input'],
-				$this->v_input['tabel_b6_field7_input']
+				$this->v_post['tabel_b6_field2_input'],
+				$this->v_post['tabel_b6_field3_input'],
+				$this->v_post['tabel_b6_field4_input'],
+				$this->v_post['tabel_b6_field5_input'],
+				$this->v_post['tabel_b6_field7_input']
 			),
 			$this->views['flash2']
 		);
@@ -114,12 +114,12 @@ class C_tabel_b6 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b6_field1_input'],
-				$this->v_input['tabel_b6_field2_input'],
-				$this->v_input['tabel_b6_field3_input'],
-				$this->v_input['tabel_b6_field4_input'],
-				$this->v_input['tabel_b6_field5_input'],
-				$this->v_input['tabel_b6_field7_input']
+				$this->v_post['tabel_b6_field1_input'],
+				$this->v_post['tabel_b6_field2_input'],
+				$this->v_post['tabel_b6_field3_input'],
+				$this->v_post['tabel_b6_field4_input'],
+				$this->v_post['tabel_b6_field5_input'],
+				$this->v_post['tabel_b6_field7_input']
 			),
 			$this->views['flash3']
 		);

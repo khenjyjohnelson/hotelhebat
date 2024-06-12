@@ -51,8 +51,8 @@ class C_tabel_b7 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b7_field2_input'],
-				$this->v_input['tabel_b7_field6_input'],
+				$this->v_post['tabel_b7_field2_input'],
+				$this->v_post['tabel_b7_field6_input'],
 			),
 			$this->views['flash2']
 		);
@@ -78,9 +78,9 @@ class C_tabel_b7 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b7_field1_input'],
-				$this->v_input['tabel_b7_field2_input'],
-				$this->v_input['tabel_b7_field6_input'],
+				$this->v_post['tabel_b7_field1_input'],
+				$this->v_post['tabel_b7_field2_input'],
+				$this->v_post['tabel_b7_field6_input'],
 			),
 			$this->views['flash3']
 		);
@@ -108,9 +108,9 @@ class C_tabel_b7 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b7_field1_input'],
-				$this->v_input['tabel_b7_field2_input'],
-				$this->v_input['tabel_b7_field3_input'],
+				$this->v_post['tabel_b7_field1_input'],
+				$this->v_post['tabel_b7_field2_input'],
+				$this->v_post['tabel_b7_field3_input'],
 			),
 			$this->views['flash1']
 		);
@@ -128,14 +128,13 @@ class C_tabel_b7 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$this->load->library('upload', $config);
+		$upload = upload_file($this->v_input['tabel_b7_field3_input'], $config);
 
 		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field3_input']]['name'], PATHINFO_EXTENSION);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_b7_field3_input'])) {
+		if (!$upload) {
 			$gambar = $this->v_post['tabel_b7_field3_old'];
 		} else {
-			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 
@@ -160,9 +159,9 @@ class C_tabel_b7 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b7_field1_input'],
-				$this->v_input['tabel_b7_field2_input'],
-				$this->v_input['tabel_b7_field4_input'],
+				$this->v_post['tabel_b7_field1_input'],
+				$this->v_post['tabel_b7_field2_input'],
+				$this->v_post['tabel_b7_field4_input'],
 			),
 			$this->views['flash1']
 		);
@@ -180,14 +179,13 @@ class C_tabel_b7 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$this->load->library('upload', $config);
+		$upload = upload_file($this->v_input['tabel_b7_field4_input'], $config);
 
 		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field4_input']]['name'], PATHINFO_EXTENSION);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_b7_field4_input'])) {
+		if (!$upload) {
 			$gambar = $this->v_post['tabel_b7_field4_old'];
 		} else {
-			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 
@@ -212,9 +210,9 @@ class C_tabel_b7 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b7_field1_input'],
-				$this->v_input['tabel_b7_field2_input'],
-				$this->v_input['tabel_b7_field5_input'],
+				$this->v_post['tabel_b7_field1_input'],
+				$this->v_post['tabel_b7_field2_input'],
+				$this->v_post['tabel_b7_field5_input'],
 			),
 			$this->views['flash1']
 		);
@@ -232,14 +230,13 @@ class C_tabel_b7 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$this->load->library('upload', $config);
+		$upload = upload_file($this->v_input['tabel_b7_field5_input'], $config);
 
 		$file_extension = pathinfo($_FILES[$this->v_input['tabel_b7_field5_input']]['name'], PATHINFO_EXTENSION);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_b7_field5_input'])) {
+		if (!$upload) {
 			$gambar = $this->v_post['tabel_b7_field5_old'];
 		} else {
-			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 

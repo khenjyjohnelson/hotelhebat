@@ -157,14 +157,14 @@
           <?= input_textarea('tabel_b2_field5', '', 'required') ?>
 
           <div class="form-group">
-            <select class="form-control float" required name="<?= $tabel_b2_field6_input ?>"
-              id="<?= $tabel_b2_field6_input ?>">
+            <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
+              id="<?= $tabel_b2_field7_input ?>">
 
               <?php foreach ($tbl_b7 as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
               <?php endforeach ?>
             </select>
-            <label for="<?= $tabel_b2_field6_input ?>" class="form-label"><?= lang('select') ?>
+            <label for="<?= $tabel_b2_field7_input ?>" class="form-label"><?= lang('select') ?>
               <?= $tabel_b7_alias ?></label>
           </div>
 
@@ -202,7 +202,7 @@
 
             <div class="form-group">
               <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
-                id="<?= $tabel_b2_field6_input ?>">
+                id="<?= $tabel_b2_field7_input ?>">
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
                   <?php if ($tl_b2->$tabel_b2_field7 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
@@ -212,7 +212,7 @@
                   <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                 <?php endforeach ?>
               </select>
-              <label for="<?= $tabel_b2_field6_input ?>" class="form-label"><?= $tabel_b7_alias ?></label>
+              <label for="<?= $tabel_b2_field7_input ?>" class="form-label"><?= $tabel_b7_alias ?></label>
             </div>
 
           </div>
@@ -246,7 +246,7 @@
                   <?= row_data('tabel_b2_field2', $tl_b2->$tabel_b2_field2) ?>
                   <?= row_data('tabel_b2_field3', $tl_b2->$tabel_b2_field3) ?>
                   <?= row_file($tabel_b2, 'tabel_b2_field4', $tl_b2->$tabel_b2_field4) ?>
-                  <?= row_data('tabel_b2_field5', truncateText($tl_b2->$tabel_b2_field5, 200) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1)) ?>
+                  <?= row_data('tabel_b2_field5', truncateText(html_entity_decode($tl_b2->$tabel_b2_field5), 200) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1)) ?>
 
                 </tbody>
                 <tfoot></tfoot>

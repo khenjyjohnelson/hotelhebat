@@ -56,7 +56,7 @@ class C_tabel_b2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b2_field7_input']
+				$this->v_post['tabel_b2_field7_input']
 			),
 			$this->views['flash1']
 		);
@@ -85,12 +85,11 @@ class C_tabel_b2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b2_field2_input'],
-				$this->v_input['tabel_b2_field3_input'],
-				$this->v_input['tabel_b2_field4_input'],
-				$this->v_input['tabel_b2_field5_input'],
-				$this->v_input['tabel_b2_field6_input'],
-				$this->v_input['tabel_b2_field7_input']
+				$this->v_post['tabel_b2_field2_input'],
+				$this->v_post['tabel_b2_field3_input'],
+				$this->v_post['tabel_b2_field4_input'],
+				$this->v_post['tabel_b2_field5_input'],
+				$this->v_post['tabel_b2_field7_input']
 			),
 			$this->views['flash2']
 		);
@@ -101,19 +100,16 @@ class C_tabel_b2 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$this->load->library('upload', $config);
+		$upload = upload_file($this->v_input['tabel_b2_field4_input'], $config);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_b2_field4_input'])) {
+		if (!$upload) {
 			// Di sini seharusnya ada notifikasi modal kalau upload tidak berhasil
 			// Tapi karena formnya sudah required saya rasa tidak perlu
-
-
 			set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b2_field4_alias']);
 			set_flashdata('modal', $this->views['flash2_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
-			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 
@@ -141,13 +137,12 @@ class C_tabel_b2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_input['tabel_b2_field1_input'],
-				$this->v_input['tabel_b2_field2_input'],
-				$this->v_input['tabel_b2_field3_input'],
-				$this->v_input['tabel_b2_field4_input'],
-				$this->v_input['tabel_b2_field5_input'],
-				$this->v_input['tabel_b2_field6_input'],
-				$this->v_input['tabel_b2_field7_input']
+				$this->v_post['tabel_b2_field1_input'],
+				$this->v_post['tabel_b2_field2_input'],
+				$this->v_post['tabel_b2_field3_input'],
+				$this->v_post['tabel_b2_field4_input'],
+				$this->v_post['tabel_b2_field5_input'],
+				$this->v_post['tabel_b2_field7_input']
 			),
 			$this->views['flash3']
 		);
@@ -161,11 +156,12 @@ class C_tabel_b2 extends Omnitags
 
 		$this->load->library('upload', $config);
 
-		if (!$this->upload->do_upload($this->v_input['tabel_b2_field4_input'])) {
+		$upload = upload_file($this->v_input['tabel_b2_field4_input'], $config);
+
+		if (!$upload) {
 			$gambar = $this->v_post['tabel_b2_field4_old'];
 		} else {
 
-			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 
 		}
