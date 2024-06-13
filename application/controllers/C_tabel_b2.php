@@ -106,8 +106,9 @@ class C_tabel_b2 extends Omnitags
 		$config['remove_spaces'] = TRUE;
 
 		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_b2_field4_input']);
 
-		if (!!$this->upload->do_upload($this->v_input['tabel_b2_field4_input'])) {
+		if (!$upload) {
 			// Di sini seharusnya ada notifikasi modal kalau upload tidak berhasil
 			// Tapi karena formnya sudah required saya rasa tidak perlu
 			set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b2_field4_alias']);

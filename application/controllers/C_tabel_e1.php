@@ -57,19 +57,16 @@ class C_tabel_e1 extends Omnitags
 		// Set the configuration for the upload
 		$config['upload_path'] = $path;
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_e1_field3'];
+		$config['file_name'] = $new_name;
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
 		$this->load->library('upload', $config);
-
-		// Load the upload library with the new configuration
 		$upload = $this->upload->do_upload($this->v_input['tabel_e1_field4_input']);
 
 		if (!$upload) {
 			// Notification if upload failed
 			// Form is required so this might not be necessary
-
 			set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_e1_field4_alias']);
 			set_flashdata('modal', $this->views['flash2_func1']);
 			redirect($_SERVER['HTTP_REFERER']);
@@ -129,7 +126,7 @@ class C_tabel_e1 extends Omnitags
 		if (!is_dir($path)) {
 			mkdir($path, 0755, TRUE);
 		}
-		
+
 		$config['upload_path'] = $path;
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
 		$config['file_name'] = $new_name;

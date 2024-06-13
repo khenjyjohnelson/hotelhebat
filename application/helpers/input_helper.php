@@ -276,7 +276,7 @@ if (!function_exists('edit_file')) {
         $old = $data[$field . "_old"];
 
         return <<<HTML
-        <div class="row">
+        <div class="row pb-2">
             <div class="col-md-5">
                 <div class="form-group">
                     <img src="img/{$tabel}/{$value}" class="img-thumbnail w-100">

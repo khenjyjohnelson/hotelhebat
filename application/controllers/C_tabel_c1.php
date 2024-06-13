@@ -143,17 +143,55 @@ class C_tabel_c1 extends Omnitags
 				$this->v_post['tabel_c1_field2'],
 				$this->v_post['tabel_c1_field3'],
 				$this->v_post['tabel_c1_field5'],
+				$this->v_post['tabel_c1_field6_old'],
 				$this->v_post['tabel_c1_field7'],
 			),
 			$this->views['flash3'],
 				'ubah' . $tabel_c1_field1
 		);
 
+		$tabel_c1 = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
+		$new_name = $this->v_post['tabel_c1_field2'];
+		$path = $this->v_upload_path['tabel_c1'];
+		$img = $this->v_post['tabel_c1_field6_old'];
+		$extension = '.' . getExtension($path . $img);
+
+		$config['upload_path'] = $path;
+		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+		$config['file_name'] = $new_name;
+		$config['allowed_types'] = $this->file_type1;
+		$config['overwrite'] = TRUE;
+		$config['remove_spaces'] = TRUE;
+
+		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_c1_field6_input']);
+
+		if (!$upload) {
+			if ($new_name != $tabel_c1[0]->nama) {
+				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+				$gambar = str_replace(' ', '_', $new_name) . $extension;
+			} else {
+				$gambar = $img;
+			}
+		} else {
+			if ($new_name != $tabel_c1[0]->nama) {
+				// File upload is successful, delete the old file
+				if (file_exists($path . $img)) {
+					unlink($path . $img);
+				}
+				$upload = $this->upload->data();
+				$gambar = $upload['file_name'];
+			} else {
+				$gambar = $img;
+			}
+		}
+
 		$data = array(
 			$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
 			$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
 			$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
 			$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
+			$this->aliases['tabel_c1_field6'] => $gambar,
 			$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
 		);
 
