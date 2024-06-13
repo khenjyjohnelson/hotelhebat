@@ -95,9 +95,12 @@ class C_tabel_b5 extends Omnitags
 			'tambah'
 		);
 
-		$config['upload_path'] = $this->v_upload_path['tabel_b5'];
+		$new_name = $this->v_post['tabel_b5_field2'];
+		$path = $this->v_upload_path['tabel_b5'];
+
+		$config['upload_path'] = $path;
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_b5_field2'];
+		$config['file_name'] = $new_name;
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -157,10 +160,15 @@ class C_tabel_b5 extends Omnitags
 		);
 
 
-		$config['upload_path'] = $this->v_upload_path['tabel_b5'];
-		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+		$tabel_b5 = $this->tl_b5->get_b5_by_b5_field1($tabel_b5_field1)->result();
+		$new_name = $this->v_post['tabel_b5_field2'];
+		$path = $this->v_upload_path['tabel_b5'];
+		$img = $this->v_post['tabel_b5_field4_old'];
+		$extension = '.' . getExtension($path . $img);
+
+		$config['upload_path'] = $path;
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_b5_field2'];
+		$config['file_name'] = $new_name;
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -168,14 +176,23 @@ class C_tabel_b5 extends Omnitags
 		$upload = $this->upload->do_upload($this->v_input['tabel_b5_field4_input']);
 
 		if (!$upload) {
-			$gambar = $this->v_post['tabel_b5_field4_old'];
+			if ($new_name != $tabel_b5[0]->nama) {
+				rename($path . $img, $path . $new_name . $extension);
+				$gambar = $new_name . $extension;
+			} else {
+				$gambar = $img;
+			}
 		} else {
-			$tabel_b5 = $this->tl_b5->get_b5_field1($tabel_b5_field1)->result();
-			$img = $tabel_b5[0]->img;
-			unlink($this->v_upload_path['tabel_b5'] . $img);
-
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];
+			if ($new_name != $tabel_b5[0]->nama) {
+				// File upload is successful, delete the old file
+				if (file_exists($path . $img)) {
+					unlink($path . $img);
+				}
+				$upload = $this->upload->data();
+				$gambar = $upload['file_name'];
+			} else {
+				$gambar = $img;
+			}
 		}
 
 		// menggunakan nama khusus sama dengan konfigurasi

@@ -50,9 +50,12 @@ class C_tabel_c1 extends Omnitags
 			'tambah'
 		);
 
-		$config['upload_path'] = $this->v_upload_path['tabel_c1'];
+		$new_name = $this->v_post['tabel_c1_field2'];
+		$path = $this->v_upload_path['tabel_c1'];
+
+		$config['upload_path'] = $path;
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_c1_field2'];
+		$config['file_name'] = $new_name;
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 

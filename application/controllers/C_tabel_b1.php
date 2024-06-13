@@ -143,11 +143,16 @@ class C_tabel_b1 extends Omnitags
 			'ubah' . $tabel_b1_field1
 		);
 
+		$tabel_b1 = $this->tl_b1->get_b1_by_b1_field1($tabel_b1_field1)->result();
+		$new_name = $this->v_post['tabel_b1_field2'];
+		$path = $this->v_upload_path['tabel_b1'];
+		$img = $this->v_post['tabel_b1_field4_old'];
+		$extension = '.' . getExtension($path . $img);
 
-		$config['upload_path'] = $this->v_upload_path['tabel_b1'];
+		$config['upload_path'] = $path;
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+		$config['file_name'] = $new_name;
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_b1_field2'];
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -155,14 +160,23 @@ class C_tabel_b1 extends Omnitags
 		$upload = $this->upload->do_upload($this->v_input['tabel_b1_field4_input']);
 
 		if (!$upload) {
-			$gambar = $this->v_post['tabel_b1_field4_old'];
+			if ($new_name != $tabel_b1[0]->kode) {
+				rename($path . $img, $path . $new_name . $extension);
+				$gambar = $new_name . $extension;
+			} else {
+				$gambar = $img;
+			}
 		} else {
-			$tabel_b1 = $this->tl_b1->get_b1_by_b1_field1($tabel_b1_field1)->result();
-			$img = $tabel_b1[0]->img;
-			unlink($this->v_upload_path['tabel_b1'] . $img);
-
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];
+			if ($new_name != $tabel_b1[0]->kode) {
+				// File upload is successful, delete the old file
+				if (file_exists($path . $img)) {
+					unlink($path . $img);
+				}
+				$upload = $this->upload->data();
+				$gambar = $upload['file_name'];
+			} else {
+				$gambar = $img;
+			}
 		}
 
 		// menggunakan nama khusus sama dengan konfigurasi

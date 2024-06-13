@@ -96,9 +96,12 @@ class C_tabel_b2 extends Omnitags
 			'tambah'
 		);
 
-		$config['upload_path'] = $this->v_upload_path['tabel_b2'];
+		$new_name = $this->v_post['tabel_b2_field2'];
+		$path = $this->v_upload_path['tabel_b2'];
+
+		$config['upload_path'] = $path;
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_b2_field2'];
+		$config['file_name'] = $new_name;
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -153,10 +156,16 @@ class C_tabel_b2 extends Omnitags
 			'ubah' . $tabel_b2_field1,
 		);
 
-		$config['upload_path'] = $this->v_upload_path['tabel_b2'];
+		$tabel_b2 = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
+		$new_name = $this->v_post['tabel_b2_field2'];
+		$path = $this->v_upload_path['tabel_b2'];
+		$img = $this->v_post['tabel_b2_field4_old'];
+		$extension = '.' . getExtension($path . $img);
+
+		$config['upload_path'] = $path;
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+		$config['file_name'] = $new_name;
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_b2_field2'];
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -164,19 +173,28 @@ class C_tabel_b2 extends Omnitags
 		$upload = $this->upload->do_upload($this->v_input['tabel_b2_field4_input']);
 
 		if (!$upload) {
-			$gambar = $this->v_post['tabel_b2_field4_old'];
+			if ($new_name != $tabel_b2[0]->nama) {
+				rename($path . $img, $path . $new_name . $extension);
+				$gambar = $new_name . $extension;
+			} else {
+				$gambar = $img;
+			}
 		} else {
-			$tabel_b2 = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
-			$img = $tabel_b2[0]->img;
-			unlink($this->v_upload_path['tabel_b2'] . $img);
-			
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];	
+			if ($new_name != $tabel_b2[0]->nama) {
+				// File upload is successful, delete the old file
+				if (file_exists($path . $img)) {
+					unlink($path . $img);
+				}
+				$upload = $this->upload->data();
+				$gambar = $upload['file_name'];
+			} else {
+				$gambar = $img;
+			}
 		}
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
-			$this->aliases['tabel_b2_field2'] => $this->v_post['tabel_b2_field2'],
+			$this->aliases['tabel_b2_field2'] => $new_name,
 			$this->aliases['tabel_b2_field3'] => $this->v_post['tabel_b2_field3'],
 			$this->aliases['tabel_b2_field4'] => $gambar,
 			$this->aliases['tabel_b2_field5'] => $this->v_post['tabel_b2_field5'],

@@ -46,16 +46,16 @@ class C_tabel_e1 extends Omnitags
 		// Set the folder name based on the post data
 		$folder_name = $this->v_post['tabel_e1_field2'];
 
-		// Define the full path to the folder
-		$upload_path = $this->v_upload_path['tabel_e1'] . '/' . $folder_name;
-
+		$new_name = $this->v_post['tabel_e1_field3'];
+		$path = $this->v_upload_path['tabel_e1'] . '/' . $folder_name;
+		
 		// Check if the folder exists, if not, create it
-		if (!is_dir($upload_path)) {
-			mkdir($upload_path, 0755, TRUE);
+		if (!is_dir($path)) {
+			mkdir($path, 0755, TRUE);
 		}
 
 		// Set the configuration for the upload
-		$config['upload_path'] = $upload_path;
+		$config['upload_path'] = $path;
 		$config['allowed_types'] = $this->file_type1;
 		$config['file_name'] = $this->v_post['tabel_e1_field3'];
 		$config['overwrite'] = TRUE;
@@ -110,18 +110,30 @@ class C_tabel_e1 extends Omnitags
 				$this->v_post['tabel_e1_field1'],
 				$this->v_post['tabel_e1_field2'],
 				$this->v_post['tabel_e1_field3'],
-				$this->v_post['tabel_e1_field4'],
 				$this->v_post['tabel_e1_field4_old'],
 			),
 			$this->views['flash3'],
 			'ubah' . $tabel_e1_field1
 		);
 
+		// Set the folder name based on the post data
+		$folder_name = $this->v_post['tabel_e1_field2'] . '/';
 
-		$config['upload_path'] = $this->v_upload_path['tabel_e1'];
+		$tabel_e1 = $this->tl_e1->get_e1_by_e1_field1($tabel_e1_field1)->result();
+		$new_name = $this->v_post['tabel_e1_field3'];
+		$path = $this->v_upload_path['tabel_e1'] . '/' . $folder_name;
+		$img = $this->v_post['tabel_e1_field4_old'];
+		$extension = '.' . getExtension($path . $folder_name . $img);
+
+		// Check if the folder exists, if not, create it
+		if (!is_dir($path)) {
+			mkdir($path, 0755, TRUE);
+		}
+		
+		$config['upload_path'] = $path;
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+		$config['file_name'] = $new_name;
 		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_e1_field3'];
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
@@ -129,17 +141,24 @@ class C_tabel_e1 extends Omnitags
 		$upload = $this->upload->do_upload($this->v_input['tabel_e1_field4_input']);
 
 		if (!$upload) {
-			$gambar = $this->v_post['tabel_e1_field4_old'];
+			if ($new_name != $tabel_e1[0]->nama) {
+				rename($path . $img, $path . $new_name . $extension);
+				$gambar = $new_name . $extension;
+			} else {
+				$gambar = $img;
+			}
 		} else {
-			$tabel_e1 = $this->tl_e1->get_e1_by_e1_field1($tabel_e1_field1)->result();
-			$img = $tabel_e1[0]->img;
-			unlink($this->v_upload_path['tabel_e1'] . $img);
-
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];
+			if ($new_name != $tabel_e1[0]->nama) {
+				// File upload is successful, delete the old file
+				if (file_exists($path . $img)) {
+					unlink($path . $img);
+				}
+				$upload = $this->upload->data();
+				$gambar = $upload['file_name'];
+			} else {
+				$gambar = $img;
+			}
 		}
-
-
 
 		// Functional requirement: Construct data array from validated view inputs
 		$data = array(
