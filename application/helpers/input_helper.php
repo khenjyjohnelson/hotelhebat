@@ -274,12 +274,13 @@ if (!function_exists('edit_file')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
         $old = $data[$field . "_old"];
+        $img = tampil_image($tabel, $value, $alias);
 
         return <<<HTML
         <div class="row pb-2">
             <div class="col-md-5">
                 <div class="form-group">
-                    <img src="img/{$tabel}/{$value}" class="img-thumbnail w-100">
+                    {$img}                
                 </div>
             </div>
             <div class="col-md-7">

@@ -77,6 +77,22 @@ if (!function_exists('password_req')) {
     }
 }
 
+if(!function_exists('tampil_image')) {
+    function tampil_image($tabel_class, $value, $konten) {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        return <<<HTML
+        <img style="max-height: 150px" role="button" data-toggle="tooltip" data-placement="bottom" 
+            class="img-thumbnail img-fluid" src="img/{$tabel_class}/{$value}" 
+            title="<img class='img-thumbnail' src='img/{$tabel_class}/{$value}' />
+            <br>{$konten}">
+        HTML;
+    }
+}
+
 if (!function_exists('tampil_file')) {
     function tampil_file($tabel_class, $field, $value)
     {
