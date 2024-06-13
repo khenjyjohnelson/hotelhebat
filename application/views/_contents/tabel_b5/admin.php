@@ -195,7 +195,7 @@
             <?= input_edit('text', 'tabel_b5_field2', $tl_b5->$tabel_b5_field2, 'required') ?>
             <?= input_hidden('tabel_b5_field1', $tl_b5->$tabel_b5_field1, 'required') ?>
             <?= input_textarea('tabel_b5_field3', $tl_b5->$tabel_b5_field3, 'required') ?>
-            <?= edit_file('tabel_b5', 'tabel_b5_field4', $tl_b5->$tabel_b5_field4, 'required') ?>
+            <?= edit_file('tabel_b5', 'tabel_b5_field4', $tl_b5->$tabel_b5_field4, '') ?>
 
           </div>
 

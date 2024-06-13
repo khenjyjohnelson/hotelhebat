@@ -80,8 +80,8 @@
       'tabel_b6',
       $tl_b6->$tabel_b6_field2,
       '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>' . $btn_class,
-      btn_lihat($tl_b6->$tabel_b6_field1) . ' ' . 
-      btn_edit($tl_b6->$tabel_b6_field1) . ' ' . 
+      btn_lihat($tl_b6->$tabel_b6_field1) . ' ' .
+      btn_edit($tl_b6->$tabel_b6_field1) . ' ' .
       btn_hapus('tabel_b6', $tl_b6->$tabel_b6_field1),
       'bg-secondary'
     );
@@ -157,13 +157,13 @@
           <?= input_add('text', 'tabel_b6_field5', 'required') ?>
 
           <div class="form-group">
-            <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
             <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
 
               <?php foreach ($tbl_b7 as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
               <?php endforeach ?>
             </select>
+            <label class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
           </div>
 
         </div>

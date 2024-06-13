@@ -51,10 +51,11 @@ class C_tabel_b7 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_post['tabel_b7_field2_input'],
-				$this->v_post['tabel_b7_field6_input'],
+				$this->v_post['tabel_b7_field2'],
+				$this->v_post['tabel_b7_field6'],
 			),
-			$this->views['flash2']
+			$this->views['flash2'],
+			'tambah'
 		);
 
 		$data = array(
@@ -76,16 +77,18 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
+
 		validate_input(
 			array(
-				$this->v_post['tabel_b7_field1_input'],
-				$this->v_post['tabel_b7_field2_input'],
-				$this->v_post['tabel_b7_field6_input'],
+				$this->v_post['tabel_b7_field1'],
+				$this->v_post['tabel_b7_field2'],
+				$this->v_post['tabel_b7_field6'],
 			),
-			$this->views['flash3']
+			$this->views['flash3'],
+			'ubah' . $tabel_b7_field1
 		);
 
-		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
@@ -106,16 +109,18 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
+
 		validate_input(
 			array(
-				$this->v_post['tabel_b7_field1_input'],
-				$this->v_post['tabel_b7_field2_input'],
-				$this->v_post['tabel_b7_field3_input'],
+				$this->v_post['tabel_b7_field1'],
+				$this->v_post['tabel_b7_field2'],
+				$this->v_post['tabel_b7_field3'],
 			),
-			$this->views['flash1']
+			$this->views['flash3'],
+			$this->aliases['tabel_b7_field3'] . $tabel_b7_field1
 		);
 
-		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";
 
@@ -126,15 +131,18 @@ class C_tabel_b7 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$upload = upload_file($this->v_input['tabel_b7_field3_input'], $config);
+		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_b7_field3_input']);
 
 		if (!$upload) {
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		} else {
 			$table = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
 			$tabel_b7_field3 = $table[0]->favicon;
 			unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field3);
 
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 
@@ -155,16 +163,18 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
+
 		validate_input(
 			array(
-				$this->v_post['tabel_b7_field1_input'],
-				$this->v_post['tabel_b7_field2_input'],
-				$this->v_post['tabel_b7_field4_input'],
+				$this->v_post['tabel_b7_field1'],
+				$this->v_post['tabel_b7_field2'],
+				$this->v_post['tabel_b7_field4'],
 			),
-			$this->views['flash1']
+			$this->views['flash3'],
+			$this->aliases['tabel_b7_field4'] . $tabel_b7_field1
 		);
 
-		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";
 
@@ -175,15 +185,18 @@ class C_tabel_b7 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$upload = upload_file($this->v_input['tabel_b7_field4_input'], $config);
+		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_b7_field3_input']);
 
 		if (!$upload) {
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		} else {
 			$table = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
 			$tabel_b7_field4 = $table[0]->logo;
 			unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field4);
 
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 
@@ -205,16 +218,18 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
+
 		validate_input(
 			array(
-				$this->v_post['tabel_b7_field1_input'],
-				$this->v_post['tabel_b7_field2_input'],
-				$this->v_post['tabel_b7_field5_input'],
+				$this->v_post['tabel_b7_field1'],
+				$this->v_post['tabel_b7_field2'],
+				$this->v_post['tabel_b7_field5'],
 			),
-			$this->views['flash1']
+			$this->views['flash3'],
+			$this->aliases['tabel_b7_field5'] . $tabel_b7_field1
 		);
 
-		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
 		$param = $this->v_post['tabel_b7_field2'] . "_";
 
@@ -225,15 +240,17 @@ class C_tabel_b7 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$upload = upload_file($this->v_input['tabel_b7_field5_input'], $config);
+		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_b5_field4_input']);
 
 		if (!$upload) {
-			$gambar = $upload['file_name'];
+			$gambar = $this->v_post['tabel_b7_field4_old'];
 		} else {
 			$table = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
 			$tabel_b7_field5 = $table[0]->foto;
 			unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field5);
 
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 

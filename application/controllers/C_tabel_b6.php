@@ -39,9 +39,10 @@ class C_tabel_b6 extends Omnitags
 		
 		validate_input(
 			array(
-				$this->v_post['tabel_b6_field7_input']
+				$this->v_post['tabel_b6_field7'],
 			),
-			$this->views['flash1']
+			$this->views['flash1'],
+			''
 		);
 
 		$param1 = $this->v_get['tabel_b6_field7'];
@@ -68,13 +69,14 @@ class C_tabel_b6 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_post['tabel_b6_field2_input'],
-				$this->v_post['tabel_b6_field3_input'],
-				$this->v_post['tabel_b6_field4_input'],
-				$this->v_post['tabel_b6_field5_input'],
-				$this->v_post['tabel_b6_field7_input']
+				$this->v_post['tabel_b6_field2'],
+				$this->v_post['tabel_b6_field3'],
+				$this->v_post['tabel_b6_field4'],
+				$this->v_post['tabel_b6_field5'],
+				$this->v_post['tabel_b6_field7'],
 			),
-			$this->views['flash2']
+			$this->views['flash2'],
+			'tambah'
 		);
 
 
@@ -111,20 +113,22 @@ class C_tabel_b6 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
-
+		
+		$tabel_b6_field1 = $this->v_post['tabel_b6_field1'];
+		
 		validate_input(
 			array(
-				$this->v_post['tabel_b6_field1_input'],
-				$this->v_post['tabel_b6_field2_input'],
-				$this->v_post['tabel_b6_field3_input'],
-				$this->v_post['tabel_b6_field4_input'],
-				$this->v_post['tabel_b6_field5_input'],
-				$this->v_post['tabel_b6_field7_input']
+				$this->v_post['tabel_b6_field1'],
+				$this->v_post['tabel_b6_field2'],
+				$this->v_post['tabel_b6_field3'],
+				$this->v_post['tabel_b6_field4'],
+				$this->v_post['tabel_b6_field5'],
+				$this->v_post['tabel_b6_field7'],
 			),
-			$this->views['flash3']
+			$this->views['flash3'],
+			'ubah' . $tabel_b6_field1
 		);
 
-		$tabel_b6_field1 = $this->v_post['tabel_b6_field1'];
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(

@@ -56,7 +56,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => lang('tabel_f1_alias_v2_title'),
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f1' => $this->tl_f1->filter_c1_with_e4($param1, $param2, $param3, $param4, $param5)->result(),
+			'tbl_f1' => $this->tl_f1->filter_c2($param1, $param2, $param3, $param4, $param5)->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,
@@ -142,7 +142,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => lang('tabel_f1_alias_v3_title'),
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f1' => $this->tl_f1->search_with_e4_between_dates($param1, $param2, $param3, $param4)->result(),
+			'tbl_f1' => $this->tl_f1->filter($param1, $param2, $param3, $param4)->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,

@@ -28,7 +28,7 @@ if (!class_exists('Omnitags')) {
         public $v1, $v2, $v3, $v4, $v5, $v6, $v7, $v8;
         public $v1_title, $v2_title, $v3_title, $v4_title, $v5_title, $v6_title, $v7_title, $v8_title;
         public $v_input, $v_post, $v_get;
-        public $v_upload_path;
+        public $v_upload_path, $upload;
         public $flash, $flash_func;
         public $notif_limit, $notif_null, $notifications, $elapsedTime, $elapsed, $elapsed2;
         public $recommendation, $theme, $theme_id;

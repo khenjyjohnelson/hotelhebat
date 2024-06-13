@@ -37,13 +37,14 @@ class C_tabel_f4 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_post['tabel_f4_field2_input'],
-				$this->v_post['tabel_f4_field3_input'],
-				$this->v_post['tabel_f4_field4_input'],
-				$this->v_post['tabel_f4_field5_input'],
-				$this->v_post['tabel_f4_field6_input'],
+				$this->v_post['tabel_f4_field2'],
+				$this->v_post['tabel_f4_field3'],
+				$this->v_post['tabel_f4_field4'],
+				$this->v_post['tabel_f4_field5'],
+				$this->v_post['tabel_f4_field6'],
 			),
-			$this->views['flash2']
+			$this->views['flash2'],
+			'tambah'
 		);
 
 		// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
@@ -76,17 +77,19 @@ class C_tabel_f4 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_4();
-
+		
+		$tabel_f4_field1 = $this->v_post['tabel_f4_field1'];
+		
 		validate_input(
 			array(
-				$this->v_post['tabel_f4_field1_input'],
-				$this->v_post['tabel_f4_field2_input'],
-				$this->v_post['tabel_f4_field3_input'],
+				$this->v_post['tabel_f4_field1'],
+				$this->v_post['tabel_f4_field2'],
+				$this->v_post['tabel_f4_field3'],
 			),
-			$this->views['flash3']
+			$this->views['flash3'],
+			'ubah' . $tabel_f4_field1
 		);
 
-		$tabel_f4_field1 = $this->v_post['tabel_f4_field1'];
 		$data = array(
 			$this->aliases['tabel_f4_field2'] => $this->v_post['tabel_f4_field2'],
 			$this->aliases['tabel_f4_field3'] => $this->v_post['tabel_f4_field3'],

@@ -161,7 +161,7 @@
           <div class="modal-body">
             <?= input_hidden('tabel_e4_field1', $tl_e4->$tabel_e4_field1, 'required') ?>
             <?= input_edit('text', 'tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
-            <?= edit_file('tabel_e4', 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, 'required') ?>
+            <?= edit_file('tabel_e4', 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, '') ?>
             <?= edit_min_max('number', 'tabel_e4_field4', $tl_e4->$tabel_e4_field4, 'required', '0', '') ?>
             <?= edit_min_max('number', 'tabel_e4_field5', $tl_e4->$tabel_e4_field5, 'required', '0', '') ?>
           </div>

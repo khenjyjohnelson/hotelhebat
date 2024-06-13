@@ -36,11 +36,12 @@ class C_tabel_b8 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_post['tabel_b8_field2_input'],
-				$this->v_post['tabel_b8_field3_input'],
-				$this->v_post['tabel_b8_field4_input'],
+				$this->v_post['tabel_b8_field2'],
+				$this->v_post['tabel_b8_field3'],
+				$this->v_post['tabel_b8_field4'],
 			),
-			$this->views['flash2']
+			$this->views['flash2'],
+			'tambah'
 		);
 
 		$data = array(
@@ -63,16 +64,18 @@ class C_tabel_b8 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$tabel_b8_field1 = $this->v_post['tabel_b8_field1'];
+
 		validate_input(
 			array(
-				$this->v_post['tabel_b8_field1_input'],
-				$this->v_post['tabel_b8_field3_input'],
-				$this->v_post['tabel_b8_field4_input'],
+				$this->v_post['tabel_b8_field1'],
+				$this->v_post['tabel_b8_field3'],
+				$this->v_post['tabel_b8_field4'],
 			),
-			$this->views['flash3']
+			$this->views['flash3'],
+			'ubah' . $tabel_b8_field1
 		);
 
-		$tabel_b8_field1 = $this->v_post['tabel_b8_field1'];
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(

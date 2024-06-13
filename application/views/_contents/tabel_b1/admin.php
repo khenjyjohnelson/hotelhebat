@@ -148,7 +148,6 @@
           <?= input_add('text', 'tabel_b1_field5', 'required') ?>
 
           <div class="form-group">
-            <label><?= lang('select') ?> <?= $tabel_b1_field6_alias ?></label>
             <select class="form-control float" required name="<?= $tabel_b1_field6_input ?>">
               <option value="a">a</option>
               <option value="b">b</option>
@@ -157,16 +156,17 @@
               <option value="f">f</option>
               <option value="0">0</option>
             </select>
+            <label class="form-label"><?= lang('select') ?> <?= $tabel_b1_field6_alias ?></label>
           </div>
 
           <div class="form-group">
-            <label><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
             <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
 
               <?php foreach ($tbl_b7 as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
               <?php endforeach ?>
             </select>
+            <label class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
           </div>
 
         </div>
@@ -205,10 +205,12 @@
 
             <div class="form-group">
               <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
-              <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b1->$tabel_b1_field7 ?></option>
+                <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b1->$tabel_b1_field7 ?></option>
 
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
-                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?></option>
+                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
+                    <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
+                  </option>
                 <?php endforeach ?>
               </select>
               <label class="form-label"><?= $tabel_b7_alias ?></label>

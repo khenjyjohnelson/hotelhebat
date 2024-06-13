@@ -93,7 +93,7 @@ class M_tabel_f1 extends CI_Model
 		return $this->db->query($filter);
 	}
 
-	public function search_f1_with_e4_between_dates_by_c1_field1($param1, $param2, $param3, $param4, $param5)
+	public function filter_c2($param1, $param2, $param3, $param4, $param5)
 	{
 		$filter = "SELECT * FROM {$this->aliases['tabel_f1']}
 		JOIN {$this->aliases['tabel_e4']} 

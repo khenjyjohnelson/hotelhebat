@@ -59,12 +59,13 @@ class C_tabel_e4 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_post['tabel_e4_field2_input'],
-				$this->v_post['tabel_e4_field3_input'],
-				$this->v_post['tabel_e4_field4_input'],
-				$this->v_post['tabel_e4_field5_input'],
+				$this->v_post['tabel_e4_field2'],
+				$this->v_post['tabel_e4_field3'],
+				$this->v_post['tabel_e4_field4'],
+				$this->v_post['tabel_e4_field5'],
 			),
-			$this->views['flash2']
+			$this->views['flash2'],
+			'tambah'
 		);
 
 		// Define the full path to the folder
@@ -82,8 +83,10 @@ class C_tabel_e4 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
+		$this->load->library('upload', $config);
+
 		// Load the upload library with the new configuration
-		$upload = upload_file($this->v_input['tabel_e4_field3_input'], $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_e4_field3_input']);
 
 		if (!$upload) {
 			// Notification if upload failed
@@ -94,6 +97,7 @@ class C_tabel_e4 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			// Get upload data
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 
@@ -121,19 +125,21 @@ class C_tabel_e4 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$tabel_e4_field1 = $this->v_post['tabel_e4_field1'];
+		
 		validate_input(
 			array(
-				$this->v_post['tabel_e4_field1_input'],
-				$this->v_post['tabel_e4_field2_input'],
-				$this->v_post['tabel_e4_field3_input'],
-				$this->v_post['tabel_e4_field4_input'],
+				$this->v_post['tabel_e4_field1'],
+				$this->v_post['tabel_e4_field2'],
+				$this->v_post['tabel_e4_field3'],
+				$this->v_post['tabel_e4_field4'],
 				$this->v_post['tabel_e4_field4_old'],
-				$this->v_post['tabel_e4_field5_input'],
+				$this->v_post['tabel_e4_field5'],
 			),
-			$this->views['flash3']
+			$this->views['flash3'],
+			'ubah' . $tabel_e4_field1
 		);
 
-		$tabel_e4_field1 = $this->v_post['tabel_e4_field1'];
 
 		$config['upload_path'] = $this->v_upload_path['tabel_e4'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
@@ -142,7 +148,8 @@ class C_tabel_e4 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$upload = upload_file($this->v_input['tabel_e4_field3_input'], $config);
+		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_e4_field3_input']);
 
 
 		if (!$upload) {
@@ -152,6 +159,7 @@ class C_tabel_e4 extends Omnitags
 			$img = $tabel_e4[0]->img;
 			unlink($this->v_upload_path['tabel_e4'] . $img);
 
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 

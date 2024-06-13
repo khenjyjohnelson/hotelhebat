@@ -256,8 +256,8 @@ if (!function_exists('add_file')) {
 
         return <<<HTML
         <div class="form-group">
-            <label>{$alias}</label>
-            <input class="form-control-file" {$required} type="file" name="{$input}" placeholder="">
+            <input class="form-control float" {$required} type="file" id={$input} name="{$input}" placeholder="">
+            <label for="{$input}" class="form-label">{$alias}</label>
         </div>
         HTML;
     }
@@ -284,9 +284,9 @@ if (!function_exists('edit_file')) {
             </div>
             <div class="col-md-7">
                 <div class="form-group">
-                    <label>Ubah {$alias}</label>
-                    <input class="form-control-file" {$required} type="file" name="{$input}" placeholder="">
-                    <input type="hidden" name="{$old}" value="{$value}">
+                    <input class="form-control float" {$required} id="{$input}" type="file" name="{$input}">
+                    <label class="form-label" for="{$input}">Ubah {$alias}</label>
+                    <input type="hidden" name="{$old}" value="{$value}" {$required}>
                 </div>
             </div>
         </div>
@@ -330,11 +330,11 @@ if (!function_exists('select_add')) {
 
         return <<<HTML
         <div class="form-group">
-            <select class="form-control float" {$required} name="{$input}" placeholder="">
+            <select id="{$input}" class="form-control float" {$required} name="{$input}" placeholder="">
                 {$selected}
                 {$values}
             </select>
-            <label class="form-label">{$alias}</label>
+            <label for="{$input} class="form-label">{$alias}</label>
         </div>
         HTML;
     }
@@ -353,11 +353,11 @@ if (!function_exists('select_ubah')) {
 
         return <<<HTML
         <div class="form-group">
-            <select class="form-control float" {$required} name="{$input}" placeholder="">
+            <select id="{$input}" class="form-control float" {$required} name="{$input}" placeholder="">
                 {$selected}
                 {$values}
             </select>
-            <label class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias}</label>
         </div>
         HTML;
     }

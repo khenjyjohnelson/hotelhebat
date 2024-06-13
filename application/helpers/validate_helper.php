@@ -1,16 +1,19 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 if (!function_exists('validate_input')) {
-    function validate_input($required_fields, $flash_key, $error_message = 'All inputs are required.')
+    function validate_input($required_fields, $flash_key, $class, $error_message = 'All inputs are required.')
     {
         $CI =& get_instance();
         $CI->load->library('form_validation');
 
+        $modal = '$("#' . $class . ' ").modal("show")';
+
         // Sanitize and validate each required field
         foreach ($required_fields as $field) {
-            if (empty(xss_clean(post($field)))) {
+            if (empty(xss_clean($field))) {
                 // Set flash message for empty inputs
                 set_flashdata($flash_key, $error_message);
+                set_flashdata('modal', $modal);
                 $redirect_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/';
                 redirect($redirect_url);
                 return false; // Indicate validation failure

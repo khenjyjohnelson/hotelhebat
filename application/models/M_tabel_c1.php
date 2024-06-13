@@ -23,7 +23,7 @@ class M_tabel_c1 extends CI_Model
 		return $this->db->get($this->aliases['tabel_c1']);
 	}
 
-	public function search_c1_by_c1_field2($param1)
+	public function get_c1_by_c1_field2($param1)
 	{
 		$this->db->where($this->aliases['tabel_c1_field2'], $param1);
 		$this->db->order_by($this->aliases['tabel_c1_field1'], 'DESC');

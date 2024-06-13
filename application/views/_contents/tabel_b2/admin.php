@@ -84,8 +84,8 @@
       $tl_b2->$tabel_b2_field1,
       $tl_b2->$tabel_b2_field2,
       $btn_class,
-      btn_lihat($tl_b2->$tabel_b2_field1) . ' ' . 
-      btn_edit($tl_b2->$tabel_b2_field1) . ' ' . 
+      btn_lihat($tl_b2->$tabel_b2_field1) . ' ' .
+      btn_edit($tl_b2->$tabel_b2_field1) . ' ' .
       btn_hapus('tabel_b2', $tl_b2->$tabel_b2_field1),
       $tabel_b2,
       $tl_b2->$tabel_b2_field4,
@@ -181,7 +181,7 @@
   </div>
 </div>
 
-<!-- modal edit foto-->
+
 <?php foreach ($tbl_b2 as $tl_b2): ?>
   <div id="ubah<?= $tl_b2->$tabel_b2_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
@@ -197,18 +197,14 @@
 
             <?= input_edit('text', 'tabel_b2_field2', $tl_b2->$tabel_b2_field2, 'required') ?>
             <?= input_edit('text', 'tabel_b2_field3', $tl_b2->$tabel_b2_field3, 'required') ?>
-            <?= edit_file('tabel_b2', 'tabel_b2_field4', $tl_b2->$tabel_b2_field4, 'required') ?>
+            <?= edit_file('tabel_b2', 'tabel_b2_field4', $tl_b2->$tabel_b2_field4, '') ?>
             <?= input_textarea('tabel_b2_field5', $tl_b2->$tabel_b2_field5, 'required') ?>
 
             <div class="form-group">
               <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
                 id="<?= $tabel_b2_field7_input ?>">
+                <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b2->$tabel_b2_field7 ?></option>
                 <?php foreach ($tbl_b7 as $tl_b7): ?>
-                  <?php if ($tl_b2->$tabel_b2_field7 == $tl_b7->$tabel_b7_field1) { ?>
-                    <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                  <?php } else { ?>
-                    <option selected hidden value=""><?= lang('select') ?>       <?= $tabel_b7_alias ?>...</option> <?php } ?>
-
                   <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                 <?php endforeach ?>
               </select>

@@ -35,11 +35,12 @@ class C_tabel_e1 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_post['tabel_e1_field2_input'],
-				$this->v_post['tabel_e1_field3_input'],
-				$this->v_post['tabel_e1_field4_input'],
+				$this->v_post['tabel_e1_field2'],
+				$this->v_post['tabel_e1_field3'],
+				$this->v_post['tabel_e1_field4'],
 			),
-			$this->views['flash2']
+			$this->views['flash2'],
+			'tambah'
 		);
 
 		// Set the folder name based on the post data
@@ -60,8 +61,10 @@ class C_tabel_e1 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
+		$this->load->library('upload', $config);
+
 		// Load the upload library with the new configuration
-		$upload = upload_file($this->v_input['tabel_e1_field4_input'], $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_e1_field4_input']);
 
 		if (!$upload) {
 			// Notification if upload failed
@@ -72,6 +75,7 @@ class C_tabel_e1 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			// Get upload data
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 
@@ -99,18 +103,20 @@ class C_tabel_e1 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$tabel_e1_field1 = $this->v_post['tabel_e1_field1'];
+		
 		validate_input(
 			array(
-				$this->v_post['tabel_e1_field1_input'],
-				$this->v_post['tabel_e1_field2_input'],
-				$this->v_post['tabel_e1_field3_input'],
-				$this->v_post['tabel_e1_field4_input'],
+				$this->v_post['tabel_e1_field1'],
+				$this->v_post['tabel_e1_field2'],
+				$this->v_post['tabel_e1_field3'],
+				$this->v_post['tabel_e1_field4'],
 				$this->v_post['tabel_e1_field4_old'],
 			),
-			$this->views['flash3']
+			$this->views['flash3'],
+			'ubah' . $tabel_e1_field1
 		);
 
-		$tabel_e1_field1 = $this->v_post['tabel_e1_field1'];
 
 		$config['upload_path'] = $this->v_upload_path['tabel_e1'];
 		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
@@ -119,15 +125,17 @@ class C_tabel_e1 extends Omnitags
 		$config['overwrite'] = TRUE;
 		$config['remove_spaces'] = TRUE;
 
-		$upload = upload_file($this->v_input['tabel_e1_field4_input'], $config);
+		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_e1_field4_input']);
 
 		if (!$upload) {
 			$gambar = $this->v_post['tabel_e1_field4_old'];
 		} else {
-			$tabel_e1 = $this->tl_e1->get_e4_by_e4_field1($tabel_e1_field1)->result();
+			$tabel_e1 = $this->tl_e1->get_e1_by_e1_field1($tabel_e1_field1)->result();
 			$img = $tabel_e1[0]->img;
-			unlink($this->v_upload_path['tabel_e4'] . $img);
+			unlink($this->v_upload_path['tabel_e1'] . $img);
 
+			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
 

@@ -83,9 +83,10 @@ class C_tabel_f2 extends Omnitags
 				$this->v_post['tabel_f2_field10_filter1'],
 				$this->v_post['tabel_f2_field10_filter2'],
 				$this->v_post['tabel_f2_field11_filter1'],
-				$this->v_post['tabel_f2_field11_filter2']
+				$this->v_post['tabel_f2_field11_filter2'],
 			),
-			$this->views['flash1']
+			$this->views['flash1'],
+			''
 		);
 
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
@@ -99,7 +100,7 @@ class C_tabel_f2 extends Omnitags
 			'title' => lang('tabel_f1_alias_v2_title'),
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
-			'tbl_f2' => $this->tl_f2->search_c1_with_e4_between_dates($param1, $param2, $param3, $param4, $tabel_c2_field1)->result(),
+			'tbl_f2' => $this->tl_f2->filter_c2($param1, $param2, $param3, $param4, $tabel_c2_field1)->result(),
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f2_field10_filter1_value' => $param1,
@@ -234,16 +235,18 @@ class C_tabel_f2 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_4_5();
+		
+		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 
 		validate_input(
 			array(
-				$this->v_post['tabel_f2_field1_input'],
-				$this->v_post['tabel_f2_field12_input'],
+				$this->v_post['tabel_f2_field1'],
+				$this->v_post['tabel_f2_field12'],
 			),
-			$this->views['flash1']
+			$this->views['flash1'],
+			'ubah_status' . $tabel_f2_field1
 		);
 
-		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 
 		$data = array(
 			$this->aliases['tabel_f2_field12'] => $this->v_post['tabel_f2_field12'],
@@ -310,9 +313,10 @@ class C_tabel_f2 extends Omnitags
 				$this->v_post['tabel_f2_field10_filter1'],
 				$this->v_post['tabel_f2_field10_filter2'],
 				$this->v_post['tabel_f2_field11_filter1'],
-				$this->v_post['tabel_f2_field11_filter2']
+				$this->v_post['tabel_f2_field11_filter2'],
 			),
-			$this->views['flash1']
+			$this->views['flash1'],
+			''
 		);
 
 		// nilai min dan max sudah diinput sebelumnya
@@ -448,17 +452,19 @@ class C_tabel_f2 extends Omnitags
 		$this->declarew();
 		$this->session_4();
 
+		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
+
 		validate_input(
 			array(
-				$this->v_post['tabel_f2_field1_input'],
-				$this->v_post['tabel_f2_field12_input'],
-				$this->v_post['tabel_f2_field13_input'],
+				$this->v_post['tabel_f2_field1'],
+				$this->v_post['tabel_f2_field12'],
+				$this->v_post['tabel_f2_field13'],
 			),
-			$this->views['flash1']
+			$this->views['flash1'],
+			'ubah_status' . $tabel_f2_field1
 		);
 
 		// hanya merubah status pesanan berdasarkan id pesanan
-		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 		$data = array(
 			$this->aliases['tabel_f2_field12'] => $this->aliases['tabel_f2_field12_value2'],
 			$this->aliases['tabel_f2_field13'] => $this->v_post['tabel_f2_field13'],

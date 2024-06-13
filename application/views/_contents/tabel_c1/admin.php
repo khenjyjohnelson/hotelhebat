@@ -111,6 +111,8 @@
           <?= input_add('text', 'tabel_c1_field2', 'required') ?>
           <?= input_add('email', 'tabel_c1_field3', 'required') ?>
           <?= add_new_password('tabel_c1_field4', 'required') ?>
+          <?= password_req() ?>
+          <?= add_confirm('password', 'tabel_c1_field4', 'required') ?>
           <?= input_add('text', 'tabel_c1_field5', 'required') ?>
           <?= add_file('tabel_c1_field6', 'required') ?>
 
@@ -152,7 +154,7 @@
             <?= input_edit('text', 'tabel_c1_field2', $tl_c1->$tabel_c1_field2, 'required') ?>
             <?= input_edit('email', 'tabel_c1_field3', $tl_c1->$tabel_c1_field3, 'required') ?>
             <?= input_edit('text', 'tabel_c1_field5', $tl_c1->$tabel_c1_field5, 'required') ?>
-            <?= edit_file('tabel_c1', 'tabel_c1_field6', $tl_c1->$tabel_c1_field6, 'required') ?>
+            <?= edit_file('tabel_c1', 'tabel_c1_field6', $tl_c1->$tabel_c1_field6, '') ?>
 
             <div class="form-group">
               <select class="form-control float" required name="<?= $tabel_c1_field7_input ?>">

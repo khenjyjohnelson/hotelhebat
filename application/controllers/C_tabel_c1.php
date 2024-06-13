@@ -34,40 +34,63 @@ class C_tabel_c1 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$param2 = $this->v_post['tabel_c1_field2'];
+
 		validate_input(
 			array(
-				$this->v_post['tabel_c1_field2_input'],
-				$this->v_post['tabel_c1_field3_input'],
-				$this->v_post['tabel_c1_field4_input'],
-				$this->v_post['tabel_c1_field5_input'],
-				$this->v_post['tabel_c1_field6_input'],
-				$this->v_post['tabel_c1_field7_input'],
+				$this->v_post['tabel_c1_field2'],
+				$this->v_post['tabel_c1_field3'],
+				$this->v_post['tabel_c1_field4'],
+				$this->v_post['tabel_c1_field4_confirm'],
+				$this->v_post['tabel_c1_field5'],
+				$this->v_post['tabel_c1_field6'],
+				$this->v_post['tabel_c1_field7'],
 			),
-			$this->views['flash2']
+			$this->views['flash2'],
+			'tambah'
 		);
 
-		$param2 = $this->v_post['tabel_c1_field2'];
-		// $param8 = $this->v_post['tabel_c1_field8'];
+		$config['upload_path'] = $this->v_upload_path['tabel_c1'];
+		$config['allowed_types'] = $this->file_type1;
+		$config['file_name'] = $this->v_post['tabel_c1_field2'];
+		$config['overwrite'] = TRUE;
+		$config['remove_spaces'] = TRUE;
 
-		$method2 = $this->tl_c1->cek_tabel_c1_field2($param2);
+		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_c1_field6_input']);
+
+		if (!$upload) {
+			// Di sini seharusnya ada notifikasi modal kalau upload tidak berhasil
+			// Tapi karena formnya sudah required saya rasa tidak perlu
+			set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_c1_field6_alias']);
+			set_flashdata('modal', $this->views['flash2_func1']);
+			redirect($_SERVER['HTTP_REFERER']);
+		} else {
+			// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
+			$upload = $this->upload->data();
+			$gambar = $upload['file_name'];
+		}
+		
+		$method2 = $this->tl_c1->get_c1_by_c1_field2($param2);
+		$param4 = $this->v_post['tabel_c1_field4'];
 
 		// mencari apakah jumlah data kurang dari 1
 		if ($method2->num_rows() < 1) {
 
 			// jika input konfirm sama dengan input password
-			// if (post('konfirm') === $param8) {
-			// $this->load->library('encryption');
+			if ($this->v_post['tabel_c1_field4_confirm'] === $param4) {
+			$this->load->library('encryption');
 
 			$data = array(
 				$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
 				$this->aliases['tabel_c1_field2'] => $param2,
 				$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
 				$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
-				$this->aliases['tabel_c1_field6'] => $this->v_post['tabel_c1_field6'],
+				$this->aliases['tabel_c1_field6'] => $gambar,
 				$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
 
 				// mengubah password menjadi password berenkripsi
-				// $this->aliases['tabel_c1_field5'] => password_hash($param8, PASSWORD_DEFAULT),
+				$this->aliases['tabel_c1_field4'] => password_hash($param4, PASSWORD_DEFAULT),
 
 			);
 
@@ -75,7 +98,6 @@ class C_tabel_c1 extends Omnitags
 
 			// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
 			if (userdata($this->aliases['tabel_c1_field3'])) {
-
 				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
 			} else {
 				redirect($_SERVER['HTTP_REFERER']);
@@ -83,13 +105,13 @@ class C_tabel_c1 extends Omnitags
 			}
 
 			// jika input konfirm tidak sama dengan input password
-			// } else {
+			} else {
 
 			// menampilkan flashdata dalam bentuk teks
-			// set_flashdata($this->views['flash1'], 'Konfirmasi ' . $this->aliases['tabel_c1_field5'] . ' salah!');
+			set_flashdata($this->views['flash1'], 'Konfirmasi ' . $this->aliases['tabel_c1_field4'] . ' salah!');
 
-			// redirect($_SERVER['HTTP_REFERER']);
-			// }
+			redirect($_SERVER['HTTP_REFERER']);
+			}
 
 			// jika jumlah data lebih dari 0
 		} else {
@@ -110,19 +132,19 @@ class C_tabel_c1 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
+
 		validate_input(
 			array(
-				$this->v_post['tabel_c1_field1_input'],
-				$this->v_post['tabel_c1_field2_input'],
-				$this->v_post['tabel_c1_field3_input'],
-				$this->v_post['tabel_c1_field5_input'],
-				$this->v_post['tabel_c1_field7_input'],
+				$this->v_post['tabel_c1_field1'],
+				$this->v_post['tabel_c1_field2'],
+				$this->v_post['tabel_c1_field3'],
+				$this->v_post['tabel_c1_field5'],
+				$this->v_post['tabel_c1_field7'],
 			),
-			$this->views['flash3']
+			$this->views['flash3'],
+				'ubah' . $tabel_c1_field1
 		);
-
-
-		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 
 		$data = array(
 			$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
@@ -320,7 +342,7 @@ class C_tabel_c1 extends Omnitags
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 		$param8 = $this->v_post['tabel_c1_field8'];
 
-		$method1 = $this->tl_c1->cek_tabel_c1_field1($tabel_c1_field1);
+		$method1 = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1);
 
 		// mencari apakah jumlah data kurang dari 0
 		if ($method1->num_rows() > 0) {
