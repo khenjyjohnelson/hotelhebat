@@ -109,7 +109,7 @@ class C_tabel_f4 extends Omnitags
 
 		$aksi = $this->tl_f4->delete_f4($tabel_f4_field1);
 
-		$notif = $this->handle_4e($aksi, 'tabel_f4_field1', $tabel_f4_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_f4', $tabel_f4_field1);
 
 		redirect($_SERVER['HTTP_REFERER']); 
 	}

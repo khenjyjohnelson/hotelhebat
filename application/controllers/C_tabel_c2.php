@@ -135,7 +135,7 @@ class C_tabel_c2 extends Omnitags
 
 		$aksi = $this->tl_c2->delete_c2($tabel_c2_field1);
 
-		$notif = $this->handle_4e($aksi, 'tabel_c2_field1', $tabel_c2_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 

@@ -177,8 +177,8 @@ class C_tabel_b5 extends Omnitags
 
 		if (!$upload) {
 			if ($new_name != $tabel_b5[0]->nama) {
-				rename($path . $img, $path . $new_name . $extension);
-				$gambar = $new_name . $extension;
+				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+				$gambar = str_replace(' ', '_', $new_name) . $extension;
 			} else {
 				$gambar = $img;
 			}

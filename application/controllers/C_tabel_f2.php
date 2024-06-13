@@ -299,7 +299,7 @@ class C_tabel_f2 extends Omnitags
 
 		$aksi = $hapus && $update_f1;
 
-		$notif = $this->handle_4e($aksi, 'tabel_f2_field1', $tabel_f2_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_f2', $tabel_f2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

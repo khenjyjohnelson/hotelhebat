@@ -139,8 +139,8 @@ class C_tabel_e1 extends Omnitags
 
 		if (!$upload) {
 			if ($new_name != $tabel_e1[0]->nama) {
-				rename($path . $img, $path . $new_name . $extension);
-				$gambar = $new_name . $extension;
+				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+				$gambar = str_replace(' ', '_', $new_name) . $extension;
 			} else {
 				$gambar = $img;
 			}
@@ -197,7 +197,7 @@ class C_tabel_e1 extends Omnitags
 			// Functional requirement: Delete data from the database
 			$aksi = $this->tl_e1->delete_e1($tabel_e1_field1);
 
-			$notif = $this->handle_4e($aksi, 'tabel_e1_field1', $tabel_e1_field1);
+			$notif = $this->handle_4e($aksi, 'tabel_e1', $tabel_e1_field1);
 
 		} catch (Exception $e) {
 			// Error Handling: Handle database operation errors

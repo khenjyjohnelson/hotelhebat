@@ -59,7 +59,7 @@ class C_tabel_a1 extends Omnitags
 
 		$aksi = $this->tl_a1->update_a1($data, $tabel_a1_field1);
 
-		$notif = $this->handle_4c($aksi, 'tabel_a1_field1', $tabel_a1_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_a1', $tabel_a1_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}

@@ -158,8 +158,8 @@ class C_tabel_e4 extends Omnitags
 
 		if (!$upload) {
 			if ($new_name != $tabel_e4[0]->tipe) {
-				rename($path . $img, $path . $new_name . $extension);
-				$gambar = $new_name . $extension;
+				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+				$gambar = str_replace(' ', '_', $new_name) . $extension;
 			} else {
 				$gambar = $img;
 			}
@@ -216,7 +216,7 @@ class C_tabel_e4 extends Omnitags
 		unlink($this->v_upload_path['tabel_e4'] . $tabel_e4_field3);
 		$aksi = $this->tl_e4->delete_e4($tabel_e4_field1);
 
-		$notif = $this->handle_4e($aksi, 'tabel_e4_field1', $tabel_e4_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_e4', $tabel_e4_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
