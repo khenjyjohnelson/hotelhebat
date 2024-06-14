@@ -9,7 +9,6 @@ switch (true) {
 }
 ?>
 
-<base href="<?= base_url('assets/') ?>">
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 

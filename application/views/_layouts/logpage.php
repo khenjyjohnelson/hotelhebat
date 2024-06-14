@@ -1,4 +1,3 @@
-<base href="<?= base_url('assets/') ?>">
 <!DOCTYPE html>
 <html lang="en">
     
@@ -44,7 +43,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: blur(5px);
+            filter: blur(20px);
             /* Adjust blur intensity as needed */
             transform: scale(1.1);
         }

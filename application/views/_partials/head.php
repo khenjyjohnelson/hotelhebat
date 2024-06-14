@@ -4,6 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Khenjy Johnelson">
 
+  <base href="<?= base_url('assets/') ?>">
+
   <!-- menampilkan data pengaturan sebagai p -->
   <?php foreach ($tbl_a1 as $tl_a1): ?>
     <meta name="description" content="<?= $tl_a1->$tabel_b7_field6 ?>">

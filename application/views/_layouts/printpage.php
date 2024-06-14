@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<base href="<?= base_url('assets/') ?>">
 
 <?php load_view($head) ?>
 
