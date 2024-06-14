@@ -66,6 +66,7 @@ class Welcome extends Omnitags
 
 				$data = array_merge($data1, $this->package);
 				load_view_data('_layouts/template', $data);
+			break;
 		}
 	}
 

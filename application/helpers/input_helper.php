@@ -214,7 +214,7 @@ if (!function_exists('input_edit')) {
 
         return <<<HTML
         <div class="form-group">
-            <input class="form-control float" type="{$type}" {$required} name="{$input}" placeholder=""
+            <input id="{$input}" class="form-control float" type="{$type}" {$required} name="{$input}" placeholder=""
             value="{$value}">
             <label for="{$input}" class="form-label">{$alias}</label>
         </div>

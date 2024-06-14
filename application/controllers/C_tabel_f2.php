@@ -41,6 +41,7 @@ class C_tabel_f2 extends Omnitags
 
 			default:
 				redirect(site_url($this->language_code . '/login'));
+			break;
 		}
 
 		$data = array_merge($data1, $this->package);

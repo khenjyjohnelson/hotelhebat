@@ -42,7 +42,7 @@ class C_tabel_b1 extends Omnitags
 			array(
 				$this->v_get['tabel_b1_field7'],
 			),
-			$this->views['flash1'], 
+			$this->views['flash1'],
 			''
 		);
 
@@ -82,43 +82,53 @@ class C_tabel_b1 extends Omnitags
 			'tambah'
 		);
 
-		$config['upload_path'] = $this->v_upload_path['tabel_b1'];
-		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $this->v_post['tabel_b1_field2'];
-		$config['overwrite'] = TRUE;
-		$config['remove_spaces'] = TRUE;
+		$tabel_b1_field2 = $this->v_post['tabel_b1_field2'];
+		$method2 = $this->tl_c2->get_b1_by_b1_field2_by_b1_field7($tabel_b1_field2, $this->theme_id);
 
-		$this->load->library('upload', $config);
-		$upload = $this->upload->do_upload($this->v_input['tabel_b1_field4_input']);
+		// mencari apakah jumlah data kurang dari 1
+		if ($method2->num_rows() < 1) {
+			$config['upload_path'] = $this->v_upload_path['tabel_b1'];
+			$config['allowed_types'] = $this->file_type1;
+			$config['file_name'] = $this->v_post['tabel_b1_field2'];
+			$config['overwrite'] = TRUE;
+			$config['remove_spaces'] = TRUE;
 
-		if (!$upload) {
-			// Di sini seharusnya ada notifikasi modal kalau upload tidak berhasil
-			// Tapi karena formnya sudah required saya rasa tidak perlu
+			$this->load->library('upload', $config);
+			$upload = $this->upload->do_upload($this->v_input['tabel_b1_field4_input']);
 
-			set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b1_field4_alias']);
-			set_flashdata('modal', $this->views['flash2_func1']);
+			if (!$upload) {
+				// Di sini seharusnya ada notifikasi modal kalau upload tidak berhasil
+				// Tapi karena formnya sudah required saya rasa tidak perlu
+
+				set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b1_field4_alias']);
+				set_flashdata('modal', $this->views['flash2_func1']);
+				redirect($_SERVER['HTTP_REFERER']);
+			} else {
+				// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
+				$upload = $this->upload->data();
+				$gambar = $upload['file_name'];
+			}
+
+			$data = array(
+				$this->aliases['tabel_b1_field1'] => '',
+				$this->aliases['tabel_b1_field2'] => $this->v_post['tabel_b1_field2'],
+				$this->aliases['tabel_b1_field3'] => $this->v_post['tabel_b1_field3'],
+				$this->aliases['tabel_b1_field4'] => $gambar,
+				$this->aliases['tabel_b1_field5'] => $this->v_post['tabel_b1_field5'],
+				$this->aliases['tabel_b1_field6'] => $this->v_post['tabel_b1_field6'],
+				$this->aliases['tabel_b1_field7'] => $this->v_post['tabel_b1_field7'],
+			);
+
+			$aksi = $this->tl_b1->insert_b1($data);
+
+			$notif = $this->handle_4b($aksi, 'tabel_b1');
+
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
-			// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];
+
+			set_flashdata($this->views['flash1'], $this->aliases['tabel_b1_field2'] . ' telah digunakan!');
+			redirect($_SERVER['HTTP_REFERER']);
 		}
-
-		$data = array(
-			$this->aliases['tabel_b1_field1'] => '',
-			$this->aliases['tabel_b1_field2'] => $this->v_post['tabel_b1_field2'],
-			$this->aliases['tabel_b1_field3'] => $this->v_post['tabel_b1_field3'],
-			$this->aliases['tabel_b1_field4'] => $gambar,
-			$this->aliases['tabel_b1_field5'] => $this->v_post['tabel_b1_field5'],
-			$this->aliases['tabel_b1_field6'] => $this->v_post['tabel_b1_field6'],
-			$this->aliases['tabel_b1_field7'] => $this->v_post['tabel_b1_field7'],
-		);
-
-		$aksi = $this->tl_b1->insert_b1($data);
-
-		$notif = $this->handle_4b($aksi, 'tabel_b1');
-
-		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function update()
@@ -127,6 +137,7 @@ class C_tabel_b1 extends Omnitags
 		$this->session_3();
 
 		$tabel_b1_field1 = $this->v_post['tabel_b1_field1'];
+		$tabel_b1_field7 = $this->v_post['tabel_b1_field7'];
 
 		validate_input(
 			array(
@@ -142,6 +153,7 @@ class C_tabel_b1 extends Omnitags
 		);
 
 		$tabel_b1 = $this->tl_b1->get_b1_by_b1_field1($tabel_b1_field1)->result();
+		$theme = $this->v_post['tabel_b1_field7'] . '_';
 		$new_name = $this->v_post['tabel_b1_field2'];
 		$path = $this->v_upload_path['tabel_b1'];
 		$img = $this->v_post['tabel_b1_field4_old'];
@@ -159,8 +171,8 @@ class C_tabel_b1 extends Omnitags
 
 		if (!$upload) {
 			if ($new_name != $tabel_b1[0]->kode) {
-				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
-				$gambar = str_replace(' ', '_', $new_name) . $extension;
+				rename($path . $img, $path . str_replace(' ', '_', $theme . $new_name) . $extension);
+				$gambar = str_replace(' ', '_', $theme . $new_name) . $extension;
 			} else {
 				$gambar = $img;
 			}
@@ -171,7 +183,8 @@ class C_tabel_b1 extends Omnitags
 					unlink($path . $img);
 				}
 				$upload = $this->upload->data();
-				$gambar = $upload['file_name'];
+				rename($path . $img, $path . str_replace(' ', '_', $theme . $upload['file_name']) . $extension);
+				$gambar = $theme . $upload['file_name'];
 			} else {
 				$gambar = $img;
 			}

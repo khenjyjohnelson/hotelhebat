@@ -4,7 +4,8 @@
     break;
 
   default:
-    redirect(site_url($language . '/' . 'no_level'));
+    redirect(site_url($language . '/no_level'));
+    break;
 }
 ?>
 <table class="table">

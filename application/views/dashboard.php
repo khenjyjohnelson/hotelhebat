@@ -6,7 +6,7 @@
     break;
 
   default:
-    redirect(site_url($language . '/' . 'welcome/no_level'));
+    redirect(site_url($language . '/no_level'));
     break;
 }
 ?>
@@ -17,7 +17,7 @@
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
-      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field7 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
@@ -38,7 +38,8 @@
     default: ?>
 
 
-  <?php } ?>
+      <?php break;
+  } ?>
 </div>
 
 <br>
@@ -70,7 +71,8 @@
     default: ?>
 
 
-  <?php } ?>
+      <?php break;
+  } ?>
 </div>
 
 <!-- The charts shown will be different for each user level -->
@@ -110,7 +112,7 @@
             <?= row_data('tabel_a1_field3', $tl_a1->$tabel_a1_field3) ?>
             <?= row_data('tabel_a1_field4', $tl_a1->$tabel_a1_field4) ?>
             <?= row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) ?>
-            
+
             <?php foreach ($sosmed as $sm):
               if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) { ?>
                 <?= row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) ?>
@@ -136,38 +138,5 @@
 <?php endforeach; ?>
 
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <?= chart('tabel_f1', 'tabel_f2') ?>
-
-
-<script>
-  function adjustColumns() {
-    // Get the current width of the viewport
-    const screenWidth = window.innerWidth;
-
-    // Define the breakpoint for switching column sizes
-    const breakpoint = 1024; // You can adjust this value based on your needs
-
-    // Select all elements with the class "col-md-3"
-    const colMd3Elements = document.querySelectorAll(".col-md-3");
-
-    // Loop through each element
-    colMd3Elements.forEach(element => {
-      if (screenWidth >= breakpoint) {
-        // If screen size is greater than or equal to breakpoint, set class to col-md-4
-        element.classList.add("col-md-3");
-        element.classList.remove("col-md-4");
-      } else {
-        // If screen size is less than breakpoint, set class to col-md-3
-        element.classList.remove("col-md-3");
-        element.classList.add("col-md-4");
-      }
-    });
-  }
-
-  // Call the adjustColumns function on window resize
-  window.addEventListener("resize", adjustColumns);
-
-  // Call the adjustColumns function on page load to handle initial layout
-  adjustColumns();
-</script>
+<?= adjust_col_js() ?>

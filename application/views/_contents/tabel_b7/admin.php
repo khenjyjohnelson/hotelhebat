@@ -4,7 +4,8 @@
     break;
 
   default:
-    redirect(site_url($language . '/' . 'no_level'));
+    redirect(site_url($language . '/no_level'));
+    break;
 }
 ?>
 
@@ -281,3 +282,5 @@
   </div>
   </div>
 <?php endforeach; ?>
+
+<?= adjust_col_js() ?>

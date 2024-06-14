@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 if (!class_exists('Omnitags')) {
     class Omnitags extends CI_Controller
     {
-        protected $language_code;        
+        protected $language_code;
 
         // Di bawah ini aku berencana untuk membuat sebuah array yang menampung semua jenis alias dari field dan nama tabel
         // Dan aku akan membuat array itu merge dengan array yang akan diload ke halaman view pada setiap
@@ -55,7 +55,7 @@ if (!class_exists('Omnitags')) {
         public function __construct()
         {
             parent::__construct();
-            
+
             //Menampilkan media
             $this->load->helper('tampil');
             // Tampil button
@@ -328,7 +328,7 @@ if (!class_exists('Omnitags')) {
         public function handle_2a()
         {
             if (userdata($this->aliases['tabel_c2_field1']) == '') {
-                redirect(site_url($this->views['language'] . '/' . 'no_level'));
+                redirect(site_url($this->views['language'] . '/no_level'));
             } else {
                 $msg = 'Selamat datang ' . userdata($this->aliases['tabel_c2_field6']) . ' ' . userdata($this->aliases['tabel_c2_field2']) . '!';
                 $type = $this->aliases['tabel_b8_field2_value2'];
@@ -582,6 +582,25 @@ if (!class_exists('Omnitags')) {
             set_flashdata($this->views['flash1'], $msg . $extra);
             set_flashdata($flashtype, $this->views['flash1_func1']);
             return [];
+        }
+
+        public function serve_dekor($directory, $filename)
+        {
+            // Set the correct content type
+            header('Content-Type: image/jpeg'); // Adjust content type based on your image type
+            
+            $this->tabel_a1_field1 = 1;
+            $this->theme = $this->tl_b7->tema($this->tabel_a1_field1)->result();
+            $this->theme_id = $this->theme[0]->id_theme;
+
+            // Serve the image file
+            $file_path = FCPATH . ('assets/img/' . $directory . '/1/' . $filename);
+            if (file_exists($file_path)) {
+                readfile($file_path);
+            } else {
+                // Handle file not found error
+                show_404();
+            }
         }
 
         public function serve_image($directory, $filename)

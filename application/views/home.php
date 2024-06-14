@@ -117,3 +117,5 @@ Tapi ketika user sudah login saja, jika tidak, maka menampilkan tombol login -->
 
     }
   </script>
+
+<?= adjust_col_js() ?>

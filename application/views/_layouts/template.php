@@ -1,13 +1,6 @@
-<!-- setting setiap src di assets -->
-<base href="<?= base_url('assets/') ?>">
-
-<!-- memastikan user memiliki id  -->
-<!-- memastikan user memiliki id  -->
 <?php
 switch (true) {
   case (userdata($tabel_c2_field1)):
-    break;
-  case (userdata($tabel_c1_field1)):
     break;
   default:
     session_destroy();
@@ -16,7 +9,7 @@ switch (true) {
 }
 ?>
 
-
+<base href="<?= base_url('assets/') ?>">
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 
@@ -24,18 +17,14 @@ switch (true) {
 <?php load_view($head) ?>
 
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX34Q9MK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
   <!-- menampilkan data pengaturan sebagai p -->
   <?php foreach ($tbl_a1 as $tl_a1): ?>
 
-     <!-- toast -->
+    <!-- toast -->
     <div class="toast fade" id="element" style="position: absolute; top: 80; right: 15; z-index: 1000" data-delay="5000">
       <div class="toast-header">
-        <img class="rounded mr-2" src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field3 ?>" width="15px" draggable="false">
+        <img class="rounded mr-2" src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field3 ?>" width="15px"
+          draggable="false">
         <strong class="mr-auto">
           <?= $tl_a1->$tabel_a1_field2 ?>
         </strong>

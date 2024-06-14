@@ -4,7 +4,8 @@
     break;
 
   default:
-    redirect(site_url($language . '/' . 'no_level'));
+    redirect(site_url($language . '/no_level'));
+    break;
 }
 ?>
 
@@ -16,7 +17,7 @@
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
-      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field7 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
@@ -68,14 +69,13 @@
 
 <div id="card-view" class="row data-view active">
   <?php foreach ($tbl_e1 as $tl_e1):
-    echo card_file(
+    echo card_regular(
       $tl_e1->$tabel_e1_field1,
+      $tabel_e1,
       $tl_e1->$tabel_e1_field2,
       $tl_e1->$tabel_e1_field3,
       btn_lihat($tl_e1->$tabel_e1_field1) . ' ' .
       btn_edit($tl_e1->$tabel_e1_field1),
-      $tabel_e1,
-      $tl_e1->$tabel_e1_field4,
       'bg-danger'
     );
   endforeach; ?>
@@ -208,3 +208,5 @@
     </div>
   </div>
 <?php endforeach; ?>
+
+<?= adjust_col_js() ?>

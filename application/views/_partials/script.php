@@ -1,20 +1,3 @@
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Organization",
-  "name": "Your Organization",
-  "url": "https://www.hotelkhenjy.com",
-  "logo": "https://hotelkhenjy.com/assets/img/website_themes/christmas_logo.png",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+1-000-000-0000",
-    "contactType": "Customer service"
-  }
-}
-</script>
-
-
-
 <!-- javascript untuk semua halaman (sesuai kebutuhan) -->
 <script src="popper.min.js"></script>
 <script src="jquery.min.js"></script>
@@ -23,16 +6,7 @@
 
 <!-- javascript untuk datatables bertema bootstrap -->
 <script src="datatables/datatables/js/jquery.dataTables.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
-
 <script src="datatables/datatables/js/dataTables.bootstrap4.min.js"></script>
-
-
-<!-- TableExport.js -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin/tableExport.min.js"></script>
-
-<!-- Add Intro.js JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.4.0/intro.min.js"></script>
 
 <!-- fungsi datatables (wajib ada) -->
 <script type="text/javascript">
@@ -55,8 +29,6 @@
     var table = $('#daterange_table').DataTable({
 
     })
-
-
 </script>
 
 <script>
@@ -71,125 +43,6 @@
 <!-- Berikut ini adalah list projek2 mendatang yang ingin kubuat jika sudah mempunyai tim frontend
     Bagiku cukup sulit dalam menentukan pilihan terbaik dalam membuat quick tour
     1. Membuat guided tour yang bisa pergi ke halaman lain -->
-
-
-<!-- Fitur di bawah ini adalah fitur oboarding yang berfungsi mengarahkan tamu untuk mengetahui fitur-fitur yang berhubungan dengan pesanan -->
-
-<!-- Intro user publik -->
-<script>
-    // Initialize Intro.js
-    // Wait for the DOM to be ready
-    $(document).ready(function () {
-        // Bind a click event to the button
-        $("#startTour").on("click", function () {
-            var intro = introJs();
-            intro.setOptions({
-                steps: [{
-                    element: document.getElementById('tour1'),
-                    intro: 'Ini adalah logo aplikasimu!',
-                    position: 'bottom'
-                },
-                {
-                    element: document.getElementById('tour2'),
-                    intro: 'Ini adalah navigasi.',
-                    position: 'bottom'
-                }
-                ]
-            });
-            intro.start();
-        });
-    });
-</script>
-
-
-
-<!-- Intro user tamu -->
-<script>
-    // Initialize Intro.js
-    // Wait for the DOM to be ready
-
-    // Bind a click event to the button
-    $("#introTamu").on("click", function () {
-        var intro = introJs();
-        intro.setOptions({
-            steps: [
-                // I want to have this one but I think it doesn't really recessary anymore since it doesn't even work yet
-                // {
-                //   title: 'Quick Tour',
-                //   intro: 'Ayo ikuti tour ini'
-                // }, 
-                {
-                    element: document.getElementById('tour1'),
-                    intro: 'Anda sekarang sudah bisa mencari serta mengelola pesanan Anda!',
-                    position: 'bottom'
-                },
-                {
-                    element: document.getElementById('tour2'),
-                    intro: 'Anda bisa memesan kamar di sini.',
-                    position: 'top'
-                }
-
-            ],
-            // dontShowAgain: true,
-        })
-        intro.start();
-    });
-</script>
-
-<!-- Script below is for radio button -->
-<script>
-    // JavaScript to make radio buttons required and stop validation once one option is picked
-    document.addEventListener('DOMContentLoaded', function () {
-        var radioGroup = document.querySelectorAll('input[type="radio"].custom-radio');
-
-        radioGroup.forEach(function (radio) {
-            radio.addEventListener('change', function () {
-                // Set "required" attribute to false for all radio buttons
-                radioGroup.forEach(function (r) {
-                    r.required = false;
-                });
-
-                // Find the checked radio button and set "required" attribute to true
-                var checkedRadio = document.querySelector('input[type="radio"].custom-radio:checked');
-                if (checkedRadio) {
-                    checkedRadio.required = true;
-                }
-            });
-        });
-    });
-</script>
-
-<!-- Script below is for checkboxes -->
-<script>
-    // JavaScript to disable all primary buttons once one is chosen
-    $(document).ready(function () {
-        $('.checkbox-group input[type="checkbox"]').change(function () {
-            var checkboxes = $('.checkbox-group input[type="checkbox"]');
-            var cards = $('.card-body');
-            var checkedCheckbox = $(this);
-
-            if (checkedCheckbox.prop('checked')) {
-                checkboxes.parent().removeClass('btn-primary').addClass('btn-secondary');
-                cards.parent().removeClass('bg-light').addClass('bg-light');
-                checkedCheckbox.parent().addClass('active').addClass('btn-success');
-                checkboxes.not(checkedCheckbox).prop('disabled', true).prop('required', false);
-            } else {
-                checkboxes.parent().removeClass('btn-secondary').addClass('btn-primary');
-                cards.parent().removeClass('bg-secondary').addClass('bg-light');
-                checkboxes.prop('disabled', false).prop('required', true);
-                checkedCheckbox.parent().removeClass('active').removeClass('btn-success');
-            }
-        });
-
-
-
-
-    });
-
-
-
-</script>
-
 <script>
     $(document).ready(function () {
         $('.view-toggle').on('click', function () {
@@ -200,71 +53,4 @@
             $('#' + target).addClass('active').show();
         });
     });
-</script>
-
-
-
-
-<script>
-    CKEDITOR.replace('editor1');
-</script>
-
-<script>
-    var myInput = document.getElementById("psw");
-    var letter = document.getElementById("letter");
-    var capital = document.getElementById("capital");
-    var number = document.getElementById("number");
-    var length = document.getElementById("length");
-
-    // When the user clicks on the password field, show the message box
-    myInput.onfocus = function () {
-        document.getElementById("message").style.display = "block";
-    }
-
-    // When the user clicks outside of the password field, hide the message box
-    myInput.onblur = function () {
-        document.getElementById("message").style.display = "none";
-    }
-
-    // When the user starts to type something inside the password field
-    myInput.onkeyup = function () {
-        // Validate lowercase letters
-        var lowerCaseLetters = /[a-z]/g;
-        if (myInput.value.match(lowerCaseLetters)) {
-            letter.classList.remove("invalid");
-            letter.classList.add("valid");
-        } else {
-            letter.classList.remove("valid");
-            letter.classList.add("invalid");
-        }
-
-        // Validate capital letters
-        var upperCaseLetters = /[A-Z]/g;
-        if (myInput.value.match(upperCaseLetters)) {
-            capital.classList.remove("invalid");
-            capital.classList.add("valid");
-        } else {
-            capital.classList.remove("valid");
-            capital.classList.add("invalid");
-        }
-
-        // Validate numbers
-        var numbers = /[0-9]/g;
-        if (myInput.value.match(numbers)) {
-            number.classList.remove("invalid");
-            number.classList.add("valid");
-        } else {
-            number.classList.remove("valid");
-            number.classList.add("invalid");
-        }
-
-        // Validate length
-        if (myInput.value.length >= 8) {
-            length.classList.remove("invalid");
-            length.classList.add("valid");
-        } else {
-            length.classList.remove("valid");
-            length.classList.add("invalid");
-        }
-    }
 </script>

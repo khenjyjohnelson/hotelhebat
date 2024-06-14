@@ -161,7 +161,7 @@ if (!function_exists('btn_cari')) {
     function btn_cari()
     {
         return <<<HTML
-        <button class="btn mr-1 mb-2 btn-success" type="submit">
+        <button class="btn mr-1 mb-2 btn-success" name="search" type="submit">
           <a type="submit"><i class="fas fa-search"></i></a>
         </button>
         HTML;

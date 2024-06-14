@@ -3,7 +3,8 @@
     break;
 
   default:
-    redirect(site_url($language . '/' . 'no_level'));
+    redirect(site_url($language . '/no_level'));
+    break;
 }
 ?>
 
@@ -15,7 +16,7 @@
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
-      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
+      <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field7 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
@@ -41,8 +42,9 @@
       $tl_b8->$tabel_b8_field1,
       'tabel_b8',
       $tl_b8->$tabel_b8_field2,
-      '<div style="display: inline-block; width: 100%;">' .
-      card_content('tabel_b8_field3', $tl_b8->$tabel_b8_field3) .
+      '<div style="width: 100%;">' .
+      card_content('tabel_b8_field3', card_text($tl_b8->$tabel_b8_field3)) .
+      card_content('tabel_b8_field4', $tl_b8->$tabel_b8_field4) .
       '</div>',
       btn_lihat($tl_b8->$tabel_b8_field1) . ' ' .
       btn_edit($tl_b8->$tabel_b8_field1) . ' ' .
@@ -160,7 +162,7 @@
                   <?= row_data('tabel_b8_field1', $tl_b8->$tabel_b8_field1) ?>
                   <?= row_data('tabel_b8_field2', $tl_b8->$tabel_b8_field2) ?>
                   <?= row_data('tabel_b8_field3', $tl_b8->$tabel_b8_field3) ?>
-                  <?= tampil_icon('tabel_b8_field4', $tl_b8->$tabel_b8_field4) ?>
+                  <?= row_data('tabel_b8_field4', $tl_b8->$tabel_b8_field4) ?>
 
 
                 </tbody>
@@ -181,3 +183,5 @@
     </div>
   </div>
 <?php endforeach; ?>
+
+<?= adjust_col_js() ?>

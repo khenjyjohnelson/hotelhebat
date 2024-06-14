@@ -4,17 +4,45 @@ defined('BASEPATH') or exit('No direct script access allowed');
 if (!function_exists('card_header')) {
     function card_header($title, $subtitle)
     {
-        $title = xss_clean($title);
+        $truncated = truncateText($title, 18);
         $subtitle = xss_clean($subtitle);
         
         return <<<HTML
         <div class="card-header">
-            <h5 class="card-title">{$title} {$subtitle}</h5>
+            <h5 class="card-title">{$truncated} {$subtitle}</h5>
 
             <button class="close" data-dismiss="card">
             <span>&times;</span>
             </button>
         </div>
+        HTML;
+    }
+}
+
+if (!function_exists('card_title')) {
+    function card_title($title)
+    {
+        $truncated = truncateText($title, 17);
+        
+        return <<<HTML
+        <p class="card-text" style="font-size: 18px;"
+        data-toggle="tooltip" data-placement="left" title="{$title}">
+            {$truncated}
+        </p>
+        HTML;
+    }
+}
+
+if (!function_exists('card_text')) {
+    function card_text($title)
+    {
+        $truncated = truncateText($title, 12);
+        
+        return <<<HTML
+        <span class="card-text" style="font-size: 16px;"
+        data-toggle="tooltip" data-placement="left" title="{$title}">
+            {$truncated}
+        </span>
         HTML;
     }
 }
@@ -27,10 +55,10 @@ if (!function_exists('card_content')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
         
-        $alias  = $data[$field . '_alias'];
+        $alias  = card_text($data[$field . '_alias']);
 
         return <<<HTML
-        '<div style="width: 70px; display: inline-block;">{$alias}</div>
+        <div style="width: 70px; display: inline-block;">{$alias}</div>
         <div style="display: inline-block;">: {$value}</div><br>
         HTML;
     }
@@ -43,14 +71,13 @@ if (!function_exists('card_regular')) {
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
+        $title = card_title($title);
         
         return <<<HTML
         <div class="col-md-3 mt-2">
             <div class="card text-white {$theme}">
             <div class="card-body">
-                <p class="card-text" style="font-size: 20px;">
-                    {$title}
-                </p>
+                {$title}
                 <p class="card-text">{$detail}</p>
 
                 {$actions}
