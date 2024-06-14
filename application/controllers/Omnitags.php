@@ -584,25 +584,6 @@ if (!class_exists('Omnitags')) {
             return [];
         }
 
-        public function serve_dekor($directory, $filename)
-        {
-            // Set the correct content type
-            header('Content-Type: image/jpeg'); // Adjust content type based on your image type
-            
-            $this->tabel_a1_field1 = 1;
-            $this->theme = $this->tl_b7->tema($this->tabel_a1_field1)->result();
-            $this->theme_id = $this->theme[0]->id_theme;
-
-            // Serve the image file
-            $file_path = FCPATH . ('assets/img/' . $directory . '/1/' . $filename);
-            if (file_exists($file_path)) {
-                readfile($file_path);
-            } else {
-                // Handle file not found error
-                show_404();
-            }
-        }
-
         public function serve_image($directory, $filename)
         {
             // Set the correct content type
