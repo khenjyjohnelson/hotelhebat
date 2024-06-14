@@ -3,10 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 if (!function_exists('row_data')) {
     function row_data($field, $value)
-    {        
-        
+    {
         $alias = lang($field . '_alias');
-        
+
         return <<<HTML
         <tr>
               <td width="30%" class="table-secondary table-active">{$alias}</td>
@@ -18,15 +17,15 @@ if (!function_exists('row_data')) {
 
 if (!function_exists('row_file')) {
     function row_file($tabel_class, $field, $value)
-    {        
-        
+    {
         $alias = lang($field . '_alias');
-        
+        $img = tampil_image($tabel_class, $value, $alias);
+
         return <<<HTML
         <tr>
               <td width="30%" class="table-secondary table-active">{$alias}</td>
               <td width="" class="table-light">
-                <img src="img/{$tabel_class}/{$value}" width="75%"></td>
+                {$img}
             </tr>
         HTML;
     }
@@ -35,14 +34,7 @@ if (!function_exists('row_file')) {
 if (!function_exists('tampil_text')) {
     function tampil_text($field, $value)
     {
-        // Get CodeIgniter instance
-        $CI =& get_instance();
-        // Fetch the view variables
-        $data = $CI->load->get_vars();
-
         $alias = lang($field . '_alias');
-
-        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">
@@ -77,15 +69,16 @@ if (!function_exists('password_req')) {
     }
 }
 
-if(!function_exists('tampil_image')) {
-    function tampil_image($tabel_class, $value, $konten) {
+if (!function_exists('tampil_image')) {
+    function tampil_image($tabel_class, $value, $konten)
+    {
         // Get CodeIgniter instance
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
         return <<<HTML
-        <img style="max-height: 150px" role="button" data-toggle="tooltip" data-placement="bottom" 
+        <img style="max-height: 125px" role="button" data-toggle="tooltip" data-placement="right" 
             class="img-thumbnail img-fluid" src="img/{$tabel_class}/{$value}" 
             title="<img class='img-thumbnail' src='img/{$tabel_class}/{$value}' />
             <br>{$konten}">
@@ -96,14 +89,7 @@ if(!function_exists('tampil_image')) {
 if (!function_exists('tampil_file')) {
     function tampil_file($tabel_class, $field, $value)
     {
-        // Get CodeIgniter instance
-        $CI =& get_instance();
-        // Fetch the view variables
-        $data = $CI->load->get_vars();
-
         $alias = lang($field . '_alias');
-
-        $placeholder = lang('input');
 
         return <<<HTML
         <div class="form-group">

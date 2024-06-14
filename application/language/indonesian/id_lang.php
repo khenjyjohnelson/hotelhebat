@@ -40,6 +40,7 @@ $lang['order_now'] = 'Pesan sekarang';
 $lang['reservations'] = 'Reservasi';
 $lang['history'] = 'Riwayat';
 
+$lang['invalid'] = "Cannot perform action!";
 $lang['no_access'] = "Anda tidak memiliki akses ke halaman ini!";
 $lang['page_not_found'] = "Halaman Tidak Ada!";
 $lang['welcome'] = "Selamat Datang!";

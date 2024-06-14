@@ -18,6 +18,7 @@ class C_tabel_b8 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b8_alias_v3_title'),
+			'count' => $this->tl_b8->get_all_b8()->num_rows(),
 			'konten' => $this->v3['tabel_b8'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b8'])->result(),
 			'tbl_b8' => $this->tl_b8->get_all_b8()->result(),

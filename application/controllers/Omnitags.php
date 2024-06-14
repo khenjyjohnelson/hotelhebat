@@ -218,7 +218,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value5']:
                 case $this->aliases['tabel_c2_field6_value4']:
                 default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
+                    redirect(site_url($this->views['language'] . '/invalid'));
                     break;
             }
         }
@@ -234,7 +234,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value5']:
                 case $this->aliases['tabel_c2_field6_value4']:
                 default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
+                    redirect(site_url($this->views['language'] . '/invalid'));
                     break;
             }
         }
@@ -250,7 +250,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value3']:
                 case $this->aliases['tabel_c2_field6_value5']:
                 default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
+                    redirect(site_url($this->views['language'] . '/invalid'));
                     break;
             }
         }
@@ -266,7 +266,7 @@ if (!class_exists('Omnitags')) {
 
                 case $this->aliases['tabel_c2_field6_value1']:
                 default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
+                    redirect(site_url($this->views['language'] . '/invalid'));
                     break;
             }
         }
@@ -282,7 +282,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value2']:
                 case $this->aliases['tabel_c2_field6_value3']:
                 default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
+                    redirect(site_url($this->views['language'] . '/invalid'));
                     break;
             }
         }
@@ -298,7 +298,7 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value3']:
                 case $this->aliases['tabel_c2_field6_value4']:
                 default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
+                    redirect(site_url($this->views['language'] . '/invalid'));
                     break;
             }
         }

@@ -13,12 +13,46 @@ class C_tabel_e1 extends Omnitags
 	{
 		$this->declarew();
 
+		$param1 = $this->v_get['tabel_e1_field2'];
+
 		$data1 = array(
 			'title' => lang('tabel_e1_alias_v3_title'),
+			'count' => $this->tl_e1->get_all_e1()->num_rows(),
 			'konten' => $this->v3['tabel_e1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
 			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
 			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
+			'tabel_e1_field2_value' => $param1
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/template', $data);
+	}
+
+	public function filter()
+	{
+		$this->declarew();
+		
+		validate_input(
+			array(
+				$this->v_get['tabel_e1_field2'],
+			),
+			$this->views['flash1'],
+			''
+			);
+
+		$param1 = $this->v_get['tabel_e1_field2'];
+
+		$data1 = array(
+			'title' => lang('tabel_e1_alias_v3_title'),
+			'count' => $this->tl_e1->get_all_e1()->num_rows(),
+			'konten' => $this->v3['tabel_e1'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1'])->result(),
+			'tbl_e1' => $this->tl_e1->filter($param1)->result(),
+			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
+			'tabel_e1_field2_value' => $param1
 		);
 
 		$data = array_merge($data1, $this->package);

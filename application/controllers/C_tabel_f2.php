@@ -128,6 +128,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v3_title'),
+			'count' => $this->tl_f2->get_all_f2()->num_rows(),
 			'konten' => $this->v3['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->get_f2_with_e4()->result(),
@@ -310,10 +311,10 @@ class C_tabel_f2 extends Omnitags
 
 		validate_input(
 			array(
-				$this->v_post['tabel_f2_field10_filter1'],
-				$this->v_post['tabel_f2_field10_filter2'],
-				$this->v_post['tabel_f2_field11_filter1'],
-				$this->v_post['tabel_f2_field11_filter2'],
+				$this->v_get['tabel_f2_field10_filter1'],
+				$this->v_get['tabel_f2_field10_filter2'],
+				$this->v_get['tabel_f2_field11_filter1'],
+				$this->v_get['tabel_f2_field11_filter2'],
 			),
 			$this->views['flash1'],
 			''
@@ -327,6 +328,7 @@ class C_tabel_f2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v3_title'),
+			'count' => $this->tl_f2->get_all_f2()->num_rows(),
 			'konten' => $this->v3['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
 			'tbl_f2' => $this->tl_f2->filter($param1, $param2, $param3, $param4)->result(),

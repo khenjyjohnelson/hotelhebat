@@ -11,6 +11,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['^(?!' . $languages . ')(.*)/home$'] = 'welcome/default_language';
 $route['(' . $languages . ')/home'] = 'welcome';
 $route['(' . $languages . ')/no_level'] = 'welcome/no_level';
+$route['(' . $languages . ')/invalid'] = 'welcome/invalid';
 $route['(' . $languages . ')/dashboard'] = 'welcome/dashboard';
 $route['(' . $languages . ')/dashboard/home'] = 'welcome/dashboard';
 $route['(' . $languages . ')/welcome/set_language'] = 'welcome/set_language';

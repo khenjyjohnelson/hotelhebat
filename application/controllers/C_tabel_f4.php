@@ -18,6 +18,7 @@ class C_tabel_f4 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f4_alias_v3_title'),
+			'count' => $this->tl_f4->get_all_f4()->num_rows(),
 			'konten' => $this->v3['tabel_f4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4'])->result(),
 			'tbl_f4' => $this->tl_f4->get_all_f4()->result(),

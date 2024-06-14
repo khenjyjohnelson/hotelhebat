@@ -14,6 +14,7 @@ class C_tabel_c2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_c2_alias_v3_title'),
+			'count' => $this->tl_c2->get_all_c2()->num_rows(),
 			'konten' => $this->v3['tabel_c2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2'])->result(),
 			'tbl_c2' => $this->tl_c2->get_all_c2()->result(),

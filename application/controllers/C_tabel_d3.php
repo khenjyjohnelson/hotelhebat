@@ -18,6 +18,7 @@ class C_tabel_d3 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_d3_alias_v3_title'),
+			'count' => $this->tl_d3->get_all_d3()->num_rows(),
 			'konten' => $this->v3['tabel_d3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_d3'])->result(),
 			'tbl_d3' => $this->tl_d3->get_all_d3()->result(),

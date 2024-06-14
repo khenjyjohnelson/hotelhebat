@@ -84,6 +84,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f1_alias_v3_title'),
+			'count' => $this->tl_f1->get_all_f1()->num_rows(),
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->get_f1_with_e4()->result(),
@@ -140,6 +141,7 @@ class C_tabel_f1 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f1_alias_v3_title'),
+			'count' => $this->tl_f1->get_all_f1()->num_rows(),
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1'])->result(),
 			'tbl_f1' => $this->tl_f1->filter($param1, $param2, $param3, $param4)->result(),

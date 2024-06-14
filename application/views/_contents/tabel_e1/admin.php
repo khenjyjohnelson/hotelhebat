@@ -12,7 +12,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>
@@ -21,6 +21,36 @@
   </div>
 </div>
 <hr>
+
+<table class="mb-4">
+
+  <!-- method get supaya nilai dari filter bisa tampil nanti -->
+  <form action="<?= site_url($language . '/' . $tabel_e1 . '/filter') ?>" method="get">
+    <tr>
+
+      <td class="pr-2">
+        <div class="form-group">
+          <select class="form-control float" required name="<?= $tabel_e1_field2_input ?>">
+            <?php foreach ($tbl_e4 as $tl_e4): ?>
+              <option selected hidden value="<?= $tabel_e1_field2_value ?>"><?= $tabel_e1_field2_value ?></option>
+              <option value="<?= $tl_e4->$tabel_e4_field2 ?>">
+                <?= $tl_e4->$tabel_e4_field1 . ' - ' . $tl_e4->$tabel_e4_field2 ?>
+              </option>
+            <?php endforeach ?>
+          </select>
+          <label for="<?= $tabel_e1_field2_input ?>" class="form-label"><?= lang('select') ?>
+            <?= $tabel_e4_alias ?></label>
+        </div>
+      </td>
+
+      <td>
+        <?= btn_cari() ?>
+        <?= btn_redo('tabel_e1', '/admin') ?>
+      </td>
+    </tr>
+  </form>
+</table>
+
 
 <div class="row">
   <div class="col-md-10">

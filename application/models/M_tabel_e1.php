@@ -18,6 +18,13 @@ class M_tabel_e1 extends CI_Model
 		return $this->db->get($this->aliases['tabel_e1']);
 	}
 
+	public function filter($param1)
+	{
+		$this->db->where($this->aliases['tabel_e1_field2'], $param1);
+		$this->db->order_by($this->aliases['tabel_e1_field1'], 'DESC');
+		return $this->db->get($this->aliases['tabel_e1']);
+	}
+
 	public function get_e1_by_e1_field1($param1)
 	{
 		$this->db->where($this->aliases['tabel_e1_field1'], $param1);

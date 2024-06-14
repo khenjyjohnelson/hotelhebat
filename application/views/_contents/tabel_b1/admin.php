@@ -10,7 +10,7 @@
 
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>

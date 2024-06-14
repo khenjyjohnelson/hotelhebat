@@ -33,6 +33,7 @@ class C_tabel_b7 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v3_title'),
+			'count' => $this->tl_b7->get_all_b7()->num_rows(),
 			'konten' => $this->v3['tabel_b7'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
 			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),

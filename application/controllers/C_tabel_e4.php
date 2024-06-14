@@ -33,6 +33,7 @@ class C_tabel_e4 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_e4_alias_v3_title'),
+			'count' => $this->tl_e4->get_all_e4()->num_rows(),
 			'konten' => $this->v3['tabel_e4'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4'])->result(),
 			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),

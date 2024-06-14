@@ -87,6 +87,7 @@ class C_tabel_b9 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b9_alias_v3_title'),
+			'count' => $this->tl_b9->get_all_b9()->num_rows(),
 			'konten' => $this->v3['tabel_b9'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9'])->result(),
 			'tbl_b9' => $this->tl_b9->get_all_b9()->result(),

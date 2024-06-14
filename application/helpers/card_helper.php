@@ -68,14 +68,16 @@ if (!function_exists('card_file')) {
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
+        $truncated = truncateText($title, 18);
         
         return <<<HTML
         <div class="col-md-3 mt-2">
             <div class="card text-white {$theme}">
             <img src="img/{$table}/{$picture}" class="card-img-top img-fluid" style="max-height: 150px" alt="...">
             <div class="card-body">
-                <p class="card-text" style="font-size: 18px;">
-                    {$title}
+                <p class="card-text" style="font-size: 18px;"
+                data-toggle="tooltip" data-placement="left" title="{$title}">
+                    {$truncated}
                 </p>
                 <p class="card-text">{$detail}</p>
 

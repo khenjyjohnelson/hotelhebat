@@ -16,7 +16,7 @@ class M_tabel_b6 extends CI_Model
 		return $this->db->get($this->aliases['tabel_b6']);
 	}
 
-	public function get_b6_by_a1_field1($param1)
+	public function get_b6_by_b6_field7($param1)
 	{
 		$this->db->where($this->aliases['tabel_b6_field2'], $param1);
 		$this->db->order_by($this->aliases['tabel_b6_field1'], 'DESC');

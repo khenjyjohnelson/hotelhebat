@@ -20,6 +20,7 @@ class C_tabel_b6 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b6_alias_v3_title'),
+			'count' => $this->tl_b6->get_all_b6()->num_rows(),
 			'konten' => $this->v3['tabel_b6'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6'])->result(),
 			'tbl_b6' => $this->tl_b6->get_all_b6()->result(),
@@ -39,7 +40,7 @@ class C_tabel_b6 extends Omnitags
 		
 		validate_input(
 			array(
-				$this->v_post['tabel_b6_field7'],
+				$this->v_get['tabel_b6_field7'],
 			),
 			$this->views['flash1'],
 			''
@@ -49,9 +50,10 @@ class C_tabel_b6 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b6_alias_v3_title'),
+			'count' => $this->tl_b6->get_all_b6()->num_rows(),
 			'konten' => $this->v3['tabel_b6'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6'])->result(),
-			'tbl_b6' => $this->tl_b6->get_b6_by_a1_field1($param1)->result(),
+			'tbl_b6' => $this->tl_b6->get_b6_by_b6_field7($param1)->result(),
 			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
 			'tabel_b6_field7_value' => $param1
 		);

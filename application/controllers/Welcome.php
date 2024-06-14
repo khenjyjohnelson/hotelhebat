@@ -106,6 +106,20 @@ class Welcome extends Omnitags
 	}
 
 	// fungsi ketika pengguna mengunjungi halaman yang tidak sesuai dengan level
+	public function invalid()
+	{
+		$this->declarew();
+
+		$data1 = array(
+			'title' => lang('invalid'),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'invalid')->result(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		$this->load->view('errors/invalid', $data);
+	}
+
 	public function no_level()
 	{
 		$this->declarew();
@@ -117,7 +131,7 @@ class Welcome extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('no-level', $data);
+		$this->load->view('errors/no_level', $data);
 	}
 
 	public function no_page()
@@ -131,7 +145,7 @@ class Welcome extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
-		$this->load->view('404', $data);
+		$this->load->view('errors/404', $data);
 	}
 
 	public function set_language()
