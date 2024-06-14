@@ -131,79 +131,70 @@ class C_tabel_e4 extends Omnitags
 		$tabel_e4_field1 = $this->v_post['tabel_e4_field1'];
 
 		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
+		$this->check_data($tabel_e4);
 
-		if ($tabel_e4) {
+		validate_input(
+			array(
+				$this->v_post['tabel_e4_field1'],
+				$this->v_post['tabel_e4_field2'],
+				$this->v_post['tabel_e4_field3'],
+				$this->v_post['tabel_e4_field4'],
+				$this->v_post['tabel_e4_field4_old'],
+				$this->v_post['tabel_e4_field5'],
+			),
+			$this->views['flash3'],
+			'ubah' . $tabel_e4_field1
+		);
 
-			validate_input(
-				array(
-					$this->v_post['tabel_e4_field1'],
-					$this->v_post['tabel_e4_field2'],
-					$this->v_post['tabel_e4_field3'],
-					$this->v_post['tabel_e4_field4'],
-					$this->v_post['tabel_e4_field4_old'],
-					$this->v_post['tabel_e4_field5'],
-				),
-				$this->views['flash3'],
-				'ubah' . $tabel_e4_field1
-			);
+		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
+		$new_name = $this->v_post['tabel_e4_field2'];
+		$path = $this->v_upload_path['tabel_e4'];
+		$img = $this->v_post['tabel_e4_field4_old'];
+		$extension = '.' . getExtension($path . $img);
 
-			$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
-			$new_name = $this->v_post['tabel_e4_field2'];
-			$path = $this->v_upload_path['tabel_e4'];
-			$img = $this->v_post['tabel_e4_field4_old'];
-			$extension = '.' . getExtension($path . $img);
+		$config['upload_path'] = $path;
+		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+		$config['file_name'] = $new_name;
+		$config['allowed_types'] = $this->file_type1;
+		$config['overwrite'] = TRUE;
+		$config['remove_spaces'] = TRUE;
 
-			$config['upload_path'] = $path;
-			// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
-			$config['file_name'] = $new_name;
-			$config['allowed_types'] = $this->file_type1;
-			$config['overwrite'] = TRUE;
-			$config['remove_spaces'] = TRUE;
+		$this->load->library('upload', $config);
+		$upload = $this->upload->do_upload($this->v_input['tabel_e4_field4_input']);
 
-			$this->load->library('upload', $config);
-			$upload = $this->upload->do_upload($this->v_input['tabel_e4_field4_input']);
-
-			if (!$upload) {
-				if ($new_name != $tabel_e4[0]->tipe) {
-					rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
-					$gambar = str_replace(' ', '_', $new_name) . $extension;
-				} else {
-					$gambar = $img;
-				}
+		if (!$upload) {
+			if ($new_name != $tabel_e4[0]->tipe) {
+				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+				$gambar = str_replace(' ', '_', $new_name) . $extension;
 			} else {
-				if ($new_name != $tabel_e4[0]->tipe) {
-					// File upload is successful, delete the old file
-					if (file_exists($path . $img)) {
-						unlink($path . $img);
-					}
-					$upload = $this->upload->data();
-					$gambar = $upload['file_name'];
-				} else {
-					$gambar = $img;
-				}
+				$gambar = $img;
 			}
-
-
-			$data = array(
-				$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
-				$this->aliases['tabel_e4_field3'] => $gambar,
-				$this->aliases['tabel_e4_field4'] => $this->v_post['tabel_e4_field4'],
-				$this->aliases['tabel_e4_field5'] => $this->v_post['tabel_e4_field5'],
-			);
-
-			$aksi = $this->tl_e4->update_e4($data, $tabel_e4_field1);
-
-			$notif = $this->handle_4c($aksi, 'tabel_e4', $tabel_e4_field1);
-
-			redirect($_SERVER['HTTP_REFERER']);
-
-
 		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
+			if ($new_name != $tabel_e4[0]->tipe) {
+				// File upload is successful, delete the old file
+				if (file_exists($path . $img)) {
+					unlink($path . $img);
+				}
+				$upload = $this->upload->data();
+				$gambar = $upload['file_name'];
+			} else {
+				$gambar = $img;
+			}
 		}
+
+
+		$data = array(
+			$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
+			$this->aliases['tabel_e4_field3'] => $gambar,
+			$this->aliases['tabel_e4_field4'] => $this->v_post['tabel_e4_field4'],
+			$this->aliases['tabel_e4_field5'] => $this->v_post['tabel_e4_field5'],
+		);
+
+		$aksi = $this->tl_e4->update_e4($data, $tabel_e4_field1);
+
+		$notif = $this->handle_4c($aksi, 'tabel_e4', $tabel_e4_field1);
+
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function delete($tabel_e4_field1 = null)
@@ -212,24 +203,16 @@ class C_tabel_e4 extends Omnitags
 		$this->session_3();
 
 		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
+		$this->check_data($tabel_e4);
 
-		if ($tabel_e4) {
-			$tabel_e4_field3 = $tabel_e4[0]->img;
+		$tabel_e4_field3 = $tabel_e4[0]->img;
 
-			unlink($this->v_upload_path['tabel_e4'] . $tabel_e4_field3);
-			$aksi = $this->tl_e4->delete_e4($tabel_e4_field1);
+		unlink($this->v_upload_path['tabel_e4'] . $tabel_e4_field3);
+		$aksi = $this->tl_e4->delete_e4($tabel_e4_field1);
 
-			$notif = $this->handle_4e($aksi, 'tabel_e4', $tabel_e4_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_e4', $tabel_e4_field1);
 
-			redirect($_SERVER['HTTP_REFERER']);
-
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
-	}
+		redirect($_SERVER['HTTP_REFERER']);	}
 
 	// Cetak semua data
 	public function laporan()

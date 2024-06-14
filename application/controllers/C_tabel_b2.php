@@ -11,6 +11,9 @@ class C_tabel_b2 extends Omnitags
 		$this->declarew();
 		$this->page_session_all();
 
+		$tabel = $this->tl_b2->get_b2_by_b2_field1($param1)->result();
+		$this->check_data($tabel);
+
 		$data1 = array(
 			'title' => lang('tabel_b2_alias_v8_title'),
 			'konten' => $this->v8['tabel_b2'],
@@ -159,8 +162,7 @@ class C_tabel_b2 extends Omnitags
 		$tabel_b2_field1 = $this->v_post['tabel_b2_field1'];
 
 		$tabel = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
-
-		if ($tabel) {
+		$this->check_data($tabel);
 
 			validate_input(
 				array(
@@ -226,18 +228,16 @@ class C_tabel_b2 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 
 
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		
 	}
 
 	public function aktifkan($tabel_b2_field1 = null) //update tidak diperlukan di sini
 	{
 		$this->declarew();
 		$this->session_3();
+
+		$tabel = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
+		$this->check_data($tabel);
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
@@ -255,6 +255,9 @@ class C_tabel_b2 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
+
+		$tabel = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
+		$this->check_data($tabel);
 
 		// menggunakan nama khusus sama dengan konfigurasi
 		$data = array(
@@ -274,8 +277,7 @@ class C_tabel_b2 extends Omnitags
 		$this->session_3();
 
 		$tabel_b2 = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
-
-		if ($tabel_b2) {
+		$this->check_data($tabel_b2);
 
 			$img = $tabel_b2[0]->img;
 
@@ -287,12 +289,7 @@ class C_tabel_b2 extends Omnitags
 
 			redirect($_SERVER['HTTP_REFERER']);
 
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		
 	}
 
 	// Cetak semua data

@@ -121,44 +121,36 @@ class C_tabel_b6 extends Omnitags
 		$tabel_b6_field1 = $this->v_post['tabel_b6_field1'];
 
 		$tabel = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1)->result();
+		$this->check_data($tabel);
+		
+		validate_input(
+			array(
+				$this->v_post['tabel_b6_field1'],
+				$this->v_post['tabel_b6_field2'],
+				$this->v_post['tabel_b6_field3'],
+				$this->v_post['tabel_b6_field4'],
+				$this->v_post['tabel_b6_field5'],
+				$this->v_post['tabel_b6_field7'],
+			),
+			$this->views['flash3'],
+			'ubah' . $tabel_b6_field1
+		);
 
-		if ($tabel) {
-			validate_input(
-				array(
-					$this->v_post['tabel_b6_field1'],
-					$this->v_post['tabel_b6_field2'],
-					$this->v_post['tabel_b6_field3'],
-					$this->v_post['tabel_b6_field4'],
-					$this->v_post['tabel_b6_field5'],
-					$this->v_post['tabel_b6_field7'],
-				),
-				$this->views['flash3'],
-				'ubah' . $tabel_b6_field1
-			);
 
+		// menggunakan nama khusus sama dengan konfigurasi
+		$data = array(
+			$this->aliases['tabel_b6_field2'] => $this->v_post['tabel_b6_field2'],
+			$this->aliases['tabel_b6_field3'] => $this->v_post['tabel_b6_field3'],
+			$this->aliases['tabel_b6_field4'] => $this->v_post['tabel_b6_field4'],
+			$this->aliases['tabel_b6_field5'] => $this->v_post['tabel_b6_field5'],
+			$this->aliases['tabel_b6_field7'] => $this->v_post['tabel_b6_field7'],
+		);
 
-			// menggunakan nama khusus sama dengan konfigurasi
-			$data = array(
-				$this->aliases['tabel_b6_field2'] => $this->v_post['tabel_b6_field2'],
-				$this->aliases['tabel_b6_field3'] => $this->v_post['tabel_b6_field3'],
-				$this->aliases['tabel_b6_field4'] => $this->v_post['tabel_b6_field4'],
-				$this->aliases['tabel_b6_field5'] => $this->v_post['tabel_b6_field5'],
-				$this->aliases['tabel_b6_field7'] => $this->v_post['tabel_b6_field7'],
-			);
+		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
 
-			$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_b6', $tabel_b6_field1);
 
-			$notif = $this->handle_4c($aksi, 'tabel_b6', $tabel_b6_field1);
-
-			redirect($_SERVER['HTTP_REFERER']);
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
-
-	}
+		redirect($_SERVER['HTTP_REFERER']);	}
 
 	public function aktifkan($tabel_b6_field1 = null) //update tidak diperlukan di sini
 	{
@@ -167,24 +159,19 @@ class C_tabel_b6 extends Omnitags
 
 		$tabel = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1);
 
-		if ($tabel) {
+		$this->check_data($tabel);
 
-			// menggunakan nama khusus sama dengan konfigurasi
-			$data = array(
-				$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value1'],
-			);
+		// menggunakan nama khusus sama dengan konfigurasi
+		$data = array(
+			$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value1'],
+		);
 
-			$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
+		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
 
-			$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
 
-			redirect($_SERVER['HTTP_REFERER']);
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		redirect($_SERVER['HTTP_REFERER']);
+
 	}
 
 	public function nonaktifkan($tabel_b6_field1 = null) //update tidak diperlukan di sini
@@ -194,26 +181,18 @@ class C_tabel_b6 extends Omnitags
 
 		$tabel = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1);
 
-		if ($tabel) {
+		$this->check_data($tabel);
 
-			// menggunakan nama khusus sama dengan konfigurasi
-			$data = array(
-				$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value2'],
-			);
+		// menggunakan nama khusus sama dengan konfigurasi
+		$data = array(
+			$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value2'],
+		);
 
-			$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
+		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
 
-			$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
 
-			redirect($_SERVER['HTTP_REFERER']);
-
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
-	}
+		redirect($_SERVER['HTTP_REFERER']);	}
 
 
 	public function delete($tabel_b6_field1 = null)
@@ -223,16 +202,11 @@ class C_tabel_b6 extends Omnitags
 
 		$tabel_b6 = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1);
 
-		if ($tabel_b6) {
-			$aksi = $this->tl_b6->delete_b6($tabel_b6_field1);
-			$notif = $this->handle_4e($aksi, 'tabel_b6', $tabel_b6_field1);
-			redirect($_SERVER['HTTP_REFERER']);
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		$this->check_data($tabel_b6);
+		$aksi = $this->tl_b6->delete_b6($tabel_b6_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_b6', $tabel_b6_field1);
+		redirect($_SERVER['HTTP_REFERER']);
+
 	}
 
 	// Cetak semua data

@@ -152,31 +152,22 @@ class C_tabel_f3 extends Omnitags
 		$tabel_f3_field1 = $this->v_post['tabel_f3_field1'];
 
 		$tabel_f3 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
+		$this->check_data($tabel_f3);
 
-		if ($tabel_f3) {
+		// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
+		$tabel_f3_field7 = date("Y-m-d\TH:i:s");
 
-			// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
-			$tabel_f3_field7 = date("Y-m-d\TH:i:s");
+		$data = array(
+			$this->aliases['tabel_f3_field5'] => $this->v_post['tabel_f3_field5'],
+			$this->aliases['tabel_f3_field6'] => $this->v_post['tabel_f3_field6'],
+			$this->aliases['tabel_f3_field7'] => $tabel_f3_field7,
+		);
 
-			$data = array(
-				$this->aliases['tabel_f3_field5'] => $this->v_post['tabel_f3_field5'],
-				$this->aliases['tabel_f3_field6'] => $this->v_post['tabel_f3_field6'],
-				$this->aliases['tabel_f3_field7'] => $tabel_f3_field7,
-			);
+		$aksi = $this->tl_f3->update_f3($data, $tabel_f3_field1);
 
-			$aksi = $this->tl_f3->update_f3($data, $tabel_f3_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_f3', $tabel_f3_field1);
 
-			$notif = $this->handle_4c($aksi, 'tabel_f3', $tabel_f3_field1);
-
-			redirect($_SERVER['HTTP_REFERER']);
-
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
-	}
+		redirect($_SERVER['HTTP_REFERER']);	}
 
 	public function delete($tabel_f3_field1 = null)
 	{
@@ -184,22 +175,13 @@ class C_tabel_f3 extends Omnitags
 		$this->session_2_4();
 
 		$tabel_f3 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
+		$this->check_data($tabel_f3);
 
-		if ($tabel_f3) {
+		$aksi = $this->tl_f3->delete_f3($tabel_f3_field1);
 
-			$aksi = $this->tl_f3->delete_f3($tabel_f3_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_f3', $tabel_f3_field1);
 
-			$notif = $this->handle_4e($aksi, 'tabel_f3', $tabel_f3_field1);
-
-			redirect($_SERVER['HTTP_REFERER']);
-
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
-	}
+		redirect($_SERVER['HTTP_REFERER']);	}
 
 	// Fitur filter untuk saat ini akan tidak digunakan terlebih dahulu
 	public function filter()
@@ -262,45 +244,36 @@ class C_tabel_f3 extends Omnitags
 		$this->page_session_4_5();
 
 		$param1 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
+		$this->check_data($param1);
 
-		if ($param1) {
+		$data1 = array(
+			'title' => lang('tabel_f3_alias_v5_title'),
+			'konten' => $this->v5['tabel_f3'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
+		);
 
-			$data1 = array(
-				'title' => lang('tabel_f3_alias_v5_title'),
-				'konten' => $this->v5['tabel_f3'],
-				'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
+
+		// Di bawah ini adalah kode untuk memisahkan antara transaksi yang id pesanannya masih berada di tabel pesanann
+		// Dan transaksi yang id pesanananya sudah berada di tabel history
+
+		$param2 = $param1[0]->id_pesanan;
+
+		$method = $this->tl_f1->get_f1_by_f1_field2($param2);
+
+
+		if ($method->num_rows() > 0) {
+			$data2 = array(
+				'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
 			);
-
-
-			// Di bawah ini adalah kode untuk memisahkan antara transaksi yang id pesanannya masih berada di tabel pesanann
-			// Dan transaksi yang id pesanananya sudah berada di tabel history
-
-			$param2 = $param1[0]->id_pesanan;
-
-			$method = $this->tl_f1->get_f1_by_f1_field2($param2);
-
-
-			if ($method->num_rows() > 0) {
-				$data2 = array(
-					'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
-				);
-				$data = array_merge($data1, $data2, $this->views, $this->aliases);
-				load_view_data('_layouts/printpage', $data);
-			} else {
-				$data2 = array(
-					'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
-				);
-				$data = array_merge($data1, $data2, $this->views, $this->aliases);
-				load_view_data('_layouts/printpage', $data);
-			}
-
+			$data = array_merge($data1, $data2, $this->views, $this->aliases);
+			load_view_data('_layouts/printpage', $data);
 		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
-	}
+			$data2 = array(
+				'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
+			);
+			$data = array_merge($data1, $data2, $this->views, $this->aliases);
+			load_view_data('_layouts/printpage', $data);
+		}	}
 
 	// Fungsi khusus
 	public function konfirmasi()

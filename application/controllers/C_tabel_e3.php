@@ -67,8 +67,7 @@ class C_tabel_e3 extends Omnitags
 		$tabel_e3_field1 = $this->v_post['tabel_e3_field1'];
 
 		$tabel = $this->tl_e3->get_e3_by_e3_field1($tabel_e3_field1)->result();
-
-		if ($tabel) {
+		$this->check_data($tabel);
 
 			validate_input(
 				array(
@@ -95,12 +94,7 @@ class C_tabel_e3 extends Omnitags
 
 			redirect($_SERVER['HTTP_REFERER']);
 
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		
 	}
 
 	public function delete($tabel_e3_field1 = null)
@@ -109,8 +103,7 @@ class C_tabel_e3 extends Omnitags
 		$this->session_3();
 
 		$tabel = $this->tl_e3->get_e3_by_e3_field1($tabel_e3_field1)->result();
-
-		if ($tabel) {
+		$this->check_data($tabel);
 
 			$aksi = $this->tl_e3->delete_e3($tabel_e3_field1);
 
@@ -118,12 +111,7 @@ class C_tabel_e3 extends Omnitags
 
 			redirect($_SERVER['HTTP_REFERER']);
 
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		
 	}
 
 	// Cetak semua data

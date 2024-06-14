@@ -83,37 +83,28 @@ class C_tabel_f4 extends Omnitags
 		$tabel_f4_field1 = $this->v_post['tabel_f4_field1'];
 
 		$tabel = $this->tl_f4->get_f4_by_f4_field1($tabel_f4_field1)->result();
+		$this->check_data($tabel);
 
-		if ($tabel) {
+		validate_input(
+			array(
+				$this->v_post['tabel_f4_field1'],
+				$this->v_post['tabel_f4_field2'],
+				$this->v_post['tabel_f4_field3'],
+			),
+			$this->views['flash3'],
+			'ubah' . $tabel_f4_field1
+		);
 
-			validate_input(
-				array(
-					$this->v_post['tabel_f4_field1'],
-					$this->v_post['tabel_f4_field2'],
-					$this->v_post['tabel_f4_field3'],
-				),
-				$this->views['flash3'],
-				'ubah' . $tabel_f4_field1
-			);
+		$data = array(
+			$this->aliases['tabel_f4_field2'] => $this->v_post['tabel_f4_field2'],
+			$this->aliases['tabel_f4_field3'] => $this->v_post['tabel_f4_field3'],
+		);
 
-			$data = array(
-				$this->aliases['tabel_f4_field2'] => $this->v_post['tabel_f4_field2'],
-				$this->aliases['tabel_f4_field3'] => $this->v_post['tabel_f4_field3'],
-			);
+		$aksi = $this->tl_f4->update_f4($data, $tabel_f4_field1);
 
-			$aksi = $this->tl_f4->update_f4($data, $tabel_f4_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_f4', $tabel_f4_field1);
 
-			$notif = $this->handle_4c($aksi, 'tabel_f4', $tabel_f4_field1);
-
-			redirect($_SERVER['HTTP_REFERER']);
-
-
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function delete($tabel_f4_field1 = null)
@@ -122,22 +113,13 @@ class C_tabel_f4 extends Omnitags
 		$this->session_4();
 
 		$tabel = $this->tl_f4->get_f4_by_f4_field1($tabel_f4_field1)->result();
+		$this->check_data($tabel);
 
-		if ($tabel) {
+		$aksi = $this->tl_f4->delete_f4($tabel_f4_field1);
 
-			$aksi = $this->tl_f4->delete_f4($tabel_f4_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_f4', $tabel_f4_field1);
 
-			$notif = $this->handle_4e($aksi, 'tabel_f4', $tabel_f4_field1);
-
-			redirect($_SERVER['HTTP_REFERER']);
-
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
-	}
+		redirect($_SERVER['HTTP_REFERER']);	}
 
 	// Cetak semua data
 	public function laporan()

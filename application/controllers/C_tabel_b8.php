@@ -69,39 +69,30 @@ class C_tabel_b8 extends Omnitags
 		$tabel_b8_field1 = $this->v_post['tabel_b8_field1'];
 
 		$tabel_b8 = $this->tl_b8->get_b8_by_b8_field1($tabel_b8_field1)->result();
+		$this->check_data($tabel_b8);
 
-		if ($tabel_b8) {
-
-			validate_input(
-				array(
-					$this->v_post['tabel_b8_field1'],
-					$this->v_post['tabel_b8_field3'],
-					$this->v_post['tabel_b8_field4'],
-				),
-				$this->views['flash3'],
-				'ubah' . $tabel_b8_field1
-			);
-
-
-			// menggunakan nama khusus sama dengan konfigurasi
-			$data = array(
-				$this->aliases['tabel_b8_field3'] => $this->v_post['tabel_b8_field3'],
-				$this->aliases['tabel_b8_field4'] => $this->v_post['tabel_b8_field4'],
-			);
-
-			$aksi = $this->tl_b8->update_b8($data, $tabel_b8_field1);
-
-			$notif = $this->handle_4c($aksi, 'tabel_a1', $tabel_b8_field1);
-
-			redirect($_SERVER['HTTP_REFERER']);
+		validate_input(
+			array(
+				$this->v_post['tabel_b8_field1'],
+				$this->v_post['tabel_b8_field3'],
+				$this->v_post['tabel_b8_field4'],
+			),
+			$this->views['flash3'],
+			'ubah' . $tabel_b8_field1
+		);
 
 
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		// menggunakan nama khusus sama dengan konfigurasi
+		$data = array(
+			$this->aliases['tabel_b8_field3'] => $this->v_post['tabel_b8_field3'],
+			$this->aliases['tabel_b8_field4'] => $this->v_post['tabel_b8_field4'],
+		);
+
+		$aksi = $this->tl_b8->update_b8($data, $tabel_b8_field1);
+
+		$notif = $this->handle_4c($aksi, 'tabel_a1', $tabel_b8_field1);
+
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -111,22 +102,13 @@ class C_tabel_b8 extends Omnitags
 		$this->session_3();
 
 		$tabel_b8 = $this->tl_b8->get_b8_by_b8_field1($tabel_b8_field1)->result();
+		$this->check_data($tabel_b8);
 
-		if ($tabel_b8) {
+		$aksi = $this->tl_b8->delete_b8($tabel_b8_field1);
 
-			$aksi = $this->tl_b8->delete_b8($tabel_b8_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_b8', $tabel_b8_field1);
 
-			$notif = $this->handle_4e($aksi, 'tabel_b8', $tabel_b8_field1);
-
-			redirect($_SERVER['HTTP_REFERER']);
-
-
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Cetak semua data

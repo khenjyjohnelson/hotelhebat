@@ -139,8 +139,7 @@ class C_tabel_e1 extends Omnitags
 		$tabel_e1_field1 = $this->v_post['tabel_e1_field1'];
 
 		$tabel_e1 = $this->tl_e1->get_e1_by_e1_field1($tabel_e1_field1)->result();
-
-		if ($tabel_e1) {
+		$this->check_data($tabel_e1);
 
 			validate_input(
 				array(
@@ -212,12 +211,7 @@ class C_tabel_e1 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 
 
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		
 	}
 
 
@@ -229,8 +223,8 @@ class C_tabel_e1 extends Omnitags
 		$this->session_3();
 
 		$tabel_e1 = $this->tl_e1->get_e1_by_e1_field1($tabel_e1_field1)->result();
+		$this->check_data($tabel_e1);
 
-		if ($tabel_e1) {
 			$tabel_e1_field2 = $tabel_e1[0]->tipe;
 			$tabel_e1_field4 = $tabel_e1[0]->img;
 
@@ -259,12 +253,7 @@ class C_tabel_e1 extends Omnitags
 			redirect($_SERVER['HTTP_REFERER']);
 
 
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		
 	}
 
 

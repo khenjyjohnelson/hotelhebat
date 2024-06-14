@@ -11,6 +11,9 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->page_session_3();
 
+		$tabel = $this->tl_b7->get_b7_by_b7_field1($param1)->result();
+		$this->check_data($tabel);
+
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v8_title'),
 			'konten' => $this->v8['tabel_b7'],
@@ -82,6 +85,9 @@ class C_tabel_b7 extends Omnitags
 
 		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
+		$tabel = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
+		$this->check_data($tabel);
+
 		validate_input(
 			array(
 				$this->v_post['tabel_b7_field1'],
@@ -113,6 +119,9 @@ class C_tabel_b7 extends Omnitags
 		$this->session_3();
 
 		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
+
+		$tabel = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
+		$this->check_data($tabel);
 
 		validate_input(
 			array(
@@ -167,6 +176,9 @@ class C_tabel_b7 extends Omnitags
 		$this->session_3();
 
 		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
+
+		$tabel = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
+		$this->check_data($tabel);
 
 		validate_input(
 			array(
@@ -223,6 +235,9 @@ class C_tabel_b7 extends Omnitags
 
 		$tabel_b7_field1 = $this->v_post['tabel_b7_field1'];
 
+		$tabel = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
+		$this->check_data($tabel);
+
 		validate_input(
 			array(
 				$this->v_post['tabel_b7_field1'],
@@ -276,8 +291,8 @@ class C_tabel_b7 extends Omnitags
 		$this->session_3();
 
 		$tabel_b7 = $this->tl_b7->get_b7_field1($tabel_b7_field1)->result();
+		$this->check_data($tabel_b7);
 
-		if($tabel_b7) {
 		$tabel_b7_field3 = $tabel_b7[0]->favicon;
 		$tabel_b7_field4 = $tabel_b7[0]->logo;
 		$tabel_b7_field5 = $tabel_b7[0]->foto;
@@ -295,12 +310,7 @@ class C_tabel_b7 extends Omnitags
 
 		redirect($_SERVER['HTTP_REFERER']);
 			
-		} else {
-			// error handling
-			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
-			set_flashdata('toast', $this->views['flash1_func1']);
-			redirect(userdata('previous_url'));
-		}
+		
 	}
 
 	// Cetak semua data

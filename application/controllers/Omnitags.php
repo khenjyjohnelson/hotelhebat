@@ -823,6 +823,16 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        public function check_data($method)
+        {
+            if (!$method) {
+                // error handling
+                set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+                set_flashdata('toast', $this->views['flash1_func1']);
+                redirect(userdata('previous_url'));
+            }
+        }
+
         // adding the actual notif
         public function add_notif($msg, $type, $extra)
         {
