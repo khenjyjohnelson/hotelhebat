@@ -24,7 +24,6 @@ $jsonData2 = file_get_contents(FCPATH . ('assets/json/app.postman_environment.js
 $myData2 = json_decode($jsonData2, true)['values'];
 
 foreach ($myData2 as $item2) {
-    $route['assets/theme/' . $item2['value'] . '/(:any)'] = 'Omnitags/serve_dekor/' . $item2['key'] . '/$1';
     $route['assets/img/' . $item2['value'] . '/(:any)'] = 'Omnitags/serve_image/' . $item2['key'] . '/$1';
 
     $prefix = 'c_' . $item2['key'];
