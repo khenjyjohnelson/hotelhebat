@@ -83,10 +83,10 @@ class C_tabel_b1 extends Omnitags
 		);
 
 		$tabel_b1_field2 = $this->v_post['tabel_b1_field2'];
-		$method2 = $this->tl_c2->get_b1_by_b1_field2_by_b1_field7($tabel_b1_field2, $this->theme_id);
+		$method = $this->tl_c2->get_b1_by_b1_field2($tabel_b1_field2);
 
 		// mencari apakah jumlah data kurang dari 1
-		if ($method2->num_rows() < 1) {
+		if ($method->num_rows() < 1) {
 			$config['upload_path'] = $this->v_upload_path['tabel_b1'];
 			$config['allowed_types'] = $this->file_type1;
 			$config['file_name'] = $this->v_post['tabel_b1_field2'];
@@ -137,7 +137,6 @@ class C_tabel_b1 extends Omnitags
 		$this->session_3();
 
 		$tabel_b1_field1 = $this->v_post['tabel_b1_field1'];
-		$tabel_b1_field7 = $this->v_post['tabel_b1_field7'];
 
 		validate_input(
 			array(
@@ -153,7 +152,6 @@ class C_tabel_b1 extends Omnitags
 		);
 
 		$tabel_b1 = $this->tl_b1->get_b1_by_b1_field1($tabel_b1_field1)->result();
-		$theme = $this->v_post['tabel_b1_field7'] . '_';
 		$new_name = $this->v_post['tabel_b1_field2'];
 		$path = $this->v_upload_path['tabel_b1'];
 		$img = $this->v_post['tabel_b1_field4_old'];
@@ -171,8 +169,8 @@ class C_tabel_b1 extends Omnitags
 
 		if (!$upload) {
 			if ($new_name != $tabel_b1[0]->kode) {
-				rename($path . $img, $path . str_replace(' ', '_', $theme . $new_name) . $extension);
-				$gambar = str_replace(' ', '_', $theme . $new_name) . $extension;
+				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+				$gambar = str_replace(' ', '_', $new_name) . $extension;
 			} else {
 				$gambar = $img;
 			}
@@ -183,8 +181,7 @@ class C_tabel_b1 extends Omnitags
 					unlink($path . $img);
 				}
 				$upload = $this->upload->data();
-				rename($path . $img, $path . str_replace(' ', '_', $theme . $upload['file_name']) . $extension);
-				$gambar = $theme . $upload['file_name'];
+				$gambar = $upload['file_name'];
 			} else {
 				$gambar = $img;
 			}

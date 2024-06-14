@@ -97,54 +97,65 @@ class C_tabel_b5 extends Omnitags
 			'tambah'
 		);
 
-		$new_name = $this->v_post['tabel_b5_field2'];
-		$path = $this->v_upload_path['tabel_b5'];
+		$tabel_b5_field2 = $this->v_post['tabel_b5_field2'];
+		$method = $this->tl_c2->get_b5_by_b5_field2($tabel_b5_field2);
 
-		$config['upload_path'] = $path;
-		$config['allowed_types'] = $this->file_type1;
-		$config['file_name'] = $new_name;
-		$config['overwrite'] = TRUE;
-		$config['remove_spaces'] = TRUE;
+		// mencari apakah jumlah data kurang dari 1
+		if ($method->num_rows() < 1) {
 
-		$this->load->library('upload', $config);
-		$upload = $this->upload->do_upload($this->v_input['tabel_b5_field4_input']);
+			$new_name = $this->v_post['tabel_b5_field2'];
+			$path = $this->v_upload_path['tabel_b5'];
 
-		if (!$upload) {
-			// Di sini seharusnya ada notifikasi modal kalau upload tidak berhasil
-			// Tapi karena formnya sudah required saya rasa tidak perlu
+			$config['upload_path'] = $path;
+			$config['allowed_types'] = $this->file_type1;
+			$config['file_name'] = $new_name;
+			$config['overwrite'] = TRUE;
+			$config['remove_spaces'] = TRUE;
+
+			$this->load->library('upload', $config);
+			$upload = $this->upload->do_upload($this->v_input['tabel_b5_field4_input']);
+
+			if (!$upload) {
+				// Di sini seharusnya ada notifikasi modal kalau upload tidak berhasil
+				// Tapi karena formnya sudah required saya rasa tidak perlu
 
 
-			set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b5_field4_alias']);
-			set_flashdata('modal', $this->views['flash2_func1']);
+				set_flashdata($this->views['flash2'], $this->flash_msg2['tabel_b5_field4_alias']);
+				set_flashdata('modal', $this->views['flash2_func1']);
+				redirect($_SERVER['HTTP_REFERER']);
+			} else {
+				// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
+				$upload = $this->upload->data();
+				$gambar = $upload['file_name'];
+			}
+
+			$data = array(
+				$this->aliases['tabel_b5_field1'] => '',
+				$this->aliases['tabel_b5_field2'] => $this->v_post['tabel_b5_field2'],
+				$this->aliases['tabel_b5_field3'] => htmlspecialchars($this->v_post['tabel_b5_field3']),
+				$this->aliases['tabel_b5_field4'] => $gambar,
+				$this->aliases['tabel_b5_field5'] => $this->v_post['tabel_b5_field5'],
+				$this->aliases['tabel_b5_field6'] => $this->aliases['tabel_b5_field6_value2'],
+				$this->aliases['tabel_b5_field7'] => $this->v_post['tabel_b5_field7'],
+			);
+
+			$aksi = $this->tl_b5->insert_b5($data);
+
+			$notif = $this->handle_4b($aksi, 'tabel_b5');
+
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
-			// Di bawah ini adalah method untuk mengambil informasi dari hasil upload data
-			$upload = $this->upload->data();
-			$gambar = $upload['file_name'];
+
+			set_flashdata($this->views['flash1'], $this->aliases['tabel_b5_field2'] . ' telah digunakan!');
+			redirect($_SERVER['HTTP_REFERER']);
 		}
-
-		$data = array(
-			$this->aliases['tabel_b5_field1'] => '',
-			$this->aliases['tabel_b5_field2'] => $this->v_post['tabel_b5_field2'],
-			$this->aliases['tabel_b5_field3'] => htmlspecialchars($this->v_post['tabel_b5_field3']),
-			$this->aliases['tabel_b5_field4'] => $gambar,
-			$this->aliases['tabel_b5_field5'] => $this->v_post['tabel_b5_field5'],
-			$this->aliases['tabel_b5_field6'] => $this->aliases['tabel_b5_field6_value2'],
-			$this->aliases['tabel_b5_field7'] => $this->v_post['tabel_b5_field7'],
-		);
-
-		$aksi = $this->tl_b5->insert_b5($data);
-
-		$notif = $this->handle_4b($aksi, 'tabel_b5');
-
-		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function update() //update tidak diperlukan di sini
 	{
 		$this->declarew();
 		$this->session_3();
-		
+
 		$tabel_b5_field1 = $this->v_post['tabel_b5_field1'];
 
 		validate_input(

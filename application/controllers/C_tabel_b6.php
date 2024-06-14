@@ -7,7 +7,7 @@ class C_tabel_b6 extends Omnitags
 {
 	// Halaman publik
 
-	
+
 	// Halaman khusus akun
 
 
@@ -37,7 +37,7 @@ class C_tabel_b6 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
-		
+
 		validate_input(
 			array(
 				$this->v_get['tabel_b6_field7'],
@@ -115,9 +115,9 @@ class C_tabel_b6 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
-		
+
 		$tabel_b6_field1 = $this->v_post['tabel_b6_field1'];
-		
+
 		validate_input(
 			array(
 				$this->v_post['tabel_b6_field1'],
@@ -179,7 +179,7 @@ class C_tabel_b6 extends Omnitags
 
 		$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -192,7 +192,7 @@ class C_tabel_b6 extends Omnitags
 
 		$notif = $this->handle_4e($aksi, 'tabel_b6', $tabel_b6_field1);
 
-		redirect($_SERVER['HTTP_REFERER']); 
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Cetak semua data
