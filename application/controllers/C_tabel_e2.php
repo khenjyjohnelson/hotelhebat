@@ -9,6 +9,7 @@ class C_tabel_e2 extends Omnitags
 	public function index()
 	{
 		$this->declarew();
+		$this->session_all();
 
 		$data1 = array(
 			'title' => lang('tabel_e2_alias_v1_title'),
@@ -30,6 +31,7 @@ class C_tabel_e2 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_e2_alias_v3_title'),
@@ -87,27 +89,39 @@ class C_tabel_e2 extends Omnitags
 		$this->session_3();
 
 		$tabel_e2_field1 = $this->v_post['tabel_e2_field1'];
-		
-		validate_input(
-			array(
-				$this->v_post['tabel_e2_field1'],
-				$this->v_post['tabel_e2_field2'],
-				$this->v_post['tabel_e2_field3'],
-			),
-			$this->views['flash3'],
-			'ubah' . $tabel_e2_field1
-		);
 
-		$data = array(
-			$this->aliases['tabel_e2_field2'] => $this->v_post['tabel_e2_field2'],
-			$this->aliases['tabel_e2_field3'] => $this->v_post['tabel_e2_field3'],
-		);
+		$tabel_e2 = $this->tl_e2->get_e2_by_e2_field1($tabel_e2_field1)->result();
 
-		$aksi = $this->tl_e2->update_e2($data, $tabel_e2_field1);
+		if ($tabel_e2) {
 
-		$notif = $this->handle_4c($aksi, 'tabel_e2', $tabel_e2_field1);
+			validate_input(
+				array(
+					$this->v_post['tabel_e2_field1'],
+					$this->v_post['tabel_e2_field2'],
+					$this->v_post['tabel_e2_field3'],
+				),
+				$this->views['flash3'],
+				'ubah' . $tabel_e2_field1
+			);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$data = array(
+				$this->aliases['tabel_e2_field2'] => $this->v_post['tabel_e2_field2'],
+				$this->aliases['tabel_e2_field3'] => $this->v_post['tabel_e2_field3'],
+			);
+
+			$aksi = $this->tl_e2->update_e2($data, $tabel_e2_field1);
+
+			$notif = $this->handle_4c($aksi, 'tabel_e2', $tabel_e2_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	public function delete($tabel_e2_field1 = null)
@@ -116,20 +130,31 @@ class C_tabel_e2 extends Omnitags
 		$this->session_3();
 
 		$tabel_e2 = $this->tl_e2->get_e2_by_e2_field1($tabel_e2_field1)->result();
-		$tabel_e2_field3 = $tabel_e2[0]->img;
 
-		unlink($this->v_upload_path['tabel_e2'] . $tabel_e2_field3);
-		$aksi = $this->tl_e2->delete_e2($tabel_e2_field1);
+		if ($tabel_e2) {
 
-		$notif = $this->handle_4e($aksi, 'tabel_e2', $tabel_e2_field1);
+			$tabel_e2_field3 = $tabel_e2[0]->img;
 
-		redirect($_SERVER['HTTP_REFERER']);
+			unlink($this->v_upload_path['tabel_e2'] . $tabel_e2_field3);
+			$aksi = $this->tl_e2->delete_e2($tabel_e2_field1);
+
+			$notif = $this->handle_4e($aksi, 'tabel_e2', $tabel_e2_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	// Cetak semua data
 	public function laporan()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_e2_alias_v4_title'),

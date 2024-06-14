@@ -15,6 +15,7 @@ class C_tabel_b6 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$param1 = $this->v_get['tabel_b6_field7'];
 
@@ -37,6 +38,7 @@ class C_tabel_b6 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		validate_input(
 			array(
@@ -118,34 +120,44 @@ class C_tabel_b6 extends Omnitags
 
 		$tabel_b6_field1 = $this->v_post['tabel_b6_field1'];
 
-		validate_input(
-			array(
-				$this->v_post['tabel_b6_field1'],
-				$this->v_post['tabel_b6_field2'],
-				$this->v_post['tabel_b6_field3'],
-				$this->v_post['tabel_b6_field4'],
-				$this->v_post['tabel_b6_field5'],
-				$this->v_post['tabel_b6_field7'],
-			),
-			$this->views['flash3'],
-			'ubah' . $tabel_b6_field1
-		);
+		$tabel = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1)->result();
+
+		if ($tabel) {
+			validate_input(
+				array(
+					$this->v_post['tabel_b6_field1'],
+					$this->v_post['tabel_b6_field2'],
+					$this->v_post['tabel_b6_field3'],
+					$this->v_post['tabel_b6_field4'],
+					$this->v_post['tabel_b6_field5'],
+					$this->v_post['tabel_b6_field7'],
+				),
+				$this->views['flash3'],
+				'ubah' . $tabel_b6_field1
+			);
 
 
-		// menggunakan nama khusus sama dengan konfigurasi
-		$data = array(
-			$this->aliases['tabel_b6_field2'] => $this->v_post['tabel_b6_field2'],
-			$this->aliases['tabel_b6_field3'] => $this->v_post['tabel_b6_field3'],
-			$this->aliases['tabel_b6_field4'] => $this->v_post['tabel_b6_field4'],
-			$this->aliases['tabel_b6_field5'] => $this->v_post['tabel_b6_field5'],
-			$this->aliases['tabel_b6_field7'] => $this->v_post['tabel_b6_field7'],
-		);
+			// menggunakan nama khusus sama dengan konfigurasi
+			$data = array(
+				$this->aliases['tabel_b6_field2'] => $this->v_post['tabel_b6_field2'],
+				$this->aliases['tabel_b6_field3'] => $this->v_post['tabel_b6_field3'],
+				$this->aliases['tabel_b6_field4'] => $this->v_post['tabel_b6_field4'],
+				$this->aliases['tabel_b6_field5'] => $this->v_post['tabel_b6_field5'],
+				$this->aliases['tabel_b6_field7'] => $this->v_post['tabel_b6_field7'],
+			);
 
-		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
+			$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
 
-		$notif = $this->handle_4c($aksi, 'tabel_b6', $tabel_b6_field1);
+			$notif = $this->handle_4c($aksi, 'tabel_b6', $tabel_b6_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			redirect($_SERVER['HTTP_REFERER']);
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
+
 	}
 
 	public function aktifkan($tabel_b6_field1 = null) //update tidak diperlukan di sini
@@ -153,16 +165,26 @@ class C_tabel_b6 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		// menggunakan nama khusus sama dengan konfigurasi
-		$data = array(
-			$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value1'],
-		);
+		$tabel = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1);
 
-		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
+		if ($tabel) {
 
-		$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
+			// menggunakan nama khusus sama dengan konfigurasi
+			$data = array(
+				$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value1'],
+			);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
+
+			$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	public function nonaktifkan($tabel_b6_field1 = null) //update tidak diperlukan di sini
@@ -170,16 +192,27 @@ class C_tabel_b6 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		// menggunakan nama khusus sama dengan konfigurasi
-		$data = array(
-			$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value2'],
-		);
+		$tabel = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1);
 
-		$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
+		if ($tabel) {
 
-		$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
+			// menggunakan nama khusus sama dengan konfigurasi
+			$data = array(
+				$this->aliases['tabel_b6_field6'] => $this->aliases['tabel_b6_field6_value2'],
+			);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$aksi = $this->tl_b6->update_b6($data, $tabel_b6_field1);
+
+			$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 
@@ -188,17 +221,25 @@ class C_tabel_b6 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		$aksi = $this->tl_b6->delete_b6($tabel_b6_field1);
+		$tabel_b6 = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1);
 
-		$notif = $this->handle_4e($aksi, 'tabel_b6', $tabel_b6_field1);
-
-		redirect($_SERVER['HTTP_REFERER']);
+		if ($tabel_b6) {
+			$aksi = $this->tl_b6->delete_b6($tabel_b6_field1);
+			$notif = $this->handle_4e($aksi, 'tabel_b6', $tabel_b6_field1);
+			redirect($_SERVER['HTTP_REFERER']);
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	// Cetak semua data
 	public function laporan()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_b6_alias_v4_title'),

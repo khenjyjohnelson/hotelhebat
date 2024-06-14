@@ -1,16 +1,3 @@
-<!-- mengarahkan ke no_level jika user tidak memiliki level -->
-<?php switch (userdata($tabel_c2_field6)) {
-  case $tabel_c2_field6_value2:
-  case $tabel_c2_field6_value3:
-  case $tabel_c2_field6_value4:
-    break;
-
-  default:
-    redirect(site_url($language . '/no_level'));
-    break;
-}
-?>
-
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
     <h1><?= $title ?><?= $phase ?></h1>

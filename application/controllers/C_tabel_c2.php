@@ -11,6 +11,7 @@ class C_tabel_c2 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_c2_alias_v3_title'),
@@ -29,6 +30,7 @@ class C_tabel_c2 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
+		$this->session_all();
 
 		validate_input(
 			array(
@@ -102,31 +104,43 @@ class C_tabel_c2 extends Omnitags
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 
-		validate_input(
-			array(
-				$this->v_post['tabel_c2_field1'],
-				$this->v_post['tabel_c2_field2'],
-				$this->v_post['tabel_c2_field3'],
-				$this->v_post['tabel_c2_field5'],
-				$this->v_post['tabel_c2_field6'],
-			),
-			$this->views['flash3'],
-			'ubah' . $tabel_c2_field1
-		);
+		$tabel_c2 = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
 
-		$data = array(
-			$this->aliases['tabel_c2_field2'] => $this->v_post['tabel_c2_field2'],
-			$this->aliases['tabel_c2_field3'] => $this->v_post['tabel_c2_field3'],
-			$this->aliases['tabel_c2_field5'] => $this->v_post['tabel_c2_field5'],
-			$this->aliases['tabel_c2_field6'] => $this->v_post['tabel_c2_field6'],
-		);
+		if ($tabel_c2) {
 
-		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
+			validate_input(
+				array(
+					$this->v_post['tabel_c2_field1'],
+					$this->v_post['tabel_c2_field2'],
+					$this->v_post['tabel_c2_field3'],
+					$this->v_post['tabel_c2_field5'],
+					$this->v_post['tabel_c2_field6'],
+				),
+				$this->views['flash3'],
+				'ubah' . $tabel_c2_field1
+			);
 
-		$notif = $this->handle_4c($aksi, 'tabel_c2', $tabel_c2_field1);
+			$data = array(
+				$this->aliases['tabel_c2_field2'] => $this->v_post['tabel_c2_field2'],
+				$this->aliases['tabel_c2_field3'] => $this->v_post['tabel_c2_field3'],
+				$this->aliases['tabel_c2_field5'] => $this->v_post['tabel_c2_field5'],
+				$this->aliases['tabel_c2_field6'] => $this->v_post['tabel_c2_field6'],
+			);
 
-		// kembali ke halaman sebelumnya
-		redirect($_SERVER['HTTP_REFERER']);
+			$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
+
+			$notif = $this->handle_4c($aksi, 'tabel_c2', $tabel_c2_field1);
+
+			// kembali ke halaman sebelumnya
+			redirect($_SERVER['HTTP_REFERER']);
+
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	public function delete($tabel_c2_field1 = null)
@@ -134,11 +148,22 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		$aksi = $this->tl_c2->delete_c2($tabel_c2_field1);
+		$tabel = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
 
-		$notif = $this->handle_4e($aksi, 'tabel_c2', $tabel_c2_field1);
+		if ($tabel) {
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$aksi = $this->tl_c2->delete_c2($tabel_c2_field1);
+
+			$notif = $this->handle_4e($aksi, 'tabel_c2', $tabel_c2_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 
 	}
 
@@ -146,6 +171,7 @@ class C_tabel_c2 extends Omnitags
 	public function laporan()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_c2_alias_v4_title'),
@@ -164,6 +190,7 @@ class C_tabel_c2 extends Omnitags
 	public function profil()
 	{
 		$this->declarew();
+		$this->page_session_2_3_4_5();
 
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
@@ -183,6 +210,7 @@ class C_tabel_c2 extends Omnitags
 	public function login()
 	{
 		$this->declarew();
+		$this->page_session_all();
 
 		$data1 = array(
 			'title' => lang('login'),
@@ -199,6 +227,7 @@ class C_tabel_c2 extends Omnitags
 	public function signup()
 	{
 		$this->declarew();
+		$this->page_session_all();
 
 		$data1 = array(
 			'title' => lang('signup'),
@@ -219,39 +248,51 @@ class C_tabel_c2 extends Omnitags
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 
-		validate_input(
-			array(
-				$this->v_post['tabel_c2_field1'],
-				$this->v_post['tabel_c2_field2'],
-				$this->v_post['tabel_c2_field3'],
-				$this->v_post['tabel_c2_field5'],
-			),
-			$this->views['flash1'],
-			'ubah' . $tabel_c2_field1
-		);
+		$tabel = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
 
-		$data = array(
-			$this->aliases['tabel_c2_field2'] => $this->v_post['tabel_c2_field2'],
-			$this->aliases['tabel_c2_field3'] => $this->v_post['tabel_c2_field3'],
-			$this->aliases['tabel_c2_field5'] => $this->v_post['tabel_c2_field5'],
-		);
+		if (!$tabel) {
 
-		$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
+			validate_input(
+				array(
+					$this->v_post['tabel_c2_field1'],
+					$this->v_post['tabel_c2_field2'],
+					$this->v_post['tabel_c2_field3'],
+					$this->v_post['tabel_c2_field5'],
+				),
+				$this->views['flash1'],
+				'ubah' . $tabel_c2_field1
+			);
 
-		$notif = $this->handle_4c($aksi, 'tabel_c2', $tabel_c2_field1);
+			$data = array(
+				$this->aliases['tabel_c2_field2'] => $this->v_post['tabel_c2_field2'],
+				$this->aliases['tabel_c2_field3'] => $this->v_post['tabel_c2_field3'],
+				$this->aliases['tabel_c2_field5'] => $this->v_post['tabel_c2_field5'],
+			);
 
-		// mengambil data profil yang baru dirubah
-		$tabel_c2 = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
-		$tabel_c2_field2 = $tabel_c2[0]->nama;
-		$tabel_c2_field3 = $tabel_c2[0]->email;
-		$tabel_c2_field4 = $tabel_c2[0]->hp;
+			$aksi = $this->tl_c2->update_c2($data, $tabel_c2_field1);
 
-		// membuat session baru berdasarkan data yang telah diupdate
-		set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
-		set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
+			$notif = $this->handle_4c($aksi, 'tabel_c2', $tabel_c2_field1);
 
-		// kembali ke halaman sebelumnya sesuai dengan masing-masing user dengan level yang berbeda
-		redirect($_SERVER['HTTP_REFERER']);
+			// mengambil data profil yang baru dirubah
+			$tabel_c2 = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
+			$tabel_c2_field2 = $tabel_c2[0]->nama;
+			$tabel_c2_field3 = $tabel_c2[0]->email;
+			$tabel_c2_field4 = $tabel_c2[0]->hp;
+
+			// membuat session baru berdasarkan data yang telah diupdate
+			set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
+			set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
+
+			// kembali ke halaman sebelumnya sesuai dengan masing-masing user dengan level yang berbeda
+			redirect($_SERVER['HTTP_REFERER']);
+
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	public function update_password()
@@ -328,6 +369,7 @@ class C_tabel_c2 extends Omnitags
 	{
 		// Ensure that necessary dependencies are loaded
 		$this->declarew();
+		$this->session_all();
 
 		validate_input(
 			array(
@@ -532,6 +574,7 @@ class C_tabel_c2 extends Omnitags
 	public function logout()
 	{
 		$this->declarew();
+		$this->session_2_3_4_5();
 
 		// menghapus session
 		session_destroy();

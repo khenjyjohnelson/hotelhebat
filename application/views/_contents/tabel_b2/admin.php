@@ -1,15 +1,3 @@
-<?php switch (userdata($tabel_c2_field6)) {
-  case $tabel_c2_field6_value3:
-    // case $tabel_c2_field6_value4:
-    break;
-
-  default:
-    redirect(site_url() . 'welcome/no_level');
-}
-?>
-
-
-
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
     <h1><?= $title ?><?= $phase ?></h1>

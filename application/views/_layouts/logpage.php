@@ -10,10 +10,10 @@
         </div>
     <?php endforeach ?>
 
-    <div class="container pb-5">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
 
         <!-- membuat konten berada tepat di tengah2 halaman  -->
-        <div class="row justify-content-center align-items-center h-100">
+        <div class="row justify-content-center align-items-center w-100">
             <div class="col-lg-5 login">
 
                 <!-- link kembali -->

@@ -1,13 +1,3 @@
-<?php switch (userdata($tabel_c2_field6)) {
-  // case $tabel_c2_field6_value3:
-  case $tabel_c2_field6_value5:
-    break;
-
-  default:
-    redirect(site_url($language . '/no_level'));
-    break;
-}
-?>
 <!-- mengecek apakah ada pesanan yang telah dilakukan -->
 <!-- Di bawah ini adalah fitur yang ditetapkan sebagai unfinished, yakni fitur untuk mengelola array dari jumlah pesanan yang telah dilakukan. -->
 <!-- Dengan fitur ini, tamu dapat memesan lebih dari satu kamar  -->

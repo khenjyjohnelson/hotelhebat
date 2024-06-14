@@ -1,10 +1,3 @@
-<?php
-if (!in_array(userdata($tabel_c2_field6), [$tabel_c2_field6_value3, $tabel_c2_field6_value4])) {
-    redirect(site_url($language . '/no_level'));
-    exit;
-}
-?>
-
 <table class="table">
     <thead>
         <tr>

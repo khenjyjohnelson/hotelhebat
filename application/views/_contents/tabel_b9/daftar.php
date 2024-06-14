@@ -1,21 +1,6 @@
-<?php switch (userdata($tabel_c2_field6)) {
-  case $tabel_c2_field6_value2:
-  case $tabel_c2_field6_value3:
-  case $tabel_c2_field6_value4:
-  case $tabel_c2_field6_value5:
-    break;
-
-  default:
-    redirect(site_url($language . '/no_level'));
-    break;
-}
-?>
-
-
-
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
+    <h1><?= $title ?><br><span class="h6"> Unread: <?= $count ?></span><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor as $dk): ?>

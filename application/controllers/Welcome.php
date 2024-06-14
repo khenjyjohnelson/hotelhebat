@@ -14,6 +14,7 @@ class Welcome extends Omnitags
 	public function index()
 	{
 		$this->declarew();
+		$this->page_session_all();
 
 		// Load your URLs dynamically here (e.g., from database)
 		$urls = array(
@@ -73,6 +74,7 @@ class Welcome extends Omnitags
 	public function dashboard()
 	{
 		$this->declarew();
+		$this->page_session_2_3_4();
 
 		$chart_tabel_f1 = $this->tl_e4->getCharttabel_f1();
 		$chart_tabel_f2 = $this->tl_e4->getCharttabel_f2();
@@ -127,7 +129,7 @@ class Welcome extends Omnitags
 
 		$data1 = array(
 			'title' => lang('no_access'),
-			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no-level')->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no_level')->result(),
 		);
 
 		$data = array_merge($data1, $this->package);

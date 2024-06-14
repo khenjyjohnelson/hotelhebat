@@ -1,14 +1,3 @@
-<?php switch (userdata($tabel_c2_field6)) {
-  // case $tabel_c2_field6_value3:
-  case $tabel_c2_field6_value5:
-    break;
-
-  default:
-    redirect(site_url($language . '/no_level'));
-    break;
-}
-?>
-
 <!-- mengecek apakah ada transaksi yang telah dilakukan -->
 <div class="d-flex justify-content-center">
 

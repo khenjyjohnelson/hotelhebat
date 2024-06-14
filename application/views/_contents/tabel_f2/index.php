@@ -1,14 +1,3 @@
-<?php switch (userdata($tabel_c2_field6)) {
-  // case $tabel_c2_field6_value3:
-  case $tabel_c2_field6_value5:
-    break;
-
-  default:
-    redirect(site_url($language . '/no_level'));
-    break;
-}
-?>
-
 <?php foreach ($tbl_a1 as $tl_a1): ?>
   <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 <?php endforeach; ?>

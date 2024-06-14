@@ -1,14 +1,3 @@
-<?php switch (userdata($tabel_c2_field6)) {
-  case $tabel_c2_field6_value3:
-    // case $tabel_c2_field6_value4:
-    break;
-
-  default:
-    redirect(site_url() . 'welcome/no_level');
-}
-?>
-
-
 <?php foreach ($tbl_a1 as $tl_a1):
   if (!$tbl_b7) { ?>
   <?php } else {

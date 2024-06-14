@@ -15,8 +15,9 @@ class C_tabel_a1 extends Omnitags
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP 1.1.
 		header("Pragma: no-cache"); // HTTP 1.0.
 		header("Expires: 0"); // Proxies.
-
+		
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_a1_alias_v6_title'),

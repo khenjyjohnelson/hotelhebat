@@ -1,13 +1,17 @@
+
 <?php
 switch (true) {
   case (userdata($tabel_c2_field1)):
     break;
-  default:
+    default:
     session_destroy();
     // Handle other cases if needed
     break;
 }
 ?>
+
+
+<!-- setting setiap src di assets -->
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
@@ -19,11 +23,10 @@ switch (true) {
   <!-- menampilkan data pengaturan sebagai p -->
   <?php foreach ($tbl_a1 as $tl_a1): ?>
 
-    <!-- toast -->
-    <div class="toast fade" id="element" style="position: absolute; top: 80; right: 15; z-index: 1000" data-delay="5000">
+     <!-- toast -->
+    <div class="toast fade" id="element" style="position: absolute; top: 100px; right: 15px; z-index: 1000" data-delay="5000">
       <div class="toast-header">
-        <img class="rounded mr-2" src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field3 ?>" width="15px"
-          draggable="false">
+        <img class="rounded mr-2" src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field3 ?>" width="15px" draggable="false">
         <strong class="mr-auto">
           <?= $tl_a1->$tabel_a1_field2 ?>
         </strong>

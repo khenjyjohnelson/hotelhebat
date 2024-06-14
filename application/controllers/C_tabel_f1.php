@@ -12,6 +12,8 @@ class C_tabel_f1 extends Omnitags
 	public function daftar()
 	{
 		$this->declarew();
+		$this->page_session_5();
+		
 		// nilai min dan max di sini belum ada
 		$param1 = $this->v_get['tabel_f1_field11_filter1'];
 		$param2 = $this->v_get['tabel_f1_field11_filter2'];
@@ -43,6 +45,7 @@ class C_tabel_f1 extends Omnitags
 	public function filter_c1()
 	{
 		$this->declarew();
+		$this->session_5();
 
 		// nilai min dan max sudah diinput sebelumnya
 		$param1 = $this->v_get['tabel_f1_field11_filter1'];
@@ -75,7 +78,8 @@ class C_tabel_f1 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-
+		$this->page_session_4();
+		
 		// nilai min dan max di sini belum ada
 		$param1 = $this->v_get['tabel_f1_field11_filter1'];
 		$param2 = $this->v_get['tabel_f1_field11_filter2'];
@@ -115,7 +119,8 @@ class C_tabel_f1 extends Omnitags
 	public function laporan()
 	{
 		$this->declarew();
-
+		$this->page_session_4();
+		
 		$data1 = array(
 			'title' => lang('tabel_f1_alias_v4_title'),
 			'konten' => $this->v4['tabel_f1'],
@@ -132,6 +137,7 @@ class C_tabel_f1 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
+		$this->page_session_4();
 
 		// nilai min dan max sudah diinput sebelumnya
 		$param1 = $this->v_get['tabel_f1_field11_filter1'];

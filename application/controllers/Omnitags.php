@@ -158,7 +158,7 @@ if (!class_exists('Omnitags')) {
             $this->theme_id = $this->theme[0]->id_theme;
 
             $this->notif_limit = $this->tl_b9->get_b9_with_b8_limit(userdata($this->aliases['tabel_c2_field1']))->result();
-            $this->notif_null = $this->tl_b9->get_b9_by_b9_field2(userdata($this->aliases['tabel_c2_field1']));
+            $this->notif_null = $this->tl_b9->get_b9_by_b9_field2_by_b9_field6(userdata($this->aliases['tabel_c2_field1']));
 
             $this->views = array(
                 'tabel_c1_v2' => '_contents/tabel_c1/login',
@@ -207,6 +207,182 @@ if (!class_exists('Omnitags')) {
             $this->package = array_merge($this->views, $this->aliases, $this->v_input, $this->reverse);
         }
 
+        public function page_session_all()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_2()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_2_4()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_2_3_4()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_2_4_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_3()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value3']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_4()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value4']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_4_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function page_session_2_3_4_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                default:
+                    redirect(site_url($this->views['language'] . '/no_level'));
+                    break;
+            }
+        }
+
+        public function session_all()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                default:
+                    redirect(site_url($this->views['language'] . '/invalid'));
+                    break;
+            }
+        }
+
         public function session_2()
         {
             switch (userdata($this->aliases['tabel_c2_field6'])) {
@@ -223,6 +399,38 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        public function session_2_4_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                default:
+                    redirect(site_url($this->views['language'] . '/invalid'));
+                    break;
+            }
+        }
+
+        public function session_2_4()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value2']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                default:
+                    redirect(site_url($this->views['language'] . '/invalid'));
+                    break;
+            }
+        }
+
         public function session_3()
         {
             switch (userdata($this->aliases['tabel_c2_field6'])) {
@@ -232,6 +440,22 @@ if (!class_exists('Omnitags')) {
                 case $this->aliases['tabel_c2_field6_value1']:
                 case $this->aliases['tabel_c2_field6_value2']:
                 case $this->aliases['tabel_c2_field6_value5']:
+                case $this->aliases['tabel_c2_field6_value4']:
+                default:
+                    redirect(site_url($this->views['language'] . '/invalid'));
+                    break;
+            }
+        }
+
+        public function session_3_5()
+        {
+            switch (userdata($this->aliases['tabel_c2_field6'])) {
+                case $this->aliases['tabel_c2_field6_value3']:
+                case $this->aliases['tabel_c2_field6_value5']:
+                    break;
+
+                case $this->aliases['tabel_c2_field6_value1']:
+                case $this->aliases['tabel_c2_field6_value2']:
                 case $this->aliases['tabel_c2_field6_value4']:
                 default:
                     redirect(site_url($this->views['language'] . '/invalid'));

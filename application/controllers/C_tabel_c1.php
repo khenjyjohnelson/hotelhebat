@@ -13,6 +13,7 @@ class C_tabel_c1 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_c1_alias_v3_title'),
@@ -33,7 +34,7 @@ class C_tabel_c1 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
-		$this->session_3();
+		$this->session_all();
 
 		$param2 = $this->v_post['tabel_c1_field2'];
 
@@ -74,7 +75,7 @@ class C_tabel_c1 extends Omnitags
 			$upload = $this->upload->data();
 			$gambar = $upload['file_name'];
 		}
-		
+
 		$method2 = $this->tl_c1->get_c1_by_c1_field2($param2);
 		$param4 = $this->v_post['tabel_c1_field4'];
 
@@ -83,38 +84,38 @@ class C_tabel_c1 extends Omnitags
 
 			// jika input konfirm sama dengan input password
 			if ($this->v_post['tabel_c1_field4_confirm'] === $param4) {
-			$this->load->library('encryption');
+				$this->load->library('encryption');
 
-			$data = array(
-				$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
-				$this->aliases['tabel_c1_field2'] => $param2,
-				$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
-				$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
-				$this->aliases['tabel_c1_field6'] => $gambar,
-				$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
+				$data = array(
+					$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
+					$this->aliases['tabel_c1_field2'] => $param2,
+					$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
+					$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
+					$this->aliases['tabel_c1_field6'] => $gambar,
+					$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
 
-				// mengubah password menjadi password berenkripsi
-				$this->aliases['tabel_c1_field4'] => password_hash($param4, PASSWORD_DEFAULT),
+					// mengubah password menjadi password berenkripsi
+					$this->aliases['tabel_c1_field4'] => password_hash($param4, PASSWORD_DEFAULT),
 
-			);
+				);
 
-			$aksi = $this->tl_c1->insert_c1($data);
+				$aksi = $this->tl_c1->insert_c1($data);
 
-			// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
-			if (userdata($this->aliases['tabel_c1_field3'])) {
-				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
+				// mengarahkan pengguna ke halaman yang berbeda sesuai dengan session masing-masing
+				if (userdata($this->aliases['tabel_c1_field3'])) {
+					redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c1'] . '/login'));
+				} else {
+					redirect($_SERVER['HTTP_REFERER']);
+
+				}
+
+				// jika input konfirm tidak sama dengan input password
 			} else {
+
+				// menampilkan flashdata dalam bentuk teks
+				set_flashdata($this->views['flash1'], 'Konfirmasi ' . $this->aliases['tabel_c1_field4'] . ' salah!');
+
 				redirect($_SERVER['HTTP_REFERER']);
-
-			}
-
-			// jika input konfirm tidak sama dengan input password
-			} else {
-
-			// menampilkan flashdata dalam bentuk teks
-			set_flashdata($this->views['flash1'], 'Konfirmasi ' . $this->aliases['tabel_c1_field4'] . ' salah!');
-
-			redirect($_SERVER['HTTP_REFERER']);
 			}
 
 			// jika jumlah data lebih dari 0
@@ -138,69 +139,81 @@ class C_tabel_c1 extends Omnitags
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 
-		validate_input(
-			array(
-				$this->v_post['tabel_c1_field1'],
-				$this->v_post['tabel_c1_field2'],
-				$this->v_post['tabel_c1_field3'],
-				$this->v_post['tabel_c1_field5'],
-				$this->v_post['tabel_c1_field6_old'],
-				$this->v_post['tabel_c1_field7'],
-			),
-			$this->views['flash3'],
-				'ubah' . $tabel_c1_field1
-		);
-
 		$tabel_c1 = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
-		$new_name = $this->v_post['tabel_c1_field2'];
-		$path = $this->v_upload_path['tabel_c1'];
-		$img = $this->v_post['tabel_c1_field6_old'];
-		$extension = '.' . getExtension($path . $img);
 
-		$config['upload_path'] = $path;
-		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
-		$config['file_name'] = $new_name;
-		$config['allowed_types'] = $this->file_type1;
-		$config['overwrite'] = TRUE;
-		$config['remove_spaces'] = TRUE;
+		if ($tabel_c1) {
 
-		$this->load->library('upload', $config);
-		$upload = $this->upload->do_upload($this->v_input['tabel_c1_field6_input']);
+			validate_input(
+				array(
+					$this->v_post['tabel_c1_field1'],
+					$this->v_post['tabel_c1_field2'],
+					$this->v_post['tabel_c1_field3'],
+					$this->v_post['tabel_c1_field5'],
+					$this->v_post['tabel_c1_field6_old'],
+					$this->v_post['tabel_c1_field7'],
+				),
+				$this->views['flash3'],
+				'ubah' . $tabel_c1_field1
+			);
 
-		if (!$upload) {
-			if ($new_name != $tabel_c1[0]->nama) {
-				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
-				$gambar = str_replace(' ', '_', $new_name) . $extension;
-			} else {
-				$gambar = $img;
-			}
-		} else {
-			if ($new_name != $tabel_c1[0]->nama) {
-				// File upload is successful, delete the old file
-				if (file_exists($path . $img)) {
-					unlink($path . $img);
+			$tabel_c1 = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
+			$new_name = $this->v_post['tabel_c1_field2'];
+			$path = $this->v_upload_path['tabel_c1'];
+			$img = $this->v_post['tabel_c1_field6_old'];
+			$extension = '.' . getExtension($path . $img);
+
+			$config['upload_path'] = $path;
+			// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+			$config['file_name'] = $new_name;
+			$config['allowed_types'] = $this->file_type1;
+			$config['overwrite'] = TRUE;
+			$config['remove_spaces'] = TRUE;
+
+			$this->load->library('upload', $config);
+			$upload = $this->upload->do_upload($this->v_input['tabel_c1_field6_input']);
+
+			if (!$upload) {
+				if ($new_name != $tabel_c1[0]->nama) {
+					rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+					$gambar = str_replace(' ', '_', $new_name) . $extension;
+				} else {
+					$gambar = $img;
 				}
-				$upload = $this->upload->data();
-				$gambar = $upload['file_name'];
 			} else {
-				$gambar = $img;
+				if ($new_name != $tabel_c1[0]->nama) {
+					// File upload is successful, delete the old file
+					if (file_exists($path . $img)) {
+						unlink($path . $img);
+					}
+					$upload = $this->upload->data();
+					$gambar = $upload['file_name'];
+				} else {
+					$gambar = $img;
+				}
 			}
+
+			$data = array(
+				$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
+				$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
+				$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
+				$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
+				$this->aliases['tabel_c1_field6'] => $gambar,
+				$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
+			);
+
+			$aksi = $this->tl_c1->update_c1($data, $tabel_c1_field1);
+
+			$notif = $this->handle_4c($aksi, 'tabel_c1', $tabel_c1_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
 		}
-
-		$data = array(
-			$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
-			$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
-			$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
-			$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
-			$this->aliases['tabel_c1_field6'] => $gambar,
-			$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
-		);
-
-		$aksi = $this->tl_c1->update_c1($data, $tabel_c1_field1);
-
-		$notif = $this->handle_4c($aksi, 'tabel_c1', $tabel_c1_field1);
-
-		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function delete($tabel_c1_field1 = null)
@@ -208,17 +221,31 @@ class C_tabel_c1 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		$aksi = $this->tl_c1->delete_c1($tabel_c1_field1);
+		$tabel = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
 
-		$notif = $this->handle_4e($aksi, 'tabel_c1', $tabel_c1_field1);
+		if ($tabel) {
+			$tabel_c1_field5 = $tabel[0]->foto;
+			unlink($this->v_upload_path['tabel_c1'] . $tabel_c1_field5);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$aksi = $this->tl_c1->delete_c1($tabel_c1_field1);
+
+			$notif = $this->handle_4e($aksi, 'tabel_c1', $tabel_c1_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	// Cetak semua data
 	public function laporan()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_c1_alias_v4_title'),
@@ -236,6 +263,7 @@ class C_tabel_c1 extends Omnitags
 	public function profil()
 	{
 		$this->declarew();
+		$this->page_session_2_3_4_5();
 
 		$tabel_c1_field1 = userdata($this->aliases['tabel_c1_field1']);
 		$data1 = array(
@@ -254,6 +282,7 @@ class C_tabel_c1 extends Omnitags
 	public function login()
 	{
 		$this->declarew();
+		$this->page_session_all();
 
 		$data1 = array(
 			'title' => $this->views['tabel_c1_v2_title'],
@@ -270,6 +299,7 @@ class C_tabel_c1 extends Omnitags
 	public function signup()
 	{
 		$this->declarew();
+		$this->page_session_all();
 
 		$data1 = array(
 			'title' => 'Create an Account',
@@ -286,43 +316,55 @@ class C_tabel_c1 extends Omnitags
 	public function update_profil()
 	{
 		$this->declarew();
-		$this->session_3();
+		$this->session_2_3_4_5();
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 
-		$data = array(
-			$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
-			$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
-			$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
-			$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
-		);
+		$tabel = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
 
-		$aksi = $this->tl_c1->update_c1($data, $tabel_c1_field1);
+		if ($tabel) {
 
-		$notif = $this->handle_4d($aksi, 'tabel_c1', $tabel_c1_field1);
+			$data = array(
+				$this->aliases['tabel_c1_field2'] => $this->v_post['tabel_c1_field2'],
+				$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
+				$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],
+				$this->aliases['tabel_c1_field7'] => $this->v_post['tabel_c1_field7'],
+			);
 
-		// mengambil data profil yang baru dirubah
-		$tabel_c1 = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
+			$aksi = $this->tl_c1->update_c1($data, $tabel_c1_field1);
 
-		$tabel_c1_field2 = $tabel_c1[0]->nama;
-		$tabel_c1_field3 = $tabel_c1[0]->email;
-		$tabel_c1_field5 = $tabel_c1[0]->hp;
-		$tabel_c1_field7 = $tabel_c1[0]->role;
+			$notif = $this->handle_4d($aksi, 'tabel_c1', $tabel_c1_field1);
 
-		// membuat session baru berdasarkan data yang telah diupdate
-		set_userdata($this->aliases['tabel_c1_field2'], $tabel_c1_field2);
-		set_userdata($this->aliases['tabel_c1_field3'], $tabel_c1_field3);
-		set_userdata($this->aliases['tabel_c1_field5'], $tabel_c1_field5);
-		set_userdata($this->aliases['tabel_c1_field7'], $tabel_c1_field7);
+			// mengambil data profil yang baru dirubah
+			$tabel_c1 = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
 
-		// kembali ke halaman sebelumnya sesuai dengan masing-masing petugas dengan level yang berbeda
-		redirect($_SERVER['HTTP_REFERER']);
+			$tabel_c1_field2 = $tabel_c1[0]->nama;
+			$tabel_c1_field3 = $tabel_c1[0]->email;
+			$tabel_c1_field5 = $tabel_c1[0]->hp;
+			$tabel_c1_field7 = $tabel_c1[0]->role;
+
+			// membuat session baru berdasarkan data yang telah diupdate
+			set_userdata($this->aliases['tabel_c1_field2'], $tabel_c1_field2);
+			set_userdata($this->aliases['tabel_c1_field3'], $tabel_c1_field3);
+			set_userdata($this->aliases['tabel_c1_field5'], $tabel_c1_field5);
+			set_userdata($this->aliases['tabel_c1_field7'], $tabel_c1_field7);
+
+			// kembali ke halaman sebelumnya sesuai dengan masing-masing petugas dengan level yang berbeda
+			redirect($_SERVER['HTTP_REFERER']);
+
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	public function update_password()
 	{
 		$this->declarew();
-		$this->session_3();
+		$this->session_2_3_4_5();
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 
@@ -380,6 +422,7 @@ class C_tabel_c1 extends Omnitags
 	public function ceklogin()
 	{
 		$this->declarew();
+		$this->session_all();
 
 		$tabel_c1_field1 = $this->v_post['tabel_c1_field1'];
 		$param8 = $this->v_post['tabel_c1_field8'];
@@ -482,6 +525,7 @@ class C_tabel_c1 extends Omnitags
 	public function logout()
 	{
 		$this->declarew();
+		$this->session_2_3_4_5();
 
 		// menghapus session
 		session_destroy();

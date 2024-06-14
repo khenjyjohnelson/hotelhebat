@@ -24,6 +24,7 @@ class C_tabel_f3 extends Omnitags
 	public function daftar()
 	{
 		$this->declarew();
+		$this->page_session_4_5();
 
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
@@ -42,6 +43,7 @@ class C_tabel_f3 extends Omnitags
 	public function daftar_history()
 	{
 		$this->declarew();
+		$this->session_2_4_5();
 
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
@@ -61,6 +63,7 @@ class C_tabel_f3 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->page_session_2();
 
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v3_title'),
@@ -86,6 +89,7 @@ class C_tabel_f3 extends Omnitags
 	{
 		// Masih membutuhkan kode untuk mencegah hal ini terjadi lebih dari satu kali dengan id tabel_f2 yang sama
 		$this->declarew();
+		$this->session_2_4_5();
 
 		$tabel_f3_field3 = $this->v_post['tabel_f3_field3'];
 		$tabel_f3_field6 = $this->v_post['tabel_f3_field6'];
@@ -143,41 +147,65 @@ class C_tabel_f3 extends Omnitags
 	public function update()
 	{
 		$this->declarew();
+		$this->session_2_4();
 
 		$tabel_f3_field1 = $this->v_post['tabel_f3_field1'];
 
-		// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
-		$tabel_f3_field7 = date("Y-m-d\TH:i:s");
+		$tabel_f3 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
 
-		$data = array(
-			$this->aliases['tabel_f3_field5'] => $this->v_post['tabel_f3_field5'],
-			$this->aliases['tabel_f3_field6'] => $this->v_post['tabel_f3_field6'],
-			$this->aliases['tabel_f3_field7'] => $tabel_f3_field7,
-		);
+		if ($tabel_f3) {
 
-		$aksi = $this->tl_f3->update_f3($data, $tabel_f3_field1);
+			// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
+			$tabel_f3_field7 = date("Y-m-d\TH:i:s");
 
-		$notif = $this->handle_4c($aksi, 'tabel_f3', $tabel_f3_field1);
+			$data = array(
+				$this->aliases['tabel_f3_field5'] => $this->v_post['tabel_f3_field5'],
+				$this->aliases['tabel_f3_field6'] => $this->v_post['tabel_f3_field6'],
+				$this->aliases['tabel_f3_field7'] => $tabel_f3_field7,
+			);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$aksi = $this->tl_f3->update_f3($data, $tabel_f3_field1);
+
+			$notif = $this->handle_4c($aksi, 'tabel_f3', $tabel_f3_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	public function delete($tabel_f3_field1 = null)
 	{
 		$this->declarew();
+		$this->session_2_4();
 
 		$tabel_f3 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
-		$aksi = $this->tl_f3->delete_f3($tabel_f3_field1);
 
-		$notif = $this->handle_4e($aksi, 'tabel_f3', $tabel_f3_field1);
+		if ($tabel_f3) {
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$aksi = $this->tl_f3->delete_f3($tabel_f3_field1);
+
+			$notif = $this->handle_4e($aksi, 'tabel_f3', $tabel_f3_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	// Fitur filter untuk saat ini akan tidak digunakan terlebih dahulu
 	public function filter()
 	{
 		$this->declarew();
+		$this->page_session_2();
 
 		// nilai min dan max sudah diinput sebelumnya
 		$tabel_f3_field7_filter1 = $this->v_get['tabel_f3_field7_filter1'];
@@ -207,6 +235,7 @@ class C_tabel_f3 extends Omnitags
 	public function laporan()
 	{
 		$this->declarew();
+		$this->page_session_2();
 
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
@@ -230,35 +259,46 @@ class C_tabel_f3 extends Omnitags
 	public function print($tabel_f3_field1 = null)
 	{
 		$this->declarew();
-
-		$data1 = array(
-			'title' => lang('tabel_f3_alias_v5_title'),
-			'konten' => $this->v5['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-		);
-
-
-		// Di bawah ini adalah kode untuk memisahkan antara transaksi yang id pesanannya masih berada di tabel pesanann
-		// Dan transaksi yang id pesanananya sudah berada di tabel history
+		$this->page_session_4_5();
 
 		$param1 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
-		$param2 = $param1[0]->id_pesanan;
 
-		$method = $this->tl_f1->get_f1_by_f1_field2($param2);
+		if ($param1) {
 
-
-		if ($method->num_rows() > 0) {
-			$data2 = array(
-				'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
+			$data1 = array(
+				'title' => lang('tabel_f3_alias_v5_title'),
+				'konten' => $this->v5['tabel_f3'],
+				'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
 			);
-			$data = array_merge($data1, $data2, $this->views, $this->aliases);
-			load_view_data('_layouts/printpage', $data);
+
+
+			// Di bawah ini adalah kode untuk memisahkan antara transaksi yang id pesanannya masih berada di tabel pesanann
+			// Dan transaksi yang id pesanananya sudah berada di tabel history
+
+			$param2 = $param1[0]->id_pesanan;
+
+			$method = $this->tl_f1->get_f1_by_f1_field2($param2);
+
+
+			if ($method->num_rows() > 0) {
+				$data2 = array(
+					'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
+				);
+				$data = array_merge($data1, $data2, $this->views, $this->aliases);
+				load_view_data('_layouts/printpage', $data);
+			} else {
+				$data2 = array(
+					'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
+				);
+				$data = array_merge($data1, $data2, $this->views, $this->aliases);
+				load_view_data('_layouts/printpage', $data);
+			}
+
 		} else {
-			$data2 = array(
-				'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
-			);
-			$data = array_merge($data1, $data2, $this->views, $this->aliases);
-			load_view_data('_layouts/printpage', $data);
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
 		}
 	}
 
@@ -266,6 +306,7 @@ class C_tabel_f3 extends Omnitags
 	public function konfirmasi()
 	{
 		$this->declarew();
+		$this->page_session_5();
 
 		$tabel_f3_field3 = get_tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
 		$data1 = array(

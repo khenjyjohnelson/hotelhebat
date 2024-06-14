@@ -9,6 +9,7 @@ class C_tabel_b2 extends Omnitags
 	public function detail($param1 = null)
 	{
 		$this->declarew();
+		$this->page_session_all();
 
 		$data1 = array(
 			'title' => lang('tabel_b2_alias_v8_title'),
@@ -31,6 +32,7 @@ class C_tabel_b2 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$param1 = $this->v_get['tabel_b2_field7'];
 
@@ -53,6 +55,7 @@ class C_tabel_b2 extends Omnitags
 	public function filter()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		validate_input(
 			array(
@@ -155,68 +158,80 @@ class C_tabel_b2 extends Omnitags
 
 		$tabel_b2_field1 = $this->v_post['tabel_b2_field1'];
 
-		validate_input(
-			array(
-				$this->v_post['tabel_b2_field1'],
-				$this->v_post['tabel_b2_field2'],
-				$this->v_post['tabel_b2_field3'],
-				$this->v_post['tabel_b2_field5'],
-				$this->v_post['tabel_b2_field7'],
-			),
-			$this->views['flash3'],
-			'ubah' . $tabel_b2_field1,
-		);
+		$tabel = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
 
-		$tabel_b2 = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
-		$new_name = $this->v_post['tabel_b2_field2'];
-		$path = $this->v_upload_path['tabel_b2'];
-		$img = $this->v_post['tabel_b2_field4_old'];
-		$extension = '.' . getExtension($path . $img);
+		if ($tabel) {
 
-		$config['upload_path'] = $path;
-		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
-		$config['file_name'] = $new_name;
-		$config['allowed_types'] = $this->file_type1;
-		$config['overwrite'] = TRUE;
-		$config['remove_spaces'] = TRUE;
+			validate_input(
+				array(
+					$this->v_post['tabel_b2_field1'],
+					$this->v_post['tabel_b2_field2'],
+					$this->v_post['tabel_b2_field3'],
+					$this->v_post['tabel_b2_field5'],
+					$this->v_post['tabel_b2_field7'],
+				),
+				$this->views['flash3'],
+				'ubah' . $tabel_b2_field1,
+			);
 
-		$this->load->library('upload', $config);
-		$upload = $this->upload->do_upload($this->v_input['tabel_b2_field4_input']);
+			$tabel_b2 = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
+			$new_name = $this->v_post['tabel_b2_field2'];
+			$path = $this->v_upload_path['tabel_b2'];
+			$img = $this->v_post['tabel_b2_field4_old'];
+			$extension = '.' . getExtension($path . $img);
 
-		if (!$upload) {
-			if ($new_name != $tabel_b2[0]->nama) {
-				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
-				$gambar = str_replace(' ', '_', $new_name) . $extension;
-			} else {
-				$gambar = $img;
-			}
-		} else {
-			if ($new_name != $tabel_b2[0]->nama) {
-				// File upload is successful, delete the old file
-				if (file_exists($path . $img)) {
-					unlink($path . $img);
+			$config['upload_path'] = $path;
+			// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+			$config['file_name'] = $new_name;
+			$config['allowed_types'] = $this->file_type1;
+			$config['overwrite'] = TRUE;
+			$config['remove_spaces'] = TRUE;
+
+			$this->load->library('upload', $config);
+			$upload = $this->upload->do_upload($this->v_input['tabel_b2_field4_input']);
+
+			if (!$upload) {
+				if ($new_name != $tabel_b2[0]->nama) {
+					rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+					$gambar = str_replace(' ', '_', $new_name) . $extension;
+				} else {
+					$gambar = $img;
 				}
-				$upload = $this->upload->data();
-				$gambar = $upload['file_name'];
 			} else {
-				$gambar = $img;
+				if ($new_name != $tabel_b2[0]->nama) {
+					// File upload is successful, delete the old file
+					if (file_exists($path . $img)) {
+						unlink($path . $img);
+					}
+					$upload = $this->upload->data();
+					$gambar = $upload['file_name'];
+				} else {
+					$gambar = $img;
+				}
 			}
+
+			// menggunakan nama khusus sama dengan konfigurasi
+			$data = array(
+				$this->aliases['tabel_b2_field2'] => $new_name,
+				$this->aliases['tabel_b2_field3'] => $this->v_post['tabel_b2_field3'],
+				$this->aliases['tabel_b2_field4'] => $gambar,
+				$this->aliases['tabel_b2_field5'] => $this->v_post['tabel_b2_field5'],
+				$this->aliases['tabel_b2_field7'] => $this->v_post['tabel_b2_field7'],
+			);
+
+			$aksi = $this->tl_b2->update_b2($data, $tabel_b2_field1);
+
+			$notif = $this->handle_4c($aksi, 'tabel_b2', $tabel_b2_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
 		}
-
-		// menggunakan nama khusus sama dengan konfigurasi
-		$data = array(
-			$this->aliases['tabel_b2_field2'] => $new_name,
-			$this->aliases['tabel_b2_field3'] => $this->v_post['tabel_b2_field3'],
-			$this->aliases['tabel_b2_field4'] => $gambar,
-			$this->aliases['tabel_b2_field5'] => $this->v_post['tabel_b2_field5'],
-			$this->aliases['tabel_b2_field7'] => $this->v_post['tabel_b2_field7'],
-		);
-
-		$aksi = $this->tl_b2->update_b2($data, $tabel_b2_field1);
-
-		$notif = $this->handle_4c($aksi, 'tabel_b2', $tabel_b2_field1);
-
-		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function aktifkan($tabel_b2_field1 = null) //update tidak diperlukan di sini
@@ -259,21 +274,32 @@ class C_tabel_b2 extends Omnitags
 		$this->session_3();
 
 		$tabel_b2 = $this->tl_b2->get_b2_by_b2_field1($tabel_b2_field1)->result();
-		$img = $tabel_b2[0]->img;
 
-		unlink($this->v_upload_path['tabel_b2'] . $img);
+		if ($tabel_b2) {
 
-		$aksi = $this->tl_b2->delete_b2($tabel_b2_field1);
+			$img = $tabel_b2[0]->img;
 
-		$notif = $this->handle_4e($aksi, 'tabel_b2', $tabel_b2_field1);
+			unlink($this->v_upload_path['tabel_b2'] . $img);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$aksi = $this->tl_b2->delete_b2($tabel_b2_field1);
+
+			$notif = $this->handle_4e($aksi, 'tabel_b2', $tabel_b2_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	// Cetak semua data
 	public function laporan()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_b2_alias_v4_title'),

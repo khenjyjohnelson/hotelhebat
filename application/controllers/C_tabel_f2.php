@@ -16,6 +16,7 @@ class C_tabel_f2 extends Omnitags
 	public function index()
 	{
 		$this->declarew();
+		$this->page_session_5();
 
 		switch (userdata($this->aliases['tabel_c2_field6'])) {
 			case $this->aliases['tabel_c2_field6_value5']:
@@ -41,7 +42,7 @@ class C_tabel_f2 extends Omnitags
 
 			default:
 				redirect(site_url($this->language_code . '/login'));
-			break;
+				break;
 		}
 
 		$data = array_merge($data1, $this->package);
@@ -55,6 +56,7 @@ class C_tabel_f2 extends Omnitags
 	public function daftar()
 	{
 		$this->declarew();
+		$this->page_session_5();
 
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
@@ -74,6 +76,7 @@ class C_tabel_f2 extends Omnitags
 	public function filter_c1()
 	{
 		$this->declarew();
+		$this->page_session_5();
 
 		validate_input(
 			array(
@@ -116,6 +119,7 @@ class C_tabel_f2 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->page_session_4();
 
 		// nilai min dan max di sini belum ada
 		$param1 = $this->v_get['tabel_f2_field10_filter1'];
@@ -233,47 +237,58 @@ class C_tabel_f2 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_4_5();
-		
+
 		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 
-		validate_input(
-			array(
-				$this->v_post['tabel_f2_field1'],
-				$this->v_post['tabel_f2_field12'],
-			),
-			$this->views['flash1'],
-			'ubah_status' . $tabel_f2_field1
-		);
+		$tabel_f2 = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
 
+		if ($tabel_f2) {
 
-		$data = array(
-			$this->aliases['tabel_f2_field12'] => $this->v_post['tabel_f2_field12'],
-		);
-
-		// jika status pesanan cek in
-		if ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value4']) {
-
-			// hanya merubah status pesanan
-			$aksi = $this->tl_f2->update_f2($data, $tabel_f2_field1);
-
-			// jika status pesanan cek out
-		} elseif ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value5']) {
-
-			// menghapus data pesanan supaya trigger tambah_kamar dapat berjalan
-			$aksi = $this->tl_f2->delete_f2($tabel_f2_field1);
-
-			// memasukkan nama resepsionis yang melakukan operasi
-			$data = array(
-				$this->aliases['tabel_f1_field15'] => userdata($this->aliases['tabel_c2_field1'])
+			validate_input(
+				array(
+					$this->v_post['tabel_f2_field1'],
+					$this->v_post['tabel_f2_field12'],
+				),
+				$this->views['flash1'],
+				'ubah_status' . $tabel_f2_field1
 			);
 
-			// mengupdate pesanan dengan nama user yang aktif
-			$aksi = $this->tl_f1->update_f1($data, $tabel_f2_field1);
+
+			$data = array(
+				$this->aliases['tabel_f2_field12'] => $this->v_post['tabel_f2_field12'],
+			);
+
+			// jika status pesanan cek in
+			if ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value4']) {
+
+				// hanya merubah status pesanan
+				$aksi = $this->tl_f2->update_f2($data, $tabel_f2_field1);
+
+				// jika status pesanan cek out
+			} elseif ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value5']) {
+
+				// menghapus data pesanan supaya trigger tambah_kamar dapat berjalan
+				$aksi = $this->tl_f2->delete_f2($tabel_f2_field1);
+
+				// memasukkan nama resepsionis yang melakukan operasi
+				$data = array(
+					$this->aliases['tabel_f1_field15'] => userdata($this->aliases['tabel_c2_field1'])
+				);
+
+				// mengupdate pesanan dengan nama user yang aktif
+				$aksi = $this->tl_f1->update_f1($data, $tabel_f2_field1);
+			}
+
+			$notif = $this->handle_4c($aksi, 'tabel_f2_field12', $tabel_f2_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
 		}
-
-		$notif = $this->handle_4c($aksi, 'tabel_f2_field12', $tabel_f2_field1);
-
-		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
@@ -282,29 +297,40 @@ class C_tabel_f2 extends Omnitags
 		$this->declarew();
 		$this->session_4();
 
-		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
-		$status = $this->v_post['tabel_f2_field12'];
+		$tabel = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
 
-		$hapus = $this->tl_f2->delete_f2($tabel_f2_field1);
+		if ($tabel) {
+			$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
+			$status = $this->v_post['tabel_f2_field12'];
 
-		// memasukkan nama resepsionis yang melakukan operasi
-		$data = array(
-			$this->aliases['tabel_f1_field14'] => userdata($this->aliases['tabel_c2_field2'])
-		);
+			$hapus = $this->tl_f2->delete_f2($tabel_f2_field1);
 
-		// mengupdate history dengan nama user yang aktif
-		$update_f1 = $this->tl_f1->update_f1($data, $tabel_f2_field1);
+			// memasukkan nama resepsionis yang melakukan operasi
+			$data = array(
+				$this->aliases['tabel_f1_field14'] => userdata($this->aliases['tabel_c2_field2'])
+			);
 
-		$aksi = $hapus && $update_f1;
+			// mengupdate history dengan nama user yang aktif
+			$update_f1 = $this->tl_f1->update_f1($data, $tabel_f2_field1);
 
-		$notif = $this->handle_4e($aksi, 'tabel_f2', $tabel_f2_field1);
+			$aksi = $hapus && $update_f1;
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$notif = $this->handle_4e($aksi, 'tabel_f2', $tabel_f2_field1);
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	public function filter()
 	{
 		$this->declarew();
+		$this->page_session_4();
 
 		validate_input(
 			array(
@@ -349,6 +375,7 @@ class C_tabel_f2 extends Omnitags
 	public function laporan()
 	{
 		$this->declarew();
+		$this->page_session_4();
 
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v4_title'),
@@ -368,18 +395,29 @@ class C_tabel_f2 extends Omnitags
 	public function print($tabel_f2_field1 = null)
 	{
 		$this->declarew();
+		$this->page_session_4_5();
 
-		$data1 = array(
-			'title' => lang('tabel_f2_alias_v5_title'),
-			'konten' => $this->v5['tabel_f2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
-			'tbl_f2' => $this->tl_f2->get_f2_with_e4_by_f2_field1($tabel_f2_field1)->result(),
-		);
+		$tabel = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1);
+		if ($tabel) {
 
-		$data = array_merge($data1, $this->package);
+			$data1 = array(
+				'title' => lang('tabel_f2_alias_v5_title'),
+				'konten' => $this->v5['tabel_f2'],
+				'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2'])->result(),
+				'tbl_f2' => $this->tl_f2->get_f2_with_e4_by_f2_field1($tabel_f2_field1)->result(),
+			);
 
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
+			$data = array_merge($data1, $this->package);
+
+			set_userdata('previous_url', current_url());
+			load_view_data('_layouts/printpage', $data);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 
@@ -399,6 +437,7 @@ class C_tabel_f2 extends Omnitags
 	public function cari()
 	{
 		$this->declarew();
+		$this->page_session_4_5();
 
 		$param1 = $this->v_get['tabel_f2_field1'];
 		$param2 = $this->v_get['tabel_f2_field4'];
@@ -424,9 +463,10 @@ class C_tabel_f2 extends Omnitags
 	public function konfirmasi()
 	{
 		$this->declarew();
+		$this->page_session_5();
 
 		$tabel_c2_field3 = $this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'];
-		
+
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v4_title'),
 			'konten' => $this->v7['tabel_f2'],
@@ -453,35 +493,47 @@ class C_tabel_f2 extends Omnitags
 
 		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 
-		validate_input(
-			array(
-				$this->v_post['tabel_f2_field1'],
-				$this->v_post['tabel_f2_field12'],
-				$this->v_post['tabel_f2_field13'],
-			),
-			$this->views['flash1'],
-			'ubah_status' . $tabel_f2_field1
-		);
+		$tabel = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
 
-		// hanya merubah status pesanan berdasarkan id pesanan
-		$data = array(
-			$this->aliases['tabel_f2_field12'] => $this->aliases['tabel_f2_field12_value2'],
-			$this->aliases['tabel_f2_field13'] => $this->v_post['tabel_f2_field13'],
+		if ($tabel) {
 
-		);
+			validate_input(
+				array(
+					$this->v_post['tabel_f2_field1'],
+					$this->v_post['tabel_f2_field12'],
+					$this->v_post['tabel_f2_field13'],
+				),
+				$this->views['flash1'],
+				'ubah_status' . $tabel_f2_field1
+			);
 
-		$aksi = $this->tl_f2->update_f2($data, $tabel_f2_field1);
+			// hanya merubah status pesanan berdasarkan id pesanan
+			$data = array(
+				$this->aliases['tabel_f2_field12'] => $this->aliases['tabel_f2_field12_value2'],
+				$this->aliases['tabel_f2_field13'] => $this->v_post['tabel_f2_field13'],
 
-		// hanya merubah id pesanan di tabel kamar berdasarkan no kamar
-		$param = $this->v_post['tabel_f2_field13'];
-		$data2 = array(
-			$this->aliases['tabel_e3_field3'] => $this->v_post['tabel_f2_field1'],
-			$this->aliases['tabel_e3_field4'] => $this->aliases['tabel_e3_field4_value3'],
-		);
-		$aksi = $this->tl_e3->update_e3($data2, $param);
+			);
 
-		$notif = $this->handle_4c($aksi, 'tabel_f2', $tabel_f2_field1);
+			$aksi = $this->tl_f2->update_f2($data, $tabel_f2_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			// hanya merubah id pesanan di tabel kamar berdasarkan no kamar
+			$param = $this->v_post['tabel_f2_field13'];
+			$data2 = array(
+				$this->aliases['tabel_e3_field3'] => $this->v_post['tabel_f2_field1'],
+				$this->aliases['tabel_e3_field4'] => $this->aliases['tabel_e3_field4_value3'],
+			);
+			$aksi = $this->tl_e3->update_e3($data2, $param);
+
+			$notif = $this->handle_4c($aksi, 'tabel_f2', $tabel_f2_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 }

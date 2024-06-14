@@ -9,6 +9,7 @@ class C_tabel_b7 extends Omnitags
 	public function detail($param1 = null)
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v8_title'),
@@ -30,7 +31,8 @@ class C_tabel_b7 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-
+		$this->page_session_3();
+		
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v3_title'),
 			'count' => $this->tl_b7->get_all_b7()->num_rows(),
@@ -273,13 +275,15 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		$tabel_b7 = $this->tl_b7->get_b5_field1($tabel_b7_field1)->result();
+		$tabel_b7 = $this->tl_b7->get_b7_field1($tabel_b7_field1)->result();
+
+		if($tabel_b7) {
 		$tabel_b7_field3 = $tabel_b7[0]->favicon;
 		$tabel_b7_field4 = $tabel_b7[0]->logo;
 		$tabel_b7_field5 = $tabel_b7[0]->foto;
-		unlink($this->v_upload_path['tabel_b5'] . $tabel_b7_field3);
-		unlink($this->v_upload_path['tabel_b5'] . $tabel_b7_field4);
-		unlink($this->v_upload_path['tabel_b5'] . $tabel_b7_field5);
+		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field3);
+		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field4);
+		unlink($this->v_upload_path['tabel_b7'] . $tabel_b7_field5);
 
 		$aksi = $this->tl_b7->delete_b7($tabel_b7_field1);
 		$tabel_b1 = $this->tl_b1->delete_b1_by_b1_field7($tabel_b7_field1);
@@ -290,13 +294,21 @@ class C_tabel_b7 extends Omnitags
 		$notif = $this->handle_4e($aksi, 'tabel_b7', $tabel_b7_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
+			
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	// Cetak semua data
 	public function laporan()
 	{
 		$this->declarew();
-
+		$this->page_session_3();
+		
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v4_title'),
 			'konten' => $this->v4['tabel_b7'],

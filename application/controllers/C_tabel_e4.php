@@ -9,6 +9,7 @@ class C_tabel_e4 extends Omnitags
 	public function index()
 	{
 		$this->declarew();
+		$this->session_all();
 
 		$data1 = array(
 			'title' => lang('tabel_e4_alias_v1_title'),
@@ -30,6 +31,7 @@ class C_tabel_e4 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_e4_alias_v3_title'),
@@ -127,105 +129,113 @@ class C_tabel_e4 extends Omnitags
 		$this->session_3();
 
 		$tabel_e4_field1 = $this->v_post['tabel_e4_field1'];
-		
-		validate_input(
-			array(
-				$this->v_post['tabel_e4_field1'],
-				$this->v_post['tabel_e4_field2'],
-				$this->v_post['tabel_e4_field3'],
-				$this->v_post['tabel_e4_field4'],
-				$this->v_post['tabel_e4_field4_old'],
-				$this->v_post['tabel_e4_field5'],
-			),
-			$this->views['flash3'],
-			'ubah' . $tabel_e4_field1
-		);
 
 		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
-		$new_name = $this->v_post['tabel_e4_field2'];
-		$path = $this->v_upload_path['tabel_e4'];
-		$img = $this->v_post['tabel_e4_field4_old'];
-		$extension = '.' . getExtension($path . $img);
 
-		$config['upload_path'] = $path;
-		// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
-		$config['file_name'] = $new_name;
-		$config['allowed_types'] = $this->file_type1;
-		$config['overwrite'] = TRUE;
-		$config['remove_spaces'] = TRUE;
+		if ($tabel_e4) {
 
-		$this->load->library('upload', $config);
-		$upload = $this->upload->do_upload($this->v_input['tabel_e4_field4_input']);
+			validate_input(
+				array(
+					$this->v_post['tabel_e4_field1'],
+					$this->v_post['tabel_e4_field2'],
+					$this->v_post['tabel_e4_field3'],
+					$this->v_post['tabel_e4_field4'],
+					$this->v_post['tabel_e4_field4_old'],
+					$this->v_post['tabel_e4_field5'],
+				),
+				$this->views['flash3'],
+				'ubah' . $tabel_e4_field1
+			);
 
-		if (!$upload) {
-			if ($new_name != $tabel_e4[0]->tipe) {
-				rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
-				$gambar = str_replace(' ', '_', $new_name) . $extension;
-			} else {
-				$gambar = $img;
-			}
-		} else {
-			if ($new_name != $tabel_e4[0]->tipe) {
-				// File upload is successful, delete the old file
-				if (file_exists($path . $img)) {
-					unlink($path . $img);
+			$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
+			$new_name = $this->v_post['tabel_e4_field2'];
+			$path = $this->v_upload_path['tabel_e4'];
+			$img = $this->v_post['tabel_e4_field4_old'];
+			$extension = '.' . getExtension($path . $img);
+
+			$config['upload_path'] = $path;
+			// nama file telah ditetapkan dan hanya berekstensi jpg dan dapat diganti dengan file bernama sama
+			$config['file_name'] = $new_name;
+			$config['allowed_types'] = $this->file_type1;
+			$config['overwrite'] = TRUE;
+			$config['remove_spaces'] = TRUE;
+
+			$this->load->library('upload', $config);
+			$upload = $this->upload->do_upload($this->v_input['tabel_e4_field4_input']);
+
+			if (!$upload) {
+				if ($new_name != $tabel_e4[0]->tipe) {
+					rename($path . $img, $path . str_replace(' ', '_', $new_name) . $extension);
+					$gambar = str_replace(' ', '_', $new_name) . $extension;
+				} else {
+					$gambar = $img;
 				}
-				$upload = $this->upload->data();
-				$gambar = $upload['file_name'];
 			} else {
-				$gambar = $img;
+				if ($new_name != $tabel_e4[0]->tipe) {
+					// File upload is successful, delete the old file
+					if (file_exists($path . $img)) {
+						unlink($path . $img);
+					}
+					$upload = $this->upload->data();
+					$gambar = $upload['file_name'];
+				} else {
+					$gambar = $img;
+				}
 			}
+
+
+			$data = array(
+				$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
+				$this->aliases['tabel_e4_field3'] => $gambar,
+				$this->aliases['tabel_e4_field4'] => $this->v_post['tabel_e4_field4'],
+				$this->aliases['tabel_e4_field5'] => $this->v_post['tabel_e4_field5'],
+			);
+
+			$aksi = $this->tl_e4->update_e4($data, $tabel_e4_field1);
+
+			$notif = $this->handle_4c($aksi, 'tabel_e4', $tabel_e4_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
 		}
-
-
-		$data = array(
-			$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
-			$this->aliases['tabel_e4_field3'] => $gambar,
-			$this->aliases['tabel_e4_field4'] => $this->v_post['tabel_e4_field4'],
-			$this->aliases['tabel_e4_field5'] => $this->v_post['tabel_e4_field5'],
-		);
-
-		$aksi = $this->tl_e4->update_e4($data, $tabel_e4_field1);
-
-		$notif = $this->handle_4c($aksi, 'tabel_e4', $tabel_e4_field1);
-
-		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function delete($tabel_e4_field1 = null)
 	{
 		$this->declarew();
-
-		// switch (userdata($this->aliases['tabel_c2_field6'])) {
-		// 	case $this->aliases['tabel_c2_field6_value3']:
-		// 		break;
-
-		// 	case $this->aliases['tabel_c2_field6_value1']:
-		// 	case $this->aliases['tabel_c2_field6_value2']:
-		// 	case $this->aliases['tabel_c2_field6_value5']:
-		// 	case $this->aliases['tabel_c2_field6_value4']:
-		// 	default:
-		// 		redirect(site_url($this->views['language'] . '/welcome/404'));
-		// 		break;
-		// }
-
 		$this->session_3();
 
 		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
-		$tabel_e4_field3 = $tabel_e4[0]->img;
 
-		unlink($this->v_upload_path['tabel_e4'] . $tabel_e4_field3);
-		$aksi = $this->tl_e4->delete_e4($tabel_e4_field1);
+		if ($tabel_e4) {
+			$tabel_e4_field3 = $tabel_e4[0]->img;
 
-		$notif = $this->handle_4e($aksi, 'tabel_e4', $tabel_e4_field1);
+			unlink($this->v_upload_path['tabel_e4'] . $tabel_e4_field3);
+			$aksi = $this->tl_e4->delete_e4($tabel_e4_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);
+			$notif = $this->handle_4e($aksi, 'tabel_e4', $tabel_e4_field1);
+
+			redirect($_SERVER['HTTP_REFERER']);
+
+		} else {
+			// error handling
+			set_flashdata($this->views['flash1'], "Error occurred while processing data!");
+			set_flashdata('toast', $this->views['flash1_func1']);
+			redirect(userdata('previous_url'));
+		}
 	}
 
 	// Cetak semua data
 	public function laporan()
 	{
 		$this->declarew();
+		$this->page_session_3();
 
 		$data1 = array(
 			'title' => lang('tabel_e4_alias_v4_title'),

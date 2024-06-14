@@ -1,13 +1,3 @@
-<?php switch (userdata($tabel_c2_field6)) {
-  case $tabel_c2_field6_value3:
-  case $tabel_c2_field6_value4:
-    break;
-
-  default:
-    redirect(site_url($language . '/no_level'));
-    break;
-}
-?>
 <table class="table">
   <thead class="thead">
     <tr>

@@ -15,7 +15,8 @@ class C_tabel_d3 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-
+		$this->page_session_3();
+		
 		$data1 = array(
 			'title' => lang('tabel_d3_alias_v3_title'),
 			'count' => $this->tl_d3->get_all_d3()->num_rows(),
@@ -49,7 +50,8 @@ class C_tabel_d3 extends Omnitags
 	public function laporan()
 	{
 		$this->declarew();
-
+		$this->page_session_3();
+		
 		$data1 = array(
 			'title' => lang('tabel_d3_alias_v4_title'),
 			'konten' => $this->v4['tabel_d3'],

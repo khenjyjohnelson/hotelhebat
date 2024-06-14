@@ -36,7 +36,20 @@ class M_tabel_b9 extends CI_Model
 
 	public function get_b9_by_b9_field2($param1)
 	{
-		$this->db->where($this->aliases['tabel_b9_field2'], userdata($this->aliases['tabel_c2_field1']));
+		$this->db->where($this->aliases['tabel_b9_field2'], $param1);
+		return $this->db->get($this->aliases['tabel_b9']);
+	}
+
+	public function get_b9_by_b9_field1_by_b9_field2($param1, $param2)
+	{
+		$this->db->where($this->aliases['tabel_b9_field1'], $param1);
+		$this->db->where($this->aliases['tabel_b9_field2'], $param2);
+		return $this->db->get($this->aliases['tabel_b9']);
+	}
+
+	public function get_b9_by_b9_field2_by_b9_field6($param1)
+	{
+		$this->db->where($this->aliases['tabel_b9_field2'], $param1);
 		$this->db->where($this->aliases['tabel_b9_field6'], NULL);
 		return $this->db->get($this->aliases['tabel_b9']);
 	}
