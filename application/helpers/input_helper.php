@@ -287,7 +287,7 @@ if (!function_exists('edit_file')) {
                 <div class="form-group">
                     <input class="form-control float" {$required} id="{$input}" type="file" name="{$input}">
                     <label class="form-label" for="{$input}">Ubah {$alias}</label>
-                    <input type="hidden" name="{$old}" value="{$value}" {$required}>
+                    <input accept=".jpg, .jpeg, .png" type="hidden" name="{$old}" value="{$value}" {$required}>
                 </div>
             </div>
         </div>
@@ -393,7 +393,7 @@ if (!function_exists('option_b1')) {
         <option value="d">d</option>
         <option value="e">e</option>
         <option value="f">f</option>
-        <option value="0">0</option>
+        <option value="o">o</option>
         HTML;
     }
 }

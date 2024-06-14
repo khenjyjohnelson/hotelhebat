@@ -15,7 +15,7 @@ if (!class_exists('Omnitags')) {
         // Ini adalah link : https://codeseven.github.io/toastr/demo.html
 
         // Di bawah ini adalah fungsi config
-        public $file_type1 = 'png|jpg|jpeg';
+        public $file_type1 = 'png|jpg|jpeg|webp';
         public $file_type2 = 'pdf';
         public $phase_0 = '<br><span class="h6"> (pre-alpha phase)</span>';
         public $phase_1 = '<br><span class="h6"> (alpha phase)</span>';

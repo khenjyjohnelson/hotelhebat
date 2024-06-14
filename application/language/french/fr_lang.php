@@ -40,13 +40,13 @@ $lang['order_now'] = "Commandez maintenant";
 $lang['reservations'] = "Réservations";
 $lang['history'] = "Historique";
 
-$lang['invalid'] = "Cannot perform action!";
+$lang['invalid'] = "Impossible d'exécuter l'action!";
 $lang['no_access'] = "Vous n'avez pas accès à cette page !";
 $lang['page_not_found'] = "Page non trouvée !";
 $lang['welcome'] = "Bienvenue !";
 $lang['select'] = "Sélectionner";
 $lang['required_to_do'] = " requis pour faire ";
-$lang['and'] = "et";
+$lang['and'] = " et ";
 
 $lang['images_not_change_immediately'] = "Certaines images ne changeront pas immédiatement, il est nécessaire de vider le cache d'abord.";
 $lang['reupload_image_even_for_name_change'] = "* Même si vous souhaitez uniquement changer le nom, vous devez également télécharger à nouveau l'image.";

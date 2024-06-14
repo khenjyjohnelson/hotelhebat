@@ -40,13 +40,13 @@ $lang['order_now'] = 'Pesan sekarang';
 $lang['reservations'] = 'Reservasi';
 $lang['history'] = 'Riwayat';
 
-$lang['invalid'] = "Cannot perform action!";
+$lang['invalid'] = "Tidak dapat melakukan tindakan!";
 $lang['no_access'] = "Anda tidak memiliki akses ke halaman ini!";
 $lang['page_not_found'] = "Halaman Tidak Ada!";
 $lang['welcome'] = "Selamat Datang!";
 $lang['select'] = "Pilih";
 $lang['required_to_do'] = " diperlukan untuk melakukan ";
-$lang['and'] = "dan";
+$lang['and'] = " dan ";
 
 $lang['images_not_change_immediately'] = "Beberapa gambar tidak akan langsung berubah, perlu menghapus cache terlebih dahulu.";
 $lang['reupload_image_even_for_name_change'] = "* Meski ingin mengubah nama saja, tetap harus mengupload ulang gambar juga.";

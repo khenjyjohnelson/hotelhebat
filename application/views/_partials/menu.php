@@ -7,7 +7,7 @@
             </li>
             <?= nav_item(lang('tabel_e4_alias'), $tabel_e4, '/') ?>
             <?= nav_item(lang('tabel_e2_alias'), $tabel_e2, '/') ?>
-            <?= nav_item(lang('login'), $tabel_c2, '/login') ?>
+            <?= nav_item(lang('login'), 'login', '') ?>
             <?php break;
         case $tabel_c2_field6_value5:
         case $tabel_c2_field6_value2:

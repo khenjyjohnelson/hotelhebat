@@ -33,22 +33,18 @@ class C_tabel_f2 extends Omnitags
 					'tabel_f2_field8_value' => $this->v_get['tabel_f2_field8'],
 				);
 
+				set_flashdata($this->views['flash1'], $this->views['flash1_note2']);
+				set_flashdata('toast', $this->views['flash1_func1']);
+
 				$halaman = '_layouts/template';
 				break;
 
 			default:
-				$data1 = array(
-					'title' => 'login',
-					'dekor' => $this->tl_b1->dekor($this->theme_id, 'login')->result(),
-					'tbl_b5' => $this->tl_b5->get_all_b5()->result(),
-				);
-				$halaman = 'login';
+				redirect(site_url($this->language_code . '/login'));
 		}
 
 		$data = array_merge($data1, $this->package);
 
-		set_flashdata($this->views['flash1'], $this->views['flash1_note2']);
-		set_flashdata('toast', $this->views['flash1_func1']);
 
 		set_userdata('previous_url', current_url());
 		load_view_data($halaman, $data);

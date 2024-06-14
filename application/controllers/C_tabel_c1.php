@@ -465,7 +465,7 @@ class C_tabel_c1 extends Omnitags
 
 		// 		set_flashdata($this->views['flash1'], 'Password Salah!');
 		// 		redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
+		redirect(site_url($this->language_code . '/login'));
 		// 	}
 
 		// 	// jika jumlah data lebih dari 0
@@ -473,7 +473,7 @@ class C_tabel_c1 extends Omnitags
 
 		// 	set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
 		// 	redirect($_SERVER['HTTP_REFERER']); 
-		redirect(site_url($this->language_code . '/' . $this->aliases['tabel_c2'] . '/login'));
+		redirect(site_url($this->language_code . '/login'));
 		// }
 
 

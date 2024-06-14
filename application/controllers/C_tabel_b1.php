@@ -74,7 +74,6 @@ class C_tabel_b1 extends Omnitags
 			array(
 				$this->v_post['tabel_b1_field2'],
 				$this->v_post['tabel_b1_field3'],
-				$this->v_post['tabel_b1_field4'],
 				$this->v_post['tabel_b1_field5'],
 				$this->v_post['tabel_b1_field6'],
 				$this->v_post['tabel_b1_field7'],

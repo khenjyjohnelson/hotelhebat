@@ -46,7 +46,7 @@ $lang['page_not_found'] = "Page Not Found!";
 $lang['welcome'] = "Welcome!";
 $lang['select'] = "Select";
 $lang['required_to_do'] = " required to do ";
-$lang['and'] = "and";
+$lang['and'] = " and ";
 
 $lang['images_not_change_immediately'] = "Some images will not change immediately, cache needs to be cleared first.";
 $lang['reupload_image_even_for_name_change'] = "* Even if you only want to change the name, you still need to re-upload the image as well.";

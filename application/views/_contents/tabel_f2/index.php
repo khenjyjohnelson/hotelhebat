@@ -17,16 +17,8 @@
   <!-- form ini berisi data yang sudah diinput sebelumnya dari halaman home -->
   <div class="row justify-content-center align-items-end mt-2">
     <div class="col-md-2">
-      <?= edit_min_max('date', 'tabel_f2_field10', $tabel_f2_field10_value, 'required', date('Y-m-d'), '') ?>
+      <?= edit_min_max('date', 'tabel_f2_field10', $tabel_f2_field10_value, 'required oninput="myFunction()"', date('Y-m-d'), '') ?>
     </div>
-
-    <!-- Seperti di bawah bentuk input array ke depannya cman itu perlu dipending dulu -->
-    <!-- <div class="col-md-2">
-      <div class="form-group">
-        <label>Tanggal Cek Out</label>
-        <input class="form-control" type="date" required name="<?= $tabel_f2_field11_input ?>" value=" $cek_out ?>">
-      </div>
-    </div> -->
 
     <div class="col-md-2">
       <?= edit_min_max('date', 'tabel_f2_field11', $tabel_f2_field11_value, 'required', date('Y-m-d', strtotime("+1 day")), '') ?>
@@ -151,3 +143,23 @@
     </div>
   </div>
 </div>
+
+<script>
+    function myFunction() {
+      let x = document.getElementById("<?= $tabel_f2_field10_input ?>").value;
+
+      // Create a Date object with the value from cek_in_date
+      let startDate = new Date(x);
+
+      // Add one day to the date
+      startDate.setDate(startDate.getDate() + 1);
+
+      // Format the date to YYYY-MM-DD (same as input type date)
+      let formattedDate = startDate.toISOString().split('T')[0];
+
+
+      document.getElementById("<?= $tabel_f2_field11_input ?>").min = formattedDate;
+      document.getElementById("<?= $tabel_f2_field11_input ?>").value = formattedDate;
+
+    }
+  </script>

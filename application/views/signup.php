@@ -22,7 +22,7 @@
     <div class="text-center">
       <span><?= lang('already_have_account') ?></span>
       <a class="text-primary text-decoration-none login" type="button"
-        href="<?= site_url($language . '/' . $tabel_c2 . '/login') ?>">
+        href="<?= site_url($language . '/login') ?>">
         <?= lang('login') ?>
       </a>
     </div>

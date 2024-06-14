@@ -10,7 +10,7 @@
             <div>
               <h1>Find a place that meets your needs</h1>
               <br>
-              <a href="<?= site_url($language . '/' . $tabel_f2 . '/index') ?>" class="btn btn-primary mb-4">Book Now</a>
+              <a href="<?= site_url($language . '/' . $tabel_f2) ?>" class="btn btn-primary mb-4">Book Now</a>
             </div>
           </div>
 
@@ -38,7 +38,7 @@
           </div>
 
           <div class="col-md-2">
-            <?= edit_min_max('number', 'tabel_f2_field11', '1', 'required readonly', '1', '10') ?>
+            <?= edit_min_max('number', 'tabel_f2_field8', '1', 'required readonly', '1', '10') ?>
           </div>
 
           <div class="col-md-1">

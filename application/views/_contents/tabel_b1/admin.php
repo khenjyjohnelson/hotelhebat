@@ -148,25 +148,28 @@
           <?= input_add('text', 'tabel_b1_field5', 'required') ?>
 
           <div class="form-group">
-            <select class="form-control float" required name="<?= $tabel_b1_field6_input ?>">
+            <select id="<?= $tabel_b1_field6_input ?>" 
+            class="form-control float" required name="<?= $tabel_b1_field6_input ?>">
               <option value="a">a</option>
               <option value="b">b</option>
               <option value="c">c</option>
               <option value="d">d</option>
               <option value="f">f</option>
-              <option value="0">0</option>
+              <option value="o">o</option>
             </select>
-            <label class="form-label"><?= lang('select') ?> <?= $tabel_b1_field6_alias ?></label>
+            <label for="<?= $tabel_b1_field6_input ?>" class="form-label"><?= lang('select') ?> 
+            <?= $tabel_b1_field6_alias ?></label>
           </div>
 
           <div class="form-group">
-            <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
-
+            <select id="<?= $tabel_b1_field7_input ?>" 
+            class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
               <?php foreach ($tbl_b7 as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
               <?php endforeach ?>
             </select>
-            <label class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
+            <label for="<?= $tabel_b1_field7_input ?>" class="form-label"><?= lang('select') ?> 
+            <?= $tabel_b7_alias ?></label>
           </div>
 
         </div>

@@ -19,7 +19,7 @@
     <div class="text-center">
       <span><?= lang('dont_have_account') ?></span>
       <a class="text-primary text-decoration-none login" type="button"
-        href="<?= site_url($language . '/' . $tabel_c2 . '/signup') ?>">
+        href="<?= site_url($language . '/signup') ?>">
         <?= lang('create_account') ?>
       </a>
     </div>
