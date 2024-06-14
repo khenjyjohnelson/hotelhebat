@@ -58,10 +58,10 @@
   <div id="card-view" class="row">
     <?php foreach ($tbl_b2 as $tl_b2): ?>
       <?php
-      echo card_file(
+      echo card_event(
         $tl_b2->$tabel_b2_field1,
         $tl_b2->$tabel_b2_field3,
-        truncateText(html_entity_decode($tl_b2->$tabel_b2_field5), 50) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1),
+        truncateText(html_entity_decode($tl_b2->$tabel_b2_field5), 110) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1),
         '',
         $tabel_b2,
         $tl_b2->$tabel_b2_field4,

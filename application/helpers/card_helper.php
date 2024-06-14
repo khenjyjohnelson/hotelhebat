@@ -116,6 +116,33 @@ if (!function_exists('card_file')) {
     }
 }
 
+if (!function_exists('card_event')) {
+    function card_event($id, $title, $detail, $actions, $table, $picture, $theme)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+        
+        return <<<HTML
+        <div class="col-md-4 mt-2">
+            <div class="card text-white {$theme}">
+            <img src="img/{$table}/{$picture}" class="card-img-top img-fluid" style="max-height: 150px" alt="...">
+            <div class="card-body">
+                <p class="card-text" style="font-size: 18px;"
+                data-toggle="tooltip" data-placement="left" title="{$title}">
+                    {$title}
+                </p>
+                <p class="card-text">{$detail}</p>
+
+                {$actions}
+            </div>
+            </div>
+        </div>
+        HTML;
+    }
+}
+
 if (!function_exists('card_count')) {
     function card_count($title, $controller, $theme, $count)
     {
