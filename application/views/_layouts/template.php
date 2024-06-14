@@ -24,7 +24,7 @@ switch (true) {
   <?php foreach ($tbl_a1 as $tl_a1): ?>
 
      <!-- toast -->
-    <div class="toast fade" id="element" style="position: absolute; top: 100px; right: 15px; z-index: 1000" data-delay="5000">
+    <div class="toast fade" id="element" style="position: absolute; top: 95px; right: 15px; z-index: 1000" data-delay="5000">
       <div class="toast-header">
         <img class="rounded mr-2" src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field3 ?>" width="15px" draggable="false">
         <strong class="mr-auto">
