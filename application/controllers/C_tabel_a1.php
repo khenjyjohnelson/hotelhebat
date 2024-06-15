@@ -15,7 +15,7 @@ class C_tabel_a1 extends Omnitags
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP 1.1.
 		header("Pragma: no-cache"); // HTTP 1.0.
 		header("Expires: 0"); // Proxies.
-		
+
 		$this->declarew();
 		$this->page_session_3();
 
@@ -36,7 +36,7 @@ class C_tabel_a1 extends Omnitags
 	{
 		$this->declarew();
 		$this->session_3();
-		
+
 		$tabel_a1_field1 = $this->v_post['tabel_a1_field1'];
 
 		validate_input(
@@ -50,7 +50,7 @@ class C_tabel_a1 extends Omnitags
 			$this->views['flash3'],
 			'ubah' . $tabel_a1_field1
 		);
-		
+
 		$data = array(
 			$this->aliases['tabel_a1_field2'] => $this->v_post['tabel_a1_field2'],
 			$this->aliases['tabel_a1_field3'] => $this->v_post['tabel_a1_field3'],

@@ -120,7 +120,7 @@ class C_tabel_b6 extends Omnitags
 
 		$tabel = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1)->result();
 		$this->check_data($tabel);
-		
+
 		validate_input(
 			array(
 				$this->v_post['tabel_b6_field1'],
@@ -148,7 +148,8 @@ class C_tabel_b6 extends Omnitags
 
 		$notif = $this->handle_4c($aksi, 'tabel_b6', $tabel_b6_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);	}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	public function aktifkan($tabel_b6_field1 = null) //update tidak diperlukan di sini
 	{
@@ -190,7 +191,8 @@ class C_tabel_b6 extends Omnitags
 
 		$notif = $this->handle_4c($aksi, 'tabel_b6_field6', $tabel_b6_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);	}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 
 	public function delete($tabel_b6_field1 = null)

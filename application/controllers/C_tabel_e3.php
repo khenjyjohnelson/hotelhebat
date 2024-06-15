@@ -68,30 +68,30 @@ class C_tabel_e3 extends Omnitags
 		$tabel = $this->tl_e3->get_e3_by_e3_field1($tabel_e3_field1)->result();
 		$this->check_data($tabel);
 
-			validate_input(
-				array(
-					$this->v_post['tabel_e3_field1'],
-					$this->v_post['tabel_e3_field3'],
-					$this->v_post['tabel_e3_field4'],
-					$this->v_post['tabel_e3_field5'],
-				),
-				$this->views['flash3'],
-				'ubah' . $tabel_e3_field1
-			);
+		validate_input(
+			array(
+				$this->v_post['tabel_e3_field1'],
+				$this->v_post['tabel_e3_field3'],
+				$this->v_post['tabel_e3_field4'],
+				$this->v_post['tabel_e3_field5'],
+			),
+			$this->views['flash3'],
+			'ubah' . $tabel_e3_field1
+		);
 
-			$data = array(
-				$this->aliases['tabel_e3_field3'] => $this->v_post['tabel_e3_field3'],
-				$this->aliases['tabel_e3_field4'] => $this->v_post['tabel_e3_field4'],
-				$this->aliases['tabel_e3_field5'] => $this->v_post['tabel_e3_field5'],
-			);
+		$data = array(
+			$this->aliases['tabel_e3_field3'] => $this->v_post['tabel_e3_field3'],
+			$this->aliases['tabel_e3_field4'] => $this->v_post['tabel_e3_field4'],
+			$this->aliases['tabel_e3_field5'] => $this->v_post['tabel_e3_field5'],
+		);
 
-			$aksi = $this->tl_e3->update_e3($data, $tabel_e3_field1);
+		$aksi = $this->tl_e3->update_e3($data, $tabel_e3_field1);
 
-			$notif = $this->handle_4c($aksi, 'tabel_e3', $tabel_e3_field1);
+		$notif = $this->handle_4c($aksi, 'tabel_e3', $tabel_e3_field1);
 
-			redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER']);
 
-		
+
 	}
 
 	public function delete($tabel_e3_field1 = null)
@@ -102,13 +102,13 @@ class C_tabel_e3 extends Omnitags
 		$tabel = $this->tl_e3->get_e3_by_e3_field1($tabel_e3_field1)->result();
 		$this->check_data($tabel);
 
-			$aksi = $this->tl_e3->delete_e3($tabel_e3_field1);
+		$aksi = $this->tl_e3->delete_e3($tabel_e3_field1);
 
-			$notif = $this->handle_4e($aksi, 'tabel_e3', $tabel_e3_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_e3', $tabel_e3_field1);
 
-			redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER']);
 
-		
+
 	}
 
 	// Cetak semua data

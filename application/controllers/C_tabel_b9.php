@@ -141,19 +141,14 @@ class C_tabel_b9 extends Omnitags
 
 		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 
-		$tabel_b9 = $this->tl_b9->get_b9_by_b9_field1($this->v_post['tabel_b9_field1'])->result();
-		$this->check_data($tabel_b9);
+		// menggunakan nama khusus sama dengan konfigurasi
+		$data = array(
+			$this->aliases['tabel_b9_field6'] => date("Y-m-d\TH:i:s"),
+		);
 
-			// menggunakan nama khusus sama dengan konfigurasi
-			$data = array(
-				$this->aliases['tabel_b9_field6'] => date("Y-m-d\TH:i:s"),
-			);
+		$aksi = $this->tl_b9->update_null($data, $tabel_b9_field2);
 
-			$aksi = $this->tl_b9->update_null($data, $tabel_b9_field2);
-
-			redirect($_SERVER['HTTP_REFERER']);
-
-		
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function delete($tabel_b9_field1 = null)
@@ -163,13 +158,13 @@ class C_tabel_b9 extends Omnitags
 
 		$tabel = $this->tl_b9->get_b1_by_b1_field1($tabel_b9_field1);
 		$this->check_data($tabel);
-			$aksi = $this->tl_b9->delete_b9($tabel_b9_field1);
+		$aksi = $this->tl_b9->delete_b9($tabel_b9_field1);
 
-			$notif = $this->handle_4e($aksi, 'tabel_b9', $tabel_b9_field1);
+		$notif = $this->handle_4e($aksi, 'tabel_b9', $tabel_b9_field1);
 
-			redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER']);
 
-		
+
 	}
 
 	// Cetak semua data

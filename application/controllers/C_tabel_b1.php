@@ -224,7 +224,8 @@ class C_tabel_b1 extends Omnitags
 
 		$notif = $this->handle_4c($aksi, 'tabel_b1', $tabel_b1_field7);
 
-		redirect($_SERVER['HTTP_REFERER']);	}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	public function delete($tabel_b1_field1 = null)
 	{
@@ -241,7 +242,8 @@ class C_tabel_b1 extends Omnitags
 
 		$notif = $this->handle_4e($aksi, 'tabel_b1', $tabel_b1_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);	}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	// Cetak semua data
 	public function laporan()

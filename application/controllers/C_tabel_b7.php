@@ -35,7 +35,7 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 		$this->page_session_3();
-		
+
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v3_title'),
 			'konten' => $this->v3['tabel_b7'],
@@ -308,8 +308,8 @@ class C_tabel_b7 extends Omnitags
 		$notif = $this->handle_4e($aksi, 'tabel_b7', $tabel_b7_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
-			
-		
+
+
 	}
 
 	// Cetak semua data
@@ -317,7 +317,7 @@ class C_tabel_b7 extends Omnitags
 	{
 		$this->declarew();
 		$this->page_session_3();
-		
+
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v4_title'),
 			'konten' => $this->v4['tabel_b7'],

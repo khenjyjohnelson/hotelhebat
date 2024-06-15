@@ -118,7 +118,8 @@ class C_tabel_f4 extends Omnitags
 
 		$notif = $this->handle_4e($aksi, 'tabel_f4', $tabel_f4_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);	}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	// Cetak semua data
 	public function laporan()
