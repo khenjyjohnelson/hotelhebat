@@ -71,7 +71,6 @@ class C_tabel_e3 extends Omnitags
 			validate_input(
 				array(
 					$this->v_post['tabel_e3_field1'],
-					$this->v_post['tabel_e3_field2'],
 					$this->v_post['tabel_e3_field3'],
 					$this->v_post['tabel_e3_field4'],
 					$this->v_post['tabel_e3_field5'],
@@ -81,7 +80,6 @@ class C_tabel_e3 extends Omnitags
 			);
 
 			$data = array(
-				$this->aliases['tabel_e3_field2'] => $this->v_post['tabel_e3_field2'],
 				$this->aliases['tabel_e3_field3'] => $this->v_post['tabel_e3_field3'],
 				$this->aliases['tabel_e3_field4'] => $this->v_post['tabel_e3_field4'],
 				$this->aliases['tabel_e3_field5'] => $this->v_post['tabel_e3_field5'],

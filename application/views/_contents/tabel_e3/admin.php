@@ -132,7 +132,7 @@
             <label class="form-label"><?= $tabel_e3_field4_alias ?></label>
           </div>
 
-          <?= add_min_max('number', 'tabel_e3_field5', 'required', '0', '') ?>
+          <?= input_add('text', 'tabel_e3_field5', 'required') ?>
 
         </div>
 
@@ -177,7 +177,7 @@
                 </div>
 
                 <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
-                <?= input_textarea('tabel_e3_field5', $tl_e3->$tabel_e3_field5, 'required') ?>
+                <?= input_edit('text', 'tabel_e3_field5', $tl_e3->$tabel_e3_field5, 'required') ?>
               </div>
 
               <!-- memunculkan notifikasi modal -->
