@@ -61,8 +61,8 @@ class Welcome extends Omnitags
 
 					'title' => lang('welcome'),
 					'konten' => 'home',
-					'dekor' => $this->tl_b1->dekor($this->theme_id, 'home')->result(),
-					'tbl_b2' => $this->tl_b2->get_b7_aktif($this->theme_id)->result(),
+					'dekor' => $this->tl_b1->dekor($this->theme_id, 'home'),
+					'tbl_b2' => $this->tl_b2->get_b7_aktif($this->theme_id),
 				);
 
 				$data = array_merge($data1, $this->package);
@@ -82,12 +82,13 @@ class Welcome extends Omnitags
 		$data1 = array(
 			'title' => lang('dashboard'),
 			'konten' => 'dashboard',
-			'dekor' => $this->tl_b1->dekor($this->theme_id, 'dashboard')->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'dashboard'),
 			'tbl_e1' => $this->tl_e1->get_all_e1()->num_rows(),
 			'tbl_e2' => $this->tl_e2->get_all_e2()->num_rows(),
 			'tbl_c1' => $this->tl_c1->get_all_c1()->num_rows(),
 			'tbl_e3' => $this->tl_e3->get_all_e3()->num_rows(),
 			'tbl_e4' => $this->tl_e4->get_all_e4()->num_rows(),
+			'tbl_f1' => $this->tl_f1->get_all_f1()->num_rows(),
 			'tbl_f2' => $this->tl_f2->get_all_f2()->num_rows(),
 			'tbl_c2' => $this->tl_c2->get_all_c2()->num_rows(),
 			'tbl_f3' => $this->tl_f3->get_all_f3()->num_rows(),
@@ -115,7 +116,7 @@ class Welcome extends Omnitags
 
 		$data1 = array(
 			'title' => lang('invalid'),
-			'dekor' => $this->tl_b1->dekor($this->theme_id, 'invalid')->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'invalid'),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -129,7 +130,7 @@ class Welcome extends Omnitags
 
 		$data1 = array(
 			'title' => lang('no_access'),
-			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no_level')->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'no_level'),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -143,7 +144,7 @@ class Welcome extends Omnitags
 
 		$data1 = array(
 			'title' => lang('page_not_found'),
-			'dekor' => $this->tl_b1->dekor($this->theme_id, '404')->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, '404'),
 		);
 
 		$data = array_merge($data1, $this->package);

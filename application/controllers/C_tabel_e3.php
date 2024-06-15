@@ -15,15 +15,14 @@ class C_tabel_e3 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-		$this->page_session_3();
+		$this->page_session_4();
 
 		$data1 = array(
 			'title' => lang('tabel_e3_alias_v3_title'),
-			'count' => $this->tl_e3->get_all_e3()->num_rows(),
 			'konten' => $this->v3['tabel_e3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e3'])->result(),
-			'tbl_e3' => $this->tl_e3->get_e3_with_e4()->result(),
-			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e3']),
+			'tbl_e3' => $this->tl_e3->get_e3_with_e4(),
+			'tbl_c1' => $this->tl_c1->get_all_c1(),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -35,7 +34,7 @@ class C_tabel_e3 extends Omnitags
 	public function tambah()
 	{
 		$this->declarew();
-		$this->session_3();
+		$this->session_4();
 
 		validate_input(
 			array(
@@ -62,7 +61,7 @@ class C_tabel_e3 extends Omnitags
 	public function update()
 	{
 		$this->declarew();
-		$this->session_3();
+		$this->session_4();
 
 		$tabel_e3_field1 = $this->v_post['tabel_e3_field1'];
 
@@ -100,7 +99,7 @@ class C_tabel_e3 extends Omnitags
 	public function delete($tabel_e3_field1 = null)
 	{
 		$this->declarew();
-		$this->session_3();
+		$this->session_4();
 
 		$tabel = $this->tl_e3->get_e3_by_e3_field1($tabel_e3_field1)->result();
 		$this->check_data($tabel);
@@ -118,13 +117,13 @@ class C_tabel_e3 extends Omnitags
 	public function laporan()
 	{
 		$this->declarew();
-		$this->page_session_3();
+		$this->page_session_4();
 
 		$data1 = array(
 			'title' => lang('tabel_e3_alias_v4_title'),
 			'konten' => $this->v4['tabel_e3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e3'])->result(),
-			'tbl_e3' => $this->tl_e3->get_all_e3()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e3']),
+			'tbl_e3' => $this->tl_e3->get_all_e3(),
 		);
 
 		$data = array_merge($data1, $this->package);

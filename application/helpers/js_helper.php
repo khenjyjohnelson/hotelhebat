@@ -208,6 +208,123 @@ if (!function_exists('radio_js')) {
     }
 }
 
+if (!function_exists('adjust_date1')) {
+    function adjust_date1($input1, $input2)
+    {
+        return <<<HTML
+        <script>
+        function myFunction1() {
+            let x = document.getElementById("{$input1}").value;
+
+            // Create a Date object with the value from cek_in_date
+            let startDate = new Date(x);
+
+            // Add one day to the date
+            startDate.setDate(startDate.getDate() + 1);
+
+            // Format the date to YYYY-MM-DD (same as input type date)
+            let formattedDate = startDate.toISOString().split('T')[0];
+
+
+            document.getElementById("{$input2}").min = formattedDate;
+            document.getElementById("{$input2}").value = formattedDate;
+
+        }
+        </script>
+        HTML;
+
+    }
+}
+
+if (!function_exists('adjust_date2')) {
+    function adjust_date2($input1, $input2)
+    {
+        return <<<HTML
+        <script>
+        function myFunction2() {
+            let x = document.getElementById("{$input1}").value;
+
+            // Create a Date object with the value from cek_in_date
+            let startDate = new Date(x);
+
+            // Add one day to the date
+            startDate.setDate(startDate.getDate() + 1);
+
+            // Format the date to YYYY-MM-DD (same as input type date)
+            let formattedDate = startDate.toISOString().split('T')[0];
+
+
+            document.getElementById("{$input2}").min = formattedDate;
+            document.getElementById("{$input2}").value = formattedDate;
+
+        }
+        </script>
+        HTML;
+
+    }
+}
+
+if (!function_exists('adjust_date3')) {
+    function adjust_date3($input1, $input2, $input3, $input4)
+    {
+        return <<<HTML
+        <script>
+        function myFunction3() {
+            let x = document.getElementById("{$input1}").value;
+
+            // Create a Date object with the value from cek_in_date
+            let startDate = new Date(x);
+
+            // Add one day to the date
+            startDate.setDate(startDate.getDate() + 1);
+
+            // Format the date to YYYY-MM-DD (same as input type date)
+            let formattedDate = startDate.toISOString().split('T')[0];
+
+
+            document.getElementById("{$input2}").min = formattedDate;
+            document.getElementById("{$input3}").min = formattedDate;
+            document.getElementById("{$input4}").min = formattedDate;
+            
+            document.getElementById("{$input2}").value = formattedDate;
+            document.getElementById("{$input3}").value = formattedDate;
+            document.getElementById("{$input4}").value = formattedDate;
+
+        }
+        </script>
+        HTML;
+
+    }
+}
+
+if (!function_exists('adjust_date4')) {
+    function adjust_date4($input1, $input2, $input3, $input4)
+    {
+        return <<<HTML
+        <script>
+        function myFunction4() {
+            let x = document.getElementById("{$input1}").value;
+
+            // Create a Date object with the value from cek_in_date
+            let startDate = new Date(x);
+
+            // Add one day to the date
+            startDate.setDate(startDate.getDate() + 1);
+
+            // Format the date to YYYY-MM-DD (same as input type date)
+            let formattedDate = startDate.toISOString().split('T')[0];
+
+
+            document.getElementById("{$input2}").min = formattedDate;
+            document.getElementById("{$input2}").value = formattedDate;
+
+        }
+        </script>
+        HTML;
+
+    }
+}
+
 if (!function_exists('adjust_col_js')) {
     function adjust_col_js()
     {
@@ -247,6 +364,7 @@ if (!function_exists('adjust_col_js')) {
 
     }
 }
+
 
 if (!function_exists('checkbox_js')) {
     function checkbox_js()

@@ -1,6 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+if (!function_exists('count_data')) {
+    function count_data($table)
+    {
+        $table = $table->num_rows();
+
+        return <<<HTML
+        <br><span class="h6"> Data: {$table}
+        HTML;
+    }
+}
+
 if (!function_exists('row_data')) {
     function row_data($field, $value)
     {

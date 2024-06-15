@@ -17,12 +17,11 @@ class C_tabel_c1 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_c1_alias_v3_title'),
-			'count' => $this->tl_c1->get_all_c1()->num_rows(),
 			'konten' => $this->v3['tabel_c1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
-			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
-			'tbl_e3' => $this->tl_e3->get_all_e3()->result(),
-			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
+			'tbl_c1' => $this->tl_c1->get_all_c1(),
+			'tbl_e3' => $this->tl_e3->get_all_e3(),
+			'tbl_e4' => $this->tl_e4->get_all_e4(),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -232,8 +231,8 @@ class C_tabel_c1 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_c1_alias_v4_title'),
 			'konten' => $this->v4['tabel_c1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
-			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
+			'tbl_c1' => $this->tl_c1->get_all_c1(),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -251,8 +250,8 @@ class C_tabel_c1 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_c1_alias2_v6_title'),
 			'konten' => $this->v6['tabel_c1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
-			'tbl_c1' => $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
+			'tbl_c1' => $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -269,7 +268,7 @@ class C_tabel_c1 extends Omnitags
 		$data1 = array(
 			'title' => $this->views['tabel_c1_v2_title'],
 			'konten' => 'login',
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -286,7 +285,7 @@ class C_tabel_c1 extends Omnitags
 		$data1 = array(
 			'title' => 'Create an Account',
 			'konten' => 'signup',
-			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup')->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup'),
 		);
 
 		$data = array_merge($data1, $this->package);

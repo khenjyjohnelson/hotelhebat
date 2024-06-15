@@ -3,7 +3,7 @@
     <h1><?= xss_clean($title) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= xss_clean($tabel_b1) ?>/<?= xss_clean($dk->$tabel_b1_field4) ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -25,7 +25,7 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_b7 as $tl_b7):
+  <?php foreach ($tbl_b7->result() as $tl_b7):
     echo card_file(
       $tl_b7->$tabel_b7_field1,
       $tl_b7->$tabel_b7_field2,
@@ -40,9 +40,9 @@
           href="' . site_url($language . '/' . $tabel_b7 . '/delete/' . $tl_b7->$tabel_b7_field1) . '">
           <i class="fas fa-trash"></i></a>' : ''
       ),
+      'text-white bg-danger',
       $tabel_b7,
       $tl_b7->$tabel_b7_field3,
-      'bg-danger'
     );
   endforeach; ?>
 </div>
@@ -63,7 +63,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_b7 as $tl_b7): ?>
+      <?php foreach ($tbl_b7->result() as $tl_b7): ?>
         <tr>
           <td></td>
           <td><?= xss_clean($tl_b7->$tabel_b7_field1); ?></td>
@@ -126,7 +126,7 @@
 
 
 <!-- modal ubah-->
-<?php foreach ($tbl_b7 as $tl_b7): ?>
+<?php foreach ($tbl_b7->result() as $tl_b7): ?>
   <div id="ubah<?= $tl_b7->$tabel_b7_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">

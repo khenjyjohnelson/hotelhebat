@@ -3,7 +3,7 @@
     <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -18,11 +18,11 @@
       <?= btn_field($tabel_b7_field4 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field4_alias')) ?>
       <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field5_alias')) ?>
       <?= btn_field($tabel_b7, '<i class="fas fa-edit"></i>' . lang('tabel_b7_alias')) ?>
-      <?= btn_kelola('tabel_b1') ?>
-      <?= btn_kelola('tabel_b2') ?>
-      <?= btn_kelola('tabel_b8') ?>
-      <?= btn_kelola('tabel_b5') ?>
-      <?= btn_kelola('tabel_b6') ?>
+      <?= btn_kelola('tabel_b1', '/admin') ?>
+      <?= btn_kelola('tabel_b2', '/admin') ?>
+      <?= btn_kelola('tabel_b8', '/admin') ?>
+      <?= btn_kelola('tabel_b5', '/admin') ?>
+      <?= btn_kelola('tabel_b6', '/admin') ?>
     </div>
     <div class="col-md-6">
       <form action="<?= site_url($language . '/' . $tabel_a1 . '/update') ?>" method="post" enctype="multipart/form-data">
@@ -53,7 +53,7 @@
             <div class="form-group">
               <select class="form-control float" required name="<?= $tabel_a1_field6_input ?>" id="<?= $tabel_a1_field6_input ?>">
                 
-              <?php foreach ($tbl_b7 as $tl_b7): ?>
+              <?php foreach ($tbl_b7->result() as $tl_b7): ?>
                 <?php if ($tl_a1->$tabel_a1_field6 == $tl_b7->$tabel_b7_field1) { ?>
                   <option selected hidden value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                   <?php } else { ?>
@@ -73,7 +73,7 @@
           </p>
 
           <div class="modal-footer">
-          <?= btn_kelola('tabel_b7') ?>
+          <?= btn_kelola('tabel_b7', '/admin') ?>
             <?= btn_update() ?>
           </div>
         </form>
@@ -83,7 +83,7 @@
 <?php endforeach; ?>
 
 <!-- modal edit favicon-->
-<?php foreach ($tbl_b7 as $tl_b7): ?>
+<?php foreach ($tbl_b7->result() as $tl_b7): ?>
   <div id="<?= $tabel_b7_field3 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field3 ?>">
     <div class="modal-dialog">
       <div class="modal-content">

@@ -96,7 +96,7 @@ if (!function_exists('btn_book')) {
         $alias = xss_clean(lang('input'));
 
         return <<<HTML
-        <a class="btn btn-light text-success" type="button" data-toggle="modal"
+        <a class="btn btn-light border border-dark text-success mb-2" type="button" data-toggle="modal"
             data-target="#book{$value}">
             <i class="fas fa-concierge-bell"></i>
         </a>
@@ -121,10 +121,9 @@ if (!function_exists('view_switcher')) {
 if (!function_exists('btn_field')) {
     function btn_field($value, $logo)
     {
-        $alias = xss_clean(lang($value));
 
         return <<<HTML
-        <a class="btn mr-1 mt-4 btn-light text-info" type="button" data-toggle="modal"
+        <a class="btn mr-1 mb-2 btn-light border border-dark text-info" type="button" data-toggle="modal"
             data-target="#{$value}">
             {$logo}
         </a>
@@ -211,7 +210,7 @@ if (!function_exists('btn_lihat')) {
         $alias = xss_clean(lang('input'));
 
         return <<<HTML
-        <a class="btn mr-1 mb-2 btn-light text-primary" type="button" data-toggle="modal"
+        <a class="btn mr-1 mb-2 btn-light border border-dark text-primary" type="button" data-toggle="modal"
             data-target="#lihat{$value}">
             <i class="fas fa-eye"></i></a>
         HTML;
@@ -224,7 +223,7 @@ if (!function_exists('btn_edit')) {
         $alias = xss_clean(lang('input'));
 
         return <<<HTML
-        <a class="btn mr-1 mb-2 btn-light text-warning" type="button" data-toggle="modal"
+        <a class="btn mr-1 mb-2 btn-light border border-dark text-warning" type="button" data-toggle="modal"
               data-target="#ubah{$value}">
               <i class="fas fa-edit"></i></a>
         HTML;
@@ -272,7 +271,7 @@ if (!function_exists('btn_print')) {
         $url = xss_clean(site_url($lang . '/' . $controller . '/print/' . $value));
 
         return <<<HTML
-        <a class="btn btn-light text-info" href="{$url}"
+        <a class="btn btn-light border border-dark text-info mb-2" href="{$url}"
               target="_blank">
               <i class="fas fa-print"></i>
             </a>
@@ -282,7 +281,7 @@ if (!function_exists('btn_print')) {
 
 if (!function_exists('btn_kelola')) {
 
-    function btn_kelola($tabel)
+    function btn_kelola($tabel, $function)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
@@ -292,7 +291,7 @@ if (!function_exists('btn_kelola')) {
         $alias = xss_clean(lang($tabel . '_alias' . '_btn'));
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
-        $url = xss_clean(site_url($lang . '/' . $controller . '/admin'));
+        $url = xss_clean(site_url($lang . '/' . $controller . $function));
 
         return <<<HTML
         <a class="btn mr-1 mt-4 btn-info text-light" href="{$url}">
@@ -312,7 +311,7 @@ if (!function_exists('btn_redo')) {
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
 
-        $url = xss_clean(site_url($lang . '/' . $controller . '/admin'));
+        $url = xss_clean(site_url($lang . '/' . $controller . $function));
 
         return <<<HTML
         <a class="btn mr-1 mb-2 btn-danger" type="button" href="{$url}">
@@ -338,7 +337,7 @@ if (!function_exists('btn_hapus')) {
         $url = xss_clean(site_url($lang . '/' . $controller . '/delete/' . $value));
 
         return <<<HTML
-        <a class="btn mr-1 mb-2 btn-light text-danger" onclick="return confirm('apakah data {$alias} ingin dihapus?')"
+        <a class="btn mr-1 mb-2 btn-light border border-dark text-danger" onclick="return confirm('apakah data {$alias} ingin dihapus?')"
               href="{$url}">
               <i class="fas fa-trash"></i></a>
         HTML;

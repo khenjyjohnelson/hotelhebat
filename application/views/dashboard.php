@@ -3,7 +3,7 @@
     <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -11,47 +11,47 @@
 <hr>
 
 
+<!-- menampilkan data untuk administrator -->
+
+<?php switch (userdata($tabel_c2_field6)) {
+  case $tabel_c2_field6_value3: ?>
+    <div class="row">
+      <?= card_count(lang('tabel_c2_alias'), 'tabel_c2', 'text-white bg-danger', $tbl_c2) ?>
+      <?= card_count(lang('tabel_c1_alias'), 'tabel_c1', 'text-white bg-danger', $tbl_c1) ?>
+      <?= card_count(lang('tabel_d3_alias'), 'tabel_d3', 'text-white bg-danger', $tbl_d3) ?>
+
+    </div>
+
+    <br>
+    <hr>
+    <?php break;
+
+  default: ?>
+
+
+    <?php break;
+} ?>
+
+
 <div class="row">
+
   <!-- menampilkan data untuk administrator -->
 
   <?php switch (userdata($tabel_c2_field6)) {
     case $tabel_c2_field6_value3: ?>
-      <?= card_count(lang('tabel_c2_alias'), 'tabel_c2', 'bg-danger', $tbl_c2) ?>
-      <?= card_count(lang('tabel_c1_alias'), 'tabel_c1', 'bg-danger', $tbl_c1) ?>
-      <?= card_count(lang('tabel_d3_alias'), 'tabel_d3', 'bg-danger', $tbl_d3) ?>
-
-      <?php break;
-
-    default: ?>
-
-
-      <?php break;
-  } ?>
-</div>
-
-<br>
-<hr>
-
-
-<div class="row">
-
-  <!-- menampilkan data untuk administrator -->
-
-  <?php switch (userdata($tabel_c2_field6)) {
-    case $tabel_c2_field6_value3: ?>
-      <?= card_count(lang('tabel_e4_alias'), 'tabel_e4', 'bg-danger', $tbl_e4) ?>
-      <?= card_count(lang('tabel_e3_alias'), 'tabel_e3', 'bg-danger', $tbl_e3) ?>
-      <?= card_count(lang('tabel_e2_alias'), 'tabel_e2', 'bg-danger', $tbl_e2) ?>
-      <?= card_count(lang('tabel_e1_alias'), 'tabel_e1', 'bg-danger', $tbl_e1) ?>
+      <?= card_count(lang('tabel_e4_alias'), 'tabel_e4', 'text-white bg-danger', $tbl_e4) ?>
+      <?= card_count(lang('tabel_e2_alias'), 'tabel_e2', 'text-white bg-danger', $tbl_e2) ?>
+      <?= card_count(lang('tabel_e1_alias'), 'tabel_e1', 'text-white bg-danger', $tbl_e1) ?>
       <?php break;
 
     case $tabel_c2_field6_value4: ?>
-      <?= card_count(lang('tabel_e3_alias'), 'tabel_e3', 'bg-danger', $tbl_e3) ?>
-      <?= card_count(lang('tabel_f2_alias'), 'tabel_f2', 'bg-danger', $tbl_f2) ?>
+      <?= card_count(lang('tabel_e3_alias'), 'tabel_e3', 'text-white bg-danger', $tbl_e3) ?>
+      <?= card_count(lang('tabel_f2_alias'), 'tabel_f2', 'text-white bg-danger', $tbl_f2) ?>
+      <?= card_count(lang('tabel_f1_alias'), 'tabel_f1', 'text-white bg-danger', $tbl_f1) ?>
       <?php break;
 
     case $tabel_c2_field6_value2: ?>
-      <?= card_count(lang('tabel_f3_alias'), 'tabel_f3', 'bg-danger', $tbl_f3) ?>
+      <?= card_count(lang('tabel_f3_alias'), 'tabel_f3', 'text-white bg-danger', $tbl_f3) ?>
       <?php break;
 
 
@@ -100,7 +100,7 @@
             <?= row_data('tabel_a1_field4', $tl_a1->$tabel_a1_field4) ?>
             <?= row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) ?>
 
-            <?php foreach ($sosmed as $sm):
+            <?php foreach ($sosmed->result() as $sm):
               if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) { ?>
                 <?= row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) ?>
                 <tr>

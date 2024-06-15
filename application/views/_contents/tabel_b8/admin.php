@@ -1,9 +1,9 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_b8) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -25,10 +25,9 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_b8 as $tl_b8):
+  <?php foreach ($tbl_b8->result() as $tl_b8):
     echo card_regular(
       $tl_b8->$tabel_b8_field1,
-      'tabel_b8',
       $tl_b8->$tabel_b8_field2,
       '<div style="width: 100%;">' .
       card_content('tabel_b8_field3', card_text($tl_b8->$tabel_b8_field3)) .
@@ -37,7 +36,8 @@
       btn_lihat($tl_b8->$tabel_b8_field1) . ' ' .
       btn_edit($tl_b8->$tabel_b8_field1) . ' ' .
       btn_hapus('tabel_b8', $tl_b8->$tabel_b8_field1),
-      'bg-danger'
+      'text-white bg-danger',
+      $tabel_b8,
     );
   endforeach; ?>
 </div>
@@ -57,7 +57,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_b8 as $tl_b8): ?>
+      <?php foreach ($tbl_b8->result() as $tl_b8): ?>
         <tr>
           <td></td>
           <td><?= $tl_b8->$tabel_b8_field1; ?></td>
@@ -107,7 +107,7 @@
 
 
 <!-- modal ubah-->
-<?php foreach ($tbl_b8 as $tl_b8): ?>
+<?php foreach ($tbl_b8->result() as $tl_b8): ?>
   <div id="ubah<?= $tl_b8->$tabel_b8_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">

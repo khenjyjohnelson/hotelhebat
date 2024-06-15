@@ -19,13 +19,35 @@ class M_tabel_f1 extends CI_Model
 		return $this->db->query($sql);
 	}
 
-	public function get_c2_with_e4($param1)
+	public function get_f1_with_e4_by_f1_field1($param1)
 	{
 		$sql = "SELECT * FROM {$this->aliases['tabel_f1']} 
 		JOIN {$this->aliases['tabel_e4']} 
 		ON {$this->aliases['tabel_f1']}.{$this->aliases['tabel_e4_field1']} = {$this->aliases['tabel_e4']}.{$this->aliases['tabel_e4_field1']}
-		WHERE {$this->aliases['tabel_f1']}.{$this->aliases['tabel_f1_field3']} = {$param1}
+		WHERE {$this->aliases['tabel_f1']}.{$this->aliases['tabel_f1_field1']} = {$param1}
 		ORDER BY {$this->aliases['tabel_f1_field1']} DESC";
+		return $this->db->query($sql);
+	}
+
+	public function get_f1_with_e4_by_c2_field1($param1)
+	{
+		$sql = "SELECT * FROM {$this->aliases['tabel_f1']} 
+		JOIN {$this->aliases['tabel_e4']} 
+		ON {$this->aliases['tabel_f1']}.{$this->aliases['tabel_e4_field1']} = {$this->aliases['tabel_e4']}.{$this->aliases['tabel_e4_field1']}
+		WHERE {$this->aliases['tabel_f1']}.{$this->aliases['tabel_c2_field1']} = {$param1}
+		ORDER BY {$this->aliases['tabel_f1_field1']} DESC";
+		return $this->db->query($sql);
+	}
+
+	public function get_f1_with_f3_with_e4_by_f1_field1($param1)
+	{
+		$sql = "SELECT * FROM {$this->aliases['tabel_f1']} 
+		LEFT JOIN {$this->aliases['tabel_f3']} 
+		ON {$this->aliases['tabel_f1']}.{$this->aliases['tabel_f3_field4']} = {$this->aliases['tabel_f3']}.{$this->aliases['tabel_f3_field4']}
+		LEFT JOIN {$this->aliases['tabel_e4']} 
+		ON {$this->aliases['tabel_f1']}.{$this->aliases['tabel_e4_field1']} = {$this->aliases['tabel_e4']}.{$this->aliases['tabel_e4_field1']}
+		WHERE {$this->aliases['tabel_f1']}.{$this->aliases['tabel_f1_field1']} = {$param1}
+		ORDER BY {$this->aliases['tabel_f3_field1']} DESC";
 		return $this->db->query($sql);
 	}
 
@@ -93,7 +115,7 @@ class M_tabel_f1 extends CI_Model
 		return $this->db->query($filter);
 	}
 
-	public function filter_c2($param1, $param2, $param3, $param4, $param5)
+	public function filter_user($param1, $param2, $param3, $param4, $param5)
 	{
 		$filter = "SELECT * FROM {$this->aliases['tabel_f1']}
 		JOIN {$this->aliases['tabel_e4']} 

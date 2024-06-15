@@ -3,7 +3,7 @@
     <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -11,7 +11,7 @@
 <hr>
 <div class="row">
   <div class="col-md-6">
-    <?php foreach ($tbl_c1 as $tl_c1): ?>
+    <?php foreach ($tbl_c1->result() as $tl_c1): ?>
 
       <!-- tombol untuk memunculkan modal memperbaiki password -->
       <?= btn_field($tabel_c1_field1 . $tl_c1->$tabel_c1_field1, '<i class="fas fa-edit"></i>' . $tabel_c1_field5_alias) ?>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="col-md-6">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid">
     <?php endforeach ?>
   </div>
@@ -42,7 +42,7 @@
 
 
 <!-- modal edit password-->
-<?php foreach ($tbl_c1 as $tl_c1): ?>
+<?php foreach ($tbl_c1->result() as $tl_c1): ?>
   <div id="password<?= $tl_c1->$tabel_c1_field1 ?>" class="modal fade <?= $tabel_c1_field5 ?>">
     <div class="modal-dialog">
       <div class="modal-content">

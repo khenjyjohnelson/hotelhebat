@@ -51,16 +51,17 @@ foreach ($myData2 as $item2) {
         'admin' => 'admin',
         'laporan' => 'laporan',
         'konfirmasi' => 'konfirmasi',
-        'profil' => 'profil'
+        'profil' => 'profil',
     ];
-
+    
     // Common function routes
     $commonFunctionRoutes = [
         'tambah' => 'tambah',
         'update' => 'update',
-        'filter' => 'filter'
+        'filter' => 'filter',
+        'filter_user' => 'filter_user',
     ];
-
+    
     $uncommonFunctionRoutes = [
         'aktifkan' => 'aktifkan',
         'nonaktifkan' => 'nonaktifkan',
@@ -86,7 +87,7 @@ foreach ($myData2 as $item2) {
         'ceklogin' => 'ceklogin',
         'importExcel' => 'importExcel',
         'cari' => 'cari',
-        'book' => 'book'
+        'book' => 'book',
     ];
 
     // Assign routes for each group

@@ -14,9 +14,9 @@ class C_tabel_e4 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_e4_alias_v1_title'),
 			'konten' => $this->v1['tabel_e4'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4'])->result(),
-			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
-			'tbl_e1' => $this->tl_e1->get_all_e1()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
+			'tbl_e4' => $this->tl_e4->get_all_e4(),
+			'tbl_e1' => $this->tl_e1->get_all_e1(),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -35,10 +35,9 @@ class C_tabel_e4 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_e4_alias_v3_title'),
-			'count' => $this->tl_e4->get_all_e4()->num_rows(),
 			'konten' => $this->v3['tabel_e4'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4'])->result(),
-			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
+			'tbl_e4' => $this->tl_e4->get_all_e4(),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -223,8 +222,8 @@ class C_tabel_e4 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_e4_alias_v4_title'),
 			'konten' => $this->v4['tabel_e4'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4'])->result(),
-			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
+			'tbl_e4' => $this->tl_e4->get_all_e4(),
 		);
 
 		$data = array_merge($data1, $this->package);

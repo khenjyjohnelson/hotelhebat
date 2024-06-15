@@ -17,8 +17,8 @@ class C_tabel_b2 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_b2_alias_v8_title'),
 			'konten' => $this->v8['tabel_b2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
-			'tbl_b2' => $this->tl_b2->get_b2_by_b2_field1($param1)->result()
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
+			'tbl_b2' => $this->tl_b2->get_b2_by_b2_field1($param1),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -41,11 +41,10 @@ class C_tabel_b2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b2_alias_v3_title'),
-			'count' => $this->tl_b2->get_all_b2()->num_rows(),
 			'konten' => $this->v3['tabel_b2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
-			'tbl_b2' => $this->tl_b2->get_all_b2()->result(),
-			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
+			'tbl_b2' => $this->tl_b2->get_all_b2(),
+			'tbl_b7' => $this->tl_b7->get_all_b7(),
 			'tabel_b2_field7_value' => $param1
 		);
 
@@ -72,11 +71,10 @@ class C_tabel_b2 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_b2_alias_v3_title'),
-			'count' => $this->tl_b2->get_all_b2()->num_rows(),
 			'konten' => $this->v3['tabel_b2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
-			'tbl_b2' => $this->tl_b2->filter($param1)->result(),
-			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
+			'tbl_b2' => $this->tl_b2->filter($param1),
+			'tbl_b7' => $this->tl_b7->get_all_b7(),
 			'tabel_b2_field7_value' => $param1
 		);
 
@@ -301,8 +299,8 @@ class C_tabel_b2 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_b2_alias_v4_title'),
 			'konten' => $this->v4['tabel_b2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2'])->result(),
-			'tbl_b2' => $this->tl_b2->get_all_b2()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
+			'tbl_b2' => $this->tl_b2->get_all_b2(),
 		);
 
 		$data = array_merge($data1, $this->package);

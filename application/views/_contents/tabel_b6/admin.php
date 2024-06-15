@@ -1,9 +1,9 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_b6) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -19,7 +19,7 @@
       <td class="pr-2">
         <div class="form-group">
           <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
-            <?php foreach ($tbl_b7 as $tl_b7): ?>
+            <?php foreach ($tbl_b7->result() as $tl_b7): ?>
               <option selected hidden value="<?= $tabel_b6_field7_value ?>"><?= $tabel_b6_field7_value ?></option>
               <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
                 <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
@@ -55,7 +55,7 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_b6 as $tl_b6): ?>
+  <?php foreach ($tbl_b6->result() as $tl_b6): ?>
     <?php
     $btn_class = '';
     if ($tl_b6->$tabel_b6_field6 == $tabel_b6_field6_value1) {
@@ -65,13 +65,13 @@
     }
     echo card_regular(
       $tl_b6->$tabel_b6_field1,
-      'tabel_b6',
       $tl_b6->$tabel_b6_field2,
       '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>' . $btn_class,
       btn_lihat($tl_b6->$tabel_b6_field1) . ' ' .
       btn_edit($tl_b6->$tabel_b6_field1) . ' ' .
       btn_hapus('tabel_b6', $tl_b6->$tabel_b6_field1),
-      'bg-secondary'
+      'text-white bg-secondary',
+      $tabel_b6,
     );
     ?>
   <?php endforeach; ?>
@@ -95,7 +95,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_b6 as $tl_b6): ?>
+      <?php foreach ($tbl_b6->result() as $tl_b6): ?>
         <tr>
           <td></td>
           <td><?= $tl_b6->$tabel_b6_field1; ?></td>
@@ -147,7 +147,7 @@
           <div class="form-group">
             <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
 
-              <?php foreach ($tbl_b7 as $tl_b7): ?>
+              <?php foreach ($tbl_b7->result() as $tl_b7): ?>
                 <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
               <?php endforeach ?>
             </select>
@@ -169,7 +169,7 @@
 
 
 <!-- modal edit-->
-<?php foreach ($tbl_b6 as $tl_b6): ?>
+<?php foreach ($tbl_b6->result() as $tl_b6): ?>
   <div id="ubah<?= $tl_b6->$tabel_b6_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -187,7 +187,7 @@
 
             <div class="form-group">
               <select class="form-control float" required name="<?= $tabel_b6_field7_input ?>">
-                <?php foreach ($tbl_b7 as $tl_b7): ?>
+                <?php foreach ($tbl_b7->result() as $tl_b7): ?>
                   <?php if ($tl_b6->$tabel_b6_field7 == $tl_b7->$tabel_b7_field1) { ?>
                     <option selected hidden value="<?= $tl_b6->$tabel_b6_field7 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                   <?php } else { ?>

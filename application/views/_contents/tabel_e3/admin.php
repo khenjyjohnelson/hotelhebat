@@ -1,20 +1,57 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_e3) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
 <hr>
 
-<?= btn_tambah() ?>
-<?= btn_laporan('tabel_e3') ?>
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_tambah() ?>
+    <?= btn_laporan('tabel_e3') ?>
+  </div>
+
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
 
 
-<div class="table-responsive">
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_e3->result() as $tl_e3):
+    switch ($tl_e3->$tabel_e3_field4) {
+      case $tabel_e3_field4_value2:
+      case $tabel_e3_field4_value3:
+        $button = btn_edit($tl_e3->$tabel_e3_field1);
+        break;
+      case $tabel_e3_field4_value4:
+        $button = btn_field($tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-broom"></i>');
+        break;
+      case $tabel_e3_field4_value5:
+        $button = btn_field($tabel_c1_field7_value2 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-hammer"></i>');
+        break;
+    }
+
+    echo card_regular(
+      $tl_e3->$tabel_e4_field1,
+      $tl_e3->$tabel_e4_field1 . ' | ' . $tl_e3->$tabel_e4_field2,
+      $tl_e3->$tabel_e4_field4,
+      btn_lihat($tl_e3->$tabel_e4_field1) . ' ' .
+      $button,
+      'text-white bg-danger',
+      $tabel_e3
+    );
+  endforeach; ?>
+</div>
+
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -28,7 +65,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_e3 as $tl_e3): ?>
+      <?php foreach ($tbl_e3->result() as $tl_e3): ?>
         <tr>
           <td></td>
           <td><?= $tl_e3->$tabel_e3_field1; ?></td>
@@ -57,8 +94,6 @@
   </table>
 </div>
 
-
-
 <!-- modal tambah -->
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
@@ -73,7 +108,7 @@
           <div class="form-group">
             <select class="form-control float" required name="<?= $tabel_e4_field1_input ?>">
               <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e4_field2_alias ?>...</option>
-              <?php foreach ($tbl_e4 as $tl_e4): ?>
+              <?php foreach ($tbl_e3->result() as $tl_e3): ?>
 
                 <!-- mengambil nilai tipe dari tipe kamar -->
                 <option value="<?= $tl_e3->$tabel_e3_field2 ?>"><?= $tl_e3->$tabel_e4_field2; ?></option>
@@ -113,7 +148,7 @@
 </div>
 
 <!-- modal edit -->
-<?php foreach ($tbl_e3 as $tl_e3): ?>
+<?php foreach ($tbl_e3->result() as $tl_e3): ?>
   <?php switch ($tl_e3->$tabel_e3_field4) {
     case $tabel_e3_field4_value2:
     case $tabel_e3_field4_value3: ?>
@@ -168,22 +203,30 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
-                    <?= row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
-                    <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
-                    <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
 
-                    <?= row_file($tabel_e4, 'tabel_e4_field3', $tl_e3->$tabel_e4_field3) ?>
-                    <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
+                    <div class="table-responsive">
+                      <table class="table table-light" id="data">
+                        <thead>
+                        <tbody>
+                          <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
+                          <?= row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
+                          <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
+                          <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
+                          <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
 
-                    <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
-                    <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
+                          <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
+                          <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
                 jika sebaliknya, maka kamar akan menjadi <?= $tabel_e3_field4_value3_alias ?> -->
-                    <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
-                      <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
-                    <?php } else { ?>
-                      <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value2, 'required') ?>
-                    <?php } ?>
+                          <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
+                            <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
+                          <?php } else { ?>
+                            <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value2, 'required') ?>
+                          <?php } ?>
+
+                        </tbody>
+                        <tfoot></tfoot>
+                      </table>
+                    </div>
                   </div>
 
                   <div class="col-md-6">
@@ -194,7 +237,7 @@
                         <!-- menampilkan petugas buat assign -->
                         <option selected hidden><?= lang('select') ?>       <?= $tabel_c1_alias ?>...</option>
                         <?php
-                        foreach ($tbl_c1 as $tl_c1):
+                        foreach ($tbl_c1->result() as $tl_c1):
                           if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
                               <?= $tl_c1->$tabel_c1_field7; ?>
@@ -241,21 +284,28 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
-                    <?= row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
-                    <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
-                    <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
+                    <div class="table-responsive">
+                      <table class="table table-light" id="data">
+                        <thead>
+                        <tbody>
 
-                    <?= row_file($tabel_e4, 'tabel_e4_field3', $tl_e3->$tabel_e4_field3) ?>
-                    <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
-                    <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
-                    <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
+                          <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
+                          <?= row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
+                          <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
+                          <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
+                          <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
+                          <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
+                          <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
                 jika sebaliknya, maka kamar akan menjadi <?= $tabel_e3_field4_value3_alias ?> -->
-                    <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
-                      <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
-                    <?php } else { ?>
-                      <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value2, 'required') ?>
-                    <?php } ?>
+                          <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
+                            <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
+                          <?php } else { ?>
+                            <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value2, 'required') ?>
+                          <?php } ?>
+                        </tbody>
+                        <tfoot></tfoot>
+                      </table>
+                    </div>
                   </div>
 
                   <div class="col-md-6">
@@ -266,7 +316,7 @@
                         <!-- menampilkan petugas buat assign -->
                         <option selected hidden><?= lang('select') ?>       <?= $tabel_c1_alias ?>...</option>
                         <?php
-                        foreach ($tbl_c1 as $tl_c1):
+                        foreach ($tbl_c1->result() as $tl_c1):
                           if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
                               <?= $tl_c1->$tabel_c1_field7; ?>
@@ -277,7 +327,7 @@
                       <label class="form-label"><?= $tabel_c1_alias ?></label>
                     </div>
 
-                    <?= input_textarea('tabel_e3_field5', '', 'required') ?>
+                    <?= input_add('text', 'tabel_e3_field5', 'required') ?>
                   </div>
                 </div>
               </div>

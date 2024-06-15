@@ -1,9 +1,9 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_e1) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -19,7 +19,7 @@
       <td class="pr-2">
         <div class="form-group">
           <select class="form-control float" required name="<?= $tabel_e1_field2_input ?>">
-            <?php foreach ($tbl_e4 as $tl_e4): ?>
+            <?php foreach ($tbl_e4->result() as $tl_e4): ?>
               <option selected hidden value="<?= $tabel_e1_field2_value ?>"><?= $tabel_e1_field2_value ?></option>
               <option value="<?= $tl_e4->$tabel_e4_field2 ?>">
                 <?= $tl_e4->$tabel_e4_field1 . ' - ' . $tl_e4->$tabel_e4_field2 ?>
@@ -55,15 +55,15 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_e1 as $tl_e1):
+  <?php foreach ($tbl_e1->result() as $tl_e1):
     echo card_regular(
       $tl_e1->$tabel_e1_field1,
-      $tabel_e1,
       $tl_e1->$tabel_e1_field2,
       $tl_e1->$tabel_e1_field3,
       btn_lihat($tl_e1->$tabel_e1_field1) . ' ' .
       btn_edit($tl_e1->$tabel_e1_field1),
-      'bg-danger'
+      'text-white bg-danger',
+      $tabel_e1,
     );
   endforeach; ?>
 </div>
@@ -82,7 +82,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_e1 as $tl_e1): ?>
+      <?php foreach ($tbl_e1->result() as $tl_e1): ?>
         <tr>
           <td></td>
           <td><?= $tl_e1->$tabel_e1_field1; ?></td>
@@ -109,7 +109,7 @@
           <div class="form-group">
             <select class="form-control float" required name="<?= $tabel_e1_field2_input ?>"
               if="<?= $tabel_e1_field2_input ?>">
-              <?php foreach ($tbl_e4 as $tl_e4): ?>
+              <?php foreach ($tbl_e4->result() as $tl_e4): ?>
                 <option value="<?= $tl_e4->$tabel_e4_field2 ?>"><?= $tl_e4->$tabel_e4_field2 ?></option>
               <?php endforeach ?>
             </select>
@@ -133,7 +133,7 @@
 </div>
 
 <!-- modal edit -->
-<?php foreach ($tbl_e1 as $tl_e1): ?>
+<?php foreach ($tbl_e1->result() as $tl_e1): ?>
   <div id="ubah<?= $tl_e1->$tabel_e1_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">

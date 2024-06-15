@@ -1,9 +1,9 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+  <h1><?= $title ?><?= count_data($tbl_a1) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -34,9 +34,9 @@
       btn_lihat($tl_a1_alt->$tabel_a1_field1) . ' ' .
       btn_edit($tl_a1_alt->$tabel_a1_field1). ' ' .
       btn_hapus($tabel_a1, $tl_a1_alt->$tabel_a1_field1),
+      'text-white bg-danger',
       $tabel_a1,
       $tl_a1->$tabel_a1_field3,
-      'bg-danger'
     );
   endforeach; ?>
 </div>
@@ -56,7 +56,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_a1_alt as $tl_a1_alt): ?>
+      <?php foreach ($tbl_a1_alt->result() as $tl_a1_alt): ?>
         <tr>
           <td></td>
           <td><?= $tl_a1_alt->$tabel_a1_field1; ?></td>
@@ -100,7 +100,7 @@
 </div>
 
 <!-- modal lihat -->
-<?php foreach ($tbl_a1_alt as $tl_a1_alt): ?>
+<?php foreach ($tbl_a1_alt->result() as $tl_a1_alt): ?>
   <div id="lihat<?= $tl_a1_alt->$tabel_a1_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">

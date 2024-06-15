@@ -3,14 +3,14 @@
     <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
 <hr>
 
-<?php foreach ($tbl_c2 as $tl_c2): ?>
+<?php foreach ($tbl_c2->result() as $tl_c2): ?>
   <div class="row">
     <div class="col-md-6">
       <a class="btn btn-warning mb-4" type="button" data-toggle="modal"
@@ -84,7 +84,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_d3 as $tl_d3): ?>
+      <?php foreach ($tbl_d3->result() as $tl_d3): ?>
         <tr>
           <td></td>
           <td><?= $tl_d3->$tabel_d3_field5 ?></td>

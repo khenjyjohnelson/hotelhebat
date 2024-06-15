@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($tbl_c2 as $tl_c2): ?>
+    <?php foreach ($tbl_c2->result() as $tl_c2): ?>
       <tr>
         <td width=""><?= $tl_c2->$tabel_c2_field1 ?></td>
         <td width=""><?= $tl_c2->$tabel_c2_field2 ?></a></td>

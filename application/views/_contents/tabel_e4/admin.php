@@ -1,17 +1,15 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_e4) ?><?= $phase ?></h1>
 
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
 <hr>
-
-
 
 
 <div class="row">
@@ -31,16 +29,16 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_e4 as $tl_e4):
+  <?php foreach ($tbl_e4->result() as $tl_e4):
     echo card_file(
       $tl_e4->$tabel_e4_field1,
       $tl_e4->$tabel_e4_field2,
       'Rp ' . number_format($tl_e4->$tabel_e4_field5, '2', ',', '.'),
       btn_lihat($tl_e4->$tabel_e4_field1) . ' ' .
       btn_edit($tl_e4->$tabel_e4_field1),
+      'text-white bg-danger',
       $tabel_e4,
       $tl_e4->$tabel_e4_field3,
-      'bg-danger'
     );
   endforeach; ?>
 </div>
@@ -60,7 +58,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_e4 as $tl_e4): ?>
+      <?php foreach ($tbl_e4->result() as $tl_e4): ?>
         <tr>
           <td></td>
           <td><?= $tl_e4->$tabel_e4_field1; ?></td>
@@ -138,7 +136,7 @@
 </div>
 
 <!-- modal edit -->
-<?php foreach ($tbl_e4 as $tl_e4): ?>
+<?php foreach ($tbl_e4->result() as $tl_e4): ?>
   <div id="ubah<?= $tl_e4->$tabel_e4_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">

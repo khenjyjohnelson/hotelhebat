@@ -30,8 +30,8 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v2_title'),
 			'konten' => $this->v2['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4_by_c2_field1($tabel_c2_field1)->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
+			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4_by_c2_field1($tabel_c2_field1),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -49,8 +49,8 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_past'),
 			'konten' => $this->views['tabel_f3_v2_alt'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f1->get_f1_with_f3_with_e4_by_c2_field1($tabel_c2_field1)->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
+			'tbl_f3' => $this->tl_f1->get_f1_with_f3_with_e4_by_c2_field1($tabel_c2_field1),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -67,11 +67,10 @@ class C_tabel_f3 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v3_title'),
-			'count' => $this->tl_f3->get_all_f3()->num_rows(),
 			'konten' => $this->v3['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4()->result(),
-			'tbl_e4' => $this->tl_e4->get_all_e4()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
+			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4(),
+			'tbl_e4' => $this->tl_e4->get_all_e4(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			// 'tgl_transaksi_min' => $param1,
@@ -167,7 +166,8 @@ class C_tabel_f3 extends Omnitags
 
 		$notif = $this->handle_4c($aksi, 'tabel_f3', $tabel_f3_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);	}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	public function delete($tabel_f3_field1 = null)
 	{
@@ -181,7 +181,8 @@ class C_tabel_f3 extends Omnitags
 
 		$notif = $this->handle_4e($aksi, 'tabel_f3', $tabel_f3_field1);
 
-		redirect($_SERVER['HTTP_REFERER']);	}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	// Fitur filter untuk saat ini akan tidak digunakan terlebih dahulu
 	public function filter()
@@ -195,12 +196,11 @@ class C_tabel_f3 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v3_title'),
-			'count' => $this->tl_f3->get_all_f3()->num_rows(),
 			'konten' => $this->v3['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->filter($tabel_f3_field7_filter1, $tabel_f3_field7_filter2)->result(),
-			'tbl_f2' => $this->tl_f2->get_all_f3()->result(),
-			'tbl_e4' => $this->tl_e4->get_all_f3()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
+			'tbl_f3' => $this->tl_f3->filter($tabel_f3_field7_filter1, $tabel_f3_field7_filter2),
+			'tbl_f2' => $this->tl_f2->get_all_f3(),
+			'tbl_e4' => $this->tl_e4->get_all_f3(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			'tabel_f3_field7_filter1' => $tabel_f3_field7_filter1,
@@ -222,10 +222,10 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
 			'konten' => $this->v4['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
-			'tbl_f3' => $this->tl_f3->get_all_f3()->result(),
-			'tbl_e4' => $this->tl_e4->get_all_f3()->result(),
-			'tbl_f2' => $this->tl_f2->get_all_f3()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
+			'tbl_f3' => $this->tl_f3->get_all_f3(),
+			'tbl_e4' => $this->tl_e4->get_all_f3(),
+			'tbl_f2' => $this->tl_f2->get_all_f3(),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -249,7 +249,7 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v5_title'),
 			'konten' => $this->v5['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
 		);
 
 
@@ -263,17 +263,18 @@ class C_tabel_f3 extends Omnitags
 
 		if ($method->num_rows() > 0) {
 			$data2 = array(
-				'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
+				'tbl_f3' => $this->tl_f3->get_f3_with_f1_with_e4_by_f3_field1($tabel_f3_field1, userdata($this->aliases['tabel_c2_field1'])),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
 			load_view_data('_layouts/printpage', $data);
 		} else {
 			$data2 = array(
-				'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1)->result(),
+				'tbl_f3' => $this->tl_f2->get_f2_with_f3_with_e4_by_f3_field1($tabel_f3_field1),
 			);
 			$data = array_merge($data1, $data2, $this->views, $this->aliases);
 			load_view_data('_layouts/printpage', $data);
-		}	}
+		}
+	}
 
 	// Fungsi khusus
 	public function konfirmasi()
@@ -285,7 +286,7 @@ class C_tabel_f3 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
 			'konten' => $this->v7['tabel_f3'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3'])->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
 
 			// mengembalikan data baris terakhir/terbaru sesuai ketentuan dalam database untuk ditampilkan
 			'tbl_f3' => $this->tl_f3->get_f3_by_c2_field3($tabel_f3_field3)->last_row(),

@@ -1,5 +1,5 @@
 <!-- menampilkan data pesanan sebagai ps -->
-<?php foreach ($tbl_f1 as $tl_f1): ?>
+<?php foreach ($tbl_f1->result() as $tl_f1): ?>
   <!-- menampilkan data pemesan -->
   <table class="table">
     <thead class="thead">

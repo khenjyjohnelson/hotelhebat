@@ -23,7 +23,7 @@
                             <div class="col-lg-3 pt-3">
                                 <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field4; ?>" height="50">
                                 <div class="row pt-2 py-0">
-                                    <?php foreach ($lisensi as $ls): ?>
+                                    <?php foreach ($lisensi->result() as $ls): ?>
                                         <div class="col-md-4 mt-2">
                                             <a class="text-decoration-none text-dark"
                                                 href="<?= site_url($language . '/' . $tabel_b5 . '/detail/' . $ls->$tabel_b5_field1) ?>">
@@ -79,7 +79,7 @@
                             <div class="col-lg-2 pt-3">
                                 <h3><?= lang('follow') ?></h3>
                                 <ul class="list-unstyled">
-                                    <?php foreach ($sosmed as $sm): ?>
+                                    <?php foreach ($sosmed->result() as $sm): ?>
                                         <li>
                                             <a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>"
                                                 target="_blank">

@@ -22,8 +22,8 @@ class C_tabel_a1 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_a1_alias_v6_title'),
 			'konten' => $this->v6['tabel_a1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_a1'])->result(),
-			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_a1']),
+			'tbl_b7' => $this->tl_b7->get_all_b7(),
 		);
 
 		$data = array_merge($data1, $this->package);

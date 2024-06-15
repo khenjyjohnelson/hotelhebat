@@ -3,7 +3,7 @@
     <h1><?= $title ?><br><span class="h6"> Unread: <?= $count ?></span><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -23,7 +23,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_b9 as $tl_b9):
+      <?php foreach ($tbl_b9->result() as $tl_b9):
         if ($tl_b9->$tabel_b9_field6 == NULL) { ?>
           <tr class="bg-light">
             <td></td>
@@ -54,7 +54,7 @@
 
 
 <!-- modal lihat -->
-<?php foreach ($tbl_b9 as $tl_b9): ?>
+<?php foreach ($tbl_b9->result() as $tl_b9): ?>
   <div id="lihat<?= $tl_b9->$tabel_b9_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

@@ -17,8 +17,8 @@ class C_tabel_b7 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v8_title'),
 			'konten' => $this->v8['tabel_b7'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
-			'tbl_b7' => $this->tl_b7->get_b7_by_b7_field1($param1)->result()
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7']),
+			'tbl_b7' => $this->tl_b7->get_b7_by_b7_field1($param1),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -38,10 +38,9 @@ class C_tabel_b7 extends Omnitags
 		
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v3_title'),
-			'count' => $this->tl_b7->get_all_b7()->num_rows(),
 			'konten' => $this->v3['tabel_b7'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
-			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7']),
+			'tbl_b7' => $this->tl_b7->get_all_b7(),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -322,8 +321,8 @@ class C_tabel_b7 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_b7_alias_v4_title'),
 			'konten' => $this->v4['tabel_b7'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7'])->result(),
-			'tbl_b7' => $this->tl_b7->get_all_b7()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b7']),
+			'tbl_b7' => $this->tl_b7->get_all_b7(),
 		);
 
 		$data = array_merge($data1, $this->package);

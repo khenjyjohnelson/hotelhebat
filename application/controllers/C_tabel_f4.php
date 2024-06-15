@@ -15,15 +15,14 @@ class C_tabel_f4 extends Omnitags
 	public function admin()
 	{
 		$this->declarew();
-		$this->page_session_3();
+		$this->page_session_4();
 
 		$data1 = array(
 			'title' => lang('tabel_f4_alias_v3_title'),
-			'count' => $this->tl_f4->get_all_f4()->num_rows(),
 			'konten' => $this->v3['tabel_f4'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4'])->result(),
-			'tbl_f4' => $this->tl_f4->get_all_f4()->result(),
-			'tbl_c1' => $this->tl_c1->get_all_c1()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4']),
+			'tbl_f4' => $this->tl_f4->get_all_f4(),
+			'tbl_c1' => $this->tl_c1->get_all_c1(),
 		);
 
 		$data = array_merge($data1, $this->package);
@@ -130,8 +129,8 @@ class C_tabel_f4 extends Omnitags
 		$data1 = array(
 			'title' => lang('tabel_f4_alias_v4_title'),
 			'konten' => $this->v4['tabel_f4'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4'])->result(),
-			'tbl_f4' => $this->tl_f4->get_all_f4()->result(),
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f4']),
+			'tbl_f4' => $this->tl_f4->get_all_f4(),
 		);
 
 		$data = array_merge($data1, $this->package);

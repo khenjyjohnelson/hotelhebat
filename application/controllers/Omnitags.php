@@ -171,8 +171,8 @@ if (!class_exists('Omnitags')) {
 
                 'head' => '_partials/head',
                 'phase' => $this->phase_2,
-                'lisensi' => $this->tl_b5->get_b5_by_b5_field6_by_b5_field7($this->theme_id)->result(),
-                'sosmed' => $this->tl_b6->get_b6_by_b6_field6_by_b6_field7($this->theme_id)->result(),
+                'lisensi' => $this->tl_b5->get_b5_by_b5_field6_by_b5_field7($this->theme_id),
+                'sosmed' => $this->tl_b6->get_b6_by_b6_field6_by_b6_field7($this->theme_id),
                 'tbl_a1' => $this->theme,
                 'notif' => $this->notif_limit,
                 'notif_count' => $this->notif_null->num_rows(),

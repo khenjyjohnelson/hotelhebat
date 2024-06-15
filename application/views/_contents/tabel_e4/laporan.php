@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($tbl_e4 as $tl_e4): ?>
+    <?php foreach ($tbl_e4->result() as $tl_e4): ?>
       <tr>
         <td width=""><?= $tl_e4->$tabel_e4_field1; ?></td>
         <td width=""><?= $tl_e4->$tabel_e4_field2 ?></td>

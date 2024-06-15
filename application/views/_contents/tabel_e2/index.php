@@ -6,7 +6,7 @@
 <hr>
 
 <div class="row">
-  <?php foreach ($tbl_e2 as $tl_e2) : ?>
+  <?php foreach ($tbl_e2->result() as $tl_e2) : ?>
     <div class="col-md-4 tabel_e2">
 
       <!-- gambar dapat ditekan untuk memunculkan modal -->
@@ -19,7 +19,7 @@
 
 
 <!-- modal lihat -->
-<?php foreach ($tbl_e2 as $tl_e2) : ?>
+<?php foreach ($tbl_e2->result() as $tl_e2) : ?>
   <div id="lihat<?= $tl_e2->$tabel_e2_field1 ?>" class="modal fade lihat">
     <div class="modal-dialog">
       <div class="modal-content">

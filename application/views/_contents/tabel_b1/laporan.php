@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($tbl_b1 as $tl_b1): ?>
+        <?php foreach ($tbl_b1->result() as $tl_b1): ?>
             <tr>
                 <td><?= htmlspecialchars($tl_b1->$tabel_b1_field1) ?></td>
                 <td><?= htmlspecialchars($tl_b1->$tabel_b1_field2) ?></td>

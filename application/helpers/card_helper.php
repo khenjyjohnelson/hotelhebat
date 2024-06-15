@@ -65,17 +65,13 @@ if (!function_exists('card_content')) {
 }
 
 if (!function_exists('card_regular')) {
-    function card_regular($id, $table, $title, $detail, $actions, $theme)
+    function card_regular($id, $title, $detail, $actions, $theme, $table)
     {
-        // Get CodeIgniter instance
-        $CI =& get_instance();
-        // Fetch the view variables
-        $data = $CI->load->get_vars();
         $title = card_title($title);
         
         return <<<HTML
         <div class="col-md-3 mt-2">
-            <div class="card text-white {$theme}">
+            <div class="card {$theme}">
             <div class="card-body">
                 {$title}
                 <p class="card-text">{$detail}</p>
@@ -89,7 +85,7 @@ if (!function_exists('card_regular')) {
 }
 
 if (!function_exists('card_file')) {
-    function card_file($id, $title, $detail, $actions, $table, $picture, $theme)
+    function card_file($id, $title, $detail, $actions, $theme, $table, $picture)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
@@ -99,7 +95,7 @@ if (!function_exists('card_file')) {
         
         return <<<HTML
         <div class="col-md-3 mt-2">
-            <div class="card text-white {$theme}">
+            <div class="card {$theme}">
             <img src="img/{$table}/{$picture}" class="card-img-top img-fluid" style="max-height: 150px" alt="...">
             <div class="card-body">
                 <p class="card-text" style="font-size: 18px;"
@@ -156,7 +152,7 @@ if (!function_exists('card_count')) {
         
         return <<<HTML
         <div class="col-md-3 mt-2">
-            <div class="card text-white {$theme}">
+            <div class="card {$theme}">
             <div class="card-body">
                 <h5 class="card-title">
                     {$title}

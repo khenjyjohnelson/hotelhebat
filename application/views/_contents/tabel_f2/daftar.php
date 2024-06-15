@@ -1,17 +1,52 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_f2) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
 <hr>
 
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_field('filter', '<i class="fas fa-filter"></i> Filter') ?>
+  </div>
 
-<div class="table-responsive">
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_f2->result() as $tl_f2):
+    switch ($tl_f2->$tabel_f2_field12) {
+      case $tabel_f2_field12_value2:
+        $button = btn_field($tabel_f3_field6 . $tl_f2->$tabel_f2_field1, '<i class="fas fa-shopping-cart"></i>');
+        break;
+      case $tabel_f2_field12_value3:
+      case $tabel_f2_field12_value4:
+        $button = btn_print('tabel_f2', $tl_f2->$tabel_f2_field1);
+        break;
+      default:
+        $button = "";
+        break;
+    }
+
+    echo card_regular(
+      $tl_f2->$tabel_f2_field1,
+      $tl_f2->$tabel_f2_field1 . ' | ' . $tl_f2->$tabel_e4_field2,
+      $tl_f2->$tabel_f2_field12,
+      $button,
+      'text-white bg-primary',
+      $tabel_f2,
+    );
+  endforeach; ?>
+</div>
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -25,7 +60,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_f2 as $tl_f2): ?>
+      <?php foreach ($tbl_f2->result() as $tl_f2): ?>
         <tr>
           <td></td>
           <td><?= $tl_f2->$tabel_f2_field6 ?></td>
@@ -53,26 +88,71 @@
   </table>
 </div>
 
-<?php foreach ($tbl_f2 as $tl_f2): ?>
+<!-- modal filter -->
+<div id="filter" class="modal fade filter">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <?= modal_header_add('Filter', '') ?>
+
+      <form action="<?= site_url($language . '/' . $tabel_f2 . '/filter_user') ?>" method="get">
+        <div class="modal-body">
+          <!-- method get supaya nilai dari filter bisa tampil nanti -->
+          <span><?= $tabel_f2_field10_alias ?></span>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Dari', 'tabel_f2_field10_filter1', 'oninput="myFunction3()"', '', '') ?>
+            </div>
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Ke', 'tabel_f2_field10_filter2', 'required', '', '') ?>
+            </div>
+          </div>
+          <span><?= $tabel_f2_field11_alias ?></span>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Dari', 'tabel_f2_field11_filter1', 'oninput="myFunction2()"', '', '') ?>
+            </div>
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Ke', 'tabel_f2_field11_filter2', 'required', '', '') ?>
+            </div>
+          </div>
+        </div>
+
+        <!-- pesan untuk pengguna yang sedang merubah password -->
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_filter') ?></p>
+
+        <div class="modal-footer">
+          <?= btn_cari() ?>
+          <?= btn_redo('tabel_f2', '/daftar') ?>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<?php foreach ($tbl_f2->result() as $tl_f2): ?>
   <div id="lihat<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade lihat">
     <div class="modal-dialog">
       <div class="modal-content">
         <?= modal_header(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
         <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
-              <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-              <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
-              <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
-            </div>
-            <div class="col-md-6">
-              <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-              <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
-              <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
-              <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
-            </div>
+          <div class="table-responsive">
+            <table class="table table-light" id="data">
+              <thead>
+              <tbody>
+                <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
+                <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
+                <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
+                <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
+                <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
+                <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
+                <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
+                <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
+
+              </tbody>
+              <tfoot></tfoot>
+            </table>
           </div>
         </div>
 
@@ -93,57 +173,62 @@
           <div class="modal-content">
             <?= modal_header(lang('tabel_f3_alias') . ' untuk ' . lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
-            <form action="<?= site_url($language . '/' . $tabel_f3 . '/tambah') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= site_url($language . '/' . $tabel_f3 . '/tambah') ?>" method="post"
+              enctype="multipart/form-data">
 
               <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <?= input_hidden('tabel_f2_field4', $tl_f2->$tabel_f2_field4, 'required') ?>
-                    <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
-                    <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-                    <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
-                    <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
+                <div class="table-responsive">
+                  <table class="table table-light" id="data">
+                    <thead>
+                    <tbody>
+                      <?= input_hidden('tabel_f2_field4', $tl_f2->$tabel_f2_field4, 'required') ?>
+                      <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
+                      <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
+                      <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
+                      <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
 
-                    <div class="col-md-6">
                       <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
                       <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
                       <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
                       <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
-                    </div>
+
+                    </tbody>
+                    <tfoot></tfoot>
+                  </table>
+                </div>
 
 
-                    <!-- Input metode pembayaran -->
+                <!-- Input metode pembayaran -->
 
-                    <div class="col-md-12">
+                <div class="col-md-12">
 
-                      <?= row_data('tabel_f2_field9', 'Rp ' . number_format($tl_f2->$tabel_f2_field9, '2', ',', '.')) ?>
+                  <?= row_data('tabel_f2_field9', 'Rp ' . number_format($tl_f2->$tabel_f2_field9, '2', ',', '.')) ?>
 
-                      <div class="form-group">
-                        <select class="form-control float" required name="<?= $tabel_f3_field5_input ?>">
-                          <option selected hidden value=""><?= lang('select') ?> <?= $tabel_f3_field5_alias ?>...</option>
-                          <option value="<?= $tabel_f3_field5_value1 ?>"><?= $tabel_f3_field5_value1_alias ?></option>
-                          <option value="<?= $tabel_f3_field5_value2 ?>"><?= $tabel_f3_field5_value2_alias ?></option>
-                        </select>
-                        <label class="form-label"><?= $tabel_f3_field5_alias ?></label>
-                      </div>
-
-                      <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
-                      <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value3, 'required') ?>
-                      <?= edit_min_max('number', 'tabel_f3_field6', $tl_f2->$tabel_f2_field9, 'required readonly', '0', '') ?>
-                    </div>
-
+                  <div class="form-group">
+                    <select class="form-control float" required name="<?= $tabel_f3_field5_input ?>">
+                      <option selected hidden value=""><?= lang('select') ?>       <?= $tabel_f3_field5_alias ?>...</option>
+                      <option value="<?= $tabel_f3_field5_value1 ?>"><?= $tabel_f3_field5_value1_alias ?></option>
+                      <option value="<?= $tabel_f3_field5_value2 ?>"><?= $tabel_f3_field5_value2_alias ?></option>
+                    </select>
+                    <label class="form-label"><?= $tabel_f3_field5_alias ?></label>
                   </div>
+
+                  <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
+                  <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value3, 'required') ?>
+                  <?= edit_min_max('number', 'tabel_f3_field6', $tl_f2->$tabel_f2_field9, 'required readonly', '0', '') ?>
                 </div>
 
-                <!-- pesan untuk pengguna yang sedang merubah password -->
-                <p class="small text-center text-danger"><?= get_flashdata('pesan_' . $tabel_f3_field6) ?></p>
-
-                <div class="modal-footer">
-                  <button class="btn btn-success" type="submit">Bayar</button>
-                </div>
-            </form>
-
+              </div>
           </div>
+
+          <!-- pesan untuk pengguna yang sedang merubah password -->
+          <p class="small text-center text-danger"><?= get_flashdata('pesan_' . $tabel_f3_field6) ?></p>
+
+          <div class="modal-footer">
+            <button class="btn btn-success" type="submit">Bayar</button>
+          </div>
+          </form>
+
         </div>
       </div>
 
@@ -154,3 +239,8 @@
       <?php break;
   } ?>
 <?php endforeach ?>
+
+<?= adjust_col_js() ?>
+
+<?= adjust_date3($tabel_f2_field10_filter1, $tabel_f2_field10_filter2, $tabel_f2_field11_filter1, $tabel_f2_field11_filter2) ?>
+<?= adjust_date2($tabel_f2_field11_filter1, $tabel_f2_field11_filter2) ?>

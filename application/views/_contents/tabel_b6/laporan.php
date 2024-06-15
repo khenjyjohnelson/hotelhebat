@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($tbl_b6 as $tl_b6): ?>
+    <?php foreach ($tbl_b6->result() as $tl_b6): ?>
       <tr>
         <td width=""><?= $tl_b6->$tabel_b6_field1; ?></td>
         <td width=""><?= $tl_b6->$tabel_b6_field2 ?></td>

@@ -5,7 +5,7 @@
     <hr>
 
   <?php } else {
-    foreach ($tbl_b5 as $tl_b5): ?>
+    foreach ($tbl_b5->result() as $tl_b5): ?>
 
       <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field5 ?>" class="img-fluid rounded">
 
@@ -35,7 +35,7 @@ endforeach; ?>
 
 
 <!-- modal lihat -->
-<?php foreach ($tbl_b5 as $tl_b5): ?>
+<?php foreach ($tbl_b5->result() as $tl_b5): ?>
   <div id="lihat<?= $tl_b5->$tabel_b5_field1 ?>" class="modal fade lihat">
     <div class="modal-dialog">
       <div class="modal-content">

@@ -9,12 +9,12 @@ terima kasih pada link di atas -->
 <h2 class="pt-2"><?= $title ?><?= $phase ?></h2>
 <hr>
 
-<?php foreach ($tbl_e4 as $tl_e4) : ?>
+<?php foreach ($tbl_e4->result() as $tl_e4) : ?>
   <img src='img/<?= $tabel_e4 ?>/<?= $tl_e4->$tabel_e4_field3 ?>' class="img-fluid rounded">
   <h2 class="pt-2"><?= $tl_e4->$tabel_e4_field2; ?> (Rp <?= number_format($tl_e4->$tabel_e4_field5, '2', ',', '.') ?> per hari)</h2>
   <ul class="list-unstyled ml-2">
     <li><?= $tabel_e1_alias ?> : </li>
-    <?php foreach ($tbl_e1 as $tl_e1) : ?>
+    <?php foreach ($tbl_e1->result() as $tl_e1) : ?>
       <?php if ($tl_e4->$tabel_e4_field2 === $tl_e1->$tabel_e4_field2) { ?>
         <li><?= $tl_e1->$tabel_e1_field3 ?></li>
       <?php } ?>

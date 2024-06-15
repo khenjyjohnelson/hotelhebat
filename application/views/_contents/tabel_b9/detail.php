@@ -3,14 +3,14 @@
     <h1><?= $title ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
 <hr>
 
-<?php foreach ($tbl_b9 as $tl_b9): ?>
+<?php foreach ($tbl_b9->result() as $tl_b9): ?>
   <div class="table-responsive">
     <table class="table table-light" id="data">
       <thead></thead>

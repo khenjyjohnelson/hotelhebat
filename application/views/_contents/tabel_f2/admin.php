@@ -1,42 +1,57 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_f2) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
 </div>
 <hr>
 
-<!-- tabel fiter pesanan -->
-<table class="mb-4">
 
-  <!-- method get supaya nilai dari filter bisa tampil nanti -->
-  <form action="<?= site_url($language . '/' . $tabel_f2 . '/filter') ?>" method="get">
-    <tr>
-      <td class="pr-2"><?= $tabel_f2_field10_alias ?></td>
-      <?= filter_tgl('Dari', 'tabel_f2_field10_filter1', '') ?>
-      <?= filter_tgl('Ke', 'tabel_f2_field10_filter2', '') ?>
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_field('filter', '<i class="fas fa-filter"></i> Filter') ?>
+  </div>
 
-      <td>
-        <?= btn_cari() ?>
-        <?= btn_redo('tabel_f2', '/admin') ?>
-      </td>
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
 
-    </tr>
-    <!-- Mengecek data menggunakan tanggal cek out -->
-    <!-- method get supaya nilai dari filter bisa tampil nanti -->
-    <tr>
-      <td class="pr-2"><?= $tabel_f2_field11_alias ?></td>
-      <?= filter_tgl('Dari', 'tabel_f2_field11_filter1', '') ?>
-      <?= filter_tgl('Ke', 'tabel_f2_field11_filter2', '') ?>
-    </tr>
-  </form>
-</table>
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_f2->result() as $tl_f2):
+    switch ($tl_f2->$tabel_f2_field12) {
+      case $tabel_f2_field12_value1:
+        $button = btn_book($tl_f2->$tabel_f2_field1);
+        break;
+      case $tabel_f2_field12_value3:
+      case $tabel_f2_field12_value4:
+        $button = btn_edit($tl_f2->$tabel_f2_field1);
+        break;
+      case $tabel_f2_field12_value5:
+        $button = btn_hapus('tabel_f2', $tl_f2->$tabel_f2_field1);
+        break;
+      default:
+        $button = "";
+        break;
+    }
 
-<div class="table-responsive">
+    echo card_regular(
+      $tl_f2->$tabel_f2_field1,
+      $tl_f2->$tabel_f2_field1 . ' | ' . $tl_f2->$tabel_e4_field2,
+      $tl_f2->$tabel_f2_field12,
+      $button . ' ' .
+      btn_print('tabel_f2', $tl_f2->$tabel_f2_field1),
+      'text-dark bg-light',
+      $tabel_f2,
+    );
+  endforeach; ?>
+</div>
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -51,7 +66,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_f2 as $tl_f2): ?>
+      <?php foreach ($tbl_f2->result() as $tl_f2): ?>
         <tr>
           <td></td>
           <td><?= $tl_f2->$tabel_f2_field1 ?></td>
@@ -87,8 +102,50 @@
   </table>
 </div>
 
+<!-- modal filter -->
+<div id="filter" class="modal fade filter">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <?= modal_header_add('Filter', '') ?>
+
+      <form action="<?= site_url($language . '/' . $tabel_f2 . '/filter') ?>" method="get">
+        <div class="modal-body">
+          <!-- method get supaya nilai dari filter bisa tampil nanti -->
+          <span><?= $tabel_f2_field10_alias ?></span>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Dari', 'tabel_f2_field10_filter1', 'oninput="myFunction3()"', '', '') ?>
+            </div>
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Ke', 'tabel_f2_field10_filter2', 'required', '', '') ?>
+            </div>
+          </div>
+          <span><?= $tabel_f2_field11_alias ?></span>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Dari', 'tabel_f2_field11_filter1', 'oninput="myFunction2()"', '', '') ?>
+            </div>
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Ke', 'tabel_f2_field11_filter2', 'required', '', '') ?>
+            </div>
+          </div>
+        </div>
+
+        <!-- pesan untuk pengguna yang sedang merubah password -->
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_filter') ?></p>
+
+        <div class="modal-footer">
+          <?= btn_cari() ?>
+          <?= btn_redo('tabel_f2', '/admin') ?>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
 <!-- modal ubah -->
-<?php foreach ($tbl_f2 as $tl_f2): ?>
+<?php foreach ($tbl_f2->result() as $tl_f2): ?>
   <?php switch ($tl_f2->$tabel_f2_field12) {
     case $tabel_f2_field12_value1: ?>
       <div id="book<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade book">
@@ -99,40 +156,32 @@
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/book') ?>" method="post">
               <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
-                    <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
-                    <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
-                    <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-                    <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
-                    <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
-                  </div>
-
-                  <div class="col-md-6">
-                    <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-                    <?= row_data('tabel_e4_field2', $tlf2_e4->$tabel_e4_field2) ?>
-                    <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
-                    <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
-                  </div>
+                <div class="table-responsive">
+                  <table class="table table-light" id="data">
+                    <thead></thead>
+                    <tbody>
+                      <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
+                      <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
+                      <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
+                      <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
+                      <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
+                      <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
+                      <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
+                      <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
+                    </tbody>
+                    <tfoot></tfoot>
+                  </table>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label><?= lang('select') ?> <?= $tabel_e3_field1_alias ?></label>
+                      <label><?= lang('select') ?>       <?= $tabel_e3_field1_alias ?></label>
 
                       <div class="row">
-
-                        <!-- <select class="form-control float" required name="<?= $tabel_f2_field13_input ?>"> -->
-                        <!-- menampilkan nilai id_tipe kamar yang aktif -->
-                        <!-- <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e3_field1_alias ?>:</option> -->
-                        <!-- <option value="<?= $tl_e3->$tabel_f2_field13 ?>"><?= $tl_e3->$tabel_f2_field13; ?> - <?= $tlf2_e4->$tabel_e4_field2 ?></option> -->
-                        <!-- </select> -->
-
-                        <?php foreach ($tbl_e3 as $tl_e3):
+                        <?php foreach ($tbl_e3->result() as $tl_e3):
                           if ($tl_f2->$tabel_f2_field7 == $tl_e3->$tabel_f2_field7) {
-                            if ($tl_e3->$tabel_f2_field7 == $tlf2_e4->$tabel_f2_field7) {
+                            if ($tl_e3->$tabel_f2_field7 == $tl_f2->$tabel_f2_field7) {
                               if ($tl_e3->$tabel_e3_field4 == $tabel_e3_field4_value2) { ?>
 
                                 <div class="col-md-3 mb-4">
@@ -207,8 +256,12 @@
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/update_status') ?>" method="post">
               <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
+
+                <div class="table-responsive">
+                  <table class="table table-light" id="data">
+                    <thead></thead>
+                    <tbody></tbody>
+
                     <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
                     <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
                     <!-- input status berdasarkan nilai status -->
@@ -226,14 +279,16 @@
                     <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
                     <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
                     <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
-                  </div>
 
-                  <div class="col-md-6">
                     <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-                    <?= row_data('tabel_e4_field2', $tlf2_e4->$tabel_e4_field2) ?>
+                    <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
                     <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
                     <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
-                  </div>
+
+
+                    </tbody>
+                    <tfoot></tfoot>
+                  </table>
                 </div>
               </div>
 
@@ -266,6 +321,11 @@
       break;
   } ?>
 <?php endforeach ?>
+
+<?= adjust_col_js() ?>
+
+<?= adjust_date3($tabel_f2_field10_filter1, $tabel_f2_field10_filter2, $tabel_f2_field11_filter1, $tabel_f2_field11_filter2) ?>
+<?= adjust_date2($tabel_f2_field11_filter1, $tabel_f2_field11_filter2) ?>
 
 <?= radio_js() ?>
 <?= checkbox_js() ?>

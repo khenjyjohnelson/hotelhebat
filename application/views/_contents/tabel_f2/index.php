@@ -7,7 +7,7 @@
   <!-- form ini berisi data yang sudah diinput sebelumnya dari halaman home -->
   <div class="row justify-content-center align-items-end mt-2">
     <div class="col-md-2">
-      <?= edit_min_max('date', 'tabel_f2_field10', $tabel_f2_field10_value, 'required oninput="myFunction()"', date('Y-m-d'), '') ?>
+      <?= edit_min_max('date', 'tabel_f2_field10', $tabel_f2_field10_value, 'required oninput="myFunction1()"', date('Y-m-d'), '') ?>
     </div>
 
     <div class="col-md-2">
@@ -67,7 +67,7 @@
       <div class="form-group">
         <select class="form-control float" required name="<?= $tabel_e4_field1_input ?>">
           <option selected hidden value=""><?= lang('select') ?> <?= $tabel_e4_field2_alias ?>...</option>
-          <?php foreach ($tbl_e4 as $tl_e4): ?>
+          <?php foreach ($tbl_e4->result() as $tl_e4): ?>
             <option value="<?= $tl_e4->$tabel_e4_field1; ?>"><?= $tl_e4->$tabel_e4_field2 ?></option>
           <?php endforeach ?>
         </select>
@@ -78,7 +78,7 @@
 
     </div>
     <div class="col-md-6">
-      <?php foreach ($dekor as $dk): ?>
+      <?php foreach ($dekor->result() as $dk): ?>
         <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" class="img-fluid rounded">
       <?php endforeach ?>
     </div>
@@ -134,22 +134,4 @@
   </div>
 </div>
 
-<script>
-    function myFunction() {
-      let x = document.getElementById("<?= $tabel_f2_field10_input ?>").value;
-
-      // Create a Date object with the value from cek_in_date
-      let startDate = new Date(x);
-
-      // Add one day to the date
-      startDate.setDate(startDate.getDate() + 1);
-
-      // Format the date to YYYY-MM-DD (same as input type date)
-      let formattedDate = startDate.toISOString().split('T')[0];
-
-
-      document.getElementById("<?= $tabel_f2_field11_input ?>").min = formattedDate;
-      document.getElementById("<?= $tabel_f2_field11_input ?>").value = formattedDate;
-
-    }
-  </script>
+<?= adjust_date1($tabel_f2_field10_input, $tabel_f2_field11_input) ?>

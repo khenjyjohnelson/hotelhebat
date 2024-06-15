@@ -295,22 +295,23 @@ if (!function_exists('edit_file')) {
     }
 }
 
-if (!function_exists('filter_tgl')) {
-    function filter_tgl($posisi, $field, $required)
+if (!function_exists('filter_min_max')) {
+    function filter_min_max($type, $posisi, $field, $required, $min, $max)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $name = $data[$field];
+        $input = $data[$field];
         $value = $data[$field . "_value"];
 
         return <<<HTML
         <td class="pr-2">
             <div class="form-group">
-                <input type="date" class="form-control float" {$required} name="{$name}" id="{$name}" value="{$value}">
-                <label for="{$name}" class="form-label">{$posisi}</label>
+                <input class="form-control float" type="{$type}" {$required} name="{$input}" placeholder="" id="{$input}"
+                min="{$min}" max="{$max}" value="{$value}">
+                <label for="{$input}" class="form-label">{$posisi}</label>
             </div>
         </td>
         HTML;

@@ -1,9 +1,9 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-    <h1><?= $title ?><br><span class="h6"> Data: <?= $count ?></span><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_f3) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
-    <?php foreach ($dekor as $dk): ?>
+    <?php foreach ($dekor->result() as $dk): ?>
       <img src="img/<?= $tabel_b1 ?>/<?= $dk->$tabel_b1_field4 ?>" width="200" alt="Image">
     <?php endforeach ?>
   </div>
@@ -25,7 +25,7 @@
     </thead>
 
     <tbody>
-      <?php foreach ($tbl_f3 as $tl_f3): ?>
+      <?php foreach ($tbl_f3->result() as $tl_f3): ?>
         <tr>
           <td></td>
           <td><?= $tl_f3->$tabel_f3_field1 ?></td>
@@ -49,9 +49,9 @@
 <!-- modal lihat -->
 <!-- Tabel transaksi dan tabel pesanan literally sudah bergabung
 Jadi tidak perlu menambahkan foreach pesanan lagi -->
-<?php foreach ($tbl_f3 as $tl_f3): ?>
+<?php foreach ($tbl_f3->result() as $tl_f3): ?>
   <div id="lihat<?= $tl_f3->$tabel_f3_field1 ?>" class="modal fade lihat" role="dialog">
-    <?php foreach ($tbl_e4 as $tl_e4): ?>
+    <?php foreach ($tbl_e4->result() as $tl_e4): ?>
       <?php if ($tl_e4->$tabel_e4_field1 === $tl_f3->$tabel_e4_field1) { ?>
         <div class="modal-dialog">
           <div class="modal-content">
