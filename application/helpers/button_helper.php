@@ -294,7 +294,7 @@ if (!function_exists('btn_kelola')) {
         $url = xss_clean(site_url($lang . '/' . $controller . $function));
 
         return <<<HTML
-        <a class="btn mr-1 mt-4 btn-info text-light" href="{$url}">
+        <a class="btn mr-1 mb-2 btn-info text-light" href="{$url}">
         <i class="fas fa-edit"></i> {$alias}</a>
         HTML;
     }

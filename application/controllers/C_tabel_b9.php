@@ -29,8 +29,6 @@ class C_tabel_b9 extends Omnitags
 					'konten' => $this->v8['tabel_b9'],
 					'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9']),
 					'tbl_b9' => $this->tl_b9->get_b9_by_b9_field1($tabel_b9_field1),
-					'notif' => $this->notif_limit,
-					'notif_count' => $this->notif_null->num_rows(),
 				);
 
 				$data = array_merge($data1, $this->package);

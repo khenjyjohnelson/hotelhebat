@@ -14,15 +14,17 @@
   <div class="row">
     <div class="col-md-6">
       <p><?= lang('images_not_change_immediately') ?></p>
-      <?= btn_field($tabel_b7_field3 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field3_alias')) ?>
-      <?= btn_field($tabel_b7_field4 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field4_alias')) ?>
-      <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field5_alias')) ?>
-      <?= btn_field($tabel_b7, '<i class="fas fa-edit"></i>' . lang('tabel_b7_alias')) ?>
-      <?= btn_kelola('tabel_b1', '/admin') ?>
-      <?= btn_kelola('tabel_b2', '/admin') ?>
-      <?= btn_kelola('tabel_b8', '/admin') ?>
-      <?= btn_kelola('tabel_b5', '/admin') ?>
-      <?= btn_kelola('tabel_b6', '/admin') ?>
+      <div class="form-group">
+        <?= btn_field($tabel_b7_field3 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field3_alias')) ?>
+        <?= btn_field($tabel_b7_field4 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field4_alias')) ?>
+        <?= btn_field($tabel_b7_field5 . $tl_a1->$tabel_b7_field1, '<i class="fas fa-edit"></i> ' . lang('tabel_b7_field5_alias')) ?>
+        <?= btn_field($tabel_b7, '<i class="fas fa-edit"></i>' . lang('tabel_b7_alias')) ?>
+        <?= btn_kelola('tabel_b1', '/admin') ?>
+        <?= btn_kelola('tabel_b2', '/admin') ?>
+        <?= btn_kelola('tabel_b8', '/admin') ?>
+        <?= btn_kelola('tabel_b5', '/admin') ?>
+        <?= btn_kelola('tabel_b6', '/admin') ?>
+      </div>
     </div>
     <div class="col-md-6">
       <form action="<?= site_url($language . '/' . $tabel_a1 . '/update') ?>" method="post" enctype="multipart/form-data">
@@ -51,18 +53,20 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <select class="form-control float" required name="<?= $tabel_a1_field6_input ?>" id="<?= $tabel_a1_field6_input ?>">
-                
-              <?php foreach ($tbl_b7->result() as $tl_b7): ?>
-                <?php if ($tl_a1->$tabel_a1_field6 == $tl_b7->$tabel_b7_field1) { ?>
-                  <option selected hidden value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+              <select class="form-control float" required name="<?= $tabel_a1_field6_input ?>"
+                id="<?= $tabel_a1_field6_input ?>">
+
+                <?php foreach ($tbl_b7->result() as $tl_b7): ?>
+                  <?php if ($tl_a1->$tabel_a1_field6 == $tl_b7->$tabel_b7_field1) { ?>
+                    <option selected hidden value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
                   <?php } else { ?>
                     <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?>
-                  </option>
+                    </option>
                   <?php }endforeach ?>
-                  
-                </select>
-                <label for="<?= $tabel_a1_field6_input ?>" class="form-label"><?= lang('select') ?> <?= $tabel_b7_alias ?></label>
+
+              </select>
+              <label for="<?= $tabel_a1_field6_input ?>" class="form-label"><?= lang('select') ?>
+                <?= $tabel_b7_alias ?></label>
               <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
             </div>
           </div>
@@ -73,7 +77,7 @@
           </p>
 
           <div class="modal-footer">
-          <?= btn_kelola('tabel_b7', '/admin') ?>
+            <?= btn_kelola('tabel_b7', '/admin') ?>
             <?= btn_update() ?>
           </div>
         </form>
@@ -89,7 +93,8 @@
       <div class="modal-content">
         <?= modal_header(lang('change_data') . ' ' . lang('tabel_b7_field3_alias'), $tl_b7->$tabel_b7_field1) ?>
 
-        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_favicon') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_favicon') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
@@ -116,7 +121,8 @@
       <div class="modal-content">
         <?= modal_header(lang('change_data') . ' ' . lang('tabel_b7_field4_alias'), $tl_b7->$tabel_b7_field1) ?>
 
-        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_logo') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_logo') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
@@ -143,7 +149,8 @@
       <div class="modal-content">
         <?= modal_header(lang('change_data') . ' ' . lang('tabel_b7_field5_alias'), $tl_b7->$tabel_b7_field1) ?>
 
-        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_foto') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_foto') ?>" method="post"
+          enctype="multipart/form-data">
           <div class="modal-body">
 
             <?= input_hidden('tabel_b7_field1', $tl_b7->$tabel_b7_field1, 'required') ?>
