@@ -16,7 +16,7 @@ class C_tabel_f2 extends Omnitags
 	public function index()
 	{
 		$this->declarew();
-		$this->page_session_5();
+		$this->page_session_all();
 
 		switch (userdata($this->aliases['tabel_c2_field6'])) {
 			case $this->aliases['tabel_c2_field6_value5']:

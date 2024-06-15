@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <?php load_view($head) ?>
 
 <body>
@@ -10,23 +10,17 @@
         </div>
     <?php endforeach ?>
 
-    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
-
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
 
         <!-- membuat konten berada tepat di tengah2 halaman  -->
-        <div class="row w-100 justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center w-100">
             <div class="col-lg-5 logpage">
-                
+
                 <!-- link kembali -->
                 <?= back_to_home() ?>
                 <h1 class="text-center"><?= $title ?><?= $phase ?></h1>
-                
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-md-8">
-                        <?= load_view($konten) ?>
-                    </div>
-                </div>
 
+                <?= load_view($konten) ?>
             </div>
         </div>
     </div>
