@@ -13,7 +13,8 @@ class M_tabel_e3 extends CI_Model
 	{
 		$sql = "SELECT * FROM {$this->aliases['tabel_e3']} 
 		JOIN {$this->aliases['tabel_e4']} 
-		ON {$this->aliases['tabel_e3']}.{$this->aliases['tabel_e3_field2']} = {$this->aliases['tabel_e4']}.{$this->aliases['tabel_e3_field2']}";
+		ON {$this->aliases['tabel_e3']}.{$this->aliases['tabel_e3_field2']} = {$this->aliases['tabel_e4']}.{$this->aliases['tabel_e3_field2']}
+		ORDER BY {$this->aliases['tabel_e3']}.{$this->aliases['tabel_e3_field1']} DESC";
 		return $this->db->query($sql);
 	}
 

@@ -39,10 +39,10 @@
     }
 
     echo card_regular(
-      $tl_e3->$tabel_e4_field1,
-      $tl_e3->$tabel_e4_field1 . ' | ' . $tl_e3->$tabel_e4_field2,
-      $tl_e3->$tabel_e4_field4,
-      btn_lihat($tl_e3->$tabel_e4_field1) . ' ' .
+      $tl_e3->$tabel_e3_field1,
+      $tl_e3->$tabel_e3_field1 . ' | ' . $tl_e3->$tabel_e4_field2,
+      $tl_e3->$tabel_e3_field4,
+      btn_lihat($tl_e3->$tabel_e3_field1) . ' ' .
       $button,
       'text-white bg-danger',
       $tabel_e3
