@@ -52,22 +52,32 @@
 <!-- modal lihat -->
 <?php foreach ($tbl_f4->result() as $tl_f4): ?>
   <div id="lihat<?= $tl_f4->$tabel_f4_field1; ?>" class="modal fade lihat" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <?= modal_header(lang('tabel_f4_alias'), $tl_f4->$tabel_f4_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <?= table_data(
-              row_data('tabel_f4_field1', $tl_f4->$tabel_f4_field1) .
-              row_data('tabel_f4_field2', $tl_f4->$tabel_f4_field2) .
-              row_data('tabel_f4_field3', $tl_f4->$tabel_f4_field3) .
-              row_data('tabel_f4_field4', $tl_f4->$tabel_f4_field4) .
-              row_data('tabel_f4_field5', $tl_f4->$tabel_f4_field5) .
-              row_data('tabel_f4_field6', $tl_f4->$tabel_f4_field6),
-              'table-ligjt'
-            ) ?>
+            <div class="row">
+              <div class="col-md-6">
+                <?= table_data(
+                  row_data('tabel_f4_field1', $tl_f4->$tabel_f4_field1) .
+                  row_data('tabel_f4_field2', $tl_f4->$tabel_f4_field2) .
+                  row_data('tabel_f4_field3', $tl_f4->$tabel_f4_field3),
+                  'table-ligjt'
+                ) ?>
+              </div>
+              <div class="col-md-6">
+                <?= table_data(
+                  row_data('tabel_f4_field4', $tl_f4->$tabel_f4_field4) .
+                  row_data('tabel_f4_field5', $tl_f4->$tabel_f4_field5) .
+                  row_data('tabel_f4_field6', $tl_f4->$tabel_f4_field6),
+                  'table-ligjt'
+                ) ?>
+              </div>
+            </div>
+
           </div>
 
           <!-- memunculkan notifikasi modal -->

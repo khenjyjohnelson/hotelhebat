@@ -44,7 +44,7 @@
 <!-- modal edit password-->
 <?php foreach ($tbl_c1->result() as $tl_c1): ?>
   <div id="password<?= $tl_c1->$tabel_c1_field1 ?>" class="modal fade <?= $tabel_c1_field5 ?>">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <?= modal_header(lang('change_data') . ' ' . $tabel_c1_field5_alias, '') ?>
 

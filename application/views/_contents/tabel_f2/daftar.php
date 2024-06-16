@@ -189,18 +189,27 @@
               enctype="multipart/form-data">
 
               <div class="modal-body">
-                <?= table_data(
-                  row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) .
-                  row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
-                  row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) .
-                  row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) .
+                <div class="row">
+                  <div class="col-md-6">
+                    <?= table_data(
+                      row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) .
+                      row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
+                      row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) .
+                      row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5),
+                      'table-light'
+                    ) ?>
+                  </div>
+                  <div class="col-md-6">
+                    <?= table_data(
+                      row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) .
+                      row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
+                      row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
+                      row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
+                      'table-light'
+                    ) ?>
+                  </div>
+                </div>
 
-                  row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) .
-                  row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
-                  row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
-                  row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
-                  'table-light'
-                ) ?>
                 <?= input_hidden('tabel_f2_field4', $tl_f2->$tabel_f2_field4, 'required') ?>
 
 

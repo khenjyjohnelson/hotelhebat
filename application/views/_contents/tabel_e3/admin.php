@@ -194,7 +194,7 @@
       <?php break;
     case $tabel_e3_field4_value4: ?>
       <div id="<?= $tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade <?= $tabel_c1_field7_value1 ?>">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <?= modal_header('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
 
@@ -272,7 +272,7 @@
       <?php break;
     case $tabel_e3_field4_value5: ?>
       <div id="<?= $tabel_c1_field7_value2 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade maintenance">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <?= modal_header('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
 
@@ -289,6 +289,7 @@
                       'table-light',
                     ) ?>
                     <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
+                    <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
                     <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
                     <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
                 jika sebaliknya, maka kamar akan menjadi <?= $tabel_e3_field4_value3_alias ?> -->

@@ -204,6 +204,24 @@ if (!function_exists('btn_read_more')) {
     }
 }
 
+if (!function_exists('btn_value')) {
+    function btn_value($table, $function, $id, $logo)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $url = xss_clean(site_url($data['language'] . '/' . $data[$table] . $function .'/' . $id));
+
+        return <<<HTML
+        <a class="btn mr-1 mb-2 btn-light border border-dark text-warning"
+                href="{$url}">
+                {$logo}</a>
+        HTML;
+    }
+}
+
 if (!function_exists('btn_lihat')) {
     function btn_lihat($value)
     {

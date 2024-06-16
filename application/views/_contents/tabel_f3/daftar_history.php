@@ -27,7 +27,7 @@
     echo card_regular(
       $tl_f3->$tabel_f3_field1,
       $tl_f3->$tabel_f3_field1 . ' | ' . $tabel_f2_alias . ' ' . $tl_f3->$tabel_f3_field4,
-      $tl_f3->$tabel_f3_field5 . ' | ' . $tl_f3->$tabel_f3_field6 . '<br>' . 
+      $tl_f3->$tabel_f3_field5 . ' | ' . $tl_f3->$tabel_f3_field6 . '<br>' .
       $tl_f3->$tabel_f3_field7,
       btn_lihat($tl_f3->$tabel_f3_field1) . ' ' .
       btn_print('tabel_f3', $tl_f3->$tabel_f3_field1),
@@ -77,30 +77,40 @@
 Jadi tidak perlu menambahkan foreach hitory lagi -->
 <?php foreach ($tbl_f3->result() as $tl_f3): ?>
   <div id="lihat<?= $tl_f3->$tabel_f3_field1 ?>" class="modal fade lihat">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
 
         <div class="modal-body">
-          <?= table_data(
-            row_data('tabel_f3_field1', $tl_f3->$tabel_f3_field1) . 
-            row_data('tabel_f1_field1', $tl_f3->$tabel_f1_field1) .
-            row_data('tabel_f3_field5', $tl_f3->$tabel_f3_field5) .
-            row_data('tabel_f3_field6', $tl_f3->$tabel_f3_field6) .
-            row_data('tabel_f2_field6', $tl_f3->$tabel_f2_field6) . 
-            row_data('tabel_e4_field2', $tl_f3->$tabel_e4_field2) .
-            row_data('tabel_f2_field10', $tl_f3->$tabel_f2_field10) .
-            row_data('tabel_f2_field11', $tl_f3->$tabel_f2_field11),
-            'table-light'
-          ) ?>
+          <div class="row">
+            <div class="col-md-6">
+              <?= table_data(
+                row_data('tabel_f3_field1', $tl_f3->$tabel_f3_field1) .
+                row_data('tabel_f1_field1', $tl_f3->$tabel_f1_field1) .
+                row_data('tabel_f3_field5', $tl_f3->$tabel_f3_field5) .
+                row_data('tabel_f3_field6', $tl_f3->$tabel_f3_field6),
+                'table-light'
+              ) ?>
+            </div>
+            <div class="col-md-6">
+              <?= table_data(
+                row_data('tabel_f2_field6', $tl_f3->$tabel_f2_field6) .
+                row_data('tabel_e4_field2', $tl_f3->$tabel_e4_field2) .
+                row_data('tabel_f2_field10', $tl_f3->$tabel_f2_field10) .
+                row_data('tabel_f2_field11', $tl_f3->$tabel_f2_field11),
+                'table-light'
+              ) ?>
+            </div>
+          </div>
+
         </div>
 
-        
+
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
-        
+
         <div class="modal-footer">
-          
+
           <?= btn_tutup() ?>
         </div>
       </div>

@@ -149,22 +149,32 @@
   <?php switch ($tl_f2->$tabel_f2_field12) {
     case $tabel_f2_field12_value1: ?>
       <div id="book<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade book">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <?= modal_header(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/book') ?>" method="post">
               <div class="modal-body">
-                <?= table_data(
-                  row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) .
-                  row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
-                  row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) .
-                  row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
-                  row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
-                  row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
-                  'table-light'
-                ) ?>
+                <div class="row">
+                  <div class="col-md-6">
+                    <?= table_data(
+                      row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) .
+                      row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
+                      row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6),
+                      'table-light'
+                    ) ?>
+                  </div>
+                  <div class="col-md-6">
+                    <?= table_data(
+                      row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
+                      row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
+                      row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
+                      'table-light'
+                    ) ?>
+                  </div>
+                </div>
+
                 <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
                 <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
 
@@ -180,7 +190,7 @@
                             if ($tl_e3->$tabel_f2_field7 == $tl_f2->$tabel_f2_field7) {
                               if ($tl_e3->$tabel_e3_field4 == $tabel_e3_field4_value2) { ?>
 
-                                <div class="col-md-3 mb-4">
+                                <div class="col-md-2 mb-4">
 
                                   <div class="card bg-light">
                                     <div class="card-body text-center">
@@ -245,23 +255,33 @@
     case $tabel_f2_field12_value3:
     case $tabel_f2_field12_value4: ?>
       <div id="ubah<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade ubah">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <?= modal_header(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/update_status') ?>" method="post">
               <div class="modal-body">
-                <?= table_data(
-                  row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
-                  row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) .
-                  row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) .
-                  row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) .
-                  row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
-                  row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
-                  row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
-                  'table-light'
-                ) ?>
+                <div class="row">
+                  <div class="col-md-6">
+                    <?= table_data(
+                      row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
+                      row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) .
+                      row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) .
+                      row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6),
+                      'table-light'
+                    ) ?>
+                  </div>
+                  <div class="col-md-6">
+                    <?= table_data(
+                      row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
+                      row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
+                      row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
+                      'table-light'
+                    ) ?>
+                  </div>
+                </div>
+
                 <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
                 <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
                 <!-- input status berdasarkan nilai status -->

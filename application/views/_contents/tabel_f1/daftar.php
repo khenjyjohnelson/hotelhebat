@@ -121,22 +121,32 @@
 <!-- modal lihat -->
 <?php foreach ($tbl_f1->result() as $tl_f1): ?>
   <div id="lihat<?= $tl_f1->$tabel_f1_field1 ?>" class="modal fade lihat">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <?= modal_header(lang('tabel_f1_alias'), $tl_f1->$tabel_f1_field1) ?>
 
         <div class="modal-body">
-          <?= table_data(
-            row_data('tabel_f1_field2', $tl_f1->$tabel_f1_field2) .
-            row_data('tabel_f1_field4', $tl_f1->$tabel_f1_field4) .
-            row_data('tabel_f1_field5', $tl_f1->$tabel_f1_field5) .
-            row_data('tabel_f1_field6', $tl_f1->$tabel_f1_field6) .
-            row_data('tabel_f1_field7', $tl_f1->$tabel_f1_field7) .
-            row_data('tabel_e4_field2', $tl_f1->$tabel_e4_field2) .
-            row_data('tabel_f1_field11', $tl_f1->$tabel_f1_field11) .
-            row_data('tabel_f1_field12', $tl_f1->$tabel_f1_field12),
-            'table-light'
-          ) ?>
+          <div class="row">
+            <div class="col-md-6">
+              <?= table_data(
+                row_data('tabel_f1_field2', $tl_f1->$tabel_f1_field2) .
+                row_data('tabel_f1_field4', $tl_f1->$tabel_f1_field4) .
+                row_data('tabel_f1_field5', $tl_f1->$tabel_f1_field5) .
+                row_data('tabel_f1_field6', $tl_f1->$tabel_f1_field6),
+                'table-light'
+              ) ?>
+            </div>
+            <div class="col-md-6">
+              <?= table_data(
+                row_data('tabel_f1_field7', $tl_f1->$tabel_f1_field7) .
+                row_data('tabel_e4_field2', $tl_f1->$tabel_e4_field2) .
+                row_data('tabel_f1_field11', $tl_f1->$tabel_f1_field11) .
+                row_data('tabel_f1_field12', $tl_f1->$tabel_f1_field12),
+                'table-light'
+              ) ?>
+            </div>
+          </div>
+
 
         </div>
 
