@@ -156,22 +156,18 @@
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/book') ?>" method="post">
               <div class="modal-body">
-                <div class="table-responsive">
-                  <table class="table table-light" id="data">
-                    <thead></thead>
-                    <tbody>
-                      <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
-                      <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
-                      <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
-                      <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-                      <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-                      <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
-                      <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
-                      <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
-                    </tbody>
-                    <tfoot></tfoot>
-                  </table>
-                </div>
+                <?= table_data(
+                  row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) .
+                  row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
+                  row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) .
+                  row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
+                  row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
+                  row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
+                  'table-light'
+                ) ?>
+                <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
+                <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
+
                 <hr>
                 <div class="row">
                   <div class="col-md-12">
@@ -256,40 +252,30 @@
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/update_status') ?>" method="post">
               <div class="modal-body">
-
-                <div class="table-responsive">
-                  <table class="table table-light" id="data">
-                    <thead></thead>
-                    <tbody></tbody>
-
-                    <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
-                    <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
-                    <!-- input status berdasarkan nilai status -->
-                    <!-- seharusnya jika status masih belum bayar, resepsionis tidak bisa melakukan apa-apa terhadap pesanan -->
-                    <?php switch ($tl_f2->$tabel_f2_field12) {
-                      case $tabel_f2_field12_value3: ?>
-                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value4, 'required') ?>
-                        <?php break;
-                      case $tabel_f2_field12_value4: ?>
-                        <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value5, 'required') ?>
-                        <?php break;
-                      default:
-                        break;
-                    } ?>
-                    <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-                    <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
-                    <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
-
-                    <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-                    <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
-                    <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
-                    <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
-
-
-                    </tbody>
-                    <tfoot></tfoot>
-                  </table>
-                </div>
+                <?= table_data(
+                  row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
+                  row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) .
+                  row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) .
+                  row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) .
+                  row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
+                  row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
+                  row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
+                  'table-light'
+                ) ?>
+                <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
+                <?= input_hidden('tabel_f2_field7', $tl_f2->$tabel_f2_field7, 'required') ?>
+                <!-- input status berdasarkan nilai status -->
+                <!-- seharusnya jika status masih belum bayar, resepsionis tidak bisa melakukan apa-apa terhadap pesanan -->
+                <?php switch ($tl_f2->$tabel_f2_field12) {
+                  case $tabel_f2_field12_value3: ?>
+                    <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value4, 'required') ?>
+                    <?php break;
+                  case $tabel_f2_field12_value4: ?>
+                    <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value5, 'required') ?>
+                    <?php break;
+                  default:
+                    break;
+                } ?>
               </div>
 
               <!-- memunculkan notifikasi modal -->

@@ -58,28 +58,6 @@
   </table>
 
 
-
-  <!-- menampilkan data transaksi -->
-  <table class="table">
-    <thead class="thead">
-      <tr>
-        <th><?= lang('tabel_f3_field1_alias') ?></th>
-        <th><?= lang('tabel_f3_field5_alias') ?></th>
-        <th><?= lang('tabel_f3_field6_alias') ?></th>
-        <th><?= lang('tabel_f3_field7_alias') ?></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td width=""><?= $tl_f1->$tabel_f3_field1 ?></td>
-        <td width=""><?= $tl_f1->$tabel_f3_field5 ?></a>
-        <td width="">Rp <?= number_format($tl_f1->$tabel_f3_field6, '2', ',', '.') ?></td>
-        <td width=""><?= $tl_f1->$tabel_f3_field7 ?></td>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
   <?php
 endforeach ?>
 

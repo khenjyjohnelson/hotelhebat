@@ -70,7 +70,6 @@ class C_tabel_f3 extends Omnitags
 			'konten' => $this->v3['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
 			'tbl_f3' => $this->tl_f3->get_f3_with_f2_with_e4(),
-			'tbl_e4' => $this->tl_e4->get_all_e4(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			// 'tgl_transaksi_min' => $param1,

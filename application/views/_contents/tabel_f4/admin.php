@@ -59,20 +59,15 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_f4_field1', $tl_f4->$tabel_f4_field1) ?>
-                  <?= row_data('tabel_f4_field2', $tl_f4->$tabel_f4_field2) ?>
-                  <?= row_data('tabel_f4_field3', $tl_f4->$tabel_f4_field3) ?>
-                  <?= row_data('tabel_f4_field4', $tl_f4->$tabel_f4_field4) ?>
-                  <?= row_data('tabel_f4_field5', $tl_f4->$tabel_f4_field5) ?>
-                  <?= row_data('tabel_f4_field6', $tl_f4->$tabel_f4_field6) ?>
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-            </div>
+            <?= table_data(
+              row_data('tabel_f4_field1', $tl_f4->$tabel_f4_field1) .
+              row_data('tabel_f4_field2', $tl_f4->$tabel_f4_field2) .
+              row_data('tabel_f4_field3', $tl_f4->$tabel_f4_field3) .
+              row_data('tabel_f4_field4', $tl_f4->$tabel_f4_field4) .
+              row_data('tabel_f4_field5', $tl_f4->$tabel_f4_field5) .
+              row_data('tabel_f4_field6', $tl_f4->$tabel_f4_field6),
+              'table-ligjt'
+            ) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

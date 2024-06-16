@@ -353,8 +353,7 @@ class C_tabel_f2 extends Omnitags
 			'title' => lang('tabel_f2_alias_v4_title'),
 			'konten' => $this->v4['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2']),
-			'tbl_f2' => $this->tl_f2->get_all_f2(),
-			'tbl_e4' => $this->tl_e4->get_all_e4(),
+			'tbl_f2' => $this->tl_f2->get_f2_with_e4(),
 		);
 
 		$data = array_merge($data1, $this->package);

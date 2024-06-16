@@ -12,6 +12,24 @@ if (!function_exists('count_data')) {
     }
 }
 
+if (!function_exists('table_data')) {
+    function table_data($data, $theme)
+    {
+        return <<<HTML
+        <div class="table-responsive">
+            <table class="table {$theme}" id="data">
+                <thead>
+                <tbody>
+                    {$data}
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+            </div>
+        HTML;
+    }
+}
+
 if (!function_exists('row_data')) {
     function row_data($field, $value)
     {
@@ -19,8 +37,8 @@ if (!function_exists('row_data')) {
 
         return <<<HTML
         <tr>
-              <td width="30%" class="table-secondary table-active">{$alias}</td>
-              <td width="" class="table-light">{$value}</td>
+              <td width="30%" class="table-active">{$alias}</td>
+              <td width="">{$value}</td>
             </tr>
         HTML;
     }
@@ -34,8 +52,8 @@ if (!function_exists('row_file')) {
 
         return <<<HTML
         <tr>
-              <td width="30%" class="table-secondary table-active">{$alias}</td>
-              <td width="" class="table-light">
+              <td width="30%" class="table-active">{$alias}</td>
+              <td width="">
                 {$img}
             </tr>
         HTML;

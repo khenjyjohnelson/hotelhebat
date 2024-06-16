@@ -10,7 +10,33 @@
 </div>
 <hr>
 
-<div class="table-responsive">
+<div class="row">
+  <div class="col-md-10">
+  </div>
+
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
+
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_f3->result() as $tl_f3):
+
+    echo card_regular(
+      $tl_f3->$tabel_f3_field1,
+      $tl_f3->$tabel_f3_field1 . ' | ' . $tabel_f2_alias . ' ' . $tl_f3->$tabel_f3_field4,
+      $tl_f3->$tabel_f3_field5 . ' | ' . $tl_f3->$tabel_f3_field6 . '<br>' . 
+      $tl_f3->$tabel_f3_field7,
+      btn_lihat($tl_f3->$tabel_f3_field1) . ' ' .
+      btn_print('tabel_f3', $tl_f3->$tabel_f3_field1),
+      'text-light bg-danger',
+      $tabel_f3,
+    );
+  endforeach; ?>
+</div>
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -55,25 +81,19 @@ Jadi tidak perlu menambahkan foreach pesanan lagi -->
         <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
 
         <div class="modal-body">
-          <div class="table-responsive">
-            <table class="table table-light" id="data">
-              <thead></thead>
-              <tbody>
-                <?= row_data('tabel_f3_field1', $tl_f3->$tabel_f3_field1) ?>
-                <?= row_data('tabel_f3_field4', $tl_f3->$tabel_f3_field4) ?>
-                <?= row_data('tabel_f3_field5', $tl_f3->$tabel_f3_field5) ?>
-                <?= row_data('tabel_f3_field6', $tl_f3->$tabel_f3_field6) ?>
+          <?= table_data(
+            row_data('tabel_f3_field1', $tl_f3->$tabel_f3_field1) . 
+            row_data('tabel_f3_field4', $tl_f3->$tabel_f3_field4) . 
+            row_data('tabel_f3_field5', $tl_f3->$tabel_f3_field5) . 
+            row_data('tabel_f3_field6', $tl_f3->$tabel_f3_field6) .
+            
+            row_data('tabel_f2_field6', $tl_f3->$tabel_f2_field6) . 
+            row_data('tabel_e4_field2', $tl_f3->$tabel_e4_field2) .
 
-                <!-- Di sini adalah bagian menampilkan data pesanan -->
-                <?= row_data('tabel_f2_field6', $tl_f3->$tabel_f2_field6) ?>
-                <?= row_data('tabel_e4_field2', $tl_f3->$tabel_e4_field2) ?>
-
-                <?= row_data('tabel_f2_field10', $tl_f3->$tabel_f2_field10) ?>
-                <?= row_data('tabel_f2_field11', $tl_f3->$tabel_f2_field11) ?>
-              </tbody>
-              <tfoot></tfoot>
-            </table>
-          </div>
+            row_data('tabel_f2_field10', $tl_f3->$tabel_f2_field10) .
+            row_data('tabel_f2_field11', $tl_f3->$tabel_f2_field11),
+            'table-light'
+          ) ?>
 
         </div>
 

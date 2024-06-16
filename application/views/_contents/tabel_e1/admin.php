@@ -169,18 +169,13 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_e1_field1', $tl_e1->$tabel_e1_field1) ?>
-                  <?= row_data('tabel_e1_field2', $tl_e1->$tabel_e1_field2) ?>
-                  <?= row_data('tabel_e1_field3', $tl_e1->$tabel_e1_field3) ?>
-                  <?= row_file($tabel_e1, 'tabel_e1_field4', $tl_e1->$tabel_e1_field4) ?>
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-            </div>
+            <?= table_data(
+              row_data('tabel_e1_field1', $tl_e1->$tabel_e1_field1) . 
+              row_data('tabel_e1_field2', $tl_e1->$tabel_e1_field2) .
+              row_data('tabel_e1_field3', $tl_e1->$tabel_e1_field3) .
+              row_file($tabel_e1, 'tabel_e1_field4', $tl_e1->$tabel_e1_field4),
+              'table-light',
+            ) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

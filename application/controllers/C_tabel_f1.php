@@ -149,7 +149,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => lang('tabel_f1_alias_v5_title'),
 			'konten' => $this->v5['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
-			'tbl_f1' => $this->tl_f1->get_f1_with_f3_with_e4_by_f1_field1($tabel_f1_field1),
+			'tbl_f1' => $this->tl_f1->get_f1_with_e4_by_f1_field1($tabel_f1_field1),
 		);
 
 		$data = array_merge($data1, $this->package);

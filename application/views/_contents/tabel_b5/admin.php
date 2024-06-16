@@ -208,21 +208,16 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_b5_field1', $tl_b5->$tabel_b5_field1) ?>
-                  <?= row_data('tabel_b5_field2', $tl_b5->$tabel_b5_field2) ?>
-                  <?= row_data('tabel_b5_field3', html_entity_decode($tl_b5->$tabel_b5_field3)) ?>
-                  <?= row_file($tabel_b5, 'tabel_b5_field4', $tl_b5->$tabel_b5_field4) ?>
-                  <?= row_data('tabel_b5_field5', $tl_b5->$tabel_b5_field5) ?>
-                  <?= row_data('tabel_b5_field6', $tl_b5->$tabel_b5_field6) ?>
-                  <?= row_data('tabel_b5_field7', $tl_b5->$tabel_b5_field7) ?>
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-            </div>
+            <?= table_data(
+              row_data('tabel_b5_field1', $tl_b5->$tabel_b5_field1) .
+              row_data('tabel_b5_field2', $tl_b5->$tabel_b5_field2) .
+              row_data('tabel_b5_field3', html_entity_decode($tl_b5->$tabel_b5_field3)) .
+              row_file($tabel_b5, 'tabel_b5_field4', $tl_b5->$tabel_b5_field4) .
+              row_data('tabel_b5_field5', $tl_b5->$tabel_b5_field5) .
+              row_data('tabel_b5_field6', $tl_b5->$tabel_b5_field6) .
+              row_data('tabel_b5_field7', $tl_b5->$tabel_b5_field7),
+              'table-light'
+            ) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

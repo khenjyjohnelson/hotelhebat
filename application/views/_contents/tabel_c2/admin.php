@@ -141,18 +141,13 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_c2_field2', $tl_c2->$tabel_c2_field2) ?>
-                  <?= row_data('tabel_c2_field3', $tl_c2->$tabel_c2_field3) ?>
-                  <?= row_data('tabel_c2_field5', $tl_c2->$tabel_c2_field5) ?>
-                  <?= row_data('tabel_c2_field6', $tl_c2->$tabel_c2_field6) ?>
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-            </div>
+            <?= table_data(
+              row_data('tabel_c2_field2', $tl_c2->$tabel_c2_field2) . 
+              row_data('tabel_c2_field3', $tl_c2->$tabel_c2_field3) .
+              row_data('tabel_c2_field5', $tl_c2->$tabel_c2_field5) .
+              row_data('tabel_c2_field6', $tl_c2->$tabel_c2_field6),
+              'table-light',
+            ) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

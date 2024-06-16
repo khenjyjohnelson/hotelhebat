@@ -204,29 +204,26 @@
                 <div class="row">
                   <div class="col-md-6">
 
-                    <div class="table-responsive">
-                      <table class="table table-light" id="data">
-                        <thead>
-                        <tbody>
-                          <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
-                          <?= row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
-                          <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
-                          <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
-                          <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
+                    <?= table_data(
+                      row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) .
+                      row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) .
+                      row_data('tabel_e3_field3', $tl_e3->$tabel_e3_field3) .
+                      row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) .
+                      row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5),
+                      'table-light',
+                    ) ?>
 
-                          <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
-                          <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
+                    <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
+
+
+                    <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
+                    <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
                 jika sebaliknya, maka kamar akan menjadi <?= $tabel_e3_field4_value3_alias ?> -->
-                          <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
-                            <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
-                          <?php } else { ?>
-                            <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value2, 'required') ?>
-                          <?php } ?>
-
-                        </tbody>
-                        <tfoot></tfoot>
-                      </table>
-                    </div>
+                    <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
+                      <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
+                    <?php } else { ?>
+                      <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value2, 'required') ?>
+                    <?php } ?>
                   </div>
 
                   <div class="col-md-6">
@@ -284,28 +281,22 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="table-responsive">
-                      <table class="table table-light" id="data">
-                        <thead>
-                        <tbody>
-
-                          <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
-                          <?= row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) ?>
-                          <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
-                          <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
-                          <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
-                          <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
-                          <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
+                    <?= table_data(
+                      row_data('tabel_e3_field1', $tl_e3->$tabel_e3_field1) .
+                      row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) .
+                      row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) .
+                      row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5),
+                      'table-light',
+                    ) ?>
+                    <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
+                    <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
+                    <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
                 jika sebaliknya, maka kamar akan menjadi <?= $tabel_e3_field4_value3_alias ?> -->
-                          <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
-                            <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
-                          <?php } else { ?>
-                            <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value2, 'required') ?>
-                          <?php } ?>
-                        </tbody>
-                        <tfoot></tfoot>
-                      </table>
-                    </div>
+                    <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
+                      <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
+                    <?php } else { ?>
+                      <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value2, 'required') ?>
+                    <?php } ?>
                   </div>
 
                   <div class="col-md-6">
@@ -357,17 +348,12 @@
         <?= modal_header(lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) ?>
-                  <?= row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) ?>
-                  <?= row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5) ?>
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-            </div>
+            <?= table_data(
+              row_data('tabel_e3_field2', $tl_e3->$tabel_e3_field2) .
+              row_data('tabel_e3_field4', $tl_e3->$tabel_e3_field4) .
+              row_data('tabel_e3_field5', $tl_e3->$tabel_e3_field5),
+              'table-light'
+            ) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

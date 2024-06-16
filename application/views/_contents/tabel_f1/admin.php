@@ -128,24 +128,17 @@
         <?= modal_header(lang('tabel_f1_alias'), $tl_f1->$tabel_f1_field1) ?>
 
         <div class="modal-body">
-          <div class="table-responsive">
-            <table class="table table-light" id="data">
-              <thead></thead>
-              <tbody>
-                <?= row_data('tabel_f1_field2', $tl_f1->$tabel_f1_field2) ?>
-                <?= row_data('tabel_f1_field4', $tl_f1->$tabel_f1_field4) ?>
-                <?= row_data('tabel_f1_field5', $tl_f1->$tabel_f1_field5) ?>
-                <?= row_data('tabel_f1_field6', $tl_f1->$tabel_f1_field6) ?>
-
-                <?= row_data('tabel_f1_field7', $tl_f1->$tabel_f1_field7) ?>
-                <?= row_data('tabel_e4_field2', $tl_f1->$tabel_e4_field2) ?>
-                <?= row_data('tabel_f1_field11', $tl_f1->$tabel_f1_field11) ?>
-                <?= row_data('tabel_f1_field12', $tl_f1->$tabel_f1_field12) ?>
-
-              </tbody>
-              <tfoot></tfoot>
-            </table>
-          </div>
+          <?= table_data(
+            row_data('tabel_f1_field2', $tl_f1->$tabel_f1_field2) . 
+            row_data('tabel_f1_field4', $tl_f1->$tabel_f1_field4) . 
+            row_data('tabel_f1_field5', $tl_f1->$tabel_f1_field5) . 
+            row_data('tabel_f1_field6', $tl_f1->$tabel_f1_field6) . 
+            row_data('tabel_f1_field7', $tl_f1->$tabel_f1_field7) . 
+            row_data('tabel_e4_field2', $tl_f1->$tabel_e4_field2) . 
+            row_data('tabel_f1_field11', $tl_f1->$tabel_f1_field11) . 
+            row_data('tabel_f1_field12', $tl_f1->$tabel_f1_field12),
+            'table-light'
+          ) ?>
         </div>
 
         <!-- memunculkan notifikasi modal -->

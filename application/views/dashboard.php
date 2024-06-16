@@ -92,28 +92,28 @@
     <div class="col-md-6">
 
       <div class="table-responsive">
-        <table class="table table-light" id="data">
-          <thead></thead>
-          <tbody>
-            <?= row_data('tabel_a1_field2', $tl_a1->$tabel_a1_field2) ?>
-            <?= row_data('tabel_a1_field3', $tl_a1->$tabel_a1_field3) ?>
-            <?= row_data('tabel_a1_field4', $tl_a1->$tabel_a1_field4) ?>
-            <?= row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) ?>
+        <?php
+        foreach ($sosmed->result() as $sm):
 
-            <?php foreach ($sosmed->result() as $sm):
-              if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) { ?>
-                <?= row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) ?>
-                <tr>
-                  <td class="table-secondary table-active"><?= $sm->$tabel_b6_field3 ?></td>
-                  <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>"
-                      target="_blank">
-                      Visit</a>
-                </tr>
-              <?php }endforeach; ?>
-
-          </tbody>
-          <tfoot></tfoot>
-        </table>
+          if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) {
+            $data2 = '<tr>
+                <td class="table-secondary table-active"><?= $sm->$tabel_b6_field3 ?></td>
+                <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>"
+                    target="_blank">
+                    Visit</a>
+              </tr>';
+          } else {
+            $data2 = '';
+          }
+        endforeach;
+        echo table_data(
+          row_data('tabel_a1_field2', $tl_a1->$tabel_a1_field2) .
+          row_data('tabel_a1_field3', $tl_a1->$tabel_a1_field3) .
+          row_data('tabel_a1_field4', $tl_a1->$tabel_a1_field4) .
+          row_data('tabel_a1_field5', $tl_a1->$tabel_a1_field5) .
+          $data2,
+          'table-light'
+        ) ?>
       </div>
 
     </div>

@@ -246,29 +246,23 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_b7_field2', $tl_b7->$tabel_b7_field2) ?>
-                  <?= row_data('tabel_b7_field6', truncateText(html_entity_decode($tl_b7->$tabel_b7_field6), 200) . btn_read_more('tabel_b7', $tl_b7->$tabel_b7_field1)) ?>
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-          
+            <?= table_data(
+              row_data('tabel_b7_field2', $tl_b7->$tabel_b7_field2) .
+              row_data('tabel_b7_field6', truncateText(html_entity_decode($tl_b7->$tabel_b7_field6), 200) . btn_read_more('tabel_b7', $tl_b7->$tabel_b7_field1)),
+              'table-light'
+            ) ?>
           </div>
+
+          <!-- memunculkan notifikasi modal -->
+          <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
+
+          <div class="modal-footer">
+            <?= btn_tutup() ?>
+          </div>
+        </form>
+
       </div>
-
-      <!-- memunculkan notifikasi modal -->
-      <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
-
-      <div class="modal-footer">
-        <?= btn_tutup() ?>
-      </div>
-      </form>
-
     </div>
-  </div>
   </div>
 <?php endforeach; ?>
 

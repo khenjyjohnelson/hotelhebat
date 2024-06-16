@@ -31,9 +31,9 @@ class M_tabel_f3 extends CI_Model
 	public function get_f3_with_f2_with_e4_by_c2_field1($param1)
 	{
 		$sql = "SELECT * FROM {$this->aliases['tabel_f3']} 
-		LEFT JOIN {$this->aliases['tabel_f2']} 
+		JOIN {$this->aliases['tabel_f2']} 
 		ON {$this->aliases['tabel_f2']}.{$this->aliases['tabel_f3_field4']} = {$this->aliases['tabel_f3']}.{$this->aliases['tabel_f3_field4']}
-		LEFT JOIN {$this->aliases['tabel_e4']} 
+		JOIN {$this->aliases['tabel_e4']} 
 		ON {$this->aliases['tabel_f2']}.{$this->aliases['tabel_e4_field1']} = {$this->aliases['tabel_e4']}.{$this->aliases['tabel_e4_field1']}
 		WHERE {$this->aliases['tabel_f3']}.{$this->aliases['tabel_c2_field1']} = {$param1}
 		ORDER BY {$this->aliases['tabel_f3_field1']} DESC";

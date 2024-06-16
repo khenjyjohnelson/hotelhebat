@@ -107,20 +107,14 @@
         <?= modal_header(lang('tabel_a1_alias'), $tl_a1_alt->$tabel_a1_field1) ?>
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1) ?>
-                  <?= row_data('tabel_a1_field2', $tl_a1_alt->$tabel_a1_field2) ?>
-                  <?= row_data('tabel_a1_field4', $tl_a1_alt->$tabel_a1_field4) ?>
-                  <?= row_file($tabel_a1, 'tabel_a1_field3', $tl_a1_alt->$tabel_a1_field3) ?>
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-            </div>
+            <?= table_data(
+              row_data('tabel_a1_field1', $tl_a1_alt->$tabel_a1_field1) .
+              row_data('tabel_a1_field2', $tl_a1_alt->$tabel_a1_field2) .
+              row_data('tabel_a1_field4', $tl_a1_alt->$tabel_a1_field4) .
+              row_file($tabel_a1, 'tabel_a1_field3', $tl_a1_alt->$tabel_a1_field3),
+              'table-light'
+            ) ?>
           </div>
-
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= get_flashdata('pesan_lihat') ?></p>
 

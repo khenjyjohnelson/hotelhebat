@@ -221,21 +221,15 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_b6_field2', $tl_b6->$tabel_b6_field2) ?>
-                  <?= row_data('tabel_b6_field3', $tl_b6->$tabel_b6_field3) ?>
-                  <?= row_data('tabel_b6_field4', '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>') ?>
-                  <?= row_data('tabel_b6_field5', $tl_b6->$tabel_b6_field5) ?>
-                  <?= row_data('tabel_b6_field6', $tl_b6->$tabel_b6_field6) ?>
-                  <?= row_data('tabel_b6_field7', $tl_b6->$tabel_b6_field7) ?>
-
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-            </div>
+            <?= table_data(
+              row_data('tabel_b6_field2', $tl_b6->$tabel_b6_field2) .
+              row_data('tabel_b6_field3', $tl_b6->$tabel_b6_field3) .
+              row_data('tabel_b6_field4', '<a class="text-decoration-none text-warning" href="' . $tl_b6->$tabel_b6_field4 . '" target="_blank">' . $tl_b6->$tabel_b6_field3 . '</a>') .
+              row_data('tabel_b6_field5', $tl_b6->$tabel_b6_field5) .
+              row_data('tabel_b6_field6', $tl_b6->$tabel_b6_field6) .
+              row_data('tabel_b6_field7', $tl_b6->$tabel_b6_field7),
+              'table-light'
+            ) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

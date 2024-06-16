@@ -222,20 +222,14 @@
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table table-light" id="data">
-                <thead></thead>
-                <tbody>
-                  <?= row_data('tabel_b2_field1', $tl_b2->$tabel_b2_field1) ?>
-                  <?= row_data('tabel_b2_field2', $tl_b2->$tabel_b2_field2) ?>
-                  <?= row_data('tabel_b2_field3', $tl_b2->$tabel_b2_field3) ?>
-                  <?= row_file($tabel_b2, 'tabel_b2_field4', $tl_b2->$tabel_b2_field4) ?>
-                  <?= row_data('tabel_b2_field5', truncateText(html_entity_decode($tl_b2->$tabel_b2_field5), 200) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1)) ?>
-
-                </tbody>
-                <tfoot></tfoot>
-              </table>
-            </div>
+            <?= table_data(
+              row_data('tabel_b2_field1', $tl_b2->$tabel_b2_field1) .
+              row_data('tabel_b2_field2', $tl_b2->$tabel_b2_field2) .
+              row_data('tabel_b2_field3', $tl_b2->$tabel_b2_field3) .
+              row_file($tabel_b2, 'tabel_b2_field4', $tl_b2->$tabel_b2_field4) .
+              row_data('tabel_b2_field5', truncateText(html_entity_decode($tl_b2->$tabel_b2_field5), 200) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1)),
+              'table-light'
+            ) ?>
           </div>
 
           <!-- memunculkan notifikasi modal -->

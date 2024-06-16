@@ -25,13 +25,19 @@
     switch ($tl_f2->$tabel_f2_field12) {
       case $tabel_f2_field12_value2:
         $button = btn_field($tabel_f3_field6 . $tl_f2->$tabel_f2_field1, '<i class="fas fa-shopping-cart"></i>');
+        $theme = 'text-white bg-primary';
         break;
       case $tabel_f2_field12_value3:
+        $button = btn_print('tabel_f2', $tl_f2->$tabel_f2_field1);
+        $theme = 'text-white bg-info';
+        break;
       case $tabel_f2_field12_value4:
         $button = btn_print('tabel_f2', $tl_f2->$tabel_f2_field1);
+        $theme = 'text-white bg-success';
         break;
       default:
-        $button = "";
+        $button = '';
+        $theme = 'text-white bg-secondary';
         break;
     }
 
@@ -39,8 +45,9 @@
       $tl_f2->$tabel_f2_field1,
       $tl_f2->$tabel_f2_field1 . ' | ' . $tl_f2->$tabel_e4_field2,
       $tl_f2->$tabel_f2_field12,
+      btn_lihat($tl_f2->$tabel_f2_field1) . ' ' .
       $button,
-      'text-white bg-primary',
+      $theme,
       $tabel_f2,
     );
   endforeach; ?>
@@ -132,28 +139,33 @@
 
 <?php foreach ($tbl_f2->result() as $tl_f2): ?>
   <div id="lihat<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade lihat">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <?= modal_header(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
         <div class="modal-body">
-          <div class="table-responsive">
-            <table class="table table-light" id="data">
-              <thead>
-              <tbody>
-                <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
-                <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-                <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
-                <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
-                <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-                <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
-                <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
-                <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
 
-              </tbody>
-              <tfoot></tfoot>
-            </table>
+          <div class="row">
+            <div class="col-md-6">
+              <?= table_data(
+                row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) .
+                row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
+                row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) .
+                row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5),
+                'table-secondary'
+              ) ?>
+            </div>
+            <div class="col-md-6">
+              <?= table_data(
+                row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) .
+                row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
+                row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
+                row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
+                'table-secondary'
+              ) ?>
+            </div>
           </div>
+
         </div>
 
         <!-- memunculkan notifikasi modal -->
@@ -177,25 +189,19 @@
               enctype="multipart/form-data">
 
               <div class="modal-body">
-                <div class="table-responsive">
-                  <table class="table table-light" id="data">
-                    <thead>
-                    <tbody>
-                      <?= input_hidden('tabel_f2_field4', $tl_f2->$tabel_f2_field4, 'required') ?>
-                      <?= row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) ?>
-                      <?= row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) ?>
-                      <?= row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) ?>
-                      <?= row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) ?>
+                <?= table_data(
+                  row_data('tabel_f2_field1', $tl_f2->$tabel_f2_field1) .
+                  row_data('tabel_f2_field3', $tl_f2->$tabel_f2_field3) .
+                  row_data('tabel_f2_field4', $tl_f2->$tabel_f2_field4) .
+                  row_data('tabel_f2_field5', $tl_f2->$tabel_f2_field5) .
 
-                      <?= row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) ?>
-                      <?= row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) ?>
-                      <?= row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) ?>
-                      <?= row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11) ?>
-
-                    </tbody>
-                    <tfoot></tfoot>
-                  </table>
-                </div>
+                  row_data('tabel_f2_field6', $tl_f2->$tabel_f2_field6) .
+                  row_data('tabel_e4_field2', $tl_f2->$tabel_e4_field2) .
+                  row_data('tabel_f2_field10', $tl_f2->$tabel_f2_field10) .
+                  row_data('tabel_f2_field11', $tl_f2->$tabel_f2_field11),
+                  'table-light'
+                ) ?>
+                <?= input_hidden('tabel_f2_field4', $tl_f2->$tabel_f2_field4, 'required') ?>
 
 
                 <!-- Input metode pembayaran -->
