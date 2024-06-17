@@ -48,6 +48,7 @@
       btn_lihat($tl_f2->$tabel_f2_field1) . ' ' .
       $button,
       $theme,
+      'col-md-3',
       $tabel_f2,
     );
   endforeach; ?>

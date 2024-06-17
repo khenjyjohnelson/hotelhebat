@@ -32,6 +32,7 @@
         btn_value('tabel_b9', '/lihat', $tl_b9->$tabel_b9_field1, '<i class="fas fa-envelope-open"></i>') .
         btn_lihat($tl_b9->$tabel_b9_field1),
         'text-dark bg-white',
+        'col-md-3',
         $tabel_b9,
       );
     } else {
@@ -42,6 +43,7 @@
         $tl_b9->$tabel_b9_field5,
         btn_lihat($tl_b9->$tabel_b9_field1),
         'text-dark bg-light',
+        'col-md-3',
         $tabel_b9,
       );
     }

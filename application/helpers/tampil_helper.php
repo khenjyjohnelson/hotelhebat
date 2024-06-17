@@ -37,7 +37,7 @@ if (!function_exists('row_data')) {
 
         return <<<HTML
         <tr>
-              <td width="30%" class="table-active">{$alias}</td>
+              <td width="40%" class="table-active">{$alias}</td>
               <td width="">{$value}</td>
             </tr>
         HTML;
@@ -52,7 +52,7 @@ if (!function_exists('row_file')) {
 
         return <<<HTML
         <tr>
-              <td width="30%" class="table-active">{$alias}</td>
+              <td width="40%" class="table-active">{$alias}</td>
               <td width="">
                 {$img}
             </tr>

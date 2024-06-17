@@ -71,6 +71,7 @@
       btn_edit($tl_b6->$tabel_b6_field1) . ' ' .
       btn_hapus('tabel_b6', $tl_b6->$tabel_b6_field1),
       'text-white bg-secondary',
+      'col-md-3',
       $tabel_b6,
     );
     ?>

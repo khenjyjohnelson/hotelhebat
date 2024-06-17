@@ -7,6 +7,22 @@ class C_tabel_a1 extends Omnitags
 {
 	// Halaman publik
 
+	public function admin()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => 'Testing Page',
+			'konten' => '_contents/tabel_a1/testing',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_a1']),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/template', $data);
+	}
 
 	// Halaman detail
 	public function profil()

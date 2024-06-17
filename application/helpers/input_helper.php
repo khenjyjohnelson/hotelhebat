@@ -71,10 +71,16 @@ if (!function_exists('input_add')) {
         $input = $data[$field . '_input'];
         $alias = lang($field . '_alias');
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="{$type}" {$required} name="{$input}" placeholder="" id="{$input}">
-            <label for="{$input}" class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -91,11 +97,17 @@ if (!function_exists('add_min_max')) {
         $input = $data[$field . '_input'];
         $alias = lang($field . '_alias');
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="{$type}" {$required} name="{$input}" placeholder="" id="{$input}"
             min="{$min}" max="{$max}">
-            <label for="{$input}" class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -112,11 +124,17 @@ if (!function_exists('edit_min_max')) {
         $input = $data[$field . '_input'];
         $alias = lang($field . '_alias');
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="{$type}" {$required} name="{$input}" placeholder="" id="{$input}"
             min="{$min}" max="{$max}" value="{$value}">
-            <label for="{$input}" class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -133,10 +151,16 @@ if (!function_exists('add_old')) {
         $alias = lang($field . '_alias_old');
         $input = $data[$field . '_old'];
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="{$type}" {$required} name="{$input}" placeholder="" id="{$input}">
-            <label for="{$input}" class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -153,12 +177,18 @@ if (!function_exists('add_new_password')) {
         $alias = lang($field . '_alias_new');
         $input = $data[$field . '_input'];
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="password" {$required} name="{$input}" placeholder="" id="psw"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-            <label for="psw" class="form-label">{$alias}</label>
+            <label for="psw" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -176,10 +206,16 @@ if (!function_exists('add_confirm')) {
         $alias = lang($field . '_alias' . '_confirm');
         $input = $data[$field . '_confirm'];
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" type="{$type}" {$required} name="{$input}" placeholder="">
-            <label for="{$input}" class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -212,11 +248,17 @@ if (!function_exists('input_edit')) {
         $input = $data[$field . '_input'];
         $alias = lang($field . '_alias');
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <input id="{$input}" class="form-control float" type="{$type}" {$required} name="{$input}" placeholder=""
             value="{$value}">
-            <label for="{$input}" class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -233,10 +275,16 @@ if (!function_exists('input_textarea')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
-            <label>{$alias}</label>
-            <textarea class="ckeditor form-control" name="{$input}" placeholder="" $required
+            <label>{$alias} {$msg}</label>
+            <textarea class="ckeditor form-control" name="{$input}" placeholder=""
             {$required} cols="30" rows="10">{$value}</textarea>
         </div>
         HTML;
@@ -254,10 +302,16 @@ if (!function_exists('add_file')) {
         $alias = lang($field . '_alias');
         $input = $data[$field . '_input'];
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <input class="form-control float" {$required} type="file" id={$input} name="{$input}" placeholder="">
-            <label for="{$input}" class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -276,6 +330,12 @@ if (!function_exists('edit_file')) {
         $old = $data[$field . "_old"];
         $img = tampil_image($tabel, $value, $alias);
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="row pb-2">
             <div class="col-md-5">
@@ -286,7 +346,7 @@ if (!function_exists('edit_file')) {
             <div class="col-md-7">
                 <div class="form-group">
                     <input class="form-control float" {$required} id="{$input}" type="file" name="{$input}">
-                    <label class="form-label" for="{$input}">Ubah {$alias}</label>
+                    <label class="form-label" for="{$input}">Ubah {$alias} {$msg}</label>
                     <input accept=".jpg, .jpeg, .png" type="hidden" name="{$old}" value="{$value}" {$required}>
                 </div>
             </div>
@@ -330,13 +390,19 @@ if (!function_exists('select_add')) {
         $alias = lang($field . '_alias' . '_select');
         $input = $data[$field . '_input'];
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <select id="{$input}" class="form-control float" {$required} name="{$input}" placeholder="">
                 {$selected}
                 {$values}
             </select>
-            <label for="{$input} class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
         </div>
         HTML;
     }
@@ -353,13 +419,45 @@ if (!function_exists('select_ubah')) {
         $alias = lang($field . '_alias' . '_select');
         $input = $data[$field . '_input'];
 
+        if (strpos($required, 'required') !== false) {
+            $msg = '';
+        } else {
+            $msg = '(Optional)';
+        }
+
         return <<<HTML
         <div class="form-group">
             <select id="{$input}" class="form-control float" {$required} name="{$input}" placeholder="">
                 {$selected}
                 {$values}
             </select>
-            <label for="{$input}" class="form-label">{$alias}</label>
+            <label for="{$input}" class="form-label">{$alias} {$msg}</label>
+        </div>
+        HTML;
+    }
+}
+
+if (!function_exists('btn_checkbox')) {
+    function btn_checkbox($id, $detail, $field, $value, $required)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $input = $data[$field . '_input'];
+
+        return <<<HTML
+        <div class="checkbox-group" id="checkbox{$id}">
+
+        <div class="btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary w-100">
+
+            <p class="card-text">{$detail}</p>
+            <input type="checkbox" name="{$input}"
+            class="checkbox-option form-control-lg" value="{$value}" {$required}>
+        </label>
+        </div>
         </div>
         HTML;
     }

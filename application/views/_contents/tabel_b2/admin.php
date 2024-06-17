@@ -76,6 +76,7 @@
       btn_edit($tl_b2->$tabel_b2_field1) . ' ' .
       btn_hapus('tabel_b2', $tl_b2->$tabel_b2_field1),
       'text-white bg-danger',
+      'col-md-3',
       $tabel_b2,
       $tl_b2->$tabel_b2_field4,
     );
@@ -215,21 +216,30 @@
 
 
   <div id="lihat<?= $tl_b2->$tabel_b2_field1; ?>" class="modal fade lihat" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <?= modal_header(lang('tabel_b2_alias'), $tl_b2->$tabel_b2_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
-            <?= table_data(
-              row_data('tabel_b2_field1', $tl_b2->$tabel_b2_field1) .
-              row_data('tabel_b2_field2', $tl_b2->$tabel_b2_field2) .
-              row_data('tabel_b2_field3', $tl_b2->$tabel_b2_field3) .
-              row_file($tabel_b2, 'tabel_b2_field4', $tl_b2->$tabel_b2_field4) .
-              row_data('tabel_b2_field5', truncateText(html_entity_decode($tl_b2->$tabel_b2_field5), 200) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1)),
-              'table-light'
-            ) ?>
+            <div class="row">
+              <div class="col-md-6">
+                <?= table_data(
+                  row_data('tabel_b2_field1', $tl_b2->$tabel_b2_field1) .
+                  row_data('tabel_b2_field2', $tl_b2->$tabel_b2_field2) .
+                  row_data('tabel_b2_field3', $tl_b2->$tabel_b2_field3) .
+                  row_file($tabel_b2, 'tabel_b2_field4', $tl_b2->$tabel_b2_field4),
+                  'table-light'
+                ) ?>
+              </div>
+              <div class="col-md-6">
+                <?= 
+                  tampil_text('tabel_b2_field5', truncateText(html_entity_decode($tl_b2->$tabel_b2_field5), 300) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1))
+                 ?>
+              </div>
+            </div>
+
           </div>
 
           <!-- memunculkan notifikasi modal -->

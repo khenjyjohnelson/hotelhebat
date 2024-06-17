@@ -41,6 +41,7 @@
           <i class="fas fa-trash"></i></a>' : ''
       ),
       'text-white bg-danger',
+      'col-md-3',
       $tabel_b7,
       $tl_b7->$tabel_b7_field3,
     );
@@ -156,7 +157,7 @@
   <div id="<?= $tabel_b7_field3 . $tl_b7->$tabel_b7_field1; ?>" class="modal fade <?= $tabel_b7_field3 ?>">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('change_data') . lang('tabel_b7_field3_alias'), $tl_b7->$tabel_b7_field1) ?>
+        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b7_field3_alias'), $tl_b7->$tabel_b7_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b7 . '/update_favicon') ?>" method="post"
           enctype="multipart/form-data">

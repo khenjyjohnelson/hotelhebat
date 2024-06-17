@@ -179,7 +179,7 @@ if (!function_exists('intro_js')) {
 
 
 if (!function_exists('radio_js')) {
-    function radio_js()
+    function radio_js($value)
     {
         return <<<HTML
         <script>
@@ -200,6 +200,35 @@ if (!function_exists('radio_js')) {
                             checkedRadio.required = true;
                         }
                     });
+                });
+            });
+        </script>
+        HTML;
+
+    }
+}
+
+
+if (!function_exists('checkbox_js')) {
+    function checkbox_js($value)
+    {
+        return <<<HTML
+        <script>
+            $(document).ready(function () {
+                // Handle change event for checkboxes within the checkbox group
+                $('#checkbox{$value} input[type="checkbox"]').change(function () {
+                    var checkboxes = $('#checkbox{$value} input[type="checkbox"]');
+                    var checkedCheckbox = $(this);
+
+                    if (checkedCheckbox.prop('checked')) {
+                        checkboxes.parent().removeClass('btn-primary btn-success').addClass('btn-secondary');
+                        checkedCheckbox.parent().removeClass('btn-secondary').addClass('active btn-success');
+                        checkboxes.not(checkedCheckbox).prop('disabled', true).prop('required', false);
+                    } else {
+                        checkboxes.parent().removeClass('btn-secondary').addClass('btn-primary');
+                        checkboxes.prop('disabled', false).prop('required', true);
+                        checkedCheckbox.parent().removeClass('active btn-success');
+                    }
                 });
             });
         </script>
@@ -359,38 +388,6 @@ if (!function_exists('adjust_col_js')) {
 
         // Call the adjustColumns function on page load to handle initial layout
         adjustColumns();
-        </script>
-        HTML;
-
-    }
-}
-
-
-if (!function_exists('checkbox_js')) {
-    function checkbox_js()
-    {
-        return <<<HTML
-        <script>
-            // JavaScript to disable all primary buttons once one is chosen
-            $(document).ready(function () {
-                $('.checkbox-group input[type="checkbox"]').change(function () {
-                    var checkboxes = $('.checkbox-group input[type="checkbox"]');
-                    var cards = $('.card-body');
-                    var checkedCheckbox = $(this);
-
-                    if (checkedCheckbox.prop('checked')) {
-                        checkboxes.parent().removeClass('btn-primary').addClass('btn-secondary');
-                        cards.parent().removeClass('bg-light').addClass('bg-light');
-                        checkedCheckbox.parent().addClass('active').addClass('btn-success');
-                        checkboxes.not(checkedCheckbox).prop('disabled', true).prop('required', false);
-                    } else {
-                        checkboxes.parent().removeClass('btn-secondary').addClass('btn-primary');
-                        cards.parent().removeClass('bg-secondary').addClass('bg-light');
-                        checkboxes.prop('disabled', false).prop('required', true);
-                        checkedCheckbox.parent().removeClass('active').removeClass('btn-success');
-                    }
-                });
-            });
         </script>
         HTML;
 

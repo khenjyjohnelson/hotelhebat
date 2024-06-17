@@ -34,6 +34,7 @@
       btn_edit($tl_c1->$tabel_c1_field1) . ' ' .
       btn_hapus('tabel_c1', $tl_c1->$tabel_c1_field1),
       'text-white bg-danger',
+      'col-md-3',
       $tabel_c1,
       $tl_c1->$tabel_c1_field6,
     );

@@ -51,6 +51,7 @@
 
         <form action="<?= site_url($language . '/' . $tabel_a1 . '/update_id_tema') ?>" method="post">
           <div class="modal-body">
+            <?= btn_kelola('tabel_b7', '/admin') ?>
 
             <div class="form-group">
               <select class="form-control float" required name="<?= $tabel_a1_field6_input ?>"
@@ -67,6 +68,7 @@
               </select>
               <label for="<?= $tabel_a1_field6_input ?>" class="form-label"><?= lang('select') ?>
                 <?= $tabel_b7_alias ?></label>
+
               <?= input_hidden('tabel_a1_field1', $tl_a1->$tabel_a1_field1, 'required') ?>
             </div>
           </div>
@@ -77,7 +79,6 @@
           </p>
 
           <div class="modal-footer">
-            <?= btn_kelola('tabel_b7', '/admin') ?>
             <?= btn_update() ?>
           </div>
         </form>

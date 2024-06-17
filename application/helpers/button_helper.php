@@ -74,7 +74,7 @@ if (!function_exists('btn_simpan')) {
         $alias = xss_clean(lang('save_data'));
 
         return <<<HTML
-        <button class="btn mt-4 mr-1 btn-success" type="submit">{$alias}</button>
+        <button class="btn mt-4 mb-4 mr-1 btn-success" type="submit">{$alias}</button>
         HTML;
     }
 }
@@ -85,7 +85,7 @@ if (!function_exists('btn_tutup')) {
         $alias = xss_clean(lang('close_dialog'));
 
         return <<<HTML
-        <button class="btn btn-secondary" data-dismiss="modal">{$alias}</button>
+        <button class="btn btn-primary" data-dismiss="modal">{$alias}</button>
         HTML;
     }
 }

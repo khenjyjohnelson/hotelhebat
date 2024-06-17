@@ -37,6 +37,7 @@
       btn_edit($tl_b8->$tabel_b8_field1) . ' ' .
       btn_hapus('tabel_b8', $tl_b8->$tabel_b8_field1),
       'text-white bg-danger',
+      'col-md-4',
       $tabel_b8,
     );
   endforeach; ?>

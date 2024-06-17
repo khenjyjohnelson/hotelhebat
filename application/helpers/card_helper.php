@@ -22,7 +22,7 @@ if (!function_exists('card_header')) {
 if (!function_exists('card_title')) {
     function card_title($title)
     {
-        $truncated = truncateText($title, 17);
+        $truncated = truncateText($title, 30);
         
         return <<<HTML
         <p class="card-text" style="font-size: 18px;"
@@ -36,7 +36,7 @@ if (!function_exists('card_title')) {
 if (!function_exists('card_text')) {
     function card_text($title)
     {
-        $truncated = truncateText($title, 12);
+        $truncated = truncateText($title, 23);
         
         return <<<HTML
         <span class="card-text" style="font-size: 16px;"
@@ -65,12 +65,12 @@ if (!function_exists('card_content')) {
 }
 
 if (!function_exists('card_regular')) {
-    function card_regular($id, $title, $detail, $actions, $theme, $table)
+    function card_regular($id, $title, $detail, $actions, $theme, $size, $table)
     {
         $title = card_title($title);
         
         return <<<HTML
-        <div class="col-md-3 mt-2">
+        <div class="{$size} mt-2">
             <div class="card {$theme}">
             <div class="card-body">
                 {$title}
@@ -85,7 +85,7 @@ if (!function_exists('card_regular')) {
 }
 
 if (!function_exists('card_file')) {
-    function card_file($id, $title, $detail, $actions, $theme, $table, $picture)
+    function card_file($id, $title, $detail, $actions, $theme, $size, $table, $picture)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
@@ -94,7 +94,7 @@ if (!function_exists('card_file')) {
         $truncated = truncateText($title, 18);
         
         return <<<HTML
-        <div class="col-md-3 mt-2">
+        <div class="{$size} mt-2">
             <div class="card {$theme}">
             <img src="img/{$table}/{$picture}" class="card-img-top img-fluid" style="max-height: 150px" alt="...">
             <div class="card-body">

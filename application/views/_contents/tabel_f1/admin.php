@@ -31,6 +31,7 @@
       btn_hapus('tabel_f1', $tl_f1->$tabel_f1_field1) . ' ' .
       btn_print('tabel_f1', $tl_f1->$tabel_f1_field1),
       'text-white bg-secondary',
+      'col-md-3',
       $tabel_f1,
     );
   endforeach; ?>

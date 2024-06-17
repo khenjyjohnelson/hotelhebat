@@ -71,9 +71,7 @@ class C_tabel_e3 extends Omnitags
 		validate_input(
 			array(
 				$this->v_post['tabel_e3_field1'],
-				$this->v_post['tabel_e3_field3'],
 				$this->v_post['tabel_e3_field4'],
-				$this->v_post['tabel_e3_field5'],
 			),
 			$this->views['flash3'],
 			'ubah' . $tabel_e3_field1

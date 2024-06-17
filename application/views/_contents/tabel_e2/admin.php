@@ -33,6 +33,7 @@
       btn_lihat($tl_e2->$tabel_e2_field1) . ' ' . 
       btn_edit($tl_e2->$tabel_e2_field1),
       'text-white bg-danger',
+      'col-md-3',
       $tabel_e2,
       $tl_e2->$tabel_e2_field4,
     );

@@ -30,4 +30,6 @@
   <!-- css pribadi -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/floating-labels.css">
+
+  <?php load_view('_partials/pre-script') ?>
 </head>

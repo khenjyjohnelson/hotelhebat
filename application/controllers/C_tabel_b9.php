@@ -135,7 +135,7 @@ class C_tabel_b9 extends Omnitags
 	public function update()
 	{
 		$this->declarew();
-		$this->session_3();
+		$this->session_2_3_4_5();
 
 		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 

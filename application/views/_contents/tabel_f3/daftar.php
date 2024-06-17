@@ -31,6 +31,7 @@
       btn_lihat($tl_f3->$tabel_f3_field1) . ' ' .
       btn_print('tabel_f3', $tl_f3->$tabel_f3_field1),
       'text-light bg-danger',
+      'col-md-3',
       $tabel_f3,
     );
   endforeach; ?>

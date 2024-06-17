@@ -45,6 +45,7 @@
       btn_lihat($tl_e3->$tabel_e3_field1) . ' ' .
       $button,
       'text-white bg-danger',
+      'col-md-3',
       $tabel_e3
     );
   endforeach; ?>
@@ -132,7 +133,7 @@
             <label class="form-label"><?= $tabel_e3_field4_alias ?></label>
           </div>
 
-          <?= input_add('text', 'tabel_e3_field5', 'required') ?>
+          <?= input_add('text', 'tabel_e3_field5', '') ?>
 
         </div>
 
@@ -155,7 +156,7 @@
       <div id="ubah<?= $tl_e3->$tabel_e3_field1; ?>" class="modal fade ubah">
         <div class="modal-dialog">
           <div class="modal-content">
-            <?= modal_header('Edit' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
+            <?= modal_header(lang('change_data') . ' ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
 
             <form action="<?= site_url($language . '/' . $tabel_e3 . '/update') ?>" method="post"
               enctype="multipart/form-data">
@@ -177,7 +178,7 @@
                 </div>
 
                 <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
-                <?= input_edit('text', 'tabel_e3_field5', $tl_e3->$tabel_e3_field5, 'required') ?>
+                <?= input_edit('text', 'tabel_e3_field5', $tl_e3->$tabel_e3_field5, '') ?>
               </div>
 
               <!-- memunculkan notifikasi modal -->
@@ -193,7 +194,7 @@
 
       <?php break;
     case $tabel_e3_field4_value4: ?>
-      <div id="<?= $tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade <?= $tabel_c1_field7_value1 ?>">
+      <div id="<?= $tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade cleaning">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <?= modal_header('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
@@ -214,11 +215,9 @@
                     ) ?>
 
                     <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
-
+                    <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
 
                     <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
-                    <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
-                jika sebaliknya, maka kamar akan menjadi <?= $tabel_e3_field4_value3_alias ?> -->
                     <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
                       <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
                     <?php } else { ?>
@@ -245,11 +244,7 @@
                       <label class="form-label"><?= $tabel_c1_alias ?></label>
                     </div>
 
-                    <!-- Aku masih ada rencana untuk mengubah textbox keterangan ini dengan dropbox 
-                  karena menurutku textarea masih kurang cukup
-                dan aku juga membutuhkan bantuan ahli UI UX untuk menentukan keputusan terbaik -->
-
-                    <?= input_add('text', 'tabel_f4_field6', 'required') ?>
+                    <?= input_add('text', 'tabel_f4_field6', '') ?>
                   </div>
                 </div>
               </div>
@@ -290,9 +285,8 @@
                     ) ?>
                     <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
                     <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
+                    
                     <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
-                    <!-- jika id pesanan itu kosong, berarti belum ada yang pesan dan kamar menjadi <?= $tabel_e3_field4_value2_alias ?>
-                jika sebaliknya, maka kamar akan menjadi <?= $tabel_e3_field4_value3_alias ?> -->
                     <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
                       <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>
                     <?php } else { ?>
@@ -309,7 +303,7 @@
                         <option selected hidden><?= lang('select') ?>       <?= $tabel_c1_alias ?>...</option>
                         <?php
                         foreach ($tbl_c1->result() as $tl_c1):
-                          if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value1) { ?>
+                          if ($tl_c1->$tabel_c1_field7 == $tabel_c1_field7_value2) { ?>
                             <option value="<?= $tl_c1->$tabel_c1_field1; ?>"><?= $tl_c1->$tabel_c1_field2; ?> -
                               <?= $tl_c1->$tabel_c1_field7; ?>
                             </option>
@@ -319,7 +313,7 @@
                       <label class="form-label"><?= $tabel_c1_alias ?></label>
                     </div>
 
-                    <?= input_add('text', 'tabel_e3_field5', 'required') ?>
+                    <?= input_add('text', 'tabel_f4_field6', '') ?>
                   </div>
                 </div>
               </div>

@@ -11,6 +11,8 @@
 <hr>
 
 
+
+
 <div class="row">
   <div class="col-md-10">
     <?= btn_field('filter', '<i class="fas fa-filter"></i> Filter') ?>
@@ -46,6 +48,7 @@
       $button . ' ' .
       btn_print('tabel_f2', $tl_f2->$tabel_f2_field1),
       'text-dark bg-light',
+      'col-md-3',
       $tabel_f2,
     );
   endforeach; ?>
@@ -182,7 +185,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label><?= lang('select') ?>       <?= $tabel_e3_field1_alias ?></label>
+                      <label><?= lang('select') ?>       <?= $tl_f2->$tabel_e4_field2 . ' ' . $tabel_e3_field1_alias ?></label>
 
                       <div class="row">
                         <?php foreach ($tbl_e3->result() as $tl_e3):
@@ -191,31 +194,14 @@
                               if ($tl_e3->$tabel_e3_field4 == $tabel_e3_field4_value2) { ?>
 
                                 <div class="col-md-2 mb-4">
-
-                                  <div class="card bg-light">
-                                    <div class="card-body text-center">
-
-                                      <div class="checkbox-group">
-                                        <p class="card-text"><?= $tl_e3->$tabel_f2_field13; ?></p>
-
-                                        <div class="btn-group-toggle" data-toggle="buttons">
-                                          <label class="btn btn-primary">
-
-                                            <input type="checkbox" name="<?= $tabel_f2_field13_input ?>" id="option1"
-                                              class="checkbox-option form-control-lg" value="<?= $tl_e3->$tabel_e3_field1 ?>"
-                                              required>
-
-
-                                          </label>
-                                        </div>
-                                      </div>
-
-                                      <!-- <div style="margin-bottom: 20px;" class="form-check d-flex justify-content-center">
-                                        <input class="custom-radio form-check-input" type="radio" id="radio_1" name="<?= $tabel_f2_field13_input ?>" value="<?= $tl_e3->$tabel_f2_field13 ?>" required>
-                                      </div> -->
-
-                                    </div>
-                                  </div>
+                                  <?= btn_checkbox(
+                                    $tl_f2->$tabel_f2_field1,
+                                    '<i class="fas fa-bed"></i><br>' .
+                                    $tl_e3->$tabel_e3_field1,
+                                    'tabel_f2_field13',
+                                    $tl_e3->$tabel_e3_field1,
+                                    'required'
+                                  ) ?>
 
                                 </div>
 
@@ -326,6 +312,8 @@
     default:
       break;
   } ?>
+
+  <?= checkbox_js($tl_f2->$tabel_f2_field1) ?>
 <?php endforeach ?>
 
 <?= adjust_col_js() ?>
@@ -333,5 +321,7 @@
 <?= adjust_date3($tabel_f2_field10_filter1, $tabel_f2_field10_filter2, $tabel_f2_field11_filter1, $tabel_f2_field11_filter2) ?>
 <?= adjust_date2($tabel_f2_field11_filter1, $tabel_f2_field11_filter2) ?>
 
-<?= radio_js() ?>
-<?= checkbox_js() ?>
+<?php foreach ($tbl_f2->result() as $tl_f2): ?>
+
+
+<?php endforeach ?>

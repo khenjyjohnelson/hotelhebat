@@ -36,17 +36,16 @@ class C_tabel_f4 extends Omnitags
 		$this->declarew();
 		$this->session_4();
 
-		// validate_input(
-		// 	array(
-		// 		$this->v_post['tabel_f4_field2'],
-		// 		$this->v_post['tabel_f4_field3'],
-		// 		$this->v_post['tabel_f4_field4'],
-		// 		$this->v_post['tabel_f4_field5'],
-		// 		$this->v_post['tabel_f4_field6'],
-		// 	),
-		// 	$this->views['flash2'],
-		// 	''
-		// );
+		validate_input(
+			array(
+				$this->v_post['tabel_f4_field2'],
+				$this->v_post['tabel_f4_field3'],
+				$this->v_post['tabel_f4_field4'],
+				$this->v_post['tabel_f4_field5'],
+			),
+			$this->views['flash2'],
+			''
+		);
 
 		// seharusnya fitur ini menggunakan trigger cman saya tidak bisa melakukannya
 		$tabel_f4_field7 = date("Y-m-d") . " " . date("h:m:s", time());
