@@ -83,7 +83,7 @@ class C_tabel_b1 extends Omnitags
 		);
 
 		$tabel_b1_field2 = $this->v_post['tabel_b1_field2'];
-		$method = $this->tl_c2->get_b1_by_b1_field2($tabel_b1_field2);
+		$method = $this->tl_b1->get_b1_by_b1_field2($tabel_b1_field2);
 
 		// mencari apakah jumlah data kurang dari 1
 		if ($method->num_rows() < 1) {
@@ -146,6 +146,7 @@ class C_tabel_b1 extends Omnitags
 				$this->v_post['tabel_b1_field1'],
 				$this->v_post['tabel_b1_field2'],
 				$this->v_post['tabel_b1_field3'],
+				$this->v_post['tabel_b1_field4_old'],
 				$this->v_post['tabel_b1_field5'],
 				$this->v_post['tabel_b1_field6'],
 				$this->v_post['tabel_b1_field7'],

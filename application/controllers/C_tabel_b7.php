@@ -126,7 +126,7 @@ class C_tabel_b7 extends Omnitags
 			array(
 				$this->v_post['tabel_b7_field1'],
 				$this->v_post['tabel_b7_field2'],
-				$this->v_post['tabel_b7_field3'],
+				$this->v_post['tabel_b7_field3_old'],
 			),
 			$this->views['flash3'],
 			$this->aliases['tabel_b7_field3'] . $tabel_b7_field1
@@ -183,7 +183,7 @@ class C_tabel_b7 extends Omnitags
 			array(
 				$this->v_post['tabel_b7_field1'],
 				$this->v_post['tabel_b7_field2'],
-				$this->v_post['tabel_b7_field4'],
+				$this->v_post['tabel_b7_field4_old'],
 			),
 			$this->views['flash3'],
 			$this->aliases['tabel_b7_field4'] . $tabel_b7_field1
@@ -241,7 +241,7 @@ class C_tabel_b7 extends Omnitags
 			array(
 				$this->v_post['tabel_b7_field1'],
 				$this->v_post['tabel_b7_field2'],
-				$this->v_post['tabel_b7_field5'],
+				$this->v_post['tabel_b7_field5_old'],
 			),
 			$this->views['flash3'],
 			$this->aliases['tabel_b7_field5'] . $tabel_b7_field1

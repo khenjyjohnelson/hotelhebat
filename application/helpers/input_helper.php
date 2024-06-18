@@ -175,7 +175,7 @@ if (!function_exists('add_new_password')) {
         $data = $CI->load->get_vars();
 
         $alias = lang($field . '_alias_new');
-        $input = $data[$field . '_input'];
+        $input = $data[$field . '_new'];
 
         if (strpos($required, 'required') !== false) {
             $msg = '';

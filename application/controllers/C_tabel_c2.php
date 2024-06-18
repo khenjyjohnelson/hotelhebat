@@ -35,7 +35,7 @@ class C_tabel_c2 extends Omnitags
 			array(
 				$this->v_post['tabel_c2_field2'],
 				$this->v_post['tabel_c2_field3'],
-				$this->v_post['tabel_c2_field4'],
+				$this->v_post['tabel_c2_field4_new'],
 				$this->v_post['tabel_c2_field4_confirm'],
 				$this->v_post['tabel_c2_field5'],
 				$this->v_post['tabel_c2_field6'],
@@ -404,143 +404,7 @@ class C_tabel_c2 extends Omnitags
 			set_flashdata($this->views['flash1'], 'Email not found.');
 			redirect(site_url($this->language_code . '/login'));
 		}
-
-		// Define validation rules
-		// $rules = array(
-		// 	'tabel_c2_field3' => array('field' => $this->v_input['tabel_c2_field3_input'], 'rules' => 'required|valid_email'),
-		// 	'tabel_c2_field4' => array('field' => $this->v_input['tabel_c2_field4_input'], 'rules' => 'required')
-		// 	// Add more fields and rules as needed
-		// );
-
-		// Validate input using the helper
-		// $is_valid = validate_form($rules, $this->views['flash1']);
-
-		// Proceed with the rest of the logic if validation is successful
-		// if ($is_valid) {
-		// Get and sanitize user inputs
-
-		// }
-
 	}
-
-
-	// public function ceklogin()
-	// {
-	// 	$this->declarew();
-
-	// 	$tabel_c2_field3 = $this->v_post['tabel_c2_field3'];
-	// 	$tabel_c2_field4 = $this->v_post['tabel_c2_field4'];
-
-	// 	$method3 = $this->tl_c2->get_c2_by_c2_field3($tabel_c2_field3);
-
-	// 	// mencari apakah jumlah data kurang dari 0
-	// 	if ($method3->num_rows() > 0) {
-	// 		$tabel_c2 = $method3->result();
-	// 		$method4 = $tabel_c2[0]->password;
-
-	// 		// memverifikasi password dengan password di database
-	// 		if (password_verify($tabel_c2_field4, $method4)) {
-	// 			$tabel_c2_field1 = $tabel_c2[0]->id_user;
-	// 			$tabel_c2_field2 = $tabel_c2[0]->nama;
-	// 			$tabel_c2_field3 = $tabel_c2[0]->email;
-	// 			$tabel_c2_field5 = $tabel_c2[0]->hp;
-	// 			$tabel_c2_field6 = $tabel_c2[0]->level;
-
-
-	// 			set_userdata($this->aliases['tabel_c2_field1'], $tabel_c2_field1);
-	// 			set_userdata($this->aliases['tabel_c2_field2'], $tabel_c2_field2);
-	// 			set_userdata($this->aliases['tabel_c2_field3'], $tabel_c2_field3);
-	// 			set_userdata($this->aliases['tabel_c2_field5'], $tabel_c2_field5);
-	// 			set_userdata($this->aliases['tabel_c2_field6'], $tabel_c2_field6);
-
-	// 			// Get the user agent string
-	// 			$userAgent = $_SERVER['HTTP_USER_AGENT'];
-
-	// 			// Get the device type
-	// 			$deviceType = getDeviceTypeAndOS($userAgent);
-
-	// 			$loginh = array(
-	// 				$this->aliases['tabel_d3_field1'] => '',
-	// 				$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
-	// 				$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
-	// 				$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
-	// 				$this->aliases['tabel_d3_field5'] => $deviceType,
-	// 			);
-
-	// 			$login_history = $this->tl_d3->insert_d3($loginh);
-
-	// 			$notif = $this->handle_2a();
-
-
-	// 			redirect(site_url($this->language_code . '/' . 'home'));
-
-	// 			// jika password salah
-	// 		} else {
-
-	// 			// Selama ini hal yang menampilkan pesan hanyalah toast
-	// 			// Di sini aku akan mencoba menerapkan menampilkan modal secara otomatis ketika password salah
-	// 			// Namun nanti hanya ketika password salah saja, melainkan semua proses yang melibatkan elemen modal
-	// 			// Kemungkinan ke depannya bakal ada yang lain juga selain modal dan toast 
-	// 			// Hal ini tentunya akan menggunakan beberapa file diantara lain
-	// 			// Welcome.php, halaman template bagian javascript, dan masing-masing halaman tujuan
-	// 			// Selain itu aku ingin mencoba menerapkannya juga pada button notifikasi jika ada nanti
-	// 			// Supaya bisa menyimpan proses apa saja yang telah selesai dilakukan
-
-	// 			// Dan terakhir, aku perlu menambahkan fungsi flashdata baru selain 'panggil'
-	// 			// Alasannya karena ada banyak sekali jenis pesan yang tidak boleh digunakan dalam satu tempat
-	// 			// Kalau tidak bisa merusak experience dari user
-
-	// 			set_flashdata($this->views['flash1'], $this->flash_msg3['tabel_c2_field4_alias']);
-	// 			redirect(site_url($this->language_code . '/login'));
-	// 		}
-
-	// 		// jika jumlah data lebih dari 0
-	// 	} else {
-
-	// 		set_flashdata($this->views['flash1'], $this->flash_msg4['tabel_c2_field3']);
-	// 		redirect(site_url($this->language_code . '/login'));
-	// 	}
-
-	// 	// // mencari apakah jumlah data kurang dari 0
-	// 	// if ($cekemail->num_rows() > 0) {
-	// 	// 	$tabel_c2 = $cekemail->result();
-	// 	// 	$cekpass = $tabel_c2[0]->password;
-
-	// 	// 	// memverifikasi password dengan password di database
-	// 	// 	if (password_verify($password, $cekpass)) {
-	// 	// 		$tabel_c2_field1 = $tabel_c2[0]->id_user;
-	// 	// 		$nama = $tabel_c2[0]->nama;
-	// 	// 		$tabel_c2_field1 = $tabel_c2[0]->email;
-	// 	// 		$hp = $tabel_c2[0]->hp;
-	// 	// 		$level = $tabel_c2[0]->level;
-
-	// 	// 		set_userdata('id_user', $tabel_c2_field1);
-	// 	// 		set_userdata('nama', $nama);
-	// 	// 		set_userdata('email', $tabel_c2_field1);
-	// 	// 		set_userdata('hp', $hp);
-	// 	// 		set_userdata('level', $level);
-
-	// 	// 		redirect($_SERVER['HTTP_REFERER']); 
-	// 	redirect(site_url($this->language_code . '/' . 'home'));
-
-	// 	// 		// jika password salah
-	// 	// 	} else {
-
-	// 	// 		set_flashdata($this->views['flash1'], 'Password Salah!');
-	// 	// 		redirect($_SERVER['HTTP_REFERER']); 
-	// 	redirect(site_url($this->language_code . '/login'));
-	// 	// 	}
-
-	// 	// 	// jika jumlah data lebih dari 0
-	// 	// } else {
-
-	// 	// 	set_flashdata($this->views['flash1'], 'Email tidak tersedia!');
-	// 	// 	redirect($_SERVER['HTTP_REFERER']); 
-	// 	redirect(site_url($this->language_code . '/login'));
-	// 	// }
-
-
-	// }
 
 	public function logout()
 	{

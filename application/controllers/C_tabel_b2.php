@@ -167,6 +167,7 @@ class C_tabel_b2 extends Omnitags
 				$this->v_post['tabel_b2_field1'],
 				$this->v_post['tabel_b2_field2'],
 				$this->v_post['tabel_b2_field3'],
+				$this->v_post['tabel_b2_field4_old'],
 				$this->v_post['tabel_b2_field5'],
 				$this->v_post['tabel_b2_field7'],
 			),
