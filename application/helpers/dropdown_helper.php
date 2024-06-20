@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Generates a dropdown menu item for a specific table and place
 if (!function_exists('dropdown_menu')) {
     function dropdown_menu($tabel, $place)
     {
@@ -20,6 +21,7 @@ if (!function_exists('dropdown_menu')) {
     }
 }
 
+// Generates a dropdown menu item with a unique title, controller, and place
 if (!function_exists('dropdown_menu_unique')) {
     function dropdown_menu_unique($title, $controller, $place)
     {
@@ -38,6 +40,7 @@ if (!function_exists('dropdown_menu_unique')) {
     }
 }
 
+// Generates the logo menu item with a dropdown toggle
 if (!function_exists('menu_logo')) {
     function menu_logo($logo)
     {
@@ -49,6 +52,7 @@ if (!function_exists('menu_logo')) {
     }
 }
 
+// Generates a navigation item with a title, controller, and place
 if (!function_exists('nav_item')) {
     function nav_item($title, $controller, $place)
     {

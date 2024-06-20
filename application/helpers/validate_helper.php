@@ -1,5 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
+// Validates user input by checking if all required fields are filled
 if (!function_exists('validate_input')) {
     function validate_input($required_fields, $flash_key, $class, $error_message = 'All inputs are required.')
     {
@@ -24,6 +25,7 @@ if (!function_exists('validate_input')) {
     }
 }
 
+// Validates form data using CodeIgniter's form validation library
 if (!function_exists('validate_form')) {
     function validate_form($rules, $flash_key, $error_message = 'All inputs are required.')
     {

@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Counts the number of rows in a given table
 if (!function_exists('count_data')) {
     function count_data($table)
     {
@@ -12,6 +13,7 @@ if (!function_exists('count_data')) {
     }
 }
 
+// Generates an HTML table with a given theme and data
 if (!function_exists('table_data')) {
     function table_data($data, $theme)
     {
@@ -30,6 +32,7 @@ if (!function_exists('table_data')) {
     }
 }
 
+// Generates a table row with a field alias and value
 if (!function_exists('row_data')) {
     function row_data($field, $value)
     {
@@ -44,6 +47,7 @@ if (!function_exists('row_data')) {
     }
 }
 
+// Generates a table row with a field alias and an image
 if (!function_exists('row_file')) {
     function row_file($tabel_class, $field, $value)
     {
@@ -60,6 +64,7 @@ if (!function_exists('row_file')) {
     }
 }
 
+// Generates a text field with a label and value
 if (!function_exists('tampil_text')) {
     function tampil_text($field, $value)
     {
@@ -75,6 +80,7 @@ if (!function_exists('tampil_text')) {
     }
 }
 
+// Generates a password requirements message
 if (!function_exists('password_req')) {
     function password_req()
     {
@@ -98,6 +104,7 @@ if (!function_exists('password_req')) {
     }
 }
 
+// Generates an image with a tooltip
 if (!function_exists('tampil_image')) {
     function tampil_image($tabel_class, $value, $konten)
     {
@@ -115,6 +122,7 @@ if (!function_exists('tampil_image')) {
     }
 }
 
+// Generates a file field with a label and image
 if (!function_exists('tampil_file')) {
     function tampil_file($tabel_class, $field, $value)
     {

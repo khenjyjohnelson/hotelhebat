@@ -3,6 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 if (!function_exists('upload_file')) {
 
+    /**
+     * Uploads a file based on the provided configuration
+     *
+     * @param string $field_name
+     * @param array $config
+     * @param string $flash_key
+     * @param string $class
+     * @return mixed
+     */
     function upload_file($field_name, $config, $flash_key, $class)
     {
         $CI =& get_instance();
@@ -22,6 +31,16 @@ if (!function_exists('upload_file')) {
     }
 }
 
+/**
+ * Handles the file upload process
+ *
+ * @param string $name
+ * @param string $old_name
+ * @param string $field
+ * @param string $path
+ * @param array $config
+ * @return string
+ */
 function handle_file_upload($name, $old_name, $field, $path, $config)
 {
     $CI =& get_instance();

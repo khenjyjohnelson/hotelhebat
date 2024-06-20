@@ -5,10 +5,10 @@ include 'Omnitags.php';
 
 class C_tabel_e1 extends Omnitags
 {
-	// Halaman khusus akun
+	// Account Only Pages
 
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -59,6 +59,25 @@ class C_tabel_e1 extends Omnitags
 
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
+	}
+
+	// Print all data
+	public function laporan()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_e1_alias_v4_title'),
+			'konten' => $this->v4['tabel_e1'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1']),
+			'tbl_e1' => $this->tl_e1->get_all_e1(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/printpage', $data);
 	}
 
 	function tambah()
@@ -128,6 +147,7 @@ class C_tabel_e1 extends Omnitags
 
 
 
+	// Update data
 	public function update()
 	{
 		// Functional requirement: Declare necessary configurations
@@ -214,6 +234,7 @@ class C_tabel_e1 extends Omnitags
 
 
 
+	// Delete data
 	public function delete($tabel_e1_field1 = null)
 	{
 		// Functional requirement: Declare necessary configurations
@@ -252,26 +273,5 @@ class C_tabel_e1 extends Omnitags
 
 
 
-	}
-
-
-
-	// Halaman cetak semua data
-	public function laporan()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_e1_alias_v4_title'),
-			'konten' => $this->v4['tabel_e1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1']),
-			'tbl_e1' => $this->tl_e1->get_all_e1(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
 	}
 }

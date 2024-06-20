@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 if (!function_exists('schema_js')) {
+    // Generates JSON-LD schema markup for an organization
     function schema_js()
     {
         return <<<HTML
@@ -24,6 +25,7 @@ if (!function_exists('schema_js')) {
 }
 
 if (!function_exists('google_tag_iframe')) {
+    // Generates Google Tag Manager iframe code
     function google_tag_iframe()
     {
         return <<<HTML
@@ -36,6 +38,7 @@ if (!function_exists('google_tag_iframe')) {
 }
 
 if (!function_exists('google_tag_js')) {
+    // Generates Google Tag Manager JavaScript code
     function google_tag_js()
     {
         return <<<HTML
@@ -54,6 +57,7 @@ if (!function_exists('google_tag_js')) {
 }
 
 if (!function_exists('export_to_excel_js')) {
+    // Generates JavaScript code for exporting data to Excel
     function export_to_excel_js()
     {
         return <<<HTML
@@ -66,6 +70,7 @@ if (!function_exists('export_to_excel_js')) {
 }
 
 if (!function_exists('chart')) {
+    // Generates JavaScript code for rendering a chart
     function chart($tabel1, $tabel2)
     {
         // Get CodeIgniter instance
@@ -136,6 +141,7 @@ if (!function_exists('chart')) {
 
 
 if (!function_exists('intro_js')) {
+    // Generates JavaScript code for Intro.js library
     function intro_js()
     {
         return <<<HTML
@@ -179,6 +185,7 @@ if (!function_exists('intro_js')) {
 
 
 if (!function_exists('radio_js')) {
+    // Generates JavaScript code to make radio buttons required and stop validation once one option is picked
     function radio_js($value)
     {
         return <<<HTML
@@ -210,6 +217,7 @@ if (!function_exists('radio_js')) {
 
 
 if (!function_exists('checkbox_js')) {
+    // Generates JavaScript code to handle checkbox group behavior
     function checkbox_js($value)
     {
         return <<<HTML
@@ -238,6 +246,7 @@ if (!function_exists('checkbox_js')) {
 }
 
 if (!function_exists('adjust_date1')) {
+    // Generates JavaScript code to adjust the minimum date for a date input field
     function adjust_date1($input1, $input2)
     {
         return <<<HTML
@@ -266,6 +275,7 @@ if (!function_exists('adjust_date1')) {
 }
 
 if (!function_exists('adjust_date2')) {
+    // Generates JavaScript code to adjust the minimum date for a date input field
     function adjust_date2($input1, $input2)
     {
         return <<<HTML
@@ -294,6 +304,7 @@ if (!function_exists('adjust_date2')) {
 }
 
 if (!function_exists('adjust_date3')) {
+    // Generates JavaScript code to adjust the minimum date for multiple date input fields
     function adjust_date3($input1, $input2, $input3, $input4)
     {
         return <<<HTML
@@ -327,6 +338,7 @@ if (!function_exists('adjust_date3')) {
 }
 
 if (!function_exists('adjust_date4')) {
+    // Generates JavaScript code to adjust the minimum date for a date input field
     function adjust_date4($input1, $input2, $input3, $input4)
     {
         return <<<HTML
@@ -355,6 +367,7 @@ if (!function_exists('adjust_date4')) {
 }
 
 if (!function_exists('adjust_col_js')) {
+    // Generates JavaScript code to adjust column sizes based on screen width
     function adjust_col_js()
     {
         return <<<HTML
@@ -396,6 +409,7 @@ if (!function_exists('adjust_col_js')) {
 
 
 if (!function_exists('password_js')) {
+    // Generates JavaScript code to validate password strength
     function password_js()
     {
         return <<<HTML
@@ -462,4 +476,5 @@ if (!function_exists('password_js')) {
 
     }
 }
+
 

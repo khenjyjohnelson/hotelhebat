@@ -5,13 +5,14 @@ include 'Omnitags.php';
 
 class C_tabel_d3 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 
 
-	// Halaman khusus akun
+	// Account Only Pages
 
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -30,22 +31,7 @@ class C_tabel_d3 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
-	public function tambah()
-	{
-		$this->declarew();
-		$this->session_3();
-
-		$data = array(
-			$this->aliases['tabel_d3_field1'] => '',
-			$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
-			$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
-			$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
-		);
-
-		$aksi = $this->tl_d3->insert_d3($data);
-	}
-
-	// Cetak semua data
+	// Print all data
 	public function laporan()
 	{
 		$this->declarew();
@@ -64,5 +50,24 @@ class C_tabel_d3 extends Omnitags
 		load_view_data('_layouts/printpage', $data);
 	}
 
-	// Cetak satu data
+	// Print one data
+
+
+
+	// Functions
+	// Add data
+	public function tambah()
+	{
+		$this->declarew();
+		$this->session_3();
+
+		$data = array(
+			$this->aliases['tabel_d3_field1'] => '',
+			$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
+			$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),
+			$this->aliases['tabel_d3_field4'] => date("Y-m-d\TH:i:s"),
+		);
+
+		$aksi = $this->tl_d3->insert_d3($data);
+	}
 }

@@ -6,9 +6,10 @@ include 'Omnitags.php';
 
 class C_tabel_f1 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 
-	// Halaman khusus akun
+	// Account Only Pages
 	public function daftar()
 	{
 		$this->declarew();
@@ -78,7 +79,7 @@ class C_tabel_f1 extends Omnitags
 		}
 	}
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -118,7 +119,7 @@ class C_tabel_f1 extends Omnitags
 	// redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f1/admin'));
 	// }
 
-	// Cetak semua data
+	// Print all data
 	public function laporan()
 	{
 		$this->declarew();

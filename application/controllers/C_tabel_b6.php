@@ -5,13 +5,14 @@ include 'Omnitags.php';
 
 class C_tabel_b6 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 
 
-	// Halaman khusus akun
+	// Account Only Pages
 
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -64,6 +65,29 @@ class C_tabel_b6 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
+	// Print all data
+	public function laporan()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_b6_alias_v4_title'),
+			'konten' => $this->v4['tabel_b6'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6']),
+			'tbl_b6' => $this->tl_b6->get_all_b6(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/printpage', $data);
+	}
+
+	// Print one data
+
+	// Functions
+	// Add data
 	public function tambah()
 	{
 		$this->declarew();
@@ -111,6 +135,7 @@ class C_tabel_b6 extends Omnitags
 	}
 
 
+	// Update data
 	public function update() //update tidak diperlukan di sini
 	{
 		$this->declarew();
@@ -195,6 +220,7 @@ class C_tabel_b6 extends Omnitags
 	}
 
 
+	// Delete data
 	public function delete($tabel_b6_field1 = null)
 	{
 		$this->declarew();
@@ -208,25 +234,4 @@ class C_tabel_b6 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 
 	}
-
-	// Cetak semua data
-	public function laporan()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_b6_alias_v4_title'),
-			'konten' => $this->v4['tabel_b6'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b6']),
-			'tbl_b6' => $this->tl_b6->get_all_b6(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
-	}
-
-	// Cetak satu data
 }

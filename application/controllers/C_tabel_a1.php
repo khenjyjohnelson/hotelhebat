@@ -5,8 +5,10 @@ include 'Omnitags.php';
 
 class C_tabel_a1 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 
+	//Admin page and functions
 	public function admin()
 	{
 		$this->declarew();
@@ -24,7 +26,7 @@ class C_tabel_a1 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
-	// Halaman detail
+	// Page for 1 data
 	public function profil()
 	{
 		// Cache control headers
@@ -48,6 +50,8 @@ class C_tabel_a1 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
+	// Functions
+	// Update data
 	public function update()
 	{
 		$this->declarew();
@@ -81,6 +85,7 @@ class C_tabel_a1 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	// Update Theme ID
 	public function update_id_tema()
 	{
 		$this->declarew();

@@ -5,11 +5,12 @@ include 'Omnitags.php';
 
 class C_tabel_c1 extends Omnitags
 {
-	// Halaman publik
-	// Halaman khusus akun
+	// Pages
+	// Public Pages
+	// Account Only Pages
 
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -30,6 +31,83 @@ class C_tabel_c1 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
+	// Print all data
+	public function laporan()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_c1_alias_v4_title'),
+			'konten' => $this->v4['tabel_c1'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
+			'tbl_c1' => $this->tl_c1->get_all_c1(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/printpage', $data);
+	}
+
+	// Show 1 data
+	public function profil()
+	{
+		$this->declarew();
+		$this->page_session_2_3_4_5();
+
+		$tabel_c1_field1 = userdata($this->aliases['tabel_c1_field1']);
+		$data1 = array(
+			'title' => lang('tabel_c1_alias2_v6_title'),
+			'konten' => $this->v6['tabel_c1'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
+			'tbl_c1' => $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/template', $data);
+	}
+
+	// Login page
+	public function login()
+	{
+		$this->declarew();
+		$this->page_session_all();
+
+		$data1 = array(
+			'title' => $this->views['tabel_c1_v2_title'],
+			'konten' => 'login',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/logpage', $data);
+	}
+
+	// Signup page
+	public function signup()
+	{
+		$this->declarew();
+		$this->page_session_all();
+
+		$data1 = array(
+			'title' => 'Create an Account',
+			'konten' => 'signup',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup'),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/logpage', $data);
+	}
+
+	// Functions
+	// Add data
 	public function tambah()
 	{
 		$this->declarew();
@@ -125,6 +203,7 @@ class C_tabel_c1 extends Omnitags
 		}
 	}
 
+	// Update data
 	public function update()
 	{
 		// Di sini aku masih ada perdebatan apakah akan menggunakan gambar dengan nama file yang sama atau tidak
@@ -206,6 +285,7 @@ class C_tabel_c1 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	// Delete data
 	public function delete($tabel_c1_field1 = null)
 	{
 		$this->declarew();
@@ -223,77 +303,7 @@ class C_tabel_c1 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	// Cetak semua data
-	public function laporan()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_c1_alias_v4_title'),
-			'konten' => $this->v4['tabel_c1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
-			'tbl_c1' => $this->tl_c1->get_all_c1(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
-	}
-
-	public function profil()
-	{
-		$this->declarew();
-		$this->page_session_2_3_4_5();
-
-		$tabel_c1_field1 = userdata($this->aliases['tabel_c1_field1']);
-		$data1 = array(
-			'title' => lang('tabel_c1_alias2_v6_title'),
-			'konten' => $this->v6['tabel_c1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
-			'tbl_c1' => $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
-
-	public function login()
-	{
-		$this->declarew();
-		$this->page_session_all();
-
-		$data1 = array(
-			'title' => $this->views['tabel_c1_v2_title'],
-			'konten' => 'login',
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/logpage', $data);
-	}
-
-	public function signup()
-	{
-		$this->declarew();
-		$this->page_session_all();
-
-		$data1 = array(
-			'title' => 'Create an Account',
-			'konten' => 'signup',
-			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup'),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/logpage', $data);
-	}
+	
 
 	public function update_profil()
 	{
@@ -493,6 +503,7 @@ class C_tabel_c1 extends Omnitags
 		// }	
 	}
 
+	// Logout function
 	public function logout()
 	{
 		$this->declarew();

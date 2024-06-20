@@ -4,10 +4,11 @@ include 'Omnitags.php';
 
 class C_tabel_c2 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -26,6 +27,84 @@ class C_tabel_c2 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
+	// Print all data
+	public function laporan()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_c2_alias_v4_title'),
+			'konten' => $this->v4['tabel_c2'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2']),
+			'tbl_c2' => $this->tl_c2->get_all_c2(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/printpage', $data);
+	}
+
+	// Profile page
+	public function profil()
+	{
+		$this->declarew();
+		$this->page_session_2_3_4_5();
+
+		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
+		$data1 = array(
+			'title' => lang('tabel_c2_alias_v6_title'),
+			'konten' => $this->v6['tabel_c2'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2']),
+			'tbl_c2' => $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1),
+			'tbl_d3' => $this->tl_d3->get_d3_by_c2_field1($tabel_c2_field1),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/template', $data);
+	}
+
+	// Login Page
+	public function login()
+	{
+		$this->declarew();
+		$this->page_session_all();
+
+		$data1 = array(
+			'title' => lang('login'),
+			'konten' => 'login',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'login'),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/logpage', $data);
+	}
+
+	// Sign Up Page
+	public function signup()
+	{
+		$this->declarew();
+		$this->page_session_all();
+
+		$data1 = array(
+			'title' => lang('signup'),
+			'konten' => 'signup',
+			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup'),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/logpage', $data);
+	}
+
+	// Functions
+	// Add data
 	public function tambah()
 	{
 		$this->declarew();
@@ -96,6 +175,7 @@ class C_tabel_c2 extends Omnitags
 		}
 	}
 
+	// Update data
 	public function update()
 	{
 		$this->declarew();
@@ -133,6 +213,7 @@ class C_tabel_c2 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	// Delete data
 	public function delete($tabel_c2_field1 = null)
 	{
 		$this->declarew();
@@ -145,80 +226,6 @@ class C_tabel_c2 extends Omnitags
 		$notif = $this->handle_4e($aksi, 'tabel_c2', $tabel_c2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
-	}
-
-
-	public function laporan()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_c2_alias_v4_title'),
-			'konten' => $this->v4['tabel_c2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2']),
-			'tbl_c2' => $this->tl_c2->get_all_c2(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
-	}
-
-
-	public function profil()
-	{
-		$this->declarew();
-		$this->page_session_2_3_4_5();
-
-		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
-		$data1 = array(
-			'title' => lang('tabel_c2_alias_v6_title'),
-			'konten' => $this->v6['tabel_c2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c2']),
-			'tbl_c2' => $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1),
-			'tbl_d3' => $this->tl_d3->get_d3_by_c2_field1($tabel_c2_field1),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
-
-	public function login()
-	{
-		$this->declarew();
-		$this->page_session_all();
-
-		$data1 = array(
-			'title' => lang('login'),
-			'konten' => 'login',
-			'dekor' => $this->tl_b1->dekor($this->theme_id, 'login'),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/logpage', $data);
-	}
-
-	public function signup()
-	{
-		$this->declarew();
-		$this->page_session_all();
-
-		$data1 = array(
-			'title' => lang('signup'),
-			'konten' => 'signup',
-			'dekor' => $this->tl_b1->dekor($this->theme_id, 'signup'),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/logpage', $data);
 	}
 
 	public function update_profil()
@@ -406,6 +413,7 @@ class C_tabel_c2 extends Omnitags
 		}
 	}
 
+	// Logout function
 	public function logout()
 	{
 		$this->declarew();

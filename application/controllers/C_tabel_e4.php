@@ -5,7 +5,8 @@ include 'Omnitags.php';
 
 class C_tabel_e4 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 	public function index()
 	{
 		$this->declarew();
@@ -25,9 +26,9 @@ class C_tabel_e4 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
-	// Halaman khusus akun
+	// Account Only Pages
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -46,6 +47,27 @@ class C_tabel_e4 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
+	// Print all data
+	public function laporan()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_e4_alias_v4_title'),
+			'konten' => $this->v4['tabel_e4'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
+			'tbl_e4' => $this->tl_e4->get_all_e4(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/printpage', $data);
+	}
+
+	
+
 	/**
 	 * Handles the submission of the form for adding new data to the 'tabel_e4' table.
 	 *
@@ -54,6 +76,8 @@ class C_tabel_e4 extends Omnitags
 	 *
 	 * @return void
 	 */
+	// Functions
+	// Add data
 	public function tambah()
 	{
 		$this->declarew();
@@ -116,6 +140,7 @@ class C_tabel_e4 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	// Update data
 	public function update()
 	{
 		// Di sini aku masih ada perdebatan apakah akan menggunakan gambar dengan nama file yang sama atau tidak
@@ -196,6 +221,7 @@ class C_tabel_e4 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	// Delete data
 	public function delete($tabel_e4_field1 = null)
 	{
 		$this->declarew();
@@ -214,26 +240,7 @@ class C_tabel_e4 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	// Cetak semua data
-	public function laporan()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_e4_alias_v4_title'),
-			'konten' => $this->v4['tabel_e4'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e4']),
-			'tbl_e4' => $this->tl_e4->get_all_e4(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
-	}
-
-	// Cetak satu data
+	// Print one data
 
 	// Import excel
 	public function importExcel()

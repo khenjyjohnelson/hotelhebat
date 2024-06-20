@@ -5,7 +5,8 @@ include 'Omnitags.php';
 
 class C_tabel_b2 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 	public function detail($param1 = null)
 	{
 		$this->declarew();
@@ -28,10 +29,10 @@ class C_tabel_b2 extends Omnitags
 	}
 
 
-	// Halaman khusus akun
+	// Account Only Pages
 
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -54,6 +55,26 @@ class C_tabel_b2 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
+	// Print all data
+	public function laporan()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_b2_alias_v4_title'),
+			'konten' => $this->v4['tabel_b2'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
+			'tbl_b2' => $this->tl_b2->get_all_b2(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/printpage', $data);
+	}
+
+	// Filter data
 	public function filter()
 	{
 		$this->declarew();
@@ -84,6 +105,8 @@ class C_tabel_b2 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
+	// Functions
+	// Add data
 	public function tambah()
 	{
 		$this->declarew();
@@ -152,6 +175,7 @@ class C_tabel_b2 extends Omnitags
 		}
 	}
 
+	// Update data
 	public function update()
 	{
 		$this->declarew();
@@ -225,9 +249,6 @@ class C_tabel_b2 extends Omnitags
 		$notif = $this->handle_4c($aksi, 'tabel_b2', $tabel_b2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
-
-
-
 	}
 
 	public function aktifkan($tabel_b2_field1 = null) //update tidak diperlukan di sini
@@ -270,6 +291,7 @@ class C_tabel_b2 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	// Delete data
 	public function delete($tabel_b2_field1 = null)
 	{
 		$this->declarew();
@@ -291,24 +313,5 @@ class C_tabel_b2 extends Omnitags
 
 	}
 
-	// Cetak semua data
-	public function laporan()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_b2_alias_v4_title'),
-			'konten' => $this->v4['tabel_b2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
-			'tbl_b2' => $this->tl_b2->get_all_b2(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
-	}
-
-	// Cetak satu data
+	// Print one data
 }

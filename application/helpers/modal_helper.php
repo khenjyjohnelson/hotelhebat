@@ -2,6 +2,13 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 if (!function_exists('modal_header_add')) {
+    /**
+     * Generates a modal header with title and subtitle
+     *
+     * @param string $title
+     * @param string $subtitle
+     * @return string
+     */
     function modal_header_add($title, $subtitle)
     {
         $title = xss_clean($title);
@@ -20,6 +27,13 @@ if (!function_exists('modal_header_add')) {
 }
 
 if (!function_exists('modal_header')) {
+    /**
+     * Generates a modal header with title and subtitle including ID
+     *
+     * @param string $title
+     * @param string $subtitle
+     * @return string
+     */
     function modal_header($title, $subtitle)
     {
         $title = xss_clean($title);
@@ -38,10 +52,18 @@ if (!function_exists('modal_header')) {
 }
 
 if (!function_exists('modal_file')) {
+    /**
+     * Generates a modal file input field
+     *
+     * @param string $tabel_class
+     * @param string $field
+     * @param string $value
+     * @return string
+     */
     function modal_file($tabel_class, $field, $value)
     {
         $tabel_class = xss_clean($tabel_class);
-                $alias = xss_clean(lang($field . '_alias'));
+        $alias = xss_clean(lang($field . '_alias'));
         
         return <<<HTML
         <div class="form-group">

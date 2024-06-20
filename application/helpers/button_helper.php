@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 if (!function_exists('back_to_home')) {
+    // Generates a link to navigate back to the home page
     function back_to_home()
     {
         // Get CodeIgniter instance
@@ -20,6 +21,7 @@ if (!function_exists('back_to_home')) {
 
 
 if (!function_exists('back_to_activity')) {
+    // Generates a link to navigate back to a previous activity page
     function back_to_activity()
     {
         // Get CodeIgniter instance
@@ -42,6 +44,7 @@ if (!function_exists('back_to_activity')) {
 
 
 if (!function_exists('fontawesome_link')) {
+    // Generates a link to Font Awesome for searching icons
     function fontawesome_link()
     {
         // Get CodeIgniter instance
@@ -58,6 +61,7 @@ if (!function_exists('fontawesome_link')) {
 }
 
 if (!function_exists('btn_tambah')) {
+    // Creates a button to add new content
     function btn_tambah()
     {
         $alias = xss_clean(lang('add'));
@@ -69,6 +73,7 @@ if (!function_exists('btn_tambah')) {
 }
 
 if (!function_exists('btn_simpan')) {
+    // Creates a button to save data
     function btn_simpan()
     {
         $alias = xss_clean(lang('save_data'));
@@ -80,6 +85,7 @@ if (!function_exists('btn_simpan')) {
 }
 
 if (!function_exists('btn_tutup')) {
+    // Creates a button to close a dialog or modal
     function btn_tutup()
     {
         $alias = xss_clean(lang('close_dialog'));
@@ -91,6 +97,7 @@ if (!function_exists('btn_tutup')) {
 }
 
 if (!function_exists('btn_book')) {
+    // Creates a button to book an item
     function btn_book($value)
     {
         $alias = xss_clean(lang('input'));
@@ -105,6 +112,7 @@ if (!function_exists('btn_book')) {
 }
 
 if (!function_exists('view_switcher')) {
+    // Generates a view toggle button group
     function view_switcher()
     {
         return <<<HTML
@@ -119,6 +127,7 @@ if (!function_exists('view_switcher')) {
 }
 
 if (!function_exists('btn_field')) {
+    // Creates a button for a specific field
     function btn_field($value, $logo)
     {
 
@@ -132,6 +141,7 @@ if (!function_exists('btn_field')) {
 }
 
 if (!function_exists('btn_update')) {
+    // Creates a button to update data
     function btn_update()
     {
         $alias = xss_clean(lang('update_data'));
@@ -143,6 +153,7 @@ if (!function_exists('btn_update')) {
 }
 
 if (!function_exists('btn_update_field')) {
+    // Creates a button to update data with a confirmation prompt
     function btn_update_field($field)
     {
         $alias = xss_clean(lang('update_data'));
@@ -157,6 +168,7 @@ if (!function_exists('btn_update_field')) {
 }
 
 if (!function_exists('btn_cari')) {
+    // Creates a search button
     function btn_cari()
     {
         return <<<HTML
@@ -167,6 +179,7 @@ if (!function_exists('btn_cari')) {
     }
 }
 if (!function_exists('btn_sync')) {
+    // Generates a button to sync data with a specific value
     function btn_sync($tabel, $value)
     {
         // Get CodeIgniter instance
@@ -189,6 +202,7 @@ if (!function_exists('btn_sync')) {
 }
 
 if (!function_exists('btn_read_more')) {
+    // Generates a button to read more details
     function btn_read_more($table, $id)
     {
         // Get CodeIgniter instance
@@ -205,6 +219,7 @@ if (!function_exists('btn_read_more')) {
 }
 
 if (!function_exists('btn_value')) {
+    // Creates a button with a specific value for a table
     function btn_value($table, $function, $id, $logo)
     {
         // Get CodeIgniter instance
@@ -223,6 +238,7 @@ if (!function_exists('btn_value')) {
 }
 
 if (!function_exists('btn_lihat')) {
+    // Creates a button to view details
     function btn_lihat($value)
     {
         $alias = xss_clean(lang('input'));
@@ -236,6 +252,7 @@ if (!function_exists('btn_lihat')) {
 }
 
 if (!function_exists('btn_edit')) {
+    // Creates a button to edit details
     function btn_edit($value)
     {
         $alias = xss_clean(lang('input'));
@@ -250,7 +267,7 @@ if (!function_exists('btn_edit')) {
 
 
 if (!function_exists('btn_laporan')) {
-
+    // Generates a button to print a report for a specific table
     function btn_laporan($tabel)
     {
         // Get CodeIgniter instance
@@ -273,7 +290,7 @@ if (!function_exists('btn_laporan')) {
 }
 
 if (!function_exists('btn_print')) {
-
+    // Generates a button to print specific data
     function btn_print($tabel, $value)
     {
         // Get CodeIgniter instance
@@ -298,7 +315,7 @@ if (!function_exists('btn_print')) {
 }
 
 if (!function_exists('btn_kelola')) {
-
+    // Creates a button to manage data for a specific table
     function btn_kelola($tabel, $function)
     {
         // Get CodeIgniter instance
@@ -319,6 +336,7 @@ if (!function_exists('btn_kelola')) {
 }
 
 if (!function_exists('btn_redo')) {
+    // Generates a button to redo an action
     function btn_redo($tabel, $function)
     {
         // Get CodeIgniter instance
@@ -340,6 +358,7 @@ if (!function_exists('btn_redo')) {
 
 
 if (!function_exists('btn_hapus')) {
+    // Creates a button to delete specific data with a confirmation prompt
     function btn_hapus($tabel, $value)
     {
         // Get CodeIgniter instance
@@ -363,6 +382,7 @@ if (!function_exists('btn_hapus')) {
 }
 
 if (!function_exists('btn_toggle_on')) {
+    // Generates a button to toggle a feature on
     function btn_toggle_on($tabel, $value)
     {
         // Get CodeIgniter instance
@@ -386,6 +406,7 @@ if (!function_exists('btn_toggle_on')) {
 }
 
 if (!function_exists('btn_toggle_off')) {
+    // Generates a button to toggle a feature off
     function btn_toggle_off($tabel, $value)
     {
         // Get CodeIgniter instance
@@ -407,3 +428,5 @@ if (!function_exists('btn_toggle_off')) {
         HTML;
     }
 }
+
+

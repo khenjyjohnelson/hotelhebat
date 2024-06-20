@@ -5,13 +5,14 @@ include 'Omnitags.php';
 
 class C_tabel_b1 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 
 
-	// Halaman khusus akun
+	// Account Only Pages
 
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -32,6 +33,25 @@ class C_tabel_b1 extends Omnitags
 
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
+	}
+
+	// Print all data
+	public function laporan()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_b1_alias_v4_title'),
+			'konten' => $this->v4['tabel_b1'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b1']),
+			'tbl_b1' => $this->tl_b1->get_all_b1(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/printpage', $data);
 	}
 
 	public function filter()
@@ -65,6 +85,11 @@ class C_tabel_b1 extends Omnitags
 	}
 
 
+
+	// Functions
+	// Add data
+	// Functions
+	// Add data
 	public function tambah()
 	{
 		$this->declarew();
@@ -131,6 +156,8 @@ class C_tabel_b1 extends Omnitags
 		}
 	}
 
+	// Update data
+	// Update data
 	public function update()
 	{
 		$this->declarew();
@@ -209,6 +236,7 @@ class C_tabel_b1 extends Omnitags
 
 	}
 
+	// Sync the theme of the website
 	public function sync_theme($tabel_b1_field7 = null)
 	{
 		$this->declarew();
@@ -228,6 +256,7 @@ class C_tabel_b1 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	// Delete data
 	public function delete($tabel_b1_field1 = null)
 	{
 		$this->declarew();
@@ -244,24 +273,5 @@ class C_tabel_b1 extends Omnitags
 		$notif = $this->handle_4e($aksi, 'tabel_b1', $tabel_b1_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
-	}
-
-	// Cetak semua data
-	public function laporan()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_b1_alias_v4_title'),
-			'konten' => $this->v4['tabel_b1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b1']),
-			'tbl_b1' => $this->tl_b1->get_all_b1(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
 	}
 }

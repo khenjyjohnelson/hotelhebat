@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Generates a card header with a title, subtitle, and a close button
 if (!function_exists('card_header')) {
     function card_header($title, $subtitle)
     {
@@ -19,6 +20,7 @@ if (!function_exists('card_header')) {
     }
 }
 
+// Generates a card title with a tooltip
 if (!function_exists('card_title')) {
     function card_title($title)
     {
@@ -33,6 +35,7 @@ if (!function_exists('card_title')) {
     }
 }
 
+// Generates a card text with a tooltip
 if (!function_exists('card_text')) {
     function card_text($title)
     {
@@ -47,6 +50,7 @@ if (!function_exists('card_text')) {
     }
 }
 
+// Generates a card content with a field alias and value
 if (!function_exists('card_content')) {
     function card_content($field, $value)
     {
@@ -64,6 +68,7 @@ if (!function_exists('card_content')) {
     }
 }
 
+// Generates a regular card with a title, detail, actions, theme, size, and table
 if (!function_exists('card_regular')) {
     function card_regular($id, $title, $detail, $actions, $theme, $size, $table)
     {
@@ -84,6 +89,7 @@ if (!function_exists('card_regular')) {
     }
 }
 
+// Generates a card with a file/image and a title, detail, actions, theme, size, table, and picture
 if (!function_exists('card_file')) {
     function card_file($id, $title, $detail, $actions, $theme, $size, $table, $picture)
     {
@@ -112,6 +118,7 @@ if (!function_exists('card_file')) {
     }
 }
 
+// Generates a card for an event with a title, detail, actions, table, picture, and theme
 if (!function_exists('card_event')) {
     function card_event($id, $title, $detail, $actions, $table, $picture, $theme)
     {
@@ -139,6 +146,7 @@ if (!function_exists('card_event')) {
     }
 }
 
+// Generates a card to display a count with a title, controller, theme, and count
 if (!function_exists('card_count')) {
     function card_count($title, $controller, $theme, $count)
     {

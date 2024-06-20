@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Loads a view file
 if (!function_exists('load_view')) {
     function load_view($view_name)
     {
@@ -9,6 +10,7 @@ if (!function_exists('load_view')) {
     }
 }
 
+// Loads a view file with data
 if (!function_exists('load_view_data')) {
     function load_view_data($view_name, $data)
     {
@@ -17,6 +19,7 @@ if (!function_exists('load_view_data')) {
     }
 }
 
+// Loads and sets the language based on user preference or default
 if (!function_exists('load_and_set_language')) {
     function load_and_set_language()
     {
@@ -44,6 +47,7 @@ if (!function_exists('load_and_set_language')) {
     }
 }
 
+// Detects the preferred language based on session, URL parameter, or URL segment
 if (!function_exists('detect_preferred_language')) {
     function detect_preferred_language()
     {
@@ -72,6 +76,7 @@ if (!function_exists('detect_preferred_language')) {
     }
 }
 
+// Sets security headers for the application
 if (!function_exists('set_security_headers')) {
     function set_security_headers()
     {
@@ -86,8 +91,7 @@ if (!function_exists('set_security_headers')) {
     }
 }
 
-// Function to get the device type
-// Function to get the device type and operating system
+// Determines the device type and operating system based on the user agent
 if (!function_exists('getDeviceTypeAndOS')) {
     function getDeviceTypeAndOS($userAgent)
     {

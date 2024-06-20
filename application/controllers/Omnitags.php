@@ -14,7 +14,8 @@ if (!class_exists('Omnitags')) {
         // Aku ada rencana untuk menggunakan Toastr untuk menampilkan notifikasi toast
         // Ini adalah link : https://codeseven.github.io/toastr/demo.html
 
-        // Di bawah ini adalah fungsi config
+        // Declaring relevant variables
+        // Hard coded variable values
         public $file_type1 = 'png|jpg|jpeg|webp';
         public $file_type2 = 'pdf';
         public $phase_0 = '<br><span class="h6"> (pre-alpha phase)</span>';
@@ -22,6 +23,8 @@ if (!class_exists('Omnitags')) {
         public $phase_2 = '<br><span class="h6"> (beta phase)</span>';
         public $phase_3 = '<br><span class="h6"> (release candidate phase)</span>';
         public $phase_4 = '';  // feature released
+
+        // Variables that functions as soft code later on
         public $spreadsheet_lib, $uri;
 
         public $aliases, $views, $flashdatas, $tempdatas, $show, $package;
@@ -95,6 +98,7 @@ if (!class_exists('Omnitags')) {
             set_security_headers();
         }
 
+        // Loader for all MVC in this website
         public function declarew()
         {
             $jsonData1 = file_get_contents(site_url('assets/json/app.postman_environment.json'));
@@ -207,6 +211,7 @@ if (!class_exists('Omnitags')) {
             $this->package = array_merge($this->views, $this->aliases, $this->v_input, $this->reverse);
         }
 
+        // Session userdata handling for loading pages
         public function page_session_all()
         {
             switch (userdata($this->aliases['tabel_c2_field6'])) {
@@ -367,6 +372,7 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        // Session userdata handling for loading public functions
         public function session_all()
         {
             switch (userdata($this->aliases['tabel_c2_field6'])) {
@@ -527,6 +533,7 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        // Notification handlers
         // notification not shown, will be used
         public function handle_1a($aksi, $object, $value)
         {

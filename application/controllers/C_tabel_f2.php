@@ -12,7 +12,8 @@ include 'Omnitags.php';
 session_write_close();
 class C_tabel_f2 extends Omnitags
 {
-	// Halaman publik/khusus akun
+	// Pages
+	// Public Pages/khusus akun
 	public function index()
 	{
 		$this->declarew();
@@ -52,7 +53,7 @@ class C_tabel_f2 extends Omnitags
 		load_view_data($halaman, $data);
 	}
 
-	// Halaman khusus akun
+	// Account Only Pages
 	public function daftar()
 	{
 		$this->declarew();
@@ -117,7 +118,7 @@ class C_tabel_f2 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
-	// Halaman admin
+	// Admin Pages
 	public function admin()
 	{
 		$this->declarew();
@@ -147,169 +148,6 @@ class C_tabel_f2 extends Omnitags
 
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
-	}
-
-	public function tambah()
-	{
-		// Functional requirement: Declare necessary configurations
-		$this->declarew();
-		$this->session_5();
-
-		// Security: Input Sanitization and Validation
-		$inputs = [
-			'tabel_f2_field4',
-			'tabel_f2_field8',
-			'tabel_f2_field10',
-			'tabel_f2_field11',
-			'tabel_f2_field2',
-			'tabel_f2_field3',
-			'tabel_f2_field5',
-			'tabel_f2_field6',
-			'tabel_f2_field7'
-		];
-
-		foreach ($inputs as $input) {
-			$input_value = htmlspecialchars(trim($this->v_post[$input]));
-			if (empty($input_value)) {
-				// Error Handling: Set error flash message for invalid input
-				set_flashdata($this->views['flash1'], "Invalid input. Please provide valid data.");
-				set_flashdata($this->views['flash1'], $this->views['flash1_func1']);
-				// Functional requirement: Redirect user to 'tabel_f2' confirmation page
-				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f2'] . '/konfirmasi'));
-			}
-		}
-
-		// Calculate total price based on date difference
-		$startTimeStamp = strtotime($this->v_post['tabel_f2_field10']);
-		$endTimeStamp = strtotime($this->v_post['tabel_f2_field11']);
-		$timedif = $endTimeStamp - $startTimeStamp;
-		$numberdays = $timedif / 60 / 60 / 24; // 86400 seconds in one day
-
-		$tabel_e4_field1 = $this->v_post['tabel_f2_field7'];
-		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
-
-		// Calculate total price
-		$harga_total = ($numberdays * $tabel_e4[0]->harga);
-
-		$data = [
-			$this->aliases['tabel_f2_field1'] => '',
-			$this->aliases['tabel_f2_field2'] => $this->v_post['tabel_f2_field2'],
-			$this->aliases['tabel_f2_field3'] => $this->v_post['tabel_f2_field3'],
-			$this->aliases['tabel_f2_field4'] => $this->v_post['tabel_f2_field4'],
-			$this->aliases['tabel_f2_field5'] => $this->v_post['tabel_f2_field5'],
-			$this->aliases['tabel_f2_field6'] => $this->v_post['tabel_f2_field6'],
-			$this->aliases['tabel_f2_field7'] => $this->v_post['tabel_f2_field7'],
-			$this->aliases['tabel_f2_field8'] => $this->v_post['tabel_f2_field8'],
-			$this->aliases['tabel_f2_field9'] => $harga_total,
-			$this->aliases['tabel_f2_field10'] => $this->v_post['tabel_f2_field10'],
-			$this->aliases['tabel_f2_field11'] => $this->v_post['tabel_f2_field11'],
-			$this->aliases['tabel_f2_field12'] => $this->aliases['tabel_f2_field12_value1']
-		];
-
-		// Create temporary session for a specific duration
-		set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'], $this->v_post['tabel_f2_field4'], 300);
-
-		try {
-			// Security: Prepared Statements to prevent SQL injection
-			// Functional requirement: Save data to the database
-			$aksi = $this->tl_f2->insert_f2($data);
-
-			$notif = $this->handle_4b($aksi, 'tabel_f2');
-
-		} catch (Exception $e) {
-			// Error Handling: Handle database operation errors
-			set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
-			set_flashdata('modal', $this->views['flash2_func1']);
-		}
-
-		// Functional requirement: Redirect user to 'tabel_f2' confirmation page
-		redirect($this->aliases['tabel_f2'] . '/konfirmasi');
-	}
-
-
-	public function update()
-	{
-		// this function is not really reccessary since only status that can be changed
-	}
-
-	// bagian update status untuk sementara kubiarkan tidak menggunakan variabel untuk sementara waktu
-	// hal ini ditujukan untuk keperluan penelitian penggunaan array
-	public function update_status()
-	{
-		$this->declarew();
-		$this->session_4_5();
-
-		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
-
-		$tabel_f2 = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
-		$this->check_data($tabel_f2);
-
-		validate_input(
-			array(
-				$this->v_post['tabel_f2_field1'],
-				$this->v_post['tabel_f2_field12'],
-			),
-			$this->views['flash1'],
-			'ubah_status' . $tabel_f2_field1
-		);
-
-
-		$data = array(
-			$this->aliases['tabel_f2_field12'] => $this->v_post['tabel_f2_field12'],
-		);
-
-		// jika status pesanan cek in
-		if ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value4']) {
-
-			// hanya merubah status pesanan
-			$aksi = $this->tl_f2->update_f2($data, $tabel_f2_field1);
-
-			// jika status pesanan cek out
-		} elseif ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value5']) {
-
-			// menghapus data pesanan supaya trigger tambah_kamar dapat berjalan
-			$aksi = $this->tl_f2->delete_f2($tabel_f2_field1);
-
-			// memasukkan nama resepsionis yang melakukan operasi
-			$data = array(
-				$this->aliases['tabel_f1_field15'] => userdata($this->aliases['tabel_c2_field1'])
-			);
-
-			// mengupdate pesanan dengan nama user yang aktif
-			$aksi = $this->tl_f1->update_f1($data, $tabel_f2_field1);
-		}
-
-		$notif = $this->handle_4c($aksi, 'tabel_f2_field12', $tabel_f2_field1);
-
-		redirect($_SERVER['HTTP_REFERER']);
-	}
-
-
-	public function delete($tabel_f2_field1 = null)
-	{
-		$this->declarew();
-		$this->session_4();
-
-		$tabel = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
-		$this->check_data($tabel);
-
-		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
-		$status = $this->v_post['tabel_f2_field12'];
-
-		$hapus = $this->tl_f2->delete_f2($tabel_f2_field1);
-
-		// memasukkan nama resepsionis yang melakukan operasi
-		$data = array(
-			$this->aliases['tabel_f1_field14'] => userdata($this->aliases['tabel_c2_field2'])
-		);
-
-		// mengupdate history dengan nama user yang aktif
-		$update_f1 = $this->tl_f1->update_f1($data, $tabel_f2_field1);
-
-		$aksi = $hapus && $update_f1;
-
-		$notif = $this->handle_4e($aksi, 'tabel_f2', $tabel_f2_field1);
-		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function filter()
@@ -343,7 +181,7 @@ class C_tabel_f2 extends Omnitags
 		load_view_data('_layouts/template', $data);
 	}
 
-	// Cetak semua data
+	// Print all data
 	public function laporan()
 	{
 		$this->declarew();
@@ -362,7 +200,7 @@ class C_tabel_f2 extends Omnitags
 		load_view_data('_layouts/printpage', $data);
 	}
 
-	// Cetak satu data
+	// Print one data
 	public function print($tabel_f2_field1 = null)
 	{
 		$this->declarew();
@@ -445,6 +283,175 @@ class C_tabel_f2 extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/blank', $data);
 	}
+
+	// Functions
+	// Add data
+	public function tambah()
+	{
+		// Functional requirement: Declare necessary configurations
+		$this->declarew();
+		$this->session_5();
+
+		// Security: Input Sanitization and Validation
+		$inputs = [
+			'tabel_f2_field4',
+			'tabel_f2_field8',
+			'tabel_f2_field10',
+			'tabel_f2_field11',
+			'tabel_f2_field2',
+			'tabel_f2_field3',
+			'tabel_f2_field5',
+			'tabel_f2_field6',
+			'tabel_f2_field7'
+		];
+
+		foreach ($inputs as $input) {
+			$input_value = htmlspecialchars(trim($this->v_post[$input]));
+			if (empty($input_value)) {
+				// Error Handling: Set error flash message for invalid input
+				set_flashdata($this->views['flash1'], "Invalid input. Please provide valid data.");
+				set_flashdata($this->views['flash1'], $this->views['flash1_func1']);
+				// Functional requirement: Redirect user to 'tabel_f2' confirmation page
+				redirect(site_url($this->language_code . '/' . $this->aliases['tabel_f2'] . '/konfirmasi'));
+			}
+		}
+
+		// Calculate total price based on date difference
+		$startTimeStamp = strtotime($this->v_post['tabel_f2_field10']);
+		$endTimeStamp = strtotime($this->v_post['tabel_f2_field11']);
+		$timedif = $endTimeStamp - $startTimeStamp;
+		$numberdays = $timedif / 60 / 60 / 24; // 86400 seconds in one day
+
+		$tabel_e4_field1 = $this->v_post['tabel_f2_field7'];
+		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
+
+		// Calculate total price
+		$harga_total = ($numberdays * $tabel_e4[0]->harga);
+
+		$data = [
+			$this->aliases['tabel_f2_field1'] => '',
+			$this->aliases['tabel_f2_field2'] => $this->v_post['tabel_f2_field2'],
+			$this->aliases['tabel_f2_field3'] => $this->v_post['tabel_f2_field3'],
+			$this->aliases['tabel_f2_field4'] => $this->v_post['tabel_f2_field4'],
+			$this->aliases['tabel_f2_field5'] => $this->v_post['tabel_f2_field5'],
+			$this->aliases['tabel_f2_field6'] => $this->v_post['tabel_f2_field6'],
+			$this->aliases['tabel_f2_field7'] => $this->v_post['tabel_f2_field7'],
+			$this->aliases['tabel_f2_field8'] => $this->v_post['tabel_f2_field8'],
+			$this->aliases['tabel_f2_field9'] => $harga_total,
+			$this->aliases['tabel_f2_field10'] => $this->v_post['tabel_f2_field10'],
+			$this->aliases['tabel_f2_field11'] => $this->v_post['tabel_f2_field11'],
+			$this->aliases['tabel_f2_field12'] => $this->aliases['tabel_f2_field12_value1']
+		];
+
+		// Create temporary session for a specific duration
+		set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'], $this->v_post['tabel_f2_field4'], 300);
+
+		try {
+			// Security: Prepared Statements to prevent SQL injection
+			// Functional requirement: Save data to the database
+			$aksi = $this->tl_f2->insert_f2($data);
+
+			$notif = $this->handle_4b($aksi, 'tabel_f2');
+
+		} catch (Exception $e) {
+			// Error Handling: Handle database operation errors
+			set_flashdata($this->views['flash2'], "Error occurred while adding data: " . $e->getMessage());
+			set_flashdata('modal', $this->views['flash2_func1']);
+		}
+
+		// Functional requirement: Redirect user to 'tabel_f2' confirmation page
+		redirect($this->aliases['tabel_f2'] . '/konfirmasi');
+	}
+
+
+	// Update data
+	public function update()
+	{
+		// this function is not really reccessary since only status that can be changed
+	}
+
+	// bagian update status untuk sementara kubiarkan tidak menggunakan variabel untuk sementara waktu
+	// hal ini ditujukan untuk keperluan penelitian penggunaan array
+	public function update_status()
+	{
+		$this->declarew();
+		$this->session_4_5();
+
+		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
+
+		$tabel_f2 = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
+		$this->check_data($tabel_f2);
+
+		validate_input(
+			array(
+				$this->v_post['tabel_f2_field1'],
+				$this->v_post['tabel_f2_field12'],
+			),
+			$this->views['flash1'],
+			'ubah_status' . $tabel_f2_field1
+		);
+
+
+		$data = array(
+			$this->aliases['tabel_f2_field12'] => $this->v_post['tabel_f2_field12'],
+		);
+
+		// jika status pesanan cek in
+		if ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value4']) {
+
+			// hanya merubah status pesanan
+			$aksi = $this->tl_f2->update_f2($data, $tabel_f2_field1);
+
+			// jika status pesanan cek out
+		} elseif ($this->v_post['tabel_f2_field12'] == $this->aliases['tabel_f2_field12_value5']) {
+
+			// menghapus data pesanan supaya trigger tambah_kamar dapat berjalan
+			$aksi = $this->tl_f2->delete_f2($tabel_f2_field1);
+
+			// memasukkan nama resepsionis yang melakukan operasi
+			$data = array(
+				$this->aliases['tabel_f1_field15'] => userdata($this->aliases['tabel_c2_field1'])
+			);
+
+			// mengupdate pesanan dengan nama user yang aktif
+			$aksi = $this->tl_f1->update_f1($data, $tabel_f2_field1);
+		}
+
+		$notif = $this->handle_4c($aksi, 'tabel_f2_field12', $tabel_f2_field1);
+
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+
+	// Delete data
+	public function delete($tabel_f2_field1 = null)
+	{
+		$this->declarew();
+		$this->session_4();
+
+		$tabel = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
+		$this->check_data($tabel);
+
+		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
+		$status = $this->v_post['tabel_f2_field12'];
+
+		$hapus = $this->tl_f2->delete_f2($tabel_f2_field1);
+
+		// memasukkan nama resepsionis yang melakukan operasi
+		$data = array(
+			$this->aliases['tabel_f1_field14'] => userdata($this->aliases['tabel_c2_field2'])
+		);
+
+		// mengupdate history dengan nama user yang aktif
+		$update_f1 = $this->tl_f1->update_f1($data, $tabel_f2_field1);
+
+		$aksi = $hapus && $update_f1;
+
+		$notif = $this->handle_4e($aksi, 'tabel_f2', $tabel_f2_field1);
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+	
 
 	// Ini adalah fitur untuk membooking kamar berdasarkan pesanan oleh resepsionis
 	// Pada fitur ini, saya akan mencoba menggunakan gabungan dari jumlah kamar dan tipe kamar, 

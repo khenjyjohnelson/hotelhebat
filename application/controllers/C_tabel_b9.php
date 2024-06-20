@@ -5,7 +5,8 @@ include 'Omnitags.php';
 
 class C_tabel_b9 extends Omnitags
 {
-	// Halaman publik
+	// Pages
+	// Public Pages
 	public function detail($tabel_b9_field1 = NULL)
 	{
 		$this->declarew();
@@ -49,6 +50,69 @@ class C_tabel_b9 extends Omnitags
 		}
 	}
 
+	// Account Only Pages
+	public function daftar()
+	{
+		$this->declarew();
+		$this->page_session_2_3_4_5();
+
+		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
+
+		$data1 = array(
+			'title' => lang('tabel_b9_alias_v2_title'),
+			'konten' => $this->v2['tabel_b9'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9']),
+			'tbl_b9' => $this->tl_b9->get_b9_with_b8_by_b9_field2($tabel_b9_field2),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/template', $data);
+	}
+
+	// Admin Pages
+	public function admin()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_b9_alias_v3_title'),
+			'konten' => $this->v3['tabel_b9'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9']),
+			'tbl_b9' => $this->tl_b9->get_all_b9(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/template', $data);
+	}
+
+	// Print all data
+	public function laporan()
+	{
+		$this->declarew();
+		$this->page_session_3();
+
+		$data1 = array(
+			'title' => lang('tabel_b9_alias_v4_title'),
+			'konten' => $this->v4['tabel_b9'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9']),
+			'tbl_b9' => $this->tl_b9->get_all_b9(),
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/printpage', $data);
+	}
+
+	// Print one data
+
+	// Functions
+	// Read the notification
 	public function lihat($tabel_b9_field1 = NULL)
 	{
 		$this->declarew();
@@ -72,47 +136,8 @@ class C_tabel_b9 extends Omnitags
 			redirect(site_url($this->views['language'] . '/invalid'));
 		}
 	}
-
-	// Halaman khusus akun
-	public function daftar()
-	{
-		$this->declarew();
-		$this->page_session_2_3_4_5();
-
-		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
-
-		$data1 = array(
-			'title' => lang('tabel_b9_alias_v2_title'),
-			'konten' => $this->v2['tabel_b9'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9']),
-			'tbl_b9' => $this->tl_b9->get_b9_with_b8_by_b9_field2($tabel_b9_field2),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
-
-	// Halaman admin
-	public function admin()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_b9_alias_v3_title'),
-			'konten' => $this->v3['tabel_b9'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9']),
-			'tbl_b9' => $this->tl_b9->get_all_b9(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
-
+	
+	// Add data
 	public function tambah()
 	{
 		$this->declarew();
@@ -132,6 +157,7 @@ class C_tabel_b9 extends Omnitags
 	}
 
 
+	// Update data
 	public function update()
 	{
 		$this->declarew();
@@ -149,6 +175,7 @@ class C_tabel_b9 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	// Delete data
 	public function delete($tabel_b9_field1 = null)
 	{
 		$this->declarew();
@@ -165,24 +192,5 @@ class C_tabel_b9 extends Omnitags
 
 	}
 
-	// Cetak semua data
-	public function laporan()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		$data1 = array(
-			'title' => lang('tabel_b9_alias_v4_title'),
-			'konten' => $this->v4['tabel_b9'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b9']),
-			'tbl_b9' => $this->tl_b9->get_all_b9(),
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/printpage', $data);
-	}
-
-	// Cetak satu data
+	
 }

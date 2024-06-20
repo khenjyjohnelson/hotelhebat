@@ -1,19 +1,25 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Calling the Omnitags file
 include 'Omnitags.php';
 
+// Using encapsulation
 class Welcome extends Omnitags
 {
+	// Calling the default language
 	public function default_language()
 	{
 		redirect('/en', 'refresh');
 	}
 
-	// fungsi pertama yang akan diload oleh website
+	// First loaded function
 	public function index()
 	{
+		// Calling all variables from Omnitags
 		$this->declarew();
+
+		// Loading page for all session levels
 		$this->page_session_all();
 
 		// Load your URLs dynamically here (e.g., from database)
@@ -32,7 +38,7 @@ class Welcome extends Omnitags
 		header("Pragma: no-cache"); // HTTP 1.0.
 		header("Expires: 0"); // Proxies.
 
-		// mengarahkan pengguna ke halaman masing-masing sesuai level
+		// Forward users based on their roles in their session
 		switch (userdata($this->aliases['tabel_c2_field6'])) {
 			case $this->aliases['tabel_c2_field6_value2']:
 			case $this->aliases['tabel_c2_field6_value3']:
@@ -56,21 +62,24 @@ class Welcome extends Omnitags
 				// } else {
 				// }
 
+				// Preparing data to be loaded 
 				$data1 = array(
-					$this->declarew(),
-
 					'title' => lang('welcome'),
 					'konten' => 'home',
 					'dekor' => $this->tl_b1->dekor($this->theme_id, 'home'),
 					'tbl_b2' => $this->tl_b2->get_b7_aktif($this->theme_id),
 				);
 
+				// Combining data1 with the package
 				$data = array_merge($data1, $this->package);
+
+				//Loading the page
 				load_view_data('_layouts/template', $data);
 			break;
 		}
 	}
 
+	// Dashboard page
 	public function dashboard()
 	{
 		$this->declarew();
@@ -108,8 +117,8 @@ class Welcome extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
-
-	// fungsi ketika pengguna mengunjungi halaman yang tidak sesuai dengan level
+	
+	// Page that will be loaded if a function is performed by a user with the wrong level
 	public function invalid()
 	{
 		$this->declarew();
@@ -124,6 +133,7 @@ class Welcome extends Omnitags
 		$this->load->view('errors/invalid', $data);
 	}
 
+	// Page that will be loaded if a page is visisted by a user with the wrong level
 	public function no_level()
 	{
 		$this->declarew();
@@ -138,6 +148,7 @@ class Welcome extends Omnitags
 		$this->load->view('errors/no_level', $data);
 	}
 
+	// Page that will be loaded when the page is not found/404
 	public function no_page()
 	{
 		$this->declarew();
@@ -152,6 +163,7 @@ class Welcome extends Omnitags
 		$this->load->view('errors/404', $data);
 	}
 
+	// Setting the language for the website, pretty complicated indeed
 	public function set_language()
 	{
 		$language = post('language');
