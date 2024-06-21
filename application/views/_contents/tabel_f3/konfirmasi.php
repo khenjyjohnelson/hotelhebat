@@ -15,27 +15,14 @@
       <p class="text-center">Anda juga bisa mengecek data <?= $tabel_f3_alias ?> anda<br>
         pada daftar <?= $tabel_f3_alias ?><br>
         untuk mencetak bukti <?= $tabel_f3_alias ?></p>
-
-      <div class="d-flex justify-content-center">
-        <a class="text-decoration-none" href="<?= site_url('/') ?>">
-          <?= lang('back_to_home') ?>
-        </a>
-
-      </div>
     </div>
 
 
   <?php } else { ?>
     <!-- anda mengakses halaman konfirmasi tapi tidak memiliki pesanan apapun -->
     <div class="col-md">
-      <h1 class="text-center">Anda tidak melakukan <?= $tabel_f3_alias ?> apapun</h1>
+      <h2 class="text-center">Anda tidak melakukan <?= $tabel_f3_alias ?> apapun</h2>
 
-      <div class="d-flex justify-content-center">
-        <a class="text-decoration-none" href="<?= site_url('/') ?>">
-          <?= lang('back_to_home') ?>
-        </a>
-
-      </div>
     </div>
   <?php } ?>
 

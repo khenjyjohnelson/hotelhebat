@@ -10,7 +10,7 @@ if (!function_exists('back_to_home')) {
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-        $alias = xss_clean(lang('back_to_home'));
+        $alias = '< Home';
         $url = xss_clean(site_url($data['language'] . '/home'));
 
         return <<<HTML

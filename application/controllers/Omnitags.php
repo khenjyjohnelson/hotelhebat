@@ -633,6 +633,8 @@ if (!class_exists('Omnitags')) {
 
             $this->add_notif($msg, $type, $extra);
 
+            json_encode($msg, JSON_UNESCAPED_UNICODE);
+
             set_flashdata($this->views['flash1'], $msg . $extra);
             set_flashdata($flashtype, $this->views['flash1_func1']);
             return [];

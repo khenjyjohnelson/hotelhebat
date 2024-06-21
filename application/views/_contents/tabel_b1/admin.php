@@ -145,6 +145,7 @@
               <option value="b">b</option>
               <option value="c">c</option>
               <option value="d">d</option>
+              <option value="e">e</option>
               <option value="f">f</option>
               <option value="o">o</option>
             </select>

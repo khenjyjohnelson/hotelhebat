@@ -180,7 +180,7 @@ class C_tabel_f3 extends Omnitags
 		$this->declarew();
 		$this->page_session_5();
 
-		$tabel_f3_field3 = get_tempdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
+		$tabel_f3_field3 = userdata($this->aliases['tabel_f3_field3'] . '_' . $this->aliases['tabel_f3']);
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v4_title'),
 			'konten' => $this->v7['tabel_f3'],
@@ -222,7 +222,7 @@ class C_tabel_f3 extends Omnitags
 			$this->aliases['tabel_f3_field7'] => $tabel_f3_field7,
 		);
 
-		set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f3'], $tabel_f3_field3, 300);
+		set_userdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f3'], $tabel_f3_field3);
 
 		// Session kembalian_transaksi sebenarnya digunakan ketika menggunakan cash, namun fungsi ini akan tetap disimpan untuk pengembangan lebih lanjut
 		// set_tempdata('kembalian_transaksi', $kembalian, 300);

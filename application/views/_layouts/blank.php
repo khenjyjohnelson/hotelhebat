@@ -10,15 +10,19 @@
         </div>
     <?php endforeach ?>
 
-    <div class="container">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
 
         <!-- membuat konten berada tepat di tengah2 halaman  -->
-        <div class="row d-flex justify-content-center align-items-center vh-100">
-            <div class="col-lg-10 d-flex flex-column justify-content-center login align-items-center h-75">
+        <div class="row justify-content-center align-items-center w-100">
+            <div class="col-lg-5 logpage">
+
+                <!-- link kembali -->
+                <?= back_to_home() ?>
                 <?= load_view($konten) ?>
             </div>
         </div>
     </div>
+
 
 
     <style>

@@ -267,7 +267,7 @@ class C_tabel_f2 extends Omnitags
 		$this->declarew();
 		$this->page_session_5();
 
-		$tabel_c2_field3 = $this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'];
+		$tabel_c2_field3 = userdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2']);
 
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v4_title'),
@@ -344,7 +344,7 @@ class C_tabel_f2 extends Omnitags
 		];
 
 		// Create temporary session for a specific duration
-		set_tempdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'], $this->v_post['tabel_f2_field4'], 300);
+		set_userdata($this->aliases['tabel_c2_field3'] . '_' . $this->aliases['tabel_f2'], $this->v_post['tabel_f2_field4']);
 
 		try {
 			// Security: Prepared Statements to prevent SQL injection
@@ -360,7 +360,7 @@ class C_tabel_f2 extends Omnitags
 		}
 
 		// Functional requirement: Redirect user to 'tabel_f2' confirmation page
-		redirect($this->aliases['tabel_f2'] . '/konfirmasi');
+		redirect($this->language_code . '/' . $this->aliases['tabel_f2'] . '/konfirmasi');
 	}
 
 
