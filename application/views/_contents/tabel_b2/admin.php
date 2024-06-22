@@ -132,7 +132,7 @@
 
 <!-- modal tambah -->
 <div id="tambah" class="modal fade tambah">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <?= modal_header_add(lang('add') . ' ' . lang('tabel_b2_alias'), '') ?>
 
@@ -140,22 +140,31 @@
         method="post">
         <div class="modal-body">
 
-          <?= input_add('text', 'tabel_b2_field2', 'required') ?>
-          <?= input_add('text', 'tabel_b2_field3', 'required') ?>
-          <?= add_file('tabel_b2_field4', 'required') ?>
-          <?= input_textarea('tabel_b2_field5', '', 'required') ?>
+          <div class="row">
+            <div class="col-md-4">
+              <?= input_add('text', 'tabel_b2_field2', 'required') ?>
+              <?= add_file('tabel_b2_field4', 'required') ?>
+              
+              <div class="form-group">
+                <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
+                  id="<?= $tabel_b2_field7_input ?>">
 
-          <div class="form-group">
-            <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
-              id="<?= $tabel_b2_field7_input ?>">
+                  <?php foreach ($tbl_b7->result() as $tl_b7): ?>
+                    <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                  <?php endforeach ?>
+                </select>
+                <label for="<?= $tabel_b2_field7_input ?>" class="form-label"><?= lang('select') ?>
+                  <?= $tabel_b7_alias ?></label>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <?= input_add('text', 'tabel_b2_field3', 'required') ?>
+              <?= input_textarea('tabel_b2_field5', '', 'required') ?>
 
-              <?php foreach ($tbl_b7->result() as $tl_b7): ?>
-                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-              <?php endforeach ?>
-            </select>
-            <label for="<?= $tabel_b2_field7_input ?>" class="form-label"><?= lang('select') ?>
-              <?= $tabel_b7_alias ?></label>
+            </div>
           </div>
+
+
 
         </div>
 
@@ -173,32 +182,41 @@
 
 <?php foreach ($tbl_b2->result() as $tl_b2): ?>
   <div id="ubah<?= $tl_b2->$tabel_b2_field1; ?>" class="modal fade ubah">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <?= modal_header(lang('change_data') . ' ' . lang('tabel_b2_alias'), $tl_b2->$tabel_b2_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b2 . '/update') ?>" method="post"
           enctype="multipart/form-data">
           <div class="modal-body">
-            <?= input_hidden('tabel_b2_field1', $tl_b2->$tabel_b2_field1, 'required') ?>
-            <small><?= lang('reupload_image_even_for_name_change') ?></small>
+            <div class="row">
+              <div class="col-md-4">
+                <?= input_hidden('tabel_b2_field1', $tl_b2->$tabel_b2_field1, 'required') ?>
+                <small><?= lang('reupload_image_even_for_name_change') ?></small>
 
 
-            <?= input_edit('text', 'tabel_b2_field2', $tl_b2->$tabel_b2_field2, 'required') ?>
-            <?= input_edit('text', 'tabel_b2_field3', $tl_b2->$tabel_b2_field3, 'required') ?>
-            <?= edit_file('tabel_b2', 'tabel_b2_field4', $tl_b2->$tabel_b2_field4, '') ?>
-            <?= input_textarea('tabel_b2_field5', $tl_b2->$tabel_b2_field5, 'required') ?>
+                <?= input_edit('text', 'tabel_b2_field2', $tl_b2->$tabel_b2_field2, 'required') ?>
+                <?= edit_file('tabel_b2', 'tabel_b2_field4', $tl_b2->$tabel_b2_field4, '') ?>
+                
+                <div class="form-group">
+                  <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
+                    id="<?= $tabel_b2_field7_input ?>">
+                    <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b2->$tabel_b2_field7 ?>
+                    </option>
+                    <?php foreach ($tbl_b7->result() as $tl_b7): ?>
+                      <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                    <?php endforeach ?>
+                  </select>
+                  <label for="<?= $tabel_b2_field7_input ?>" class="form-label"><?= $tabel_b7_alias ?></label>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <?= input_edit('text', 'tabel_b2_field3', $tl_b2->$tabel_b2_field3, 'required') ?>
+                <?= input_textarea('tabel_b2_field5', $tl_b2->$tabel_b2_field5, 'required') ?>
 
-            <div class="form-group">
-              <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
-                id="<?= $tabel_b2_field7_input ?>">
-                <option selected hidden value="<?= $tl_b2->$tabel_b2_field7 ?>"><?= $tl_b2->$tabel_b2_field7 ?></option>
-                <?php foreach ($tbl_b7->result() as $tl_b7): ?>
-                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-                <?php endforeach ?>
-              </select>
-              <label for="<?= $tabel_b2_field7_input ?>" class="form-label"><?= $tabel_b7_alias ?></label>
+              </div>
             </div>
+
 
           </div>
 
@@ -234,9 +252,9 @@
                 ) ?>
               </div>
               <div class="col-md-6">
-                <?= 
+                <?=
                   tampil_text('tabel_b2_field5', truncateText(html_entity_decode($tl_b2->$tabel_b2_field5), 300) . btn_read_more('tabel_b2', $tl_b2->$tabel_b2_field1))
-                 ?>
+                  ?>
               </div>
             </div>
 

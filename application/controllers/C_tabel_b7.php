@@ -79,9 +79,14 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		validate_input(
+		$param1 = $this->v_post['tabel_b7_field2'];
+
+		$tabel = $this->tl_b7->get_b7_by_b7_field2($param1)->result();
+		$this->check_data($tabel);
+
+		validate_all(
 			array(
-				$this->v_post['tabel_b7_field2'],
+				$param1,
 				$this->v_post['tabel_b7_field6'],
 			),
 			$this->views['flash2'],
@@ -90,7 +95,7 @@ class C_tabel_b7 extends Omnitags
 
 		$data = array(
 			$this->aliases['tabel_b7_field1'] => '',
-			$this->aliases['tabel_b7_field2'] => $this->v_post['tabel_b7_field2'],
+			$this->aliases['tabel_b7_field2'] => $param1,
 			$this->aliases['tabel_b7_field6'] => htmlspecialchars($this->v_post['tabel_b7_field6']),
 		);
 
@@ -113,7 +118,7 @@ class C_tabel_b7 extends Omnitags
 		$tabel = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
 		$this->check_data($tabel);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_b7_field1'],
 				$this->v_post['tabel_b7_field2'],
@@ -148,7 +153,7 @@ class C_tabel_b7 extends Omnitags
 		$tabel = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
 		$this->check_data($tabel);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_b7_field1'],
 				$this->v_post['tabel_b7_field2'],
@@ -205,7 +210,7 @@ class C_tabel_b7 extends Omnitags
 		$tabel = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
 		$this->check_data($tabel);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_b7_field1'],
 				$this->v_post['tabel_b7_field2'],
@@ -263,7 +268,7 @@ class C_tabel_b7 extends Omnitags
 		$tabel = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
 		$this->check_data($tabel);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_b7_field1'],
 				$this->v_post['tabel_b7_field2'],

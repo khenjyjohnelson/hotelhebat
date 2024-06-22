@@ -99,9 +99,20 @@ class C_tabel_f2 extends Omnitags
 		$param3 = $this->v_get['tabel_f2_field11_filter1'];
 		$param4 = $this->v_get['tabel_f2_field11_filter2'];
 
+		validate_some(
+			array(
+				$param1,
+				$param2,
+				$param3,
+				$param4,
+			),
+			$this->views['flash1'],
+			'filter'
+		);
+
 		$data1 = array(
-			'title' => lang('tabel_f1_alias_v2_title'),
-			'konten' => $this->v2['tabel_f1'],
+			'title' => lang('tabel_f2_alias_v2_title'),
+			'konten' => $this->v2['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
 			'tbl_f2' => $this->tl_f2->filter_user_with_e4($param1, $param2, $param3, $param4, $tabel_c2_field1),
 
@@ -382,7 +393,7 @@ class C_tabel_f2 extends Omnitags
 		$tabel_f2 = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
 		$this->check_data($tabel_f2);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_f2_field1'],
 				$this->v_post['tabel_f2_field12'],
@@ -467,7 +478,7 @@ class C_tabel_f2 extends Omnitags
 		$tabel = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1)->result();
 		$this->check_data($tabel);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_f2_field1'],
 				$this->v_post['tabel_f2_field12'],

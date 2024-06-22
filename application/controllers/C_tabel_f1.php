@@ -54,29 +54,36 @@ class C_tabel_f1 extends Omnitags
 		$param3 = $this->v_get['tabel_f1_field12_filter1'];
 		$param4 = $this->v_get['tabel_f1_field12_filter2'];
 
-		if (empty($param1) && empty($param2) && empty($param3) && empty($param4)) {
-			redirect(site_url($this->views['language'] . '/' . $this->aliases['tabel_f1'] . '/daftar'));
-		} else {
-			$param5 = userdata($this->aliases['tabel_c2_field1']);
+		validate_some(
+			array(
+				$param1,
+				$param2,
+				$param3,
+				$param4,
+			),
+			$this->views['flash1'],
+			'filter'
+		);
 
-			$data1 = array(
-				'title' => lang('tabel_f1_alias_v2_title'),
-				'konten' => $this->v2['tabel_f1'],
-				'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
-				'tbl_f1' => $this->tl_f1->filter_user($param1, $param2, $param3, $param4, $param5),
+		$param5 = userdata($this->aliases['tabel_c2_field1']);
 
-				// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
-				'tabel_f1_field11_filter1_value' => $param1,
-				'tabel_f1_field11_filter2_value' => $param2,
-				'tabel_f1_field12_filter1_value' => $param3,
-				'tabel_f1_field12_filter2_value' => $param4,
-			);
+		$data1 = array(
+			'title' => lang('tabel_f1_alias_v2_title'),
+			'konten' => $this->v2['tabel_f1'],
+			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
+			'tbl_f1' => $this->tl_f1->filter_user_with_e4($param1, $param2, $param3, $param4, $param5),
 
-			$data = array_merge($data1, $this->package);
+			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
+			'tabel_f1_field11_filter1_value' => $param1,
+			'tabel_f1_field11_filter2_value' => $param2,
+			'tabel_f1_field12_filter1_value' => $param3,
+			'tabel_f1_field12_filter2_value' => $param4,
+		);
 
-			set_userdata('previous_url', current_url());
-			load_view_data('_layouts/template', $data);
-		}
+		$data = array_merge($data1, $this->package);
+
+		set_userdata('previous_url', current_url());
+		load_view_data('_layouts/template', $data);
 	}
 
 	// Admin Pages

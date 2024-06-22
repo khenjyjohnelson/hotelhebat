@@ -125,43 +125,51 @@
 
 <!-- modal tambah -->
 <div id="tambah" class="modal fade tambah">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <?= modal_header_add(lang('add') . ' ' . lang('tabel_b1_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_b1 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
         <div class="modal-body">
-          <?= input_add('text', 'tabel_b1_field2', 'required') ?>
-          <?= input_add('text', 'tabel_b1_field3', 'required') ?>
-          <?= add_file('tabel_b1_field4', 'required') ?>
-          <?= fontawesome_link() ?>
-          <?= input_add('text', 'tabel_b1_field5', 'required') ?>
+          <div class="row">
+            <div class="col-md-6">
+              <?= input_add('text', 'tabel_b1_field2', 'required') ?>
+              <?= input_add('text', 'tabel_b1_field3', 'required') ?>
+              <?= add_file('tabel_b1_field4', 'required') ?>
 
-          <div class="form-group">
-            <select id="<?= $tabel_b1_field6_input ?>" class="form-control float" required
-              name="<?= $tabel_b1_field6_input ?>">
-              <option value="a">a</option>
-              <option value="b">b</option>
-              <option value="c">c</option>
-              <option value="d">d</option>
-              <option value="e">e</option>
-              <option value="f">f</option>
-              <option value="o">o</option>
-            </select>
-            <label for="<?= $tabel_b1_field6_input ?>" class="form-label"><?= lang('select') ?>
-              <?= $tabel_b1_field6_alias ?></label>
-          </div>
+            </div>
+            <div class="col-md-6">
+              <?= fontawesome_link() ?>
+              <?= input_add('text', 'tabel_b1_field5', 'required') ?>
 
-          <div class="form-group">
-            <select id="<?= $tabel_b1_field7_input ?>" class="form-control float" required
-              name="<?= $tabel_b1_field7_input ?>">
-              <?php foreach ($tbl_b7->result() as $tl_b7): ?>
-                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-              <?php endforeach ?>
-            </select>
-            <label for="<?= $tabel_b1_field7_input ?>" class="form-label"><?= lang('select') ?>
-              <?= $tabel_b7_alias ?></label>
+              <div class="form-group">
+                <select id="<?= $tabel_b1_field6_input ?>" class="form-control float" required
+                  name="<?= $tabel_b1_field6_input ?>">
+                  <option value="a">a</option>
+                  <option value="b">b</option>
+                  <option value="c">c</option>
+                  <option value="d">d</option>
+                  <option value="e">e</option>
+                  <option value="f">f</option>
+                  <option value="o">o</option>
+                </select>
+                <label for="<?= $tabel_b1_field6_input ?>" class="form-label"><?= lang('select') ?>
+                  <?= $tabel_b1_field6_alias ?></label>
+              </div>
+
+              <div class="form-group">
+                <select id="<?= $tabel_b1_field7_input ?>" class="form-control float" required
+                  name="<?= $tabel_b1_field7_input ?>">
+                  <?php foreach ($tbl_b7->result() as $tl_b7): ?>
+                    <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                  <?php endforeach ?>
+                </select>
+                <label for="<?= $tabel_b1_field7_input ?>" class="form-label"><?= lang('select') ?>
+                  <?= $tabel_b7_alias ?></label>
+              </div>
+
+            </div>
           </div>
 
         </div>
@@ -199,7 +207,8 @@
             <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1(), 'required') ?>
 
             <div class="form-group">
-              <select  id="<?= $tabel_b1_field7_input ?>" class="form-control float" required name="<?= $tabel_b1_field7_input ?>">
+              <select id="<?= $tabel_b1_field7_input ?>" class="form-control float" required
+                name="<?= $tabel_b1_field7_input ?>">
                 <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b1->$tabel_b1_field7 ?></option>
 
                 <?php foreach ($tbl_b7->result() as $tl_b7): ?>

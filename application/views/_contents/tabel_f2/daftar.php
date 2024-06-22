@@ -182,7 +182,7 @@
   <?php switch ($tl_f2->$tabel_f2_field12) {
     case $tabel_f2_field12_value2: ?>
       <div id="<?= $tabel_f3_field6 . $tl_f2->$tabel_f2_field1 ?>" class="modal fade <?= $tabel_f3_field6 ?>">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <?= modal_header(lang('tabel_f3_alias') . ' untuk ' . lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
@@ -215,36 +215,42 @@
 
 
                 <!-- Input metode pembayaran -->
-
-                <div class="col-md-12">
-
-                  <?= row_data('tabel_f2_field9', 'Rp ' . number_format($tl_f2->$tabel_f2_field9, '2', ',', '.')) ?>
-
-                  <div class="form-group">
-                    <select class="form-control float" required name="<?= $tabel_f3_field5_input ?>">
-                      <option selected hidden value=""><?= lang('select') ?>       <?= $tabel_f3_field5_alias ?>...</option>
-                      <option value="<?= $tabel_f3_field5_value1 ?>"><?= $tabel_f3_field5_value1_alias ?></option>
-                      <option value="<?= $tabel_f3_field5_value2 ?>"><?= $tabel_f3_field5_value2_alias ?></option>
-                    </select>
-                    <label class="form-label"><?= $tabel_f3_field5_alias ?></label>
+                <div class="row">
+                  <div class="col-md-6">
+                    <?= table_data(
+                      row_data('tabel_f2_field9', 'Rp ' . number_format($tl_f2->$tabel_f2_field9, '2', ',', '.')),
+                      'table-light'
+                    ) ?>
                   </div>
 
-                  <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
-                  <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value3, 'required') ?>
-                  <?= edit_min_max('number', 'tabel_f3_field6', $tl_f2->$tabel_f2_field9, 'required readonly', '0', '') ?>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select class="form-control float" required name="<?= $tabel_f3_field5_input ?>">
+                        <option selected hidden value=""><?= lang('select') ?>       <?= $tabel_f3_field5_alias ?>...</option>
+                        <option value="<?= $tabel_f3_field5_value1 ?>"><?= $tabel_f3_field5_value1_alias ?></option>
+                        <option value="<?= $tabel_f3_field5_value2 ?>"><?= $tabel_f3_field5_value2_alias ?></option>
+                      </select>
+                      <label class="form-label"><?= $tabel_f3_field5_alias ?></label>
+                    </div>
+
+                    <?= input_hidden('tabel_f2_field1', $tl_f2->$tabel_f2_field1, 'required') ?>
+                    <?= input_hidden('tabel_f2_field12', $tabel_f2_field12_value3, 'required') ?>
+                    <?= edit_min_max('number', 'tabel_f3_field6', $tl_f2->$tabel_f2_field9, 'required readonly', '0', '') ?>
+                  </div>
                 </div>
 
+
               </div>
+
+              <!-- pesan untuk pengguna yang sedang merubah password -->
+              <p class="small text-center text-danger"><?= get_flashdata('pesan_' . $tabel_f3_field6) ?></p>
+
+              <div class="modal-footer">
+                <button class="btn btn-success" type="submit">Bayar</button>
+              </div>
+            </form>
+
           </div>
-
-          <!-- pesan untuk pengguna yang sedang merubah password -->
-          <p class="small text-center text-danger"><?= get_flashdata('pesan_' . $tabel_f3_field6) ?></p>
-
-          <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Bayar</button>
-          </div>
-          </form>
-
         </div>
       </div>
 

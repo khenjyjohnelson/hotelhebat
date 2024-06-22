@@ -40,7 +40,7 @@ class C_tabel_b6 extends Omnitags
 		$this->declarew();
 		$this->page_session_3();
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_get['tabel_b6_field7'],
 			),
@@ -93,7 +93,7 @@ class C_tabel_b6 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_b6_field2'],
 				$this->v_post['tabel_b6_field3'],
@@ -146,7 +146,7 @@ class C_tabel_b6 extends Omnitags
 		$tabel = $this->tl_b6->get_b6_by_b6_field1($tabel_b6_field1)->result();
 		$this->check_data($tabel);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_b6_field1'],
 				$this->v_post['tabel_b6_field2'],

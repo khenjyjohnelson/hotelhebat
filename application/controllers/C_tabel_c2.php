@@ -110,7 +110,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 		$this->session_all();
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_c2_field2'],
 				$this->v_post['tabel_c2_field3'],
@@ -186,7 +186,7 @@ class C_tabel_c2 extends Omnitags
 		$tabel_c2 = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
 		$this->check_data($tabel_c2);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_c2_field1'],
 				$this->v_post['tabel_c2_field2'],
@@ -238,7 +238,7 @@ class C_tabel_c2 extends Omnitags
 		$tabel = $this->tl_c2->get_c2_by_c2_field1($tabel_c2_field1)->result();
 		$this->check_data($tabel);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_c2_field1'],
 				$this->v_post['tabel_c2_field2'],
@@ -280,7 +280,7 @@ class C_tabel_c2 extends Omnitags
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_c2_field1'],
 				$this->v_post['tabel_c2_field4_old'],
@@ -349,7 +349,7 @@ class C_tabel_c2 extends Omnitags
 		$this->declarew();
 		$this->session_all();
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_c2_field3'],
 				$this->v_post['tabel_c2_field4'],

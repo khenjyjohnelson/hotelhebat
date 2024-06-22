@@ -32,6 +32,13 @@ class M_tabel_b7 extends CI_Model
 		return $this->db->get($this->aliases['tabel_b7']);
 	}
 
+	public function get_b7_by_b7_field2($param1)
+	{
+		$this->db->where($this->aliases['tabel_b7_field2'], $param1);
+		$this->db->order_by($this->aliases['tabel_b7_field1'], 'DESC');
+		return $this->db->get($this->aliases['tabel_b7']);
+	}
+
 	public function insert_b7($data)
 	// public function insert_b7($query)
 	{

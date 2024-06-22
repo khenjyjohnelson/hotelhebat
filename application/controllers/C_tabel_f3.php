@@ -89,20 +89,20 @@ class C_tabel_f3 extends Omnitags
 		$this->page_session_2();
 
 		// nilai min dan max sudah diinput sebelumnya
-		$tabel_f3_field7_filter1 = $this->v_get['tabel_f3_field7_filter1'];
-		$tabel_f3_field7_filter2 = $this->v_get['tabel_f3_field7_filter2'];
+		$param1 = $this->v_get['tabel_f3_field7_filter1'];
+		$param2 = $this->v_get['tabel_f3_field7_filter2'];
 
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_v3_title'),
 			'konten' => $this->v3['tabel_f3'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
-			'tbl_f3' => $this->tl_f3->filter($tabel_f3_field7_filter1, $tabel_f3_field7_filter2),
+			'tbl_f3' => $this->tl_f3->filter($param1, $param2),
 			'tbl_f2' => $this->tl_f2->get_all_f3(),
 			'tbl_e4' => $this->tl_e4->get_all_f3(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
-			'tabel_f3_field7_filter1' => $tabel_f3_field7_filter1,
-			'tabel_f3_field7_filter2' => $tabel_f3_field7_filter2,
+			'tabel_f3_field7_filter1' => $param1,
+			'tabel_f3_field7_filter2' => $param2,
 		);
 
 		$data = array_merge($data1, $this->package);

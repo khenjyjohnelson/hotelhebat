@@ -115,7 +115,7 @@ class C_tabel_c1 extends Omnitags
 
 		$param2 = $this->v_post['tabel_c1_field2'];
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_c1_field2'],
 				$this->v_post['tabel_c1_field3'],
@@ -220,7 +220,7 @@ class C_tabel_c1 extends Omnitags
 		$tabel_c1 = $this->tl_c1->get_c1_by_c1_field1($tabel_c1_field1)->result();
 		$this->check_data($tabel_c1);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_c1_field1'],
 				$this->v_post['tabel_c1_field2'],

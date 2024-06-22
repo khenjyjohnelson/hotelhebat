@@ -128,7 +128,7 @@ class M_tabel_f1 extends CI_Model
 	}
 
 	// Retrieves records from the tabel_f1 table joined with tabel_e4 table, filtered by tabel_f1_field3, tabel_c2_field1, and a range of values for tabel_f1_field11 and tabel_f1_field12, ordered by tabel_f1_field1 in descending order
-	public function filter_user($param1, $param2, $param3, $param4, $param5)
+	public function filter_user_with_e4($param1, $param2, $param3, $param4, $param5)
 	{
 		$filter = "SELECT * FROM {$this->aliases['tabel_f1']}
 		JOIN {$this->aliases['tabel_e4']} 

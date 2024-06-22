@@ -83,7 +83,7 @@ class C_tabel_e4 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_e4_field2'],
 				$this->v_post['tabel_e4_field3'],
@@ -157,7 +157,7 @@ class C_tabel_e4 extends Omnitags
 		$tabel_e4 = $this->tl_e4->get_e4_by_e4_field1($tabel_e4_field1)->result();
 		$this->check_data($tabel_e4);
 
-		validate_input(
+		validate_all(
 			array(
 				$this->v_post['tabel_e4_field1'],
 				$this->v_post['tabel_e4_field2'],

@@ -102,14 +102,14 @@
 
 <!-- modal tambah -->
 <div id="tambah" class="modal fade tambah">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <?= modal_header_add(lang('add') . ' ' . lang('tabel_b7_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_b7 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
         <div class="modal-body">
-          <?= input_add('text', 'tabel_b7_field2', 'required') ?>
+          <?= input_edit('text', 'tabel_b7_field2', $database, 'required') ?>
           <?= input_textarea('tabel_b7_field6', '', 'required') ?>
         </div>
 
