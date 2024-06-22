@@ -75,7 +75,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header_add(lang('add') . ' ' . lang('tabel_e2_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_e2_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_e2 . '/tambah') ?>" method="post">
         <div class="modal-body">
@@ -101,7 +101,7 @@
   <div id="ubah<?= $tl_e2->$tabel_e2_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('change_data') . ' ' . lang('tabel_e2_alias'), $tl_e2->$tabel_e2_field1) ?>
+        <?= modal_header_id(lang('change_data') . ' ' . lang('tabel_e2_alias'), $tl_e2->$tabel_e2_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_e2 . '/update') ?>" method="post"
@@ -129,7 +129,7 @@
   <div id="lihat<?= $tl_e2->$tabel_e2_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_e2_alias'), $tl_e2->$tabel_e2_field1) ?>
+        <?= modal_header_id(lang('tabel_e2_alias'), $tl_e2->$tabel_e2_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

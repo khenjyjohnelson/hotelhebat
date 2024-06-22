@@ -10,10 +10,35 @@
 </div>
 <hr>
 
-<?= btn_tambah() ?>
-<?= btn_laporan('tabel_c2') ?>
+<div class="row">
+  <div class="col-md-10">
+    <?= btn_tambah() ?>
+    <?= btn_laporan('tabel_c2') ?>
+  </div>
 
-<div class="table-responsive">
+  <div class="col-md-2 d-flex justify-content-end">
+    <?= view_switcher() ?>
+  </div>
+</div>
+
+<div id="card-view" class="row data-view active">
+  <?php foreach ($tbl_c2->result() as $tl_c2):
+    echo card_regular(
+      $tl_c2->$tabel_c2_field1,
+      $tl_c2->$tabel_c2_field2,
+      $tl_c2->$tabel_c2_field5,
+      btn_lihat($tl_c2->$tabel_c2_field1) . ' ' .
+      btn_edit($tl_c2->$tabel_c2_field1) . ' ' .
+      btn_hapus('tabel_c2', $tl_c2->$tabel_c2_field1),
+      'text-white bg-danger',
+      'col-md-3',
+      $tabel_c2,
+    );
+  endforeach; ?>
+</div>
+
+
+<div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">
     <thead class="thead-light">
       <tr>
@@ -57,11 +82,11 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header_add(lang('add') . ' ' . lang('tabel_c2_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_c2_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_c2 . '/tambah') ?>" method="post">
         <div class="modal-body">
-          <?= input_add('text', 'tabel_c2_field1', 'required') ?>
+          <?= input_add('text', 'tabel_c2_field2', 'required') ?>
           <?= input_add('email', 'tabel_c2_field3', 'required') ?>
           <?= add_new_password('tabel_c2_field4', 'required') ?>
           <?= password_req() ?>
@@ -97,7 +122,7 @@
   <div id="ubah<?= $tl_c2->$tabel_c2_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('change_data') . ' ' . lang('tabel_c2_alias'), $tl_c2->$tabel_c2_field1) ?>
+        <?= modal_header_id(lang('change_data') . ' ' . lang('tabel_c2_alias'), $tl_c2->$tabel_c2_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_c2 . '/update') ?>" method="post"
@@ -136,7 +161,7 @@
   <div id="lihat<?= $tl_c2->$tabel_c2_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_c2_alias'), $tl_c2->$tabel_c2_field1) ?>
+        <?= modal_header_id(lang('tabel_c2_alias'), $tl_c2->$tabel_c2_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

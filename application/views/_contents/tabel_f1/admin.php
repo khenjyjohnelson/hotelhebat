@@ -82,7 +82,7 @@
 <div id="filter" class="modal fade filter">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header_add('Filter', '') ?>
+      <?= modal_header('Filter', '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_f1 . '/filter') ?>" method="get">
         <div class="modal-body">
@@ -126,7 +126,7 @@
   <div id="lihat<?= $tl_f1->$tabel_f1_field1 ?>" class="modal fade lihat">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_f1_alias'), $tl_f1->$tabel_f1_field1) ?>
+        <?= modal_header_id(lang('tabel_f1_alias'), $tl_f1->$tabel_f1_field1) ?>
 
         <div class="modal-body">
           <div class="row">

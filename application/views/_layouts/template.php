@@ -53,7 +53,7 @@ switch (true) {
     </div>
 
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top shadow-sm">
       <a class="navbar-brand font-weight-bold" href="<?= site_url('/') ?>">
         <img src="img/<?= $tabel_b7 ?>/<?= $tl_a1->$tabel_b7_field4; ?>" height="50">
       </a>
@@ -70,7 +70,7 @@ switch (true) {
     </nav>
 
     <!-- komponen berada tengah halaman -->
-    <div class="container" id="konten">
+    <div class="container mb-4" id="konten">
 
       <div style="margin-top: 100px;">
         <!-- konten sesuai controller -->

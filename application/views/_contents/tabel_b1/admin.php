@@ -125,9 +125,9 @@
 
 <!-- modal tambah -->
 <div id="tambah" class="modal fade tambah">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <?= modal_header_add(lang('add') . ' ' . lang('tabel_b1_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_b1_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_b1 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
@@ -140,9 +140,8 @@
 
             </div>
             <div class="col-md-6">
-              <?= fontawesome_link() ?>
               <?= input_add('text', 'tabel_b1_field5', 'required') ?>
-
+              
               <div class="form-group">
                 <select id="<?= $tabel_b1_field6_input ?>" class="form-control float" required
                   name="<?= $tabel_b1_field6_input ?>">
@@ -178,6 +177,7 @@
         <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
 
         <div class="modal-footer">
+          <?= fontawesome_link() ?>
           <?= btn_simpan() ?>
         </div>
       </form>
@@ -189,42 +189,50 @@
 <!-- modal edit-->
 <?php foreach ($tbl_b1->result() as $tl_b1): ?>
   <div id="ubah<?= $tl_b1->$tabel_b1_field1; ?>" class="modal fade ubah">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b1_alias'), $tl_b1->$tabel_b1_field1) ?>
+        <?= modal_header_id(lang('change_data') . ' ' . lang('tabel_b1_alias'), $tl_b1->$tabel_b1_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b1 . '/update') ?>" method="post"
           enctype="multipart/form-data">
           <div class="modal-body">
-            <small><?= lang('reupload_image_even_for_name_change') ?></small>
+            <div class="row">
+              <div class="col-md-6">
+                <small><?= lang('reupload_image_even_for_name_change') ?></small>
+                <?= input_hidden('tabel_b1_field1', $tl_b1->$tabel_b1_field1, 'required') ?>
+                <?= input_edit('text', 'tabel_b1_field2', $tl_b1->$tabel_b1_field2, 'required') ?>
+                <?= input_edit('text', 'tabel_b1_field3', $tl_b1->$tabel_b1_field3, 'required') ?>
+                <?= edit_file('tabel_b1', 'tabel_b1_field4', $tl_b1->$tabel_b1_field4, '') ?>
 
-            <?= input_hidden('tabel_b1_field1', $tl_b1->$tabel_b1_field1, 'required') ?>
-            <?= input_edit('text', 'tabel_b1_field2', $tl_b1->$tabel_b1_field2, 'required') ?>
-            <?= input_edit('text', 'tabel_b1_field3', $tl_b1->$tabel_b1_field3, 'required') ?>
-            <?= edit_file('tabel_b1', 'tabel_b1_field4', $tl_b1->$tabel_b1_field4, '') ?>
-            <?= fontawesome_link() ?>
-            <?= input_edit('text', 'tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
-            <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1(), 'required') ?>
+              </div>
+              <div class="col-md-6">
+                <?= input_edit('text', 'tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
+                <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1(), 'required') ?>
+                
+                <div class="form-group">
+                  <select id="<?= $tabel_b1_field7_input ?>" class="form-control float" required
+                    name="<?= $tabel_b1_field7_input ?>">
+                    <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b1->$tabel_b1_field7 ?></option>
+                    
+                    <?php foreach ($tbl_b7->result() as $tl_b7): ?>
+                      <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
+                        <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
+                      </option>
+                    <?php endforeach ?>
+                  </select>
+                  <label for="<?= $tabel_b1_field7_input ?>" class="form-label"><?= $tabel_b7_alias ?></label>
+                </div>
 
-            <div class="form-group">
-              <select id="<?= $tabel_b1_field7_input ?>" class="form-control float" required
-                name="<?= $tabel_b1_field7_input ?>">
-                <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b1->$tabel_b1_field7 ?></option>
-
-                <?php foreach ($tbl_b7->result() as $tl_b7): ?>
-                  <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
-                    <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
-                  </option>
-                <?php endforeach ?>
-              </select>
-              <label for="<?= $tabel_b1_field7_input ?>" class="form-label"><?= $tabel_b7_alias ?></label>
+              </div>
             </div>
+
           </div>
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= get_flashdata('pesan_ubah') ?></p>
-
+          
           <div class="modal-footer">
+            <?= fontawesome_link() ?>
             <?= btn_update() ?>
           </div>
         </form>
@@ -235,7 +243,7 @@
   <div id="lihat<?= $tl_b1->$tabel_b1_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_b1_alias'), $tl_b1->$tabel_b1_field1) ?>
+        <?= modal_header_id(lang('tabel_b1_alias'), $tl_b1->$tabel_b1_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

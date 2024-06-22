@@ -99,7 +99,7 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header_add(lang('add') . ' ' . lang('tabel_e3_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_e3_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_e3 . '/tambah') ?>" method="post"
         enctype="multipart/form-data">
@@ -156,7 +156,7 @@
       <div id="ubah<?= $tl_e3->$tabel_e3_field1; ?>" class="modal fade ubah">
         <div class="modal-dialog">
           <div class="modal-content">
-            <?= modal_header(lang('change_data') . ' ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
+            <?= modal_header_id(lang('change_data') . ' ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
 
             <form action="<?= site_url($language . '/' . $tabel_e3 . '/update') ?>" method="post"
               enctype="multipart/form-data">
@@ -197,7 +197,7 @@
       <div id="<?= $tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade cleaning">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <?= modal_header('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
+            <?= modal_header_id('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
 
             <!-- form untuk mengubah nilai status sebuah kamar -->
             <form action="<?= site_url($language . '/' . $tabel_f4 . '/tambah') ?>" method="post">
@@ -269,7 +269,7 @@
       <div id="<?= $tabel_c1_field7_value2 . $tl_e3->$tabel_e3_field1 ?>" class="modal fade maintenance">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <?= modal_header('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
+            <?= modal_header_id('Assign ' . lang('tabel_c1_alias') . ' untuk ' . lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
 
             <!-- form untuk mengubah nilai status sebuah kamar -->
             <form action="<?= site_url($language . '/' . $tabel_f4 . '/tambah') ?>" method="post">
@@ -340,7 +340,7 @@
   <div id="lihat<?= $tl_e3->$tabel_e3_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
+        <?= modal_header_id(lang('tabel_e3_alias'), $tl_e3->$tabel_e3_field1) ?>
         <form>
           <div class="modal-body">
             <?= table_data(

@@ -135,27 +135,34 @@
 
 <!-- modal tambah -->
 <div id="tambah" class="modal fade tambah">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <?= modal_header_add(lang('add') . ' ' . lang('tabel_b5_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_b5_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_b5 . '/tambah') ?>" enctype="multipart/form-data"
         method="post">
         <div class="modal-body">
-          <?= input_add('text', 'tabel_b5_field2', 'required') ?>
-          <?= input_textarea('tabel_b5_field3', '', 'required') ?>
-          <?= add_file('tabel_b5_field4', 'required') ?>
-          <?= input_add('text', 'tabel_b5_field5', 'required') ?>
+          <div class="row">
+            <div class="col-md-6">
+              <?= input_add('text', 'tabel_b5_field2', 'required') ?>
+              <?= add_file('tabel_b5_field4', 'required') ?>
+              <?= input_add('text', 'tabel_b5_field5', 'required') ?>
 
-          <div class="form-group">
-            <select class="form-control float" required name="<?= $tabel_b5_field7_input ?>"
-              if="<?= $tabel_b5_field7_input ?>">
-              <?php foreach ($tbl_b7->result() as $tl_b7): ?>
-                <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
-              <?php endforeach ?>
-            </select>
-            <label for="<?= $tabel_b5_field7_input ?>" class="form-label"><?= lang('select') ?>
-              <?= $tabel_b7_alias ?></label>
+              <div class="form-group">
+                <select class="form-control float" required name="<?= $tabel_b5_field7_input ?>"
+                  if="<?= $tabel_b5_field7_input ?>">
+                  <?php foreach ($tbl_b7->result() as $tl_b7): ?>
+                    <option value="<?= $tl_b7->$tabel_b7_field1 ?>"><?= $tl_b7->$tabel_b7_field2 ?></option>
+                  <?php endforeach ?>
+                </select>
+                <label for="<?= $tabel_b5_field7_input ?>" class="form-label"><?= lang('select') ?>
+                  <?= $tabel_b7_alias ?></label>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <?= input_textarea('tabel_b5_field3', '', 'required') ?>
+            </div>
           </div>
         </div>
 
@@ -173,18 +180,26 @@
 <!-- modal edit foto -->
 <?php foreach ($tbl_b5->result() as $tl_b5): ?>
   <div id="ubah<?= $tl_b5->$tabel_b5_field1; ?>" class="modal fade ubah">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
-        <?= modal_header(lang('change_data') . ' ' . lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
+        <?= modal_header_id(lang('change_data') . ' ' . lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
 
         <form action="<?= site_url($language . '/' . $tabel_b5 . '/update') ?>" method="post"
           enctype="multipart/form-data">
           <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <?= input_hidden('tabel_b5_field1', $tl_b5->$tabel_b5_field1, 'required') ?>
+                <?= input_edit('text', 'tabel_b5_field2', $tl_b5->$tabel_b5_field2, 'required') ?>
+                <?= edit_file('tabel_b5', 'tabel_b5_field4', $tl_b5->$tabel_b5_field4, '') ?>
 
-            <?= input_edit('text', 'tabel_b5_field2', $tl_b5->$tabel_b5_field2, 'required') ?>
-            <?= input_hidden('tabel_b5_field1', $tl_b5->$tabel_b5_field1, 'required') ?>
-            <?= input_textarea('tabel_b5_field3', $tl_b5->$tabel_b5_field3, 'required') ?>
-            <?= edit_file('tabel_b5', 'tabel_b5_field4', $tl_b5->$tabel_b5_field4, '') ?>
+              </div>
+              <div class="col-md-6">
+                <?= input_textarea('tabel_b5_field3', $tl_b5->$tabel_b5_field3, 'required') ?>
+
+              </div>
+            </div>
+
 
           </div>
 
@@ -204,28 +219,28 @@
   <div id="lihat<?= $tl_b5->$tabel_b5_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
+        <?= modal_header_id(lang('tabel_b5_alias'), $tl_b5->$tabel_b5_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
-              <?= table_data(
-              row_data('tabel_b5_field1', $tl_b5->$tabel_b5_field1) .
-              row_data('tabel_b5_field2', $tl_b5->$tabel_b5_field2) .
-              row_file($tabel_b5, 'tabel_b5_field4', $tl_b5->$tabel_b5_field4) .
-              row_data('tabel_b5_field5', $tl_b5->$tabel_b5_field5) .
-              row_data('tabel_b5_field6', $tl_b5->$tabel_b5_field6) .
-              row_data('tabel_b5_field7', $tl_b5->$tabel_b5_field7),
-              'table-light'
-            ) ?>
+                <?= table_data(
+                  row_data('tabel_b5_field1', $tl_b5->$tabel_b5_field1) .
+                  row_data('tabel_b5_field2', $tl_b5->$tabel_b5_field2) .
+                  row_file($tabel_b5, 'tabel_b5_field4', $tl_b5->$tabel_b5_field4) .
+                  row_data('tabel_b5_field5', $tl_b5->$tabel_b5_field5) .
+                  row_data('tabel_b5_field6', $tl_b5->$tabel_b5_field6) .
+                  row_data('tabel_b5_field7', $tl_b5->$tabel_b5_field7),
+                  'table-light'
+                ) ?>
               </div>
               <div class="col-md-6">
-              <?= tampil_text('tabel_b5_field3', html_entity_decode($tl_b5->$tabel_b5_field3)) ?>
+                <?= tampil_text('tabel_b5_field3', html_entity_decode($tl_b5->$tabel_b5_field3)) ?>
               </div>
             </div>
-            
+
           </div>
 
           <!-- memunculkan notifikasi modal -->

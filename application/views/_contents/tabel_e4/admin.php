@@ -88,7 +88,7 @@
 <div id="import" class="modal fade import">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header('Import ' . lang('tabel_e4_alias'), '') ?>
+      <?= modal_header_id('Import ' . lang('tabel_e4_alias'), '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_e4 . '/import') ?>" enctype="multipart/form-data"
         method="post">
@@ -118,13 +118,21 @@
 <div id="tambah" class="modal fade tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header_add(lang('add') . ' ' . lang('tabel_e4_alias'), '') ?>
+      <?= modal_header(lang('add') . ' ' . lang('tabel_e4_alias'), '') ?>
       <form action="<?= site_url($language . '/' . $tabel_e4 . '/tambah') ?>" method="post">
         <div class="modal-body">
           <?= input_add('text', 'tabel_e4_field2', 'required') ?>
           <?= add_file('tabel_e4_field3', 'required') ?>
-          <?= add_min_max('number', 'tabel_e4_field4', 'required', '0', '') ?>
-          <?= add_min_max('number', 'tabel_e4_field5', 'required', '0', '') ?>
+          <div class="row">
+            <div class="col-md-6">
+              <?= add_min_max('number', 'tabel_e4_field4', 'required', '0', '') ?>
+
+            </div>
+            <div class="col-md-6">
+              <?= add_min_max('number', 'tabel_e4_field5', 'required', '0', '') ?>
+
+            </div>
+          </div>
         </div>
         <!-- memunculkan notifikasi modal -->
         <p class="small text-center text-danger"><?= get_flashdata('pesan_tambah') ?></p>
@@ -141,7 +149,7 @@
   <div id="ubah<?= $tl_e4->$tabel_e4_field1; ?>" class="modal fade ubah">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?= modal_header(lang('change_data') . ' ' . lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
+        <?= modal_header_id(lang('change_data') . ' ' . lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
 
         <!-- administrator tidak dapat mengubah password akun lain -->
         <form action="<?= site_url($language . '/' . $tabel_e4 . '/update') ?>" method="post"
@@ -150,8 +158,16 @@
             <?= input_hidden('tabel_e4_field1', $tl_e4->$tabel_e4_field1, 'required') ?>
             <?= input_edit('text', 'tabel_e4_field2', $tl_e4->$tabel_e4_field2, 'required') ?>
             <?= edit_file('tabel_e4', 'tabel_e4_field3', $tl_e4->$tabel_e4_field3, '') ?>
-            <?= edit_min_max('number', 'tabel_e4_field4', $tl_e4->$tabel_e4_field4, 'required', '0', '') ?>
-            <?= edit_min_max('number', 'tabel_e4_field5', $tl_e4->$tabel_e4_field5, 'required', '0', '') ?>
+            <div class="row">
+              <div class="col-md-6">
+                <?= edit_min_max('number', 'tabel_e4_field4', $tl_e4->$tabel_e4_field4, 'required', '0', '') ?>
+
+              </div>
+              <div class="col-md-6">
+                <?= edit_min_max('number', 'tabel_e4_field5', $tl_e4->$tabel_e4_field5, 'required', '0', '') ?>
+
+              </div>
+            </div>
           </div>
 
           <!-- memunculkan notifikasi modal -->
@@ -169,7 +185,7 @@
   <div id="lihat<?= $tl_e4->$tabel_e4_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
+        <?= modal_header_id(lang('tabel_e4_alias'), $tl_e4->$tabel_e4_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

@@ -109,7 +109,7 @@
 <div id="filter" class="modal fade filter">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header_add('Filter', '') ?>
+      <?= modal_header('Filter', '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_f2 . '/filter') ?>" method="get">
         <div class="modal-body">
@@ -154,7 +154,7 @@
       <div id="book<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade book">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <?= modal_header(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
+            <?= modal_header_id(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/book') ?>" method="post">
@@ -243,7 +243,7 @@
       <div id="ubah<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade ubah">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <?= modal_header(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
+            <?= modal_header_id(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
             <!-- form untuk mengubah nilai status sebuah pesanan -->
             <form action="<?= site_url($language . '/' . $tabel_f2 . '/update_status') ?>" method="post">

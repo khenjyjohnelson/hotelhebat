@@ -3,7 +3,7 @@
         case $tabel_c2_field6_value1:
             ?>
             <li class="nav-item pb-2">
-                <a class="nav-link text-decoration-none font-weight-bold" href="<?= site_url($language . '/') ?>"><?= lang('home') ?></a>
+                <a class="nav-link text-decoration-none text-light" href="<?= site_url($language . '/') ?>"><?= lang('home') ?></a>
             </li>
             <?= nav_item(lang('tabel_e4_alias'), $tabel_e4, '/') ?>
             <?= nav_item(lang('tabel_e2_alias'), $tabel_e2, '/') ?>
@@ -75,7 +75,7 @@
             } ?>
 
             <li class="nav-item pb-2 dropdown">
-                <a type="button" class="nav-link text-decoration-none h4 mt-1 font-weight-bold" data-toggle="dropdown" href="#">
+                <a type="button" class="nav-link text-decoration-none h4 mt-1 text-light font-weight-bold" data-toggle="dropdown" href="#">
                     <i class="fas fa-bell"></i><?php if (!$notif_count) { ?><span>&nbsp;&nbsp;</span><?php
                     } else { ?>
                         <span><?= $notif_count ?></span><?php } ?>

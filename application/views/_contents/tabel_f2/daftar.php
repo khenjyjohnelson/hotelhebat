@@ -100,7 +100,7 @@
 <div id="filter" class="modal fade filter">
   <div class="modal-dialog">
     <div class="modal-content">
-      <?= modal_header_add('Filter', '') ?>
+      <?= modal_header('Filter', '') ?>
 
       <form action="<?= site_url($language . '/' . $tabel_f2 . '/filter_user') ?>" method="get">
         <div class="modal-body">
@@ -142,7 +142,7 @@
   <div id="lihat<?= $tl_f2->$tabel_f2_field1 ?>" class="modal fade lihat">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
+        <?= modal_header_id(lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
         <div class="modal-body">
 
@@ -184,7 +184,7 @@
       <div id="<?= $tabel_f3_field6 . $tl_f2->$tabel_f2_field1 ?>" class="modal fade <?= $tabel_f3_field6 ?>">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <?= modal_header(lang('tabel_f3_alias') . ' untuk ' . lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
+            <?= modal_header_id(lang('tabel_f3_alias') . ' untuk ' . lang('tabel_f2_alias'), $tl_f2->$tabel_f2_field1) ?>
 
             <form action="<?= site_url($language . '/' . $tabel_f3 . '/tambah') ?>" method="post"
               enctype="multipart/form-data">

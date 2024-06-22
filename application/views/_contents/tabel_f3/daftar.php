@@ -77,9 +77,9 @@
 Jadi tidak perlu menambahkan foreach pesanan lagi -->
 <?php foreach ($tbl_f3->result() as $tl_f3): ?>
   <div id="lihat<?= $tl_f3->$tabel_f3_field1 ?>" class="modal fade lihat">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
+        <?= modal_header_id(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
 
         <div class="modal-body">
           <div class="row">

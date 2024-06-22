@@ -99,7 +99,7 @@
   <div id="lihat<?= $tl_b9->$tabel_b9_field1; ?>" class="modal fade lihat" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <?= modal_header(lang('tabel_b9_alias'), $tl_b9->$tabel_b9_field1) ?>
+        <?= modal_header_id(lang('tabel_b9_alias'), $tl_b9->$tabel_b9_field1) ?>
 
         <!-- administrator tidak bisa melihat password user lain -->
         <form>

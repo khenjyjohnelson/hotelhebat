@@ -82,7 +82,7 @@ Jadi tidak perlu menambahkan foreach pesanan lagi -->
       <?php if ($tl_e4->$tabel_e4_field1 === $tl_f3->$tabel_e4_field1) { ?>
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <?= modal_header(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
+            <?= modal_header_id(lang('tabel_f3_alias'), $tl_f3->$tabel_f3_field1) ?>
 
             <div class="modal-body">
               <div class="row">

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-if (!function_exists('modal_header_add')) {
+if (!function_exists('modal_header')) {
     /**
      * Generates a modal header with title and subtitle
      *
@@ -9,7 +9,7 @@ if (!function_exists('modal_header_add')) {
      * @param string $subtitle
      * @return string
      */
-    function modal_header_add($title, $subtitle)
+    function modal_header($title, $subtitle)
     {
         $title = xss_clean($title);
         $subtitle = xss_clean($subtitle);
@@ -26,7 +26,7 @@ if (!function_exists('modal_header_add')) {
     }
 }
 
-if (!function_exists('modal_header')) {
+if (!function_exists('modal_header_id')) {
     /**
      * Generates a modal header with title and subtitle including ID
      *
@@ -34,7 +34,7 @@ if (!function_exists('modal_header')) {
      * @param string $subtitle
      * @return string
      */
-    function modal_header($title, $subtitle)
+    function modal_header_id($title, $subtitle)
     {
         $title = xss_clean($title);
         $subtitle = xss_clean($subtitle);

@@ -45,7 +45,7 @@ if (!function_exists('menu_logo')) {
     function menu_logo($logo)
     {
         return <<<HTML
-        <a type="button" class="nav-link text-decoration-none font-weight-bold" data-toggle="dropdown" href="#">
+        <a type="button" class="nav-link text-light text-decoration-none" data-toggle="dropdown" href="#">
                 <h4>{$logo} <i class="fas fa-caret-down"></i></h4>
             </a>
         HTML;
@@ -65,7 +65,7 @@ if (!function_exists('nav_item')) {
 
         return <<<HTML
             <li class="nav-item pb-2">
-                <a class="nav-link text-decoration-none font-weight-bold" href="{$url}">
+                <a class="nav-link text-light text-decoration-none" href="{$url}">
                     {$title}
                 </a>
             </li>
