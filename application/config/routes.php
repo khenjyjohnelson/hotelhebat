@@ -84,6 +84,7 @@ foreach ($myData2 as $item2) {
         'update_favicon' => 'update_favicon',
         'update_logo' => 'update_logo',
         'update_foto' => 'update_foto',
+        'update_status' => 'update_status',
         'ceklogin' => 'ceklogin',
         'importExcel' => 'importExcel',
         'cari' => 'cari',

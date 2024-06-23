@@ -135,6 +135,4 @@ class C_tabel_b8 extends Omnitags
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
-
-	
 }

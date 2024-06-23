@@ -66,8 +66,6 @@ class C_tabel_e4 extends Omnitags
 		load_view_data('_layouts/printpage', $data);
 	}
 
-	
-
 	/**
 	 * Handles the submission of the form for adding new data to the 'tabel_e4' table.
 	 *

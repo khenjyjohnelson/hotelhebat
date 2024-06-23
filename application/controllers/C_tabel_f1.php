@@ -25,7 +25,7 @@ class C_tabel_f1 extends Omnitags
 
 		$filter = $this->tl_f1->filter_user_with_e4($param1, $param2, $param3, $param4, $param5);
 
-		if(empty($filter)) {
+		if(empty($filter->num_rows())) {
 			$result = $this->tl_f1->get_f1_with_e4_by_c2_field1($param5);
 		} else {
 			$result = $filter;
@@ -64,7 +64,7 @@ class C_tabel_f1 extends Omnitags
 
 		$filter = $this->tl_f1->filter($param1, $param2, $param3, $param4);
 
-		if(empty($filter)) {
+		if(empty($filter->num_rows())) {
 			$result = $this->tl_f1->get_f1_with_e4();
 		} else {
 			$result = $filter;
@@ -74,7 +74,7 @@ class C_tabel_f1 extends Omnitags
 			'title' => lang('tabel_f1_alias_v3_title'),
 			'konten' => $this->v3['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
-			'tbl_f1' => $this->tl_f1->get_f1_with_e4(),
+			'tbl_f1' => $result,
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,

@@ -22,7 +22,7 @@ class C_tabel_b6 extends Omnitags
 
 		$filter = $this->tl_b6->filter($param1);
 
-		if(empty($filter)) {
+		if(empty($filter->num_rows())) {
 			$result = $this->tl_b6->get_all_b6();
 		} else {
 			$result = $filter;
