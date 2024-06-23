@@ -77,8 +77,8 @@ class C_tabel_c1 extends Omnitags
 		$this->page_session_all();
 
 		$data1 = array(
-			'title' => $this->views['tabel_c1_v2_title'],
-			'konten' => 'login',
+			'title' => 'Login Sebagai ' . $this->aliases['tabel_c1_alias'],
+			'konten' => '_contents/tabel_c1/login',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_c1']),
 		);
 

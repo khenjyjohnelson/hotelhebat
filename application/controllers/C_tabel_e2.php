@@ -159,8 +159,6 @@ class C_tabel_e2 extends Omnitags
 		$notif = $this->handle_4e($aksi, 'tabel_e2', $tabel_e2_field1);
 
 		redirect($_SERVER['HTTP_REFERER']);
-
-
 	}
 
 	

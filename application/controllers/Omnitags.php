@@ -165,14 +165,6 @@ if (!class_exists('Omnitags')) {
             $this->notif_null = $this->tl_b9->get_b9_by_b9_field2_by_b9_field6(userdata($this->aliases['tabel_c2_field1']));
 
             $this->views = array(
-                'tabel_c1_v2' => '_contents/tabel_c1/login',
-                'tabel_c1_v2_title' => 'Login Sebagai ' . $this->aliases['tabel_c1_alias'],
-
-                'tabel_f3_v2_alt' => '_contents/tabel_f3/daftar_history',
-                'tabel_f3_v2_alt_title' => 'Daftar ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
-                'tabel_f3_v3_alt' => '_contents/tabel_f3/admin_tabel_f1',
-                'tabel_f3_v3_alt_title' => 'Data ' . $this->aliases['tabel_f3_alias'] . ' dari ' . $this->aliases['tabel_f1_alias'],
-
                 'head' => '_partials/head',
                 'phase' => $this->phase_2,
                 'lisensi' => $this->tl_b5->get_b5_by_b5_field6_by_b5_field7($this->theme_id),

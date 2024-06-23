@@ -75,7 +75,7 @@ class C_tabel_f3 extends Omnitags
 
 		$data1 = array(
 			'title' => lang('tabel_f3_alias_past'),
-			'konten' => $this->views['tabel_f3_v2_alt'],
+			'konten' => '_contents/tabel_f3/daftar_history',
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f3']),
 			'tbl_f3' => $result,
 
