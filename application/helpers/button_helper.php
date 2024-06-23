@@ -381,50 +381,23 @@ if (!function_exists('btn_hapus')) {
     }
 }
 
-if (!function_exists('btn_toggle_on')) {
-    // Generates a button to toggle a feature on
-    function btn_toggle_on($tabel, $value)
+
+if (!function_exists('btn_action')) {
+
+    function btn_action($tabel, $function, $logo, $theme)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
         // Fetch the view variables
         $data = $CI->load->get_vars();
 
-
         $controller = xss_clean($data[$tabel]);
         $lang = xss_clean($data['language']);
-
-        $url = xss_clean(site_url($lang . '/' . $controller . '/aktifkan/' . $value));
-
-        return <<<HTML
-
-        <a class="text-warning" href="{$url}">
-                <h4><i class="fas fa-toggle-off"></i></h4>
-              </a>
-        HTML;
-    }
-}
-
-if (!function_exists('btn_toggle_off')) {
-    // Generates a button to toggle a feature off
-    function btn_toggle_off($tabel, $value)
-    {
-        // Get CodeIgniter instance
-        $CI =& get_instance();
-        // Fetch the view variables
-        $data = $CI->load->get_vars();
-
-
-        $controller = xss_clean($data[$tabel]);
-        $lang = xss_clean($data['language']);
-
-        $url = xss_clean(site_url($lang . '/' . $controller . '/nonaktifkan/' . $value));
-        $alias = xss_clean(lang('input'));
+        $url = xss_clean(site_url($lang . '/' . $controller . $function));
 
         return <<<HTML
-        <a class="text-warning" href="{$url}">
-                <h4><i class="fas fa-toggle-on"></i></h4>
-              </a>
+        <a class="btn mr-2 mb-2 {$theme}" href="{$url}">
+        {$logo}</a>
         HTML;
     }
 }

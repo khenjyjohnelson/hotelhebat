@@ -70,6 +70,8 @@ foreach ($myData2 as $item2) {
         'delete' => 'delete',
         'print' => 'print',
         'sync_theme' => 'sync_theme',
+        'approve' => 'approve',
+        'reject' => 'reject',
     ];
 
     // Unique function routes
