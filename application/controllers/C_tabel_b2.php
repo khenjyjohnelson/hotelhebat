@@ -42,7 +42,7 @@ class C_tabel_b2 extends Omnitags
 
 		$filter = $this->tl_b2->filter($param1);
 
-		if(empty($filter->num_rows())) {
+		if (empty($filter->num_rows())) {
 			$result = $this->tl_b2->get_all_b2();
 		} else {
 			$result = $filter;
@@ -81,7 +81,7 @@ class C_tabel_b2 extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/printpage', $data);
 	}
-	
+
 	// Functions
 	// Add data
 	public function tambah()
@@ -132,7 +132,7 @@ class C_tabel_b2 extends Omnitags
 			}
 
 			// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
-		// $this->aliases['tabel_e1_field1'] => $id,
+			// $this->aliases['tabel_e1_field1'] => $id,
 
 			$data = array(
 				$this->aliases['tabel_b2_field1'] => '',

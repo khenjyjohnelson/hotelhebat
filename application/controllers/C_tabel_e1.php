@@ -109,7 +109,7 @@ class C_tabel_e1 extends Omnitags
 
 		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
 		// $this->aliases['tabel_e1_field1'] => $id,
-		
+
 		// Functional requirement: Construct data array from validated view inputs
 		$data = array(
 			$this->aliases['tabel_e1_field1'] => '',

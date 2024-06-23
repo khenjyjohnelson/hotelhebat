@@ -75,7 +75,7 @@ class Welcome extends Omnitags
 
 				//Loading the page
 				load_view_data('_layouts/template', $data);
-			break;
+				break;
 		}
 	}
 
@@ -117,7 +117,7 @@ class Welcome extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
-	
+
 	// Page that will be loaded if a function is performed by a user with the wrong level
 	public function invalid()
 	{

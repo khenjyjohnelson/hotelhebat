@@ -41,7 +41,7 @@ class C_tabel_b5 extends Omnitags
 
 		$filter = $this->tl_b5->filter($param1);
 
-		if(empty($filter->num_rows())) {
+		if (empty($filter->num_rows())) {
 			$result = $this->tl_b5->get_all_b5();
 		} else {
 			$result = $filter;
@@ -136,7 +136,7 @@ class C_tabel_b5 extends Omnitags
 			}
 
 			// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
-		// $this->aliases['tabel_e1_field1'] => $id,
+			// $this->aliases['tabel_e1_field1'] => $id,
 
 			$data = array(
 				$this->aliases['tabel_b5_field1'] => '',

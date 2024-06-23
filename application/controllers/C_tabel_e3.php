@@ -31,7 +31,7 @@ class C_tabel_e3 extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
-	
+
 	// Print all data
 	public function laporan()
 	{
@@ -68,8 +68,8 @@ class C_tabel_e3 extends Omnitags
 			$this->views['flash2'],
 			'tambah'
 		);
-		
-// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+
+		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
 		// $this->aliases['tabel_e1_field1'] => $id,
 
 		$data = array(

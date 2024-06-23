@@ -49,7 +49,7 @@ class C_tabel_b7 extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
-	
+
 	// Print all data
 	public function laporan()
 	{

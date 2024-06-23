@@ -306,7 +306,7 @@ class C_tabel_c1 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	
+
 
 	public function update_profil()
 	{

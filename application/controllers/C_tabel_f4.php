@@ -50,7 +50,7 @@ class C_tabel_f4 extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/printpage', $data);
 	}
-	
+
 	// Functions
 	// Add data
 	public function tambah()
@@ -76,7 +76,7 @@ class C_tabel_f4 extends Omnitags
 
 		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
 		// $this->aliases['tabel_e1_field1'] => $id,
-		
+
 		$data = array(
 			$this->aliases['tabel_f4_field1'] => '',
 			$this->aliases['tabel_f4_field2'] => $tabel_f4_field2,
