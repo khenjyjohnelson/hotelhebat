@@ -73,6 +73,10 @@ class C_tabel_f4 extends Omnitags
 		$tabel_f4_field7 = date("Y-m-d") . " " . date("h:m:s", time());
 
 		$tabel_f4_field2 = $this->v_post['tabel_f4_field2'];
+
+		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+		// $this->aliases['tabel_e1_field1'] => $id,
+		
 		$data = array(
 			$this->aliases['tabel_f4_field1'] => '',
 			$this->aliases['tabel_f4_field2'] => $tabel_f4_field2,

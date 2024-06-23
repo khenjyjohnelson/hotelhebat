@@ -226,6 +226,9 @@ class C_tabel_f3 extends Omnitags
 
 		// $kembalian = $this->tl_f2->get('harga_total') - $bayar;
 
+		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+		// $this->aliases['tabel_e1_field1'] => $id,
+
 		$data = array(
 			$this->aliases['tabel_f3_field1'] => '',
 			$this->aliases['tabel_f3_field2'] => userdata($this->aliases['tabel_c2_field1']),

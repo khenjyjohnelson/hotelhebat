@@ -61,7 +61,10 @@ class C_tabel_d3 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		// $id = get_next_code($this->aliases['tabel_d3'], $this->aliases['tabel_d3_field1'], 'USR');
+
 		$data = array(
+			// $this->aliases['tabel_d3_field1'] => $id,
 			$this->aliases['tabel_d3_field1'] => '',
 			$this->aliases['tabel_d3_field2'] => userdata($this->aliases['tabel_c2_field1']),
 			$this->aliases['tabel_d3_field3'] => date("Y-m-d\TH:i:s"),

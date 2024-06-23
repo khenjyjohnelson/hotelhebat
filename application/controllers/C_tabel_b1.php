@@ -110,6 +110,9 @@ class C_tabel_b1 extends Omnitags
 				$gambar = $upload['file_name'];
 			}
 
+			// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+		// $this->aliases['tabel_e1_field1'] => $id,
+
 			$data = array(
 				$this->aliases['tabel_b1_field1'] => '',
 				$this->aliases['tabel_b1_field2'] => $this->v_post['tabel_b1_field2'],

@@ -163,8 +163,11 @@ class C_tabel_c1 extends Omnitags
 			if ($this->v_post['tabel_c1_field4_confirm'] === $param4) {
 				$this->load->library('encryption');
 
+				// $id = get_next_code($this->aliases['tabel_c1'], $this->aliases['tabel_c1_field1'], 'USR');
+
 				$data = array(
-					$this->aliases['tabel_c1_field1'] => $this->v_post['tabel_c1_field1'],
+					// $this->aliases['tabel_c1_field1'] => $id,
+					$this->aliases['tabel_c1_field1'] => '',
 					$this->aliases['tabel_c1_field2'] => $param2,
 					$this->aliases['tabel_c1_field3'] => $this->v_post['tabel_c1_field3'],
 					$this->aliases['tabel_c1_field5'] => $this->v_post['tabel_c1_field5'],

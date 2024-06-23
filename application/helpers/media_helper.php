@@ -67,3 +67,31 @@ if (!function_exists('getExtension')) {
         return pathinfo($filePath, PATHINFO_EXTENSION);
     }
 }
+
+if (!function_exists('get_next_code')) {
+    function get_next_code($table, $field, $prefix)
+    {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        // Query to get the last record
+        $CI->db->select($field);
+        $CI->db->from($table);
+        $CI->db->order_by($field, 'DESC');
+        $CI->db->limit(1);
+        $last_record = $CI->db->get()->row();
+
+        if ($last_record) {
+            // Assuming last 5 digits are the incrementing number
+            $last_code = substr($last_record->$field, -5);
+            $next_number = intval($last_code) + 1;
+        } else {
+            $next_number = 1; // Start with 1 if there are no records
+        }
+
+        // Generate the new code with the specified prefix
+        $new_code = sprintf("%s%05d", $prefix, $next_number);
+
+        return $new_code;
+    }
+}

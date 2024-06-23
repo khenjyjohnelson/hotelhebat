@@ -18,7 +18,7 @@ class C_tabel_e1 extends Omnitags
 
 		$filter = $this->tl_e1->filter($param1);
 
-		if(empty($filter->num_rows())) {
+		if (empty($filter->num_rows())) {
 			$result = $this->tl_e1->get_all_e1();
 		} else {
 			$result = $filter;
@@ -107,6 +107,9 @@ class C_tabel_e1 extends Omnitags
 			$gambar = $upload['file_name'];
 		}
 
+		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+		// $this->aliases['tabel_e1_field1'] => $id,
+		
 		// Functional requirement: Construct data array from validated view inputs
 		$data = array(
 			$this->aliases['tabel_e1_field1'] => '',

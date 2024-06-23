@@ -143,6 +143,9 @@ class C_tabel_b9 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
+		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+		// $this->aliases['tabel_e1_field1'] => $id,
+
 		$data = array(
 			$this->aliases['tabel_b9_field1'] => '',
 			$this->aliases['tabel_b9_field2'] => $this->v_post['tabel_b9_field2'],

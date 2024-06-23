@@ -95,6 +95,9 @@ class C_tabel_b6 extends Omnitags
 			$tabel_b6_field4 = 'https://' . $this->v_post['tabel_b6_field4'];
 		}
 
+		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+		// $this->aliases['tabel_e1_field1'] => $id,
+
 		$data = array(
 			$this->aliases['tabel_b6_field1'] => '',
 			$this->aliases['tabel_b6_field2'] => $this->v_post['tabel_b6_field2'],

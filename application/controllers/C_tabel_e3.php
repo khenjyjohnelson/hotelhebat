@@ -68,6 +68,9 @@ class C_tabel_e3 extends Omnitags
 			$this->views['flash2'],
 			'tambah'
 		);
+		
+// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+		// $this->aliases['tabel_e1_field1'] => $id,
 
 		$data = array(
 			$this->aliases['tabel_e3_field1'] => '',

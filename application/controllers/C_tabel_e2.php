@@ -84,7 +84,10 @@ class C_tabel_e2 extends Omnitags
 			'tambah'
 		);
 
+		// $id = get_next_code($this->aliases['tabel_e2'], $this->aliases['tabel_e2_field1'], 'FH');
+		
 		$data = array(
+			// $this->aliases['tabel_e2_field1'] => $id,
 			$this->aliases['tabel_e2_field1'] => '',
 			$this->aliases['tabel_e2_field2'] => $this->v_post['tabel_e2_field2'],
 			$this->aliases['tabel_e2_field3'] => $this->v_post['tabel_e2_field3'],
@@ -161,7 +164,7 @@ class C_tabel_e2 extends Omnitags
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	
+
 
 
 }

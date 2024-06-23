@@ -69,6 +69,9 @@ class C_tabel_b8 extends Omnitags
 			'tambah'
 		);
 
+		// $id = get_next_code($this->aliases['tabel_e1'], $this->aliases['tabel_e1_field1'], 'FK');
+		// $this->aliases['tabel_e1_field1'] => $id,
+
 		$data = array(
 			$this->aliases['tabel_b8_field1'] => '',
 			$this->aliases['tabel_b8_field2'] => $this->v_post['tabel_b8_field2'],
