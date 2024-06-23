@@ -16,41 +16,19 @@ class C_tabel_e1 extends Omnitags
 
 		$param1 = $this->v_get['tabel_e1_field2'];
 
-		$data1 = array(
-			'title' => lang('tabel_e1_alias_v3_title'),
-			'konten' => $this->v3['tabel_e1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1']),
-			'tbl_e1' => $this->tl_e1->get_all_e1(),
-			'tbl_e4' => $this->tl_e4->get_all_e4(),
-			'tabel_e1_field2_value' => $param1
-		);
+		$filter = $this->tl_e1->filter($param1);
 
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
-
-	public function filter()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		validate_all(
-			array(
-				$this->v_get['tabel_e1_field2'],
-			),
-			$this->views['flash1'],
-			''
-		);
-
-		$param1 = $this->v_get['tabel_e1_field2'];
+		if(empty($filter)) {
+			$result = $this->tl_e1->get_all_e1();
+		} else {
+			$result = $filter;
+		}
 
 		$data1 = array(
 			'title' => lang('tabel_e1_alias_v3_title'),
 			'konten' => $this->v3['tabel_e1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_e1']),
-			'tbl_e1' => $this->tl_e1->filter($param1),
+			'tbl_e1' => $result,
 			'tbl_e4' => $this->tl_e4->get_all_e4(),
 			'tabel_e1_field2_value' => $param1
 		);

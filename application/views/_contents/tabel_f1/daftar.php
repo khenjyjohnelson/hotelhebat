@@ -27,7 +27,9 @@
     echo card_regular(
       $tl_f1->$tabel_f1_field1,
       $tl_f1->$tabel_f1_field1 . ' | ' . $tl_f1->$tabel_e4_field2,
-      $tl_f1->$tabel_f1_field13,
+      card_content('40%', 'tabel_f1_field11', $tl_f1->$tabel_f1_field11) .
+      card_content('40%', 'tabel_f1_field12', $tl_f1->$tabel_f1_field12) .
+      $tl_f1->$tabel_f1_field14,
       btn_lihat($tl_f1->$tabel_f1_field1) . ' ' .
       btn_print('tabel_f1', $tl_f1->$tabel_f1_field1),
       'text-white bg-secondary',
@@ -83,7 +85,7 @@
     <div class="modal-content">
       <?= modal_header('Filter', '') ?>
 
-      <form action="<?= site_url($language . '/' . $tabel_f1 . '/filter_user') ?>" method="get">
+      <form action="<?= site_url($language . '/' . $tabel_f1 . '/daftar') ?>" method="get">
         <div class="modal-body">
           <!-- method get supaya nilai dari filter bisa tampil nanti -->
           <span><?= $tabel_f1_field11_alias ?></span>

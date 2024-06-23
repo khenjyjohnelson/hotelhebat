@@ -1,6 +1,6 @@
 <?php foreach ($tbl_a1 as $tl_a1): ?>
     <!-- footer -->
-    <footer class="container-fluid bg-dark border">
+    <footer class="container-fluid bg-dark">
             <div class="container">
 
                 <!-- Displaying footer specific to user level: guest, admin, etc. -->

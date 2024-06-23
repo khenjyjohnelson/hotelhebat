@@ -102,7 +102,7 @@
     <div class="modal-content">
       <?= modal_header('Filter', '') ?>
 
-      <form action="<?= site_url($language . '/' . $tabel_f2 . '/filter_user') ?>" method="get">
+      <form action="<?= site_url($language . '/' . $tabel_f2 . '/daftar') ?>" method="get">
         <div class="modal-body">
           <!-- method get supaya nilai dari filter bisa tampil nanti -->
           <span><?= $tabel_f2_field10_alias ?></span>

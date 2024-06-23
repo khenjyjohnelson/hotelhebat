@@ -52,7 +52,7 @@ if (!function_exists('card_text')) {
 
 // Generates a card content with a field alias and value
 if (!function_exists('card_content')) {
-    function card_content($field, $value)
+    function card_content($size, $field, $value)
     {
         // Get CodeIgniter instance
         $CI =& get_instance();
@@ -62,7 +62,7 @@ if (!function_exists('card_content')) {
         $alias  = card_text($data[$field . '_alias']);
 
         return <<<HTML
-        <div style="width: 70px; display: inline-block;">{$alias}</div>
+        <div style="width: {$size}; display: inline-block;">{$alias}</div>
         <div style="display: inline-block;">: {$value}</div><br>
         HTML;
     }

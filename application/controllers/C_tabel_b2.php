@@ -40,11 +40,19 @@ class C_tabel_b2 extends Omnitags
 
 		$param1 = $this->v_get['tabel_b2_field7'];
 
+		$filter = $this->tl_b2->filter($param1);
+
+		if(empty($filter)) {
+			$result = $this->tl_b2->get_all_b2();
+		} else {
+			$result = $filter;
+		}
+
 		$data1 = array(
 			'title' => lang('tabel_b2_alias_v3_title'),
 			'konten' => $this->v3['tabel_b2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
-			'tbl_b2' => $this->tl_b2->get_all_b2(),
+			'tbl_b2' => $result,
 			'tbl_b7' => $this->tl_b7->get_all_b7(),
 			'tabel_b2_field7_value' => $param1
 		);
@@ -73,38 +81,7 @@ class C_tabel_b2 extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/printpage', $data);
 	}
-
-	// Filter data
-	public function filter()
-	{
-		$this->declarew();
-		$this->page_session_3();
-
-		validate_all(
-			array(
-				$this->v_get['tabel_b2_field7'],
-			),
-			$this->views['flash1'],
-			''
-		);
-
-		$param1 = $this->v_get['tabel_b2_field7'];
-
-		$data1 = array(
-			'title' => lang('tabel_b2_alias_v3_title'),
-			'konten' => $this->v3['tabel_b2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_b2']),
-			'tbl_b2' => $this->tl_b2->filter($param1),
-			'tbl_b7' => $this->tl_b7->get_all_b7(),
-			'tabel_b2_field7_value' => $param1
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
-
+	
 	// Functions
 	// Add data
 	public function tambah()

@@ -23,55 +23,19 @@ class C_tabel_f1 extends Omnitags
 
 		$param5 = userdata($this->aliases['tabel_c2_field1']);
 
-		$data1 = array(
-			'title' => lang('tabel_f1_alias_v2_title'),
-			'konten' => $this->v2['tabel_f1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
-			'tbl_f1' => $this->tl_f1->get_f1_with_e4_by_c2_field1($param5),
+		$filter = $this->tl_f1->filter_user_with_e4($param1, $param2, $param3, $param4, $param5);
 
-			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
-			'tabel_f1_field11_filter1_value' => $param1,
-			'tabel_f1_field11_filter2_value' => $param2,
-			'tabel_f1_field12_filter1_value' => $param3,
-			'tabel_f1_field12_filter2_value' => $param4,
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
-
-
-	public function filter_user()
-	{
-		$this->declarew();
-		$this->session_5();
-
-		// nilai min dan max sudah diinput sebelumnya
-		$param1 = $this->v_get['tabel_f1_field11_filter1'];
-		$param2 = $this->v_get['tabel_f1_field11_filter2'];
-		$param3 = $this->v_get['tabel_f1_field12_filter1'];
-		$param4 = $this->v_get['tabel_f1_field12_filter2'];
-
-		validate_some(
-			array(
-				$param1,
-				$param2,
-				$param3,
-				$param4,
-			),
-			$this->views['flash1'],
-			'filter'
-		);
-
-		$param5 = userdata($this->aliases['tabel_c2_field1']);
+		if(empty($filter)) {
+			$result = $this->tl_f1->get_f1_with_e4_by_c2_field1($param5);
+		} else {
+			$result = $filter;
+		}
 
 		$data1 = array(
 			'title' => lang('tabel_f1_alias_v2_title'),
 			'konten' => $this->v2['tabel_f1'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
-			'tbl_f1' => $this->tl_f1->filter_user_with_e4($param1, $param2, $param3, $param4, $param5),
+			'tbl_f1' => $result,
 
 			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f1_field11_filter1_value' => $param1,
@@ -97,6 +61,14 @@ class C_tabel_f1 extends Omnitags
 		$param2 = $this->v_get['tabel_f1_field11_filter2'];
 		$param3 = $this->v_get['tabel_f1_field12_filter1'];
 		$param4 = $this->v_get['tabel_f1_field12_filter2'];
+
+		$filter = $this->tl_f1->filter($param1, $param2, $param3, $param4);
+
+		if(empty($filter)) {
+			$result = $this->tl_f1->get_f1_with_e4();
+		} else {
+			$result = $filter;
+		}
 
 		$data1 = array(
 			'title' => lang('tabel_f1_alias_v3_title'),
@@ -164,35 +136,5 @@ class C_tabel_f1 extends Omnitags
 
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/printpage', $data);
-	}
-
-	public function filter()
-	{
-		$this->declarew();
-		$this->page_session_4();
-
-		// nilai min dan max sudah diinput sebelumnya
-		$param1 = $this->v_get['tabel_f1_field11_filter1'];
-		$param2 = $this->v_get['tabel_f1_field11_filter2'];
-		$param3 = $this->v_get['tabel_f1_field12_filter1'];
-		$param4 = $this->v_get['tabel_f1_field12_filter2'];
-
-		$data1 = array(
-			'title' => lang('tabel_f1_alias_v3_title'),
-			'konten' => $this->v3['tabel_f1'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
-			'tbl_f1' => $this->tl_f1->filter($param1, $param2, $param3, $param4),
-
-			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
-			'tabel_f1_field11_filter1_value' => $param1,
-			'tabel_f1_field11_filter2_value' => $param2,
-			'tabel_f1_field12_filter1_value' => $param3,
-			'tabel_f1_field12_filter2_value' => $param4,
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
 	}
 }

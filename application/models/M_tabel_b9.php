@@ -23,6 +23,15 @@ class M_tabel_b9 extends CI_Model
 		return $this->db->get($this->aliases['tabel_b9']);
 	}
 
+	// 	This is a method in a PHP model class that retrieves a limited number of records 
+	// from two related tables (tabel_b9 and tabel_b8) based on a given parameter ($param1).
+	// The SQL query selects all columns from tabel_b9 and tabel_b8 
+	// and joins them on where the tabel_b9_field2 column in tabel_b9 matches the given parameter. 
+	// The results are ordered by a case statement that puts rows with a null tabel_b9_field6 value first,
+	// followed then by tabel_b9_field6 in descending order, and finally by tabel_b9_field1 in descending order. 
+	// The LIMIT 15 clause limits the number of results to 15.
+	// The method returns the result of the query, which is a CI_DB_mysqli_result object.
+
 	public function get_b9_with_b8_limit($param1)
 	{
 		$sql = "SELECT * FROM {$this->aliases['tabel_b9']} 

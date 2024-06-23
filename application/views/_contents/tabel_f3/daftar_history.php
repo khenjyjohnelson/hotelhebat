@@ -13,6 +13,7 @@
 
 <div class="row">
   <div class="col-md-10">
+    <?= btn_field('filter', '<i class="fas fa-filter"></i> Filter') ?>
   </div>
 
   <div class="col-md-2 d-flex justify-content-end">
@@ -27,12 +28,13 @@
     echo card_regular(
       $tl_f3->$tabel_f3_field1,
       $tl_f3->$tabel_f3_field1 . ' | ' . $tabel_f2_alias . ' ' . $tl_f3->$tabel_f3_field4,
-      $tl_f3->$tabel_f3_field5 . ' | ' . $tl_f3->$tabel_f3_field6 . '<br>' .
-      $tl_f3->$tabel_f3_field7,
+      card_content('40%', 'tabel_f3_field5', $tl_f3->$tabel_f3_field5) .
+      card_content('40%', 'tabel_f3_field6', 'Rp ' . number_format($tl_f3->$tabel_f3_field6, '2', ',', '.')) .
+      card_content('40%', 'tabel_f3_field7', $tl_f3->$tabel_f3_field7),
       btn_lihat($tl_f3->$tabel_f3_field1) . ' ' .
       btn_print('tabel_f3', $tl_f3->$tabel_f3_field1),
-      'text-light bg-danger',
-      'col-md-3',
+      'text-light bg-secondary',
+      'col-md-4',
       $tabel_f3,
     );
   endforeach; ?>
@@ -71,6 +73,41 @@
 
 
   </table>
+</div>
+
+
+<!-- modal filter -->
+<div id="filter" class="modal fade filter">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <?= modal_header('Filter', '') ?>
+
+      <form action="<?= site_url($language . '/' . $tabel_f3 . '/daftar_history') ?>" method="get">
+        <div class="modal-body">
+          <!-- method get supaya nilai dari filter bisa tampil nanti -->
+          <span><?= $tabel_f3_field7_alias ?></span>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Dari', 'tabel_f3_field7_filter1', 'oninput="myFunction1()"', '', '') ?>
+            </div>
+            <div class="col-md-6">
+              <?= filter_min_max('date', 'Ke', 'tabel_f3_field7_filter2', 'required', '', '') ?>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- pesan untuk pengguna yang sedang merubah password -->
+        <p class="small text-center text-danger"><?= get_flashdata('pesan_filter') ?></p>
+
+        <div class="modal-footer">
+          <?= btn_cari() ?>
+          <?= btn_redo('tabel_f3', '/daftar_history') ?>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>
 
 <!-- modal lihat -->

@@ -36,7 +36,7 @@ class M_tabel_f2 extends CI_Model
 		JOIN {$this->aliases['tabel_e4']} 
 		ON {$this->aliases['tabel_f2']}.{$this->aliases['tabel_e4_field1']} = {$this->aliases['tabel_e4']}.{$this->aliases['tabel_e4_field1']}
 		WHERE {$this->aliases['tabel_f2']}.{$this->aliases['tabel_c2_field1']} = {$param1}
-		ORDER BY {$this->aliases['tabel_f2_field1']} DESC";
+		ORDER BY {$this->aliases['tabel_f2_field12']} DESC, {$this->aliases['tabel_f2_field1']} DESC";
 		return $this->db->query($sql);
 	}
 

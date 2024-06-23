@@ -26,7 +26,7 @@
     echo card_regular(
       $tl_f1->$tabel_f1_field1,
       $tl_f1->$tabel_f1_field1 . ' | ' . $tl_f1->$tabel_e4_field2,
-      $tl_f1->$tabel_f1_field12,
+      $tl_f1->$tabel_f1_field14,
       btn_lihat($tl_f1->$tabel_f1_field1) . ' ' .
       btn_hapus('tabel_f1', $tl_f1->$tabel_f1_field1) . ' ' .
       btn_print('tabel_f1', $tl_f1->$tabel_f1_field1),
@@ -84,7 +84,7 @@
     <div class="modal-content">
       <?= modal_header('Filter', '') ?>
 
-      <form action="<?= site_url($language . '/' . $tabel_f1 . '/filter') ?>" method="get">
+      <form action="<?= site_url($language . '/' . $tabel_f1 . '/admin') ?>" method="get">
         <div class="modal-body">
           <!-- method get supaya nilai dari filter bisa tampil nanti -->
           <span><?= $tabel_f1_field11_alias ?></span>

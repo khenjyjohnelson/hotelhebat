@@ -13,7 +13,7 @@
 <table class="mb-4">
 
   <!-- method get supaya nilai dari filter bisa tampil nanti -->
-  <form action="<?= site_url($language . '/' . $tabel_e1 . '/filter') ?>" method="get">
+  <form action="<?= site_url($language . '/' . $tabel_e1 . '/admin') ?>" method="get">
     <tr>
 
       <td class="pr-2">

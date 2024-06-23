@@ -65,13 +65,22 @@ class C_tabel_f2 extends Omnitags
 		$param3 = $this->v_get['tabel_f2_field11_filter1'];
 		$param4 = $this->v_get['tabel_f2_field11_filter2'];
 
-
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
+
+		$filter = $this->tl_f2->filter_user_with_e4($param1, $param2, $param3, $param4, $tabel_c2_field1);
+
+		if(empty($filter)) {
+			$result = $this->tl_f2->get_f2_with_e4_by_c2_field1($tabel_c2_field1);
+		} else {
+			$result = $filter;
+		}
+
+
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v2_title'),
 			'konten' => $this->v2['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2']),
-			'tbl_f2' => $this->tl_f2->get_f2_with_e4_by_c2_field1($tabel_c2_field1),
+			'tbl_f2' => $result,
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
 			'tabel_f2_field10_filter1_value' => $param1,
@@ -86,48 +95,7 @@ class C_tabel_f2 extends Omnitags
 		set_userdata('previous_url', current_url());
 		load_view_data('_layouts/template', $data);
 	}
-
-	public function filter_user()
-	{
-		$this->declarew();
-		$this->page_session_5();
-
-		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
-		// nilai min dan max sudah diinput sebelumnya
-		$param1 = $this->v_get['tabel_f2_field10_filter1'];
-		$param2 = $this->v_get['tabel_f2_field10_filter2'];
-		$param3 = $this->v_get['tabel_f2_field11_filter1'];
-		$param4 = $this->v_get['tabel_f2_field11_filter2'];
-
-		validate_some(
-			array(
-				$param1,
-				$param2,
-				$param3,
-				$param4,
-			),
-			$this->views['flash1'],
-			'filter'
-		);
-
-		$data1 = array(
-			'title' => lang('tabel_f2_alias_v2_title'),
-			'konten' => $this->v2['tabel_f2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f1']),
-			'tbl_f2' => $this->tl_f2->filter_user_with_e4($param1, $param2, $param3, $param4, $tabel_c2_field1),
-
-			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
-			'tabel_f2_field10_filter1_value' => $param1,
-			'tabel_f2_field10_filter2_value' => $param2,
-			'tabel_f2_field11_filter1_value' => $param3,
-			'tabel_f2_field11_filter2_value' => $param4
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
+	
 
 	// Admin Pages
 	public function admin()
@@ -141,45 +109,23 @@ class C_tabel_f2 extends Omnitags
 		$param3 = $this->v_get['tabel_f2_field11_filter1'];
 		$param4 = $this->v_get['tabel_f2_field11_filter2'];
 
+		
+		$filter = $this->tl_f2->filter_with_e4($param1, $param2, $param3, $param4);
+
+		if(empty($filter)) {
+			$result = $this->tl_f2->get_f2_with_e4();
+		} else {
+			$result = $filter;
+		}
+
 		$data1 = array(
 			'title' => lang('tabel_f2_alias_v3_title'),
 			'konten' => $this->v3['tabel_f2'],
 			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2']),
-			'tbl_f2' => $this->tl_f2->get_f2_with_e4(),
+			'tbl_f2' => $result,
 			'tbl_e3' => $this->tl_e3->get_all_e3(),
 
 			// menggunakan nilai $min dan $max sebagai bagian dari $data
-			'tabel_f2_field10_filter1_value' => $param1,
-			'tabel_f2_field10_filter2_value' => $param2,
-			'tabel_f2_field11_filter1_value' => $param3,
-			'tabel_f2_field11_filter2_value' => $param4
-		);
-
-		$data = array_merge($data1, $this->package);
-
-		set_userdata('previous_url', current_url());
-		load_view_data('_layouts/template', $data);
-	}
-
-	public function filter()
-	{
-		$this->declarew();
-		$this->page_session_4();
-
-		// nilai min dan max sudah diinput sebelumnya
-		$param1 = $this->v_get['tabel_f2_field10_filter1'];
-		$param2 = $this->v_get['tabel_f2_field10_filter2'];
-		$param3 = $this->v_get['tabel_f2_field11_filter1'];
-		$param4 = $this->v_get['tabel_f2_field11_filter2'];
-
-		$data1 = array(
-			'title' => lang('tabel_f2_alias_v3_title'),
-			'konten' => $this->v3['tabel_f2'],
-			'dekor' => $this->tl_b1->dekor($this->theme_id, $this->aliases['tabel_f2']),
-			'tbl_f2' => $this->tl_f2->filter_with_e4($param1, $param2, $param3, $param4),
-			'tbl_e3' => $this->tl_e3->get_all_e3(),
-
-			// menggunakan nilai $cek_in_min, $cek_in_max, $cek_out_min dan $cek_out_max sebagai bagian dari $data
 			'tabel_f2_field10_filter1_value' => $param1,
 			'tabel_f2_field10_filter2_value' => $param2,
 			'tabel_f2_field11_filter1_value' => $param3,

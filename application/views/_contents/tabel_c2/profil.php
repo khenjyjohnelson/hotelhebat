@@ -17,7 +17,7 @@
         data-target="#password<?= $tl_c2->$tabel_c2_field1 ?>">
         <i class="fas fa-edit"></i> <?= lang('tabel_c2_field4_alias') ?></a>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
 
       <!-- form ini terpisah dengan form ubah password untuk keamanan sesama :) -->
       <form action="<?= site_url($language . '/' . $tabel_c2 . '/update_profil') ?>" method="post"
