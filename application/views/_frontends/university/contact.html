@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>University Web Design - Easy Tutorials</title>
+
+  <!-- custom css -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&family=Viga&display=swap"
+    rel="stylesheet">
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+  <section class="sub-header">
+    <nav>
+      <a href="index.html"><img src="img/logo.png" alt=""></a>
+      <div class="nav-links" id="navLinks">
+        <i class="fas fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="course.html">COURSE</a></li>
+          <li><a href="blog.html">BLOG</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+      <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <h1>Contact Us</h1>
+
+  </section>
+
+  <!-- contact us -->
+  <section class="location">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4642.278844922658!2d103.97036102648255!3d1.0448502720001365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98da25a9e1151%3A0x9351c9bc1b2ac683!2zMcKwMDInNTEuNSJOIDEwM8KwNTgnMDguMCJF!5e0!3m2!1sid!2sid!4v1646542431566!5m2!1sid!2sid"
+      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <section class="contact-us">
+    <div class="row">
+      <div class="contact-col">
+        <div>
+          <i class="fas fa-home"></i>
+          <span>
+            <h5>XYZ Road, ABC Building</h5>
+            <p>Riau, Batam, Indonesia</p>
+          </span>
+        </div>
+        <div>
+          <i class="fas fa-phone"></i>
+          <span>
+            <h5>+1 1234567890</h5>
+            <p>Monday to Saturday, 10AM to 6PM</p>
+          </span>
+        </div>
+        <div>
+          <i class="fas fa-envelope"></i>
+          <span>
+            <h5>info@easytutorials.com</h5>
+            <p>Email us your query</p>
+          </span>
+
+        </div>
+      </div>
+      <div class="contact-col">
+
+        <form onsubmit="sendEmail(); reset(); return false;">
+          <input name="name" id="name" type="text" placeholder="Enter your name" required>
+          <input name="email" id="email" type="email" placeholder="Enter email address" required>
+          <input name="subject" id="subject" type="text" placeholder="Enter your subject" required>
+          <textarea name="message" id="message" rows="8" placeholder="Message" required></textarea>
+          <button type="submit" class="hero-btn red-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="footer">
+    <h4>About Us</h4>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam harum neque fuga explicabo velit, architecto
+      nihil ex,<br> vel accusantium sapiente culpa. Officia, repellendus fugit. Temporibus recusandae illo ipsa
+      quibusdam totam.</p>
+    <div class="icons">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin"></i>
+    </div>
+
+    <p>Made with <i class="fas fa-heart"></i> by Easy Tutorials</p>
+  </section>
+
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    function sendEmail() {
+      Email.send({
+        SecureToken: "512d7d10-b84f-4d2a-8dc9-9b10e6bdb8a0",
+        To: 'khenjyjohnelson123@gmail.com',
+        From: document.getElementById("email").value,
+        Subject: "New Contact Form Enquiry",
+        Body: "Name : " + document.getElementById("name").value
+          + "<br> Email : " + document.getElementById("email").value
+          + "<br> Subject : " + document.getElementById("subject").value
+          + "<br> Message : " + document.getElementById("message").value
+      }).then(
+        message => alert(message)
+      );
+    }
+  </script>
+
+  <!-- Javascript for Toggle Menu -->
+  <script>
+
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+    function hideMenu() {
+      navLinks.style.right = "-200px";
+    }
+  </script>
+</body>
+
+</html>
