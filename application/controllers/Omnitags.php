@@ -206,324 +206,112 @@ if (!class_exists('Omnitags')) {
         // Session userdata handling for loading pages
         public function page_session_all()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value1'],
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
         }
 
         public function page_session_2()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
-            }
-        }
-
-        public function page_session_2_4()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
-            }
-        }
-
-        public function page_session_2_3_4()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
-            }
-        }
-
-        public function page_session_2_4_5()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value2']
+            ];
+            $this->page_session_check($allowed_values);
         }
 
         public function page_session_3()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value3']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value3']
+            ];
+            $this->page_session_check($allowed_values);
         }
 
         public function page_session_4()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value4']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
-            }
-        }
-
-        public function page_session_4_5()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value4']
+            ];
+            $this->page_session_check($allowed_values);
         }
 
         public function page_session_5()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
+        }
 
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
+
+        public function page_session_check($allowed_values)
+        {
+            if (in_array(userdata($this->aliases['tabel_c2_field6']), $allowed_values)) {
+                return; // Do nothing if the value is allowed
+            } else {
+                redirect(site_url($this->views['language'] . '/invalid'));
             }
         }
 
-        public function page_session_2_3_4_5()
+        public function session_check($allowed_values)
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                default:
-                    redirect(site_url($this->views['language'] . '/no_level'));
-                    break;
+            if (in_array(userdata($this->aliases['tabel_c2_field6']), $allowed_values)) {
+                return; // Do nothing if the value is allowed
+            } else {
+                redirect(site_url($this->views['language'] . '/invalid'));
             }
         }
 
         // Session userdata handling for loading public functions
         public function session_all()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value1'],
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
         }
 
         public function session_2()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
-        }
-
-        public function session_2_4_5()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
-        }
-
-        public function session_2_4()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value2']
+            ];
+            $this->session_check($allowed_values);
         }
 
         public function session_3()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value3']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
-        }
-
-        public function session_3_5()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value3']
+            ];
+            $this->session_check($allowed_values);
         }
 
         public function session_4()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value4']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value4']
+            ];
+            $this->session_check($allowed_values);
         }
-
-        public function session_2_3_4_5()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
-        }
-
-        public function session_4_5()
-        {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value4']:
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
-        }
-
+        
         public function session_5()
         {
-            switch (userdata($this->aliases['tabel_c2_field6'])) {
-                case $this->aliases['tabel_c2_field6_value5']:
-                    break;
-
-                case $this->aliases['tabel_c2_field6_value1']:
-                case $this->aliases['tabel_c2_field6_value2']:
-                case $this->aliases['tabel_c2_field6_value3']:
-                case $this->aliases['tabel_c2_field6_value4']:
-                default:
-                    redirect(site_url($this->views['language'] . '/invalid'));
-                    break;
-            }
+            $allowed_values = [
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
         }
+
 
         // Notification handlers
         // notification not shown, will be used

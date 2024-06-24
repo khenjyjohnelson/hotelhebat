@@ -50,7 +50,13 @@ class C_tabel_c2 extends Omnitags
 	public function profil()
 	{
 		$this->declarew();
-		$this->page_session_2_3_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
 
 		$tabel_c2_field1 = userdata($this->aliases['tabel_c2_field1']);
 		$data1 = array(
@@ -279,7 +285,13 @@ class C_tabel_c2 extends Omnitags
 	public function update_password()
 	{
 		$this->declarew();
-		$this->session_2_3_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
 
 		$tabel_c2_field1 = $this->v_post['tabel_c2_field1'];
 
@@ -420,7 +432,13 @@ class C_tabel_c2 extends Omnitags
 	public function logout()
 	{
 		$this->declarew();
-		$this->session_2_3_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
 
 		// menghapus session
 		session_destroy();

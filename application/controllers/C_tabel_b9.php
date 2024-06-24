@@ -10,7 +10,13 @@ class C_tabel_b9 extends Omnitags
 	public function detail($tabel_b9_field1 = NULL)
 	{
 		$this->declarew();
-		$this->page_session_2_3_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
 
 		$tabel_b9 = $this->tl_b9->get_b9_by_b9_field1_by_b9_field2($tabel_b9_field1, userdata($this->aliases['tabel_c2_field1']))->result();
 
@@ -54,7 +60,13 @@ class C_tabel_b9 extends Omnitags
 	public function daftar()
 	{
 		$this->declarew();
-		$this->page_session_2_3_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
 
 		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 
@@ -116,7 +128,13 @@ class C_tabel_b9 extends Omnitags
 	public function lihat($tabel_b9_field1 = NULL)
 	{
 		$this->declarew();
-		$this->session_2_3_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
 
 		$tabel_b9 = $this->tl_b9->get_b9_by_b9_field1_by_b9_field2($tabel_b9_field1, userdata($this->aliases['tabel_c2_field1']))->result();
 
@@ -164,7 +182,13 @@ class C_tabel_b9 extends Omnitags
 	public function update()
 	{
 		$this->declarew();
-		$this->session_2_3_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
 
 		$tabel_b9_field2 = userdata($this->aliases['tabel_c2_field1']);
 

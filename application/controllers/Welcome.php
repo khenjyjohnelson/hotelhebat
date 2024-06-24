@@ -83,7 +83,12 @@ class Welcome extends Omnitags
 	public function dashboard()
 	{
 		$this->declarew();
-		$this->page_session_2_3_4();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value3'],
+                $this->aliases['tabel_c2_field6_value4']
+            ];
+            $this->page_session_check($allowed_values);
 
 		$chart_tabel_f1 = $this->tl_e4->getCharttabel_f1();
 		$chart_tabel_f2 = $this->tl_e4->getCharttabel_f2();

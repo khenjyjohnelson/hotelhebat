@@ -120,7 +120,11 @@ class C_tabel_f1 extends Omnitags
 	public function print($tabel_f1_field1 = null)
 	{
 		$this->declarew();
-		$this->page_session_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
 
 		$tabel = $this->tl_f1->get_f1_by_f1_field1($tabel_f1_field1);
 		$this->check_data($tabel);

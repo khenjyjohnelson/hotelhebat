@@ -160,7 +160,11 @@ class C_tabel_f2 extends Omnitags
 	public function print($tabel_f2_field1 = null)
 	{
 		$this->declarew();
-		$this->page_session_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
 
 		$tabel = $this->tl_f2->get_f2_by_f2_field1($tabel_f2_field1);
 		$this->check_data($tabel);
@@ -195,7 +199,11 @@ class C_tabel_f2 extends Omnitags
 	public function cari()
 	{
 		$this->declarew();
-		$this->page_session_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
 
 		$param1 = $this->v_get['tabel_f2_field1'];
 		$param2 = $this->v_get['tabel_f2_field4'];
@@ -334,7 +342,11 @@ class C_tabel_f2 extends Omnitags
 	public function update_status()
 	{
 		$this->declarew();
-		$this->session_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
 
 		$tabel_f2_field1 = $this->v_post['tabel_f2_field1'];
 

@@ -25,7 +25,11 @@ class C_tabel_f3 extends Omnitags
 	public function daftar()
 	{
 		$this->declarew();
-		$this->page_session_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
 
 		// nilai min dan max sudah diinput sebelumnya
 		$param1 = $this->v_get['tabel_f3_field7_filter1'];
@@ -57,7 +61,12 @@ class C_tabel_f3 extends Omnitags
 	public function daftar_history()
 	{
 		$this->declarew();
-		$this->session_2_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
 
 		// nilai min dan max sudah diinput sebelumnya
 		$param1 = $this->v_get['tabel_f3_field7_filter1'];
@@ -153,7 +162,11 @@ class C_tabel_f3 extends Omnitags
 	public function print($tabel_f3_field1 = null)
 	{
 		$this->declarew();
-		$this->page_session_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->page_session_check($allowed_values);
 
 		$param1 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
 		$this->check_data($param1);
@@ -216,7 +229,12 @@ class C_tabel_f3 extends Omnitags
 	{
 		// Masih membutuhkan kode untuk mencegah hal ini terjadi lebih dari satu kali dengan id tabel_f2 yang sama
 		$this->declarew();
-		$this->session_2_4_5();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value4'],
+                $this->aliases['tabel_c2_field6_value5']
+            ];
+            $this->session_check($allowed_values);
 
 		$tabel_f3_field3 = $this->v_post['tabel_f3_field3'];
 		$tabel_f3_field6 = $this->v_post['tabel_f3_field6'];
@@ -278,7 +296,11 @@ class C_tabel_f3 extends Omnitags
 	public function update()
 	{
 		$this->declarew();
-		$this->session_2_4();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value4']
+            ];
+            $this->session_check($allowed_values);
 
 		$tabel_f3_field1 = $this->v_post['tabel_f3_field1'];
 
@@ -305,7 +327,11 @@ class C_tabel_f3 extends Omnitags
 	public function delete($tabel_f3_field1 = null)
 	{
 		$this->declarew();
-		$this->session_2_4();
+		$allowed_values = [
+                $this->aliases['tabel_c2_field6_value2'],
+                $this->aliases['tabel_c2_field6_value4']
+            ];
+            $this->session_check($allowed_values);
 
 		$tabel_f3 = $this->tl_f3->get_f3_by_f3_field1($tabel_f3_field1)->result();
 		$this->check_data($tabel_f3);
