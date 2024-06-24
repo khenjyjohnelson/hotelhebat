@@ -22,20 +22,33 @@
 </div>
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_f1->result() as $tl_f1):
-    echo card_regular(
-      $tl_f1->$tabel_f1_field1,
-      $tl_f1->$tabel_f1_field1 . ' | ' . $tl_f1->$tabel_e4_field2,
-      $tl_f1->$tabel_f1_field14,
-      btn_lihat($tl_f1->$tabel_f1_field1) . ' ' .
-      btn_hapus('tabel_f1', $tl_f1->$tabel_f1_field1) . ' ' .
-      btn_print('tabel_f1', $tl_f1->$tabel_f1_field1),
-      'text-white bg-secondary',
-      'col-md-3',
-      $tabel_f1,
-    );
-  endforeach; ?>
+  <?php if (empty($tbl_f1->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
+
+  <?php } else {
+    foreach ($tbl_f1->result() as $tl_f1):
+      echo card_regular(
+        $tl_f1->$tabel_f1_field1,
+        $tl_f1->$tabel_f1_field1 . ' | ' . $tl_f1->$tabel_e4_field2,
+        $tl_f1->$tabel_f1_field14,
+        btn_lihat($tl_f1->$tabel_f1_field1) . ' ' .
+        btn_hapus('tabel_f1', $tl_f1->$tabel_f1_field1) . ' ' .
+        btn_print('tabel_f1', $tl_f1->$tabel_f1_field1),
+        'text-white bg-secondary',
+        'col-md-3',
+        $tabel_f1,
+      );
+    endforeach;
+  } ?>
 </div>
+
 
 <div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">

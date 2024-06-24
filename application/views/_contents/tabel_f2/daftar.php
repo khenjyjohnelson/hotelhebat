@@ -21,38 +21,51 @@
 </div>
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_f2->result() as $tl_f2):
-    switch ($tl_f2->$tabel_f2_field12) {
-      case $tabel_f2_field12_value2:
-        $button = btn_field($tabel_f3_field6 . $tl_f2->$tabel_f2_field1, '<i class="fas fa-shopping-cart"></i>');
-        $theme = 'text-white bg-primary';
-        break;
-      case $tabel_f2_field12_value3:
-        $button = btn_print('tabel_f2', $tl_f2->$tabel_f2_field1);
-        $theme = 'text-white bg-info';
-        break;
-      case $tabel_f2_field12_value4:
-        $button = btn_print('tabel_f2', $tl_f2->$tabel_f2_field1);
-        $theme = 'text-white bg-success';
-        break;
-      default:
-        $button = '';
-        $theme = 'text-white bg-secondary';
-        break;
-    }
+  <?php if (empty($tbl_f2->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
 
-    echo card_regular(
-      $tl_f2->$tabel_f2_field1,
-      $tl_f2->$tabel_f2_field1 . ' | ' . $tl_f2->$tabel_e4_field2,
-      $tl_f2->$tabel_f2_field12,
-      btn_lihat($tl_f2->$tabel_f2_field1) . ' ' .
-      $button,
-      $theme,
-      'col-md-3',
-      $tabel_f2,
-    );
-  endforeach; ?>
+  <?php } else {
+    foreach ($tbl_f2->result() as $tl_f2):
+      switch ($tl_f2->$tabel_f2_field12) {
+        case $tabel_f2_field12_value2:
+          $button = btn_field($tabel_f3_field6 . $tl_f2->$tabel_f2_field1, '<i class="fas fa-shopping-cart"></i>');
+          $theme = 'text-white bg-primary';
+          break;
+        case $tabel_f2_field12_value3:
+          $button = btn_print('tabel_f2', $tl_f2->$tabel_f2_field1);
+          $theme = 'text-white bg-info';
+          break;
+        case $tabel_f2_field12_value4:
+          $button = btn_print('tabel_f2', $tl_f2->$tabel_f2_field1);
+          $theme = 'text-white bg-success';
+          break;
+        default:
+          $button = '';
+          $theme = 'text-white bg-secondary';
+          break;
+      }
+
+      echo card_regular(
+        $tl_f2->$tabel_f2_field1,
+        $tl_f2->$tabel_f2_field1 . ' | ' . $tl_f2->$tabel_e4_field2,
+        $tl_f2->$tabel_f2_field12,
+        btn_lihat($tl_f2->$tabel_f2_field1) . ' ' .
+        $button,
+        $theme,
+        'col-md-3',
+        $tabel_f2,
+      );
+    endforeach;
+  } ?>
 </div>
+
 
 <div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">

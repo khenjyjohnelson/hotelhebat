@@ -18,7 +18,7 @@ class C_tabel_e1 extends Omnitags
 
 		$filter = $this->tl_e1->filter($param1);
 
-		if (empty($filter->num_rows())) {
+		if (empty($param1)) {
 			$result = $this->tl_e1->get_all_e1();
 		} else {
 			$result = $filter;

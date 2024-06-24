@@ -1,6 +1,6 @@
 <div class="row mb-2 align-items-center">
   <div class="col-md-9 d-flex align-items-center">
-  <h1><?= $title ?><?= count_data($tbl_a1) ?><?= $phase ?></h1>
+    <h1><?= $title ?><?= count_data($tbl_a1) ?><?= $phase ?></h1>
   </div>
   <div class="col-md-3 text-right">
     <?php foreach ($dekor->result() as $dk): ?>
@@ -26,20 +26,32 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_a1 as $tl_a1):
-    echo card_file(
-      $tl_a1->$tabel_a1_field1,
-      $tl_a1->$tabel_a1_field2,
-      $tl_a1->$tabel_a1_field4,
-      btn_lihat($tl_a1_alt->$tabel_a1_field1) . ' ' .
-      btn_edit($tl_a1_alt->$tabel_a1_field1). ' ' .
-      btn_hapus($tabel_a1, $tl_a1_alt->$tabel_a1_field1),
-      'text-white bg-danger',
-      'col-md-3',
-      $tabel_a1,
-      $tl_a1->$tabel_a1_field3,
-    );
-  endforeach; ?>
+  <?php if (empty($tbl_a1->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
+
+  <?php } else {
+    foreach ($tbl_a1 as $tl_a1):
+      echo card_file(
+        $tl_a1->$tabel_a1_field1,
+        $tl_a1->$tabel_a1_field2,
+        $tl_a1->$tabel_a1_field4,
+        btn_lihat($tl_a1_alt->$tabel_a1_field1) . ' ' .
+        btn_edit($tl_a1_alt->$tabel_a1_field1) . ' ' .
+        btn_hapus($tabel_a1, $tl_a1_alt->$tabel_a1_field1),
+        'text-white bg-danger',
+        'col-md-3',
+        $tabel_a1,
+        $tl_a1->$tabel_a1_field3,
+      );
+    endforeach;
+  } ?>
 </div>
 
 

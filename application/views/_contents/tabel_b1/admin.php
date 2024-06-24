@@ -65,20 +65,32 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_b1->result() as $tl_b1):
-    echo card_file(
-      $tl_b1->$tabel_b1_field1,
-      $tl_b1->$tabel_b1_field2,
-      $tl_b1->$tabel_b1_field5,
-      btn_lihat($tl_b1->$tabel_b1_field1) . ' ' .
-      btn_edit($tl_b1->$tabel_b1_field1) . ' ' .
-      btn_hapus('tabel_b1', $tl_b1->$tabel_b1_field1),
-      'text-white bg-danger',
-      'col-md-3',
-      $tabel_b1,
-      $tl_b1->$tabel_b1_field4,
-    );
-  endforeach; ?>
+  <?php if (empty($tbl_b1->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
+
+  <?php } else {
+    foreach ($tbl_b1->result() as $tl_b1):
+      echo card_file(
+        $tl_b1->$tabel_b1_field1,
+        $tl_b1->$tabel_b1_field2,
+        $tl_b1->$tabel_b1_field5,
+        btn_lihat($tl_b1->$tabel_b1_field1) . ' ' .
+        btn_edit($tl_b1->$tabel_b1_field1) . ' ' .
+        btn_hapus('tabel_b1', $tl_b1->$tabel_b1_field1),
+        'text-white bg-danger',
+        'col-md-3',
+        $tabel_b1,
+        $tl_b1->$tabel_b1_field4,
+      );
+    endforeach;
+  } ?>
 </div>
 
 
@@ -141,7 +153,7 @@
             </div>
             <div class="col-md-6">
               <?= input_add('text', 'tabel_b1_field5', 'required') ?>
-              
+
               <div class="form-group">
                 <select id="<?= $tabel_b1_field6_input ?>" class="form-control float" required
                   name="<?= $tabel_b1_field6_input ?>">
@@ -208,12 +220,13 @@
               <div class="col-md-6">
                 <?= input_edit('text', 'tabel_b1_field5', htmlspecialchars($tl_b1->$tabel_b1_field5), 'required') ?>
                 <?= select_ubah('tabel_b1_field6', option_selected($tl_b1->$tabel_b1_field6, $tl_b1->$tabel_b1_field6), option_b1(), 'required') ?>
-                
+
                 <div class="form-group">
                   <select id="<?= $tabel_b1_field7_input ?>" class="form-control float" required
                     name="<?= $tabel_b1_field7_input ?>">
-                    <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b1->$tabel_b1_field7 ?></option>
-                    
+                    <option selected hidden value="<?= $tl_b1->$tabel_b1_field7 ?>"><?= $tl_b1->$tabel_b1_field7 ?>
+                    </option>
+
                     <?php foreach ($tbl_b7->result() as $tl_b7): ?>
                       <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
                         <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
@@ -230,7 +243,7 @@
 
           <!-- memunculkan notifikasi modal -->
           <p class="small text-center text-danger"><?= get_flashdata('pesan_ubah') ?></p>
-          
+
           <div class="modal-footer">
             <?= fontawesome_link() ?>
             <?= btn_update() ?>

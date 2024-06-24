@@ -69,7 +69,7 @@ class C_tabel_f2 extends Omnitags
 
 		$filter = $this->tl_f2->filter_user_with_e4($param1, $param2, $param3, $param4, $tabel_c2_field1);
 
-		if (empty($filter->num_rows())) {
+		if (empty($param1)) {
 			$result = $this->tl_f2->get_f2_with_e4_by_c2_field1($tabel_c2_field1);
 		} else {
 			$result = $filter;
@@ -111,7 +111,7 @@ class C_tabel_f2 extends Omnitags
 
 		$filter = $this->tl_f2->filter_with_e4($param1, $param2, $param3, $param4);
 
-		if (empty($filter->num_rows())) {
+		if (empty($param1)) {
 			$result = $this->tl_f2->get_f2_with_e4();
 		} else {
 			$result = $filter;

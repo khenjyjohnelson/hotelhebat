@@ -173,6 +173,7 @@ if (!class_exists('Omnitags')) {
                 'notif' => $this->notif_limit,
                 'notif_count' => $this->notif_null->num_rows(),
                 'language' => $this->language_code,
+                'no_data' => $this->tl_b1->dekor($this->theme_id, 'no_data'),
 
                 'flash1' => 'pesan',
                 'flash1_func1' => '$("#element").toast("show")',

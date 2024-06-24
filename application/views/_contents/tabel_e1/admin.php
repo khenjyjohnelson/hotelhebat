@@ -55,18 +55,30 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_e1->result() as $tl_e1):
-    echo card_regular(
-      $tl_e1->$tabel_e1_field1,
-      $tl_e1->$tabel_e1_field2,
-      $tl_e1->$tabel_e1_field3,
-      btn_lihat($tl_e1->$tabel_e1_field1) . ' ' .
-      btn_edit($tl_e1->$tabel_e1_field1),
-      'text-white bg-danger',
-      'col-md-3',
-      $tabel_e1,
-    );
-  endforeach; ?>
+  <?php if (empty($tbl_e1->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
+
+  <?php } else {
+    foreach ($tbl_e1->result() as $tl_e1):
+      echo card_regular(
+        $tl_e1->$tabel_e1_field1,
+        $tl_e1->$tabel_e1_field2,
+        $tl_e1->$tabel_e1_field3,
+        btn_lihat($tl_e1->$tabel_e1_field1) . ' ' .
+        btn_edit($tl_e1->$tabel_e1_field1),
+        'text-white bg-danger',
+        'col-md-3',
+        $tabel_e1,
+      );
+    endforeach;
+  } ?>
 </div>
 
 
@@ -171,7 +183,7 @@
         <form>
           <div class="modal-body">
             <?= table_data(
-              row_data('tabel_e1_field1', $tl_e1->$tabel_e1_field1) . 
+              row_data('tabel_e1_field1', $tl_e1->$tabel_e1_field1) .
               row_data('tabel_e1_field2', $tl_e1->$tabel_e1_field2) .
               row_data('tabel_e1_field3', $tl_e1->$tabel_e1_field3) .
               row_file($tabel_e1, 'tabel_e1_field4', $tl_e1->$tabel_e1_field4),

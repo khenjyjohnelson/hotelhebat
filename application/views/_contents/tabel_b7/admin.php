@@ -25,27 +25,39 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_b7->result() as $tl_b7):
-    echo card_file(
-      $tl_b7->$tabel_b7_field1,
-      $tl_b7->$tabel_b7_field2,
-      btn_field($tabel_b7_field3 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-globe"></i>') . ' ' .
-      btn_field($tabel_b7_field4 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-rocket"></i>') . ' ' .
-      btn_field($tabel_b7_field5 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-image"></i>'),
-      btn_lihat($tl_b7->$tabel_b7_field1) . ' ' .
-      btn_edit($tl_b7->$tabel_b7_field1) . ' ' .
-      ($tl_b7->$tabel_b7_field2 != $database ?
-        '<a class="btn mr-1 mb-2 btn-light text-danger"
+  <?php if (empty($tbl_b7->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
+
+  <?php } else {
+    foreach ($tbl_b7->result() as $tl_b7):
+      echo card_file(
+        $tl_b7->$tabel_b7_field1,
+        $tl_b7->$tabel_b7_field2,
+        btn_field($tabel_b7_field3 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-globe"></i>') . ' ' .
+        btn_field($tabel_b7_field4 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-rocket"></i>') . ' ' .
+        btn_field($tabel_b7_field5 . $tl_b7->$tabel_b7_field1, '<i class="fas fa-image"></i>'),
+        btn_lihat($tl_b7->$tabel_b7_field1) . ' ' .
+        btn_edit($tl_b7->$tabel_b7_field1) . ' ' .
+        ($tl_b7->$tabel_b7_field2 != $database ?
+          '<a class="btn mr-1 mb-2 btn-light text-danger"
           onclick="return confirm(\'Tindakan anda akan menghapus hal-hal berikut:\n' . $tabel_b7_alias . '\n' . $tabel_b1_alias . '\n' . $tabel_b2_alias . '\n' . $tabel_b5_alias . '\n' . $tabel_b6_alias . '\nHapus data?\')"
           href="' . site_url($language . '/' . $tabel_b7 . '/delete/' . $tl_b7->$tabel_b7_field1) . '">
           <i class="fas fa-trash"></i></a>' : ''
-      ),
-      'text-white bg-danger',
-      'col-md-3',
-      $tabel_b7,
-      $tl_b7->$tabel_b7_field3,
-    );
-  endforeach; ?>
+        ),
+        'text-white bg-danger',
+        'col-md-3',
+        $tabel_b7,
+        $tl_b7->$tabel_b7_field3,
+      );
+    endforeach;
+  } ?>
 </div>
 
 

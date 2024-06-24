@@ -24,31 +24,43 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_e3->result() as $tl_e3):
-    switch ($tl_e3->$tabel_e3_field4) {
-      case $tabel_e3_field4_value2:
-      case $tabel_e3_field4_value3:
-        $button = btn_edit($tl_e3->$tabel_e3_field1);
-        break;
-      case $tabel_e3_field4_value4:
-        $button = btn_field($tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-broom"></i>');
-        break;
-      case $tabel_e3_field4_value5:
-        $button = btn_field($tabel_c1_field7_value2 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-hammer"></i>');
-        break;
-    }
+  <?php if (empty($tbl_e3->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
 
-    echo card_regular(
-      $tl_e3->$tabel_e3_field1,
-      $tl_e3->$tabel_e3_field1 . ' | ' . $tl_e3->$tabel_e4_field2,
-      $tl_e3->$tabel_e3_field4,
-      btn_lihat($tl_e3->$tabel_e3_field1) . ' ' .
-      $button,
-      'text-white bg-danger',
-      'col-md-3',
-      $tabel_e3
-    );
-  endforeach; ?>
+  <?php } else {
+    foreach ($tbl_e3->result() as $tl_e3):
+      switch ($tl_e3->$tabel_e3_field4) {
+        case $tabel_e3_field4_value2:
+        case $tabel_e3_field4_value3:
+          $button = btn_edit($tl_e3->$tabel_e3_field1);
+          break;
+        case $tabel_e3_field4_value4:
+          $button = btn_field($tabel_c1_field7_value1 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-broom"></i>');
+          break;
+        case $tabel_e3_field4_value5:
+          $button = btn_field($tabel_c1_field7_value2 . $tl_e3->$tabel_e3_field1, '<i class="fas fa-hammer"></i>');
+          break;
+      }
+
+      echo card_regular(
+        $tl_e3->$tabel_e3_field1,
+        $tl_e3->$tabel_e3_field1 . ' | ' . $tl_e3->$tabel_e4_field2,
+        $tl_e3->$tabel_e3_field4,
+        btn_lihat($tl_e3->$tabel_e3_field1) . ' ' .
+        $button,
+        'text-white bg-danger',
+        'col-md-3',
+        $tabel_e3
+      );
+    endforeach;
+  } ?>
 </div>
 
 
@@ -285,7 +297,7 @@
                     ) ?>
                     <?= input_hidden('tabel_c2_field1', userdata($tabel_c2_field1), 'required') ?>
                     <?= input_hidden('tabel_e3_field1', $tl_e3->$tabel_e3_field1, 'required') ?>
-                    
+
                     <!-- mengubah status kamar secara instan berdasarkan id_pesanan -->
                     <?php if ($tl_e3->$tabel_e3_field3 <> 0) { ?>
                       <?= input_hidden('tabel_e3_field4', $tabel_e3_field4_value3, 'required') ?>

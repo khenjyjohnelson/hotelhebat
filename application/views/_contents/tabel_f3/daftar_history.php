@@ -23,22 +23,35 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_f3->result() as $tl_f3):
+  <?php if (empty($tbl_f3->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
 
-    echo card_regular(
-      $tl_f3->$tabel_f3_field1,
-      $tl_f3->$tabel_f3_field1 . ' | ' . $tabel_f2_alias . ' ' . $tl_f3->$tabel_f3_field4,
-      card_content('40%', 'tabel_f3_field5', $tl_f3->$tabel_f3_field5) .
-      card_content('40%', 'tabel_f3_field6', 'Rp ' . number_format($tl_f3->$tabel_f3_field6, '2', ',', '.')) .
-      card_content('40%', 'tabel_f3_field7', $tl_f3->$tabel_f3_field7),
-      btn_lihat($tl_f3->$tabel_f3_field1) . ' ' .
-      btn_print('tabel_f3', $tl_f3->$tabel_f3_field1),
-      'text-light bg-secondary',
-      'col-md-4',
-      $tabel_f3,
-    );
-  endforeach; ?>
+  <?php } else {
+    foreach ($tbl_f3->result() as $tl_f3):
+
+      echo card_regular(
+        $tl_f3->$tabel_f3_field1,
+        $tl_f3->$tabel_f3_field1 . ' | ' . $tabel_f2_alias . ' ' . $tl_f3->$tabel_f3_field4,
+        card_content('40%', 'tabel_f3_field5', $tl_f3->$tabel_f3_field5) .
+        card_content('40%', 'tabel_f3_field6', 'Rp ' . number_format($tl_f3->$tabel_f3_field6, '2', ',', '.')) .
+        card_content('40%', 'tabel_f3_field7', $tl_f3->$tabel_f3_field7),
+        btn_lihat($tl_f3->$tabel_f3_field1) . ' ' .
+        btn_print('tabel_f3', $tl_f3->$tabel_f3_field1),
+        'text-light bg-secondary',
+        'col-md-4',
+        $tabel_f3,
+      );
+    endforeach;
+  } ?>
 </div>
+
 
 <div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">

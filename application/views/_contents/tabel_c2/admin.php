@@ -22,19 +22,31 @@
 </div>
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_c2->result() as $tl_c2):
-    echo card_regular(
-      $tl_c2->$tabel_c2_field1,
-      $tl_c2->$tabel_c2_field2,
-      $tl_c2->$tabel_c2_field5,
-      btn_lihat($tl_c2->$tabel_c2_field1) . ' ' .
-      btn_edit($tl_c2->$tabel_c2_field1) . ' ' .
-      btn_hapus('tabel_c2', $tl_c2->$tabel_c2_field1),
-      'text-white bg-danger',
-      'col-md-3',
-      $tabel_c2,
-    );
-  endforeach; ?>
+  <?php if (empty($tbl_c2->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
+
+  <?php } else {
+    foreach ($tbl_c2->result() as $tl_c2):
+      echo card_regular(
+        $tl_c2->$tabel_c2_field1,
+        $tl_c2->$tabel_c2_field2,
+        $tl_c2->$tabel_c2_field5,
+        btn_lihat($tl_c2->$tabel_c2_field1) . ' ' .
+        btn_edit($tl_c2->$tabel_c2_field1) . ' ' .
+        btn_hapus('tabel_c2', $tl_c2->$tabel_c2_field1),
+        'text-white bg-danger',
+        'col-md-3',
+        $tabel_c2,
+      );
+    endforeach;
+  } ?>
 </div>
 
 
@@ -167,7 +179,7 @@
         <form>
           <div class="modal-body">
             <?= table_data(
-              row_data('tabel_c2_field2', $tl_c2->$tabel_c2_field2) . 
+              row_data('tabel_c2_field2', $tl_c2->$tabel_c2_field2) .
               row_data('tabel_c2_field3', $tl_c2->$tabel_c2_field3) .
               row_data('tabel_c2_field5', $tl_c2->$tabel_c2_field5) .
               row_data('tabel_c2_field6', $tl_c2->$tabel_c2_field6),

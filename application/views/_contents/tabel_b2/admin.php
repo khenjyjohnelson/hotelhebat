@@ -60,28 +60,40 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_b2->result() as $tl_b2): ?>
-    <?php
-    $btn_class = '';
-    if ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value1) {
-      $btn_class = btn_action('tabel_b2', '/nonaktifkan/' . $tl_b2->$tabel_b2_field1, '<i class="fas fa-toggle-on"></i>', 'text-warning');
-    } elseif ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value2) {
-      $btn_class = btn_action('tabel_b2', '/aktifkan/' . $tl_b2->$tabel_b2_field1, '<i class="fas fa-toggle-off"></i>', 'text-warning');
-    }
-    echo card_file(
-      $tl_b2->$tabel_b2_field1,
-      $tl_b2->$tabel_b2_field2,
-      $btn_class,
-      btn_lihat($tl_b2->$tabel_b2_field1) . ' ' .
-      btn_edit($tl_b2->$tabel_b2_field1) . ' ' .
-      btn_hapus('tabel_b2', $tl_b2->$tabel_b2_field1),
-      'text-white bg-danger',
-      'col-md-3',
-      $tabel_b2,
-      $tl_b2->$tabel_b2_field4,
-    );
-    ?>
-  <?php endforeach; ?>
+  <?php if (empty($tbl_b2->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
+
+  <?php } else {
+    foreach ($tbl_b2->result() as $tl_b2): ?>
+      <?php
+      $btn_class = '';
+      if ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value1) {
+        $btn_class = btn_action('tabel_b2', '/nonaktifkan/' . $tl_b2->$tabel_b2_field1, '<i class="fas fa-toggle-on"></i>', 'text-warning');
+      } elseif ($tl_b2->$tabel_b2_field6 == $tabel_b2_field6_value2) {
+        $btn_class = btn_action('tabel_b2', '/aktifkan/' . $tl_b2->$tabel_b2_field1, '<i class="fas fa-toggle-off"></i>', 'text-warning');
+      }
+      echo card_file(
+        $tl_b2->$tabel_b2_field1,
+        $tl_b2->$tabel_b2_field2,
+        $btn_class,
+        btn_lihat($tl_b2->$tabel_b2_field1) . ' ' .
+        btn_edit($tl_b2->$tabel_b2_field1) . ' ' .
+        btn_hapus('tabel_b2', $tl_b2->$tabel_b2_field1),
+        'text-white bg-danger',
+        'col-md-3',
+        $tabel_b2,
+        $tl_b2->$tabel_b2_field4,
+      );
+      ?>
+    <?php endforeach;
+  } ?>
 </div>
 
 
@@ -144,7 +156,7 @@
             <div class="col-md-4">
               <?= input_add('text', 'tabel_b2_field2', 'required') ?>
               <?= add_file('tabel_b2_field4', 'required') ?>
-              
+
               <div class="form-group">
                 <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
                   id="<?= $tabel_b2_field7_input ?>">
@@ -197,7 +209,7 @@
 
                 <?= input_edit('text', 'tabel_b2_field2', $tl_b2->$tabel_b2_field2, 'required') ?>
                 <?= edit_file('tabel_b2', 'tabel_b2_field4', $tl_b2->$tabel_b2_field4, '') ?>
-                
+
                 <div class="form-group">
                   <select class="form-control float" required name="<?= $tabel_b2_field7_input ?>"
                     id="<?= $tabel_b2_field7_input ?>">

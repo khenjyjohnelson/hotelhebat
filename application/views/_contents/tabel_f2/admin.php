@@ -24,35 +24,48 @@
 </div>
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_f2->result() as $tl_f2):
-    switch ($tl_f2->$tabel_f2_field12) {
-      case $tabel_f2_field12_value1:
-        $button = btn_book($tl_f2->$tabel_f2_field1);
-        break;
-      case $tabel_f2_field12_value3:
-      case $tabel_f2_field12_value4:
-        $button = btn_edit($tl_f2->$tabel_f2_field1);
-        break;
-      case $tabel_f2_field12_value5:
-        $button = btn_hapus('tabel_f2', $tl_f2->$tabel_f2_field1);
-        break;
-      default:
-        $button = "";
-        break;
-    }
+  <?php if (empty($tbl_f2->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
 
-    echo card_regular(
-      $tl_f2->$tabel_f2_field1,
-      $tl_f2->$tabel_f2_field1 . ' | ' . $tl_f2->$tabel_e4_field2,
-      $tl_f2->$tabel_f2_field12,
-      $button . ' ' .
-      btn_print('tabel_f2', $tl_f2->$tabel_f2_field1),
-      'text-dark bg-light',
-      'col-md-3',
-      $tabel_f2,
-    );
-  endforeach; ?>
+  <?php } else {
+    foreach ($tbl_f2->result() as $tl_f2):
+      switch ($tl_f2->$tabel_f2_field12) {
+        case $tabel_f2_field12_value1:
+          $button = btn_book($tl_f2->$tabel_f2_field1);
+          break;
+        case $tabel_f2_field12_value3:
+        case $tabel_f2_field12_value4:
+          $button = btn_edit($tl_f2->$tabel_f2_field1);
+          break;
+        case $tabel_f2_field12_value5:
+          $button = btn_hapus('tabel_f2', $tl_f2->$tabel_f2_field1);
+          break;
+        default:
+          $button = "";
+          break;
+      }
+
+      echo card_regular(
+        $tl_f2->$tabel_f2_field1,
+        $tl_f2->$tabel_f2_field1 . ' | ' . $tl_f2->$tabel_e4_field2,
+        $tl_f2->$tabel_f2_field12,
+        $button . ' ' .
+        btn_print('tabel_f2', $tl_f2->$tabel_f2_field1),
+        'text-dark bg-light',
+        'col-md-3',
+        $tabel_f2,
+      );
+    endforeach;
+  } ?>
 </div>
+
 
 <div id="table-view" class="table-responsive data-view" style="display: none;">
   <table class="table table-light" id="data">

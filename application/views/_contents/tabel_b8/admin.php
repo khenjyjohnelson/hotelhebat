@@ -25,22 +25,34 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php foreach ($tbl_b8->result() as $tl_b8):
-    echo card_regular(
-      $tl_b8->$tabel_b8_field1,
-      $tl_b8->$tabel_b8_field2,
-      '<div style="width: 100%;">' .
-      card_content('40%', 'tabel_b8_field3', card_text($tl_b8->$tabel_b8_field3)) .
-      card_content('40%', 'tabel_b8_field4', $tl_b8->$tabel_b8_field4) .
-      '</div>',
-      btn_lihat($tl_b8->$tabel_b8_field1) . ' ' .
-      btn_edit($tl_b8->$tabel_b8_field1) . ' ' .
-      btn_hapus('tabel_b8', $tl_b8->$tabel_b8_field1),
-      'text-white bg-danger',
-      'col-md-4',
-      $tabel_b8,
-    );
-  endforeach; ?>
+  <?php if (empty($tbl_b8->result())) { ?>
+    <div class="col-md-12">
+      <div class="text-center">
+        <?php foreach ($no_data->result() as $nd): ?>
+          <img src="img/<?= $tabel_b1 ?>/<?= $nd->$tabel_b1_field4 ?>" width="200" alt="Image">
+        <?php endforeach ?>
+        <h3>NO DATA</h3>
+      </div>
+    </div>
+
+  <?php } else {
+    foreach ($tbl_b8->result() as $tl_b8):
+      echo card_regular(
+        $tl_b8->$tabel_b8_field1,
+        $tl_b8->$tabel_b8_field2,
+        '<div style="width: 100%;">' .
+        card_content('40%', 'tabel_b8_field3', card_text($tl_b8->$tabel_b8_field3)) .
+        card_content('40%', 'tabel_b8_field4', $tl_b8->$tabel_b8_field4) .
+        '</div>',
+        btn_lihat($tl_b8->$tabel_b8_field1) . ' ' .
+        btn_edit($tl_b8->$tabel_b8_field1) . ' ' .
+        btn_hapus('tabel_b8', $tl_b8->$tabel_b8_field1),
+        'text-white bg-danger',
+        'col-md-4',
+        $tabel_b8,
+      );
+    endforeach;
+  } ?>
 </div>
 
 

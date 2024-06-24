@@ -41,7 +41,7 @@ class C_tabel_b5 extends Omnitags
 
 		$filter = $this->tl_b5->filter($param1);
 
-		if (empty($filter->num_rows())) {
+		if (empty($param1)) {
 			$result = $this->tl_b5->get_all_b5();
 		} else {
 			$result = $filter;
