@@ -29,7 +29,7 @@
 
 
 <div id="card-view" class="row data-view active">
-  <?php if (empty($tbl_f2->result())) { ?>
+  <?php if (empty($tbl_e4->result())) { ?>
     <div class="col-md-12">
       <div class="text-center">
         <?php foreach ($no_data->result() as $nd): ?>
@@ -38,20 +38,22 @@
         <h3>NO DATA</h3>
       </div>
     </div>
-    
-  <?php } else {foreach ($tbl_e4->result() as $tl_e4):
-    echo card_file(
-      $tl_e4->$tabel_e4_field1,
-      $tl_e4->$tabel_e4_field2,
-      'Rp ' . number_format($tl_e4->$tabel_e4_field5, '2', ',', '.'),
-      btn_lihat($tl_e4->$tabel_e4_field1) . ' ' .
-      btn_edit($tl_e4->$tabel_e4_field1),
-      'text-white bg-danger',
-      'col-md-3',
-      $tabel_e4,
-      $tl_e4->$tabel_e4_field3,
-    );
-  endforeach; } ?>
+
+  <?php } else {
+    foreach ($tbl_e4->result() as $tl_e4):
+      echo card_file(
+        $tl_e4->$tabel_e4_field1,
+        $tl_e4->$tabel_e4_field2,
+        'Rp ' . number_format($tl_e4->$tabel_e4_field5, '2', ',', '.'),
+        btn_lihat($tl_e4->$tabel_e4_field1) . ' ' .
+        btn_edit($tl_e4->$tabel_e4_field1),
+        'text-white bg-danger',
+        'col-md-3',
+        $tabel_e4,
+        $tl_e4->$tabel_e4_field3,
+      );
+    endforeach;
+  } ?>
 </div>
 
 
@@ -201,10 +203,10 @@
         <form>
           <div class="modal-body">
             <?= table_data(
-              row_data('tabel_e4_field2', $tl_e4->$tabel_e4_field2) . 
-              row_file($tabel_e4, 'tabel_e4_field3', $tl_e4->$tabel_e4_field3) . 
-              row_data('tabel_e4_field4', $tl_e4->$tabel_e4_field4) . 
-              row_data('tabel_e4_field5', $tl_e4->$tabel_e4_field5), 
+              row_data('tabel_e4_field2', $tl_e4->$tabel_e4_field2) .
+              row_file($tabel_e4, 'tabel_e4_field3', $tl_e4->$tabel_e4_field3) .
+              row_data('tabel_e4_field4', $tl_e4->$tabel_e4_field4) .
+              row_data('tabel_e4_field5', $tl_e4->$tabel_e4_field5),
               'table-light'
             ) ?>
           </div>

@@ -82,8 +82,6 @@
 }
 ?>
 
-
-
 <h2 class="mt-4">Detail Website</h2>
 <hr>
 
@@ -93,19 +91,24 @@
 
       <div class="table-responsive">
         <?php
-        foreach ($sosmed->result() as $sm):
+        if (!$sosmed->result()) {
+          $data2 = '';
+        } else {
+          foreach ($sosmed->result() as $sm):
 
-          if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) {
-            $data2 = '<tr>
-                <td class="table-secondary table-active"><?= $sm->$tabel_b6_field3 ?></td>
-                <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>"
-                    target="_blank">
-                    Visit</a>
-              </tr>';
-          } else {
-            $data2 = '';
-          }
-        endforeach;
+            if ($sm->$tabel_b6_field2 == $tl_a1->$tabel_a1_field1) {
+              $data2 = '<tr>
+                  <td class="table-secondary table-active"><?= $sm->$tabel_b6_field3 ?></td>
+                  <td class="table-light"><a class="text-decoration-none text-primary" href="<?= $sm->$tabel_b6_field4 ?>"
+                      target="_blank">
+                      Visit</a>
+                </tr>';
+            } else {
+              $data2 = '';
+            }
+          endforeach;
+        }
+
         echo table_data(
           row_data('tabel_a1_field2', $tl_a1->$tabel_a1_field2) .
           row_data('tabel_a1_field3', $tl_a1->$tabel_a1_field3) .
@@ -123,7 +126,6 @@
     </div>
   </div>
 <?php endforeach; ?>
-
 
 <?= chart('tabel_f1', 'tabel_f2') ?>
 <?= adjust_col_js() ?>
