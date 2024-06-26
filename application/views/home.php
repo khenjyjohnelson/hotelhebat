@@ -74,7 +74,14 @@
 <br>
 <br>
 <br>
+<!-- 
+<h1>News about Apple</h1>
+<div id="news-container"></div> -->
 
+
+<br>
+<br>
+<br>
 
 <?php foreach ($tbl_a1 as $tl_a1): ?>
   <h1 class="text-center">About Us</h1>
@@ -92,6 +99,7 @@
   </div>
 <?php endforeach ?>
 
+<?= newsapi_apple('news-container') ?>
 
 <?= adjust_date1($tabel_f2_field10_input, $tabel_f2_field11_input) ?>
 <?= adjust_col_js() ?>

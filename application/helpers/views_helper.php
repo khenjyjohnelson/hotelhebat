@@ -75,14 +75,13 @@ if (!function_exists('detect_preferred_language')) {
         return 'id';
     }
 }
-
 // Sets security headers for the application
 if (!function_exists('set_security_headers')) {
     function set_security_headers()
     {
         $CI =& get_instance();
 
-        $CI->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';");
+        $CI->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; connect-src 'self' https://newsapi.org;");
         $CI->output->set_header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
         $CI->output->set_header("X-Frame-Options: SAMEORIGIN");
         $CI->output->set_header("X-Content-Type-Options: nosniff");
@@ -90,6 +89,7 @@ if (!function_exists('set_security_headers')) {
         $CI->output->set_header("Permissions-Policy: geolocation=(self 'http://localhost/me/hotel')");
     }
 }
+
 
 // Determines the device type and operating system based on the user agent
 if (!function_exists('getDeviceTypeAndOS')) {

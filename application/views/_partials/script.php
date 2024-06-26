@@ -24,7 +24,7 @@
 <script>
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip({
-            html:true
+            html: true
         });
     });
 </script>

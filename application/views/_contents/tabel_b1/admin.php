@@ -17,15 +17,21 @@
   <!-- method get supaya nilai dari filter bisa tampil nanti -->
   <form action="<?= site_url($language . '/' . $tabel_b1 . '/admin') ?>" method="get">
     <tr>
-
       <td class="pr-2">
         <div class="form-group">
           <select class="form-control float" required name="<?= $tabel_b1_field7_input ?>"
             id="<?= $tabel_b1_field7_input ?>">
-            <option selected hidden value="<?= $tabel_b1_field7_value ?>"><?= $tabel_b1_field7_value ?></option>
             <?php foreach ($tbl_b7->result() as $tl_b7): ?>
+
+              <?= options_selected_multi(
+                'tabel_b7',
+                $tl_b7->$tabel_b7_field1,
+                $tabel_b1_field7_value,
+                $tl_b7->$tabel_b7_field2
+              ) ?>
+
               <option value="<?= $tl_b7->$tabel_b7_field1 ?>">
-                <?= $tl_b7->$tabel_b7_field1 . ' - ' . $tl_b7->$tabel_b7_field2 ?>
+                <?= $tl_b7->$tabel_b7_field2 ?>
               </option>
             <?php endforeach ?>
           </select>

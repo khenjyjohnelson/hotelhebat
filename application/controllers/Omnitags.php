@@ -69,6 +69,8 @@ if (!class_exists('Omnitags')) {
             $this->load->helper('input');
             // Tampil modal
             $this->load->helper('modal');
+            // Kelola API
+            $this->load->helper('load_api');
             // Tampil card
             $this->load->helper('card');
             // Tampil dropdown

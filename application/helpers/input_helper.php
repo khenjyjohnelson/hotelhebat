@@ -473,6 +473,28 @@ if (!function_exists('option_selected')) {
     }
 }
 
+if (!function_exists('options_selected_multi')) {
+    function options_selected_multi($tabel2, $id1, $id2, $value)
+    {
+        // Get CodeIgniter instance
+        $CI =& get_instance();
+        // Fetch the view variables
+        $data = $CI->load->get_vars();
+
+        $tabel2 = $data[$tabel2];
+
+        $output = '';
+
+        if ($id1 != $id2) {
+            // You might want to handle non-matching cases here if needed
+        } else {
+            $output .= '<option selected hidden value="' . $id2 . '">' . $value . '</option>';
+        }
+
+        return $output;
+    }
+}
+
 if (!function_exists('options')) {
     function options($value, $alias)
     {
