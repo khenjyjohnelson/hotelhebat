@@ -22,6 +22,25 @@ class M_tabel_c2 extends CI_Model
 		return $this->db->get($this->aliases['tabel_c2']);
 	}
 
+	// The function below is an attemp to make a dynamic query approach into what field to load, but the controller side is very bad
+	// So I have to postpone this technique
+	public function get_c2_field_by_c2_field1($field, $param)
+	{
+		$sql = "SELECT {$field} FROM {$this->aliases['tabel_c2']}
+		WHERE {$this->aliases['tabel_c2_field1']} = '{$param}'
+		ORDER BY {$this->aliases['tabel_c2_field1']} DESC";
+		return $this->db->query($sql);
+	}
+	
+	// The function below is an attemp to make a dynamic query approach into what field to load, but the controller side is very bad 
+	// So I have to postpone this technique
+	public function get_c2_field_by_c2_field3($field, $param)
+	{
+		$sql = "SELECT {$field} FROM {$this->aliases['tabel_c2']}
+		WHERE {$this->aliases['tabel_c2_field3']} LIKE '%{$param}%'";
+		return $this->db->query($sql);
+	}
+
 	public function ceklogin($param1, $param2)
 	{
 		$this->db->where($this->aliases['tabel_c2_field3'], $param1);

@@ -74,14 +74,12 @@
 <br>
 <br>
 <br>
-<!-- 
-<h1>News about Apple</h1>
-<div id="news-container"></div> -->
 
-
+<!-- <h1>News about Apple</h1>
+<div id="news-container"></div>
 <br>
 <br>
-<br>
+<br> -->
 
 <?php foreach ($tbl_a1 as $tl_a1): ?>
   <h1 class="text-center">About Us</h1>

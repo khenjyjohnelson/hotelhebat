@@ -6,6 +6,9 @@ if (!class_exists('Omnitags')) {
     {
         protected $language_code;
 
+        // Remember if you failed to load the link in this app, then you have to go to views helper where I put restrictions on 
+        // which websites that I need to load
+
         // Di bawah ini aku berencana untuk membuat sebuah array yang menampung semua jenis alias dari field dan nama tabel
         // Dan aku akan membuat array itu merge dengan array yang akan diload ke halaman view pada setiap
         // Controller yang ada di aplikasi ini, dengan begitu, aku tidak perlu khawatir jika ingin memulai projek baru

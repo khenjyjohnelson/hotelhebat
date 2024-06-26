@@ -81,12 +81,21 @@ if (!function_exists('set_security_headers')) {
     {
         $CI =& get_instance();
 
-        $CI->output->set_header("Content-Security-Policy: default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; connect-src 'self' https://newsapi.org;");
-        $CI->output->set_header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
-        $CI->output->set_header("X-Frame-Options: SAMEORIGIN");
-        $CI->output->set_header("X-Content-Type-Options: nosniff");
-        $CI->output->set_header("Referrer-Policy: strict-origin-when-cross-origin");
-        $CI->output->set_header("Permissions-Policy: geolocation=(self 'http://localhost/me/hotel')");
+        $headers = [
+            "Content-Security-Policy: default-src 'self' data:; " . 
+                "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; " . 
+                "style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; " . 
+                "connect-src 'self' https://newsapi.org;",
+            "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "X-Frame-Options: SAMEORIGIN",
+            "X-Content-Type-Options: nosniff",
+            "Referrer-Policy: strict-origin-when-cross-origin",
+            "Permissions-Policy: geolocation=(self 'http://localhost/me/hotel')"
+        ];
+
+        foreach ($headers as $header) {
+            $CI->output->set_header($header);
+        }
     }
 }
 
