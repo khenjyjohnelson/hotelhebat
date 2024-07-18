@@ -13,6 +13,7 @@ class Welcome extends Omnitags
 		redirect('/en', 'refresh');
 	}
 
+
 	// First loaded function
 	public function index()
 	{
@@ -82,17 +83,22 @@ class Welcome extends Omnitags
 	// Dashboard page
 	public function dashboard()
 	{
+		// call declarew from Omnitags
 		$this->declarew();
-		$allowed_values = [
-                $this->aliases['tabel_c2_field6_value2'],
-                $this->aliases['tabel_c2_field6_value3'],
-                $this->aliases['tabel_c2_field6_value4']
-            ];
-            $this->page_session_check($allowed_values);
 
+		// showing all sessions that can be loaded in this controller
+		$allowed_values = [
+			$this->aliases['tabel_c2_field6_value2'],
+			$this->aliases['tabel_c2_field6_value3'],
+			$this->aliases['tabel_c2_field6_value4']
+		];
+		$this->page_session_check($allowed_values);
+
+		// initialize the charts from each table with specific model function
 		$chart_tabel_f1 = $this->tl_e4->getCharttabel_f1();
 		$chart_tabel_f2 = $this->tl_e4->getCharttabel_f2();
 
+		// setting the array for data1
 		$data1 = array(
 			'title' => lang('dashboard'),
 			'konten' => 'dashboard',
@@ -112,14 +118,20 @@ class Welcome extends Omnitags
 			'chart_tabel_f2' => json_encode($chart_tabel_f2),
 		);
 
+		// setting the flashdata
 		set_flashdata($this->views['flash1'], $this->views['flash1_note1']);
 		set_flashdata('toast', $this->views['flash1_func1']);
 
+		// combining the data and package from Omnitags
 		$data = array_merge($data1, $this->package);
 
+		// handling the notification
 		$notif = $this->handle_2a();
 
+		// set the session for this function to be called if there's an error page
 		set_userdata('previous_url', current_url());
+
+		// load the view with data
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -136,6 +148,21 @@ class Welcome extends Omnitags
 		$data = array_merge($data1, $this->package);
 
 		$this->load->view('errors/invalid', $data);
+	}
+
+	// Page that will be loaded if a page is visisted by a user with the wrong level
+	public function overloaded()
+	{
+		$this->declarew();
+
+		$data1 = array(
+			'title' => "Website Overloaded",
+			'dekor' => "",
+		);
+
+		$data = array_merge($data1, $this->package);
+
+		$this->load->view('errors/overload', $data);
 	}
 
 	// Page that will be loaded if a page is visisted by a user with the wrong level

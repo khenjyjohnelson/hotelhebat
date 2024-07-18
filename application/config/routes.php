@@ -13,6 +13,7 @@ $route['(' . $languages . ')/home'] = 'welcome';
 $route['(' . $languages . ')/login'] = 'c_tabel_c2/login';
 $route['(' . $languages . ')/signup'] = 'c_tabel_c2/signup';
 $route['(' . $languages . ')/no_level'] = 'welcome/no_level';
+$route['en/overloaded'] = 'welcome/overloaded';
 $route['(' . $languages . ')/invalid'] = 'welcome/invalid';
 $route['(' . $languages . ')/dashboard'] = 'welcome/dashboard';
 $route['(' . $languages . ')/dashboard/home'] = 'welcome/dashboard';

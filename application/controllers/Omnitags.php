@@ -160,6 +160,8 @@ if (!class_exists('Omnitags')) {
                 $this->v8[$item['key']] = '_contents/' . $item['key'] . '/detail';
             }
 
+            $this->overload();
+
             date_default_timezone_set($this->aliases['timezone']);
             $this->tabel_a1_field1 = 1;
 
@@ -207,6 +209,28 @@ if (!class_exists('Omnitags')) {
             );
 
             $this->package = array_merge($this->views, $this->aliases, $this->v_input, $this->reverse);
+
+
+        }
+
+        public function overload()
+        {
+            // Try to connect to the database
+        $this->load->database();
+
+        if ($this->db->conn_id === false) {
+            // Check if the error code is 1203 (max_user_connections)
+            $db_error = $this->db->error();
+            if ($db_error['code'] == 1203) {
+                // Load the overload error view
+                redirect(site_url('en/overloaded'));
+                return;
+            } else {
+                // Handle other database connection errors
+                show_error('Database connection error: ' . $db_error['message'], 500);
+                return;
+            }
+        }
         }
 
         // Session userdata handling for loading pages
@@ -309,7 +333,7 @@ if (!class_exists('Omnitags')) {
             ];
             $this->session_check($allowed_values);
         }
-        
+
         public function session_5()
         {
             $allowed_values = [

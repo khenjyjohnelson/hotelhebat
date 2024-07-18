@@ -11,7 +11,9 @@ class C_tabel_a1 extends Omnitags
 	//Admin page and functions
 	public function admin()
 	{
+		// Call to declarew method
 		$this->declarew();
+		// Call to page_session_3 method
 		$this->page_session_3();
 
 		$data1 = array(
@@ -22,7 +24,9 @@ class C_tabel_a1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		// Set previous URL in session
 		set_userdata('previous_url', current_url());
+		// Load view data with template
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -34,7 +38,9 @@ class C_tabel_a1 extends Omnitags
 		header("Pragma: no-cache"); // HTTP 1.0.
 		header("Expires: 0"); // Proxies.
 
+		// Call to declarew method
 		$this->declarew();
+		// Call to page_session_3 method
 		$this->page_session_3();
 
 		$data1 = array(
@@ -46,7 +52,9 @@ class C_tabel_a1 extends Omnitags
 
 		$data = array_merge($data1, $this->package);
 
+		// Set previous URL in session
 		set_userdata('previous_url', current_url());
+		// Load view data with template
 		load_view_data('_layouts/template', $data);
 	}
 
@@ -54,11 +62,14 @@ class C_tabel_a1 extends Omnitags
 	// Update data
 	public function update()
 	{
+		// Call to declarew method
 		$this->declarew();
+		// Call to session_3 method
 		$this->session_3();
 
 		$tabel_a1_field1 = $this->v_post['tabel_a1_field1'];
 
+		// Validate fields
 		validate_all(
 			array(
 				$this->v_post['tabel_a1_field1'],
@@ -82,17 +93,21 @@ class C_tabel_a1 extends Omnitags
 
 		$notif = $this->handle_4c($aksi, 'tabel_a1', $tabel_a1_field1);
 
+		// Redirect to previous page
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	// Update Theme ID
 	public function update_id_tema()
 	{
+		// Call to declarew method
 		$this->declarew();
+		// Call to session_3 method
 		$this->session_3();
 
 		$tabel_a1_field1 = $this->v_post['tabel_a1_field1'];
 
+		// Validate fields
 		validate_all(
 			array(
 				$this->v_post['tabel_a1_field1'],
@@ -110,6 +125,7 @@ class C_tabel_a1 extends Omnitags
 
 		$notif = $this->handle_4d($aksi, 'tabel_b7', $tabel_a1_field1);
 
+		 // Redirect to previous page
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
