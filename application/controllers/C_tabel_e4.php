@@ -129,9 +129,9 @@ class C_tabel_e4 extends Omnitags
 		// $this->aliases['tabel_e1_field1'] => $id,
 
 		$data = array(
-			$this->aliases['tabel_e4_field2'] => post('tabel_e4_field2'),
+			$this->aliases['tabel_e4_field2'] => $this->v_post['tabel_e4_field2'],
 			$this->aliases['tabel_e4_field3'] => $gambar,
-			$this->aliases['tabel_e4_field5'] => post('tabel_e4_field5'),
+			$this->aliases['tabel_e4_field5'] => $this->v_post['tabel_e4_field5'],
 		);
 
 		$aksi = $this->tl_e4->insert_e4($data);
