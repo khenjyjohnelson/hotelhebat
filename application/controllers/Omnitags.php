@@ -642,6 +642,16 @@ if (!class_exists('Omnitags')) {
             }
         }
 
+        public function check_null($method)
+        {
+            if ($method != NULL) {
+                // error handling
+                set_flashdata($this->views['flash1'], "This data already exist, pick something else!");
+                set_flashdata('toast', $this->views['flash1_func1']);
+                redirect(userdata('previous_url'));
+            }
+        }
+
         public function check_data($method)
         {
             if (!$method) {

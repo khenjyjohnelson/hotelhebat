@@ -82,7 +82,7 @@ class C_tabel_b7 extends Omnitags
 		$param1 = $this->v_post['tabel_b7_field2'];
 
 		$tabel = $this->tl_b7->get_b7_by_b7_field2($param1)->result();
-		$this->check_data($tabel);
+		$this->check_null($tabel);
 
 		validate_all(
 			array(
@@ -322,7 +322,7 @@ class C_tabel_b7 extends Omnitags
 		$this->declarew();
 		$this->session_3();
 
-		$tabel_b7 = $this->tl_b7->get_b7_field1($tabel_b7_field1)->result();
+		$tabel_b7 = $this->tl_b7->get_b7_by_b7_field1($tabel_b7_field1)->result();
 		$this->check_data($tabel_b7);
 
 		$tabel_b7_field3 = $tabel_b7[0]->favicon;

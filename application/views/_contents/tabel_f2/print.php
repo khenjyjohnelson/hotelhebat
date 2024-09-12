@@ -19,10 +19,6 @@
       </td>
     </tr>
     </tbody>
-  </table>
-
-  <!-- menampilkan data tamu -->
-  <table class="table">
     <thead class="thead">
       <tr>
         <th><?= lang('tabel_f2_field5_alias') ?></th>
